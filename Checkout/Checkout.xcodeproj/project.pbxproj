@@ -14,6 +14,7 @@
 		E70BEB7829B92B220030335E /* CheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB7729B92B220030335E /* CheckoutTests.swift */; };
 		E70BEB8229B92B220030335E /* CheckoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB8129B92B220030335E /* CheckoutUITests.swift */; };
 		E70BEB8429B92B220030335E /* CheckoutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB8329B92B220030335E /* CheckoutUITestsLaunchTests.swift */; };
+		E70BEB9229B94D8B0030335E /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9129B94D8B0030335E /* HelloView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		E70BEB7D29B92B220030335E /* CheckoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckoutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70BEB8129B92B220030335E /* CheckoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUITests.swift; sourceTree = "<group>"; };
 		E70BEB8329B92B220030335E /* CheckoutUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E70BEB9129B94D8B0030335E /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		E70BEB6529B92B200030335E /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
+				E70BEB9029B94D710030335E /* Views */,
 				E70BEB6629B92B200030335E /* CheckoutApp.swift */,
 				E70BEB6829B92B200030335E /* ContentView.swift */,
 				E70BEB6A29B92B210030335E /* Assets.xcassets */,
@@ -125,6 +128,14 @@
 				E70BEB8329B92B220030335E /* CheckoutUITestsLaunchTests.swift */,
 			);
 			path = CheckoutUITests;
+			sourceTree = "<group>";
+		};
+		E70BEB9029B94D710030335E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E70BEB9129B94D8B0030335E /* HelloView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E70BEB9229B94D8B0030335E /* HelloView.swift in Sources */,
 				E70BEB6929B92B200030335E /* ContentView.swift in Sources */,
 				E70BEB6729B92B200030335E /* CheckoutApp.swift in Sources */,
 			);
@@ -419,7 +431,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Checkout/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=*]" = NO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -447,7 +460,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Checkout/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=*]" = NO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

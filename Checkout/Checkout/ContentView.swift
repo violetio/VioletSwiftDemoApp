@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var selectedOffer = VioletOffer()
     var body: some View {
         VStack {
             HelloView()
+            SelectedOfferView()
+                .padding()
         }
         .padding()
     }

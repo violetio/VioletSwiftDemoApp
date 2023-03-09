@@ -18,6 +18,7 @@
 		E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9429B94F5A0030335E /* VioletOffer.swift */; };
 		E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9629BA37440030335E /* SelectedOfferView.swift */; };
 		E70BEB9B29BA54B00030335E /* GetOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9A29BA54B00030335E /* GetOffer.swift */; };
+		E70BEBA029BA6ACF0030335E /* VioletPublicClientAPI in Frameworks */ = {isa = PBXBuildFile; productRef = E70BEB9F29BA6ACF0030335E /* VioletPublicClientAPI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E70BEBA029BA6ACF0030335E /* VioletPublicClientAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +90,7 @@
 				E70BEB7629B92B220030335E /* CheckoutTests */,
 				E70BEB8029B92B220030335E /* CheckoutUITests */,
 				E70BEB6429B92B200030335E /* Products */,
+				E70BEB9E29BA6ACF0030335E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +168,13 @@
 			path = APIModels;
 			sourceTree = "<group>";
 		};
+		E70BEB9E29BA6ACF0030335E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,6 +191,9 @@
 			dependencies = (
 			);
 			name = Checkout;
+			packageProductDependencies = (
+				E70BEB9F29BA6ACF0030335E /* VioletPublicClientAPI */,
+			);
 			productName = Checkout;
 			productReference = E70BEB6329B92B200030335E /* Checkout.app */;
 			productType = "com.apple.product-type.application";
@@ -621,6 +634,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E70BEB9F29BA6ACF0030335E /* VioletPublicClientAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = VioletPublicClientAPI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E70BEB5B29B92B200030335E /* Project object */;
 }

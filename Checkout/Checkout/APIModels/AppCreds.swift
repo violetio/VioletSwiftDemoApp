@@ -7,10 +7,13 @@
 
 import VioletPublicClientAPI
 
+/// AppCreds captures the common properties necessary to call
+/// a Violet API Endpoint with an AppID
+/// TODO: Split out subtype for AppId and AppSecret as these are used together
 struct AppCreds {
-    let appID: Int64// = 10199
-    let apiSecret: String// = "c50e054620634e9aacc22f5529b2782c"
-    var token: String// = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJldmFuZHJvLmdvbWVzQHZpb2xldC5pbyIsInNjb3BlcyI6WyJST0xFX1JFRlJFU0hfVE9LRU4iXSwicGVybWlzc2lvbnMiOlsiUk9MRV9ERVZFTE9QRVIiXSwiZGV2ZWxvcGVyX2lkIjoxMDI5MCwibWVyY2hhbnRfaWRzIjpbXSwiaXNzIjoiaHR0cHM6Ly92aW9sZXQuaW8iLCJqdGkiOiJiNDg5MTE2Mi04ZDRiLTRkYjMtYjllNi00OGJkOGQzYjczMWUiLCJpYXQiOjE2NTEwMDI5MTksImV4cCI6MjEyNDM4ODUxOX0.B1o5_4UIv2ybL5-Y4Mrq7g5z33iEWfh3-tCRDET-PSMTNuvsh7HZrEOfDh3egPGvbBMzGeoJKVjHYnM5VExIXA"
+    let appID: Int64
+    let apiSecret: String
+    var token: String
     let username: String
     let password: String
     

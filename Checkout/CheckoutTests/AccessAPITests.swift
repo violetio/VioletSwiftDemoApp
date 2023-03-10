@@ -50,7 +50,7 @@ final class CheckoutTests: XCTestCase {
     
     func test_Login() throws {
         
-        let appCreds = AppCreds.SandBoxTestCreds()
+        let appCreds = AppCreds.SandBoxTestCreds_Alan()
         
         var myAuthtoken: String = ""
         let expectation = XCTestExpectation(description: "API Call")

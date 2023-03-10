@@ -22,6 +22,14 @@ struct AppCreds {
         self.password = password
     }
     
+    init(_ envVars: EnvVars) {
+        self.init(appID: envVars.sandbox_app_id,
+                  apiSecret: envVars.sandbox_app_secret,
+                  token: "",
+                  username: envVars.sandbox_app_username,
+                  password: envVars.sandbox_app_password)
+    }
+    
     func loginBody() -> LoginRequest {
         return LoginRequest(username: self.username, password: self.password)
     }
@@ -29,20 +37,12 @@ struct AppCreds {
     public mutating func setToken(_ newToken: String) {
         self.token = newToken
     }
-    /**
-     X-Violet-App-Id: 10382
-     X-Violet-App-Sercret: 48f50b967d6944b18df3c212ca60a151
-     (for token)
-     loginUsername: ishan.guru@violet.io
-     loginPassword: vxb*EHE4ahw4zmf@ekc
-     */
     
     static func SandBoxTestCreds() -> AppCreds {
-        let envVars = EnvVars()
-        return AppCreds(appID: envVars.sandbox_app_id,
-                        apiSecret: envVars.sandbox_app_secret,
-                        token: "",
-                        username: envVars.sandbox_app_username,
-                        password: envVars.sandbox_app_password)
+        return AppCreds(EnvVars())
+    }
+    
+    static func SandBoxTestCreds_Alan() -> AppCreds {
+        return AppCreds(EnvVars.Alan())
     }
 }

@@ -59,7 +59,6 @@ final class CheckoutTests: XCTestCase {
                             body: appCreds.loginBody()) { (response, error) in
             guard error == nil else {
                 print(error.debugDescription)
-
                 return
             }
 

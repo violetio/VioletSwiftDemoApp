@@ -74,8 +74,13 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
+            key = "sandbox_app_id"
+            value = "10382"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "sandbox_app_secret"
-            value = "c50e054620634e9aacc22f5529b2782c"
+            value = "48f50b967d6944b18df3c212ca60a151"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
@@ -89,8 +94,43 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "sandbox_app_id"
+            key = "sandbox_app_id_alan"
+            value = "10199"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "sandbox_app_secret_alan"
+            value = "c50e054620634e9aacc22f5529b2782c"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "sandbox_app_username_alan"
+            value = "alan+sandbox@violet.io"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "sandbox_app_password_alan"
+            value = "Violet252627!"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "sandbox_app_id_ishan"
             value = "10382"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "sandbox_app_secret_ishan"
+            value = "48f50b967d6944b18df3c212ca60a151"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "sandbox_app_username_ishan"
+            value = "ishan.guru@violet.io"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "sandbox_app_password_ishan"
+            value = "vxb*EHE4ahw4zmf@ekc"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

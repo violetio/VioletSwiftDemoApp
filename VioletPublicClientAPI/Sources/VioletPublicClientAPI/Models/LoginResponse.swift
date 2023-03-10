@@ -29,8 +29,6 @@ public struct LoginResponse: Codable, JSONEncodable, Hashable {
     public var firstName: String
     /** The users last name */
     public var lastName: String
-    /** The users raw desired password */
-    public var password: String
     /** The users unique email address */
     public var email: String
     /** The Id of the Store the User is associated to. */
@@ -51,11 +49,10 @@ public struct LoginResponse: Codable, JSONEncodable, Hashable {
     /** Users Refresh Token. Never expires. */
     public var refreshToken: String?
 
-    public init(id: Int64? = nil, firstName: String, lastName: String, password: String, email: String, merchantId: Int? = nil, type: ModelType, verified: Bool? = false, status: Status? = nil, dateCreated: Date? = nil, dateLastModified: Date? = nil, roles: [Role]? = nil, token: String? = nil, refreshToken: String? = nil) {
+    public init(id: Int64? = nil, firstName: String, lastName: String, email: String, merchantId: Int? = nil, type: ModelType, verified: Bool? = false, status: Status? = nil, dateCreated: Date? = nil, dateLastModified: Date? = nil, roles: [Role]? = nil, token: String? = nil, refreshToken: String? = nil) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
-        self.password = password
         self.email = email
         self.merchantId = merchantId
         self.type = type
@@ -72,7 +69,6 @@ public struct LoginResponse: Codable, JSONEncodable, Hashable {
         case id
         case firstName = "first_name"
         case lastName = "last_name"
-        case password
         case email
         case merchantId = "merchant_id"
         case type
@@ -92,7 +88,6 @@ public struct LoginResponse: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encode(firstName, forKey: .firstName)
         try container.encode(lastName, forKey: .lastName)
-        try container.encode(password, forKey: .password)
         try container.encode(email, forKey: .email)
         try container.encodeIfPresent(merchantId, forKey: .merchantId)
         try container.encode(type, forKey: .type)

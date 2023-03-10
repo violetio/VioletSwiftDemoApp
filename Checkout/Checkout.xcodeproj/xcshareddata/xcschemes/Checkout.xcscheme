@@ -74,6 +74,11 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
+            key = "CFNETWORK_DIAGNOSTICS"
+            value = "&quot;3&quot;"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "sandbox_app_id"
             value = "10382"
             isEnabled = "YES">
@@ -110,7 +115,7 @@
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "sandbox_app_password_alan"
-            value = "Violet252627!"
+            value = "SandboxPass1234!@"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable

@@ -9,23 +9,24 @@ import VioletPublicClientAPI
 
 class APICallRunner {
     
-    func loginPost() {
-        print("     ---- loginPost ---")
-        let appCreds = AppCreds.SandBoxTestCreds_Alan()
+    private let logger = Logger()
+    
+    func loginPost(appCreds: AppCreds = AppCreds.SandBoxTestCreds_Alan()) {
+        logger.log("     ---- loginPost ---")
         AccessAPI.loginPost(xVioletAppSecret: appCreds.apiSecret,
                             xVioletAppId: appCreds.appID,
                             body: appCreds.loginBody()) { (response, error) in
             guard error == nil else {
-                print("     ---- loginPost: error:")
-                print(error.debugDescription)
+                self.logger.info("     ---- loginPost: error:")
+                self.logger.error(error.debugDescription)
                 return
             }
 
             if let resp = response {
                 if let tokenReceived = resp.token {
-                    print("     ---- loginPost: token: \(tokenReceived)")
+                    self.logger.info("     ---- loginPost: token: \(tokenReceived)")
                 } else {
-                    print("     ---- loginPost: NO TOKEN")
+                    self.logger.info("     ---- loginPost: NO TOKEN")
                 }
                 
             }

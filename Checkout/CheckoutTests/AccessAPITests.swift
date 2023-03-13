@@ -1,6 +1,6 @@
 //
-//  CheckoutTests.swift
-//  CheckoutTests
+//  AccessAPITests.swift
+//  AccessAPITests
 //
 //  Created by Alan Morford on 3/8/23.
 //
@@ -9,7 +9,7 @@ import XCTest
 @testable import Checkout
 import VioletPublicClientAPI
 
-final class CheckoutTests: XCTestCase {
+final class AccessAPITests: XCTestCase {
     
     func test_Login() throws {
         

@@ -72,7 +72,7 @@ open class AccessAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func loginPost(xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, body: LoginRequest? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: LoginResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func loginPost(xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, body: LoginRequest? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: LoginResponse?, _ error: ErrorResponse?) -> Void)) -> RequestTask {
         return loginPostWithRequestBuilder(xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, body: body).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):

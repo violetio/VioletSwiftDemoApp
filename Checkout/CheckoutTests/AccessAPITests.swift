@@ -41,11 +41,11 @@ final class AccessAPITests: XCTestCase {
     func test_RefreshAuthTokenGet() throws {
 
         let appCreds = AppCreds.SandBoxTestCreds()
-        
+        var refreshToken = ""
         var myAuthtoken: String = ""
         
         let expectation = XCTestExpectation(description: "API Call")
-        AccessAPI.authTokenGet(xVioletToken: appCreds.token,
+        AccessAPI.authTokenGet(xVioletToken: refreshToken,
                                xVioletAppSecret: appCreds.apiSecret,
                                xVioletAppId: appCreds.appID) { (response, error) in
             guard error == nil else {

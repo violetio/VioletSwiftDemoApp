@@ -6,16 +6,25 @@
 //
 
 import SwiftUI
+import VioletPublicClientAPI
 
 struct LoginButtonView: View {
     
-    let caller = APICallRunner()
+    @StateObject var loginPostRequest = LoginPostRequest(appCreds: AppCreds.SandBoxTestCreds_Alan())
     var body: some View {
-        Button("Login") {
-            print("---- Start Login Action")
-            caller.loginPost()
-            print("---- Completed Login Action")
-        }.padding(6)
+        if loginPostRequest.callCompleted {
+            Text("Logged In").bold()
+            let token_prefix: String = loginPostRequest.dataResponse?.token?.prefix(9).debugDescription ?? "-"
+            Text("Token: \(token_prefix)").bold()
+            
+        } else {
+            Button("Login") {
+                print("---- Start Login Action")
+                loginPostRequest.send()
+                
+            }.padding(6)
+
+        }
     }
 }
 

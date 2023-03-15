@@ -24,8 +24,9 @@
 		E70BEBA729BB9F650030335E /* EnvTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA629BB9F650030335E /* EnvTests.swift */; };
 		E70BEBA929BBA0FD0030335E /* EnvVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA829BBA0FD0030335E /* EnvVars.swift */; };
 		E70BEBAB29BBBC6D0030335E /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBAA29BBBC6D0030335E /* LoginButtonView.swift */; };
-		E70BEBAD29BBBE220030335E /* APICallRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBAC29BBBE220030335E /* APICallRunner.swift */; };
 		E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB7A29BFC20100598B15 /* Logger.swift */; };
+		E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */; };
+		E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8229C2334B00598B15 /* APIModelsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +68,9 @@
 		E70BEBA629BB9F650030335E /* EnvTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvTests.swift; sourceTree = "<group>"; };
 		E70BEBA829BBA0FD0030335E /* EnvVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVars.swift; sourceTree = "<group>"; };
 		E70BEBAA29BBBC6D0030335E /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
-		E70BEBAC29BBBE220030335E /* APICallRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallRunner.swift; sourceTree = "<group>"; };
 		E71CFB7A29BFC20100598B15 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPostRequest.swift; sourceTree = "<group>"; };
+		E71CFB8229C2334B00598B15 /* APIModelsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModelsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		E70BEB7629B92B220030335E /* CheckoutTests */ = {
 			isa = PBXGroup;
 			children = (
+				E71CFB8229C2334B00598B15 /* APIModelsTests.swift */,
 				E70BEB7729B92B220030335E /* AccessAPITests.swift */,
 				E70BEBA429BAB47F0030335E /* CatalogOffersAPITests.swift */,
 				E70BEBA629BB9F650030335E /* EnvTests.swift */,
@@ -185,8 +188,8 @@
 				E70BEB9A29BA54B00030335E /* GetOffer.swift */,
 				E70BEBA229BAA2210030335E /* AppCreds.swift */,
 				E70BEBA829BBA0FD0030335E /* EnvVars.swift */,
-				E70BEBAC29BBBE220030335E /* APICallRunner.swift */,
 				E71CFB7A29BFC20100598B15 /* Logger.swift */,
+				E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -331,7 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E70BEBAD29BBBE220030335E /* APICallRunner.swift in Sources */,
+				E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */,
 				E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */,
 				E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */,
 				E70BEB9B29BA54B00030335E /* GetOffer.swift in Sources */,
@@ -349,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */,
 				E70BEBA729BB9F650030335E /* EnvTests.swift in Sources */,
 				E70BEB7829B92B220030335E /* AccessAPITests.swift in Sources */,
 				E70BEBA529BAB47F0030335E /* CatalogOffersAPITests.swift in Sources */,
@@ -503,6 +507,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Checkout/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Checkout/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -533,6 +538,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Checkout/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Checkout/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";

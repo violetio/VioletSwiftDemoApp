@@ -30,4 +30,16 @@ class Logger {
         log(message,logLevel: .error)
     }
     
+    static func log(_ message: String, logLevel: LogLevel = .info) {
+        print("\(logLevel): \(message)")
+    }
+
+    static func info(_ message: String) {
+        log(message,logLevel: .info)
+    }
+
+    static func error(_ message: String) {
+        log(message,logLevel: .error)
+    }
+    
 }

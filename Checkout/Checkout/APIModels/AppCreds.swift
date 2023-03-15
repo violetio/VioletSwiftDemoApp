@@ -13,32 +13,30 @@ import VioletPublicClientAPI
 struct AppCreds {
     let appID: Int64
     let apiSecret: String
-    var token: String
     let username: String
     let password: String
     
-    init(appID: Int64, apiSecret: String, token: String, username: String, password: String) {
+    init(appID: Int64, apiSecret: String, username: String, password: String) {
         self.appID = appID
         self.apiSecret = apiSecret
-        self.token = token
         self.username = username
         self.password = password
+        self.log()
     }
     
-    init(_ envVars: EnvVars) {
+    init(_ envVars: EnvVars = EnvVars.Alan()) {
         self.init(appID: envVars.sandbox_app_id,
                   apiSecret: envVars.sandbox_app_secret,
-                  token: "",
                   username: envVars.sandbox_app_username,
                   password: envVars.sandbox_app_password)
     }
     
-    func loginBody() -> LoginRequest {
-        return LoginRequest(username: self.username, password: self.password)
+    func log() {
+        Logger.info("AppCreds: \(self)")
     }
     
-    public mutating func setToken(_ newToken: String) {
-        self.token = newToken
+    func loginBody() -> LoginRequest {
+        return LoginRequest(username: self.username, password: self.password)
     }
     
     static func SandBoxTestCreds() -> AppCreds {

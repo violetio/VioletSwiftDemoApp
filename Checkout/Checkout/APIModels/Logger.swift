@@ -16,6 +16,7 @@ class Logger {
     enum LogLevel {
         case info
         case error
+        case debug
     }
     
     func log(_ message: String, logLevel: LogLevel = .info) {
@@ -42,4 +43,7 @@ class Logger {
         log(message,logLevel: .error)
     }
     
+    static func debug(_ message: String) {
+        log(message,logLevel: .debug)
+    }
 }

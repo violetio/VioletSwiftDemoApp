@@ -8,32 +8,25 @@
 import SwiftUI
 import VioletPublicClientAPI
 
-class LoginPostRequest: ObservableObject {
-        
+class LoginPostRequest: BaseAPICall {
+
     let appCreds: AppCreds
-    
+
     var dataResponse: LoginResponse? = nil
     var errorResponse: ErrorResponse? = nil
-    @Published var callCompleted = false
     
     init(appCreds: AppCreds) {
         self.appCreds = appCreds
     }
-    
+
     func send() {
         AccessAPI.loginPost(xVioletAppSecret: appCreds.apiSecret,
                             xVioletAppId: appCreds.appID,
                             body: appCreds.loginBody()) { [weak self] (response, error) in
-            guard let weakSelf = self else {
-                return
-            }
-            Logger.info("response?.token: \(response?.token)")
-            Logger.info("response?.refreshToken: \(response?.refreshToken)")
-            Logger.error("\(error.debugDescription)")
+            guard let weakSelf = self else { return }
             weakSelf.dataResponse = response
             weakSelf.errorResponse = error
-            weakSelf.callCompleted = true
-            
+            weakSelf.callIsCompleted()
         }
     }
 }

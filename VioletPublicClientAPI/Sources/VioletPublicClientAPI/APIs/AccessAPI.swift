@@ -22,7 +22,7 @@ open class AccessAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func authTokenGet(xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: RefreshTokenResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func authTokenGet(xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: RefreshTokenResponse?, _ error: ErrorResponse?) -> Void)) -> RequestTask {
         return authTokenGetWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):

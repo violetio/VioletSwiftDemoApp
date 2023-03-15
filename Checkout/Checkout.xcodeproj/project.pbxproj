@@ -27,6 +27,9 @@
 		E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB7A29BFC20100598B15 /* Logger.swift */; };
 		E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */; };
 		E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8229C2334B00598B15 /* APIModelsTests.swift */; };
+		E71CFB8829C26C7100598B15 /* FileSystemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8529C26C7100598B15 /* FileSystemObject.swift */; };
+		E71CFB8929C26C7100598B15 /* FileDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8629C26C7100598B15 /* FileDirectory.swift */; };
+		E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8729C26C7100598B15 /* FilePath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +74,9 @@
 		E71CFB7A29BFC20100598B15 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPostRequest.swift; sourceTree = "<group>"; };
 		E71CFB8229C2334B00598B15 /* APIModelsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModelsTests.swift; sourceTree = "<group>"; };
+		E71CFB8529C26C7100598B15 /* FileSystemObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemObject.swift; sourceTree = "<group>"; };
+		E71CFB8629C26C7100598B15 /* FileDirectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDirectory.swift; sourceTree = "<group>"; };
+		E71CFB8729C26C7100598B15 /* FilePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilePath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,7 @@
 		E70BEB6529B92B200030335E /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
+				E71CFB8429C26C7100598B15 /* FileManager */,
 				E70BEBA129BA977D0030335E /* Info.plist */,
 				E70BEB9929BA54880030335E /* APIModels */,
 				E70BEB9329B94F370030335E /* Models */,
@@ -199,6 +206,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E71CFB8429C26C7100598B15 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				E71CFB8529C26C7100598B15 /* FileSystemObject.swift */,
+				E71CFB8629C26C7100598B15 /* FileDirectory.swift */,
+				E71CFB8729C26C7100598B15 /* FilePath.swift */,
+			);
+			path = FileManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,9 +352,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */,
+				E71CFB8829C26C7100598B15 /* FileSystemObject.swift in Sources */,
 				E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */,
 				E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */,
+				E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */,
 				E70BEB9B29BA54B00030335E /* GetOffer.swift in Sources */,
+				E71CFB8929C26C7100598B15 /* FileDirectory.swift in Sources */,
 				E70BEB9229B94D8B0030335E /* HelloView.swift in Sources */,
 				E70BEBA329BAA2210030335E /* AppCreds.swift in Sources */,
 				E70BEBAB29BBBC6D0030335E /* LoginButtonView.swift in Sources */,

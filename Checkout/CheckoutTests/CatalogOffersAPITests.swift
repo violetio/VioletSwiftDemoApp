@@ -8,9 +8,20 @@
 import XCTest
 @testable import Checkout
 import VioletPublicClientAPI
+import SwiftCSV
 
 final class CatalogOffersAPITests: XCTestCase {
 
+    
+    func test_generate_offer() {
+        guard let resource: CSV<Named> = MockData.loadData() else {
+            XCTFail("No CSV Data")
+            return
+        }
+        
+        print("Resource? Rows Count \(resource.rows.count)")
+    }
+    
     var appCreds = AppCreds.SandBoxTestCreds()
     //appCreds.setToken()
     var token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpc2hhbi5ndXJ1QHZpb2xldC5pbyIsInNjb3BlcyI6WyJST0xFX0RFVkVMT1BFUiJdLCJ1c2VyX2lkIjoxMDM5NywidXNlcl90eXBlIjoiREVWRUxPUEVSIiwibWVyY2hhbnRfaWRzIjpbXSwiZGV2ZWxvcGVyX2lkIjoxMDI5MiwiYXBwX2lkIjoiMTAzODIiLCJpc3MiOiJodHRwczovL3Zpb2xldC5pbyIsImlhdCI6MTY3ODQ3MjEyNSwiZXhwIjoxNjc4NTU4NTI1fQ.et0A8z_JwJy8_KQj-d6fLhy11UBP50KrlZTgpmWxaV09CKr6S2StzpvUA_9nMyBVMWfDHuiZnolJcfSDkScsww"

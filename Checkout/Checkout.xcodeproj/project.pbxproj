@@ -32,6 +32,9 @@
 		E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8729C26C7100598B15 /* FilePath.swift */; };
 		E71CFB8D29C26CE200598B15 /* AuthTokenGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8B29C26CE200598B15 /* AuthTokenGet.swift */; };
 		E71CFB8E29C26CE200598B15 /* BaseAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8C29C26CE200598B15 /* BaseAPICall.swift */; };
+		E71CFB9129C3B2AC00598B15 /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = E71CFB9029C3B2AC00598B15 /* SwiftCSV */; };
+		E71CFB9429C3B41900598B15 /* Sandbox_Offers_MerchantID_10000.csv in Resources */ = {isa = PBXBuildFile; fileRef = E71CFB9329C3B41900598B15 /* Sandbox_Offers_MerchantID_10000.csv */; };
+		E71CFB9629C3B45D00598B15 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB9529C3B45D00598B15 /* MockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,8 @@
 		E71CFB8729C26C7100598B15 /* FilePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilePath.swift; sourceTree = "<group>"; };
 		E71CFB8B29C26CE200598B15 /* AuthTokenGet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTokenGet.swift; sourceTree = "<group>"; };
 		E71CFB8C29C26CE200598B15 /* BaseAPICall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPICall.swift; sourceTree = "<group>"; };
+		E71CFB9329C3B41900598B15 /* Sandbox_Offers_MerchantID_10000.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sandbox_Offers_MerchantID_10000.csv; sourceTree = "<group>"; };
+		E71CFB9529C3B45D00598B15 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E70BEBA029BA6ACF0030335E /* VioletPublicClientAPI in Frameworks */,
+				E71CFB9129C3B2AC00598B15 /* SwiftCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +140,7 @@
 		E70BEB6529B92B200030335E /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
+				E71CFB9229C3B32C00598B15 /* MockData */,
 				E71CFB8429C26C7100598B15 /* FileManager */,
 				E70BEBA129BA977D0030335E /* Info.plist */,
 				E70BEB9929BA54880030335E /* APIModels */,
@@ -224,6 +231,15 @@
 			path = FileManager;
 			sourceTree = "<group>";
 		};
+		E71CFB9229C3B32C00598B15 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				E71CFB9329C3B41900598B15 /* Sandbox_Offers_MerchantID_10000.csv */,
+				E71CFB9529C3B45D00598B15 /* MockData.swift */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -242,6 +258,7 @@
 			name = Checkout;
 			packageProductDependencies = (
 				E70BEB9F29BA6ACF0030335E /* VioletPublicClientAPI */,
+				E71CFB9029C3B2AC00598B15 /* SwiftCSV */,
 			);
 			productName = Checkout;
 			productReference = E70BEB6329B92B200030335E /* Checkout.app */;
@@ -315,6 +332,9 @@
 				Base,
 			);
 			mainGroup = E70BEB5A29B92B200030335E;
+			packageReferences = (
+				E71CFB8F29C3B2AC00598B15 /* XCRemoteSwiftPackageReference "SwiftCSV" */,
+			);
 			productRefGroup = E70BEB6429B92B200030335E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -333,6 +353,7 @@
 			files = (
 				E70BEB6E29B92B210030335E /* Preview Assets.xcassets in Resources */,
 				E70BEB6B29B92B210030335E /* Assets.xcassets in Resources */,
+				E71CFB9429C3B41900598B15 /* Sandbox_Offers_MerchantID_10000.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +381,7 @@
 				E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */,
 				E71CFB8829C26C7100598B15 /* FileSystemObject.swift in Sources */,
 				E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */,
+				E71CFB9629C3B45D00598B15 /* MockData.swift in Sources */,
 				E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */,
 				E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */,
 				E70BEB9B29BA54B00030335E /* GetOffer.swift in Sources */,
@@ -701,10 +723,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		E71CFB8F29C3B2AC00598B15 /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftcsv/SwiftCSV";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		E70BEB9F29BA6ACF0030335E /* VioletPublicClientAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = VioletPublicClientAPI;
+		};
+		E71CFB9029C3B2AC00598B15 /* SwiftCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E71CFB8F29C3B2AC00598B15 /* XCRemoteSwiftPackageReference "SwiftCSV" */;
+			productName = SwiftCSV;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

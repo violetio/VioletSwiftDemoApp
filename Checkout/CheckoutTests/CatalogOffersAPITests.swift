@@ -10,8 +10,33 @@ import XCTest
 import VioletPublicClientAPI
 import SwiftCSV
 
-final class CatalogOffersAPITests: XCTestCase {
+final class CatalogOffersAPITests: APIXCTestCase {
 
+    
+    var appCreds = AppCreds.SandBoxTestCreds_Alan()
+    //appCreds.setToken()
+    var token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbGFuK3NhbmRib3hAdmlvbGV0LmlvIiwic2NvcGVzIjpbIlJPTEVfREVWRUxPUEVSIl0sInVzZXJfaWQiOjEwMjY4LCJ1c2VyX3R5cGUiOiJERVZFTE9QRVIiLCJtZXJjaGFudF9pZHMiOltdLCJkZXZlbG9wZXJfaWQiOjEwMTc0LCJhcHBfaWQiOiIxMDE5OSIsImlzcyI6Imh0dHBzOi8vdmlvbGV0LmlvIiwiaWF0IjoxNjc5MzQ4NjQ2LCJleHAiOjE2Nzk0MzUwNDZ9.FDkyg4OoW0bNSIzDS3n83GP8r0NhXO-TrNa9PsrI4veyOMA7-CHQe_bTCv5o3WwAlWhRway3VTpkRPxB9NQU-Q"
+    
+    func test_catalogOffersMerchantsMerchantIdGet() {
+        let merchant_id: Int64 = 10003
+        let expectation = XCTestExpectation(description: "API Call")
+        CatalogOffersAPI.catalogOffersMerchantsMerchantIdGet(xVioletToken: token,
+                                                             xVioletAppSecret: appCreds.apiSecret,
+                                                             xVioletAppId: appCreds.appID,
+                                                             merchantId: merchant_id) { data, err in
+            if let error = err {
+                print(error)
+                return
+            }
+
+            if let response = data {
+                print(response)
+            }
+        expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: pageTimeout)
+        
+    }
     
     func test_generate_offer() {
         guard let resource: CSV<Named> = MockData.loadData() else {
@@ -21,13 +46,9 @@ final class CatalogOffersAPITests: XCTestCase {
         
         print("Resource? Rows Count \(resource.rows.count)")
     }
-    
-    var appCreds = AppCreds.SandBoxTestCreds()
-    //appCreds.setToken()
-    var token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpc2hhbi5ndXJ1QHZpb2xldC5pbyIsInNjb3BlcyI6WyJST0xFX0RFVkVMT1BFUiJdLCJ1c2VyX2lkIjoxMDM5NywidXNlcl90eXBlIjoiREVWRUxPUEVSIiwibWVyY2hhbnRfaWRzIjpbXSwiZGV2ZWxvcGVyX2lkIjoxMDI5MiwiYXBwX2lkIjoiMTAzODIiLCJpc3MiOiJodHRwczovL3Zpb2xldC5pbyIsImlhdCI6MTY3ODQ3MjEyNSwiZXhwIjoxNjc4NTU4NTI1fQ.et0A8z_JwJy8_KQj-d6fLhy11UBP50KrlZTgpmWxaV09CKr6S2StzpvUA_9nMyBVMWfDHuiZnolJcfSDkScsww"
 
     func test_catalogOffersOfferIdGet() throws {
-        let offer_id: Int64 = 10114
+        let offer_id: Int64 = 12555
         let expectation = XCTestExpectation(description: "API Call")
         CatalogOffersAPI.catalogOffersOfferIdGet(offerId: offer_id,
                                                  xVioletToken: token,
@@ -43,7 +64,7 @@ final class CatalogOffersAPITests: XCTestCase {
                 }
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 3.0)
+        wait(for: [expectation], timeout: pageTimeout)
     }
     
     func test_catalogProductsGet() throws {

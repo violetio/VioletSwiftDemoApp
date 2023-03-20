@@ -9,7 +9,7 @@ import XCTest
 @testable import Checkout
 import VioletPublicClientAPI
 
-final class AccessAPITests: XCTestCase {
+final class AccessAPITests: APIXCTestCase {
     
     func test_Login() throws {
         
@@ -33,7 +33,7 @@ final class AccessAPITests: XCTestCase {
 
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 3.0)
+        wait(for: [expectation], timeout: timeout)
         print("tokenReceived: \(myAuthtoken)")
         
     }

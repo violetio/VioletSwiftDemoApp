@@ -13,6 +13,69 @@ import AnyCodable
 open class CatalogOffersAPI {
 
     /**
+     Get Offers by merchant_id
+     
+     - parameter xVioletToken: (header)  
+     - parameter xVioletAppSecret: (header)  
+     - parameter xVioletAppId: (header)  
+     - parameter merchantId: (path)  
+     - parameter page: (query)  (optional)
+     - parameter size: (query)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func catalogOffersMerchantsMerchantIdGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, merchantId: Int64, page: Int64? = nil, size: Int64? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: PageOffer?, _ error: Error?) -> Void)) -> RequestTask {
+        return catalogOffersMerchantsMerchantIdGetWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, merchantId: merchantId, page: page, size: size).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get Offers by merchant_id
+     - GET /catalog/offers/merchants/{merchant_id}
+     - Retrieves a page of offers by Merchant ID.
+     - parameter xVioletToken: (header)  
+     - parameter xVioletAppSecret: (header)  
+     - parameter xVioletAppId: (header)  
+     - parameter merchantId: (path)  
+     - parameter page: (query)  (optional)
+     - parameter size: (query)  (optional)
+     - returns: RequestBuilder<PageOffer> 
+     */
+    open class func catalogOffersMerchantsMerchantIdGetWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, merchantId: Int64, page: Int64? = nil, size: Int64? = nil) -> RequestBuilder<PageOffer> {
+        var localVariablePath = "/catalog/offers/merchants/{merchant_id}"
+        let merchantIdPreEscape = "\(APIHelper.mapValueToPathItem(merchantId))"
+        let merchantIdPostEscape = merchantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{merchant_id}", with: merchantIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = VioletPublicClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
+            "size": (wrappedValue: size?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "X-Violet-Token": xVioletToken.encodeToJSON(),
+            "X-Violet-App-Secret": xVioletAppSecret.encodeToJSON(),
+            "X-Violet-App-Id": xVioletAppId.encodeToJSON(),
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<PageOffer>.Type = VioletPublicClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: false)
+    }
+
+    /**
      Get Offer by ID
      
      - parameter offerId: (path)  

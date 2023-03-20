@@ -17,16 +17,45 @@ public struct Sku: Codable, JSONEncodable, Hashable {
         case _default = "default"
         case apparel = "apparel"
         case service = "service"
+        
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            let rawString = try container.decode(String.self)
+            
+            if let taxType = TaxType(rawValue: rawString.lowercased()) {
+                self = taxType
+            } else {
+                throw DecodingError.dataCorruptedError(in: container, debugDescription: "Cannot initialize UserType from invalid String value \(rawString)")
+            }
+        }
     }
+    
     public enum ModelType: String, Codable, CaseIterable {
         case physical = "physical"
         case digital = "digital"
         case virtual = "virtual"
+        
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            let rawString = try container.decode(String.self)
+            
+            if let modelType = Sku.ModelType(rawValue: rawString.lowercased()) {
+                self = modelType
+            } else {
+                throw DecodingError.dataCorruptedError(in: container, debugDescription: "Cannot initialize Sku.ModelType from invalid String value \(rawString)")
+            }
+        }
     }
+    
     public enum Status: String, Codable, CaseIterable {
-        case enabled = "enabled"
-        case disabled = "disabled"
+        case available = "AVAILABLE"
+        case unavailable = "UNAVAILABLE"
+        case disabledAvailable = "DISABLED_AVAILABLE"
+        case disabledUnavailable = "DISABLED_UNAVAILABLE"
+        case archived = "ARCHIVED"
+        case forDeletion = "FOR_DELETION"
     }
+    
     public var id: Int64?
     /** ID of the Offer */
     public var offerId: Int64

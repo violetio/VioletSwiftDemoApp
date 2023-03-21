@@ -13,7 +13,7 @@ class LoginPostRequest: BaseAPICall {
     let appCreds: AppCreds
 
     var dataResponse: LoginResponse? = nil
-    var errorResponse: ErrorResponse? = nil
+    var errorResponse: Error? = nil
     
     init(appCreds: AppCreds) {
         self.appCreds = appCreds

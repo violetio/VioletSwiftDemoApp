@@ -11,15 +11,14 @@ import SwiftUI
 import VioletPublicClientAPI
 import XCTest
 
-final class APIModelsTests: XCTestCase {
+final class APIModelsTests: APIXCTestCase {
     var refreshToken: String? = nil
     var token: String? = nil
-    let fileName = "loginPostJsonResponse.json"
     
     func test_1_LoginPostRequest() {
         // Given
 
-        let loginPostRequest = LoginPostRequest(appCreds: AppCreds())
+        let loginPostRequest = LoginPostRequest(appCreds: appCreds)
         let expectation = XCTestExpectation(description: "CallCompleted True")
 
         let streamHandle: AnyCancellable? = loginPostRequest.$callCompleted
@@ -37,16 +36,17 @@ final class APIModelsTests: XCTestCase {
         loginPostRequest.send()
 
         // Then
-        wait(for: [expectation], timeout: 3)
+        wait(for: [expectation], timeout: timeout_5s)
         XCTAssertNotNil(streamHandle)
         XCTAssertNotNil(self.token)
+        Logger.log("token: \(self.token?.debugDescription)")
         XCTAssertNotNil(self.refreshToken)
 
         if let responseToPersist = loginPostRequest.dataResponse {
             let jsonData = CodableHelper.encode(responseToPersist)
             switch jsonData {
             case .success(let dataToWrite):
-                try! self.persistData(fileName: self.fileName, data: dataToWrite)
+                try! self.persistData(fileName: loginPostJsonResponse_fileName, data: dataToWrite)
             case .failure:
                 XCTFail()
             }
@@ -55,7 +55,7 @@ final class APIModelsTests: XCTestCase {
 
     func test_2_AuthTokenGet() {
         // Given
-        guard let jsonData = reloadData(fileName: self.fileName) else {
+        guard let jsonData = reloadData(fileName: loginPostJsonResponse_fileName) else {
             XCTFail("No Json Data")
             return
         }
@@ -69,7 +69,7 @@ final class APIModelsTests: XCTestCase {
             refreshToken = loginPostRequest.refreshToken!
         }
 
-        let authTokenGet = AuthTokenGet(appCreds: AppCreds(), refreshToken: refreshToken)
+        let authTokenGet = AuthTokenGet(appCreds: appCreds, refreshToken: refreshToken)
         let expectation = XCTestExpectation(description: "CallCompleted True")
 //
         let streamHandle: AnyCancellable? = authTokenGet.$callCompleted
@@ -86,23 +86,8 @@ final class APIModelsTests: XCTestCase {
         authTokenGet.send()
 
         // Then
-        wait(for: [expectation], timeout: 3)
+        wait(for: [expectation], timeout: timeout_5s)
         XCTAssertNotNil(streamHandle)
         XCTAssertNotNil(self.token)
-    }
-    
-    // Helpers
-    func persistData(fileName: String, data: Data) throws {
-        let cachesDir = FileDirectory.CachesFileDirectory()
-        let targetWritePath = FilePath(fileName: fileName, fileDirectory: cachesDir)!
-
-        try data.write(to: targetWritePath.fileURL, options: .noFileProtection)
-        Logger.debug("Wrote Caches file: \(targetWritePath.fileURL)")
-    }
-
-    func reloadData(fileName: String) -> Data? {
-        let cachesDir = FileDirectory.CachesFileDirectory()
-        let filePath = FilePath(fileName: fileName, fileDirectory: cachesDir)!
-        return try? Data(contentsOf: filePath.fileURL)
     }
 }

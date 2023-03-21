@@ -18,7 +18,7 @@ class GetOffers: BaseAPICall {
     let refreshToken: String
 
     @Published var dataResponse: RefreshTokenResponse? = nil
-    @Published var errorResponse: ErrorResponse? = nil
+    @Published var errorResponse: Error? = nil
 
     init(appCreds: AppCreds, refreshToken: String) {
         self.appCreds = appCreds

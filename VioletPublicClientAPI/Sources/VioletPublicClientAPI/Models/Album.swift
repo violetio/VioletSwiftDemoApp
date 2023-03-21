@@ -14,8 +14,8 @@ import AnyCodable
 public struct Album: Codable, JSONEncodable, Hashable {
 
     public enum ModelType: String, Codable, CaseIterable {
-        case offer = "offer"
-        case sku = "sku"
+        case offer = "OFFER"
+        case sku = "SKU"
     }
     public var id: Int64?
     /** ID of the parent entity */

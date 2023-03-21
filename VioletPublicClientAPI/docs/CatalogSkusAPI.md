@@ -1,6 +1,6 @@
 # CatalogSkusAPI
 
-All URIs are relative to *http://sandbox-api.violet.io/v1*
+All URIs are relative to *https://sandbox-api.violet.io:443/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **catalogSkusSkuIdGet**
 ```swift
-    open class func catalogSkusSkuIdGet(skuId: Int64, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, completion: @escaping (_ data: Sku?, _ error: Error?) -> Void)
+    open class func catalogSkusSkuIdGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, skuId: Int64, completion: @escaping (_ data: Sku?, _ error: Error?) -> Void)
 ```
 
 Get Sku by ID
@@ -21,13 +21,13 @@ Retreives a single SKU by ID.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 let skuId = 987 // Int64 | 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
 
 // Get Sku by ID
-CatalogSkusAPI.catalogSkusSkuIdGet(skuId: skuId, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId) { (response, error) in
+CatalogSkusAPI.catalogSkusSkuIdGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, skuId: skuId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -43,10 +43,10 @@ CatalogSkusAPI.catalogSkusSkuIdGet(skuId: skuId, xVioletToken: xVioletToken, xVi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
  **skuId** | **Int64** |  | 
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
 
 ### Return type
 

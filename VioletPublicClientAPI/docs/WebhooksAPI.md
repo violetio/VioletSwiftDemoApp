@@ -1,24 +1,24 @@
-# CatalogCategoriesAPI
+# WebhooksAPI
 
 All URIs are relative to *https://sandbox-api.violet.io:443/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**catalogCategoriesGet**](CatalogCategoriesAPI.md#catalogcategoriesget) | **GET** /catalog/categories | Get Categories
-[**catalogCategoriesIdGet**](CatalogCategoriesAPI.md#catalogcategoriesidget) | **GET** /catalog/categories/{id} | Get Category by ID
-[**catalogCategoriesIdTreeGet**](CatalogCategoriesAPI.md#catalogcategoriesidtreeget) | **GET** /catalog/categories/{id}/tree | Get Category Tree
-[**catalogCategoriesSearchQueryGet**](CatalogCategoriesAPI.md#catalogcategoriessearchqueryget) | **GET** /catalog/categories/search/{query} | Search Categories
-[**catalogCategoriesSlugSlugGet**](CatalogCategoriesAPI.md#catalogcategoriesslugslugget) | **GET** /catalog/categories/slug/{slug} | Get Category by Slug
+[**appsAppIdWebhooksGet**](WebhooksAPI.md#appsappidwebhooksget) | **GET** /apps/{app_id}/webhooks | List Webhooks
+[**appsAppIdWebhooksPost**](WebhooksAPI.md#appsappidwebhookspost) | **POST** /apps/{app_id}/webhooks | Create Webhook
+[**appsAppIdWebhooksWebhookIdDelete**](WebhooksAPI.md#appsappidwebhookswebhookiddelete) | **DELETE** /apps/{app_id}/webhooks/{webhook_id} | Delete Webhook
+[**appsAppIdWebhooksWebhookIdGet**](WebhooksAPI.md#appsappidwebhookswebhookidget) | **GET** /apps/{app_id}/webhooks/{webhook_id} | Get Webhook by ID
+[**appsAppIdWebhooksWebhookIdPut**](WebhooksAPI.md#appsappidwebhookswebhookidput) | **PUT** /apps/{app_id}/webhooks/{webhook_id} | Update Webhook
 
 
-# **catalogCategoriesGet**
+# **appsAppIdWebhooksGet**
 ```swift
-    open class func catalogCategoriesGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: [Category]?, _ error: Error?) -> Void)
+    open class func appsAppIdWebhooksGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, appId: Int64, event: String? = nil, completion: @escaping (_ data: [Webhook]?, _ error: Error?) -> Void)
 ```
 
-Get Categories
+List Webhooks
 
-Retreives a paginated list of all available categories.
+Retrieves a list of previously created webhooks.
 
 ### Example
 ```swift
@@ -28,11 +28,11 @@ import VioletPublicClient
 let xVioletToken = "xVioletToken_example" // String | 
 let xVioletAppSecret = "xVioletAppSecret_example" // String | 
 let xVioletAppId = 987 // Int64 | 
-let page = 987 // Int |  (optional) (default to 1)
-let size = 987 // Int |  (optional) (default to 20)
+let appId = 987 // Int64 | 
+let event = "event_example" // String |  (optional)
 
-// Get Categories
-CatalogCategoriesAPI.catalogCategoriesGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, page: page, size: size) { (response, error) in
+// List Webhooks
+WebhooksAPI.appsAppIdWebhooksGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, appId: appId, event: event) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -51,12 +51,12 @@ Name | Type | Description  | Notes
  **xVioletToken** | **String** |  | 
  **xVioletAppSecret** | **String** |  | 
  **xVioletAppId** | **Int64** |  | 
- **page** | **Int** |  | [optional] [default to 1]
- **size** | **Int** |  | [optional] [default to 20]
+ **appId** | **Int64** |  | 
+ **event** | **String** |  | [optional] 
 
 ### Return type
 
-[**[Category]**](Category.md)
+[**[Webhook]**](Webhook.md)
 
 ### Authorization
 
@@ -69,14 +69,14 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **catalogCategoriesIdGet**
+# **appsAppIdWebhooksPost**
 ```swift
-    open class func catalogCategoriesIdGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, id: String, completion: @escaping (_ data: Category?, _ error: Error?) -> Void)
+    open class func appsAppIdWebhooksPost(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, appId: Int64, body: Webhook? = nil, completion: @escaping (_ data: Webhook?, _ error: Error?) -> Void)
 ```
 
-Get Category by ID
+Create Webhook
 
-Retrieves a single category by ID.
+Creates a new webhook for the desired event. The remote endpoint must be HTTPS.<br><br>We currently limit webhooks to one per event per app. If the event is already active on a previously created webhook that existing webhook will be updated with the new endpoint.
 
 ### Example
 ```swift
@@ -86,10 +86,11 @@ import VioletPublicClient
 let xVioletToken = "xVioletToken_example" // String | 
 let xVioletAppSecret = "xVioletAppSecret_example" // String | 
 let xVioletAppId = 987 // Int64 | 
-let id = "id_example" // String | 
+let appId = 987 // Int64 | 
+let body = Webhook(id: 123, appId: 123, event: "event_example", remoteEndpoint: "remoteEndpoint_example", status: "status_example", dateCreated: Date(), dateLastModified: Date()) // Webhook |  (optional)
 
-// Get Category by ID
-CatalogCategoriesAPI.catalogCategoriesIdGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, id: id) { (response, error) in
+// Create Webhook
+WebhooksAPI.appsAppIdWebhooksPost(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, appId: appId, body: body) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -108,11 +109,128 @@ Name | Type | Description  | Notes
  **xVioletToken** | **String** |  | 
  **xVioletAppSecret** | **String** |  | 
  **xVioletAppId** | **Int64** |  | 
- **id** | **String** |  | 
+ **appId** | **Int64** |  | 
+ **body** | [**Webhook**](Webhook.md) |  | [optional] 
 
 ### Return type
 
-[**Category**](Category.md)
+[**Webhook**](Webhook.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **appsAppIdWebhooksWebhookIdDelete**
+```swift
+    open class func appsAppIdWebhooksWebhookIdDelete(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, appId: Int64, webhookId: Int64, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Delete Webhook
+
+Removes a webhook. Events will immedietly stop posting to this endpoint upon deletion.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import VioletPublicClient
+
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
+let appId = 987 // Int64 | 
+let webhookId = 987 // Int64 | 
+
+// Delete Webhook
+WebhooksAPI.appsAppIdWebhooksWebhookIdDelete(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, appId: appId, webhookId: webhookId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
+ **appId** | **Int64** |  | 
+ **webhookId** | **Int64** |  | 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **appsAppIdWebhooksWebhookIdGet**
+```swift
+    open class func appsAppIdWebhooksWebhookIdGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, appId: Int64, webhookId: Int64, completion: @escaping (_ data: Webhook?, _ error: Error?) -> Void)
+```
+
+Get Webhook by ID
+
+Retrieves a single webhook by ID.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import VioletPublicClient
+
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
+let appId = 987 // Int64 | 
+let webhookId = 987 // Int64 | 
+
+// Get Webhook by ID
+WebhooksAPI.appsAppIdWebhooksWebhookIdGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, appId: appId, webhookId: webhookId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
+ **appId** | **Int64** |  | 
+ **webhookId** | **Int64** |  | 
+
+### Return type
+
+[**Webhook**](Webhook.md)
 
 ### Authorization
 
@@ -125,14 +243,14 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **catalogCategoriesIdTreeGet**
+# **appsAppIdWebhooksWebhookIdPut**
 ```swift
-    open class func catalogCategoriesIdTreeGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, id: String, completion: @escaping (_ data: [Category]?, _ error: Error?) -> Void)
+    open class func appsAppIdWebhooksWebhookIdPut(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, appId: Int64, webhookId: Int64, body: Webhook? = nil, completion: @escaping (_ data: Webhook?, _ error: Error?) -> Void)
 ```
 
-Get Category Tree
+Update Webhook
 
-Retreives the category tree by ID.
+Modifies an existing webhook by ID.
 
 ### Example
 ```swift
@@ -142,10 +260,12 @@ import VioletPublicClient
 let xVioletToken = "xVioletToken_example" // String | 
 let xVioletAppSecret = "xVioletAppSecret_example" // String | 
 let xVioletAppId = 987 // Int64 | 
-let id = "id_example" // String | 
+let appId = 987 // Int64 | 
+let webhookId = 987 // Int64 | 
+let body = Webhook(id: 123, appId: 123, event: "event_example", remoteEndpoint: "remoteEndpoint_example", status: "status_example", dateCreated: Date(), dateLastModified: Date()) // Webhook |  (optional)
 
-// Get Category Tree
-CatalogCategoriesAPI.catalogCategoriesIdTreeGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, id: id) { (response, error) in
+// Update Webhook
+WebhooksAPI.appsAppIdWebhooksWebhookIdPut(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, appId: appId, webhookId: webhookId, body: body) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -164,11 +284,13 @@ Name | Type | Description  | Notes
  **xVioletToken** | **String** |  | 
  **xVioletAppSecret** | **String** |  | 
  **xVioletAppId** | **Int64** |  | 
- **id** | **String** |  | 
+ **appId** | **Int64** |  | 
+ **webhookId** | **Int64** |  | 
+ **body** | [**Webhook**](Webhook.md) |  | [optional] 
 
 ### Return type
 
-[**[Category]**](Category.md)
+[**Webhook**](Webhook.md)
 
 ### Authorization
 
@@ -176,123 +298,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **catalogCategoriesSearchQueryGet**
-```swift
-    open class func catalogCategoriesSearchQueryGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, query: String, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: [Category]?, _ error: Error?) -> Void)
-```
-
-Search Categories
-
-Performs a paginated search of all categories where name matches query.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import VioletPublicClient
-
-let xVioletToken = "xVioletToken_example" // String | 
-let xVioletAppSecret = "xVioletAppSecret_example" // String | 
-let xVioletAppId = 987 // Int64 | 
-let query = "query_example" // String | 
-let page = 987 // Int |  (optional) (default to 1)
-let size = 987 // Int |  (optional) (default to 20)
-
-// Search Categories
-CatalogCategoriesAPI.catalogCategoriesSearchQueryGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, query: query, page: page, size: size) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xVioletToken** | **String** |  | 
- **xVioletAppSecret** | **String** |  | 
- **xVioletAppId** | **Int64** |  | 
- **query** | **String** |  | 
- **page** | **Int** |  | [optional] [default to 1]
- **size** | **Int** |  | [optional] [default to 20]
-
-### Return type
-
-[**[Category]**](Category.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **catalogCategoriesSlugSlugGet**
-```swift
-    open class func catalogCategoriesSlugSlugGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, slug: String, completion: @escaping (_ data: Category?, _ error: Error?) -> Void)
-```
-
-Get Category by Slug
-
-Retrieves a single category by slug.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import VioletPublicClient
-
-let xVioletToken = "xVioletToken_example" // String | 
-let xVioletAppSecret = "xVioletAppSecret_example" // String | 
-let xVioletAppId = 987 // Int64 | 
-let slug = "slug_example" // String | 
-
-// Get Category by Slug
-CatalogCategoriesAPI.catalogCategoriesSlugSlugGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, slug: slug) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xVioletToken** | **String** |  | 
- **xVioletAppSecret** | **String** |  | 
- **xVioletAppId** | **Int64** |  | 
- **slug** | **String** |  | 
-
-### Return type
-
-[**Category**](Category.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

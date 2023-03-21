@@ -1,6 +1,6 @@
 # AccessAPI
 
-All URIs are relative to *http://sandbox-api.violet.io/v1*
+All URIs are relative to *https://sandbox-api.violet.io:443/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **authTokenGet**
 ```swift
-    open class func authTokenGet(xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, completion: @escaping (_ data: RefreshTokenResponse?, _ error: Error?) -> Void)
+    open class func authTokenGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, completion: @escaping (_ data: RefreshTokenResponse?, _ error: Error?) -> Void)
 ```
 
 Refresh Token
@@ -22,9 +22,9 @@ Refreshes a Users token. Pass the \"refresh_token\" value provided in the respon
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 
 // Refresh Token
 AccessAPI.authTokenGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId) { (response, error) in
@@ -43,9 +43,9 @@ AccessAPI.authTokenGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppS
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
 
 ### Return type
 
@@ -64,7 +64,7 @@ No authorization required
 
 # **loginPost**
 ```swift
-    open class func loginPost(xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, body: LoginRequest? = nil, completion: @escaping (_ data: LoginResponse?, _ error: Error?) -> Void)
+    open class func loginPost(xVioletAppSecret: String, xVioletAppId: Int64, body: LoginRequest? = nil, completion: @escaping (_ data: LoginResponse?, _ error: Error?) -> Void)
 ```
 
 Login
@@ -76,8 +76,8 @@ Log into an existing Violet account with a username and password. If sucessful a
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 let body = LoginRequest(username: "username_example", password: "password_example") // LoginRequest |  (optional)
 
 // Login
@@ -97,8 +97,8 @@ AccessAPI.loginPost(xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletApp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
  **body** | [**LoginRequest**](LoginRequest.md) |  | [optional] 
 
 ### Return type

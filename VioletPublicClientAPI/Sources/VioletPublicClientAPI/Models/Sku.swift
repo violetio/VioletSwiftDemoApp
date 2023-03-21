@@ -14,48 +14,23 @@ import AnyCodable
 public struct Sku: Codable, JSONEncodable, Hashable {
 
     public enum TaxType: String, Codable, CaseIterable {
-        case _default = "default"
-        case apparel = "apparel"
-        case service = "service"
-        
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.singleValueContainer()
-            let rawString = try container.decode(String.self)
-            
-            if let taxType = TaxType(rawValue: rawString.lowercased()) {
-                self = taxType
-            } else {
-                throw DecodingError.dataCorruptedError(in: container, debugDescription: "Cannot initialize UserType from invalid String value \(rawString)")
-            }
-        }
+        case _default = "DEFAULT"
+        case apparel = "APPAREL"
+        case service = "SERVICE"
     }
-    
     public enum ModelType: String, Codable, CaseIterable {
-        case physical = "physical"
-        case digital = "digital"
-        case virtual = "virtual"
-        
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.singleValueContainer()
-            let rawString = try container.decode(String.self)
-            
-            if let modelType = Sku.ModelType(rawValue: rawString.lowercased()) {
-                self = modelType
-            } else {
-                throw DecodingError.dataCorruptedError(in: container, debugDescription: "Cannot initialize Sku.ModelType from invalid String value \(rawString)")
-            }
-        }
+        case physical = "PHYSICAL"
+        case digital = "DIGITAL"
+        case virtual = "VIRTUAL"
     }
-    
     public enum Status: String, Codable, CaseIterable {
-        case available = "AVAILABLE"
         case unavailable = "UNAVAILABLE"
-        case disabledAvailable = "DISABLED_AVAILABLE"
+        case available = "AVAILABLE"
         case disabledUnavailable = "DISABLED_UNAVAILABLE"
-        case archived = "ARCHIVED"
+        case disabledAvailable = "DISABLED_AVAILABLE"
         case forDeletion = "FOR_DELETION"
+        case archived = "ARCHIVED"
     }
-    
     public var id: Int64?
     /** ID of the Offer */
     public var offerId: Int64

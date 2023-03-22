@@ -14,9 +14,9 @@ import AnyCodable
 public struct Product: Codable, JSONEncodable, Hashable {
 
     public enum ModelType: String, Codable, CaseIterable {
-        case physical = "physical"
-        case digital = "digital"
-        case virtual = "virtual"
+        case physical = "PHYSICAL"
+        case digital = "DIGITAL"
+        case virtual = "VIRTUAL"
     }
     public enum Currency: String, Codable, CaseIterable {
         case usd = "USD"

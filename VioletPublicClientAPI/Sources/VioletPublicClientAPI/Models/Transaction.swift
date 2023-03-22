@@ -14,11 +14,11 @@ import AnyCodable
 public struct Transaction: Codable, JSONEncodable, Hashable {
 
     public enum ModelType: String, Codable, CaseIterable {
-        case authorization = "authorization"
-        case capture = "capture"
-        case sale = "sale"
-        case void = "void"
-        case refund = "refund"
+        case authorization = "AUTHORIZATION"
+        case capture = "CAPTURE"
+        case sale = "SALE"
+        case void = "VOID"
+        case refund = "REFUND"
     }
     public enum Status: String, Codable, CaseIterable {
         case processing = "processing"

@@ -70,7 +70,7 @@ public struct Sku: Codable, JSONEncodable, Hashable {
     public var albums: [Album]?
     /** Variant Values that apply to this SKU */
     public var variantValues: [SkuVariantValue]?
-    public var type: ModelType
+    public var type: ModelType?
     /** SKU Status */
     public var status: Status?
     /** Date of SKU creation */
@@ -79,7 +79,7 @@ public struct Sku: Codable, JSONEncodable, Hashable {
     public var dateLastModified: Date?
     public var skuDimensions: SkuDimensions?
 
-    public init(id: Int64? = nil, offerId: Int64, merchantId: Int, externalId: String? = nil, name: String? = nil, asin: String? = nil, gtin: String? = nil, upc: String? = nil, ean: String? = nil, isbn: String? = nil, inStock: Bool? = false, quantityAvailable: Int? = nil, inventoryTracked: Bool? = false, salePrice: Int, retailPrice: Int? = nil, currency: String, taxable: Bool? = false, taxType: TaxType? = nil, albums: [Album]? = nil, variantValues: [SkuVariantValue]? = nil, type: ModelType, status: Status? = nil, dateCreated: Date? = nil, dateLastModified: Date? = nil, skuDimensions: SkuDimensions? = nil) {
+    public init(id: Int64? = nil, offerId: Int64, merchantId: Int, externalId: String? = nil, name: String? = nil, asin: String? = nil, gtin: String? = nil, upc: String? = nil, ean: String? = nil, isbn: String? = nil, inStock: Bool? = false, quantityAvailable: Int? = nil, inventoryTracked: Bool? = false, salePrice: Int, retailPrice: Int? = nil, currency: String, taxable: Bool? = false, taxType: TaxType? = nil, albums: [Album]? = nil, variantValues: [SkuVariantValue]? = nil, type: ModelType? = nil, status: Status? = nil, dateCreated: Date? = nil, dateLastModified: Date? = nil, skuDimensions: SkuDimensions? = nil) {
         self.id = id
         self.offerId = offerId
         self.merchantId = merchantId
@@ -159,7 +159,7 @@ public struct Sku: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(taxType, forKey: .taxType)
         try container.encodeIfPresent(albums, forKey: .albums)
         try container.encodeIfPresent(variantValues, forKey: .variantValues)
-        try container.encode(type, forKey: .type)
+        try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(dateCreated, forKey: .dateCreated)
         try container.encodeIfPresent(dateLastModified, forKey: .dateLastModified)

@@ -26,6 +26,8 @@ public struct Offer: Codable, JSONEncodable, Hashable {
         case spreecommerce = "SPREECOMMERCE"
         case demandware = "DEMANDWARE"
         case volusion = "VOLUSION"
+        case prestashop = "PRESTASHOP"
+        case threedcart = "THREEDCART"
     }
     public enum ModelType: String, Codable, CaseIterable {
         case physical = "PHYSICAL"

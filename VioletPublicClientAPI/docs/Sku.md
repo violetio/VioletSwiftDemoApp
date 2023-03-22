@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **taxType** | **String** | Type of Tax on this SKU | [optional] 
 **albums** | [Album] | Sku Albums | [optional] 
 **variantValues** | [SkuVariantValue] | Variant Values that apply to this SKU | [optional] 
-**type** | **String** |  | 
+**type** | **String** |  | [optional] 
 **status** | **String** | SKU Status | [optional] 
 **dateCreated** | **Date** | Date of SKU creation | [optional] 
 **dateLastModified** | **Date** | Date of last SKU update | [optional] 

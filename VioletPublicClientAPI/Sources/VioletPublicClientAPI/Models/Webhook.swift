@@ -14,15 +14,20 @@ import AnyCodable
 public struct Webhook: Codable, JSONEncodable, Hashable {
 
     public enum Event: String, Codable, CaseIterable {
-        case updated = "order_updated"
-        case shipped = "order_shipped"
-        case completed = "order_completed"
-        case canceled = "order_canceled"
+        case orderUpdated = "ORDER_UPDATED"
+        case orderShipped = "ORDER_SHIPPED"
+        case orderCompleted = "ORDER_COMPLETED"
+        case orderCanceled = "ORDER_CANCELED"
+        case orderRefunded = "ORDER_REFUNDED"
+        case orderReturned = "ORDER_RETURNED"
+        case offerCreated = "OFFER_CREATED"
+        case offerUpdated = "OFFER_UPDATED"
+        case offerRemoved = "OFFER_REMOVED"
     }
     public enum Status: String, Codable, CaseIterable {
-        case inactive = "inactive"
-        case active = "active"
-        case disabled = "disabled"
+        case inactive = "INACTIVE"
+        case active = "ACTIVE"
+        case disabled = "DISABLED"
     }
     public var id: Int64?
     public var appId: Int64?

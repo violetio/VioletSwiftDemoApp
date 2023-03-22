@@ -14,9 +14,9 @@ import AnyCodable
 public struct App: Codable, JSONEncodable, Hashable {
 
     public enum Status: String, Codable, CaseIterable {
-        case inactive = "inactive"
-        case active = "active"
-        case disabled = "disabled"
+        case inactive = "INACTIVE"
+        case active = "ACTIVE"
+        case disabled = "DISABLED"
     }
     public var id: Int64?
     /** User ID of Owner */

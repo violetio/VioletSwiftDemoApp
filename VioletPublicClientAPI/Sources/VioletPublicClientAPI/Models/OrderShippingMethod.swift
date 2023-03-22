@@ -14,15 +14,15 @@ import AnyCodable
 public struct OrderShippingMethod: Codable, JSONEncodable, Hashable {
 
     public enum ModelType: String, Codable, CaseIterable {
-        case variable = "variable"
-        case flatRate = "flat_rate"
+        case variable = "VARIABLE"
+        case flatRate = "FLAT_RATE"
     }
     public enum Carrier: String, Codable, CaseIterable {
-        case ups = "ups"
-        case usps = "usps"
-        case fedex = "fedex"
-        case dhl = "dhl"
-        case ontrac = "ontrac"
+        case ups = "UPS"
+        case usps = "USPS"
+        case fedex = "FEDEX"
+        case dhl = "DHL"
+        case ontrac = "ONTRAC"
     }
     /** Type of Shipping Method */
     public var type: ModelType

@@ -183,15 +183,16 @@ open class CheckoutCartAPI {
      - parameter xVioletToken: (header)  
      - parameter xVioletAppSecret: (header)  
      - parameter xVioletAppId: (header)  
-     - parameter appOrderId: (query)  
-     - parameter baseCurrency: (query)  
-     - parameter referralId: (query)  
+     - parameter appOrderId: (query)  (optional)
+     - parameter baseCurrency: (query)  (optional, default to "USD")
+     - parameter referralId: (query)  (optional)
+     - parameter cartInitializationRequest: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func checkoutCartPost(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, appOrderId: String, baseCurrency: String, referralId: String, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: Order?, _ error: Error?) -> Void)) -> RequestTask {
-        return checkoutCartPostWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, appOrderId: appOrderId, baseCurrency: baseCurrency, referralId: referralId).execute(apiResponseQueue) { result in
+    open class func checkoutCartPost(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, appOrderId: String? = nil, baseCurrency: String? = nil, referralId: String? = nil, cartInitializationRequest: CartInitializationRequest? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: Order?, _ error: Error?) -> Void)) -> RequestTask {
+        return checkoutCartPostWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, appOrderId: appOrderId, baseCurrency: baseCurrency, referralId: referralId, cartInitializationRequest: cartInitializationRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -208,21 +209,22 @@ open class CheckoutCartAPI {
      - parameter xVioletToken: (header)  
      - parameter xVioletAppSecret: (header)  
      - parameter xVioletAppId: (header)  
-     - parameter appOrderId: (query)  
-     - parameter baseCurrency: (query)  
-     - parameter referralId: (query)  
+     - parameter appOrderId: (query)  (optional)
+     - parameter baseCurrency: (query)  (optional, default to "USD")
+     - parameter referralId: (query)  (optional)
+     - parameter cartInitializationRequest: (body)  (optional)
      - returns: RequestBuilder<Order> 
      */
-    open class func checkoutCartPostWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, appOrderId: String, baseCurrency: String, referralId: String) -> RequestBuilder<Order> {
+    open class func checkoutCartPostWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, appOrderId: String? = nil, baseCurrency: String? = nil, referralId: String? = nil, cartInitializationRequest: CartInitializationRequest? = nil) -> RequestBuilder<Order> {
         let localVariablePath = "/checkout/cart"
         let localVariableURLString = VioletPublicClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: cartInitializationRequest)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "app_order_id": (wrappedValue: appOrderId.encodeToJSON(), isExplode: true),
-            "base_currency": (wrappedValue: baseCurrency.encodeToJSON(), isExplode: true),
-            "referral_id": (wrappedValue: referralId.encodeToJSON(), isExplode: true),
+            "app_order_id": (wrappedValue: appOrderId?.encodeToJSON(), isExplode: true),
+            "base_currency": (wrappedValue: baseCurrency?.encodeToJSON(), isExplode: true),
+            "referral_id": (wrappedValue: referralId?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [

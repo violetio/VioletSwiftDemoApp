@@ -5,7 +5,6 @@
 //  Created by Alan Morford on 3/15/23.
 //
 
-import SwiftUI
 import VioletPublicClientAPI
 
 class AuthTokenGet: DataResponseAPICall<RefreshTokenResponse> {
@@ -21,8 +20,9 @@ class AuthTokenGet: DataResponseAPICall<RefreshTokenResponse> {
     func send() {
         AccessAPI.authTokenGet(xVioletToken: refreshToken,
                                xVioletAppSecret: appCreds.apiSecret,
-                               xVioletAppId: appCreds.appID) { data, error in
-            self.callIsCompleted(errorResponse: error, dataResponse: data)
+                               xVioletAppId: appCreds.appID) { [weak self] data, error in
+            guard let weakSelf = self else { return }
+            weakSelf.callIsCompleted(errorResponse: error, dataResponse: data)
         }
     }
 }

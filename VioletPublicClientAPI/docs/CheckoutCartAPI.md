@@ -180,7 +180,7 @@ No authorization required
 
 # **checkoutCartPost**
 ```swift
-    open class func checkoutCartPost(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, appOrderId: String, baseCurrency: String, referralId: String, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
+    open class func checkoutCartPost(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, appOrderId: String? = nil, baseCurrency: String? = nil, referralId: String? = nil, cartInitializationRequest: CartInitializationRequest? = nil, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
 ```
 
 Create Cart
@@ -195,12 +195,13 @@ import VioletPublicClient
 let xVioletToken = "xVioletToken_example" // String | 
 let xVioletAppSecret = "xVioletAppSecret_example" // String | 
 let xVioletAppId = 987 // Int64 | 
-let appOrderId = "appOrderId_example" // String | 
-let baseCurrency = "baseCurrency_example" // String |  (default to "USD")
-let referralId = "referralId_example" // String | 
+let appOrderId = "appOrderId_example" // String |  (optional)
+let baseCurrency = "baseCurrency_example" // String |  (optional) (default to "USD")
+let referralId = "referralId_example" // String |  (optional)
+let cartInitializationRequest = CartInitializationRequest(baseCurrency: "baseCurrency_example", skus: [OrderSku(id: 123, merchantId: 123, appId: 123, productId: "productId_example", skuId: 123, externalId: "externalId_example", name: "name_example", thumbnail: "thumbnail_example", quantity: 123, price: 123)], referralId: "referralId_example", appOrderId: "appOrderId_example", customer: OrderCustomer(userId: 123, firstName: "firstName_example", lastName: "lastName_example", email: "email_example", name: "name_example"), walletBasedCheckout: false) // CartInitializationRequest |  (optional)
 
 // Create Cart
-CheckoutCartAPI.checkoutCartPost(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, appOrderId: appOrderId, baseCurrency: baseCurrency, referralId: referralId) { (response, error) in
+CheckoutCartAPI.checkoutCartPost(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, appOrderId: appOrderId, baseCurrency: baseCurrency, referralId: referralId, cartInitializationRequest: cartInitializationRequest) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,9 +220,10 @@ Name | Type | Description  | Notes
  **xVioletToken** | **String** |  | 
  **xVioletAppSecret** | **String** |  | 
  **xVioletAppId** | **Int64** |  | 
- **appOrderId** | **String** |  | 
- **baseCurrency** | **String** |  | [default to &quot;USD&quot;]
- **referralId** | **String** |  | 
+ **appOrderId** | **String** |  | [optional] 
+ **baseCurrency** | **String** |  | [optional] [default to &quot;USD&quot;]
+ **referralId** | **String** |  | [optional] 
+ **cartInitializationRequest** | [**CartInitializationRequest**](CartInitializationRequest.md) |  | [optional] 
 
 ### Return type
 
@@ -233,7 +235,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

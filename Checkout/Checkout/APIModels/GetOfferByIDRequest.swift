@@ -8,17 +8,11 @@
 import Foundation
 import VioletPublicClientAPI
 
-
-import SwiftUI
-import VioletPublicClientAPI
-
 class GetOfferByIDRequest: DataResponseAPICall<Offer> {
 
     let appCreds: AppCreds
     let token: String
     let offerId: Int64
-
-//    @Published var dataResponse: Offer? = nil
 
     init(appCreds: AppCreds, token: String, offerId: Int64) {
         self.appCreds = appCreds

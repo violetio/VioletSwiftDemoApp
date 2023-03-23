@@ -24,8 +24,13 @@ class CheckoutCartPostRequest: DataResponseAPICall<Order> {
         CheckoutCartAPI.checkoutCartPost(xVioletToken: token,
                                          xVioletAppSecret: appCreds.apiSecret,
                                          xVioletAppId: appCreds.appID,
+                                         baseCurrency: "USD",
+                                         
                                          cartInitializationRequest: cartInitializationRequest) { [weak self] data, error in
             guard let weakSelf = self else { return }
+            if let printError: ErrorResponse = error {
+                Logger.error(printError.localizedDescription)
+            }
             weakSelf.callIsCompleted(errorResponse: error, dataResponse: data)
             
         }

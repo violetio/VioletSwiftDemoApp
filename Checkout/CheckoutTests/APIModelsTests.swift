@@ -15,8 +15,39 @@ final class APIModelsTests: APIXCTestCase {
     var refreshToken: String? = nil
     var token: String? = nil
     
+    func test_4_CheckoutCartCreate() {
+        let orderSku_SkuId_33524 = OrderSku(skuId: 33524, quantity: 1)
+        let body = CartInitializationRequest(baseCurrency: "USD",
+                                             skus: [orderSku_SkuId_33524],
+                                             referralId: nil,
+                                             appOrderId: nil,
+                                             customer: nil,
+                                             walletBasedCheckout: false)
+        let checkoutCartPostRequest = CheckoutCartPostRequest(appCreds: appCreds,
+                                         token: self.loginToken,
+                                         cartInitializationRequest: body)
+        let expectation = XCTestExpectation(description: "CallCompleted True")
+        let streamHandle: AnyCancellable? = checkoutCartPostRequest.$callCompleted
+            .dropFirst()
+            .sink(receiveValue: {
+                XCTAssertEqual($0, true)
+                expectation.fulfill()
+
+            })
+
+        // When
+        checkoutCartPostRequest.send()
+
+        // Then
+        wait(for: [expectation], timeout: timeout_5s)
+        XCTAssertNotNil(streamHandle)
+        XCTAssertNotNil(checkoutCartPostRequest.dataResponse)
+        
+        
+    }
+    
     func test_3_GetOffer() {
-        let getOfferByIDRequest = GetOfferByIDRequest(appCreds: appCreds, token: self.loginToken, offerId: 12555)
+        let getOfferByIDRequest = GetOfferByIDRequest(appCreds: appCreds, token: self.loginToken, offerId: 12574)
         let expectation = XCTestExpectation(description: "CallCompleted True")
         
         let streamHandle: AnyCancellable? = getOfferByIDRequest.$callCompleted

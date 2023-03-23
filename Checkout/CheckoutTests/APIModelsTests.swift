@@ -67,7 +67,7 @@ final class APIModelsTests: APIXCTestCase {
         XCTAssertNotNil(self.refreshToken)
 
         if let responseToPersist = loginPostRequest.dataResponse {
-            persist(responseToPersist)
+            persistEncodable(responseToPersist, to: loginPostJsonResponse_fileName)
         }
     }
 

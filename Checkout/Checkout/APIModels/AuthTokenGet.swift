@@ -8,12 +8,10 @@
 import SwiftUI
 import VioletPublicClientAPI
 
-class AuthTokenGet: BaseAPICall {
+class AuthTokenGet: DataResponseAPICall<RefreshTokenResponse> {
 
     let appCreds: AppCreds
     let refreshToken: String
-
-    @Published var dataResponse: RefreshTokenResponse? = nil
 
     init(appCreds: AppCreds, refreshToken: String) {
         self.appCreds = appCreds
@@ -24,8 +22,7 @@ class AuthTokenGet: BaseAPICall {
         AccessAPI.authTokenGet(xVioletToken: refreshToken,
                                xVioletAppSecret: appCreds.apiSecret,
                                xVioletAppId: appCreds.appID) { data, error in
-            self.dataResponse = data
-            self.callIsCompleted(errorResponse: error)
+            self.callIsCompleted(errorResponse: error, dataResponse: data)
         }
     }
 }

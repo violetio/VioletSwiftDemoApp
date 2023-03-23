@@ -78,16 +78,6 @@ class APIXCTestCase: XCTestCase {
         return refreshToken
     }
     
-    func persist(_ responseToPersist: LoginResponse) {
-        let jsonData = CodableHelper.encode(responseToPersist)
-        switch jsonData {
-        case .success(let dataToWrite):
-            try! self.persistData(fileName: loginPostJsonResponse_fileName, data: dataToWrite)
-        case .failure:
-            XCTFail()
-        }
-    }
-    
     func persistEncodable<T>(_ encodable: T, to filename: String) where T: Encodable {
         let jsonData = CodableHelper.encode(encodable)
         switch jsonData {

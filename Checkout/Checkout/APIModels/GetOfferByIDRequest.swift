@@ -19,7 +19,6 @@ class GetOfferByIDRequest: BaseAPICall {
     let offerId: Int64
 
     @Published var dataResponse: Offer? = nil
-    @Published var errorResponse: Error? = nil
 
     init(appCreds: AppCreds, token: String, offerId: Int64) {
         self.appCreds = appCreds
@@ -33,8 +32,7 @@ class GetOfferByIDRequest: BaseAPICall {
                                                  xVioletAppId: appCreds.appID,
                                                  offerId: offerId) { data, error in
             self.dataResponse = data
-            self.errorResponse = error
-            self.callIsCompleted()
+            self.callIsCompleted(errorResponse: error)
         }
     }
 }

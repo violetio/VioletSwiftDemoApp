@@ -13,7 +13,6 @@ class LoginPostRequest: BaseAPICall {
     let appCreds: AppCreds
 
     var dataResponse: LoginResponse? = nil
-    var errorResponse: Error? = nil
     
     init(appCreds: AppCreds) {
         self.appCreds = appCreds
@@ -25,8 +24,7 @@ class LoginPostRequest: BaseAPICall {
                             body: appCreds.loginBody()) { [weak self] (response, error) in
             guard let weakSelf = self else { return }
             weakSelf.dataResponse = response
-            weakSelf.errorResponse = error
-            weakSelf.callIsCompleted()
+            weakSelf.callIsCompleted(errorResponse: error)
         }
     }
 }

@@ -14,7 +14,6 @@ class AuthTokenGet: BaseAPICall {
     let refreshToken: String
 
     @Published var dataResponse: RefreshTokenResponse? = nil
-    @Published var errorResponse: Error? = nil
 
     init(appCreds: AppCreds, refreshToken: String) {
         self.appCreds = appCreds
@@ -26,8 +25,7 @@ class AuthTokenGet: BaseAPICall {
                                xVioletAppSecret: appCreds.apiSecret,
                                xVioletAppId: appCreds.appID) { data, error in
             self.dataResponse = data
-            self.errorResponse = error
-            self.callIsCompleted()
+            self.callIsCompleted(errorResponse: error)
         }
     }
 }

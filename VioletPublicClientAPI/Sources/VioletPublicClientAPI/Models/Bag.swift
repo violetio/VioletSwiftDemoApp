@@ -14,29 +14,32 @@ import AnyCodable
 public struct Bag: Codable, JSONEncodable, Hashable {
 
     public enum Status: String, Codable, CaseIterable {
-        case inProgress = "in_progress"
-        case submitted = "submitted"
-        case accepted = "accepted"
-        case shipped = "shipped"
-        case completed = "completed"
-        case rejected = "rejected"
-        case canceled = "canceled"
+        case inProgress = "IN_PROGRESS"
+        case submitted = "SUBMITTED"
+        case accepted = "ACCEPTED"
+        case completed = "COMPLETED"
+        case partiallyRefunded = "PARTIALLY_REFUNDED"
+        case refunded = "REFUNDED"
+        case rejected = "REJECTED"
+        case canceled = "CANCELED"
     }
     public enum FulfillmentStatus: String, Codable, CaseIterable {
-        case unshipped = "unshipped"
-        case shipped = "shipped"
-        case partiallyShipped = "partially_shipped"
-        case returned = "returned"
+        case processing = "PROCESSING"
+        case fulfilled = "FULFILLED"
+        case partiallyFulfilled = "PARTIALLY_FULFILLED"
+        case delivered = "DELIVERED"
+        case couldNotDeliver = "COULD_NOT_DELIVER"
+        case returned = "RETURNED"
     }
     public enum FinancialStatus: String, Codable, CaseIterable {
-        case unpaid = "unpaid"
-        case authorized = "authorized"
-        case pending = "pending"
-        case paid = "paid"
-        case partiallyPaid = "partially_paid"
-        case refunded = "refunded"
-        case partiallyRefunded = "partially_refunded"
-        case voided = "voided"
+        case unpaid = "UNPAID"
+        case authorized = "AUTHORIZED"
+        case pending = "PENDING"
+        case paid = "PAID"
+        case partiallyPaid = "PARTIALLY_PAID"
+        case refunded = "REFUNDED"
+        case partiallyRefunded = "PARTIALLY_REFUNDED"
+        case voided = "VOIDED"
     }
     public var id: Int64?
     /** ID of the Order the Bag belongs to */

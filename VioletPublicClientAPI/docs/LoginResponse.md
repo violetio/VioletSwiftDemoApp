@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 **id** | **Int64** |  | [optional] 
 **firstName** | **String** | The users first name | 
 **lastName** | **String** | The users last name | 
-**password** | **String** | The users raw desired password | 
 **email** | **String** | The users unique email address | 
 **merchantId** | **Int** | The Id of the Store the User is associated to. | [optional] 
 **type** | **String** | The allowed values for the user type | 

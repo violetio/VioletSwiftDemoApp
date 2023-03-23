@@ -13,9 +13,9 @@ import AnyCodable
 public struct AuthRequest: Codable, JSONEncodable, Hashable {
 
     public enum Status: String, Codable, CaseIterable {
-        case pending = "pending"
-        case completed = "completed"
-        case expired = "expired"
+        case pending = "PENDING"
+        case completed = "COMPLETED"
+        case expired = "EXPIRED"
     }
     public var id: Int64?
     /** App ID */

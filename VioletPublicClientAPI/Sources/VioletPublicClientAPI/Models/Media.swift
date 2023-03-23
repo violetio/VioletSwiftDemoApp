@@ -14,8 +14,8 @@ import AnyCodable
 public struct Media: Codable, JSONEncodable, Hashable {
 
     public enum ModelType: String, Codable, CaseIterable {
-        case image = "image"
-        case video = "video"
+        case image = "IMAGE"
+        case video = "VIDEO"
     }
     public var id: Int64?
     /** Album ID */

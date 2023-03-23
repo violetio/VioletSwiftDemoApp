@@ -17,7 +17,7 @@ public struct Webhook: Codable, JSONEncodable, Hashable {
         case orderUpdated = "ORDER_UPDATED"
         case orderShipped = "ORDER_SHIPPED"
         case orderCompleted = "ORDER_COMPLETED"
-        case orderCancelled = "ORDER_CANCELLED"
+        case orderCanceled = "ORDER_CANCELED"
         case orderRefunded = "ORDER_REFUNDED"
         case orderReturned = "ORDER_RETURNED"
         case offerCreated = "OFFER_CREATED"
@@ -29,20 +29,20 @@ public struct Webhook: Codable, JSONEncodable, Hashable {
         case active = "ACTIVE"
         case disabled = "DISABLED"
     }
-    public var id: Int?
-    public var appId: Int?
+    public var id: Int64?
+    public var appId: Int64?
     /** The event being triggered */
     public var event: Event
     /** Remote endpoint the webhook posts against. */
     public var remoteEndpoint: String
     /** Status of the webhook */
     public var status: Status?
-    /** Date of creation */
+    /** Date of webhook creation */
     public var dateCreated: Date?
-    /** Date of last update */
+    /** Date of last webhook update */
     public var dateLastModified: Date?
 
-    public init(id: Int? = nil, appId: Int? = nil, event: Event, remoteEndpoint: String, status: Status? = nil, dateCreated: Date? = nil, dateLastModified: Date? = nil) {
+    public init(id: Int64? = nil, appId: Int64? = nil, event: Event, remoteEndpoint: String, status: Status? = nil, dateCreated: Date? = nil, dateLastModified: Date? = nil) {
         self.id = id
         self.appId = appId
         self.event = event

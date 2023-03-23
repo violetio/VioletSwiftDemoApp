@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class CodableHelper {
+public class CodableHelper {
     private static var customDateFormatter: DateFormatter?
     private static var defaultDateFormatter: DateFormatter = OpenISO8601DateFormatter()
 

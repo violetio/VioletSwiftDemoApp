@@ -1,6 +1,6 @@
 //
-//  CheckoutTests.swift
-//  CheckoutTests
+//  AccessAPITests.swift
+//  AccessAPITests
 //
 //  Created by Alan Morford on 3/8/23.
 //
@@ -9,11 +9,9 @@ import XCTest
 @testable import Checkout
 import VioletPublicClientAPI
 
-final class CheckoutTests: XCTestCase {
+final class AccessAPITests: APIXCTestCase {
     
     func test_Login() throws {
-        
-        let appCreds = AppCreds.SandBoxTestCreds_Alan()
         
         var myAuthtoken: String = ""
         let expectation = XCTestExpectation(description: "API Call")
@@ -33,36 +31,7 @@ final class CheckoutTests: XCTestCase {
 
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 3.0)
-        print("tokenReceived: \(myAuthtoken)")
-        
-    }
-    
-    func test_RefreshAuthTokenGet() throws {
-
-        let appCreds = AppCreds.SandBoxTestCreds()
-        
-        var myAuthtoken: String = ""
-        
-        let expectation = XCTestExpectation(description: "API Call")
-        AccessAPI.authTokenGet(xVioletToken: appCreds.token,
-                               xVioletAppSecret: appCreds.apiSecret,
-                               xVioletAppId: appCreds.appID) { (response, error) in
-            guard error == nil else {
-                print(error.debugDescription)
-                return
-            }
-
-            if let resp = response {
-                if let tokenReceived = resp.token {
-                    myAuthtoken = tokenReceived
-                }
-                print("response.token \(String(describing: resp.token))")   
-            }
-
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 3.0)
+        wait(for: [expectation], timeout: timeout)
         print("tokenReceived: \(myAuthtoken)")
         
     }

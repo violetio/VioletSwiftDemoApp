@@ -26,6 +26,8 @@ public struct Offer: Codable, JSONEncodable, Hashable {
         case spreecommerce = "SPREECOMMERCE"
         case demandware = "DEMANDWARE"
         case volusion = "VOLUSION"
+        case prestashop = "PRESTASHOP"
+        case threedcart = "THREEDCART"
     }
     public enum ModelType: String, Codable, CaseIterable {
         case physical = "PHYSICAL"
@@ -33,8 +35,12 @@ public struct Offer: Codable, JSONEncodable, Hashable {
         case virtual = "VIRTUAL"
     }
     public enum Status: String, Codable, CaseIterable {
-        case enabled = "ENABLED"
-        case disabled = "DISABLED"
+        case unavailable = "UNAVAILABLE"
+        case available = "AVAILABLE"
+        case disabledUnavailable = "DISABLED_UNAVAILABLE"
+        case disabledAvailable = "DISABLED_AVAILABLE"
+        case forDeletion = "FOR_DELETION"
+        case archived = "ARCHIVED"
     }
     public enum WeightUnit: String, Codable, CaseIterable {
         case ounces = "OUNCES"

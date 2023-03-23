@@ -1,6 +1,6 @@
 # CheckoutCartAPI
 
-All URIs are relative to *http://sandbox-api.violet.io/v1*
+All URIs are relative to *https://sandbox-api.violet.io:443/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **checkoutCartByTokenTokenGet**
 ```swift
-    open class func checkoutCartByTokenTokenGet(token: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
+    open class func checkoutCartByTokenTokenGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, token: String, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
 ```
 
 Get Cart by Token
@@ -24,13 +24,13 @@ Retreives a single cart by its token. The token a unique string generated for ea
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 let token = "token_example" // String | 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
 
 // Get Cart by Token
-CheckoutCartAPI.checkoutCartByTokenTokenGet(token: token, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId) { (response, error) in
+CheckoutCartAPI.checkoutCartByTokenTokenGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, token: token) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,10 +46,10 @@ CheckoutCartAPI.checkoutCartByTokenTokenGet(token: token, xVioletToken: xVioletT
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
  **token** | **String** |  | 
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
 
 ### Return type
 
@@ -68,7 +68,7 @@ No authorization required
 
 # **checkoutCartCartIdDelete**
 ```swift
-    open class func checkoutCartCartIdDelete(cartId: Int64, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func checkoutCartCartIdDelete(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, cartId: Int64, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Delete Cart
@@ -80,13 +80,13 @@ Deletes a cart by its ID.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 let cartId = 987 // Int64 | 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
 
 // Delete Cart
-CheckoutCartAPI.checkoutCartCartIdDelete(cartId: cartId, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId) { (response, error) in
+CheckoutCartAPI.checkoutCartCartIdDelete(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, cartId: cartId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -102,10 +102,10 @@ CheckoutCartAPI.checkoutCartCartIdDelete(cartId: cartId, xVioletToken: xVioletTo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
  **cartId** | **Int64** |  | 
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
 
 ### Return type
 
@@ -124,7 +124,7 @@ No authorization required
 
 # **checkoutCartCartIdGet**
 ```swift
-    open class func checkoutCartCartIdGet(cartId: Int64, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
+    open class func checkoutCartCartIdGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, cartId: Int64, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
 ```
 
 Get Cart by ID
@@ -136,13 +136,13 @@ Retreives a single cart by its ID.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 let cartId = 987 // Int64 | 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
 
 // Get Cart by ID
-CheckoutCartAPI.checkoutCartCartIdGet(cartId: cartId, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId) { (response, error) in
+CheckoutCartAPI.checkoutCartCartIdGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, cartId: cartId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -158,10 +158,10 @@ CheckoutCartAPI.checkoutCartCartIdGet(cartId: cartId, xVioletToken: xVioletToken
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
  **cartId** | **Int64** |  | 
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
 
 ### Return type
 
@@ -180,7 +180,7 @@ No authorization required
 
 # **checkoutCartPost**
 ```swift
-    open class func checkoutCartPost(xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, appOrderId: String? = nil, baseCurrency: String? = nil, referralId: String? = nil, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
+    open class func checkoutCartPost(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, appOrderId: String, baseCurrency: String, referralId: String, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
 ```
 
 Create Cart
@@ -192,12 +192,12 @@ Creates a new empty cart. <br><br>By setting the 'apply_current_user' flag to tr
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
-let appOrderId = "appOrderId_example" // String |  (optional)
-let baseCurrency = "baseCurrency_example" // String |  (optional) (default to "USD")
-let referralId = "referralId_example" // String |  (optional)
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
+let appOrderId = "appOrderId_example" // String | 
+let baseCurrency = "baseCurrency_example" // String |  (default to "USD")
+let referralId = "referralId_example" // String | 
 
 // Create Cart
 CheckoutCartAPI.checkoutCartPost(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, appOrderId: appOrderId, baseCurrency: baseCurrency, referralId: referralId) { (response, error) in
@@ -216,12 +216,12 @@ CheckoutCartAPI.checkoutCartPost(xVioletToken: xVioletToken, xVioletAppSecret: x
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
- **appOrderId** | **String** |  | [optional] 
- **baseCurrency** | **String** |  | [optional] [default to &quot;USD&quot;]
- **referralId** | **String** |  | [optional] 
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
+ **appOrderId** | **String** |  | 
+ **baseCurrency** | **String** |  | [default to &quot;USD&quot;]
+ **referralId** | **String** |  | 
 
 ### Return type
 

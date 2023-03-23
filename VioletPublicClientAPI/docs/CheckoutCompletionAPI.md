@@ -1,6 +1,6 @@
 # CheckoutCompletionAPI
 
-All URIs are relative to *http://sandbox-api.violet.io/v1*
+All URIs are relative to *https://sandbox-api.violet.io:443/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **checkoutCartCartIdPriceGet**
 ```swift
-    open class func checkoutCartCartIdPriceGet(cartId: Int64, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
+    open class func checkoutCartCartIdPriceGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, cartId: Int64, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
 ```
 
 Price Cart
@@ -22,13 +22,13 @@ Prices the cart. This includes the calculation of shipping and tax rates. Before
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 let cartId = 987 // Int64 | 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
 
 // Price Cart
-CheckoutCompletionAPI.checkoutCartCartIdPriceGet(cartId: cartId, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId) { (response, error) in
+CheckoutCompletionAPI.checkoutCartCartIdPriceGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, cartId: cartId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -44,10 +44,10 @@ CheckoutCompletionAPI.checkoutCartCartIdPriceGet(cartId: cartId, xVioletToken: x
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
  **cartId** | **Int64** |  | 
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
 
 ### Return type
 
@@ -66,7 +66,7 @@ No authorization required
 
 # **checkoutCartCartIdSubmitPost**
 ```swift
-    open class func checkoutCartCartIdSubmitPost(cartId: Int64, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
+    open class func checkoutCartCartIdSubmitPost(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, cartId: Int64, completion: @escaping (_ data: Order?, _ error: Error?) -> Void)
 ```
 
 Submit Cart
@@ -78,13 +78,13 @@ Submits a cart. For each unique bag in your cart an order will be submitted to t
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 let cartId = 987 // Int64 | 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
 
 // Submit Cart
-CheckoutCompletionAPI.checkoutCartCartIdSubmitPost(cartId: cartId, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId) { (response, error) in
+CheckoutCompletionAPI.checkoutCartCartIdSubmitPost(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, cartId: cartId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -100,10 +100,10 @@ CheckoutCompletionAPI.checkoutCartCartIdSubmitPost(cartId: cartId, xVioletToken:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
  **cartId** | **Int64** |  | 
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
 
 ### Return type
 

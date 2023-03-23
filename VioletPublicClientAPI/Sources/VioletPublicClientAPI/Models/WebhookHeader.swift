@@ -13,21 +13,21 @@ import AnyCodable
 /** Webhook Header */
 public struct WebhookHeader: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int64?
     /** App ID */
-    public var appId: Int?
+    public var appId: Int64?
     /** ID of the webhook the header belongs to */
-    public var webhookId: Int?
+    public var webhookId: Int64?
     /** Header Key */
     public var key: String?
     /** Header Value */
     public var value: String?
-    /** Date of creation */
+    /** Date of webhook header creation */
     public var dateCreated: Date?
-    /** Date of last update */
+    /** Date of last webhook header update */
     public var dateLastModified: Date?
 
-    public init(id: Int? = nil, appId: Int? = nil, webhookId: Int? = nil, key: String? = nil, value: String? = nil, dateCreated: Date? = nil, dateLastModified: Date? = nil) {
+    public init(id: Int64? = nil, appId: Int64? = nil, webhookId: Int64? = nil, key: String? = nil, value: String? = nil, dateCreated: Date? = nil, dateLastModified: Date? = nil) {
         self.id = id
         self.appId = appId
         self.webhookId = webhookId

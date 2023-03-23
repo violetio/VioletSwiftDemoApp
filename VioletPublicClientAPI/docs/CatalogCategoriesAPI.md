@@ -1,6 +1,6 @@
 # CatalogCategoriesAPI
 
-All URIs are relative to *http://sandbox-api.violet.io/v1*
+All URIs are relative to *https://sandbox-api.violet.io:443/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **catalogCategoriesGet**
 ```swift
-    open class func catalogCategoriesGet(xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: [Category]?, _ error: Error?) -> Void)
+    open class func catalogCategoriesGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: [Category]?, _ error: Error?) -> Void)
 ```
 
 Get Categories
@@ -25,9 +25,9 @@ Retreives a paginated list of all available categories.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 let page = 987 // Int |  (optional) (default to 1)
 let size = 987 // Int |  (optional) (default to 20)
 
@@ -48,9 +48,9 @@ CatalogCategoriesAPI.catalogCategoriesGet(xVioletToken: xVioletToken, xVioletApp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
  **page** | **Int** |  | [optional] [default to 1]
  **size** | **Int** |  | [optional] [default to 20]
 
@@ -71,7 +71,7 @@ No authorization required
 
 # **catalogCategoriesIdGet**
 ```swift
-    open class func catalogCategoriesIdGet(id: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, completion: @escaping (_ data: Category?, _ error: Error?) -> Void)
+    open class func catalogCategoriesIdGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, id: String, completion: @escaping (_ data: Category?, _ error: Error?) -> Void)
 ```
 
 Get Category by ID
@@ -83,13 +83,13 @@ Retrieves a single category by ID.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 let id = "id_example" // String | 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
 
 // Get Category by ID
-CatalogCategoriesAPI.catalogCategoriesIdGet(id: id, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId) { (response, error) in
+CatalogCategoriesAPI.catalogCategoriesIdGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, id: id) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -105,10 +105,10 @@ CatalogCategoriesAPI.catalogCategoriesIdGet(id: id, xVioletToken: xVioletToken, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
  **id** | **String** |  | 
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
 
 ### Return type
 
@@ -127,7 +127,7 @@ No authorization required
 
 # **catalogCategoriesIdTreeGet**
 ```swift
-    open class func catalogCategoriesIdTreeGet(id: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, completion: @escaping (_ data: [Category]?, _ error: Error?) -> Void)
+    open class func catalogCategoriesIdTreeGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, id: String, completion: @escaping (_ data: [Category]?, _ error: Error?) -> Void)
 ```
 
 Get Category Tree
@@ -139,13 +139,13 @@ Retreives the category tree by ID.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 let id = "id_example" // String | 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
 
 // Get Category Tree
-CatalogCategoriesAPI.catalogCategoriesIdTreeGet(id: id, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId) { (response, error) in
+CatalogCategoriesAPI.catalogCategoriesIdTreeGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, id: id) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -161,10 +161,10 @@ CatalogCategoriesAPI.catalogCategoriesIdTreeGet(id: id, xVioletToken: xVioletTok
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
  **id** | **String** |  | 
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
 
 ### Return type
 
@@ -183,7 +183,7 @@ No authorization required
 
 # **catalogCategoriesSearchQueryGet**
 ```swift
-    open class func catalogCategoriesSearchQueryGet(query: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: [Category]?, _ error: Error?) -> Void)
+    open class func catalogCategoriesSearchQueryGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, query: String, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: [Category]?, _ error: Error?) -> Void)
 ```
 
 Search Categories
@@ -195,15 +195,15 @@ Performs a paginated search of all categories where name matches query.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 let query = "query_example" // String | 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
 let page = 987 // Int |  (optional) (default to 1)
 let size = 987 // Int |  (optional) (default to 20)
 
 // Search Categories
-CatalogCategoriesAPI.catalogCategoriesSearchQueryGet(query: query, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, page: page, size: size) { (response, error) in
+CatalogCategoriesAPI.catalogCategoriesSearchQueryGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, query: query, page: page, size: size) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -219,10 +219,10 @@ CatalogCategoriesAPI.catalogCategoriesSearchQueryGet(query: query, xVioletToken:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
  **query** | **String** |  | 
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
  **page** | **Int** |  | [optional] [default to 1]
  **size** | **Int** |  | [optional] [default to 20]
 
@@ -243,7 +243,7 @@ No authorization required
 
 # **catalogCategoriesSlugSlugGet**
 ```swift
-    open class func catalogCategoriesSlugSlugGet(slug: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, completion: @escaping (_ data: Category?, _ error: Error?) -> Void)
+    open class func catalogCategoriesSlugSlugGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, slug: String, completion: @escaping (_ data: Category?, _ error: Error?) -> Void)
 ```
 
 Get Category by Slug
@@ -255,13 +255,13 @@ Retrieves a single category by slug.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import VioletPublicClient
 
+let xVioletToken = "xVioletToken_example" // String | 
+let xVioletAppSecret = "xVioletAppSecret_example" // String | 
+let xVioletAppId = 987 // Int64 | 
 let slug = "slug_example" // String | 
-let xVioletToken = "xVioletToken_example" // String |  (optional)
-let xVioletAppSecret = "xVioletAppSecret_example" // String |  (optional)
-let xVioletAppId = 987 // Int64 |  (optional)
 
 // Get Category by Slug
-CatalogCategoriesAPI.catalogCategoriesSlugSlugGet(slug: slug, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId) { (response, error) in
+CatalogCategoriesAPI.catalogCategoriesSlugSlugGet(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, slug: slug) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -277,10 +277,10 @@ CatalogCategoriesAPI.catalogCategoriesSlugSlugGet(slug: slug, xVioletToken: xVio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xVioletToken** | **String** |  | 
+ **xVioletAppSecret** | **String** |  | 
+ **xVioletAppId** | **Int64** |  | 
  **slug** | **String** |  | 
- **xVioletToken** | **String** |  | [optional] 
- **xVioletAppSecret** | **String** |  | [optional] 
- **xVioletAppId** | **Int64** |  | [optional] 
 
 ### Return type
 

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Individual Sku Dimensions */
+/** Individual SkuDimensions */
 public struct SkuDimensions: Codable, JSONEncodable, Hashable {
 
     public enum ModelType: String, Codable, CaseIterable {

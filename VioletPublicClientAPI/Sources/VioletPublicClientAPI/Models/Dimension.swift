@@ -14,23 +14,33 @@ import AnyCodable
 public struct Dimension: Codable, JSONEncodable, Hashable {
 
     public enum Measure: String, Codable, CaseIterable {
-        case height = "height"
-        case weight = "weight"
-        case width = "width"
-        case depth = "depth"
+        case height = "HEIGHT"
+        case weight = "WEIGHT"
+        case width = "WIDTH"
+        case depth = "DEPTH"
     }
     public enum ModelType: String, Codable, CaseIterable {
-        case product = "product"
-        case shipping = "shipping"
+        case product = "PRODUCT"
+        case shipping = "SHIPPING"
     }
     public enum UnitOfMeasure: String, Codable, CaseIterable {
-        case inches = "inches"
-        case feet = "feet"
-        case centimeters = "centimeters"
-        case ounces = "ounces"
-        case pounds = "pounds"
-        case grams = "grams"
-        case kilograms = "kilograms"
+        case inches = "INCHES"
+        case feet = "FEET"
+        case centimeters = "CENTIMETERS"
+        case ounces = "OUNCES"
+        case pounds = "POUNDS"
+        case grams = "GRAMS"
+        case kilograms = "KILOGRAMS"
+        case carats = "CARATS"
+        case yards = "YARDS"
+        case millimeters = "MILLIMETERS"
+        case milligrams = "MILLIGRAMS"
+        case liters = "LITERS"
+        case milliliters = "MILLILITERS"
+        case quarts = "QUARTS"
+        case quarters = "QUARTERS"
+        case gallons = "GALLONS"
+        case pints = "PINTS"
     }
     public var id: Int64?
     /** Sku ID */

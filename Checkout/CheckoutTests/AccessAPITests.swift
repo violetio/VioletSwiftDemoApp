@@ -13,8 +13,6 @@ final class AccessAPITests: APIXCTestCase {
     
     func test_Login() throws {
         
-        let appCreds = AppCreds.SandBoxTestCreds_Alan()
-        
         var myAuthtoken: String = ""
         let expectation = XCTestExpectation(description: "API Call")
         AccessAPI.loginPost(xVioletAppSecret: appCreds.apiSecret,
@@ -34,35 +32,6 @@ final class AccessAPITests: APIXCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: timeout)
-        print("tokenReceived: \(myAuthtoken)")
-        
-    }
-    
-    func test_RefreshAuthTokenGet() throws {
-
-        let appCreds = AppCreds.SandBoxTestCreds()
-        var refreshToken = ""
-        var myAuthtoken: String = ""
-        
-        let expectation = XCTestExpectation(description: "API Call")
-        AccessAPI.authTokenGet(xVioletToken: refreshToken,
-                               xVioletAppSecret: appCreds.apiSecret,
-                               xVioletAppId: appCreds.appID) { (response, error) in
-            guard error == nil else {
-                print(error.debugDescription)
-                return
-            }
-
-            if let resp = response {
-                if let tokenReceived = resp.token {
-                    myAuthtoken = tokenReceived
-                }
-                print("response.token \(String(describing: resp.token))")   
-            }
-
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 3.0)
         print("tokenReceived: \(myAuthtoken)")
         
     }

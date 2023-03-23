@@ -39,17 +39,11 @@ final class APIModelsTests: APIXCTestCase {
         wait(for: [expectation], timeout: timeout_5s)
         XCTAssertNotNil(streamHandle)
         XCTAssertNotNil(self.token)
-        Logger.log("token: \(self.token?.debugDescription)")
+//        Logger.log("token: \(self.token?.debugDescription)")
         XCTAssertNotNil(self.refreshToken)
 
         if let responseToPersist = loginPostRequest.dataResponse {
-            let jsonData = CodableHelper.encode(responseToPersist)
-            switch jsonData {
-            case .success(let dataToWrite):
-                try! self.persistData(fileName: loginPostJsonResponse_fileName, data: dataToWrite)
-            case .failure:
-                XCTFail()
-            }
+            persist(responseToPersist)
         }
     }
 

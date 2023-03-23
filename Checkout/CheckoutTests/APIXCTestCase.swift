@@ -21,6 +21,16 @@ class APIXCTestCase: XCTestCase {
     let timeout_10s: TimeInterval = 10
     let timeout_15s: TimeInterval = 15
     let appCreds = AppCreds()
+    
+    var loginToken: String {
+        get {
+            guard let loginToken = lastLoginPost_Token() else {
+                XCTFail("No Login Token")
+                return ""
+            }
+            return loginToken
+        }
+    }
 
     func persistData(fileName: String, data: Data) throws {
         let cachesDir = FileDirectory.CachesFileDirectory()
@@ -68,4 +78,23 @@ class APIXCTestCase: XCTestCase {
         return refreshToken
     }
     
+    func persist(_ responseToPersist: LoginResponse) {
+        let jsonData = CodableHelper.encode(responseToPersist)
+        switch jsonData {
+        case .success(let dataToWrite):
+            try! self.persistData(fileName: loginPostJsonResponse_fileName, data: dataToWrite)
+        case .failure:
+            XCTFail()
+        }
+    }
+    
+    func persistEncodable<T>(_ encodable: T, to filename: String) where T: Encodable {
+        let jsonData = CodableHelper.encode(encodable)
+        switch jsonData {
+        case .success(let dataToWrite):
+            try! self.persistData(fileName: filename, data: dataToWrite)
+        case .failure:
+            XCTFail()
+        }
+    }
 }

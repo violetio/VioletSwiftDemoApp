@@ -208,14 +208,11 @@
 		E70BEB9929BA54880030335E /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
+				E71CFB9C29CCD01700598B15 /* Base */,
+				E71CFB9B29CCCFF800598B15 /* Utils */,
 				E71CFB8B29C26CE200598B15 /* AuthTokenGet.swift */,
-				E71CFB8C29C26CE200598B15 /* BaseAPICall.swift */,
 				E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */,
-				E70BEBA229BAA2210030335E /* AppCreds.swift */,
-				E70BEBA829BBA0FD0030335E /* EnvVars.swift */,
-				E71CFB7A29BFC20100598B15 /* Logger.swift */,
 				E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */,
-				E71CFB9929CCCD7100598B15 /* DataResponseAPICall.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -244,6 +241,25 @@
 				E71CFB9529C3B45D00598B15 /* MockData.swift */,
 			);
 			path = MockData;
+			sourceTree = "<group>";
+		};
+		E71CFB9B29CCCFF800598B15 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E71CFB7A29BFC20100598B15 /* Logger.swift */,
+				E70BEBA829BBA0FD0030335E /* EnvVars.swift */,
+				E70BEBA229BAA2210030335E /* AppCreds.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E71CFB9C29CCD01700598B15 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E71CFB8C29C26CE200598B15 /* BaseAPICall.swift */,
+				E71CFB9929CCCD7100598B15 /* DataResponseAPICall.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

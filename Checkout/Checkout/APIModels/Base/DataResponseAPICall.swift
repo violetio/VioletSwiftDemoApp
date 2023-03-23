@@ -10,7 +10,6 @@
         to capture the 'dataResponse' from an API Call typed to the call being made.
  */
 class DataResponseAPICall<DataResponseType>: BaseAPICall {
-    
     var dataResponse: DataResponseType? = nil
     
     func callIsCompleted(errorResponse: Error? = nil, dataResponse: DataResponseType? = nil) {

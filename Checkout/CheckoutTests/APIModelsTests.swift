@@ -15,6 +15,31 @@ final class APIModelsTests: APIXCTestCase {
     var refreshToken: String? = nil
     var token: String? = nil
     
+    func test_3_GetOffer() {
+        let getOfferByIDRequest = GetOfferByIDRequest(appCreds: appCreds, token: self.loginToken, offerId: 12555)
+        let expectation = XCTestExpectation(description: "CallCompleted True")
+        
+        let streamHandle: AnyCancellable? = getOfferByIDRequest.$callCompleted
+            .dropFirst()
+            .sink(receiveValue: {
+                XCTAssertEqual($0, true)
+                expectation.fulfill()
+
+            })
+
+        // When
+        getOfferByIDRequest.send()
+
+        // Then
+        wait(for: [expectation], timeout: timeout_5s)
+        XCTAssertNotNil(streamHandle)
+        XCTAssertNotNil(getOfferByIDRequest.dataResponse)
+
+//        if let responseToPersist = loginPostRequest.dataResponse {
+//            persist(responseToPersist)
+//        }
+        
+    }
     func test_1_LoginPostRequest() {
         // Given
 
@@ -39,7 +64,6 @@ final class APIModelsTests: APIXCTestCase {
         wait(for: [expectation], timeout: timeout_5s)
         XCTAssertNotNil(streamHandle)
         XCTAssertNotNil(self.token)
-//        Logger.log("token: \(self.token?.debugDescription)")
         XCTAssertNotNil(self.refreshToken)
 
         if let responseToPersist = loginPostRequest.dataResponse {

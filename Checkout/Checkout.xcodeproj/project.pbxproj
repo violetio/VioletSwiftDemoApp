@@ -17,7 +17,7 @@
 		E70BEB9229B94D8B0030335E /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9129B94D8B0030335E /* HelloView.swift */; };
 		E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9429B94F5A0030335E /* VioletOffer.swift */; };
 		E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9629BA37440030335E /* SelectedOfferView.swift */; };
-		E70BEB9B29BA54B00030335E /* GetOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9A29BA54B00030335E /* GetOffer.swift */; };
+		E70BEB9B29BA54B00030335E /* GetOfferByIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */; };
 		E70BEBA029BA6ACF0030335E /* VioletPublicClientAPI in Frameworks */ = {isa = PBXBuildFile; productRef = E70BEB9F29BA6ACF0030335E /* VioletPublicClientAPI */; };
 		E70BEBA329BAA2210030335E /* AppCreds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA229BAA2210030335E /* AppCreds.swift */; };
 		E70BEBA529BAB47F0030335E /* CatalogOffersAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA429BAB47F0030335E /* CatalogOffersAPITests.swift */; };
@@ -70,7 +70,7 @@
 		E70BEB9429B94F5A0030335E /* VioletOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VioletOffer.swift; sourceTree = "<group>"; };
 		E70BEB9629BA37440030335E /* SelectedOfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedOfferView.swift; sourceTree = "<group>"; };
 		E70BEB9829BA47580030335E /* VioletPublicClientAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = VioletPublicClientAPI; path = ../VioletPublicClientAPI; sourceTree = "<group>"; };
-		E70BEB9A29BA54B00030335E /* GetOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOffer.swift; sourceTree = "<group>"; };
+		E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOfferByIDRequest.swift; sourceTree = "<group>"; };
 		E70BEBA129BA977D0030335E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E70BEBA229BAA2210030335E /* AppCreds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCreds.swift; sourceTree = "<group>"; };
 		E70BEBA429BAB47F0030335E /* CatalogOffersAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogOffersAPITests.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 			children = (
 				E71CFB8B29C26CE200598B15 /* AuthTokenGet.swift */,
 				E71CFB8C29C26CE200598B15 /* BaseAPICall.swift */,
-				E70BEB9A29BA54B00030335E /* GetOffer.swift */,
+				E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */,
 				E70BEBA229BAA2210030335E /* AppCreds.swift */,
 				E70BEBA829BBA0FD0030335E /* EnvVars.swift */,
 				E71CFB7A29BFC20100598B15 /* Logger.swift */,
@@ -387,7 +387,7 @@
 				E71CFB9629C3B45D00598B15 /* MockData.swift in Sources */,
 				E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */,
 				E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */,
-				E70BEB9B29BA54B00030335E /* GetOffer.swift in Sources */,
+				E70BEB9B29BA54B00030335E /* GetOfferByIDRequest.swift in Sources */,
 				E71CFB8929C26C7100598B15 /* FileDirectory.swift in Sources */,
 				E70BEB9229B94D8B0030335E /* HelloView.swift in Sources */,
 				E70BEBA329BAA2210030335E /* AppCreds.swift in Sources */,

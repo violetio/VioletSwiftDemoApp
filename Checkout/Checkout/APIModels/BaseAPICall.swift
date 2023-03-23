@@ -14,7 +14,7 @@ import VioletPublicClientAPI
 class BaseAPICall: ObservableObject {
 
     @Published var callCompleted = false
-    @Published var errorResponse: Error? = nil
+    var errorResponse: Error? = nil
 
     func callIsCompleted(errorResponse: Error? = nil) {
         self.errorResponse = errorResponse

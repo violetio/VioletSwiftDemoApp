@@ -12,13 +12,13 @@ import VioletPublicClientAPI
 import SwiftUI
 import VioletPublicClientAPI
 
-class GetOfferByIDRequest: BaseAPICall {
+class GetOfferByIDRequest: DataResponseAPICall<Offer> {
 
     let appCreds: AppCreds
     let token: String
     let offerId: Int64
 
-    @Published var dataResponse: Offer? = nil
+//    @Published var dataResponse: Offer? = nil
 
     init(appCreds: AppCreds, token: String, offerId: Int64) {
         self.appCreds = appCreds
@@ -31,8 +31,7 @@ class GetOfferByIDRequest: BaseAPICall {
                                                  xVioletAppSecret: appCreds.apiSecret,
                                                  xVioletAppId: appCreds.appID,
                                                  offerId: offerId) { data, error in
-            self.dataResponse = data
-            self.callIsCompleted(errorResponse: error)
+            self.callIsCompleted(errorResponse: error, dataResponse: data)
         }
     }
 }

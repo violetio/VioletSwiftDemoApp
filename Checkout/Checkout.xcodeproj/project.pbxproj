@@ -36,6 +36,7 @@
 		E71CFB9429C3B41900598B15 /* Sandbox_Offers_MerchantID_10000.csv in Resources */ = {isa = PBXBuildFile; fileRef = E71CFB9329C3B41900598B15 /* Sandbox_Offers_MerchantID_10000.csv */; };
 		E71CFB9629C3B45D00598B15 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB9529C3B45D00598B15 /* MockData.swift */; };
 		E71CFB9829C90ABD00598B15 /* APIXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB9729C90ABD00598B15 /* APIXCTestCase.swift */; };
+		E71CFB9A29CCCD7100598B15 /* DataResponseAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB9929CCCD7100598B15 /* DataResponseAPICall.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		E71CFB9329C3B41900598B15 /* Sandbox_Offers_MerchantID_10000.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sandbox_Offers_MerchantID_10000.csv; sourceTree = "<group>"; };
 		E71CFB9529C3B45D00598B15 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		E71CFB9729C90ABD00598B15 /* APIXCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIXCTestCase.swift; sourceTree = "<group>"; };
+		E71CFB9929CCCD7100598B15 /* DataResponseAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponseAPICall.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 				E70BEBA829BBA0FD0030335E /* EnvVars.swift */,
 				E71CFB7A29BFC20100598B15 /* Logger.swift */,
 				E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */,
+				E71CFB9929CCCD7100598B15 /* DataResponseAPICall.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */,
 				E71CFB8829C26C7100598B15 /* FileSystemObject.swift in Sources */,
 				E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */,
+				E71CFB9A29CCCD7100598B15 /* DataResponseAPICall.swift in Sources */,
 				E71CFB9629C3B45D00598B15 /* MockData.swift in Sources */,
 				E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */,
 				E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */,

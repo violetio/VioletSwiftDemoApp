@@ -7,7 +7,7 @@
 
 import VioletPublicClientAPI
 
-class CheckoutCartPostRequest: DataResponseAPICall<Order> {
+class CheckoutCartPostRequest: DataResponseAPICall<ShoppingCart> {
 
     let appCreds: AppCreds
     let token: String
@@ -28,9 +28,6 @@ class CheckoutCartPostRequest: DataResponseAPICall<Order> {
                                          
                                          cartInitializationRequest: cartInitializationRequest) { [weak self] data, error in
             guard let weakSelf = self else { return }
-            if let printError: ErrorResponse = error {
-                Logger.error(printError.localizedDescription)
-            }
             weakSelf.callIsCompleted(errorResponse: error, dataResponse: data)
             
         }

@@ -22,7 +22,7 @@ final class JsonDecodeTests: TestBundleFileTestCase {
 
     func test_Bag_43113() throws {
         let data: Data! = try! Data(contentsOf: testFile_bag_id_43113)
-        let decodedResult = CodableHelper.decode(Bag.self, from: data)
+        let decodedResult = CodableHelper.decode(ShoppingBag.self, from: data)
         switch decodedResult {
         case .failure(let error):
             XCTFail("Did not Decode bag_43113 \(error)")
@@ -35,7 +35,7 @@ final class JsonDecodeTests: TestBundleFileTestCase {
     
     func test_Order_58111() throws {
         let data: Data! = try! Data(contentsOf: testFile_get_order_by_id_58111)
-        let decodedResult = CodableHelper.decode(Order.self, from: data)
+        let decodedResult = CodableHelper.decode(ShoppingCart.self, from: data)
         switch decodedResult {
         case .failure(let error):
             XCTFail("Did not Decode Order 5811 \(error)")

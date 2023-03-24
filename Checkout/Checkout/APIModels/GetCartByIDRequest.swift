@@ -1,5 +1,5 @@
 //
-//  GetOffer.swift
+//  GetCartByIDRequest.swift
 //  Checkout
 //
 //  Created by Alan Morford on 3/9/23.
@@ -21,7 +21,6 @@ class GetCartByIDRequest: DataResponseAPICall<Order> {
     }
 
     func send() {
-        //CheckoutCartAPI.checkoutCartCartIdGet(xVioletToken: <#T##String#>, xVioletAppSecret: <#T##String#>, xVioletAppId: <#T##Int64#>, cartId: <#T##Int64#>, completion: <#T##((Order?, Error?) -> Void)##((Order?, Error?) -> Void)##(_ data: Order?, _ error: Error?) -> Void#>)
         CheckoutCartAPI.checkoutCartCartIdGet(xVioletToken: token,
                                                  xVioletAppSecret: appCreds.apiSecret,
                                                  xVioletAppId: appCreds.appID,

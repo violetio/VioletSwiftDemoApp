@@ -15,6 +15,29 @@ final class APIModelsTests: APIXCTestCase {
     var refreshToken: String? = nil
     var token: String? = nil
     
+    func test_7_CheckoutCartShippingAvailableGetRequest() {
+        let checkoutCartShippingAvailableGetRequest = CheckoutCartShippingAvailableGetRequest(appCreds: appCreds,
+                                                                                              token: self.loginToken,
+                                                                                              cartId: 58111)
+        let expectation = XCTestExpectation(description: "CallCompleted True")
+        
+        let streamHandle: AnyCancellable? = checkoutCartShippingAvailableGetRequest.$callCompleted
+            .dropFirst()
+            .sink(receiveValue: {
+                XCTAssertEqual($0, true)
+                expectation.fulfill()
+
+            })
+
+        // When
+        checkoutCartShippingAvailableGetRequest.send()
+
+        // Then
+        wait(for: [expectation], timeout: timeout_5s)
+        XCTAssertNotNil(streamHandle)
+        XCTAssertNotNil(checkoutCartShippingAvailableGetRequest.dataResponse)
+    }
+    
     func test_6_CheckoutCartPaymentPostRequest() {
         let body = PaymentMethodRequest(intentBasedCapture: true)
         let checkoutCartPaymentPostRequest = CheckoutCartPaymentPostRequest(appCreds: appCreds,

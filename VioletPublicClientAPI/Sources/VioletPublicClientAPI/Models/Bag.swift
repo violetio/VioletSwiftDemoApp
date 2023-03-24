@@ -58,7 +58,7 @@ public struct Bag: Codable, JSONEncodable, Hashable {
     public var financialStatus: FinancialStatus?
     /** SKUs added to the bag */
     public var skus: [OrderSku]?
-    public var shippingMethod: OrderShippingMethod
+    public var shippingMethod: OrderShippingMethod?
     /** Taxes applied to the bag */
     public var taxes: [OrderTax]
     /** Subtotal of the bag */
@@ -76,7 +76,7 @@ public struct Bag: Codable, JSONEncodable, Hashable {
     /** Name of Merchant */
     public var merchantName: String?
 
-    public init(id: Int64? = nil, orderId: Int64, merchantId: Int, appId: Int64, externalId: String? = nil, status: Status? = nil, fulfillmentStatus: FulfillmentStatus? = nil, financialStatus: FinancialStatus? = nil, skus: [OrderSku]? = nil, shippingMethod: OrderShippingMethod, taxes: [OrderTax], subTotal: Int? = nil, shippingTotal: Int? = nil, taxTotal: Int? = nil, total: Int? = nil, transactions: [Transaction]? = nil, externalCheckout: Bool? = false, merchantName: String? = nil) {
+    public init(id: Int64? = nil, orderId: Int64, merchantId: Int, appId: Int64, externalId: String? = nil, status: Status? = nil, fulfillmentStatus: FulfillmentStatus? = nil, financialStatus: FinancialStatus? = nil, skus: [OrderSku]? = nil, shippingMethod: OrderShippingMethod? = nil, taxes: [OrderTax], subTotal: Int? = nil, shippingTotal: Int? = nil, taxTotal: Int? = nil, total: Int? = nil, transactions: [Transaction]? = nil, externalCheckout: Bool? = false, merchantName: String? = nil) {
         self.id = id
         self.orderId = orderId
         self.merchantId = merchantId
@@ -131,7 +131,7 @@ public struct Bag: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(fulfillmentStatus, forKey: .fulfillmentStatus)
         try container.encodeIfPresent(financialStatus, forKey: .financialStatus)
         try container.encodeIfPresent(skus, forKey: .skus)
-        try container.encode(shippingMethod, forKey: .shippingMethod)
+        try container.encodeIfPresent(shippingMethod, forKey: .shippingMethod)
         try container.encode(taxes, forKey: .taxes)
         try container.encodeIfPresent(subTotal, forKey: .subTotal)
         try container.encodeIfPresent(shippingTotal, forKey: .shippingTotal)

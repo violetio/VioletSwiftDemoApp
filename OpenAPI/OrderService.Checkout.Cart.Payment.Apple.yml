@@ -1,0 +1,41 @@
+/checkout/cart/{cart_id}/payment:
+    post:
+      tags:
+      - "Checkout - Payment"
+      summary: "Apply Payment Method"
+      description: ""
+      operationId: "applyPaymentMethod_1"
+      parameters:
+      - name: "X-Violet-Token"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "X-Violet-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "X-Violet-App-Id"
+        in: "header"
+        required: false
+        type: "integer"
+        format: "int32"
+      - name: "cart_id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/PaymentMethodRequest"
+      - name: "price_cart"
+        in: "query"
+        required: false
+        type: "boolean"
+        default: false
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Order"

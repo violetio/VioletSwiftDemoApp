@@ -1,0 +1,47 @@
+/checkout/cart/{cart_id}/payment:
+        post:
+            tags:
+                - Checkout - Payment
+            summary: Apply Payment Method
+            parameters:
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int32
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: price_cart
+                  in: query
+                  schema:
+                      type: boolean
+                      default: false
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CartPaymentMethod"
+                required: false
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Order"
+            x-codegen-request-body-name: body

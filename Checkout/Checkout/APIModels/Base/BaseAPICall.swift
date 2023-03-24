@@ -8,12 +8,15 @@
 import SwiftUI
 import VioletPublicClientAPI
 
+/**
+ Extract errorResponse into BaseAPICall
+ */
 class BaseAPICall: ObservableObject {
-
     @Published var callCompleted = false
+    var errorResponse: Error? = nil
 
-    func callIsCompleted() {
+    func callIsCompleted(errorResponse: Error? = nil) {
+        self.errorResponse = errorResponse
         self.callCompleted = true
     }
-
 }

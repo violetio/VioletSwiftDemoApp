@@ -1,0 +1,132 @@
+Order:
+    type: "object"
+    required:
+    - "status"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+        readOnly: true
+      token:
+        type: "string"
+        readOnly: true
+      user_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of the User placing the order"
+      app_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the App creating the order"
+      developer_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the Developer who placed"
+      customer:
+        description: "Customer placing the order"
+        $ref: "#/definitions/OrderCustomer"
+      bags:
+        type: "array"
+        description: "Bags in the Order"
+        items:
+          $ref: "#/definitions/Bag"
+      shipping_address:
+        description: "Shipping Address of the Order"
+        $ref: "#/definitions/OrderAddress"
+      billing_address:
+        description: "Billing Address of the Order"
+        $ref: "#/definitions/OrderAddress"
+      payment_method:
+        description: "Payment Method of the Order"
+        $ref: "#/definitions/OrderPaymentMethod"
+      sub_total:
+        type: "integer"
+        format: "int32"
+        description: "Subtotal of the Order"
+      shipping_total:
+        type: "integer"
+        format: "int32"
+        description: "Shipping Total of the Order"
+      tax_total:
+        type: "integer"
+        format: "int32"
+        description: "Tax Total of the Order"
+      total:
+        type: "integer"
+        format: "int32"
+        description: "Total of the Order"
+      app_customer_id:
+        type: "string"
+        description: "App Customer ID"
+      app_order_id:
+        type: "string"
+        description: "App Order ID"
+      status:
+        type: "string"
+        description: "Status of the Order"
+        enum:
+        - "in_progress"
+        - "processing"
+        - "completed"
+        - "canceled"
+        - "partially_refunded"
+        - "refunded"
+        - "requires_action"
+      is_guest:
+        type: "boolean"
+        description: "Order is Guest"
+      date_created:
+        type: "string"
+        format: "date-time"
+        description: "Date of order creation"
+      date_last_modified:
+        type: "string"
+        format: "date-time"
+        description: "Date of last order update"
+      priced:
+        type: "boolean"
+        description: "Is the cart priced"
+      wallet_based_checkout:
+        type: "boolean"
+        description: "Is this cart going to be placed through wallet-based checkout"
+      currency:
+        type: "string"
+        description: "Base currency of cart"
+      referral_id:
+        type: "string"
+        description: "Optional value used to represent an identifier in your system."
+      errors:
+        type: "array"
+        description: "Errors on the Order"
+        items:
+          $ref: "#/definitions/OrderError"
+      currency_symbol:
+        type: "string"
+        description: "Symbol representing the desired currency"
+      app_name:
+        type: "string"
+        description: "Name of app that originated the order."
+      stripe_key:
+        type: "string"
+        description: "Stripe publishable key. Use for tokenizing payment methods."
+      payment_intent_client_secret:
+        type: "string"
+        description: "Payment intent client secret"
+      guest:
+        type: "boolean"
+      orderId:
+        type: "integer"
+        format: "int64"
+      orderStatus:
+        type: "string"
+        enum:
+        - "IN_PROGRESS"
+        - "PROCESSING"
+        - "COMPLETED"
+        - "CANCELED"
+        - "PARTIALLY_REFUNDED"
+        - "REFUNDED"
+        - "REQUIRES_ACTION"
+      intentBasedCheckout:
+        type: "boolean"
+    description: "Order"

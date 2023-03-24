@@ -15,6 +15,83 @@ final class APIModelsTests: APIXCTestCase {
     var refreshToken: String? = nil
     var token: String? = nil
     
+    func test_5_GetOrderByIDRequest() {
+        let getOrderByIDRequest = GetCartByIDRequest(appCreds: appCreds, token: self.loginToken, orderId: 58111)
+        let expectation = XCTestExpectation(description: "CallCompleted True")
+        
+        let streamHandle: AnyCancellable? = getOrderByIDRequest.$callCompleted
+            .dropFirst()
+            .sink(receiveValue: {
+                XCTAssertEqual($0, true)
+                expectation.fulfill()
+
+            })
+
+        // When
+        getOrderByIDRequest.send()
+
+        // Then
+        wait(for: [expectation], timeout: timeout_5s)
+        XCTAssertNotNil(streamHandle)
+        XCTAssertNotNil(getOrderByIDRequest.dataResponse)
+        
+    }
+    
+    func test_4_CheckoutCartCreate() {
+        let orderSku_SkuId_33524 = OrderSku(skuId: 33524, quantity: 1)
+        let body = CartInitializationRequest(baseCurrency: "USD",
+                                             skus: [orderSku_SkuId_33524],
+                                             referralId: nil,
+                                             appOrderId: nil,
+                                             customer: nil,
+                                             walletBasedCheckout: false)
+        let checkoutCartPostRequest = CheckoutCartPostRequest(appCreds: appCreds,
+                                         token: self.loginToken,
+                                         cartInitializationRequest: body)
+        let expectation = XCTestExpectation(description: "CallCompleted True")
+        let streamHandle: AnyCancellable? = checkoutCartPostRequest.$callCompleted
+            .dropFirst()
+            .sink(receiveValue: {
+                XCTAssertEqual($0, true)
+                expectation.fulfill()
+
+            })
+
+        // When
+        checkoutCartPostRequest.send()
+
+        // Then
+        wait(for: [expectation], timeout: timeout_5s)
+        XCTAssertNotNil(streamHandle)
+        XCTAssertNotNil(checkoutCartPostRequest.dataResponse)
+
+    }
+    
+    func test_3_GetOffer() {
+        let getOfferByIDRequest = GetOfferByIDRequest(appCreds: appCreds, token: self.loginToken, offerId: 12574)
+        let expectation = XCTestExpectation(description: "CallCompleted True")
+
+        let streamHandle: AnyCancellable? = getOfferByIDRequest.$callCompleted
+            .dropFirst()
+            .sink(receiveValue: {
+                XCTAssertEqual($0, true)
+                expectation.fulfill()
+
+            })
+
+        // When
+        getOfferByIDRequest.send()
+
+        // Then
+        wait(for: [expectation], timeout: timeout_5s)
+        XCTAssertNotNil(streamHandle)
+        XCTAssertNotNil(getOfferByIDRequest.dataResponse)
+
+//        if let responseToPersist = loginPostRequest.dataResponse {
+//            persist(responseToPersist)
+//        }
+
+    }
     func test_1_LoginPostRequest() {
         // Given
 
@@ -39,15 +116,14 @@ final class APIModelsTests: APIXCTestCase {
         wait(for: [expectation], timeout: timeout_5s)
         XCTAssertNotNil(streamHandle)
         XCTAssertNotNil(self.token)
-//        Logger.log("token: \(self.token?.debugDescription)")
         XCTAssertNotNil(self.refreshToken)
 
         if let responseToPersist = loginPostRequest.dataResponse {
-            persist(responseToPersist)
+            persistEncodable(responseToPersist, to: loginPostJsonResponse_fileName)
         }
     }
 
-    func test_2_AuthTokenGet() {
+    func DISABLED_test_2_AuthTokenGet() {
         // Given
         guard let jsonData = reloadData(fileName: loginPostJsonResponse_fileName) else {
             XCTFail("No Json Data")

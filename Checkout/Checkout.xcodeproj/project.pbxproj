@@ -43,6 +43,8 @@
 		E71CFBA729CE0EBD00598B15 /* JsonDecodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBA629CE0EBD00598B15 /* JsonDecodeTests.swift */; };
 		E71CFBA929CE129F00598B15 /* bag_id_43113.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBA829CE129F00598B15 /* bag_id_43113.json */; };
 		E71CFBAB29CE17B300598B15 /* TestBundleFileTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBAA29CE17B300598B15 /* TestBundleFileTestCase.swift */; };
+		E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBAC29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift */; };
+		E71CFBAF29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBAE29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		E71CFBA629CE0EBD00598B15 /* JsonDecodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecodeTests.swift; sourceTree = "<group>"; };
 		E71CFBA829CE129F00598B15 /* bag_id_43113.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bag_id_43113.json; sourceTree = "<group>"; };
 		E71CFBAA29CE17B300598B15 /* TestBundleFileTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBundleFileTestCase.swift; sourceTree = "<group>"; };
+		E71CFBAC29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCartPaymentPostRequest.swift; sourceTree = "<group>"; };
+		E71CFBAE29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCartShippingAvailableGetRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +226,7 @@
 		E70BEB9929BA54880030335E /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
+				E71CFBAE29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift */,
 				E71CFBA129CE0C1D00598B15 /* GetCartByIDRequest.swift */,
 				E71CFB9F29CD098D00598B15 /* GetOrderByIDRequest.swift */,
 				E71CFB9C29CCD01700598B15 /* Base */,
@@ -230,6 +235,7 @@
 				E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */,
 				E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */,
 				E71CFB9D29CCD92C00598B15 /* CheckoutCartPostRequest.swift */,
+				E71CFBAC29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 				E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */,
 				E71CFB9A29CCCD7100598B15 /* DataResponseAPICall.swift in Sources */,
 				E71CFB9629C3B45D00598B15 /* MockData.swift in Sources */,
+				E71CFBAF29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift in Sources */,
 				E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */,
 				E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */,
 				E71CFB9E29CCD92C00598B15 /* CheckoutCartPostRequest.swift in Sources */,
@@ -446,6 +453,7 @@
 				E71CFBA229CE0C1E00598B15 /* GetCartByIDRequest.swift in Sources */,
 				E70BEBA929BBA0FD0030335E /* EnvVars.swift in Sources */,
 				E70BEB6929B92B200030335E /* ContentView.swift in Sources */,
+				E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */,
 				E71CFB8E29C26CE200598B15 /* BaseAPICall.swift in Sources */,
 				E70BEB6729B92B200030335E /* CheckoutApp.swift in Sources */,
 				E71CFB8D29C26CE200598B15 /* AuthTokenGet.swift in Sources */,

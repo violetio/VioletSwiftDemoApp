@@ -20,7 +20,8 @@ class APIXCTestCase: XCTestCase {
     let timeout_5s: TimeInterval = 5
     let timeout_10s: TimeInterval = 10
     let timeout_15s: TimeInterval = 15
-    let appCreds = AppCreds()
+    //let appCreds = AppCreds.SandBoxTestCreds()
+    let appCreds = AppCreds() 
     
     var loginToken: String {
         get {

@@ -113,6 +113,12 @@ final class APIModelsTests: APIXCTestCase {
         wait(for: [expectation], timeout: timeout_5s)
         XCTAssertNotNil(streamHandle)
         XCTAssertNotNil(checkoutCartPostRequest.dataResponse)
+        
+        
+        if let aCart = checkoutCartPostRequest.dataResponse {
+            Logger.info("New CartID: \(aCart.id?.description)")
+            persistEncodable(aCart, to: "CreateCartPostResponse.json")
+        }
 
     }
     

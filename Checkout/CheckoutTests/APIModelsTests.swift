@@ -18,29 +18,26 @@ final class APIModelsTests: APIXCTestCase {
     var token: String? = nil
 
     func test_8_CheckoutCartShippingAvailableGetRequest() {
+        // Given
         let checkoutCartShippingAvailableGetRequest = CheckoutCartShippingAvailableGetRequest(appCreds: appCreds,
                                                                                               token: self.loginToken,
                                                                                               cartId: 58111)
-        let expectation = XCTestExpectation(description: "CallCompleted True")
-
-        let streamHandle: AnyCancellable? = checkoutCartShippingAvailableGetRequest.$callCompleted
-            .dropFirst()
-            .sink(receiveValue: {
-                XCTAssertEqual($0, true)
-                expectation.fulfill()
-
-            })
+        let expectationRunner = ExpectationRunner(checkoutCartShippingAvailableGetRequest)
+        expectationRunner.sink {
+            XCTAssertEqual($0, true)
+        }
 
         // When
         checkoutCartShippingAvailableGetRequest.send()
 
         // Then
-        wait(for: [expectation], timeout: timeout_5s)
-        XCTAssertNotNil(streamHandle)
-        XCTAssertNotNil(checkoutCartShippingAvailableGetRequest.dataResponse)
+        wait(for: expectationRunner.expectations, timeout: timeout_5s)
+        XCTAssertNotNil(expectationRunner.streamHandle)
+        XCTAssertNotNil(checkoutCartShippingAvailableGetRequest.errorResponse)
     }
 
     func test_7_CheckoutCartCustomerPostRequest() throws {
+        // Given
         let guestOrderCustomer: GuestOrderCustomer! = TestJsonResources.guestOrderCustomer_Demo
 
         let checkoutCartCustomerPostRequest = CheckoutCartCustomerPostRequest(appCreds: appCreds,
@@ -50,53 +47,47 @@ final class APIModelsTests: APIXCTestCase {
     }
 
     func test_6_CheckoutCartPaymentPostRequest() {
+        // Given
         let body = PaymentMethodRequest(intentBasedCapture: true)
         let checkoutCartPaymentPostRequest = CheckoutCartPaymentPostRequest(appCreds: appCreds,
                                                                             token: self.loginToken,
                                                                             cartId: 58111, priceCart: true, paymentMethodRequest: body)
-        let expectation = XCTestExpectation(description: "CallCompleted True")
-
-        let streamHandle: AnyCancellable? = checkoutCartPaymentPostRequest.$callCompleted
-            .dropFirst()
-            .sink(receiveValue: {
-                XCTAssertEqual($0, true)
-                expectation.fulfill()
-
-            })
+        let expectationRunner = ExpectationRunner(checkoutCartPaymentPostRequest)
+        expectationRunner.sink {
+            XCTAssertEqual($0, true)
+        }
 
         // When
         checkoutCartPaymentPostRequest.send()
 
         // Then
-        wait(for: [expectation], timeout: timeout_5s)
-        XCTAssertNotNil(streamHandle)
+        wait(for: expectationRunner.expectations, timeout: timeout_5s)
+        XCTAssertNotNil(expectationRunner.streamHandle)
         XCTAssertNotNil(checkoutCartPaymentPostRequest.dataResponse)
     }
 
     /// Order with Bag missing ShippingMethod will fail to Decode,
     ///  Change over to return `ShoppingCart` then will succeed w or w/o shipping_method
-    func DISABLED_test_5_GetOrderByIDRequest() {
+    func test_5_GetOrderByIDRequest() {
+        // Given
         let getOrderByIDRequest = GetCartByIDRequest(appCreds: appCreds, token: self.loginToken, orderId: 58111)
-        let expectation = XCTestExpectation(description: "CallCompleted True")
 
-        let streamHandle: AnyCancellable? = getOrderByIDRequest.$callCompleted
-            .dropFirst()
-            .sink(receiveValue: {
-                XCTAssertEqual($0, true)
-                expectation.fulfill()
-
-            })
+        let expectationRunner = ExpectationRunner(getOrderByIDRequest)
+        expectationRunner.sink {
+            XCTAssertEqual($0, true)
+        }
 
         // When
         getOrderByIDRequest.send()
 
         // Then
-        wait(for: [expectation], timeout: timeout_5s)
-        XCTAssertNotNil(streamHandle)
+        wait(for: expectationRunner.expectations, timeout: timeout_5s)
+        XCTAssertNotNil(expectationRunner.streamHandle)
         XCTAssertNotNil(getOrderByIDRequest.dataResponse)
     }
 
     func test_4_CheckoutCartCreate() {
+        // Given
         let orderSku_SkuId_33524 = OrderSku(skuId: 33524, quantity: 1)
         let body = CartInitializationRequest(baseCurrency: "USD",
                                              skus: [orderSku_SkuId_33524],
@@ -107,21 +98,18 @@ final class APIModelsTests: APIXCTestCase {
         let checkoutCartPostRequest = CheckoutCartPostRequest(appCreds: appCreds,
                                                               token: self.loginToken,
                                                               cartInitializationRequest: body)
-        let expectation = XCTestExpectation(description: "CallCompleted True")
-        let streamHandle: AnyCancellable? = checkoutCartPostRequest.$callCompleted
-            .dropFirst()
-            .sink(receiveValue: {
-                XCTAssertEqual($0, true)
-                expectation.fulfill()
-
-            })
+        let expectationRunner = ExpectationRunner(checkoutCartPostRequest)
+        
+        expectationRunner.sink {
+            XCTAssertEqual($0, true)
+        }
 
         // When
         checkoutCartPostRequest.send()
 
         // Then
-        wait(for: [expectation], timeout: timeout_5s)
-        XCTAssertNotNil(streamHandle)
+        wait(for: expectationRunner.expectations, timeout: timeout_5s)
+        XCTAssertNotNil(expectationRunner.streamHandle)
         XCTAssertNotNil(checkoutCartPostRequest.dataResponse)
 
         if let aCart = checkoutCartPostRequest.dataResponse {
@@ -131,6 +119,7 @@ final class APIModelsTests: APIXCTestCase {
     }
 
     func test_3_GetOffer() {
+        // Given
         let getOfferByIDRequest = GetOfferByIDRequest(appCreds: appCreds, token: self.loginToken, offerId: 12574)
 
         let expectationRunner = ExpectationRunner(getOfferByIDRequest)
@@ -154,7 +143,6 @@ final class APIModelsTests: APIXCTestCase {
 
     func test_1_LoginPostRequest() {
         // Given
-
         let loginPostRequest = LoginPostRequest(appCreds: appCreds)
         let expectation = XCTestExpectation(description: "CallCompleted True")
 

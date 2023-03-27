@@ -48,10 +48,11 @@ final class APIModelsTests: APIXCTestCase {
 
     func test_6_CheckoutCartPaymentPostRequest() {
         // Given
+        let testCheckoutSequence = TestCheckoutSequence.Order_ID_58374()
         let body = PaymentMethodRequest(intentBasedCapture: true)
         let checkoutCartPaymentPostRequest = CheckoutCartPaymentPostRequest(appCreds: appCreds,
                                                                             token: self.loginToken,
-                                                                            cartId: 58111, priceCart: true, paymentMethodRequest: body)
+                                                                            cartId: testCheckoutSequence.orderId, priceCart: true, paymentMethodRequest: body)
         let expectationRunner = ExpectationRunner(checkoutCartPaymentPostRequest)
         expectationRunner.sink {
             XCTAssertEqual($0, true)
@@ -64,6 +65,11 @@ final class APIModelsTests: APIXCTestCase {
         wait(for: expectationRunner.expectations, timeout: timeout_5s)
         XCTAssertNotNil(expectationRunner.streamHandle)
         XCTAssertNotNil(checkoutCartPaymentPostRequest.dataResponse)
+        
+        if let aDataResponse = checkoutCartPaymentPostRequest.dataResponse {
+//            Logger.info("New CartID: \(aCart.id?.description)")
+            persistEncodable(aDataResponse, to: "Order_ID_58374_PaymentPost_intent_based_checkout.json")
+        }
     }
 
     /// Order with Bag missing ShippingMethod will fail to Decode,

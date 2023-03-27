@@ -49,6 +49,8 @@
 		E71CFBB329CE613B00598B15 /* TestJsonResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBB229CE613B00598B15 /* TestJsonResources.swift */; };
 		E71CFBB529CE635900598B15 /* guestOrderCustomer_Demo.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBB429CE635900598B15 /* guestOrderCustomer_Demo.json */; };
 		E71CFBB829D2349500598B15 /* ExpectationRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBB729D2349500598B15 /* ExpectationRunner.swift */; };
+		E71CFBBA29D2402100598B15 /* TestCheckoutSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */; };
+		E71CFBBC29D240EC00598B15 /* bag_id_58374.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBBB29D240EC00598B15 /* bag_id_58374.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,8 @@
 		E71CFBB229CE613B00598B15 /* TestJsonResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestJsonResources.swift; sourceTree = "<group>"; };
 		E71CFBB429CE635900598B15 /* guestOrderCustomer_Demo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = guestOrderCustomer_Demo.json; sourceTree = "<group>"; };
 		E71CFBB729D2349500598B15 /* ExpectationRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpectationRunner.swift; sourceTree = "<group>"; };
+		E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCheckoutSequence.swift; sourceTree = "<group>"; };
+		E71CFBBB29D240EC00598B15 /* bag_id_58374.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bag_id_58374.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +206,7 @@
 				E71CFBA629CE0EBD00598B15 /* JsonDecodeTests.swift */,
 				E71CFBAA29CE17B300598B15 /* TestBundleFileTestCase.swift */,
 				E71CFBB229CE613B00598B15 /* TestJsonResources.swift */,
+				E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */,
 			);
 			path = CheckoutTests;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 		E71CFBA329CE0E0A00598B15 /* JsonBlobs */ = {
 			isa = PBXGroup;
 			children = (
+				E71CFBBB29D240EC00598B15 /* bag_id_58374.json */,
 				E71CFBB429CE635900598B15 /* guestOrderCustomer_Demo.json */,
 				E71CFBA829CE129F00598B15 /* bag_id_43113.json */,
 				E71CFBA429CE0E0A00598B15 /* get_order_by_id_58111.json */,
@@ -436,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E71CFBA929CE129F00598B15 /* bag_id_43113.json in Resources */,
+				E71CFBBC29D240EC00598B15 /* bag_id_58374.json in Resources */,
 				E71CFBA529CE0E0A00598B15 /* get_order_by_id_58111.json in Resources */,
 				E71CFBB529CE635900598B15 /* guestOrderCustomer_Demo.json in Resources */,
 			);
@@ -489,6 +496,7 @@
 				E71CFBB829D2349500598B15 /* ExpectationRunner.swift in Sources */,
 				E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */,
 				E70BEBA729BB9F650030335E /* EnvTests.swift in Sources */,
+				E71CFBBA29D2402100598B15 /* TestCheckoutSequence.swift in Sources */,
 				E71CFBA729CE0EBD00598B15 /* JsonDecodeTests.swift in Sources */,
 				E71CFBAB29CE17B300598B15 /* TestBundleFileTestCase.swift in Sources */,
 				E71CFBB329CE613B00598B15 /* TestJsonResources.swift in Sources */,

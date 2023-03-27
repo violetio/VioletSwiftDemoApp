@@ -70,7 +70,8 @@ final class APIModelsTests: APIXCTestCase {
     ///  Change over to return `ShoppingCart` then will succeed w or w/o shipping_method
     func test_5_GetOrderByIDRequest() {
         // Given
-        let getOrderByIDRequest = GetCartByIDRequest(appCreds: appCreds, token: self.loginToken, orderId: 58111)
+        let testCheckoutSequence = TestCheckoutSequence.Order_ID_58374()
+        let getOrderByIDRequest = GetCartByIDRequest(appCreds: appCreds, token: self.loginToken, orderId: testCheckoutSequence.orderId)
 
         let expectationRunner = ExpectationRunner(getOrderByIDRequest)
         expectationRunner.sink {

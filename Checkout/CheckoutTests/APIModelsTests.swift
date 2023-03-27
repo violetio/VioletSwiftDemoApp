@@ -38,12 +38,29 @@ final class APIModelsTests: APIXCTestCase {
 
     func test_7_CheckoutCartCustomerPostRequest() throws {
         // Given
+        let testCheckoutSequence = TestCheckoutSequence.Order_ID_58374()
         let guestOrderCustomer: GuestOrderCustomer! = TestJsonResources.guestOrderCustomer_Demo
 
         let checkoutCartCustomerPostRequest = CheckoutCartCustomerPostRequest(appCreds: appCreds,
                                                                               token: self.loginToken,
-                                                                              cartId: 5811, priceCart: false,
+                                                                              cartId: testCheckoutSequence.orderId, priceCart: false,
                                                                               guestOrderCustomer: guestOrderCustomer)
+        let expectationRunner = ExpectationRunner(checkoutCartCustomerPostRequest)
+        expectationRunner.sink {
+            XCTAssertEqual($0, true)
+        }
+
+        // When
+        checkoutCartCustomerPostRequest.send()
+
+        // Then
+        wait(for: expectationRunner.expectations, timeout: timeout_5s)
+        XCTAssertNotNil(expectationRunner.streamHandle)
+        XCTAssertNotNil(checkoutCartCustomerPostRequest.dataResponse)
+        
+        if let aDataResponse = checkoutCartCustomerPostRequest.dataResponse {
+            persistEncodable(aDataResponse, to: "Order_ID_58374_CustomerPost_Response.json")
+        }
     }
 
     func test_6_CheckoutCartPaymentPostRequest() {
@@ -67,8 +84,7 @@ final class APIModelsTests: APIXCTestCase {
         XCTAssertNotNil(checkoutCartPaymentPostRequest.dataResponse)
         
         if let aDataResponse = checkoutCartPaymentPostRequest.dataResponse {
-//            Logger.info("New CartID: \(aCart.id?.description)")
-            persistEncodable(aDataResponse, to: "Order_ID_58374_PaymentPost_intent_based_checkout.json")
+            persistEncodable(aDataResponse, to: "Order_ID_58374_PaymentPost_Response.json")
         }
     }
 

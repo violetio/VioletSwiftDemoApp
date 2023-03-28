@@ -51,6 +51,7 @@
 		E71CFBB829D2349500598B15 /* ExpectationRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBB729D2349500598B15 /* ExpectationRunner.swift */; };
 		E71CFBBA29D2402100598B15 /* TestCheckoutSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */; };
 		E71CFBBC29D240EC00598B15 /* Order_ID_58374.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBBB29D240EC00598B15 /* Order_ID_58374.json */; };
+		E71CFBBE29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBBD29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		E71CFBB729D2349500598B15 /* ExpectationRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpectationRunner.swift; sourceTree = "<group>"; };
 		E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCheckoutSequence.swift; sourceTree = "<group>"; };
 		E71CFBBB29D240EC00598B15 /* Order_ID_58374.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order_ID_58374.json; sourceTree = "<group>"; };
+		E71CFBBD29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shipping_methods_get_bag_id_43402.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 		E71CFBA329CE0E0A00598B15 /* JsonBlobs */ = {
 			isa = PBXGroup;
 			children = (
+				E71CFBBD29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json */,
 				E71CFBBB29D240EC00598B15 /* Order_ID_58374.json */,
 				E71CFBB429CE635900598B15 /* guestOrderCustomer_Demo.json */,
 				E71CFBA829CE129F00598B15 /* bag_id_43113.json */,
@@ -441,6 +444,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E71CFBBE29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json in Resources */,
 				E71CFBA929CE129F00598B15 /* bag_id_43113.json in Resources */,
 				E71CFBBC29D240EC00598B15 /* Order_ID_58374.json in Resources */,
 				E71CFBA529CE0E0A00598B15 /* get_order_by_id_58111.json in Resources */,

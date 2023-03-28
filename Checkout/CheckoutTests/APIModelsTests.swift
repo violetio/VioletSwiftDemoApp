@@ -16,12 +16,13 @@ import XCTest
 final class APIModelsTests: APIXCTestCase {
     var refreshToken: String? = nil
     var token: String? = nil
-
+    let testCheckoutSequence = TestCheckoutSequence.Order_ID_58374()
+    
     func test_8_CheckoutCartShippingAvailableGetRequest() {
         // Given
         let checkoutCartShippingAvailableGetRequest = CheckoutCartShippingAvailableGetRequest(appCreds: appCreds,
                                                                                               token: self.loginToken,
-                                                                                              cartId: 58111)
+                                                                                              cartId: testCheckoutSequence.orderId)
         let expectationRunner = ExpectationRunner(checkoutCartShippingAvailableGetRequest)
         expectationRunner.sink {
             XCTAssertEqual($0, true)
@@ -33,12 +34,15 @@ final class APIModelsTests: APIXCTestCase {
         // Then
         wait(for: expectationRunner.expectations, timeout: timeout_5s)
         XCTAssertNotNil(expectationRunner.streamHandle)
-        XCTAssertNotNil(checkoutCartShippingAvailableGetRequest.errorResponse)
+        XCTAssertNotNil(checkoutCartShippingAvailableGetRequest.dataResponse)
+        
+        if let aDataResponse = checkoutCartShippingAvailableGetRequest.dataResponse {
+            persistEncodable(aDataResponse, to: "Order_ID_58374_ShippingAvailable_Response.json")
+        }
     }
 
     func test_7_CheckoutCartCustomerPostRequest() throws {
         // Given
-        let testCheckoutSequence = TestCheckoutSequence.Order_ID_58374()
         let guestOrderCustomer: GuestOrderCustomer! = TestJsonResources.guestOrderCustomer_Demo
 
         let checkoutCartCustomerPostRequest = CheckoutCartCustomerPostRequest(appCreds: appCreds,
@@ -65,7 +69,6 @@ final class APIModelsTests: APIXCTestCase {
 
     func test_6_CheckoutCartPaymentPostRequest() {
         // Given
-        let testCheckoutSequence = TestCheckoutSequence.Order_ID_58374()
         let body = PaymentMethodRequest(intentBasedCapture: true)
         let checkoutCartPaymentPostRequest = CheckoutCartPaymentPostRequest(appCreds: appCreds,
                                                                             token: self.loginToken,
@@ -92,7 +95,6 @@ final class APIModelsTests: APIXCTestCase {
     ///  Change over to return `ShoppingCart` then will succeed w or w/o shipping_method
     func test_5_GetOrderByIDRequest() {
         // Given
-        let testCheckoutSequence = TestCheckoutSequence.Order_ID_58374()
         let getOrderByIDRequest = GetCartByIDRequest(appCreds: appCreds, token: self.loginToken, orderId: testCheckoutSequence.orderId)
 
         let expectationRunner = ExpectationRunner(getOrderByIDRequest)

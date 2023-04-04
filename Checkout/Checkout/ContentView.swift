@@ -9,14 +9,33 @@ import SwiftUI
 
 struct ContentView: View {
     @State var selectedOffer = VioletOffer()
+
+    #if os(iOS)
+        @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    #endif
+
+    /*
+     var body: some View {
+         VStack {
+             SelectedOfferView()
+                 .padding()
+         }
+         .padding()
+     }
+     */
+
     var body: some View {
-        VStack {
-            HelloView()
-            LoginButtonView()
-            SelectedOfferView()
-                .padding()
-        }
-        .padding()
+        #if os(iOS)
+            if horizontalSizeClass == .compact {
+                CheckoutNavigationView()
+            }
+            else {
+                // For iPadOS
+                // CheckoutSidebarNavigationView()
+            }
+        #else
+
+        #endif
     }
 }
 

@@ -203,7 +203,7 @@ open class CatalogProductsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogProductsSearchPost(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int, page: Int? = nil, size: Int? = nil, excludePublic: Bool? = nil, body: SearchRequest? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: PageProduct?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func catalogProductsSearchPost(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, page: Int? = nil, size: Int? = nil, excludePublic: Bool? = nil, body: SearchRequest? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: PageProduct?, _ error: Error?) -> Void)) -> RequestTask {
         return catalogProductsSearchPostWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, page: page, size: size, excludePublic: excludePublic, body: body).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -227,7 +227,7 @@ open class CatalogProductsAPI {
      - parameter body: (body)  (optional)
      - returns: RequestBuilder<PageProduct> 
      */
-    open class func catalogProductsSearchPostWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int, page: Int? = nil, size: Int? = nil, excludePublic: Bool? = nil, body: SearchRequest? = nil) -> RequestBuilder<PageProduct> {
+    open class func catalogProductsSearchPostWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, page: Int? = nil, size: Int? = nil, excludePublic: Bool? = nil, body: SearchRequest? = nil) -> RequestBuilder<PageProduct> {
         let localVariablePath = "/catalog/products/search"
         let localVariableURLString = VioletPublicClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

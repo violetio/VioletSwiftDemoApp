@@ -49,8 +49,17 @@ paths:
                 If sucessful an access token will be returned in the response body for use
                 in additional requests against the API.
             parameters:
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
             requestBody:
                 content:
                     application/json:
@@ -74,9 +83,22 @@ paths:
                 Refreshes a Users token. Pass the "refresh_token" value provided
                 in the response body of a login request in the "X-Violet-Token" header.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
             responses:
                 200:
                     description: successful operation
@@ -93,11 +115,34 @@ paths:
                 Retreives a paginated list of all products in ascending order since
                 date of creation.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/queryPage'
-                - $ref: '#/components/parameters/querySize'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: page
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 1
+                - name: size
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 20
                 - name: exclude_public
                   in: query
                   description:
@@ -124,11 +169,34 @@ paths:
                 Retreives a paginated list of products in random order. The original
                 random order is maintained through pagination.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/queryPage'
-                - $ref: '#/components/parameters/querySize'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: page
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 1
+                - name: size
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 20
                 - name: exclude_public
                   in: query
                   description:
@@ -155,9 +223,22 @@ paths:
                 Retrieves a single product by ID. This request will include all
                 offers of that product.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: product_id
                   in: path
                   required: true
@@ -179,11 +260,34 @@ paths:
                 Search the complete product catalog by using the available filters
                 in the request body.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/queryPage'
-                - $ref: '#/components/parameters/querySize'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int32
+                - name: page
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 1
+                - name: size
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 20
                 - name: exclude_public
                   in: query
                   description:
@@ -215,9 +319,22 @@ paths:
             summary: Get Sku by ID
             description: Retreives a single SKU by ID.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: sku_id
                   in: path
                   required: true
@@ -238,9 +355,22 @@ paths:
             summary: Get Offer by ID
             description: Retrieves a single offer by ID.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: offer_id
                   in: path
                   required: true
@@ -261,14 +391,37 @@ paths:
             summary: Get Offers by merchant_id
             description: Retrieves a page of offers by Merchant ID.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/queryPage'
-                - $ref: '#/components/parameters/querySize'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: merchant_id
                   in: path
                   required: true
+                  schema:
+                    type: integer
+                    format: int64
+                - name: page
+                  in: query
+                  required: false
+                  schema:
+                      type: integer
+                      format: int64
+                - name: size
+                  in: query
+                  required: false
                   schema:
                     type: integer
                     format: int64
@@ -286,11 +439,34 @@ paths:
             summary: Get Categories
             description: Retreives a paginated list of all available categories.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/queryPage'
-                - $ref: '#/components/parameters/querySize'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: page
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 1
+                - name: size
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 20
             responses:
                 200:
                     description: successful operation
@@ -309,16 +485,39 @@ paths:
                 Performs a paginated search of all categories where name matches
                 query.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: query
                   in: path
                   required: true
                   schema:
                       type: string
-                - $ref: '#/components/parameters/queryPage'
-                - $ref: '#/components/parameters/querySize'
+                - name: page
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 1
+                - name: size
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 20
             responses:
                 200:
                     description: successful operation
@@ -335,9 +534,22 @@ paths:
             summary: Get Category by Slug
             description: Retrieves a single category by slug.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: slug
                   in: path
                   required: true
@@ -357,10 +569,27 @@ paths:
             summary: Get Category by ID
             description: Retrieves a single category by ID.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                      type: string
             responses:
                 200:
                     description: successful operation
@@ -375,10 +604,27 @@ paths:
             summary: Get Category Tree
             description: Retreives the category tree by ID.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                      type: string
             responses:
                 200:
                     description: successful operation
@@ -405,9 +651,22 @@ paths:
                 the optional 'app_order_id' parameter to map the newly created cart to an
                 ID in your systems.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: app_order_id
                   in: query
                   required: false
@@ -436,7 +695,7 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: "#/components/schemas/Order"
+                                $ref: "#/components/schemas/ShoppingCart"
     /checkout/cart/byToken/{token}:
         get:
             tags:
@@ -446,9 +705,22 @@ paths:
                 Retreives a single cart by its token. The token a unique string
                 generated for each cart at the time of creation.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: token
                   in: path
                   required: true
@@ -468,10 +740,28 @@ paths:
             summary: Get Cart by ID
             description: Retreives a single cart by its ID.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
             responses:
                 200:
                     description: successful operation
@@ -485,10 +775,28 @@ paths:
             summary: Delete Cart
             description: Deletes a cart by its ID.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
             responses:
                 default:
                     description: successful operation
@@ -502,11 +810,33 @@ paths:
                 Adds a SKU to the cart by its ID. Quantity will default to 1 if
                 no quantity is passed. Quantities greater than 10 will default to 10.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
-                - $ref: '#/components/parameters/queryPriceCart'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: price_cart
+                  in: query
+                  schema:
+                      type: boolean
+                      default: false
             requestBody:
                 content:
                     application/json:
@@ -528,17 +858,39 @@ paths:
             summary: Update SKU in Cart
             description: Modifies a cart SKU by its ID.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: order_sku_id
                   in: path
                   required: true
                   schema:
                       type: integer
                       format: int64
-                - $ref: '#/components/parameters/queryPriceCart'
+                - name: price_cart
+                  in: query
+                  schema:
+                      type: boolean
+                      default: false
             requestBody:
                 content:
                     application/json:
@@ -559,17 +911,39 @@ paths:
             summary: Remove SKU from Cart
             description: Removes a cart SKU by its ID.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: order_sku_id
                   in: path
                   required: true
                   schema:
                       type: integer
                       format: int64
-                - $ref: '#/components/parameters/queryPriceCart'
+                - name: price_cart
+                  in: query
+                  schema:
+                      type: boolean
+                      default: false
             responses:
                 200:
                     description: successful operation
@@ -584,11 +958,33 @@ paths:
             summary: Update Billing Address
             description: Modifies the billing address of the cart.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
-                - $ref: '#/components/parameters/queryPriceCart'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: price_cart
+                  in: query
+                  schema:
+                      type: boolean
+                      default: false
             requestBody:
                 content:
                     application/json:
@@ -609,11 +1005,33 @@ paths:
             summary: Set Billing Address
             description: Applies the provided billing address to the cart.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
-                - $ref: '#/components/parameters/queryPriceCart'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: price_cart
+                  in: query
+                  schema:
+                      type: boolean
+                      default: false
             requestBody:
                 content:
                     application/json:
@@ -638,11 +1056,33 @@ paths:
                 a first name, last name, and email address. Guest customers are not persisted
                 within Violet for use on future orders.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
-                - $ref: '#/components/parameters/queryPriceCart'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: price_cart
+                  in: query
+                  schema:
+                      type: boolean
+                      default: false
             requestBody:
                 content:
                     application/json:
@@ -667,11 +1107,33 @@ paths:
                 to each bag can be retreived from 'Get Available Shipping Methods' endpoint.
                 Each bag requires a shipping method.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
-                - $ref: '#/components/parameters/queryPriceCart'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: price_cart
+                  in: query
+                  schema:
+                      type: boolean
+                      default: false
             requestBody:
                 content:
                     application/json:
@@ -698,10 +1160,28 @@ paths:
                 shipping address and customer must be applied to the cart before requesting
                 shipping methods.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
             responses:
                 200:
                     description: successful operation
@@ -718,17 +1198,39 @@ paths:
             summary: Remove Shipping Method
             description: Removes a previously applied shipping from the cart.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: shipping_method_id
                   in: path
                   required: true
                   schema:
                       type: integer
                       format: int64
-                - $ref: '#/components/parameters/queryPriceCart'
+                - name: price_cart
+                  in: query
+                  schema:
+                      type: boolean
+                      default: false
             responses:
                 200:
                     description: successful operation
@@ -746,9 +1248,22 @@ paths:
                 payment card data with the <a target='_blank' href='https://stripe.com/docs/stripe-js/reference#stripe-create-token'>Stripe.js
                 library</a>.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
             responses:
                 200:
                     description: successful operation
@@ -762,11 +1277,33 @@ paths:
                 - Checkout - Payment
             summary: Apply Payment Method
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
-                - $ref: '#/components/parameters/queryPriceCart'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: price_cart
+                  in: query
+                  schema:
+                      type: boolean
+                      default: false
             requestBody:
                 content:
                     application/json:
@@ -788,11 +1325,33 @@ paths:
             summary: Update Shipping Address
             description: Modifies the shipping address of the cart.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
-                - $ref: '#/components/parameters/queryPriceCart'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: price_cart
+                  in: query
+                  schema:
+                      type: boolean
+                      default: false
             requestBody:
                 content:
                     application/json:
@@ -813,11 +1372,33 @@ paths:
             summary: Set Shipping Address
             description: Applies the provided shipping address to the cart.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
-                - $ref: '#/components/parameters/queryPriceCart'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: price_cart
+                  in: query
+                  schema:
+                      type: boolean
+                      default: false
             requestBody:
                 content:
                     application/json:
@@ -842,10 +1423,28 @@ paths:
                 tax rates. Before pricing a cart the shipping address, billing address, shipping
                 method, and any SKUs should be applied to the cart.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
             responses:
                 200:
                     description: successful operation
@@ -864,10 +1463,28 @@ paths:
                 bags in your cart this request can take a few moments as each external order
                 is submitted.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathCartId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: cart_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
             responses:
                 200:
                     description: successful operation
@@ -885,11 +1502,34 @@ paths:
                 by 'merchant_id', 'user_id', or a combination of both. <br><br>Orders are
                 limited to those placed by your app.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/queryPage'
-                - $ref: '#/components/parameters/querySize'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int32
+                - name: page
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 1
+                - name: size
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 20
             requestBody:
                 content:
                     application/json:
@@ -913,11 +1553,34 @@ paths:
                 Returns a paginated list of orders. <br><br>Orders are limited
                 to those placed by your app.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/queryPage'
-                - $ref: '#/components/parameters/querySize'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int32
+                - name: page
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 1
+                - name: size
+                  in: query
+                  schema:
+                      type: integer
+                      format: int32
+                      default: 20
             responses:
                 200:
                     description: successful operation
@@ -932,9 +1595,22 @@ paths:
             summary: Get Order by ID
             description: Retrieves a single order by ID.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: order_id
                   in: path
                   required: true
@@ -955,10 +1631,28 @@ paths:
             summary: List Webhooks
             description: Retrieves a list of previously created webhooks.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathAppId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: app_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
                 - name: event
                   in: query
                   schema:
@@ -982,10 +1676,28 @@ paths:
                 If the event is already active on a previously created webhook that existing
                 webhook will be updated with the new endpoint.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathAppId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: app_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
             requestBody:
                 content:
                     application/json:
@@ -1007,11 +1719,34 @@ paths:
             summary: Get Webhook by ID
             description: Retrieves a single webhook by ID.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathAppId'
-                - $ref: '#/components/parameters/pathWebhookId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: app_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: webhook_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
             responses:
                 200:
                     description: successful operation
@@ -1025,11 +1760,34 @@ paths:
             summary: Update Webhook
             description: Modifies an existing webhook by ID.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathAppId'
-                - $ref: '#/components/parameters/pathWebhookId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: app_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: webhook_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
             requestBody:
                 content:
                     application/json:
@@ -1052,11 +1810,34 @@ paths:
                 Removes a webhook. Events will immedietly stop posting to this
                 endpoint upon deletion.
             parameters:
-                - $ref: '#/components/parameters/xVioletToken'
-                - $ref: '#/components/parameters/xVioletAppSecret'
-                - $ref: '#/components/parameters/xVioletAppId'
-                - $ref: '#/components/parameters/pathAppId'
-                - $ref: '#/components/parameters/pathWebhookId'
+                - name: X-Violet-Token
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Secret
+                  in: header
+                  required: true
+                  schema:
+                      type: string
+                - name: X-Violet-App-Id
+                  in: header
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: app_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
+                - name: webhook_id
+                  in: path
+                  required: true
+                  schema:
+                      type: integer
+                      format: int64
             responses:
                 default:
                     description: successful operation
@@ -2545,8 +3326,10 @@ components:
         OrderShippingMethod:
             required:
                 - bag_id
+                - merchant_id
                 - price
                 - shipping_method_id
+                - type
             type: object
             properties:
                 type:
@@ -2563,7 +3346,6 @@ components:
                         - FEDEX
                         - DHL
                         - ONTRAC
-                        - OTHER
                 label:
                     type: string
                     description: Shipping Method Label
@@ -3059,70 +3841,4 @@ components:
                         Boolean denoting whether or not this order will be placed through a
                         wallet based payment mechanism such as apple pay
             description: Optional data to initialize the cart with on creation.
-    parameters:
-        xVioletAppSecret:
-            name: X-Violet-App-Secret
-            in: header
-            required: true
-            schema:
-              type: string
-        xVioletAppId:
-            name: X-Violet-App-Id
-            in: header
-            required: true
-            schema:
-                type: integer
-                format: int64
-        xVioletToken:
-            name: X-Violet-Token
-            in: header
-            required: true
-            schema:
-                type: string
-        queryPage:
-            name: page
-            in: query
-            schema:
-                type: integer
-                format: int32
-                default: 1
-        querySize:
-            name: size
-            in: query
-            schema:
-                type: integer
-                format: int32
-                default: 20
-        pathId:
-            name: id
-            in: path
-            required: true
-            schema:
-                type: string
-        pathCartId:
-            name: cart_id
-            in: path
-            required: true
-            schema:
-                type: integer
-                format: int64
-        queryPriceCart:
-            name: price_cart
-            in: query
-            schema:
-                type: boolean
-                default: false
-        pathAppId:
-            name: app_id
-            in: path
-            required: true
-            schema:
-                type: integer
-                format: int64
-        pathWebhookId:
-            name: webhook_id
-            in: path
-            required: true
-            schema:
-                type: integer
-                format: int64
+

@@ -1,0 +1,51 @@
+{
+  "app_id" : 10199,
+  "id" : 58374,
+  "date_last_modified" : "2023-03-27T21:27:25.000Z",
+  "shipping_total" : 0,
+  "total" : 9500,
+  "user_id" : 10268,
+  "tax_total" : 0,
+  "token" : "1ce84e1c654647c093fc566535f2c196",
+  "date_created" : "2023-03-27T20:34:31.000Z",
+  "guest" : true,
+  "bags" : [
+    {
+      "id" : 43402,
+      "app_id" : 10199,
+      "financial_status" : "UNPAID",
+      "shipping_total" : 0,
+      "total" : 9500,
+      "order_id" : 58374,
+      "fulfillment_status" : "PROCESSING",
+      "tax_total" : 0,
+      "taxes" : [
+
+      ],
+      "skus" : [
+        {
+          "product_id" : "d45fc564046d43c5adee46b95d153d8e",
+          "app_id" : 10199,
+          "sku_id" : 33524,
+          "id" : 56721,
+          "thumbnail" : "https:\/\/d2j6dbq0eux0bg.cloudfront.net\/images\/13101742\/1089530467.jpg",
+          "external_id" : "141418660",
+          "quantity" : 1,
+          "price" : 9500,
+          "merchant_id" : 10003,
+          "name" : "Venn Puzzle"
+        }
+      ],
+      "transactions" : [
+
+      ],
+      "merchant_id" : 10003,
+      "external_checkout" : true,
+      "merchant_name" : "Nordies Store",
+      "status" : "IN_PROGRESS",
+      "sub_total" : 9500
+    }
+  ],
+  "status" : "IN_PROGRESS",
+  "sub_total" : 9500
+}

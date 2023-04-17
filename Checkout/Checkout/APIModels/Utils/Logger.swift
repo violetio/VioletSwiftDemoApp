@@ -11,39 +11,39 @@ import Foundation
     Instead using print statements, abstracting a Logger type
     that can redirected to an actual Remote Logging solution in the future.
  */
-class Logger {
+public class Logger {
     
-    enum LogLevel {
+    public enum LogLevel {
         case info
         case error
         case debug
     }
     
-    func log(_ message: String, logLevel: LogLevel = .info) {
+    public func log(_ message: String, logLevel: LogLevel = .info) {
         print("\(logLevel): \(message)")
     }
     
-    func info(_ message: String) {
+    public func info(_ message: String) {
         log(message,logLevel: .info)
     }
     
-    func error(_ message: String) {
+    public func error(_ message: String) {
         log(message,logLevel: .error)
     }
     
-    static func log(_ message: String, logLevel: LogLevel = .info) {
+    public static func log(_ message: String, logLevel: LogLevel = .info) {
         print("\(logLevel): \(message)")
     }
 
-    static func info(_ message: String) {
+    public static func info(_ message: String) {
         log(message,logLevel: .info)
     }
 
-    static func error(_ message: String) {
+    public static func error(_ message: String) {
         log(message,logLevel: .error)
     }
     
-    static func debug(_ message: String) {
+    public static func debug(_ message: String) {
         log(message,logLevel: .debug)
     }
 }

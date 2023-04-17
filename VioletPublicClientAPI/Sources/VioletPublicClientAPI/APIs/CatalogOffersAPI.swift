@@ -19,13 +19,13 @@ open class CatalogOffersAPI {
      - parameter xVioletAppSecret: (header)  
      - parameter xVioletAppId: (header)  
      - parameter merchantId: (path)  
-     - parameter page: (query)  (optional)
-     - parameter size: (query)  (optional)
+     - parameter page: (query)  (optional, default to 1)
+     - parameter size: (query)  (optional, default to 20)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogOffersMerchantsMerchantIdGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, merchantId: Int64, page: Int64? = nil, size: Int64? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: PageOffer?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func catalogOffersMerchantsMerchantIdGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, merchantId: Int64, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: PageOffer?, _ error: Error?) -> Void)) -> RequestTask {
         return catalogOffersMerchantsMerchantIdGetWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, merchantId: merchantId, page: page, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -44,11 +44,11 @@ open class CatalogOffersAPI {
      - parameter xVioletAppSecret: (header)  
      - parameter xVioletAppId: (header)  
      - parameter merchantId: (path)  
-     - parameter page: (query)  (optional)
-     - parameter size: (query)  (optional)
+     - parameter page: (query)  (optional, default to 1)
+     - parameter size: (query)  (optional, default to 20)
      - returns: RequestBuilder<PageOffer> 
      */
-    open class func catalogOffersMerchantsMerchantIdGetWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, merchantId: Int64, page: Int64? = nil, size: Int64? = nil) -> RequestBuilder<PageOffer> {
+    open class func catalogOffersMerchantsMerchantIdGetWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, merchantId: Int64, page: Int? = nil, size: Int? = nil) -> RequestBuilder<PageOffer> {
         var localVariablePath = "/catalog/offers/merchants/{merchant_id}"
         let merchantIdPreEscape = "\(APIHelper.mapValueToPathItem(merchantId))"
         let merchantIdPostEscape = merchantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

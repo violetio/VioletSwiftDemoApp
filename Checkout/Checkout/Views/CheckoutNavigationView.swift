@@ -26,13 +26,13 @@ struct CheckoutNavigationView: View {
                 ScenariosListView()
             }
             .tabItem {
-                let menuText = Text("Scenarios", comment: "API Scenarios")
+                let menuText = Text("Shopping", comment: "API Scenarios")
                 Label
                 {
                     menuText
                 }
                 icon: {
-                    Image(systemName: "house")
+                    Image(systemName: "square.grid.3x2")
                 }.accessibility(label: menuText)
             }
             .tag(Tab.scenarios)
@@ -43,26 +43,13 @@ struct CheckoutNavigationView: View {
             }
             .tabItem {
                 Label {
-                    Text("Offers", comment: "Offers")
+                    Text("Settings", comment: "Settings")
                 } icon: {
-                    Image(systemName: "basket.fill")
+                    Image(systemName: "gear")
                 }
             }
             .tag(Tab.history)
 
-
-            NavigationView {
-                let fakeOffer = Offer(productId: "01001", name: "Offer Name", source: .shopify, merchantId: 42, minPrice: 0199)
-                OfferView(offer:fakeOffer)
-            }
-            .tabItem {
-                Label {
-                    Text("Offers", comment: "Offers")
-                } icon: {
-                    Image(systemName: "basket.fill")
-                }
-            }
-            .tag(Tab.history)
         }
     }
 }

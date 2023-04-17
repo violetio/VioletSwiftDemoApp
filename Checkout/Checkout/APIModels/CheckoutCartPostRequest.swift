@@ -7,7 +7,7 @@
 
 import VioletPublicClientAPI
 
-class CheckoutCartPostRequest: DataResponseAPICall<ShoppingCart> {
+class CheckoutCartPostRequest: DataResponseAPICall<Order> {
 
     let appCreds: AppCreds
     let token: String

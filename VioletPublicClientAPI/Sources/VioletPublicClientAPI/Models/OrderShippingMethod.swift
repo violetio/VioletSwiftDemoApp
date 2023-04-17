@@ -23,9 +23,10 @@ public struct OrderShippingMethod: Codable, JSONEncodable, Hashable {
         case fedex = "FEDEX"
         case dhl = "DHL"
         case ontrac = "ONTRAC"
+        case other = "OTHER"
     }
     /** Type of Shipping Method */
-    public var type: ModelType
+    public var type: ModelType?
     public var carrier: Carrier?
     /** Shipping Method Label */
     public var label: String?
@@ -44,11 +45,11 @@ public struct OrderShippingMethod: Codable, JSONEncodable, Hashable {
     /** ID of the Bag the Shipping Method applies to */
     public var bagId: Int64
     /** ID of the merchant the bag belongs to */
-    public var merchantId: Int
+    public var merchantId: Int?
     /** Carrier Tracking Number */
     public var trackingNumber: String?
 
-    public init(type: ModelType, carrier: Carrier? = nil, label: String? = nil, price: Int, minSubtotal: Int? = nil, maxSubtotal: Int? = nil, minWeight: Double? = nil, maxWeight: Double? = nil, id: Int64? = nil, shippingMethodId: String, bagId: Int64, merchantId: Int, trackingNumber: String? = nil) {
+    public init(type: ModelType? = nil, carrier: Carrier? = nil, label: String? = nil, price: Int, minSubtotal: Int? = nil, maxSubtotal: Int? = nil, minWeight: Double? = nil, maxWeight: Double? = nil, id: Int64? = nil, shippingMethodId: String, bagId: Int64, merchantId: Int? = nil, trackingNumber: String? = nil) {
         self.type = type
         self.carrier = carrier
         self.label = label
@@ -84,7 +85,7 @@ public struct OrderShippingMethod: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(type, forKey: .type)
+        try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(carrier, forKey: .carrier)
         try container.encodeIfPresent(label, forKey: .label)
         try container.encode(price, forKey: .price)
@@ -95,7 +96,7 @@ public struct OrderShippingMethod: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encode(shippingMethodId, forKey: .shippingMethodId)
         try container.encode(bagId, forKey: .bagId)
-        try container.encode(merchantId, forKey: .merchantId)
+        try container.encodeIfPresent(merchantId, forKey: .merchantId)
         try container.encodeIfPresent(trackingNumber, forKey: .trackingNumber)
     }
 }

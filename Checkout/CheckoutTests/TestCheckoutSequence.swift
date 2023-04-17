@@ -19,7 +19,26 @@ class TestCheckoutSequence {
     static func Order_ID_58374() -> TestCheckoutSequence {
         return TestCheckoutSequence(orderId: 58374)
     }
-    
+    //
+    static func Order_ID_59087() -> TestCheckoutSequence {
+        return TestCheckoutSequence(orderId: 59087)
+    }
+
+    func shippingAvailable_Response_jsonResponseFileName() -> String {
+        return "Order_ID_" + String(self.orderId) + "_ShippingAvailable_Response.json"
+    }
+
+    func cartCustomerPostAvailable_Response_jsonResponseFileName() -> String {
+        return "Order_ID_" + String(self.orderId) + "_CustomerPost_Response.json"
+    }
+
+    func paymentIntentBased_Response_jsonResponseFileName() -> String {
+        return "Order_ID_" + String(self.orderId) + "_PaymentPost_Response.json"
+    }
+
+    func createCart_Response_jsonResponseFileName() -> String {
+        return "Order_ID_" + String(self.orderId) + "_CreateCart_Response.json"
+    }
     /**
         Looking for:
         "stripe_key":  String,

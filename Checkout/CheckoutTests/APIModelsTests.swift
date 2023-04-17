@@ -11,13 +11,11 @@ import SwiftUI
 import VioletPublicClientAPI
 import XCTest
 
-
-
 final class APIModelsTests: APIXCTestCase {
     var refreshToken: String? = nil
     var token: String? = nil
-    let testCheckoutSequence = TestCheckoutSequence.Order_ID_58374()
-    
+    var testCheckoutSequence = TestCheckoutSequence.Order_ID_59087()
+
     func test_8_CheckoutCartShippingAvailableGetRequest() {
         // Given
         let checkoutCartShippingAvailableGetRequest = CheckoutCartShippingAvailableGetRequest(appCreds: appCreds,
@@ -35,9 +33,9 @@ final class APIModelsTests: APIXCTestCase {
         wait(for: expectationRunner.expectations, timeout: timeout_5s)
         XCTAssertNotNil(expectationRunner.streamHandle)
         XCTAssertNotNil(checkoutCartShippingAvailableGetRequest.dataResponse)
-        
+
         if let aDataResponse = checkoutCartShippingAvailableGetRequest.dataResponse {
-            persistEncodable(aDataResponse, to: "Order_ID_58374_ShippingAvailable_Response.json")
+            persistEncodable(aDataResponse, to: testCheckoutSequence.shippingAvailable_Response_jsonResponseFileName())
         }
     }
 
@@ -61,9 +59,9 @@ final class APIModelsTests: APIXCTestCase {
         wait(for: expectationRunner.expectations, timeout: timeout_5s)
         XCTAssertNotNil(expectationRunner.streamHandle)
         XCTAssertNotNil(checkoutCartCustomerPostRequest.dataResponse)
-        
+
         if let aDataResponse = checkoutCartCustomerPostRequest.dataResponse {
-            persistEncodable(aDataResponse, to: "Order_ID_58374_CustomerPost_Response.json")
+            persistEncodable(aDataResponse, to: testCheckoutSequence.cartCustomerPostAvailable_Response_jsonResponseFileName())
         }
     }
 
@@ -85,9 +83,9 @@ final class APIModelsTests: APIXCTestCase {
         wait(for: expectationRunner.expectations, timeout: timeout_5s)
         XCTAssertNotNil(expectationRunner.streamHandle)
         XCTAssertNotNil(checkoutCartPaymentPostRequest.dataResponse)
-        
+
         if let aDataResponse = checkoutCartPaymentPostRequest.dataResponse {
-            persistEncodable(aDataResponse, to: "Order_ID_58374_PaymentPost_Response.json")
+            persistEncodable(aDataResponse, to: testCheckoutSequence.paymentIntentBased_Response_jsonResponseFileName())
         }
     }
 
@@ -124,7 +122,7 @@ final class APIModelsTests: APIXCTestCase {
                                                               token: self.loginToken,
                                                               cartInitializationRequest: body)
         let expectationRunner = ExpectationRunner(checkoutCartPostRequest)
-        
+
         expectationRunner.sink {
             XCTAssertEqual($0, true)
         }
@@ -137,9 +135,11 @@ final class APIModelsTests: APIXCTestCase {
         XCTAssertNotNil(expectationRunner.streamHandle)
         XCTAssertNotNil(checkoutCartPostRequest.dataResponse)
 
-        if let aCart = checkoutCartPostRequest.dataResponse {
-            Logger.info("New CartID: \(aCart.id?.description)")
-            persistEncodable(aCart, to: "CreateCartPostResponse.json")
+        if let aCart = checkoutCartPostRequest.dataResponse,
+           let orderId = aCart.id {
+                Logger.info("New CartID: \(orderId)")
+                testCheckoutSequence = TestCheckoutSequence(orderId: orderId)
+                persistEncodable(aCart, to: testCheckoutSequence.createCart_Response_jsonResponseFileName())
         }
     }
 
@@ -161,9 +161,9 @@ final class APIModelsTests: APIXCTestCase {
         XCTAssertNotNil(expectationRunner.streamHandle)
         XCTAssertNotNil(getOfferByIDRequest.dataResponse)
 
-//        if let responseToPersist = loginPostRequest.dataResponse {
-//            persist(responseToPersist)
-//        }
+        if let aDataResponse = getOfferByIDRequest.dataResponse {
+            persistEncodable(aDataResponse, to: "Offer_ID_12574_Response.json")
+        }
     }
 
     func test_1_LoginPostRequest() {

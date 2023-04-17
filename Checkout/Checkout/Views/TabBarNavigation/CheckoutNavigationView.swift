@@ -23,7 +23,7 @@ struct CheckoutNavigationView: View {
                 //ScenariosListView(scenarios: [])
                 //let offerModel = OfferModel()
                 //LoginView(offerModel:offerModel)
-                ScenariosListView()
+                PageOffersView()
             }
             .tabItem {
                 let menuText = Text("Shopping", comment: "API Scenarios")

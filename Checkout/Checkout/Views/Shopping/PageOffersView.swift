@@ -6,36 +6,12 @@
 //
 
 import SwiftUI
-import VioletPublicClientAPI
-
-struct OfferGridDataSource {
-    let offerGridItems: [ShoppingOfferGridItem]
-    
-    init(pageOffers: PageOffer? = nil) {
-        if let aPageOfOffers = pageOffers {
-            offerGridItems = Self.shoppingOfferGridItems(pageOffers: aPageOfOffers)
-        } else {
-            offerGridItems = Array(1...20).map { ShoppingOfferGridItem(name: "Item \($0)" ) }
-        }
-    }
-    
-    static func shoppingOfferGridItems(pageOffers: PageOffer?) -> [ShoppingOfferGridItem] {
-        return shoppingOfferGridItems(content: pageOffers?.content)
-    }
-    
-    static func shoppingOfferGridItems(content: [Offer]?) -> [ShoppingOfferGridItem] {
-        guard let contentOffers = content else {
-            return []
-        }
-        return contentOffers.map(ShoppingOfferGridItem.fromOffer)
-    }
-}
 
 struct PageOffersView: View {
     
     let gridDataSource: OfferGridDataSource
     
-    init(gridDataSource: OfferGridDataSource = OfferGridDataSource()) {
+    init(gridDataSource: OfferGridDataSource = OfferGridDataSource.MockOfferGridDataSource()) {
         self.gridDataSource = gridDataSource
     }
     
@@ -71,6 +47,6 @@ struct PageOffersView: View {
 
 struct PageOffersView_Previews: PreviewProvider {
     static var previews: some View {
-        PageOffersView()
+        PageOffersView(gridDataSource: OfferGridDataSource.MockOfferGridDataSource())
     }
 }

@@ -54,6 +54,7 @@
 		E72E000329EDFF72009F7BFE /* ShoppingOfferGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000229EDFF72009F7BFE /* ShoppingOfferGridItem.swift */; };
 		E72E000529EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */; };
 		E72E000729EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = E72E000629EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json */; };
+		E72E000929EF18CD009F7BFE /* OfferGridDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000829EF18CD009F7BFE /* OfferGridDataSource.swift */; };
 		E72EFFE129D4C858009F7BFE /* CheckoutNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EFFE029D4C858009F7BFE /* CheckoutNavigationView.swift */; };
 		E72EFFE329D4C892009F7BFE /* ScenariosListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EFFE229D4C892009F7BFE /* ScenariosListView.swift */; };
 		E72EFFE529D4C8BA009F7BFE /* OfferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EFFE429D4C8BA009F7BFE /* OfferView.swift */; };
@@ -138,6 +139,7 @@
 		E72E000229EDFF72009F7BFE /* ShoppingOfferGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingOfferGridItem.swift; sourceTree = "<group>"; };
 		E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPageOffersByMerchantIDRequest.swift; sourceTree = "<group>"; };
 		E72E000629EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PageOffer_Page_1_MerchantID_10003_Response.json; sourceTree = "<group>"; };
+		E72E000829EF18CD009F7BFE /* OfferGridDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferGridDataSource.swift; sourceTree = "<group>"; };
 		E72EFFE029D4C858009F7BFE /* CheckoutNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutNavigationView.swift; sourceTree = "<group>"; };
 		E72EFFE229D4C892009F7BFE /* ScenariosListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenariosListView.swift; sourceTree = "<group>"; };
 		E72EFFE429D4C8BA009F7BFE /* OfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferView.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			children = (
 				E70BEB9429B94F5A0030335E /* VioletOffer.swift */,
 				E72E000229EDFF72009F7BFE /* ShoppingOfferGridItem.swift */,
+				E72E000829EF18CD009F7BFE /* OfferGridDataSource.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				E70BEBA329BAA2210030335E /* AppCreds.swift in Sources */,
 				E72E000129EDFC36009F7BFE /* PageOffersView.swift in Sources */,
 				E70BEBAB29BBBC6D0030335E /* LoginButtonView.swift in Sources */,
+				E72E000929EF18CD009F7BFE /* OfferGridDataSource.swift in Sources */,
 				E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */,
 				E71CFBA229CE0C1E00598B15 /* GetCartByIDRequest.swift in Sources */,
 				E72EFFE129D4C858009F7BFE /* CheckoutNavigationView.swift in Sources */,

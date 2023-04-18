@@ -28,7 +28,7 @@ struct OfferGridDataSource {
         guard let contentOffers = content else {
             return []
         }
-        return contentOffers.map(ShoppingOfferGridItem.fromOffer)
+        return contentOffers.compactMap(ShoppingOfferGridItem.fromOffer)
     }
     
     static func MockOfferGridDataSource() -> OfferGridDataSource {

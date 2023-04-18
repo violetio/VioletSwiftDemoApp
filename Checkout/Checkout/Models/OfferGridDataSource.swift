@@ -13,6 +13,7 @@ struct OfferGridDataSource {
     
     init(pageOffers: PageOffer? = nil) {
         if let aPageOfOffers = pageOffers {
+            Logger.info("Loaded PageOffer Data")
             offerGridItems = Self.shoppingOfferGridItems(pageOffers: aPageOfOffers)
         } else {
             offerGridItems = Array(1...20).map { ShoppingOfferGridItem(name: "Item \($0)" ) }
@@ -31,6 +32,6 @@ struct OfferGridDataSource {
     }
     
     static func MockOfferGridDataSource() -> OfferGridDataSource {
-        return OfferGridDataSource()
+        return OfferGridDataSource(pageOffers: MockOffers.load_PageOffers())
     }
 }

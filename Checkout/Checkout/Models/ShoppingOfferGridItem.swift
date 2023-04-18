@@ -6,6 +6,7 @@
 
 import Foundation
 import SwiftUI
+import VioletPublicClientAPI
 
 struct ShoppingOfferGridItem {
     public let name: String
@@ -18,4 +19,10 @@ struct ShoppingOfferGridItem {
         self.thumbnailImage = thumbnailImage
     }
     
+}
+
+extension ShoppingOfferGridItem {
+    static func fromOffer(offer: Offer) -> ShoppingOfferGridItem {
+        return ShoppingOfferGridItem(name: offer.name, price: offer.minPrice)
+    }
 }

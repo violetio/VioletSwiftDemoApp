@@ -7,9 +7,16 @@
 
 import SwiftUI
 
-struct PageOffersView: View {
-    var offer_id: Int = 0
+struct OfferGridDataSource {
     let offerGridItems = Array(1...20).map { ShoppingOfferGridItem(name: "Item \($0)" ) }
+    
+    init() {}
+}
+
+struct PageOffersView: View {
+    
+    let gridDataSource = OfferGridDataSource()
+    
     let layout = [
         GridItem(.adaptive(minimum: 100)),
         GridItem(.adaptive(minimum: 100)),
@@ -18,7 +25,7 @@ struct PageOffersView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: layout, spacing: 20) {
-                ForEach(offerGridItems, id: \.self.name) { item in
+                ForEach(gridDataSource.offerGridItems, id: \.self.name) { item in
                     VStack {
                         item.thumbnailImage
                             .frame(minWidth:100, minHeight: 50)

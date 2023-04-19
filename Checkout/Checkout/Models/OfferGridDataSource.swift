@@ -30,8 +30,4 @@ struct OfferGridDataSource {
         }
         return contentOffers.compactMap(ShoppingOfferGridItem.fromOffer)
     }
-    
-    static func MockOfferGridDataSource() -> OfferGridDataSource {
-        return OfferGridDataSource(pageOffers: MockOffers.load_PageOffers())
-    }
 }

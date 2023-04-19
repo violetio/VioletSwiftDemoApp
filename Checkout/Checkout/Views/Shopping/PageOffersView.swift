@@ -17,8 +17,8 @@ struct PageOffersView: View {
         static let aspectRatio: CGSize = CGSize(width: 80, height: 80)
     }
     let gridDataSource: OfferGridDataSource
-    
-    init(gridDataSource: OfferGridDataSource = OfferGridDataSource.MockOfferGridDataSource()) {
+    let channelName = "ULTRA"
+    init(gridDataSource: OfferGridDataSource) {
         self.gridDataSource = gridDataSource
     }
 
@@ -63,15 +63,14 @@ struct PageOffersView: View {
             .padding(.horizontal)
             
         }
-        .navigationBarTitle("ULTRA", displayMode: .inline)
+        .navigationBarTitle(channelName, displayMode: .inline)
 
-        
     }
 
 }
 
 struct PageOffersView_Previews: PreviewProvider {
     static var previews: some View {
-        PageOffersView(gridDataSource: OfferGridDataSource.MockOfferGridDataSource())
+        PageOffersView(gridDataSource: PreviewMocks.MockOfferGridDataSource())
     }
 }

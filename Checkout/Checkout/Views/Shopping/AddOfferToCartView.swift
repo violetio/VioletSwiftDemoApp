@@ -16,7 +16,26 @@ struct AddOfferToCartView: View {
     }
     
     var body: some View {
-        Text("Add Offer To Cart")
+        VStack {
+            Text("Add Offer To Cart")
+            
+            if let thumbURL =  shoppingOfferGridItem.firstAlbumMediaImageURL {
+                AsyncImage(url: thumbURL) { phase in
+                    if let image = phase.image {
+                        image.resizable().scaledToFit()
+                    } else if phase.error != nil {
+                        Color.red
+                    } else {
+                        Color.purple
+                    }
+                    
+                }
+            } else {
+                shoppingOfferGridItem.thumbnailImage
+                    .frame(minWidth:100, minHeight: 50)
+                    .colorInvert()
+            }
+        }.border(.black).padding(10)
     }
 }
 

@@ -43,4 +43,8 @@ extension ShoppingOfferGridItem: Identifiable, Equatable {
     var id: Int64 {
         return offer_id
     }
+    
+    static func mock_Preview() -> ShoppingOfferGridItem {
+        return ShoppingOfferGridItem(offer_id: 0, name: "Mock", price: 0)
+    }
 }

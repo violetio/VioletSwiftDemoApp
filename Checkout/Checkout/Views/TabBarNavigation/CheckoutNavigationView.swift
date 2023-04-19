@@ -18,7 +18,7 @@ struct CheckoutNavigationView: View {
     var body: some View {
         TabView(selection: $selection)
         {
-            NavigationView
+            NavigationStack
             {
                 //ScenariosListView(scenarios: [])
                 //let offerModel = OfferModel()
@@ -37,7 +37,7 @@ struct CheckoutNavigationView: View {
             }
             .tag(Tab.scenarios)
 
-            NavigationView {
+            NavigationStack {
                 let fakeOffer = Offer(productId: "01001", name: "Offer Name", source: .shopify, merchantId: 42, minPrice: 0199)
                 OfferView(offer:fakeOffer)
             }

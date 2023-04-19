@@ -9,40 +9,65 @@ import SwiftUI
 
 struct PageOffersView: View {
     
+    struct LayoutConstants {
+        static let imageMaxWidth: CGFloat = 80
+        static let imageMaxHeight: CGFloat = 80
+        static let itemMaxWidth: CGFloat = 100
+        static let itemMaxHeight: CGFloat = 120
+        static let aspectRatio: CGSize = CGSize(width: 80, height: 80)
+    }
     let gridDataSource: OfferGridDataSource
     
     init(gridDataSource: OfferGridDataSource = OfferGridDataSource.MockOfferGridDataSource()) {
         self.gridDataSource = gridDataSource
     }
+
     
     let layout = [
-        GridItem(.adaptive(minimum: 100)),
-        GridItem(.adaptive(minimum: 100)),
-        GridItem(.adaptive(minimum: 100))
+        GridItem(.fixed(100)),
+        GridItem(.fixed(100)),
+        GridItem(.fixed(100))
     ]
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: layout, spacing: 20) {
-                ForEach(gridDataSource.offerGridItems, id: \.self.name) { item in
-                    VStack {
-                        item.thumbnailImage
-                            .frame(minWidth:100, minHeight: 50)
-                            .colorInvert()
+            LazyVGrid(columns: layout, spacing: 5) {
+                ForEach(gridDataSource.offerGridItems, id: \.self.name) { shoppingOfferGridItem in
+                    NavigationLink(destination: AddOfferToCartView(shoppingOfferGridItem: shoppingOfferGridItem)) {
                         
-                        Text(item.name).colorInvert()
-//                        Text(item.price.description).colorInvert()
-                        
-                        
+                        VStack {
+                            if let thumbURL =  shoppingOfferGridItem.firstAlbumMediaImageURL {
+                                AsyncImage(url: thumbURL) { phase in
+                                    if let image = phase.image {
+                                        image.resizable().scaledToFit()
+                                    } else if phase.error != nil {
+                                        Color.red
+                                    } else {
+                                        Color.purple
+                                    }
+                                    
+                                }
+                            } else {
+                                shoppingOfferGridItem.thumbnailImage
+                                    .frame(minWidth:100, minHeight: 50)
+                                    .colorInvert()
+                            }
+                            Text(shoppingOfferGridItem.name).colorInvert()
+                        }
+                        .frame(maxWidth: LayoutConstants.itemMaxWidth,
+                               maxHeight: LayoutConstants.itemMaxHeight)
+                        .background(Color.gray)
+                        .border(.black).padding(10)
                     }
-                    .background(Color.gray)
-                    .border(.black).padding(10)
                 }
             }
             .padding(.horizontal)
-        }.navigationBarTitle("ULTRA", displayMode: .inline)
+            
+        }
+        .navigationBarTitle("ULTRA", displayMode: .inline)
 
         
     }
+
 }
 
 struct PageOffersView_Previews: PreviewProvider {

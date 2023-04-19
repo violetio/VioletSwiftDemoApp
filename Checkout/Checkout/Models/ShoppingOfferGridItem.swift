@@ -38,21 +38,8 @@ extension ShoppingOfferGridItem: EntityViewModel {
                                      price: entity.minPrice,
                                      firstAlbumMediaImageURL: entity.firstAlbumMediaImageURL())
     }
-//    static func fromOffer(offer: Offer? = nil) -> ShoppingOfferGridItem? {
-//        guard let anOffer = offer else {
-//            return nil
-//        }
-//        guard let offer_id = anOffer.id else {
-//            return nil
-//        }
-//        return ShoppingOfferGridItem(offer_id: offer_id,
-//                                     name: anOffer.name,
-//                                     price: anOffer.minPrice,
-//                                     firstAlbumMediaImageURL: anOffer.firstAlbumMediaImageURL())
-//    }
     
-    
-    static func Empty() -> ShoppingOfferGridItem {
+    static func Empty() -> Self {
         return ShoppingOfferGridItem(offer_id: 0, name: "", price: 0)
     }
 }

@@ -8,7 +8,10 @@
 struct PreviewMocks {
     
     static func MockOfferGridDataSource() -> OfferGridDataSource {
-        return OfferGridDataSource(pageOffers: MockOffers.load_PageOffers())
+        guard let pageOffers = MockOffers.load_PageOffers() else {
+            return OfferGridDataSource.Empty()
+        }
+        return OfferGridDataSource.fromEntity(entity: pageOffers) ?? OfferGridDataSource.Empty()
     }
     
     static func Mock_ShoppingOfferGridItem() -> ShoppingOfferGridItem {

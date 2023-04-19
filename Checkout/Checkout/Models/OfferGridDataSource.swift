@@ -11,13 +11,9 @@ import VioletPublicClientAPI
 struct OfferGridDataSource {
     let offerGridItems: [ShoppingOfferGridItem]
     
-    init(pageOffers: PageOffer? = nil) {
-        if let aPageOfOffers = pageOffers {
-            Logger.info("Loaded PageOffer Data")
-            offerGridItems = Self.shoppingOfferGridItems(pageOffers: aPageOfOffers)
-        } else {
-            offerGridItems = Array(1...20).map { ShoppingOfferGridItem(name: "Item \($0)" ) }
-        }
+    init(offerGridItems: [ShoppingOfferGridItem] = []) {
+        self.offerGridItems = offerGridItems
+        
     }
     
     static func shoppingOfferGridItems(pageOffers: PageOffer?) -> [ShoppingOfferGridItem] {
@@ -28,6 +24,17 @@ struct OfferGridDataSource {
         guard let contentOffers = content else {
             return []
         }
-        return contentOffers.compactMap(ShoppingOfferGridItem.fromOffer)
+        return contentOffers.compactMap(ShoppingOfferGridItem.fromEntity)
+    }
+}
+
+extension OfferGridDataSource: EntityViewModel {
+    typealias Entity = PageOffer
+    static func fromEntity(entity: Entity) -> Self? {
+        return OfferGridDataSource(offerGridItems: Self.shoppingOfferGridItems(pageOffers: entity))
+    }
+    
+    static func Empty() -> Self {
+        return OfferGridDataSource()
     }
 }

@@ -27,24 +27,38 @@ struct ShoppingOfferGridItem {
     
 }
 
-extension ShoppingOfferGridItem {
-    static func fromOffer(offer: Offer) -> ShoppingOfferGridItem? {
-        guard let offer_id = offer.id else {
+extension ShoppingOfferGridItem: EntityViewModel {
+    typealias Entity = Offer
+    static func fromEntity(entity: Entity) -> Self? {
+        guard let offer_id = entity.id else {
             return nil
         }
         return ShoppingOfferGridItem(offer_id: offer_id,
-                                     name: offer.name,
-                                     price: offer.minPrice,
-                                     firstAlbumMediaImageURL: offer.firstAlbumMediaImageURL())
+                                     name: entity.name,
+                                     price: entity.minPrice,
+                                     firstAlbumMediaImageURL: entity.firstAlbumMediaImageURL())
+    }
+//    static func fromOffer(offer: Offer? = nil) -> ShoppingOfferGridItem? {
+//        guard let anOffer = offer else {
+//            return nil
+//        }
+//        guard let offer_id = anOffer.id else {
+//            return nil
+//        }
+//        return ShoppingOfferGridItem(offer_id: offer_id,
+//                                     name: anOffer.name,
+//                                     price: anOffer.minPrice,
+//                                     firstAlbumMediaImageURL: anOffer.firstAlbumMediaImageURL())
+//    }
+    
+    
+    static func Empty() -> ShoppingOfferGridItem {
+        return ShoppingOfferGridItem(offer_id: 0, name: "", price: 0)
     }
 }
 
 extension ShoppingOfferGridItem: Identifiable, Equatable {
     var id: Int64 {
         return offer_id
-    }
-    
-    static func mock_Preview() -> ShoppingOfferGridItem {
-        return ShoppingOfferGridItem(offer_id: 0, name: "Mock", price: 0)
     }
 }

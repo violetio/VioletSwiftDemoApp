@@ -16,7 +16,7 @@ struct AddOfferToCartView: View {
     }
     
     var body: some View {
-        VStack {
+        Form {
             Text("Add Offer To Cart")
             
             if let thumbURL =  shoppingOfferGridItem.firstAlbumMediaImageURL {
@@ -41,6 +41,6 @@ struct AddOfferToCartView: View {
 
 struct AddOfferToCartView_Previews: PreviewProvider {
     static var previews: some View {
-        AddOfferToCartView(shoppingOfferGridItem: ShoppingOfferGridItem.mock_Preview())
+        AddOfferToCartView(shoppingOfferGridItem: PreviewMocks.Mock_ShoppingOfferGridItem())
     }
 }

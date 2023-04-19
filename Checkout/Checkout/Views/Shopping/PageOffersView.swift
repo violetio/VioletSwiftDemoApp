@@ -31,7 +31,7 @@ struct PageOffersView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: layout, spacing: 5) {
-                ForEach(gridDataSource.offerGridItems, id: \.self.name) { shoppingOfferGridItem in
+                ForEach(gridDataSource.offerGridItems, id: \.self.offer_id) { shoppingOfferGridItem in
                     NavigationLink(destination: AddOfferToCartView(shoppingOfferGridItem: shoppingOfferGridItem)) {
                         
                         VStack {

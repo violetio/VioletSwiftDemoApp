@@ -25,6 +25,9 @@ struct ShoppingOfferGridItem {
         self.firstAlbumMediaImageURL = firstAlbumMediaImageURL
     }
     
+    public var priceText: String {
+        return String(price)
+    }
 }
 
 extension ShoppingOfferGridItem: EntityViewModel {

@@ -12,6 +12,7 @@ struct ShoppingOfferGridItem {
     public let offer_id: Int64
     public let name: String
     public let price: Int
+    public let intPrice: IntPrice
     public let thumbnailImage: Image
     public let firstAlbumMediaImageURL: URL?
     
@@ -20,13 +21,10 @@ struct ShoppingOfferGridItem {
          thumbnailImage: Image = Image(systemName: "questionmark.square.dashed")) {
         self.name = name
         self.price = price
+        self.intPrice = IntPrice(price: price)
         self.thumbnailImage = thumbnailImage
         self.offer_id = offer_id
         self.firstAlbumMediaImageURL = firstAlbumMediaImageURL
-    }
-    
-    public var priceText: String {
-        return String(price)
     }
 }
 
@@ -45,6 +43,7 @@ extension ShoppingOfferGridItem: EntityViewModel {
     static func Empty() -> Self {
         return ShoppingOfferGridItem(offer_id: 0, name: "", price: 0)
     }
+    
 }
 
 extension ShoppingOfferGridItem: Identifiable, Equatable {

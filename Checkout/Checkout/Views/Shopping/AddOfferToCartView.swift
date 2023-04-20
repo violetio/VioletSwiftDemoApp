@@ -23,7 +23,7 @@ struct AddOfferToCartView: View {
         VStack {
             Text(shoppingOfferGridItem.name).padding(10)
                 .foregroundColor(Color.black)
-            Text(shoppingOfferGridItem.priceText).padding(10)
+            Text(shoppingOfferGridItem.intPrice.priceText()).padding(10)
                 .foregroundColor(Color.black)
                 
         }.padding(30).background(Color(white: 0.8))

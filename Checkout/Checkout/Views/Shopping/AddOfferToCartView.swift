@@ -19,6 +19,15 @@ struct AddOfferToCartView: View {
         Logger.info("Button Action")
     }
     
+    var productDetailsView: some View {
+        VStack {
+            Text(shoppingOfferGridItem.name).padding(10)
+                .foregroundColor(Color.black)
+            Text(shoppingOfferGridItem.priceText).padding(10)
+                .foregroundColor(Color.black)
+                
+        }.padding(30).background(Color(white: 0.8))
+    }
     var body: some View {
         VStack {
             
@@ -43,11 +52,8 @@ struct AddOfferToCartView: View {
                         .colorInvert()
                 }
                 
-                Group {
-                    Text(shoppingOfferGridItem.name).padding(30)
-                        .foregroundColor(Color.black)
-                        .background(Color(white: 0.8))
-                }
+                productDetailsView
+
             }.padding([.leading, .trailing], 40)
             
             Button {

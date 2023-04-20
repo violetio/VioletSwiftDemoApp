@@ -21,4 +21,17 @@ struct StyleConstants {
                                        trailing: LR)
         static let CornerRadius: CGFloat = 9
     }
+    
+}
+
+struct BlackBorder: ViewModifier {
+    func body(content: Content) -> some View {
+        content.border(.black)
+    }
+}
+
+extension View {
+    func withBlackBorder() -> some View {
+        modifier(BlackBorder())
+    }
 }

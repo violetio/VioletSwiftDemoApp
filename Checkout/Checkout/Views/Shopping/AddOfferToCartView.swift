@@ -21,13 +21,21 @@ struct AddOfferToCartView: View {
     
     var productDetailsView: some View {
         VStack {
-            Text(shoppingOfferGridItem.name).padding(10)
+            Text(shoppingOfferGridItem.name)
+                .font(.title)
+                .padding(10)
                 .foregroundColor(Color.black)
-            Text(shoppingOfferGridItem.intPrice.priceText()).padding(10)
+            Text(shoppingOfferGridItem.intPrice.priceText())
+                .font(.title2)
+                .padding(10)
                 .foregroundColor(Color.black)
+                .background(Color.white).cornerRadius(3)
                 
-        }.padding(30).background(Color(white: 0.8))
+        }.padding(30)
+            .background(Color(white: 0.8))
+            .cornerRadius(9)
     }
+    
     var body: some View {
         VStack {
             
@@ -60,11 +68,14 @@ struct AddOfferToCartView: View {
                 buttonAction()
             } label: {
                 Label("Add To Cart", systemImage: "cart")
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
             }
-                .buttonStyle(.borderedProminent)
+            .buttonStyle(.borderedProminent).padding()
+                
                 
     
-        }.border(.black)
+        }.withBlackBorder()
     }
 }
 

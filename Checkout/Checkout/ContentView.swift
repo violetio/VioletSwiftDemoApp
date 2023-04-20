@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var selectedOffer = VioletOffer()
+    @StateObject var offerSelections = OfferSelections()
 
     #if os(iOS)
         @Environment(\.horizontalSizeClass) private var horizontalSizeClass
@@ -27,7 +28,7 @@ struct ContentView: View {
     var body: some View {
         #if os(iOS)
             if horizontalSizeClass == .compact {
-                CheckoutNavigationView()
+                CheckoutNavigationView().environmentObject(offerSelections)
             }
             else {
                 // For iPadOS

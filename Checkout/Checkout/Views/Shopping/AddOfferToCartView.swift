@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddOfferToCartView: View {
     
+    @EnvironmentObject var offerSelections: OfferSelections
     let shoppingOfferGridItem: ShoppingOfferGridItem
     
     init(shoppingOfferGridItem: ShoppingOfferGridItem) {
@@ -16,7 +17,8 @@ struct AddOfferToCartView: View {
     }
     
     func buttonAction() {
-        Logger.info("Button Action")
+        offerSelections.insert(shoppingOfferGridItem.offer_id)
+        Logger.info("offerSelections: \(offerSelections.description)")
     }
     
     var productDetailsView: some View {

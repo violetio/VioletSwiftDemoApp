@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-class OfferSelections: ObservableObject {
+class OfferSelections: ObservableObject, CustomStringConvertible {
     
     typealias OfferIDType = Int64
     
@@ -23,6 +23,14 @@ class OfferSelections: ObservableObject {
     func insert(_ newMember: OfferIDType) {
         self.offer_ids.insert(newMember)
         didChange.send()
+        
     }
+    
+    func contains(_ offer_id: OfferIDType) -> Bool {
+        return self.offer_ids.contains(offer_id)
+    }
+    
+    var description: String { return offer_ids.description }
+    
 
 }

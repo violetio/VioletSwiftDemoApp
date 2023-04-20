@@ -16,6 +16,8 @@ struct PageOffersView: View {
         static let itemMaxHeight: CGFloat = 120
         static let aspectRatio: CGSize = CGSize(width: 80, height: 80)
     }
+    
+    @EnvironmentObject var offerSelections: OfferSelections
     let gridDataSource: OfferGridDataSource
     let channelName = "ULTRA"
     init(gridDataSource: OfferGridDataSource) {
@@ -28,12 +30,15 @@ struct PageOffersView: View {
         GridItem(.fixed(100)),
         GridItem(.fixed(100))
     ]
+    
+    
     var body: some View {
         ScrollView {
             LazyVGrid(columns: layout, spacing: 5) {
                 ForEach(gridDataSource.offerGridItems, id: \.self.offer_id) { shoppingOfferGridItem in
                     NavigationLink(destination: AddOfferToCartView(shoppingOfferGridItem: shoppingOfferGridItem)) {
-                        
+                        let selected = offerSelections.contains(shoppingOfferGridItem.offer_id)
+                        let borderColor: Color = selected ? Color.blue : Color.black
                         VStack {
                             if let thumbURL =  shoppingOfferGridItem.firstAlbumMediaImageURL {
                                 AsyncImage(url: thumbURL) { phase in
@@ -56,7 +61,7 @@ struct PageOffersView: View {
                         .frame(maxWidth: LayoutConstants.itemMaxWidth,
                                maxHeight: LayoutConstants.itemMaxHeight)
                         .background(Color.gray)
-                        .border(.black).padding(10)
+                        .border(borderColor).padding(10)
                     }
                 }
             }
@@ -64,6 +69,9 @@ struct PageOffersView: View {
             
         }
         .navigationBarTitle(channelName, displayMode: .inline)
+        .onAppear() {
+            Logger.info("offerSelections: \(offerSelections.description)")
+        }
 
     }
 

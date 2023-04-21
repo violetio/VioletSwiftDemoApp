@@ -34,8 +34,9 @@ struct PageOffersView: View {
             LazyVGrid(columns: layout, spacing: 5) {
                 ForEach(gridDataSource.offerGridItems, id: \.self.offer_id) { shoppingOfferGridItem in
                     NavigationLink(destination: AddOfferToCartView(shoppingOfferGridItem: shoppingOfferGridItem)) {
-                        let selected = offerSelections.contains(shoppingOfferGridItem.offer_id)
-                        let borderColor: Color = selected ? Color.blue : Color.black
+                        //let selected = offerSelections.contains(shoppingOfferGridItem.offer_id)
+                        //let borderColor: Color = selected ? Color.blue : Color.black
+                        let borderColor: Color = shoppingOfferGridItem.offerEntity != nil ? Color.blue : Color.black
                         VStack {
                             if let thumbURL =  shoppingOfferGridItem.firstAlbumMediaImageURL {
                                 AsyncImage(url: thumbURL) { phase in

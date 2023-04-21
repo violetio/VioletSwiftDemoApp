@@ -15,6 +15,7 @@ struct CartContentsView: View {
         ScrollView {
             ForEach(offerIdsList, id: \.self) { offer_id in
                 Text(String(offer_id))
+                CartItemView()
             }
         }.navigationTitle("Items In Cart: \(offerIdsList.count)")
     }

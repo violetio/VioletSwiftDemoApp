@@ -50,12 +50,35 @@
 		E71CFBBA29D2402100598B15 /* TestCheckoutSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */; };
 		E71CFBBC29D240EC00598B15 /* Order_ID_58374.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBBB29D240EC00598B15 /* Order_ID_58374.json */; };
 		E71CFBBE29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBBD29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json */; };
+		E72E000129EDFC36009F7BFE /* PageOffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000029EDFC36009F7BFE /* PageOffersView.swift */; };
+		E72E000329EDFF72009F7BFE /* ShoppingOfferGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000229EDFF72009F7BFE /* ShoppingOfferGridItem.swift */; };
+		E72E000529EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */; };
+		E72E000729EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = E72E000629EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json */; };
+		E72E000929EF18CD009F7BFE /* OfferGridDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000829EF18CD009F7BFE /* OfferGridDataSource.swift */; };
+		E72E000B29EF3353009F7BFE /* Offer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000A29EF3353009F7BFE /* Offer+Extensions.swift */; };
+		E72E000D29EF33F1009F7BFE /* ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000C29EF33F1009F7BFE /* ExtensionsTests.swift */; };
+		E72E000F29F03B05009F7BFE /* AddOfferToCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000E29F03B05009F7BFE /* AddOfferToCartView.swift */; };
+		E72E001129F07B0F009F7BFE /* PreviewMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E001029F07B0F009F7BFE /* PreviewMocks.swift */; };
+		E72E001429F0852F009F7BFE /* EntityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E001329F0852F009F7BFE /* EntityViewModel.swift */; };
+		E72E001629F08C71009F7BFE /* StyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E001529F08C71009F7BFE /* StyleConstants.swift */; };
+		E72E001829F1BA61009F7BFE /* PriceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E001729F1BA61009F7BFE /* PriceViewModel.swift */; };
+		E72E001A29F1C009009F7BFE /* IntPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E001929F1C009009F7BFE /* IntPrice.swift */; };
+		E72E001D29F1D213009F7BFE /* OfferSelections.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E001C29F1D213009F7BFE /* OfferSelections.swift */; };
 		E72EFFE129D4C858009F7BFE /* CheckoutNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EFFE029D4C858009F7BFE /* CheckoutNavigationView.swift */; };
 		E72EFFE329D4C892009F7BFE /* ScenariosListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EFFE229D4C892009F7BFE /* ScenariosListView.swift */; };
 		E72EFFE529D4C8BA009F7BFE /* OfferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EFFE429D4C8BA009F7BFE /* OfferView.swift */; };
 		E72EFFE929DC88E1009F7BFE /* Offer_ID_12574_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = E72EFFE629DC88E1009F7BFE /* Offer_ID_12574_Response.json */; };
 		E72EFFEA29DC88E1009F7BFE /* Offer_ID_12555_response.json in Resources */ = {isa = PBXBuildFile; fileRef = E72EFFE729DC88E1009F7BFE /* Offer_ID_12555_response.json */; };
 		E72EFFEB29DC88E1009F7BFE /* MockOffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EFFE829DC88E1009F7BFE /* MockOffers.swift */; };
+		E72EFFEE29EDAEE4009F7BFE /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = E72EFFED29EDAEE4009F7BFE /* Stripe */; };
+		E72EFFF029EDAEE4009F7BFE /* StripeApplePay in Frameworks */ = {isa = PBXBuildFile; productRef = E72EFFEF29EDAEE4009F7BFE /* StripeApplePay */; };
+		E72EFFF229EDAEE4009F7BFE /* StripeCardScan in Frameworks */ = {isa = PBXBuildFile; productRef = E72EFFF129EDAEE4009F7BFE /* StripeCardScan */; };
+		E72EFFF429EDAEE4009F7BFE /* StripeFinancialConnections in Frameworks */ = {isa = PBXBuildFile; productRef = E72EFFF329EDAEE4009F7BFE /* StripeFinancialConnections */; };
+		E72EFFF629EDAEE4009F7BFE /* StripeIdentity in Frameworks */ = {isa = PBXBuildFile; productRef = E72EFFF529EDAEE4009F7BFE /* StripeIdentity */; };
+		E72EFFF829EDAEE4009F7BFE /* StripePaymentSheet in Frameworks */ = {isa = PBXBuildFile; productRef = E72EFFF729EDAEE4009F7BFE /* StripePaymentSheet */; };
+		E72EFFFA29EDAEE4009F7BFE /* StripePayments in Frameworks */ = {isa = PBXBuildFile; productRef = E72EFFF929EDAEE4009F7BFE /* StripePayments */; };
+		E72EFFFC29EDAEE4009F7BFE /* StripePaymentsUI in Frameworks */ = {isa = PBXBuildFile; productRef = E72EFFFB29EDAEE4009F7BFE /* StripePaymentsUI */; };
+		E7B41C3E29F3304B00E7371B /* OfferSelectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C3D29F3304B00E7371B /* OfferSelectionsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,12 +145,28 @@
 		E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCheckoutSequence.swift; sourceTree = "<group>"; };
 		E71CFBBB29D240EC00598B15 /* Order_ID_58374.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order_ID_58374.json; sourceTree = "<group>"; };
 		E71CFBBD29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shipping_methods_get_bag_id_43402.json; sourceTree = "<group>"; };
+		E72E000029EDFC36009F7BFE /* PageOffersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageOffersView.swift; sourceTree = "<group>"; };
+		E72E000229EDFF72009F7BFE /* ShoppingOfferGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingOfferGridItem.swift; sourceTree = "<group>"; };
+		E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPageOffersByMerchantIDRequest.swift; sourceTree = "<group>"; };
+		E72E000629EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PageOffer_Page_1_MerchantID_10003_Response.json; sourceTree = "<group>"; };
+		E72E000829EF18CD009F7BFE /* OfferGridDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferGridDataSource.swift; sourceTree = "<group>"; };
+		E72E000A29EF3353009F7BFE /* Offer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Offer+Extensions.swift"; sourceTree = "<group>"; };
+		E72E000C29EF33F1009F7BFE /* ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsTests.swift; sourceTree = "<group>"; };
+		E72E000E29F03B05009F7BFE /* AddOfferToCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOfferToCartView.swift; sourceTree = "<group>"; };
+		E72E001029F07B0F009F7BFE /* PreviewMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMocks.swift; sourceTree = "<group>"; };
+		E72E001229F08410009F7BFE /* ViewModels_ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ViewModels_ReadMe.md; sourceTree = "<group>"; };
+		E72E001329F0852F009F7BFE /* EntityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityViewModel.swift; sourceTree = "<group>"; };
+		E72E001529F08C71009F7BFE /* StyleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConstants.swift; sourceTree = "<group>"; };
+		E72E001729F1BA61009F7BFE /* PriceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceViewModel.swift; sourceTree = "<group>"; };
+		E72E001929F1C009009F7BFE /* IntPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntPrice.swift; sourceTree = "<group>"; };
+		E72E001C29F1D213009F7BFE /* OfferSelections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSelections.swift; sourceTree = "<group>"; };
 		E72EFFE029D4C858009F7BFE /* CheckoutNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutNavigationView.swift; sourceTree = "<group>"; };
 		E72EFFE229D4C892009F7BFE /* ScenariosListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenariosListView.swift; sourceTree = "<group>"; };
 		E72EFFE429D4C8BA009F7BFE /* OfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferView.swift; sourceTree = "<group>"; };
 		E72EFFE629DC88E1009F7BFE /* Offer_ID_12574_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Offer_ID_12574_Response.json; sourceTree = "<group>"; };
 		E72EFFE729DC88E1009F7BFE /* Offer_ID_12555_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Offer_ID_12555_response.json; sourceTree = "<group>"; };
 		E72EFFE829DC88E1009F7BFE /* MockOffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockOffers.swift; sourceTree = "<group>"; };
+		E7B41C3D29F3304B00E7371B /* OfferSelectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSelectionsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +174,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E72EFFFA29EDAEE4009F7BFE /* StripePayments in Frameworks */,
+				E72EFFF829EDAEE4009F7BFE /* StripePaymentSheet in Frameworks */,
 				E70BEBA029BA6ACF0030335E /* VioletPublicClientAPI in Frameworks */,
+				E72EFFF429EDAEE4009F7BFE /* StripeFinancialConnections in Frameworks */,
+				E72EFFF029EDAEE4009F7BFE /* StripeApplePay in Frameworks */,
+				E72EFFF629EDAEE4009F7BFE /* StripeIdentity in Frameworks */,
 				E71CFB9129C3B2AC00598B15 /* SwiftCSV in Frameworks */,
+				E72EFFF229EDAEE4009F7BFE /* StripeCardScan in Frameworks */,
+				E72EFFFC29EDAEE4009F7BFE /* StripePaymentsUI in Frameworks */,
+				E72EFFEE29EDAEE4009F7BFE /* Stripe in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +229,7 @@
 		E70BEB6529B92B200030335E /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
+				E72E001B29F1D1E4009F7BFE /* State */,
 				E71CFB9229C3B32C00598B15 /* MockData */,
 				E71CFB8429C26C7100598B15 /* FileManager */,
 				E70BEBA129BA977D0030335E /* Info.plist */,
@@ -207,6 +255,7 @@
 		E70BEB7629B92B220030335E /* CheckoutTests */ = {
 			isa = PBXGroup;
 			children = (
+				E7B41C3C29F3303300E7371B /* StateTests */,
 				E71CFBB629D2348800598B15 /* Utils */,
 				E71CFBA329CE0E0A00598B15 /* JsonBlobs */,
 				E71CFB8229C2334B00598B15 /* APIModelsTests.swift */,
@@ -217,6 +266,7 @@
 				E71CFBAA29CE17B300598B15 /* TestBundleFileTestCase.swift */,
 				E71CFBB229CE613B00598B15 /* TestJsonResources.swift */,
 				E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */,
+				E72E000C29EF33F1009F7BFE /* ExtensionsTests.swift */,
 			);
 			path = CheckoutTests;
 			sourceTree = "<group>";
@@ -233,10 +283,12 @@
 		E70BEB9029B94D710030335E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E72EFFFF29EDF587009F7BFE /* TabBarNavigation */,
+				E72EFFFE29EDF56E009F7BFE /* Settings */,
+				E72EFFFD29EDF562009F7BFE /* Shopping */,
 				E70BEB9129B94D8B0030335E /* HelloView.swift */,
 				E70BEB9629BA37440030335E /* SelectedOfferView.swift */,
 				E70BEBAA29BBBC6D0030335E /* LoginButtonView.swift */,
-				E72EFFE029D4C858009F7BFE /* CheckoutNavigationView.swift */,
 				E72EFFE229D4C892009F7BFE /* ScenariosListView.swift */,
 				E72EFFE429D4C8BA009F7BFE /* OfferView.swift */,
 			);
@@ -247,6 +299,15 @@
 			isa = PBXGroup;
 			children = (
 				E70BEB9429B94F5A0030335E /* VioletOffer.swift */,
+				E72E000229EDFF72009F7BFE /* ShoppingOfferGridItem.swift */,
+				E72E000829EF18CD009F7BFE /* OfferGridDataSource.swift */,
+				E72E000A29EF3353009F7BFE /* Offer+Extensions.swift */,
+				E72E001029F07B0F009F7BFE /* PreviewMocks.swift */,
+				E72E001229F08410009F7BFE /* ViewModels_ReadMe.md */,
+				E72E001329F0852F009F7BFE /* EntityViewModel.swift */,
+				E72E001529F08C71009F7BFE /* StyleConstants.swift */,
+				E72E001729F1BA61009F7BFE /* PriceViewModel.swift */,
+				E72E001929F1C009009F7BFE /* IntPrice.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -254,6 +315,7 @@
 		E70BEB9929BA54880030335E /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
+				E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */,
 				E71CFBB029CE5FB300598B15 /* CheckoutCartCustomerPostRequest.swift */,
 				E71CFBAE29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift */,
 				E71CFBA129CE0C1D00598B15 /* GetCartByIDRequest.swift */,
@@ -289,6 +351,7 @@
 		E71CFB9229C3B32C00598B15 /* MockData */ = {
 			isa = PBXGroup;
 			children = (
+				E72E000629EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json */,
 				E72EFFE829DC88E1009F7BFE /* MockOffers.swift */,
 				E72EFFE729DC88E1009F7BFE /* Offer_ID_12555_response.json */,
 				E72EFFE629DC88E1009F7BFE /* Offer_ID_12574_Response.json */,
@@ -335,6 +398,46 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		E72E001B29F1D1E4009F7BFE /* State */ = {
+			isa = PBXGroup;
+			children = (
+				E72E001C29F1D213009F7BFE /* OfferSelections.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		E72EFFFD29EDF562009F7BFE /* Shopping */ = {
+			isa = PBXGroup;
+			children = (
+				E72E000029EDFC36009F7BFE /* PageOffersView.swift */,
+				E72E000E29F03B05009F7BFE /* AddOfferToCartView.swift */,
+			);
+			path = Shopping;
+			sourceTree = "<group>";
+		};
+		E72EFFFE29EDF56E009F7BFE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E72EFFFF29EDF587009F7BFE /* TabBarNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				E72EFFE029D4C858009F7BFE /* CheckoutNavigationView.swift */,
+			);
+			path = TabBarNavigation;
+			sourceTree = "<group>";
+		};
+		E7B41C3C29F3303300E7371B /* StateTests */ = {
+			isa = PBXGroup;
+			children = (
+				E7B41C3D29F3304B00E7371B /* OfferSelectionsTests.swift */,
+			);
+			path = StateTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -354,6 +457,14 @@
 			packageProductDependencies = (
 				E70BEB9F29BA6ACF0030335E /* VioletPublicClientAPI */,
 				E71CFB9029C3B2AC00598B15 /* SwiftCSV */,
+				E72EFFED29EDAEE4009F7BFE /* Stripe */,
+				E72EFFEF29EDAEE4009F7BFE /* StripeApplePay */,
+				E72EFFF129EDAEE4009F7BFE /* StripeCardScan */,
+				E72EFFF329EDAEE4009F7BFE /* StripeFinancialConnections */,
+				E72EFFF529EDAEE4009F7BFE /* StripeIdentity */,
+				E72EFFF729EDAEE4009F7BFE /* StripePaymentSheet */,
+				E72EFFF929EDAEE4009F7BFE /* StripePayments */,
+				E72EFFFB29EDAEE4009F7BFE /* StripePaymentsUI */,
 			);
 			productName = Checkout;
 			productReference = E70BEB6329B92B200030335E /* Checkout.app */;
@@ -429,6 +540,7 @@
 			mainGroup = E70BEB5A29B92B200030335E;
 			packageReferences = (
 				E71CFB8F29C3B2AC00598B15 /* XCRemoteSwiftPackageReference "SwiftCSV" */,
+				E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */,
 			);
 			productRefGroup = E70BEB6429B92B200030335E /* Products */;
 			projectDirPath = "";
@@ -446,6 +558,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E72E000729EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json in Resources */,
 				E70BEB6E29B92B210030335E /* Preview Assets.xcassets in Resources */,
 				E70BEB6B29B92B210030335E /* Assets.xcassets in Resources */,
 				E72EFFE929DC88E1009F7BFE /* Offer_ID_12574_Response.json in Resources */,
@@ -481,6 +594,7 @@
 			files = (
 				E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */,
 				E72EFFE529D4C8BA009F7BFE /* OfferView.swift in Sources */,
+				E72E000529EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift in Sources */,
 				E71CFBA029CD098D00598B15 /* GetOrderByIDRequest.swift in Sources */,
 				E71CFB8829C26C7100598B15 /* FileSystemObject.swift in Sources */,
 				E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */,
@@ -489,22 +603,33 @@
 				E71CFBAF29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift in Sources */,
 				E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */,
 				E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */,
+				E72E001A29F1C009009F7BFE /* IntPrice.swift in Sources */,
 				E71CFBB129CE5FB300598B15 /* CheckoutCartCustomerPostRequest.swift in Sources */,
+				E72E000329EDFF72009F7BFE /* ShoppingOfferGridItem.swift in Sources */,
+				E72E001629F08C71009F7BFE /* StyleConstants.swift in Sources */,
 				E71CFB9E29CCD92C00598B15 /* CheckoutCartPostRequest.swift in Sources */,
+				E72E001D29F1D213009F7BFE /* OfferSelections.swift in Sources */,
 				E70BEB9B29BA54B00030335E /* GetOfferByIDRequest.swift in Sources */,
 				E71CFB8929C26C7100598B15 /* FileDirectory.swift in Sources */,
 				E70BEB9229B94D8B0030335E /* HelloView.swift in Sources */,
 				E70BEBA329BAA2210030335E /* AppCreds.swift in Sources */,
+				E72E001129F07B0F009F7BFE /* PreviewMocks.swift in Sources */,
+				E72E000129EDFC36009F7BFE /* PageOffersView.swift in Sources */,
+				E72E001429F0852F009F7BFE /* EntityViewModel.swift in Sources */,
 				E70BEBAB29BBBC6D0030335E /* LoginButtonView.swift in Sources */,
+				E72E000929EF18CD009F7BFE /* OfferGridDataSource.swift in Sources */,
 				E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */,
 				E71CFBA229CE0C1E00598B15 /* GetCartByIDRequest.swift in Sources */,
 				E72EFFE129D4C858009F7BFE /* CheckoutNavigationView.swift in Sources */,
 				E70BEBA929BBA0FD0030335E /* EnvVars.swift in Sources */,
 				E72EFFEB29DC88E1009F7BFE /* MockOffers.swift in Sources */,
 				E70BEB6929B92B200030335E /* ContentView.swift in Sources */,
+				E72E001829F1BA61009F7BFE /* PriceViewModel.swift in Sources */,
 				E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */,
 				E71CFB8E29C26CE200598B15 /* BaseAPICall.swift in Sources */,
 				E70BEB6729B92B200030335E /* CheckoutApp.swift in Sources */,
+				E72E000F29F03B05009F7BFE /* AddOfferToCartView.swift in Sources */,
+				E72E000B29EF3353009F7BFE /* Offer+Extensions.swift in Sources */,
 				E71CFB8D29C26CE200598B15 /* AuthTokenGet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,10 +643,12 @@
 				E70BEBA729BB9F650030335E /* EnvTests.swift in Sources */,
 				E71CFBBA29D2402100598B15 /* TestCheckoutSequence.swift in Sources */,
 				E71CFBA729CE0EBD00598B15 /* JsonDecodeTests.swift in Sources */,
+				E72E000D29EF33F1009F7BFE /* ExtensionsTests.swift in Sources */,
 				E71CFBAB29CE17B300598B15 /* TestBundleFileTestCase.swift in Sources */,
 				E71CFBB329CE613B00598B15 /* TestJsonResources.swift in Sources */,
 				E70BEBA529BAB47F0030335E /* CatalogOffersAPITests.swift in Sources */,
 				E71CFB9829C90ABD00598B15 /* APIXCTestCase.swift in Sources */,
+				E7B41C3E29F3304B00E7371B /* OfferSelectionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,6 +975,14 @@
 				minimumVersion = 0.8.1;
 			};
 		};
+		E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-ios-spm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -859,6 +994,46 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E71CFB8F29C3B2AC00598B15 /* XCRemoteSwiftPackageReference "SwiftCSV" */;
 			productName = SwiftCSV;
+		};
+		E72EFFED29EDAEE4009F7BFE /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = Stripe;
+		};
+		E72EFFEF29EDAEE4009F7BFE /* StripeApplePay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeApplePay;
+		};
+		E72EFFF129EDAEE4009F7BFE /* StripeCardScan */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeCardScan;
+		};
+		E72EFFF329EDAEE4009F7BFE /* StripeFinancialConnections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeFinancialConnections;
+		};
+		E72EFFF529EDAEE4009F7BFE /* StripeIdentity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeIdentity;
+		};
+		E72EFFF729EDAEE4009F7BFE /* StripePaymentSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripePaymentSheet;
+		};
+		E72EFFF929EDAEE4009F7BFE /* StripePayments */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripePayments;
+		};
+		E72EFFFB29EDAEE4009F7BFE /* StripePaymentsUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripePaymentsUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

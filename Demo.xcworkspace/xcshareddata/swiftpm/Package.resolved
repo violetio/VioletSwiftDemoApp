@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Stripe",
+        "repositoryURL": "https://github.com/stripe/stripe-ios-spm",
+        "state": {
+          "branch": null,
+          "revision": "5c2f1729e4c873faaead832b654be662dbd6eba3",
+          "version": "23.6.0"
+        }
+      },
+      {
         "package": "SwiftCSV",
         "repositoryURL": "https://github.com/swiftcsv/SwiftCSV",
         "state": {

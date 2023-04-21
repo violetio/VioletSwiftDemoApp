@@ -143,6 +143,29 @@ final class APIModelsTests: APIXCTestCase {
         }
     }
 
+    func test_3b_GetPageOffers() {
+        let merchantId : Int64 = 10003
+        let request = GetPageOffersByMerchantIDRequest(appCreds: appCreds, token: self.loginToken, merchantId: merchantId)
+        
+        let expectationRunner = ExpectationRunner(request)
+        
+        expectationRunner.sink {
+            XCTAssertEqual($0, true)
+        }
+
+        // When
+        request.send()
+
+        // Then
+        wait(for: expectationRunner.expectations, timeout: timeout_5s)
+        XCTAssertNotNil(expectationRunner.streamHandle)
+        XCTAssertNotNil(request.dataResponse)
+        
+        if let aDataResponse = request.dataResponse {
+            persistEncodable(aDataResponse, to: "PageOffer_Page_1_MerchantID_10003_Response.json")
+        }
+        
+    }
     func test_3_GetOffer() {
         // Given
         let getOfferByIDRequest = GetOfferByIDRequest(appCreds: appCreds, token: self.loginToken, offerId: 12574)

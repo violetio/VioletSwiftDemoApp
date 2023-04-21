@@ -20,6 +20,10 @@ class OfferSelections: ObservableObject, CustomStringConvertible {
         self.offer_ids = offer_ids
     }
     
+    convenience init(offer_id: OfferIDType) {
+        self.init(offer_ids: Set<OfferIDType>([offer_id]))
+    }
+    
     func insert(_ newMember: OfferIDType) {
         self.offer_ids.insert(newMember)
         didChange.send()

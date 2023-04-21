@@ -56,7 +56,7 @@ struct PageOffersView: View {
                                     .frame(minWidth:100, minHeight: 50)
                                     .colorInvert()
                             }
-                            Text(shoppingOfferGridItem.name).colorInvert()
+                            Text(shoppingOfferGridItem.name).foregroundColor(Color.white)
                         }
                         .frame(maxWidth: LayoutConstants.itemMaxWidth,
                                maxHeight: LayoutConstants.itemMaxHeight)
@@ -80,5 +80,6 @@ struct PageOffersView: View {
 struct PageOffersView_Previews: PreviewProvider {
     static var previews: some View {
         PageOffersView(gridDataSource: PreviewMocks.MockOfferGridDataSource())
+            .environmentObject(OfferSelections(offer_id: 12555))
     }
 }

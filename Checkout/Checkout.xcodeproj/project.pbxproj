@@ -78,6 +78,7 @@
 		E72EFFF829EDAEE4009F7BFE /* StripePaymentSheet in Frameworks */ = {isa = PBXBuildFile; productRef = E72EFFF729EDAEE4009F7BFE /* StripePaymentSheet */; };
 		E72EFFFA29EDAEE4009F7BFE /* StripePayments in Frameworks */ = {isa = PBXBuildFile; productRef = E72EFFF929EDAEE4009F7BFE /* StripePayments */; };
 		E72EFFFC29EDAEE4009F7BFE /* StripePaymentsUI in Frameworks */ = {isa = PBXBuildFile; productRef = E72EFFFB29EDAEE4009F7BFE /* StripePaymentsUI */; };
+		E7B41C3E29F3304B00E7371B /* OfferSelectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C3D29F3304B00E7371B /* OfferSelectionsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +166,7 @@
 		E72EFFE629DC88E1009F7BFE /* Offer_ID_12574_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Offer_ID_12574_Response.json; sourceTree = "<group>"; };
 		E72EFFE729DC88E1009F7BFE /* Offer_ID_12555_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Offer_ID_12555_response.json; sourceTree = "<group>"; };
 		E72EFFE829DC88E1009F7BFE /* MockOffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockOffers.swift; sourceTree = "<group>"; };
+		E7B41C3D29F3304B00E7371B /* OfferSelectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSelectionsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 		E70BEB7629B92B220030335E /* CheckoutTests */ = {
 			isa = PBXGroup;
 			children = (
+				E7B41C3C29F3303300E7371B /* StateTests */,
 				E71CFBB629D2348800598B15 /* Utils */,
 				E71CFBA329CE0E0A00598B15 /* JsonBlobs */,
 				E71CFB8229C2334B00598B15 /* APIModelsTests.swift */,
@@ -425,6 +428,14 @@
 				E72EFFE029D4C858009F7BFE /* CheckoutNavigationView.swift */,
 			);
 			path = TabBarNavigation;
+			sourceTree = "<group>";
+		};
+		E7B41C3C29F3303300E7371B /* StateTests */ = {
+			isa = PBXGroup;
+			children = (
+				E7B41C3D29F3304B00E7371B /* OfferSelectionsTests.swift */,
+			);
+			path = StateTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -637,6 +648,7 @@
 				E71CFBB329CE613B00598B15 /* TestJsonResources.swift in Sources */,
 				E70BEBA529BAB47F0030335E /* CatalogOffersAPITests.swift in Sources */,
 				E71CFB9829C90ABD00598B15 /* APIXCTestCase.swift in Sources */,
+				E7B41C3E29F3304B00E7371B /* OfferSelectionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

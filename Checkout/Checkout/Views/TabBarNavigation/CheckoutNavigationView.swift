@@ -11,6 +11,7 @@ struct CheckoutNavigationView: View {
     enum Tab {
         case scenarios
         case history
+        case shopping
     }
 
     @State private var selection: Tab = .scenarios
@@ -35,7 +36,7 @@ struct CheckoutNavigationView: View {
                     Image(systemName: "square.grid.3x2")
                 }.accessibility(label: menuText)
             }
-            .tag(Tab.scenarios)
+            .tag(Tab.shopping)
 
             NavigationStack {
                 let fakeOffer = Offer(productId: "01001", name: "Offer Name", source: .shopify, merchantId: 42, minPrice: 0199)

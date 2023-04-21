@@ -18,11 +18,8 @@ struct PageOffersView: View {
     }
     
     @EnvironmentObject var offerSelections: OfferSelections
-    let gridDataSource: OfferGridDataSource
+    @Binding var gridDataSource: OfferGridDataSource
     let channelName = "ULTRA"
-    init(gridDataSource: OfferGridDataSource) {
-        self.gridDataSource = gridDataSource
-    }
 
     
     let layout = [
@@ -78,8 +75,9 @@ struct PageOffersView: View {
 }
 
 struct PageOffersView_Previews: PreviewProvider {
+
     static var previews: some View {
-        PageOffersView(gridDataSource: PreviewMocks.MockOfferGridDataSource())
+        PageOffersView(gridDataSource: .constant(PreviewMocks.MockOfferGridDataSource()))
             .environmentObject(OfferSelections(offer_id: 12555))
     }
 }

@@ -12,19 +12,23 @@ struct CheckoutNavigationView: View {
         case scenarios
         case history
         case shopping
+        case cart
+        case settings
     }
 
     @State private var selection: Tab = .scenarios
+    @State var gridDataSource: OfferGridDataSource
 
+    init(gridDataSource: OfferGridDataSource = OfferGridDataSource()) {
+        self.gridDataSource = gridDataSource
+    }
+    
     var body: some View {
         TabView(selection: $selection)
         {
             NavigationStack
             {
-                //ScenariosListView(scenarios: [])
-                //let offerModel = OfferModel()
-                //LoginView(offerModel:offerModel)
-                PageOffersView(gridDataSource: PreviewMocks.MockOfferGridDataSource())
+                PageOffersView(gridDataSource: $gridDataSource)
             }
             .tabItem {
                 let menuText = Text("Shopping", comment: "API Scenarios")
@@ -39,6 +43,18 @@ struct CheckoutNavigationView: View {
             .tag(Tab.shopping)
 
             NavigationStack {
+                
+            }
+            .tabItem {
+                Label {
+                    Text("Cart", comment: "Cart")
+                } icon: {
+                    Image(systemName: "cart")
+                }
+            }
+            .tag(Tab.cart)
+            
+            NavigationStack {
                 let fakeOffer = Offer(productId: "01001", name: "Offer Name", source: .shopify, merchantId: 42, minPrice: 0199)
                 OfferView(offer:fakeOffer)
             }
@@ -49,7 +65,7 @@ struct CheckoutNavigationView: View {
                     Image(systemName: "gear")
                 }
             }
-            .tag(Tab.history)
+            .tag(Tab.settings)
 
         }
     }
@@ -57,6 +73,7 @@ struct CheckoutNavigationView: View {
 
 struct CheckoutNavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckoutNavigationView()
+        CheckoutNavigationView(gridDataSource: PreviewMocks.MockOfferGridDataSource())
+            .environmentObject(OfferSelections(offer_id: 12555))
     }
 }

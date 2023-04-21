@@ -43,7 +43,7 @@ struct CheckoutNavigationView: View {
             .tag(Tab.shopping)
 
             NavigationStack {
-                
+                CartContentsView()
             }
             .tabItem {
                 Label {
@@ -74,6 +74,6 @@ struct CheckoutNavigationView: View {
 struct CheckoutNavigationView_Previews: PreviewProvider {
     static var previews: some View {
         CheckoutNavigationView(gridDataSource: PreviewMocks.MockOfferGridDataSource())
-            .environmentObject(OfferSelections(offer_id: 12555))
+            .environmentObject(PreviewMocks.Mock_OfferSelectionsState())
     }
 }

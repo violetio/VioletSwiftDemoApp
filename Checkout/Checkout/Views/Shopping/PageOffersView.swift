@@ -78,6 +78,6 @@ struct PageOffersView_Previews: PreviewProvider {
 
     static var previews: some View {
         PageOffersView(gridDataSource: .constant(PreviewMocks.MockOfferGridDataSource()))
-            .environmentObject(OfferSelections(offer_id: 12555))
+            .environmentObject(PreviewMocks.Mock_OfferSelectionsState())
     }
 }

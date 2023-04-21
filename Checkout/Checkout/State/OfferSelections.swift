@@ -36,5 +36,9 @@ class OfferSelections: ObservableObject, CustomStringConvertible {
     
     var description: String { return offer_ids.description }
     
+    func offerIdsList() -> [OfferIDType] {
+        return Array(offer_ids)
+    }
+    
 
 }

@@ -20,4 +20,8 @@ struct PreviewMocks {
         }
         return ShoppingOfferGridItem.fromEntity(entity: mockOffer) ?? ShoppingOfferGridItem.Empty()
     }
+    
+    static func Mock_OfferSelectionsState() -> OfferSelections {
+        return OfferSelections(offer_id: 12555)
+    }
 }

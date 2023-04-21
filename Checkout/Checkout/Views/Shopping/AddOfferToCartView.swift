@@ -84,5 +84,6 @@ struct AddOfferToCartView: View {
 struct AddOfferToCartView_Previews: PreviewProvider {
     static var previews: some View {
         AddOfferToCartView(shoppingOfferGridItem: PreviewMocks.Mock_ShoppingOfferGridItem())
+            .environmentObject(PreviewMocks.Mock_OfferSelectionsState())
     }
 }

@@ -1,32 +1,29 @@
 //
-//  OfferSelections.swift
+//  OfferItemSelections.swift
 //  Checkout
 //
-//  Created by Alan Morford on 4/20/23.
+//  Created by Alan Morford on 4/23/23.
 //
 
 import Combine
 import SwiftUI
 import VioletPublicClientAPI
 
-class OfferSelections: ObservableObject, CustomStringConvertible {
+class OfferItemSelections: ObservableObject, CustomStringConvertible {
     
     typealias OfferIDType = Int64
     
     var didChange = PassthroughSubject<Void, Never>()
     
-    var offer_ids: Set<OfferIDType>
+    var offer_ids: Dictionary<OfferIDType, OfferItem>.Keys { offerItemsMap.keys }
+    var offerItemsMap: Dictionary<OfferIDType, OfferItem>
     
-    init(offer_ids: Set<OfferIDType> = Set()) {
-        self.offer_ids = offer_ids
+    init(offerItems: [OfferItem]) {
+        self.offerItemsMap = offerItems.autoDictionary()
     }
     
-    convenience init(offer_id: OfferIDType) {
-        self.init(offer_ids: Set<OfferIDType>([offer_id]))
-    }
-    
-    func insert(_ newMember: OfferIDType) {
-        self.offer_ids.insert(newMember)
+    func insert(_ newMember: OfferItem) {
+        self.offerItemsMap[newMember.offer_id] = newMember
         didChange.send()
 
     }

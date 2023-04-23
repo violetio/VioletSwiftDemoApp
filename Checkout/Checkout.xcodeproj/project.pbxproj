@@ -86,6 +86,8 @@
 		E7B41C4D29F5878D00E7371B /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C4C29F5878D00E7371B /* DataStore.swift */; };
 		E7B41C4F29F5880800E7371B /* UserInputCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C4E29F5880800E7371B /* UserInputCoordinator.swift */; };
 		E7B41C5129F5892E00E7371B /* AppIDAndSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5029F5892E00E7371B /* AppIDAndSecret.swift */; };
+		E7B41C5429F589CA00E7371B /* DemoAppIdAndSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5329F589CA00E7371B /* DemoAppIdAndSecret.swift */; };
+		E7B41C5629F58BAF00E7371B /* DemoChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5529F58BAF00E7371B /* DemoChannels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +183,8 @@
 		E7B41C4C29F5878D00E7371B /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		E7B41C4E29F5880800E7371B /* UserInputCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputCoordinator.swift; sourceTree = "<group>"; };
 		E7B41C5029F5892E00E7371B /* AppIDAndSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIDAndSecret.swift; sourceTree = "<group>"; };
+		E7B41C5329F589CA00E7371B /* DemoAppIdAndSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppIdAndSecret.swift; sourceTree = "<group>"; };
+		E7B41C5529F58BAF00E7371B /* DemoChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoChannels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,6 +387,8 @@
 				E70BEBA829BBA0FD0030335E /* EnvVars.swift */,
 				E70BEBA229BAA2210030335E /* AppCreds.swift */,
 				E7B41C5029F5892E00E7371B /* AppIDAndSecret.swift */,
+				E7B41C5329F589CA00E7371B /* DemoAppIdAndSecret.swift */,
+				E7B41C5529F58BAF00E7371B /* DemoChannels.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -668,6 +674,7 @@
 				E72E000929EF18CD009F7BFE /* OfferGridDataSource.swift in Sources */,
 				E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */,
 				E71CFBA229CE0C1E00598B15 /* GetCartByIDRequest.swift in Sources */,
+				E7B41C5429F589CA00E7371B /* DemoAppIdAndSecret.swift in Sources */,
 				E72EFFE129D4C858009F7BFE /* CheckoutNavigationView.swift in Sources */,
 				E70BEBA929BBA0FD0030335E /* EnvVars.swift in Sources */,
 				E72EFFEB29DC88E1009F7BFE /* MockOffers.swift in Sources */,
@@ -682,6 +689,7 @@
 				E70BEB6729B92B200030335E /* CheckoutApp.swift in Sources */,
 				E72E000F29F03B05009F7BFE /* AddOfferToCartView.swift in Sources */,
 				E72E000B29EF3353009F7BFE /* Offer+Extensions.swift in Sources */,
+				E7B41C5629F58BAF00E7371B /* DemoChannels.swift in Sources */,
 				E71CFB8D29C26CE200598B15 /* AuthTokenGet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

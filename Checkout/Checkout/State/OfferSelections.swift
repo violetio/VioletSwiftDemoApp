@@ -16,11 +16,9 @@ class OfferSelections: ObservableObject, CustomStringConvertible {
     var didChange = PassthroughSubject<Void, Never>()
     
     var offer_ids: Set<OfferIDType>
-    var offerEntities: Dictionary<OfferIDType, Offer>
     
     init(offer_ids: Set<OfferIDType> = Set()) {
         self.offer_ids = offer_ids
-        self.offerEntities = [:]
     }
     
     convenience init(offer_id: OfferIDType) {
@@ -43,5 +41,35 @@ class OfferSelections: ObservableObject, CustomStringConvertible {
         return Array(offer_ids)
     }
     
+}
 
+class OfferItemSelections: ObservableObject, CustomStringConvertible {
+    
+    typealias OfferIDType = Int64
+    
+    var didChange = PassthroughSubject<Void, Never>()
+    
+    var offer_ids: Dictionary<OfferIDType, OfferItem>.Keys { offerItemsMap.keys }
+    var offerItemsMap: Dictionary<OfferIDType, OfferItem>
+    
+    init(offerItems: [OfferItem]) {
+        self.offerItemsMap = offerItems.autoDictionary()
+    }
+    
+    func insert(_ newMember: OfferItem) {
+        self.offerItemsMap[newMember.offer_id] = newMember
+        didChange.send()
+
+    }
+    
+    func contains(_ offer_id: OfferIDType) -> Bool {
+        return self.offer_ids.contains(offer_id)
+    }
+    
+    var description: String { return offer_ids.description }
+    
+    func offerIdsList() -> [OfferIDType] {
+        return Array(offer_ids)
+    }
+    
 }

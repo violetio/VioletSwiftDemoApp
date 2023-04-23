@@ -8,7 +8,10 @@ import Foundation
 import SwiftUI
 import VioletPublicClientAPI
 
-struct OfferItem: Identifiable, Equatable {
+struct OfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
+    var autoKey: Int64 { offer_id }
+    
+    typealias Key = Int64
     public let offer_id: Int64
     public let name: String
     public let intPrice: IntPrice
@@ -24,31 +27,29 @@ struct OfferItem: Identifiable, Equatable {
     var id: Int64 {
         return offer_id
     }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.offer_id)
+    }
 }
 
 struct ShoppingOfferGridItem {
     
     public let offerItem: OfferItem
-    public let offer_id: Int64
-    public let name: String
-    public let price: Int
-    public let intPrice: IntPrice
+    public var offer_id: Int64 { offerItem.offer_id }
+    public var name: String { offerItem.name }
+    public var intPrice: IntPrice { offerItem.intPrice }
     public let thumbnailImage: Image
     public let firstAlbumMediaImageURL: URL?
-    public let offerEntity: Offer?
+    public var offerEntity: Offer? { offerItem.offerEntity }
     
     init(offer_id: Int64 = 0, name: String, price: Int = 0,
          firstAlbumMediaImageURL: URL? = nil,
          thumbnailImage: Image = Image(systemName: "questionmark.square.dashed"),
          offerEntity: Offer? = nil) {
         self.offerItem = OfferItem(offer_id: offer_id, name: name, intPrice: IntPrice(price: price), offerEntity: offerEntity)
-        self.name = name
-        self.price = price
-        self.intPrice = IntPrice(price: price)
         self.thumbnailImage = thumbnailImage
-        self.offer_id = offer_id
         self.firstAlbumMediaImageURL = firstAlbumMediaImageURL
-        self.offerEntity = offerEntity
     }
 }
 

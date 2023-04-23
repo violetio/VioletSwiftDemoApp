@@ -88,6 +88,8 @@
 		E7B41C5129F5892E00E7371B /* AppIDAndSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5029F5892E00E7371B /* AppIDAndSecret.swift */; };
 		E7B41C5429F589CA00E7371B /* DemoAppIdAndSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5329F589CA00E7371B /* DemoAppIdAndSecret.swift */; };
 		E7B41C5629F58BAF00E7371B /* DemoChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5529F58BAF00E7371B /* DemoChannels.swift */; };
+		E7B41C5829F58C0700E7371B /* UsernameAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5729F58C0700E7371B /* UsernameAndPassword.swift */; };
+		E7B41C5A29F58C6B00E7371B /* DemoUsernameAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5929F58C6B00E7371B /* DemoUsernameAndPassword.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +187,8 @@
 		E7B41C5029F5892E00E7371B /* AppIDAndSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIDAndSecret.swift; sourceTree = "<group>"; };
 		E7B41C5329F589CA00E7371B /* DemoAppIdAndSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppIdAndSecret.swift; sourceTree = "<group>"; };
 		E7B41C5529F58BAF00E7371B /* DemoChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoChannels.swift; sourceTree = "<group>"; };
+		E7B41C5729F58C0700E7371B /* UsernameAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPassword.swift; sourceTree = "<group>"; };
+		E7B41C5929F58C6B00E7371B /* DemoUsernameAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUsernameAndPassword.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,6 +393,8 @@
 				E7B41C5029F5892E00E7371B /* AppIDAndSecret.swift */,
 				E7B41C5329F589CA00E7371B /* DemoAppIdAndSecret.swift */,
 				E7B41C5529F58BAF00E7371B /* DemoChannels.swift */,
+				E7B41C5729F58C0700E7371B /* UsernameAndPassword.swift */,
+				E7B41C5929F58C6B00E7371B /* DemoUsernameAndPassword.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -646,6 +652,7 @@
 				E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */,
 				E72EFFE529D4C8BA009F7BFE /* OfferView.swift in Sources */,
 				E7B41C5129F5892E00E7371B /* AppIDAndSecret.swift in Sources */,
+				E7B41C5A29F58C6B00E7371B /* DemoUsernameAndPassword.swift in Sources */,
 				E72E000529EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift in Sources */,
 				E71CFBA029CD098D00598B15 /* GetOrderByIDRequest.swift in Sources */,
 				E71CFB8829C26C7100598B15 /* FileSystemObject.swift in Sources */,
@@ -682,6 +689,7 @@
 				E70BEB6929B92B200030335E /* ContentView.swift in Sources */,
 				E72E001829F1BA61009F7BFE /* PriceViewModel.swift in Sources */,
 				E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */,
+				E7B41C5829F58C0700E7371B /* UsernameAndPassword.swift in Sources */,
 				E7B41C4F29F5880800E7371B /* UserInputCoordinator.swift in Sources */,
 				E7B41C4D29F5878D00E7371B /* DataStore.swift in Sources */,
 				E71CFB8E29C26CE200598B15 /* BaseAPICall.swift in Sources */,

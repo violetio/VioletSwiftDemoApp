@@ -7,18 +7,18 @@
 
 import SwiftUI
 
+enum CartListSections: Int, CaseIterable, Identifiable {
+    case OfferItems
+    case Checkout
+    
+    var id: Int { rawValue }
+}
+
 struct CartTabView: View {
     
     @Binding var offerItemSelections: OfferItemSelections
     
     var tab: Tab = .cart
-    
-    enum CartListSections: Int, CaseIterable, Identifiable {
-        case OfferItems
-        case Checkout
-        
-        var id: Int { rawValue }
-    }
     
     var cartItemsSections: some View {
         Section {

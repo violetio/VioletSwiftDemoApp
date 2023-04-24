@@ -7,10 +7,44 @@
 
 import SwiftUI
 
+enum SettingsListSections: Int, CaseIterable, Identifiable {
+    case ChannelIdentity
+    case AuthToken
+    
+    var id: Int { rawValue }
+}
 struct SettingsTabView: View {
     var tab: Tab = .settings
+    
+    var channelIdentitySection: some View {
+        Section {
+            Text("Username, AppID")
+            
+        } header: {
+            Text("Channel")
+        }
+    }
+    
+    var authTokenSection: some View {
+        Section {
+            Text("Checkout Steps")
+            
+        } header: {
+            Text("AuthToken")
+        }
+    }
+    
     var body: some View {
-        Text("Setting Tab View")
+        
+        List(SettingsListSections.allCases) { nextSection in
+            switch nextSection {
+            case .ChannelIdentity:
+                channelIdentitySection
+            case .AuthToken:
+                authTokenSection
+            }
+            
+        }
     }
 }
 

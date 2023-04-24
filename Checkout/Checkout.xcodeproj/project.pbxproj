@@ -56,7 +56,6 @@
 		E72E000929EF18CD009F7BFE /* OfferGridDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000829EF18CD009F7BFE /* OfferGridDataSource.swift */; };
 		E72E000B29EF3353009F7BFE /* Offer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000A29EF3353009F7BFE /* Offer+Extensions.swift */; };
 		E72E000D29EF33F1009F7BFE /* ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000C29EF33F1009F7BFE /* ExtensionsTests.swift */; };
-		E72E000F29F03B05009F7BFE /* AddOfferToCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000E29F03B05009F7BFE /* AddOfferToCartView.swift */; };
 		E72E001129F07B0F009F7BFE /* PreviewMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E001029F07B0F009F7BFE /* PreviewMocks.swift */; };
 		E72E001429F0852F009F7BFE /* EntityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E001329F0852F009F7BFE /* EntityViewModel.swift */; };
 		E72E001629F08C71009F7BFE /* StyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E001529F08C71009F7BFE /* StyleConstants.swift */; };
@@ -170,7 +169,6 @@
 		E72E000829EF18CD009F7BFE /* OfferGridDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferGridDataSource.swift; sourceTree = "<group>"; };
 		E72E000A29EF3353009F7BFE /* Offer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Offer+Extensions.swift"; sourceTree = "<group>"; };
 		E72E000C29EF33F1009F7BFE /* ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsTests.swift; sourceTree = "<group>"; };
-		E72E000E29F03B05009F7BFE /* AddOfferToCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOfferToCartView.swift; sourceTree = "<group>"; };
 		E72E001029F07B0F009F7BFE /* PreviewMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMocks.swift; sourceTree = "<group>"; };
 		E72E001229F08410009F7BFE /* ViewModels_ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ViewModels_ReadMe.md; sourceTree = "<group>"; };
 		E72E001329F0852F009F7BFE /* EntityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityViewModel.swift; sourceTree = "<group>"; };
@@ -458,7 +456,6 @@
 		E72EFFFD29EDF562009F7BFE /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
-				E72E000E29F03B05009F7BFE /* AddOfferToCartView.swift */,
 				E7B41C6729F71DF000E7371B /* OffersGrid.swift */,
 				E7B41C6B29F72C0B00E7371B /* OfferGridTile.swift */,
 				E7B41C6D29F72E0D00E7371B /* OfferDetail.swift */,
@@ -727,7 +724,6 @@
 				E7B41C6429F719B700E7371B /* SettingsTabView.swift in Sources */,
 				E7B41C4829F34AE700E7371B /* AutoKeyed.swift in Sources */,
 				E70BEB6729B92B200030335E /* CheckoutApp.swift in Sources */,
-				E72E000F29F03B05009F7BFE /* AddOfferToCartView.swift in Sources */,
 				E72E000B29EF3353009F7BFE /* Offer+Extensions.swift in Sources */,
 				E7B41C5629F58BAF00E7371B /* DemoChannels.swift in Sources */,
 				E71CFB8D29C26CE200598B15 /* AuthTokenGet.swift in Sources */,

@@ -8,13 +8,6 @@ import SwiftUI
 import VioletPublicClientAPI
 
 struct CheckoutNavigationView: View {
-    enum Tab {
-        case scenarios
-        case history
-        case shopping
-        case cart
-        case settings
-    }
 
     @State private var selection: Tab = .shopping
     @Binding var viewDataCoordinator: ViewDataCoordinator
@@ -24,7 +17,8 @@ struct CheckoutNavigationView: View {
         {
             NavigationStack
             {
-                PageOffersView(viewDataCoordinator: $viewDataCoordinator)
+                ShoppingTabView()
+//                PageOffersView(viewDataCoordinator: $viewDataCoordinator)
             }
             .tabItem {
                 let menuText = Text("Shopping", comment: "API Scenarios")
@@ -39,7 +33,8 @@ struct CheckoutNavigationView: View {
             .tag(Tab.shopping)
 
             NavigationStack {
-                CartContentsView(viewDataCoordinator: $viewDataCoordinator)
+                CartTabView()
+//                CartContentsView(viewDataCoordinator: $viewDataCoordinator)
             }
             .tabItem {
                 Label {
@@ -51,8 +46,9 @@ struct CheckoutNavigationView: View {
             .tag(Tab.cart)
             
             NavigationStack {
-                let fakeOffer = Offer(productId: "01001", name: "Offer Name", source: .shopify, merchantId: 42, minPrice: 0199)
-                OfferView(offer:fakeOffer)
+                SettingsTabView()
+//                let fakeOffer = Offer(productId: "01001", name: "Offer Name", source: .shopify, merchantId: 42, minPrice: 0199)
+//                OfferView(offer:fakeOffer)
             }
             .tabItem {
                 Label {

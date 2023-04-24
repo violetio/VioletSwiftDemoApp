@@ -9,13 +9,10 @@ import SwiftUI
 
 struct AddOfferToCartView: View {
     
-    @EnvironmentObject var offerSelections: OfferSelections
-    let shoppingOfferGridItem: ShoppingOfferGridItem
+    @Binding var offerSelections: OfferSelections
+    @Binding var shoppingOfferGridItem: ShoppingOfferGridItem
     
-    init(shoppingOfferGridItem: ShoppingOfferGridItem) {
-        self.shoppingOfferGridItem = shoppingOfferGridItem
-    }
-    
+
     func buttonAction() {
         offerSelections.insert(shoppingOfferGridItem.offer_id)
         Logger.info("offerSelections: \(offerSelections.description)")
@@ -83,7 +80,7 @@ struct AddOfferToCartView: View {
 
 struct AddOfferToCartView_Previews: PreviewProvider {
     static var previews: some View {
-        AddOfferToCartView(shoppingOfferGridItem: PreviewMocks.Mock_ShoppingOfferGridItem())
-            .environmentObject(PreviewMocks.Mock_OfferSelectionsState())
+        AddOfferToCartView(offerSelections: .constant(PreviewMocks.Mock_OfferSelectionsState()),
+                           shoppingOfferGridItem: .constant(PreviewMocks.Mock_ShoppingOfferGridItem()))
     }
 }

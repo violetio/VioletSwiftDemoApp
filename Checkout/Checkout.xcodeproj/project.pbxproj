@@ -90,6 +90,7 @@
 		E7B41C5629F58BAF00E7371B /* DemoChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5529F58BAF00E7371B /* DemoChannels.swift */; };
 		E7B41C5829F58C0700E7371B /* UsernameAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5729F58C0700E7371B /* UsernameAndPassword.swift */; };
 		E7B41C5A29F58C6B00E7371B /* DemoUsernameAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5929F58C6B00E7371B /* DemoUsernameAndPassword.swift */; };
+		E7B41C5C29F590F600E7371B /* ViewDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5B29F590F600E7371B /* ViewDataCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +190,7 @@
 		E7B41C5529F58BAF00E7371B /* DemoChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoChannels.swift; sourceTree = "<group>"; };
 		E7B41C5729F58C0700E7371B /* UsernameAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPassword.swift; sourceTree = "<group>"; };
 		E7B41C5929F58C6B00E7371B /* DemoUsernameAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUsernameAndPassword.swift; sourceTree = "<group>"; };
+		E7B41C5B29F590F600E7371B /* ViewDataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDataCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,7 +263,6 @@
 				E70BEB9329B94F370030335E /* Models */,
 				E70BEB9029B94D710030335E /* Views */,
 				E70BEB6629B92B200030335E /* CheckoutApp.swift */,
-				E70BEB6829B92B200030335E /* ContentView.swift */,
 				E70BEB6A29B92B210030335E /* Assets.xcassets */,
 				E70BEB6C29B92B210030335E /* Preview Content */,
 			);
@@ -307,6 +308,7 @@
 		E70BEB9029B94D710030335E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E70BEB6829B92B200030335E /* ContentView.swift */,
 				E7B41C4129F3361F00E7371B /* Cart */,
 				E72EFFFF29EDF587009F7BFE /* TabBarNavigation */,
 				E72EFFFE29EDF56E009F7BFE /* Settings */,
@@ -316,6 +318,7 @@
 				E70BEBAA29BBBC6D0030335E /* LoginButtonView.swift */,
 				E72EFFE229D4C892009F7BFE /* ScenariosListView.swift */,
 				E72EFFE429D4C8BA009F7BFE /* OfferView.swift */,
+				E7B41C5B29F590F600E7371B /* ViewDataCoordinator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				E72EFFEB29DC88E1009F7BFE /* MockOffers.swift in Sources */,
 				E7B41C4A29F586E200E7371B /* OfferItemSelections.swift in Sources */,
 				E70BEB6929B92B200030335E /* ContentView.swift in Sources */,
+				E7B41C5C29F590F600E7371B /* ViewDataCoordinator.swift in Sources */,
 				E72E001829F1BA61009F7BFE /* PriceViewModel.swift in Sources */,
 				E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */,
 				E7B41C5829F58C0700E7371B /* UsernameAndPassword.swift in Sources */,

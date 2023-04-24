@@ -25,11 +25,11 @@ class GetCartByIDRequest: DataResponseAPICall<Order> {
                                                  xVioletAppSecret: appCreds.apiSecret,
                                                  xVioletAppId: appCreds.appID,
                                                  cartId: orderId) { data, error in
-            if let printData = data {
-//                Logger.info(printData.description ?? "")
-            } else if let printError = error {
-                Logger.error(printError.localizedDescription)
-            }
+//            if let printData = data {
+////                Logger.info(printData.description ?? "")
+//            } else if let printError = error {
+//                Logger.error(printError.localizedDescription)
+//            }
             self.callIsCompleted(errorResponse: error, dataResponse: data)
         }
     }

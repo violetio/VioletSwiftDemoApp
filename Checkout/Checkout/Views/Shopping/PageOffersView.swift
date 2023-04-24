@@ -17,8 +17,7 @@ struct PageOffersView: View {
         static let aspectRatio: CGSize = CGSize(width: 80, height: 80)
     }
     
-    @EnvironmentObject var offerSelections: OfferSelections
-    @Binding var gridDataSource: OfferGridDataSource
+    @Binding var viewDataCoordinator: ViewDataCoordinator
     let channelName = "ULTRA"
 
     
@@ -32,8 +31,8 @@ struct PageOffersView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: layout, spacing: 5) {
-                ForEach(gridDataSource.offerGridItems, id: \.self.offer_id) { shoppingOfferGridItem in
-                    NavigationLink(destination: AddOfferToCartView(shoppingOfferGridItem: shoppingOfferGridItem)) {
+                ForEach(viewDataCoordinator.gridDataSource.offerGridItems, id: \.self.offer_id) { shoppingOfferGridItem in
+                    NavigationLink(destination: AddOfferToCartView(offerSelections: $viewDataCoordinator.offerSelections, shoppingOfferGridItem: .constant(shoppingOfferGridItem))) {
                         //let selected = offerSelections.contains(shoppingOfferGridItem.offer_id)
                         //let borderColor: Color = selected ? Color.blue : Color.black
                         let borderColor: Color = shoppingOfferGridItem.offerEntity != nil ? Color.blue : Color.black
@@ -68,7 +67,7 @@ struct PageOffersView: View {
         }
         .navigationBarTitle(channelName, displayMode: .inline)
         .onAppear() {
-            Logger.info("offerSelections: \(offerSelections.description)")
+            Logger.info("offerSelections: \(viewDataCoordinator.offerSelections.description)")
         }
 
     }
@@ -78,7 +77,6 @@ struct PageOffersView: View {
 struct PageOffersView_Previews: PreviewProvider {
 
     static var previews: some View {
-        PageOffersView(gridDataSource: .constant(PreviewMocks.MockOfferGridDataSource()))
-            .environmentObject(PreviewMocks.Mock_OfferSelectionsState())
+        PageOffersView(viewDataCoordinator: .constant(MockViewDataCoordinator()))
     }
 }

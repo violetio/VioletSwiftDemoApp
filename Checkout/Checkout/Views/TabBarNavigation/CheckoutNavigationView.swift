@@ -16,19 +16,15 @@ struct CheckoutNavigationView: View {
         case settings
     }
 
-    @State private var selection: Tab = .scenarios
-    @State var gridDataSource: OfferGridDataSource
-
-    init(gridDataSource: OfferGridDataSource = OfferGridDataSource()) {
-        self.gridDataSource = gridDataSource
-    }
+    @State private var selection: Tab = .shopping
+    @Binding var viewDataCoordinator: ViewDataCoordinator
     
     var body: some View {
         TabView(selection: $selection)
         {
             NavigationStack
             {
-                PageOffersView(gridDataSource: $gridDataSource)
+                PageOffersView(viewDataCoordinator: $viewDataCoordinator)
             }
             .tabItem {
                 let menuText = Text("Shopping", comment: "API Scenarios")
@@ -43,7 +39,7 @@ struct CheckoutNavigationView: View {
             .tag(Tab.shopping)
 
             NavigationStack {
-                CartContentsView()
+                CartContentsView(viewDataCoordinator: $viewDataCoordinator)
             }
             .tabItem {
                 Label {
@@ -67,13 +63,14 @@ struct CheckoutNavigationView: View {
             }
             .tag(Tab.settings)
 
+        }.onAppear() {
+            $viewDataCoordinator.wrappedValue.logDescription()
         }
     }
 }
 
 struct CheckoutNavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckoutNavigationView(gridDataSource: PreviewMocks.MockOfferGridDataSource())
-            .environmentObject(PreviewMocks.Mock_OfferSelectionsState())
+        CheckoutNavigationView( viewDataCoordinator: .constant(ViewDataCoordinator.mock()))
     }
 }

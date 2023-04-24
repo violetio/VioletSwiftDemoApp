@@ -11,11 +11,14 @@ import Combine
 class ShoppingNavigationModel {
     @Published var offerItemPath: [OfferItem]
     @Published var loadedOfferItems: [OfferItem]
+    @Published var offerItemSelections: OfferItemSelections
     
     init(offerItemPath: [OfferItem] = [],
-         loadedOfferItems: [OfferItem] = []) {
+         loadedOfferItems: [OfferItem] = [],
+         offerItemSelections: OfferItemSelections = OfferItemSelections()) {
         self.offerItemPath = offerItemPath
         self.loadedOfferItems = loadedOfferItems
+        self.offerItemSelections = offerItemSelections
     }
 }
 

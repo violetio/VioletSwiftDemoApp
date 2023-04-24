@@ -18,7 +18,7 @@ class OfferItemSelections: ObservableObject, CustomStringConvertible {
     var offer_ids: Dictionary<OfferIDType, OfferItem>.Keys { offerItemsMap.keys }
     var offerItemsMap: Dictionary<OfferIDType, OfferItem>
     
-    init(offerItems: [OfferItem]) {
+    init(offerItems: [OfferItem] = []) {
         self.offerItemsMap = offerItems.autoDictionary()
     }
     

@@ -9,10 +9,11 @@ import SwiftUI
 
 struct OfferDetail: View {
     @Binding var offerItem: OfferItem
+    @Binding var offerItemSelections: OfferItemSelections
     
     func buttonAction() {
-    //    offerSelections.insert(shoppingOfferGridItem.offer_id)
-    //    Logger.info("offerSelections: \(offerSelections.description)")
+        offerItemSelections.insert(offerItem)
+        Logger.info("offerItemSelections: \(offerItemSelections.description)")
     }
     
     var productDetailsView: some View {
@@ -77,6 +78,6 @@ struct OfferDetail: View {
 
 struct OfferDetail_Previews: PreviewProvider {
     static var previews: some View {
-        OfferDetail(offerItem: .constant(PreviewMocks.MockOfferItem()))
+        OfferDetail(offerItem: .constant(PreviewMocks.MockOfferItem()), offerItemSelections: .constant(OfferItemSelections()))
     }
 }

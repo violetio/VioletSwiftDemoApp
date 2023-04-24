@@ -17,7 +17,7 @@ struct ShoppingTabView: View {
         }
         .navigationBarTitle("Offer Grid")
         .navigationDestination(for: OfferItem.self) { offerItem in
-            OfferDetail(offerItem: .constant(offerItem))
+            OfferDetail(offerItem: .constant(offerItem), offerItemSelections: $shoppingNavigationModel.offerItemSelections)
         }
         
     }

@@ -95,6 +95,11 @@
 		E7B41C6029F715ED00E7371B /* CartTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5F29F715ED00E7371B /* CartTabView.swift */; };
 		E7B41C6229F718C300E7371B /* ShoppingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6129F718C300E7371B /* ShoppingTabView.swift */; };
 		E7B41C6429F719B700E7371B /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6329F719B700E7371B /* SettingsTabView.swift */; };
+		E7B41C6629F71A5700E7371B /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6529F71A5700E7371B /* NavigationModel.swift */; };
+		E7B41C6829F71DF000E7371B /* OffersGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6729F71DF000E7371B /* OffersGrid.swift */; };
+		E7B41C6A29F71EEC00E7371B /* OfferItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6929F71EEC00E7371B /* OfferItem.swift */; };
+		E7B41C6C29F72C0B00E7371B /* OfferGridTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6B29F72C0B00E7371B /* OfferGridTile.swift */; };
+		E7B41C6E29F72E0D00E7371B /* OfferDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6D29F72E0D00E7371B /* OfferDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +204,11 @@
 		E7B41C5F29F715ED00E7371B /* CartTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTabView.swift; sourceTree = "<group>"; };
 		E7B41C6129F718C300E7371B /* ShoppingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTabView.swift; sourceTree = "<group>"; };
 		E7B41C6329F719B700E7371B /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		E7B41C6529F71A5700E7371B /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
+		E7B41C6729F71DF000E7371B /* OffersGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersGrid.swift; sourceTree = "<group>"; };
+		E7B41C6929F71EEC00E7371B /* OfferItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferItem.swift; sourceTree = "<group>"; };
+		E7B41C6B29F72C0B00E7371B /* OfferGridTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferGridTile.swift; sourceTree = "<group>"; };
+		E7B41C6D29F72E0D00E7371B /* OfferDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +354,7 @@
 				E72E001529F08C71009F7BFE /* StyleConstants.swift */,
 				E72E001729F1BA61009F7BFE /* PriceViewModel.swift */,
 				E72E001929F1C009009F7BFE /* IntPrice.swift */,
+				E7B41C6929F71EEC00E7371B /* OfferItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -454,6 +465,9 @@
 			children = (
 				E72E000029EDFC36009F7BFE /* PageOffersView.swift */,
 				E72E000E29F03B05009F7BFE /* AddOfferToCartView.swift */,
+				E7B41C6729F71DF000E7371B /* OffersGrid.swift */,
+				E7B41C6B29F72C0B00E7371B /* OfferGridTile.swift */,
+				E7B41C6D29F72E0D00E7371B /* OfferDetail.swift */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -473,6 +487,7 @@
 				E7B41C5F29F715ED00E7371B /* CartTabView.swift */,
 				E7B41C6129F718C300E7371B /* ShoppingTabView.swift */,
 				E7B41C6329F719B700E7371B /* SettingsTabView.swift */,
+				E7B41C6529F71A5700E7371B /* NavigationModel.swift */,
 			);
 			path = TabBarNavigation;
 			sourceTree = "<group>";
@@ -669,6 +684,7 @@
 				E7B41C5129F5892E00E7371B /* AppIDAndSecret.swift in Sources */,
 				E7B41C5A29F58C6B00E7371B /* DemoUsernameAndPassword.swift in Sources */,
 				E72E000529EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift in Sources */,
+				E7B41C6E29F72E0D00E7371B /* OfferDetail.swift in Sources */,
 				E71CFBA029CD098D00598B15 /* GetOrderByIDRequest.swift in Sources */,
 				E71CFB8829C26C7100598B15 /* FileSystemObject.swift in Sources */,
 				E7B41C5E29F715B100E7371B /* Tab.swift in Sources */,
@@ -697,16 +713,20 @@
 				E72E001429F0852F009F7BFE /* EntityViewModel.swift in Sources */,
 				E70BEBAB29BBBC6D0030335E /* LoginButtonView.swift in Sources */,
 				E72E000929EF18CD009F7BFE /* OfferGridDataSource.swift in Sources */,
+				E7B41C6A29F71EEC00E7371B /* OfferItem.swift in Sources */,
 				E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */,
 				E71CFBA229CE0C1E00598B15 /* GetCartByIDRequest.swift in Sources */,
 				E7B41C5429F589CA00E7371B /* DemoAppIdAndSecret.swift in Sources */,
 				E72EFFE129D4C858009F7BFE /* CheckoutNavigationView.swift in Sources */,
+				E7B41C6C29F72C0B00E7371B /* OfferGridTile.swift in Sources */,
 				E70BEBA929BBA0FD0030335E /* EnvVars.swift in Sources */,
 				E72EFFEB29DC88E1009F7BFE /* MockOffers.swift in Sources */,
 				E7B41C4A29F586E200E7371B /* OfferItemSelections.swift in Sources */,
 				E70BEB6929B92B200030335E /* ContentView.swift in Sources */,
+				E7B41C6629F71A5700E7371B /* NavigationModel.swift in Sources */,
 				E7B41C5C29F590F600E7371B /* ViewDataCoordinator.swift in Sources */,
 				E72E001829F1BA61009F7BFE /* PriceViewModel.swift in Sources */,
+				E7B41C6829F71DF000E7371B /* OffersGrid.swift in Sources */,
 				E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */,
 				E7B41C5829F58C0700E7371B /* UsernameAndPassword.swift in Sources */,
 				E7B41C4F29F5880800E7371B /* UserInputCoordinator.swift in Sources */,

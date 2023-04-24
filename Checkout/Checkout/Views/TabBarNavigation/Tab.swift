@@ -12,3 +12,50 @@ enum Tab: String {
     case cart
     case settings
 }
+
+extension Tab: Codable {
+    
+    enum Key: CodingKey {
+        case rawValue
+    }
+    
+    enum CodingError: Error {
+        case unknownValue
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Key.self)
+        let rawValue = try container.decode(String.self, forKey: .rawValue)
+        switch rawValue {
+        case "scenarios":
+            self = .scenarios
+        case "history":
+            self = .history
+        case "shopping":
+            self = .shopping
+        case "cart":
+            self = .cart
+        case "settings":
+            self = .settings
+        default:
+            throw CodingError.unknownValue
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: Key.self)
+        switch self {
+        case .scenarios:
+            try container.encode("scenarios", forKey: .rawValue)
+        case .history:
+            try container.encode("history", forKey: .rawValue)
+        case .shopping:
+            try container.encode("shopping", forKey: .rawValue)
+        case .cart:
+            try container.encode("cart", forKey: .rawValue)
+        case .settings:
+            try container.encode("settings", forKey: .rawValue)
+        }
+    }
+    
+}

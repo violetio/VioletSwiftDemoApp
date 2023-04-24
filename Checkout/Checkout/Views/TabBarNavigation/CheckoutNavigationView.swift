@@ -9,15 +9,19 @@ import VioletPublicClientAPI
 
 struct CheckoutNavigationView: View {
 
+    @SceneStorage("navigation") private var navigationData: Data?
+    //@StateObject private var navigationModel = NavigationModel()
+    @StateObject private var navigationModel = NavigationModel(offerItemPath: [], loadedOfferItems: PreviewMocks.MockOfferItemsArray())
+    
     @State private var selection: Tab = .shopping
     @Binding var viewDataCoordinator: ViewDataCoordinator
     
     var body: some View {
-        TabView(selection: $selection)
+        TabView(selection: $navigationModel.selectedTab)
         {
             NavigationStack
             {
-                ShoppingTabView()
+                ShoppingTabView(shoppingNavigationModel: $navigationModel.shoppingNavigationModel)
 //                PageOffersView(viewDataCoordinator: $viewDataCoordinator)
             }
             .tabItem {

@@ -8,31 +8,6 @@ import Foundation
 import SwiftUI
 import VioletPublicClientAPI
 
-struct OfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
-    var autoKey: Int64 { offer_id }
-    
-    typealias Key = Int64
-    public let offer_id: Int64
-    public let name: String
-    public let intPrice: IntPrice
-    public let offerEntity: Offer?
-    
-    init(offer_id: Int64, name: String, intPrice: IntPrice, offerEntity: Offer?) {
-        self.offer_id = offer_id
-        self.name = name
-        self.intPrice = intPrice
-        self.offerEntity = offerEntity
-    }
-    
-    var id: Int64 {
-        return offer_id
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(self.offer_id)
-    }
-}
-
 struct ShoppingOfferGridItem {
     
     public let offerItem: OfferItem

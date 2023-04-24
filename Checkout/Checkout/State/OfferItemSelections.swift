@@ -13,10 +13,13 @@ class OfferItemSelections: ObservableObject, CustomStringConvertible {
     
     typealias OfferIDType = Int64
     
+    @Published var itemCount: Int = 0
+    
     var didChange = PassthroughSubject<Void, Never>()
     
     var offer_ids: Dictionary<OfferIDType, OfferItem>.Keys { offerItemsMap.keys }
     var offerItemsMap: Dictionary<OfferIDType, OfferItem>
+    var offerItems: [OfferItem]  { Array(offerItemsMap.values) }
     
     init(offerItems: [OfferItem] = []) {
         self.offerItemsMap = offerItems.autoDictionary()
@@ -24,6 +27,7 @@ class OfferItemSelections: ObservableObject, CustomStringConvertible {
     
     func insert(_ newMember: OfferItem) {
         self.offerItemsMap[newMember.offer_id] = newMember
+        self.itemCount = offer_ids.count
         didChange.send()
 
     }

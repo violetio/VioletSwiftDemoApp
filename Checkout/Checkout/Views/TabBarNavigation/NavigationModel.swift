@@ -26,7 +26,7 @@ final class NavigationModel: ObservableObject, Codable {
     @Published var selectedTab: Tab
     @State var shoppingNavigationModel: ShoppingNavigationModel
     
-    init(selectedTab: Tab = .shopping,
+    init(selectedTab: Tab = .cart,
          offerItemPath: [OfferItem] = [],
          loadedOfferItems: [OfferItem] = []) {
         self.selectedTab = selectedTab

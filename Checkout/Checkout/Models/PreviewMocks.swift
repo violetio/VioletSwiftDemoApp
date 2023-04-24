@@ -39,4 +39,8 @@ struct PreviewMocks {
     static func Mock_OfferSelectionsState() -> OfferSelections {
         return OfferSelections(offer_id: 12555)
     }
+    
+    static func Mock_OfferItemSelections() -> OfferItemSelections {
+        return OfferItemSelections(offerItems: [MockOfferItem()])
+    }
 }

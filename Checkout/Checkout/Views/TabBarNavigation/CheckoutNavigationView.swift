@@ -12,8 +12,6 @@ struct CheckoutNavigationView: View {
     @SceneStorage("navigation") private var navigationData: Data?
     @StateObject private var navigationModel = NavigationModel(offerItemPath: [], loadedOfferItems: PreviewMocks.MockOfferItemsArray())
     
-    @State private var selection: Tab = .shopping
-    
     var body: some View {
         TabView(selection: $navigationModel.selectedTab)
         {
@@ -34,7 +32,7 @@ struct CheckoutNavigationView: View {
             .tag(Tab.shopping)
 
             NavigationStack {
-                CartTabView()
+                CartTabView(offerItemSelections: $navigationModel.shoppingNavigationModel.offerItemSelections)
 //                CartContentsView(viewDataCoordinator: $viewDataCoordinator)
             }
             .tabItem {
@@ -44,6 +42,7 @@ struct CheckoutNavigationView: View {
                     Image(systemName: "cart")
                 }
             }
+            //.badge(navigationModel.shoppingNavigationModel.offerItemSelections.itemCount) //Doesnt update?
             .tag(Tab.cart)
             
             NavigationStack {

@@ -15,10 +15,20 @@ enum SettingsListSections: Int, CaseIterable, Identifiable {
 }
 struct SettingsTabView: View {
     var tab: Tab = .settings
-    
+    let demoChannelOptions: [DemoChannels] = [.Alan, .Ishan]
+    @State var demoChannelSelection: DemoChannels = .Alan
+
     var channelIdentitySection: some View {
         Section {
-            Text("Username, AppID")
+            Picker("Demo Channel Select", selection: $demoChannelSelection) {
+                Text(DemoChannels.Alan.rawValue).tag(DemoChannels.Alan)
+                Text(DemoChannels.Ishan.rawValue).tag(DemoChannels.Ishan)
+            }
+            .pickerStyle(.segmented)
+            var appId: AppIDAndSecret = DemoAppIdAndSecret.byDemoChannel(demoChannelSelection)
+            var username: String = DemoUsernameAndPassword.byDemoChannel(demoChannelSelection).username
+            Text("Username: \(username)")
+            Text("AppId: \(appId.appID)")
             
         } header: {
             Text("Channel")

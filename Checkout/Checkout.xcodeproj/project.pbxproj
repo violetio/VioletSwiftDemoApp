@@ -50,7 +50,6 @@
 		E71CFBBA29D2402100598B15 /* TestCheckoutSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */; };
 		E71CFBBC29D240EC00598B15 /* Order_ID_58374.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBBB29D240EC00598B15 /* Order_ID_58374.json */; };
 		E71CFBBE29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBBD29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json */; };
-		E72E000129EDFC36009F7BFE /* PageOffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000029EDFC36009F7BFE /* PageOffersView.swift */; };
 		E72E000329EDFF72009F7BFE /* ShoppingOfferGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000229EDFF72009F7BFE /* ShoppingOfferGridItem.swift */; };
 		E72E000529EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */; };
 		E72E000729EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = E72E000629EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json */; };
@@ -90,7 +89,6 @@
 		E7B41C5629F58BAF00E7371B /* DemoChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5529F58BAF00E7371B /* DemoChannels.swift */; };
 		E7B41C5829F58C0700E7371B /* UsernameAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5729F58C0700E7371B /* UsernameAndPassword.swift */; };
 		E7B41C5A29F58C6B00E7371B /* DemoUsernameAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5929F58C6B00E7371B /* DemoUsernameAndPassword.swift */; };
-		E7B41C5C29F590F600E7371B /* ViewDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5B29F590F600E7371B /* ViewDataCoordinator.swift */; };
 		E7B41C5E29F715B100E7371B /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5D29F715B100E7371B /* Tab.swift */; };
 		E7B41C6029F715ED00E7371B /* CartTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5F29F715ED00E7371B /* CartTabView.swift */; };
 		E7B41C6229F718C300E7371B /* ShoppingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6129F718C300E7371B /* ShoppingTabView.swift */; };
@@ -166,7 +164,6 @@
 		E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCheckoutSequence.swift; sourceTree = "<group>"; };
 		E71CFBBB29D240EC00598B15 /* Order_ID_58374.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order_ID_58374.json; sourceTree = "<group>"; };
 		E71CFBBD29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shipping_methods_get_bag_id_43402.json; sourceTree = "<group>"; };
-		E72E000029EDFC36009F7BFE /* PageOffersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageOffersView.swift; sourceTree = "<group>"; };
 		E72E000229EDFF72009F7BFE /* ShoppingOfferGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingOfferGridItem.swift; sourceTree = "<group>"; };
 		E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPageOffersByMerchantIDRequest.swift; sourceTree = "<group>"; };
 		E72E000629EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PageOffer_Page_1_MerchantID_10003_Response.json; sourceTree = "<group>"; };
@@ -199,7 +196,6 @@
 		E7B41C5529F58BAF00E7371B /* DemoChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoChannels.swift; sourceTree = "<group>"; };
 		E7B41C5729F58C0700E7371B /* UsernameAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPassword.swift; sourceTree = "<group>"; };
 		E7B41C5929F58C6B00E7371B /* DemoUsernameAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUsernameAndPassword.swift; sourceTree = "<group>"; };
-		E7B41C5B29F590F600E7371B /* ViewDataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDataCoordinator.swift; sourceTree = "<group>"; };
 		E7B41C5D29F715B100E7371B /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		E7B41C5F29F715ED00E7371B /* CartTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTabView.swift; sourceTree = "<group>"; };
 		E7B41C6129F718C300E7371B /* ShoppingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTabView.swift; sourceTree = "<group>"; };
@@ -336,7 +332,6 @@
 				E70BEBAA29BBBC6D0030335E /* LoginButtonView.swift */,
 				E72EFFE229D4C892009F7BFE /* ScenariosListView.swift */,
 				E72EFFE429D4C8BA009F7BFE /* OfferView.swift */,
-				E7B41C5B29F590F600E7371B /* ViewDataCoordinator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -463,7 +458,6 @@
 		E72EFFFD29EDF562009F7BFE /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
-				E72E000029EDFC36009F7BFE /* PageOffersView.swift */,
 				E72E000E29F03B05009F7BFE /* AddOfferToCartView.swift */,
 				E7B41C6729F71DF000E7371B /* OffersGrid.swift */,
 				E7B41C6B29F72C0B00E7371B /* OfferGridTile.swift */,
@@ -709,7 +703,6 @@
 				E70BEBA329BAA2210030335E /* AppCreds.swift in Sources */,
 				E72E001129F07B0F009F7BFE /* PreviewMocks.swift in Sources */,
 				E7B41C6029F715ED00E7371B /* CartTabView.swift in Sources */,
-				E72E000129EDFC36009F7BFE /* PageOffersView.swift in Sources */,
 				E72E001429F0852F009F7BFE /* EntityViewModel.swift in Sources */,
 				E70BEBAB29BBBC6D0030335E /* LoginButtonView.swift in Sources */,
 				E72E000929EF18CD009F7BFE /* OfferGridDataSource.swift in Sources */,
@@ -724,7 +717,6 @@
 				E7B41C4A29F586E200E7371B /* OfferItemSelections.swift in Sources */,
 				E70BEB6929B92B200030335E /* ContentView.swift in Sources */,
 				E7B41C6629F71A5700E7371B /* NavigationModel.swift in Sources */,
-				E7B41C5C29F590F600E7371B /* ViewDataCoordinator.swift in Sources */,
 				E72E001829F1BA61009F7BFE /* PriceViewModel.swift in Sources */,
 				E7B41C6829F71DF000E7371B /* OffersGrid.swift in Sources */,
 				E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */,

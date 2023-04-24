@@ -10,11 +10,9 @@ import VioletPublicClientAPI
 struct CheckoutNavigationView: View {
 
     @SceneStorage("navigation") private var navigationData: Data?
-    //@StateObject private var navigationModel = NavigationModel()
     @StateObject private var navigationModel = NavigationModel(offerItemPath: [], loadedOfferItems: PreviewMocks.MockOfferItemsArray())
     
     @State private var selection: Tab = .shopping
-    @Binding var viewDataCoordinator: ViewDataCoordinator
     
     var body: some View {
         TabView(selection: $navigationModel.selectedTab)
@@ -22,7 +20,6 @@ struct CheckoutNavigationView: View {
             NavigationStack
             {
                 ShoppingTabView(shoppingNavigationModel: $navigationModel.shoppingNavigationModel)
-//                PageOffersView(viewDataCoordinator: $viewDataCoordinator)
             }
             .tabItem {
                 let menuText = Text("Shopping", comment: "API Scenarios")
@@ -63,14 +60,12 @@ struct CheckoutNavigationView: View {
             }
             .tag(Tab.settings)
 
-        }.onAppear() {
-            $viewDataCoordinator.wrappedValue.logDescription()
         }
     }
 }
 
 struct CheckoutNavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckoutNavigationView( viewDataCoordinator: .constant(ViewDataCoordinator.mock()))
+        CheckoutNavigationView()
     }
 }

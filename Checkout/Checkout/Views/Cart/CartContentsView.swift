@@ -8,11 +8,10 @@ import SwiftUI
 
 struct CartContentsView: View {
 //    @EnvironmentObject var offerSelections: OfferSelections
-    @Binding var viewDataCoordinator: ViewDataCoordinator
     
     var body: some View {
 //
-        let offerIdsList = viewDataCoordinator.$offerSelections.wrappedValue.offerIdsList()
+        let offerIdsList = [12555]
         ScrollView {
             ForEach(offerIdsList, id: \.self) { offer_id in
                 Text(String(offer_id))
@@ -24,6 +23,6 @@ struct CartContentsView: View {
 
 struct CartContentsView_Previews: PreviewProvider {
     static var previews: some View {
-        CartContentsView(viewDataCoordinator: .constant(MockViewDataCoordinator()))
+        CartContentsView()
     }
 }

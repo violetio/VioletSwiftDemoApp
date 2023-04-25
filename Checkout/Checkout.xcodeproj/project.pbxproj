@@ -99,6 +99,7 @@
 		E7B41C7029F7587D00E7371B /* ChannelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6F29F7587D00E7371B /* ChannelStore.swift */; };
 		E7B41C7329F75AB600E7371B /* ChannelStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C7229F75AB600E7371B /* ChannelStoreTests.swift */; };
 		E7B41C7529F75C9A00E7371B /* loginPostJsonResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = E7B41C7429F75C9A00E7371B /* loginPostJsonResponse.json */; };
+		E7B41C7729F769B900E7371B /* CachedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C7629F769B900E7371B /* CachedEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +208,7 @@
 		E7B41C6F29F7587D00E7371B /* ChannelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelStore.swift; sourceTree = "<group>"; };
 		E7B41C7229F75AB600E7371B /* ChannelStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelStoreTests.swift; sourceTree = "<group>"; };
 		E7B41C7429F75C9A00E7371B /* loginPostJsonResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loginPostJsonResponse.json; sourceTree = "<group>"; };
+		E7B41C7629F769B900E7371B /* CachedEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -518,6 +520,7 @@
 			children = (
 				E7B41C4C29F5878D00E7371B /* DataStore.swift */,
 				E7B41C6F29F7587D00E7371B /* ChannelStore.swift */,
+				E7B41C7629F769B900E7371B /* CachedEntity.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */,
 				E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */,
 				E72E001A29F1C009009F7BFE /* IntPrice.swift in Sources */,
+				E7B41C7729F769B900E7371B /* CachedEntity.swift in Sources */,
 				E71CFBB129CE5FB300598B15 /* CheckoutCartCustomerPostRequest.swift in Sources */,
 				E72E000329EDFF72009F7BFE /* ShoppingOfferGridItem.swift in Sources */,
 				E7B41C4529F342D100E7371B /* CartItemView.swift in Sources */,

@@ -25,6 +25,12 @@ public class FilePath {
         self.fileName = url.lastPathComponent
         self.fileDirectory = fileDirectory
     }
+    
+    public init(fileName: String, in fileDirectory: FileDirectory) {
+        self.fileURL = fileDirectory.directoryURL.appendingPathComponent(fileName, isDirectory: false)
+        self.fileName = fileName
+        self.fileDirectory = fileDirectory
+    }
 
     public convenience init?(fileName: String, fileDirectory: FileDirectory) {
         let fileURL = fileDirectory.directoryURL.appendingPathComponent(fileName)

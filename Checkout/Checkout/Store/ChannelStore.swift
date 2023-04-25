@@ -20,8 +20,8 @@ class ChannelStore {
         Self.ChannelStoreDirectory.childDirectory(name: String(appId))
     }
     
-    static func ChannelIDStoredEntityFilePath(appId: Int64, cacheFileName: CacheFileNames) -> FilePath? {
-        return FilePath(fileName: cacheFileName.rawValue, fileDirectory: self.ChannelIDStoreDirectory(appId: appId))
+    static func ChannelIDStoredEntityFilePath(appId: Int64, cacheFileName: CacheFileNames) -> FilePath {
+        return FilePath(fileName: cacheFileName.rawValue, in: self.ChannelIDStoreDirectory(appId: appId))
     }
     
     enum CacheFileNames: String {
@@ -30,7 +30,7 @@ class ChannelStore {
     
     let appId: Int64
     let channelIDStoreDirectory: FileDirectory
-    var cachedLoginResponse: LoginResponse? = nil
+    var cachedLoginResponse: CachedEntity<LoginResponse>? = nil
     
     init(appId: Int64, createDir: Bool = false) {
         self.appId = appId
@@ -39,36 +39,37 @@ class ChannelStore {
         if createDir {
             self.createDirectory()
         }
+        //self.cachedLoginResponse = .init(filePath: ChannelStore.ChannelIDStoredEntityFilePath(appId: appId, cacheFileName: .loginResponse))
     }
     
-    @discardableResult
-    func cachePath(loginResponse: LoginResponse) -> FilePath? {
-        let filePath = FilePath(fileName: CacheFileNames.loginResponse.rawValue, fileDirectory: self.channelIDStoreDirectory)
-        return filePath
-    }
+//    @discardableResult
+//    func cachePath(loginResponse: LoginResponse) -> FilePath? {
+//        let filePath = FilePath(fileName: CacheFileNames.loginResponse.rawValue, fileDirectory: self.channelIDStoreDirectory)
+//        return filePath
+//    }
     
-    @discardableResult
-    func updateCache(loginResponse: LoginResponse) -> Bool {
-        self.cachedLoginResponse = loginResponse
-        guard let filePath = self.cachePath(loginResponse: loginResponse) else {
-            return false
-        }
-        
-        let encodeResult = CodableHelper.encode(loginResponse)
-        switch encodeResult {
-        case .success(let dataToWrite):
-            do {
-                try dataToWrite.write(to: filePath.fileURL, options: .noFileProtection)
-                Logger.debug("Channel Store Cache - ID: \(String(appId)) - Cached LoginResponse: \(filePath.fileURL)")
-                return true
-            }  catch {
-                print(error.localizedDescription)
-                return false
-            }
-        case .failure:
-            return false
-        }
-    }
+//    @discardableResult
+//    func updateCache(loginResponse: LoginResponse) -> Bool {
+//        self.cachedLoginResponse = loginResponse
+//        guard let filePath = self.cachePath(loginResponse: loginResponse) else {
+//            return false
+//        }
+//
+//        let encodeResult = CodableHelper.encode(loginResponse)
+//        switch encodeResult {
+//        case .success(let dataToWrite):
+//            do {
+//                try dataToWrite.write(to: filePath.fileURL, options: .noFileProtection)
+//                Logger.debug("Channel Store Cache - ID: \(String(appId)) - Cached LoginResponse: \(filePath.fileURL)")
+//                return true
+//            }  catch {
+//                print(error.localizedDescription)
+//                return false
+//            }
+//        case .failure:
+//            return false
+//        }
+//    }
     
 //    func reloadCaches(files: [CacheFileNames]) {
 //        files.forEach { cacheFileName in

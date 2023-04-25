@@ -14,9 +14,11 @@ enum SettingsListSections: Int, CaseIterable, Identifiable {
     var id: Int { rawValue }
 }
 struct SettingsTabView: View {
+    
+    @ObservedObject var dataStore: DataStore = DataStore.shared
     var tab: Tab = .settings
-    let demoChannelOptions: [DemoChannels] = [.Alan, .Ishan]
-    @State var demoChannelSelection: DemoChannels = .Alan
+    let demoChannelOptions: [DemoChannels] = DemoChannels.allCases
+    @State var demoChannelSelection: DemoChannels = DemoChannels.defaultDemoChannel
 
     var channelIdentitySection: some View {
         Section {
@@ -25,6 +27,10 @@ struct SettingsTabView: View {
                 Text(DemoChannels.Ishan.rawValue).tag(DemoChannels.Ishan)
             }
             .pickerStyle(.segmented)
+            .onChange(of: demoChannelSelection) { newValue in
+                Logger.info("Demo Channel Select: \(newValue)")
+                dataStore.changeAppId(DemoAppIdAndSecret.byDemoChannel(newValue).appID)
+            }
             let appId: AppIDAndSecret = DemoAppIdAndSecret.byDemoChannel(demoChannelSelection)
             let username: String = DemoUsernameAndPassword.byDemoChannel(demoChannelSelection).username
             Text("Username: \(username)")
@@ -37,7 +43,12 @@ struct SettingsTabView: View {
     
     var authTokenSection: some View {
         Section {
-            Text("Checkout Steps")
+            if let loadedChannelStore = dataStore.loadedChannelStore {
+                Text("Loaded Channel Store")
+            } else {
+                Text("No Channel Store Loaded")
+            }
+            
             
         } header: {
             Text("AuthToken")

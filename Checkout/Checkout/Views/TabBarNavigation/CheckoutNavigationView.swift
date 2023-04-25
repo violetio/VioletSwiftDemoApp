@@ -11,6 +11,7 @@ struct CheckoutNavigationView: View {
 
     @SceneStorage("navigation") private var navigationData: Data?
     @StateObject private var navigationModel = NavigationModel(offerItemPath: [], loadedOfferItems: PreviewMocks.MockOfferItemsArray())
+    @ObservedObject var dataStore: DataStore = DataStore.shared
     
     var body: some View {
         TabView(selection: $navigationModel.selectedTab)

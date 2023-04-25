@@ -25,10 +25,10 @@ struct SettingsTabView: View {
                 Text(DemoChannels.Ishan.rawValue).tag(DemoChannels.Ishan)
             }
             .pickerStyle(.segmented)
-            var appId: AppIDAndSecret = DemoAppIdAndSecret.byDemoChannel(demoChannelSelection)
-            var username: String = DemoUsernameAndPassword.byDemoChannel(demoChannelSelection).username
+            let appId: AppIDAndSecret = DemoAppIdAndSecret.byDemoChannel(demoChannelSelection)
+            let username: String = DemoUsernameAndPassword.byDemoChannel(demoChannelSelection).username
             Text("Username: \(username)")
-            Text("AppId: \(appId.appID)")
+            Text("AppId: \(String(appId.appID))")
             
         } header: {
             Text("Channel")

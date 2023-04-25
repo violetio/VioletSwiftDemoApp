@@ -29,7 +29,7 @@ final class JsonDecodeTests: TestBundleFileTestCase {
         case .failure(let error):
             XCTFail("Did not Decode bag_43113 \(error)")
         case .success(let bag):
-            Logger.info("bag.id: \(bag.id)")
+            Logger.info("bag.id: \(String(bag.id ?? 0))")
             XCTAssertNotNil(bag)
         }
         

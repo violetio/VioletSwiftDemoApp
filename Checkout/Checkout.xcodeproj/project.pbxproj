@@ -98,6 +98,7 @@
 		E7B41C6E29F72E0D00E7371B /* OfferDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6D29F72E0D00E7371B /* OfferDetail.swift */; };
 		E7B41C7029F7587D00E7371B /* ChannelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6F29F7587D00E7371B /* ChannelStore.swift */; };
 		E7B41C7329F75AB600E7371B /* ChannelStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C7229F75AB600E7371B /* ChannelStoreTests.swift */; };
+		E7B41C7529F75C9A00E7371B /* loginPostJsonResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = E7B41C7429F75C9A00E7371B /* loginPostJsonResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +206,7 @@
 		E7B41C6D29F72E0D00E7371B /* OfferDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetail.swift; sourceTree = "<group>"; };
 		E7B41C6F29F7587D00E7371B /* ChannelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelStore.swift; sourceTree = "<group>"; };
 		E7B41C7229F75AB600E7371B /* ChannelStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelStoreTests.swift; sourceTree = "<group>"; };
+		E7B41C7429F75C9A00E7371B /* loginPostJsonResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loginPostJsonResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +430,7 @@
 		E71CFBA329CE0E0A00598B15 /* JsonBlobs */ = {
 			isa = PBXGroup;
 			children = (
+				E7B41C7429F75C9A00E7371B /* loginPostJsonResponse.json */,
 				E71CFBBD29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json */,
 				E71CFBBB29D240EC00598B15 /* Order_ID_58374.json */,
 				E71CFBB429CE635900598B15 /* guestOrderCustomer_Demo.json */,
@@ -663,6 +666,7 @@
 				E71CFBA929CE129F00598B15 /* bag_id_43113.json in Resources */,
 				E71CFBBC29D240EC00598B15 /* Order_ID_58374.json in Resources */,
 				E71CFBA529CE0E0A00598B15 /* get_order_by_id_58111.json in Resources */,
+				E7B41C7529F75C9A00E7371B /* loginPostJsonResponse.json in Resources */,
 				E71CFBB529CE635900598B15 /* guestOrderCustomer_Demo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

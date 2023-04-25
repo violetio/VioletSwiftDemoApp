@@ -1,0 +1,20 @@
+{
+  "roles" : [
+    {
+      "name" : "ROLE_DEVELOPER",
+      "permissions" : [
+
+      ]
+    }
+  ],
+  "refresh_token" : "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbGFuK3NhbmRib3hAdmlvbGV0LmlvIiwic2NvcGVzIjpbIlJPTEVfUkVGUkVTSF9UT0tFTiJdLCJwZXJtaXNzaW9ucyI6WyJST0xFX0RFVkVMT1BFUiJdLCJkZXZlbG9wZXJfaWQiOjEwMTc0LCJtZXJjaGFudF9pZHMiOltdLCJpc3MiOiJodHRwczovL3Zpb2xldC5pbyIsImp0aSI6IjYzYjJmOWQyLTc3NTUtNGQ2Ny05ZmEzLWYxN2MxZGUzNzcxMiIsImlhdCI6MTY4MjM4Mzk3MiwiZXhwIjoyMTU1NzY5NTcyfQ.njvfMFniXIXj2uYUUWEZ7qSQqIZ48ql5O1sX6xE1UDht8dKj7KxGQUs2hC32_KC3isLXBAybKeZuVf2yznBlKg",
+  "id" : 10268,
+  "last_name" : "Morford",
+  "verified" : false,
+  "email" : "alan+sandbox@violet.io",
+  "date_created" : "2021-08-20T17:24:39.000Z",
+  "type" : "DEVELOPER",
+  "date_last_modified" : "2023-03-10T20:07:10.000Z",
+  "token" : "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbGFuK3NhbmRib3hAdmlvbGV0LmlvIiwic2NvcGVzIjpbIlJPTEVfREVWRUxPUEVSIl0sInVzZXJfaWQiOjEwMjY4LCJ1c2VyX3R5cGUiOiJERVZFTE9QRVIiLCJtZXJjaGFudF9pZHMiOltdLCJkZXZlbG9wZXJfaWQiOjEwMTc0LCJhcHBfaWQiOiIxMDE5OSIsImlzcyI6Imh0dHBzOi8vdmlvbGV0LmlvIiwiaWF0IjoxNjgyMzgzOTcyLCJleHAiOjE2ODI0NzAzNzJ9.igJH6x7DVTCRctoigEV12I8Wjm3li4EWxsvF0mh6m_uWG0hZEe6Z50YfICfvHE-pcvh5NFa5ptZIHPwPGO6ZdQ",
+  "first_name" : "Alan"
+}

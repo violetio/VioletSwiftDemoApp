@@ -30,16 +30,16 @@ class ChannelStore {
     
     let appId: Int64
     let channelIDStoreDirectory: FileDirectory
-    var cachedLoginResponse: CachedEntity<LoginResponse>? = nil
+    var cachedLoginResponse: CachedEntity<LoginResponse>
     
     init(appId: Int64, createDir: Bool = false) {
         self.appId = appId
         let channelIDStoreDirectory = Self.ChannelStoreDirectory.childDirectory(name: String(appId))
         self.channelIDStoreDirectory = channelIDStoreDirectory
+        self.cachedLoginResponse = .init(appId: appId)
         if createDir {
             self.createDirectory()
         }
-        //self.cachedLoginResponse = .init(filePath: ChannelStore.ChannelIDStoredEntityFilePath(appId: appId, cacheFileName: .loginResponse))
     }
     
 //    @discardableResult

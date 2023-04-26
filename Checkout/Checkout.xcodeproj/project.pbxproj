@@ -104,6 +104,7 @@
 		E7B41C7D29F9848900E7371B /* CurrentAuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C7C29F9848900E7371B /* CurrentAuthToken.swift */; };
 		E7B41C7F29F9865500E7371B /* APICallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C7E29F9865500E7371B /* APICallService.swift */; };
 		E7B41C8129F9B05500E7371B /* CurrentAuthTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C8029F9B05500E7371B /* CurrentAuthTokenView.swift */; };
+		E7B41C8329F9CCB200E7371B /* ChannelHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C8229F9CCB200E7371B /* ChannelHeaders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +218,7 @@
 		E7B41C7C29F9848900E7371B /* CurrentAuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAuthToken.swift; sourceTree = "<group>"; };
 		E7B41C7E29F9865500E7371B /* APICallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallService.swift; sourceTree = "<group>"; };
 		E7B41C8029F9B05500E7371B /* CurrentAuthTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAuthTokenView.swift; sourceTree = "<group>"; };
+		E7B41C8229F9CCB200E7371B /* ChannelHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelHeaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -533,6 +535,7 @@
 				E7B41C6F29F7587D00E7371B /* ChannelStore.swift */,
 				E7B41C7629F769B900E7371B /* CachedEntity.swift */,
 				E7B41C7C29F9848900E7371B /* CurrentAuthToken.swift */,
+				E7B41C8229F9CCB200E7371B /* ChannelHeaders.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				E72E001D29F1D213009F7BFE /* OfferSelections.swift in Sources */,
 				E7B41C7029F7587D00E7371B /* ChannelStore.swift in Sources */,
 				E70BEB9B29BA54B00030335E /* GetOfferByIDRequest.swift in Sources */,
+				E7B41C8329F9CCB200E7371B /* ChannelHeaders.swift in Sources */,
 				E71CFB8929C26C7100598B15 /* FileDirectory.swift in Sources */,
 				E70BEB9229B94D8B0030335E /* HelloView.swift in Sources */,
 				E7B41C4329F3362000E7371B /* CartContentsView.swift in Sources */,

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ShoppingTabView: View {
     @Binding var shoppingNavigationModel: ShoppingNavigationModel
+    @ObservedObject var dataStore: DataStore = DataStore.shared
+    
     let tab: Tab = .shopping
     
     var body: some View {
@@ -18,6 +20,11 @@ struct ShoppingTabView: View {
         .navigationBarTitle("Offer Grid")
         .navigationDestination(for: OfferItem.self) { offerItem in
             OfferDetail(offerItem: .constant(offerItem), offerItemSelections: $shoppingNavigationModel.offerItemSelections)
+        }.onAppear() {
+            if let channelHeaders = dataStore.channelHeaders {
+                Logger.debug("ShoppingTabView -> sendGetPageOffers")
+                dataStore.apiCallService.sendGetPageOffers(channelHeaders: channelHeaders)
+            }
         }
         
     }

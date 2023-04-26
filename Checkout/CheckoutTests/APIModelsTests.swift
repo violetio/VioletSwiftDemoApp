@@ -145,7 +145,7 @@ final class APIModelsTests: APIXCTestCase {
 
     func test_3b_GetPageOffers() {
         let merchantId : Int64 = 10003
-        let request = GetPageOffersByMerchantIDRequest(appCreds: appCreds, token: self.loginToken, merchantId: merchantId)
+        let request = GetPageOffersByMerchantIDRequest(channelHeaders: appCreds.channelHeaders(token: self.loginToken), merchantId: merchantId)
         
         let expectationRunner = ExpectationRunner(request)
         

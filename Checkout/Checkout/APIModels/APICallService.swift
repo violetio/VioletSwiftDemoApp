@@ -13,6 +13,7 @@ import VioletPublicClientAPI
 class APICallService {
     
     @Published var currentLoginResponse: LoginResponse? = nil
+    @Published var lastPageOffer: PageOffer? = nil
     private var internalLoginPost: LoginPostRequest? = nil
     private var cancellables = Set<AnyCancellable>()
     
@@ -41,6 +42,10 @@ class APICallService {
             }
         }.store(in: &cancellables)
         loginPost.send()
+    }
+    
+    func sendGetPageOffers(channelHeaders: ChannelHeaders) {
+        //
     }
     
 }

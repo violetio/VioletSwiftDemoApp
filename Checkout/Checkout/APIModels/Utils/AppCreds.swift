@@ -56,4 +56,8 @@ struct AppCreds {
         }
         
     }
+    
+    func channelHeaders(token: String) -> ChannelHeaders {
+        return ChannelHeaders(token: token, apiSecret: self.apiSecret, appID: self.appID)
+    }
 }

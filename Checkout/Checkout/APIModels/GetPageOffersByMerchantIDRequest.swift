@@ -10,24 +10,22 @@ import VioletPublicClientAPI
 
 class GetPageOffersByMerchantIDRequest: DataResponseAPICall<PageOffer> {
 
-    let appCreds: AppCreds
-    let token: String
     let merchantId: Int64
     let page: Int
     let size: Int
-
-    init(appCreds: AppCreds, token: String, merchantId: Int64, page: Int = 1, size: Int = 20) {
-        self.appCreds = appCreds
-        self.token = token
+    let channelHeaders: ChannelHeaders
+    
+    init(channelHeaders: ChannelHeaders, merchantId: Int64, page: Int = 1, size: Int = 20) {
         self.merchantId = merchantId
         self.page = page
         self.size = size
+        self.channelHeaders = channelHeaders
     }
 
     func send() {
-        CatalogOffersAPI.catalogOffersMerchantsMerchantIdGet(xVioletToken: token,
-                                                             xVioletAppSecret: appCreds.apiSecret,
-                                                             xVioletAppId: appCreds.appID,
+        CatalogOffersAPI.catalogOffersMerchantsMerchantIdGet(xVioletToken: channelHeaders.token,
+                                                             xVioletAppSecret: channelHeaders.apiSecret,
+                                                             xVioletAppId: channelHeaders.appID,
                                                              merchantId: merchantId,
                                                              page: page,
                                                              size: size) { data, error in

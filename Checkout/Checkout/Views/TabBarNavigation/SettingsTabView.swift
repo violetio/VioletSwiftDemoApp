@@ -35,7 +35,7 @@ struct SettingsTabView: View {
             .pickerStyle(.segmented)
             .onChange(of: demoChannelSelection) { newValue in
                 Logger.info("Demo Channel Select: \(newValue)")
-                dataStore.changeAppId(DemoAppIdAndSecret.byDemoChannel(newValue).appID)
+                dataStore.changeAppId(activeAppIDAndSecret: DemoAppIdAndSecret.byDemoChannel(newValue))
             }
             let appId: AppIDAndSecret = DemoAppIdAndSecret.byDemoChannel(demoChannelSelection)
             let username: String = DemoUsernameAndPassword.byDemoChannel(demoChannelSelection).username

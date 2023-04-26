@@ -10,25 +10,24 @@ import SwiftUI
 import Combine
 
 class DataStore: ObservableObject {
-    
-//    static let shared: DataStore = DataStore(activeAppId: DemoAppIdAndSecret.byDemoChannel(DemoChannels.defaultDemoChannel).appID)
+
     static let shared: DataStore = DataStore()
     
     @Published var activeAppId: Int64?
+    @Published var activeAppIDAndSecret: AppIDAndSecret?
     @Published var loadedChannelStore: ChannelStore?
     @Published var currentAuthToken: CurrentAuthToken?
+    @Published var channelHeaders: ChannelHeaders?
+    @Published var loadedOfferItems: [OfferItem]?
+    
     let apiCallService = APICallService()
     var cancellables = Set<AnyCancellable>()
     
-    init(activeAppId: Int64? = nil) {
-        self.activeAppId = activeAppId
+    init() {
         self.startUp()
     }
     
     func startUp() {
-//        if let notNil = activeAppId {
-//            loadChannelStore(appId: notNil)
-//        }
         apiCallService.$currentLoginResponse.sink { completion in
             switch completion {
             case .finished:
@@ -48,12 +47,28 @@ class DataStore: ObservableObject {
 
     }
     
-    func changeAppId(_ newAppId: Int64?) {
-        self.activeAppId = newAppId
-        Logger.info("Changed AppId: \(String(reflecting: newAppId))")
-        if let notNil = newAppId {
+    func changeAppId(activeAppIDAndSecret: AppIDAndSecret?) {
+        if let newAppId = activeAppIDAndSecret?.appID,
+           newAppId == self.activeAppId {
+            clearChannelStore()
+        } else {
+            clearChannelStore()
+        }
+        self.activeAppId = activeAppIDAndSecret?.appID
+        self.activeAppIDAndSecret = activeAppIDAndSecret
+        Logger.info("Changed AppId: \(String(reflecting: activeAppIDAndSecret?.appID))")
+        if let notNil = activeAppIDAndSecret?.appID {
             loadChannelStore(appId: notNil)
         }
+    }
+    
+    func clearChannelStore() {
+        self.activeAppId = nil
+        self.activeAppIDAndSecret = nil
+        self.loadedChannelStore = nil
+        self.currentAuthToken = nil
+        self.channelHeaders = nil
+        self.loadedOfferItems = nil
     }
     
     func loadChannelStore(appId: Int64) {

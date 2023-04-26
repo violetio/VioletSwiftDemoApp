@@ -20,6 +20,12 @@ struct SettingsTabView: View {
     let demoChannelOptions: [DemoChannels] = DemoChannels.allCases
     @State var demoChannelSelection: DemoChannels = DemoChannels.defaultDemoChannel
 
+    func demoAppCreds() -> AppCreds {
+        return AppCreds.SandBoxTestCreds(demoChannelSelection)
+    }
+    func runLoginPost() {
+        dataStore.apiCallService.sendLoginPost(appCreds: demoAppCreds())
+    }
     var channelIdentitySection: some View {
         Section {
             Picker("Demo Channel Select", selection: $demoChannelSelection) {
@@ -41,20 +47,39 @@ struct SettingsTabView: View {
         }
     }
     
+//    var authTokenSection: some View {
+//
+//        Section {
+//            if let loadedChannelStore = dataStore.loadedChannelStore {
+//                Text("Loaded Channel Store")
+//                if let foundCachedLoginResponse = loadedChannelStore.cachedLoginResponse.cachedEntity {
+//                    Text("Found Cached LoginResponse")
+//                } else {
+//                    Text("NO Cached LoginResponse")
+//                    Button("Login Post") {
+//                        runLoginPost()
+//                    }
+//                }
+//            } else {
+//                Text("No Channel Store Loaded")
+//            }
+//
+//            if let currentAuthToken = dataStore.currentAuthToken {
+//                Text("Token: \(currentAuthToken.authToken)")
+//                Text("RefreshToken: \(currentAuthToken.refreshToken)")
+//            } else {
+//                Text("No AuthToken")
+//            }
+//
+//
+//        } header: {
+//            Text("AuthToken")
+//        }
+//    }
     var authTokenSection: some View {
-        Section {
-            if let loadedChannelStore = dataStore.loadedChannelStore {
-                Text("Loaded Channel Store")
-            } else {
-                Text("No Channel Store Loaded")
-            }
-            
-            
-        } header: {
-            Text("AuthToken")
-        }
+        CurrentAuthTokenView(currentAuthToken: $dataStore.currentAuthToken)
     }
-    
+
     var body: some View {
         
         List(SettingsListSections.allCases) { nextSection in

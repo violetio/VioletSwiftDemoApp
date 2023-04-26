@@ -5,6 +5,7 @@
 //  Created by Alan Morford on 4/24/23.
 //
 
+import Combine
 import Foundation
 import VioletPublicClientAPI
 
@@ -31,7 +32,7 @@ class ChannelStore {
     let appId: Int64
     let channelIDStoreDirectory: FileDirectory
     var cachedLoginResponse: CachedEntity<LoginResponse>
-    
+
     init(appId: Int64, createDir: Bool = false) {
         self.appId = appId
         let channelIDStoreDirectory = Self.ChannelStoreDirectory.childDirectory(name: String(appId))
@@ -42,57 +43,10 @@ class ChannelStore {
         }
     }
     
-//    @discardableResult
-//    func cachePath(loginResponse: LoginResponse) -> FilePath? {
-//        let filePath = FilePath(fileName: CacheFileNames.loginResponse.rawValue, fileDirectory: self.channelIDStoreDirectory)
-//        return filePath
-//    }
+    func reloadCacheEntities() {
+        self.cachedLoginResponse.reloadCachedEntity()
+    }
     
-//    @discardableResult
-//    func updateCache(loginResponse: LoginResponse) -> Bool {
-//        self.cachedLoginResponse = loginResponse
-//        guard let filePath = self.cachePath(loginResponse: loginResponse) else {
-//            return false
-//        }
-//
-//        let encodeResult = CodableHelper.encode(loginResponse)
-//        switch encodeResult {
-//        case .success(let dataToWrite):
-//            do {
-//                try dataToWrite.write(to: filePath.fileURL, options: .noFileProtection)
-//                Logger.debug("Channel Store Cache - ID: \(String(appId)) - Cached LoginResponse: \(filePath.fileURL)")
-//                return true
-//            }  catch {
-//                print(error.localizedDescription)
-//                return false
-//            }
-//        case .failure:
-//            return false
-//        }
-//    }
-    
-//    func reloadCaches(files: [CacheFileNames]) {
-//        files.forEach { cacheFileName in
-//            switch cacheFileName {
-//            case .loginResponse:
-//                
-//            }
-//            
-//        }
-//    }
-//    
-//    func clearLoadedCaches(files: [CacheFileNames]) {
-//        files.forEach { cacheFileName in
-//            
-//        }
-//    }
-//    
-//    func clearStoredCaches(files: [CacheFileNames]) {
-//        files.forEach { cacheFileName in
-//            
-//        }
-//    }
-
     func pathExists() -> Bool {
         return self.channelIDStoreDirectory.pathExists()
     }

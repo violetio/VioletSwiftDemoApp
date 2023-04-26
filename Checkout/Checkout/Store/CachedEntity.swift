@@ -19,7 +19,7 @@ class CachedEntity<T: Codable> {
     
     init(filePath: FilePath) {
         self.filePath = filePath
-        Logger.debug("FilePath: \(filePath.fileURL)")
+//        Logger.debug("FilePath: \(filePath.fileURL)")
     }
     
     func reloadData() -> Data? {
@@ -55,6 +55,7 @@ class CachedEntity<T: Codable> {
         case .success(let data):
             filePath.fileDirectory.createDirectory(withIntermediateDirectories: true)
             try data.write(to: filePath.fileURL)
+            Logger.debug("Stored \(type(of: entity)) at: \(filePath.fileURL)")
             self.cachedEntity = entity
         }
     }

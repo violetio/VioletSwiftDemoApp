@@ -60,7 +60,10 @@ struct CheckoutNavigationView: View {
             }
             .tag(Tab.settings)
 
+        }.onAppear() {
+            DataStore.shared.changeAppId(DemoAppIdAndSecret.byDemoChannel(DemoChannels.defaultDemoChannel).appID)
         }
+        
     }
 }
 

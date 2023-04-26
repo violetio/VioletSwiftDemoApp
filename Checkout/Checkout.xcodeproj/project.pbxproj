@@ -100,6 +100,10 @@
 		E7B41C7329F75AB600E7371B /* ChannelStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C7229F75AB600E7371B /* ChannelStoreTests.swift */; };
 		E7B41C7529F75C9A00E7371B /* loginPostJsonResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = E7B41C7429F75C9A00E7371B /* loginPostJsonResponse.json */; };
 		E7B41C7729F769B900E7371B /* CachedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C7629F769B900E7371B /* CachedEntity.swift */; };
+		E7B41C7B29F9706000E7371B /* LoginPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C7A29F9706000E7371B /* LoginPostView.swift */; };
+		E7B41C7D29F9848900E7371B /* CurrentAuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C7C29F9848900E7371B /* CurrentAuthToken.swift */; };
+		E7B41C7F29F9865500E7371B /* APICallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C7E29F9865500E7371B /* APICallService.swift */; };
+		E7B41C8129F9B05500E7371B /* CurrentAuthTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C8029F9B05500E7371B /* CurrentAuthTokenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,6 +213,10 @@
 		E7B41C7229F75AB600E7371B /* ChannelStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelStoreTests.swift; sourceTree = "<group>"; };
 		E7B41C7429F75C9A00E7371B /* loginPostJsonResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loginPostJsonResponse.json; sourceTree = "<group>"; };
 		E7B41C7629F769B900E7371B /* CachedEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedEntity.swift; sourceTree = "<group>"; };
+		E7B41C7A29F9706000E7371B /* LoginPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPostView.swift; sourceTree = "<group>"; };
+		E7B41C7C29F9848900E7371B /* CurrentAuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAuthToken.swift; sourceTree = "<group>"; };
+		E7B41C7E29F9865500E7371B /* APICallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallService.swift; sourceTree = "<group>"; };
+		E7B41C8029F9B05500E7371B /* CurrentAuthTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAuthTokenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +345,7 @@
 				E70BEBAA29BBBC6D0030335E /* LoginButtonView.swift */,
 				E72EFFE229D4C892009F7BFE /* ScenariosListView.swift */,
 				E72EFFE429D4C8BA009F7BFE /* OfferView.swift */,
+				E7B41C8029F9B05500E7371B /* CurrentAuthTokenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -373,6 +382,7 @@
 				E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */,
 				E71CFB9D29CCD92C00598B15 /* CheckoutCartPostRequest.swift */,
 				E71CFBAC29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift */,
+				E7B41C7E29F9865500E7371B /* APICallService.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -473,6 +483,7 @@
 		E72EFFFE29EDF56E009F7BFE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E7B41C7A29F9706000E7371B /* LoginPostView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -521,6 +532,7 @@
 				E7B41C4C29F5878D00E7371B /* DataStore.swift */,
 				E7B41C6F29F7587D00E7371B /* ChannelStore.swift */,
 				E7B41C7629F769B900E7371B /* CachedEntity.swift */,
+				E7B41C7C29F9848900E7371B /* CurrentAuthToken.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -701,6 +713,7 @@
 				E72EFFE329D4C892009F7BFE /* ScenariosListView.swift in Sources */,
 				E71CFB9A29CCCD7100598B15 /* DataResponseAPICall.swift in Sources */,
 				E71CFBAF29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift in Sources */,
+				E7B41C7F29F9865500E7371B /* APICallService.swift in Sources */,
 				E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */,
 				E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */,
 				E72E001A29F1C009009F7BFE /* IntPrice.swift in Sources */,
@@ -723,6 +736,7 @@
 				E72E001429F0852F009F7BFE /* EntityViewModel.swift in Sources */,
 				E70BEBAB29BBBC6D0030335E /* LoginButtonView.swift in Sources */,
 				E7B41C6A29F71EEC00E7371B /* OfferItem.swift in Sources */,
+				E7B41C7B29F9706000E7371B /* LoginPostView.swift in Sources */,
 				E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */,
 				E71CFBA229CE0C1E00598B15 /* GetCartByIDRequest.swift in Sources */,
 				E7B41C5429F589CA00E7371B /* DemoAppIdAndSecret.swift in Sources */,
@@ -734,6 +748,8 @@
 				E70BEB6929B92B200030335E /* ContentView.swift in Sources */,
 				E7B41C6629F71A5700E7371B /* NavigationModel.swift in Sources */,
 				E72E001829F1BA61009F7BFE /* PriceViewModel.swift in Sources */,
+				E7B41C8129F9B05500E7371B /* CurrentAuthTokenView.swift in Sources */,
+				E7B41C7D29F9848900E7371B /* CurrentAuthToken.swift in Sources */,
 				E7B41C6829F71DF000E7371B /* OffersGrid.swift in Sources */,
 				E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */,
 				E7B41C5829F58C0700E7371B /* UsernameAndPassword.swift in Sources */,

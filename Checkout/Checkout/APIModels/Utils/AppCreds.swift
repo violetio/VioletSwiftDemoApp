@@ -46,4 +46,14 @@ struct AppCreds {
     static func SandBoxTestCreds_Alan() -> AppCreds {
         return AppCreds(EnvVars.Alan())
     }
+    
+    static func SandBoxTestCreds(_ demoChannel: DemoChannels) -> AppCreds {
+        switch demoChannel {
+        case .Alan:
+            return AppCreds(EnvVars.Alan())
+        case .Ishan:
+            return AppCreds(EnvVars())
+        }
+        
+    }
 }

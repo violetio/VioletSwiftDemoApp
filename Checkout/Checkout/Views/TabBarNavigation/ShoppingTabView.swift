@@ -13,26 +13,39 @@ struct ShoppingTabView: View {
     
     let tab: Tab = .shopping
     
+    func refreshPageOffers() {
+        if let channelHeaders = dataStore.channelHeaders {
+            Logger.debug("ShoppingTabView -> sendGetPageOffers")
+            dataStore.apiCallService.sendGetPageOffers(channelHeaders: channelHeaders, merchantId: 10003)
+        }
+    }
     var body: some View {
         NavigationStack(path: $shoppingNavigationModel.offerItemPath) {
-            OffersGrid(loadedOfferItems: $shoppingNavigationModel.loadedOfferItems)
+            OffersGrid(loadedOfferItems: $dataStore.loadedOfferItems)
         }
         .navigationBarTitle("Offer Grid")
+        .toolbar {
+            Button("Refresh") {
+                refreshPageOffers()
+            }
+        }
         .navigationDestination(for: OfferItem.self) { offerItem in
             OfferDetail(offerItem: .constant(offerItem), offerItemSelections: $shoppingNavigationModel.offerItemSelections)
-        }.onAppear() {
-            if let channelHeaders = dataStore.channelHeaders {
-                Logger.debug("ShoppingTabView -> sendGetPageOffers")
-                dataStore.apiCallService.sendGetPageOffers(channelHeaders: channelHeaders)
-            }
+        }
+        .onAppear() {
+            refreshPageOffers()
         }
         
     }
 }
 
 struct ShoppingTabView_Previews: PreviewProvider {
+    
+    static var mockOfferItems: [OfferItem] {
+        return []
+        //return PreviewMocks.MockOfferItemsArray()
+    }
     static var previews: some View {
-        //.constant()
-        ShoppingTabView(shoppingNavigationModel: .constant(ShoppingNavigationModel(offerItemPath: [], loadedOfferItems: PreviewMocks.MockOfferItemsArray())))
+        ShoppingTabView(shoppingNavigationModel: .constant(ShoppingNavigationModel(offerItemPath: [], loadedOfferItems: mockOfferItems)))
     }
 }

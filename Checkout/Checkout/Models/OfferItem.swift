@@ -51,6 +51,10 @@ extension OfferItem: EntityViewModel {
                          offerEntity: entity)
     }
     
+    static func fromEntities(entities: [Entity]) -> [Self] {
+        return entities.compactMap(fromEntity)
+    }
+    
     static func Empty() -> Self {
         return OfferItem(offer_id: 0, name: "Empty 🫙", intPrice: IntPrice(price: 0), offerEntity: nil)
     }

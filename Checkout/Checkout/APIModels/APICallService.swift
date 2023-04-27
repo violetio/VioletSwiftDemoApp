@@ -16,6 +16,7 @@ class APICallService {
     @Published var lastPageOffer: PageOffer? = nil
     private var internalLoginPost: LoginPostRequest? = nil
     private var cancellables = Set<AnyCancellable>()
+    private var pendingPageOffersRequest: GetPageOffersByMerchantIDRequest? = nil
     
     init() {
     }
@@ -44,8 +45,30 @@ class APICallService {
         loginPost.send()
     }
     
-    func sendGetPageOffers(channelHeaders: ChannelHeaders) {
-        //
+    func sendGetPageOffers(channelHeaders: ChannelHeaders, merchantId: Int64) {
+        guard self.pendingPageOffersRequest == nil else {
+            Logger.debug("sendLoginPost Already Running!! Returning not overlapping call!")
+            return
+        }
+        let apiCall = GetPageOffersByMerchantIDRequest(channelHeaders: channelHeaders, merchantId: merchantId)
+        var newPageOffers: PageOffer? = nil
+        self.pendingPageOffersRequest = apiCall
+        apiCall.$callCompleted.sink { [weak self] completed in
+            Logger.info("sendGetPageOffers -  2 - sink \(completed)")
+            guard let weakSelf = self else {
+                return
+            }
+            if completed {
+                if let returnedPageOffer = weakSelf.pendingPageOffersRequest?.dataResponse {
+                    newPageOffers = returnedPageOffer
+                    Logger.info("Received PageOffers with Offers Count: \(returnedPageOffer.content?.count)")
+                }
+                weakSelf.pendingPageOffersRequest = nil
+                weakSelf.lastPageOffer = newPageOffers
+            }
+        }.store(in: &cancellables)
+        Logger.info("sendGetPageOffers -  1 - Sending Get Page Offers")
+        apiCall.send()
     }
     
 }

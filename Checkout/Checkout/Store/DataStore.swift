@@ -18,7 +18,7 @@ class DataStore: ObservableObject {
     @Published var loadedChannelStore: ChannelStore?
     @Published var currentAuthToken: CurrentAuthToken?
     @Published var channelHeaders: ChannelHeaders?
-    @Published var loadedOfferItems: [OfferItem]?
+    @Published var loadedOfferItems: [OfferItem] = []
     
     let apiCallService = APICallService()
     var cancellables = Set<AnyCancellable>()
@@ -44,6 +44,14 @@ class DataStore: ObservableObject {
             }
             weakSelf.currentAuthToken = CurrentAuthToken.fromLoginResponse(returnedValue)
         }.store(in: &cancellables)
+        
+        apiCallService.$lastPageOffer.sink { [weak self] returnedValue in
+            guard let weakSelf = self else { return }
+            if let offersContent = returnedValue?.content {
+                weakSelf.loadedOfferItems = OfferItem.fromEntities(entities: offersContent)
+                Logger.info("DataStore - Receive OfferItems = Count: \(weakSelf.loadedOfferItems.count)")
+            }
+        }.store(in: &cancellables)
 
     }
     
@@ -56,9 +64,10 @@ class DataStore: ObservableObject {
         }
         self.activeAppId = activeAppIDAndSecret?.appID
         self.activeAppIDAndSecret = activeAppIDAndSecret
+        //self.channelHeaders = activeAppIDAndSecret.
         Logger.info("Changed AppId: \(String(reflecting: activeAppIDAndSecret?.appID))")
-        if let notNil = activeAppIDAndSecret?.appID {
-            loadChannelStore(appId: notNil)
+        if let appIDAndSecret = activeAppIDAndSecret {
+            loadChannelStore(activeAppIDAndSecret: appIDAndSecret)
         }
     }
     
@@ -68,19 +77,24 @@ class DataStore: ObservableObject {
         self.loadedChannelStore = nil
         self.currentAuthToken = nil
         self.channelHeaders = nil
-        self.loadedOfferItems = nil
+        self.loadedOfferItems = []
     }
     
-    func loadChannelStore(appId: Int64) {
-        Logger.debug("DataStore.loadChannelStore appId: \(String(appId))")
-        let newChannelStore = ChannelStore(appId: appId)
+    func loadChannelStore(activeAppIDAndSecret: AppIDAndSecret) {
+        Logger.debug("DataStore.loadChannelStore appId: \(String(activeAppIDAndSecret.appID))")
+        let newChannelStore = ChannelStore(appId: activeAppIDAndSecret.appID)
         newChannelStore.reloadCacheEntities()
         
         Logger.debug("DataStore.loadChannelStore set newChannelStore")
         
         if let cached = newChannelStore.cachedLoginResponse.cachedEntity {
-            Logger.debug("DataStore.loadChannelStore set currentAuthToken")
+            Logger.debug("DataStore.loadChannelStore restored currentAuthToken")
             self.currentAuthToken = CurrentAuthToken.fromLoginResponse(cached)
+            if let cachedAuthToken = cached.token {
+                self.channelHeaders = ChannelHeaders(token: cachedAuthToken, appIdAndSecret: activeAppIDAndSecret)
+                Logger.debug("DataStore.loadChannelStore restored channelHeaders")
+                
+            }
         } else {
             Logger.debug("DataStore.loadChannelStore MISSING currentAuthToken")
         }

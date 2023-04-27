@@ -7,30 +7,30 @@
 
 import VioletPublicClientAPI
 
-class CheckoutCartPostRequest: DataResponseAPICall<Order> {
-
-    let appCreds: AppCreds
-    let token: String
+class CheckoutCartPostRequest: ChannelHeadersAPICall<Order> {
     let cartInitializationRequest: CartInitializationRequest
+    let baseCurrency: String
 
+    convenience init(appCreds: AppCreds, token: String, cartInitializationRequest: CartInitializationRequest) {
+        self.init(channelHeaders: appCreds.channelHeaders(token: token), cartInitializationRequest: cartInitializationRequest)
+    }
 
-    init(appCreds: AppCreds, token: String, cartInitializationRequest: CartInitializationRequest) {
-        self.appCreds = appCreds
-        self.token = token
+    init(channelHeaders: ChannelHeaders, cartInitializationRequest: CartInitializationRequest, baseCurrency: String = "USD") {
         self.cartInitializationRequest = cartInitializationRequest
+        self.baseCurrency = baseCurrency
+        super.init(channelHeaders: channelHeaders)
     }
 
     override func send() {
-        CheckoutCartAPI.checkoutCartPost(xVioletToken: token,
-                                         xVioletAppSecret: appCreds.apiSecret,
-                                         xVioletAppId: appCreds.appID,
-                                         baseCurrency: "USD",
-                                         
-                                         cartInitializationRequest: cartInitializationRequest) { [weak self] data, error in
+        CheckoutCartAPI.checkoutCartPost(xVioletToken: channelHeaders.token,
+                                         xVioletAppSecret: channelHeaders.apiSecret,
+                                         xVioletAppId: channelHeaders.appID,
+                                         baseCurrency: baseCurrency,
+
+                                         cartInitializationRequest: cartInitializationRequest)
+        { [weak self] data, error in
             guard let weakSelf = self else { return }
             weakSelf.callIsCompleted(errorResponse: error, dataResponse: data)
-            
         }
     }
 }
-

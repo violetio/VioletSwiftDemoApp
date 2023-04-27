@@ -8,7 +8,6 @@
 import VioletPublicClientAPI
 
 class AuthTokenGet: DataResponseAPICall<RefreshTokenResponse> {
-
     let appCreds: AppCreds
     let refreshToken: String
 
@@ -20,10 +19,10 @@ class AuthTokenGet: DataResponseAPICall<RefreshTokenResponse> {
     override func send() {
         AccessAPI.authTokenGet(xVioletToken: refreshToken,
                                xVioletAppSecret: appCreds.apiSecret,
-                               xVioletAppId: appCreds.appID) { [weak self] data, error in
+                               xVioletAppId: appCreds.appID)
+        { [weak self] data, error in
             guard let weakSelf = self else { return }
             weakSelf.callIsCompleted(errorResponse: error, dataResponse: data)
         }
     }
 }
-

@@ -19,9 +19,9 @@ class BaseAPICall: ObservableObject {
 
     func callIsCompleted(errorResponse: Error? = nil) {
         self.errorResponse = errorResponse
-        self.callCompleted = true
+        callCompleted = true
     }
-    
+
     func sinkCompleted(receiveValue: @escaping ((Bool) -> Void)) {
         $callCompleted.sink(receiveValue: receiveValue)
             .store(in: &cancellables)

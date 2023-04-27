@@ -7,28 +7,27 @@
 
 import VioletPublicClientAPI
 
-class CheckoutCartShippingAvailableGetRequest: DataResponseAPICall<[OrderShippingMethodWrapper]> {
+class CheckoutCartShippingAvailableGetRequest: ChannelHeadersAPICall<[OrderShippingMethodWrapper]> {
+    let orderId: Int64
 
-    let appCreds: AppCreds
-    let token: String
-    let cartId: Int64
+    convenience init(appCreds: AppCreds, token: String, cartId: Int64) {
+        self.init(channelHeaders: appCreds.channelHeaders(token: token), orderId: cartId)
+    }
 
-
-    init(appCreds: AppCreds, token: String, cartId: Int64) {
-        self.appCreds = appCreds
-        self.token = token
-        self.cartId = cartId
+    init(channelHeaders: ChannelHeaders, orderId: Int64) {
+        self.orderId = orderId
+        super.init(channelHeaders: channelHeaders)
     }
 
     override func send() {
-        CheckoutShippingAPI.checkoutCartCartIdShippingAvailableGet(xVioletToken: token,
-                                         xVioletAppSecret: appCreds.apiSecret,
-                                         xVioletAppId: appCreds.appID,
-                                         cartId: cartId) { [weak self] data, error in
+        CheckoutShippingAPI.checkoutCartCartIdShippingAvailableGet(xVioletToken: channelHeaders.token,
+                                                                   xVioletAppSecret: channelHeaders.apiSecret,
+                                                                   xVioletAppId: channelHeaders.appID,
+                                                                   cartId: orderId)
+        { [weak self] data, error in
 
             guard let weakSelf = self else { return }
             weakSelf.callIsCompleted(errorResponse: error, dataResponse: data)
-
         }
     }
 }

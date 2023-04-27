@@ -19,7 +19,7 @@ protocol APICallable {
  
  */
 class DataResponseAPICall<DataResponseType: Codable>: BaseAPICall, APICallable {
-    typealias SinkResponse = ((DataResponseType?, Error?) -> Void)
+    typealias SinkResponse = (DataResponseType?, Error?) -> Void
     var dataResponse: DataResponseType? = nil
     
     func callIsCompleted(errorResponse: Error? = nil, dataResponse: DataResponseType? = nil) {
@@ -36,7 +36,7 @@ class DataResponseAPICall<DataResponseType: Codable>: BaseAPICall, APICallable {
     }
     
     func send() {
-        //Override
+        // Override
     }
     
     func sinkResponse(receiveResponse: @escaping SinkResponse) {

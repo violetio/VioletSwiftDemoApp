@@ -13,36 +13,13 @@ import VioletPublicClientAPI
 class APICallService {
     @Published var currentLoginResponse: LoginResponse? = nil
     @Published var lastPageOffer: PageOffer? = nil
+    @Published var lastRefreshTokenResponse: RefreshTokenResponse? = nil
     private var cancellables = Set<AnyCancellable>()
     private var pendingPageOffersRequest2: Any?
     private var pendingAPICalls = Set<AnyHashable>()
     private var pendingNoOverlap = Set<PendingNoOverlap>()
     
     init() {}
-    
-//    func sendLoginPost(appCreds: AppCreds) {
-//        guard self.internalLoginPost == nil else {
-//            Logger.debug("sendLoginPost Already Running!! Returning not overlapping call!")
-//            return
-//        }
-//        let loginPost = LoginPostRequest(appCreds: appCreds)
-//        var newLoginResponse: LoginResponse? = nil
-//        self.internalLoginPost = loginPost
-//        loginPost.$callCompleted.sink { [weak self] completed in
-//            guard let weakSelf = self else {
-//                return
-//            }
-//            if completed {
-//                if let loginResponse = weakSelf.internalLoginPost?.dataResponse {
-//                    newLoginResponse = loginResponse
-//                    Logger.info("Received loginResponse with token: \(loginResponse.token!)")
-//                }
-//                weakSelf.internalLoginPost = nil
-//                weakSelf.currentLoginResponse = newLoginResponse
-//            }
-//        }.store(in: &cancellables)
-//        loginPost.send()
-//    }
     
     func sendLoginPost(appCreds: AppCreds) {
         let pending = PendingNoOverlap.login
@@ -89,7 +66,6 @@ class APICallService {
         let apiCall = APICall(apiCall: GetPageOffersByMerchantIDRequest(channelHeaders: channelHeaders, merchantId: merchantId))
         var newPageOffers: PageOffer?
         _ = pendingAPICalls.insert(apiCall)
-        Logger.debug("Start - pendingAPICalls.count: \(pendingAPICalls.count)")
         apiCall.send { [weak self] data, error in
             guard let self = self else { return }
             if let returnedPageOffer = data {
@@ -100,8 +76,34 @@ class APICallService {
             self.lastPageOffer = newPageOffers
             self.pendingAPICalls.remove(apiCall)
             self.pendingNoOverlap.remove(pending)
-            Logger.debug("End - pendingAPICalls.count: \(self.pendingAPICalls.count)")
         }
+    }
+    
+    func sendRefreshToken(appIDAndSecret: AppIDAndSecret, refreshToken: String) {
+        Logger.debug("sendRefreshToken")
+        let pending = PendingNoOverlap.refreshToken
+        guard !pendingNoOverlap.contains(pending) else {
+            Logger.debug("sendGetPageOffers Overlap Prevented")
+            return
+        }
+        
+        pendingNoOverlap.insert(pending)
+        let apiCall = APICall(apiCall: AuthTokenGet(appIDAndSecret: appIDAndSecret, refreshToken: refreshToken))
+        var newRefreshTokenResponse: RefreshTokenResponse?
+        _ = pendingAPICalls.insert(apiCall)
+        apiCall.send { [weak self] data, error in
+            guard let self = self else { return }
+            if let returnedRefreshTokenResponse = data {
+                newRefreshTokenResponse = returnedRefreshTokenResponse
+            } else if let gotError = error {
+                Logger.error(gotError)
+            }
+            self.lastRefreshTokenResponse = newRefreshTokenResponse
+            self.pendingAPICalls.remove(apiCall)
+            self.pendingNoOverlap.remove(pending)
+        }
+        
+        
     }
     
     static var CallCounter: Int = 0
@@ -133,6 +135,7 @@ class APICallService {
     
     enum PendingNoOverlap: CaseIterable {
         case login
+        case refreshToken
         case pageOffers
         case createCart
     }

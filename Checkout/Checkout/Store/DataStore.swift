@@ -52,7 +52,24 @@ class DataStore: ObservableObject {
                 Logger.info("DataStore - Receive OfferItems = Count: \(weakSelf.loadedOfferItems.count)")
             }
         }.store(in: &cancellables)
+        
+        
+        apiCallService.$lastRefreshTokenResponse.sink { [weak self] returnedValue in
+            guard let self = self else { return }
+            if let newAuthToken = returnedValue?.token,
+                   let current = self.currentAuthToken {
+                       Logger.debug("Replacing currentAuthToken")
+                    self.currentAuthToken = current.replaceAuthToken(authToken: newAuthToken)
+            }
 
+        }.store(in: &cancellables)
+
+    }
+    
+    func doLogOut() {
+        self.loadedChannelStore?.cachedLoginResponse.clearCachedEntity()
+        self.currentAuthToken = nil
+        self.channelHeaders = nil
     }
     
     func changeAppId(activeAppIDAndSecret: AppIDAndSecret?) {

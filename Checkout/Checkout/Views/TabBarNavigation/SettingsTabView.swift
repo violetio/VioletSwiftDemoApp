@@ -10,6 +10,7 @@ import SwiftUI
 enum SettingsListSections: Int, CaseIterable, Identifiable {
     case ChannelIdentity
     case AuthToken
+    case LogInOutRefresh
     
     var id: Int { rawValue }
 }
@@ -25,6 +26,20 @@ struct SettingsTabView: View {
     }
     func runLoginPost() {
         dataStore.apiCallService.sendLoginPost(appCreds: demoAppCreds())
+    }
+    
+    func doLogOut() {
+        Logger.debug("Log Out")
+        dataStore.doLogOut()
+    }
+    
+    func doRefresh() {
+        Logger.debug("Refresh")
+        if let headers = dataStore.channelHeaders,
+        let refreshToken = dataStore.currentAuthToken?.refreshToken {
+            dataStore.apiCallService.sendRefreshToken(appIDAndSecret: headers,
+                                                      refreshToken: refreshToken)
+        }
     }
     var channelIdentitySection: some View {
         Section {
@@ -47,6 +62,28 @@ struct SettingsTabView: View {
         }
     }
     
+    var logInOutRefreshSection: some View {
+        Section {
+            if dataStore.currentAuthToken != nil {
+                Button("Log Out") {
+                    doLogOut()
+                }
+                
+                Button("Refresh") {
+                    doRefresh()
+                }
+            } else {
+                Button("Log In") {
+                    runLoginPost()
+                }
+            }
+            
+            
+            
+        } header: {
+            Text("Log In/Out/Refresh")
+        }
+    }
 //    var authTokenSection: some View {
 //
 //        Section {
@@ -88,6 +125,8 @@ struct SettingsTabView: View {
                 channelIdentitySection
             case .AuthToken:
                 authTokenSection
+            case .LogInOutRefresh:
+                logInOutRefreshSection
             }
             
         }

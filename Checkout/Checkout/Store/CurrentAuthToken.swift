@@ -31,4 +31,8 @@ struct CurrentAuthToken {
         }
         return CurrentAuthToken(authToken: authToken, refreshToken: refreshToken)
     }
+    
+    func replaceAuthToken(authToken: String) -> CurrentAuthToken{
+        return CurrentAuthToken(authToken: authToken, refreshToken: self.refreshToken)
+    }
 }

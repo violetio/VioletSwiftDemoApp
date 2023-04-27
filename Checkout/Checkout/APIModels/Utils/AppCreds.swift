@@ -10,15 +10,15 @@ import VioletPublicClientAPI
 /// AppCreds captures the common properties necessary to call
 /// a Violet API Endpoint with an AppID
 /// TODO: Split out subtype for AppId and AppSecret as these are used together
-struct AppCreds {
-    let appID: Int64
-    let apiSecret: String
+struct AppCreds: AppIDAndSecret {
+    var appID: Int64 { appIDAndSecret.appID }
+    var apiSecret: String { appIDAndSecret.apiSecret }
+    let appIDAndSecret: AppIDAndSecret
     let username: String
     let password: String
     
     init(appID: Int64, apiSecret: String, username: String, password: String) {
-        self.appID = appID
-        self.apiSecret = apiSecret
+        self.appIDAndSecret = DemoAppIdAndSecret(appID: appID, apiSecret: apiSecret)
         self.username = username
         self.password = password
         self.log()

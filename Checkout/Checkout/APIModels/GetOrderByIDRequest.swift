@@ -20,7 +20,7 @@ class GetOrderByIDRequest: DataResponseAPICall<Order> {
         self.orderId = orderId
     }
 
-    func send() {
+    override func send() {
         OrdersAPI.ordersOrderIdGet(xVioletToken: token,
                                                  xVioletAppSecret: appCreds.apiSecret,
                                                  xVioletAppId: appCreds.appID,

@@ -21,7 +21,7 @@ class GetPageOffersByMerchantIDRequest: ChannelHeadersAPICall<PageOffer> {
         super.init(channelHeaders: channelHeaders)
     }
 
-    func send() {
+    override func send() {
         CatalogOffersAPI.catalogOffersMerchantsMerchantIdGet(xVioletToken: channelHeaders.token,
                                                              xVioletAppSecret: channelHeaders.apiSecret,
                                                              xVioletAppId: channelHeaders.appID,

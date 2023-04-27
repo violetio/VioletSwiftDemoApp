@@ -20,7 +20,7 @@ class CheckoutCartShippingAvailableGetRequest: DataResponseAPICall<[OrderShippin
         self.cartId = cartId
     }
 
-    func send() {
+    override func send() {
         CheckoutShippingAPI.checkoutCartCartIdShippingAvailableGet(xVioletToken: token,
                                          xVioletAppSecret: appCreds.apiSecret,
                                          xVioletAppId: appCreds.appID,

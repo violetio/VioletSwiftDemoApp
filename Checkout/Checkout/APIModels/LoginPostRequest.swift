@@ -16,7 +16,7 @@ class LoginPostRequest: DataResponseAPICall<LoginResponse> {
         self.appCreds = appCreds
     }
 
-    func send() {
+    override func send() {
         AccessAPI.loginPost(xVioletAppSecret: appCreds.apiSecret,
                             xVioletAppId: appCreds.appID,
                             body: appCreds.loginBody()) { [weak self] (response, error) in

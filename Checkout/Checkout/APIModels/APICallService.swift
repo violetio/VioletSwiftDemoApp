@@ -17,6 +17,7 @@ class APICallService {
     private var internalLoginPost: LoginPostRequest? = nil
     private var cancellables = Set<AnyCancellable>()
     private var pendingPageOffersRequest: GetPageOffersByMerchantIDRequest? = nil
+    private var pendingPageOffersRequest2: Any? = nil
     
     init() {
     }
@@ -45,30 +46,40 @@ class APICallService {
         loginPost.send()
     }
     
+    func sendCreateCart(channelHeaders: ChannelHeaders, skus: [OrderSku]? = nil) {
+        //
+    }
+    
     func sendGetPageOffers(channelHeaders: ChannelHeaders, merchantId: Int64) {
         guard self.pendingPageOffersRequest == nil else {
             Logger.debug("sendLoginPost Already Running!! Returning not overlapping call!")
             return
         }
-        let apiCall = GetPageOffersByMerchantIDRequest(channelHeaders: channelHeaders, merchantId: merchantId)
+        let apiCall = APICall(apiCall: GetPageOffersByMerchantIDRequest(channelHeaders: channelHeaders, merchantId: merchantId))
         var newPageOffers: PageOffer? = nil
-        self.pendingPageOffersRequest = apiCall
-        apiCall.$callCompleted.sink { [weak self] completed in
-            Logger.info("sendGetPageOffers -  2 - sink \(completed)")
-            guard let weakSelf = self else {
-                return
+        self.pendingPageOffersRequest2 = apiCall
+        apiCall.send { [weak self]  data, error in
+            guard let self = self else { return }
+            if let returnedPageOffer = data {
+                newPageOffers = returnedPageOffer
+            } else if let gotError = error {
+                Logger.error(gotError)
             }
-            if completed {
-                if let returnedPageOffer = weakSelf.pendingPageOffersRequest?.dataResponse {
-                    newPageOffers = returnedPageOffer
-                    Logger.info("Received PageOffers with Offers Count: \(returnedPageOffer.content?.count)")
-                }
-                weakSelf.pendingPageOffersRequest = nil
-                weakSelf.lastPageOffer = newPageOffers
-            }
-        }.store(in: &cancellables)
-        Logger.info("sendGetPageOffers -  1 - Sending Get Page Offers")
-        apiCall.send()
+            self.pendingPageOffersRequest2 = nil
+            self.lastPageOffer = newPageOffers
+        }
+    }
+    
+    class APICall<T, DataResponseType: Codable> where T: DataResponseAPICall<DataResponseType> {
+        let dataResponseAPICall: T
+        init(apiCall: T) {
+            self.dataResponseAPICall = apiCall
+        }
+        
+        func send(receiveResponse: @escaping T.SinkResponse) {
+            dataResponseAPICall.sinkResponse(receiveResponse: receiveResponse)
+            dataResponseAPICall.send()
+        }
     }
     
 }

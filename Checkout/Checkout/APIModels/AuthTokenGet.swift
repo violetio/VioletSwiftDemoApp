@@ -17,7 +17,7 @@ class AuthTokenGet: DataResponseAPICall<RefreshTokenResponse> {
         self.refreshToken = refreshToken
     }
 
-    func send() {
+    override func send() {
         AccessAPI.authTokenGet(xVioletToken: refreshToken,
                                xVioletAppSecret: appCreds.apiSecret,
                                xVioletAppId: appCreds.appID) { [weak self] data, error in

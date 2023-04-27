@@ -20,7 +20,7 @@ class GetCartByIDRequest: DataResponseAPICall<Order> {
         self.orderId = orderId
     }
 
-    func send() {
+    override func send() {
         CheckoutCartAPI.checkoutCartCartIdGet(xVioletToken: token,
                                                  xVioletAppSecret: appCreds.apiSecret,
                                                  xVioletAppId: appCreds.appID,

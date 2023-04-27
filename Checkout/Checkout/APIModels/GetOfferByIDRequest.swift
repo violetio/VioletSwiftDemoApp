@@ -20,7 +20,7 @@ class GetOfferByIDRequest: DataResponseAPICall<Offer> {
         self.offerId = offerId
     }
 
-    func send() {
+    override func send() {
         CatalogOffersAPI.catalogOffersOfferIdGet(xVioletToken: token,
                                                  xVioletAppSecret: appCreds.apiSecret,
                                                  xVioletAppId: appCreds.appID,

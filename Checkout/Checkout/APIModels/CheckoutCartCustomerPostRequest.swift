@@ -24,7 +24,7 @@ class CheckoutCartCustomerPostRequest: DataResponseAPICall<Order> {
         self.priceCart = priceCart
     }
 
-    func send() {
+    override func send() {
         CheckoutCustomerAPI.checkoutCartCartIdCustomerPost(xVioletToken: token,
                                          xVioletAppSecret: appCreds.apiSecret,
                                          xVioletAppId: appCreds.appID,

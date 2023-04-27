@@ -20,7 +20,7 @@ class CheckoutCartPostRequest: DataResponseAPICall<Order> {
         self.cartInitializationRequest = cartInitializationRequest
     }
 
-    func send() {
+    override func send() {
         CheckoutCartAPI.checkoutCartPost(xVioletToken: token,
                                          xVioletAppSecret: appCreds.apiSecret,
                                          xVioletAppId: appCreds.appID,

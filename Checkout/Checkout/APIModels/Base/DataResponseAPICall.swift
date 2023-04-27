@@ -24,4 +24,8 @@ class DataResponseAPICall<DataResponseType: Codable>: BaseAPICall {
     override func callIsCompleted(errorResponse: Error? = nil) {
         super.callIsCompleted(errorResponse: errorResponse)
     }
+    
+    func logError(_ error: Error?) {
+        Logger.error(error)
+    }
 }

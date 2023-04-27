@@ -8,18 +8,17 @@
 import Foundation
 import VioletPublicClientAPI
 
-class GetPageOffersByMerchantIDRequest: DataResponseAPICall<PageOffer> {
+class GetPageOffersByMerchantIDRequest: ChannelHeadersAPICall<PageOffer> {
 
     let merchantId: Int64
     let page: Int
     let size: Int
-    let channelHeaders: ChannelHeaders
     
     init(channelHeaders: ChannelHeaders, merchantId: Int64, page: Int = 1, size: Int = 20) {
         self.merchantId = merchantId
         self.page = page
         self.size = size
-        self.channelHeaders = channelHeaders
+        super.init(channelHeaders: channelHeaders)
     }
 
     func send() {
@@ -28,8 +27,11 @@ class GetPageOffersByMerchantIDRequest: DataResponseAPICall<PageOffer> {
                                                              xVioletAppId: channelHeaders.appID,
                                                              merchantId: merchantId,
                                                              page: page,
-                                                             size: size) { data, error in
+                                                             size: size) { [weak self] data, error in
+            guard let self = self else {return}
+            self.logError(error)
             self.callIsCompleted(errorResponse: error, dataResponse: data)
         }
     }
+    
 }

@@ -105,6 +105,7 @@
 		E7B41C7F29F9865500E7371B /* APICallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C7E29F9865500E7371B /* APICallService.swift */; };
 		E7B41C8129F9B05500E7371B /* CurrentAuthTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C8029F9B05500E7371B /* CurrentAuthTokenView.swift */; };
 		E7B41C8329F9CCB200E7371B /* ChannelHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C8229F9CCB200E7371B /* ChannelHeaders.swift */; };
+		E7B41C8529FAC5E300E7371B /* ChannelHeadersAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C8429FAC5E300E7371B /* ChannelHeadersAPICall.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,6 +220,7 @@
 		E7B41C7E29F9865500E7371B /* APICallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallService.swift; sourceTree = "<group>"; };
 		E7B41C8029F9B05500E7371B /* CurrentAuthTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAuthTokenView.swift; sourceTree = "<group>"; };
 		E7B41C8229F9CCB200E7371B /* ChannelHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelHeaders.swift; sourceTree = "<group>"; };
+		E7B41C8429FAC5E300E7371B /* ChannelHeadersAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelHeadersAPICall.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,6 +439,7 @@
 			children = (
 				E71CFB8C29C26CE200598B15 /* BaseAPICall.swift */,
 				E71CFB9929CCCD7100598B15 /* DataResponseAPICall.swift */,
+				E7B41C8429FAC5E300E7371B /* ChannelHeadersAPICall.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */,
+				E7B41C8529FAC5E300E7371B /* ChannelHeadersAPICall.swift in Sources */,
 				E72EFFE529D4C8BA009F7BFE /* OfferView.swift in Sources */,
 				E7B41C5129F5892E00E7371B /* AppIDAndSecret.swift in Sources */,
 				E7B41C5A29F58C6B00E7371B /* DemoUsernameAndPassword.swift in Sources */,

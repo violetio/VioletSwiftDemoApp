@@ -1565,6 +1565,7 @@ components:
             description: Variation Data
         Offer:
             required:
+                - id
                 - available
                 - merchant_id
                 - min_price
@@ -1777,6 +1778,7 @@ components:
             description: Product Variant
         Sku:
             required:
+                - id
                 - currency
                 - merchant_id
                 - offer_id

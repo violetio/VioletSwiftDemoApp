@@ -32,7 +32,7 @@ struct CartTabView: View {
     
     var cartItemsSections: some View {
         Section {
-            ForEach(offerItemSelections.offerItems) { offerItem in
+            ForEach(offerItemSelections.items) { offerItem in
                 OfferGridTile(offerItem: .constant(offerItem))
             }
         } header: {

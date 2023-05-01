@@ -16,7 +16,7 @@ struct OfferSkusView: View {
             if let offerSkus = offerSkus {
                 Text("Got \(offerSkus.count) Skus")
                 if let firstSku = offerSkus.first {
-                    Text("First Sku \(firstSku.offerId)")
+                    Text("First Sku \(String(reflecting: firstSku.id))")
                 }
 
             } else {

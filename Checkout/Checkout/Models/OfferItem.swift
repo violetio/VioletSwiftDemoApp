@@ -50,10 +50,7 @@ struct OfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
 extension OfferItem: EntityViewModel {
     typealias Entity = Offer
     static func fromEntity(entity: Entity) -> Self? {
-        guard let offer_id = entity.id else {
-            return nil
-        }
-        return OfferItem(offer_id: offer_id,
+        return OfferItem(offer_id: entity.id,
                          name: entity.name,
                          intPrice: IntPrice(price: entity.minPrice),
                          offerEntity: entity)

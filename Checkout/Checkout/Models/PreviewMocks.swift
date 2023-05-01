@@ -27,6 +27,6 @@ struct PreviewMocks {
     }
     
     static func Mock_OfferItemSelections() -> OfferItemSelections {
-        return OfferItemSelections(offerItems: [MockOfferItem()])
+        return OfferItemSelections(items: [MockOfferItem()])
     }
 }

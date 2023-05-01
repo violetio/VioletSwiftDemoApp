@@ -31,10 +31,7 @@ struct ShoppingOfferGridItem {
 extension ShoppingOfferGridItem: EntityViewModel {
     typealias Entity = Offer
     static func fromEntity(entity: Entity) -> Self? {
-        guard let offer_id = entity.id else {
-            return nil
-        }
-        return ShoppingOfferGridItem(offer_id: offer_id,
+        return ShoppingOfferGridItem(offer_id: entity.id,
                                      name: entity.name,
                                      price: entity.minPrice,
                                      firstAlbumMediaImageURL: entity.firstAlbumMediaImageURL(),

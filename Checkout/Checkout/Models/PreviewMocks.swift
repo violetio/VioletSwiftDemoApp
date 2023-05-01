@@ -21,11 +21,7 @@ struct PreviewMocks {
         }
         return OfferItem.fromEntity(entity: mockOffer) ?? OfferItem.Empty()
     }
-    
-    static func Mock_OfferSelectionsState() -> OfferSelections {
-        return OfferSelections(offer_id: 12555)
-    }
-    
+        
     static func Mock_OfferItemSelections() -> OfferItemSelections {
         return OfferItemSelections(items: [MockOfferItem()])
     }

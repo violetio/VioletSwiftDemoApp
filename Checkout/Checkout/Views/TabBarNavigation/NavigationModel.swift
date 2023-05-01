@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class ShoppingNavigationModel {
+class ShoppingNavigationModel: ObservableObject {
     @Published var offerItemPath: [OfferItem]
     @Published var loadedOfferItems: [OfferItem]
     @Published var offerItemSelections: OfferItemSelections

@@ -46,6 +46,30 @@ class APICallService {
         }
     }
     
+    func sendGetOrderByID(channelHeaders: ChannelHeaders, orderId: Int64) {
+        let pending = PendingNoOverlap.getOrderById
+        guard !pendingNoOverlap.contains(pending) else {
+            Logger.debug("sendGetOrderByID Overlap Prevented")
+            return
+        }
+        
+        pendingNoOverlap.insert(pending)
+        let apiCall = APICall(apiCall: GetOrderByIDRequest(channelHeaders: channelHeaders, orderId: orderId))
+        var existingOrder: Order?
+        _ = pendingAPICalls.insert(apiCall)
+        apiCall.send { [weak self] data, error in
+            guard let self = self else { return }
+            if let returnedOrder = data {
+                existingOrder = returnedOrder
+            } else if let gotError = error {
+                Logger.error(gotError)
+            }
+            self.currentOrder = existingOrder
+            self.pendingAPICalls.remove(apiCall)
+            self.pendingNoOverlap.remove(pending)
+        }
+    }
+    
     func sendGetPageOffers(channelHeaders: ChannelHeaders, merchantId: Int64) {
         let pending = PendingNoOverlap.pageOffers
         guard !pendingNoOverlap.contains(pending) else {
@@ -166,5 +190,6 @@ class APICallService {
         case refreshToken
         case pageOffers
         case createCart
+        case getOrderById
     }
 }

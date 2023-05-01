@@ -13,8 +13,8 @@ class CachedEntity<T: Codable> {
     
     let filePath: FilePath
     
-    convenience init(appId: Int64) {
-        self.init(filePath: ChannelStore.ChannelIDStoredEntityFilePath(appId: appId, cacheFileName: .loginResponse))
+    convenience init(appId: Int64, cacheFileName: ChannelStore.CacheFileNames = .loginResponse) {
+        self.init(filePath: ChannelStore.ChannelIDStoredEntityFilePath(appId: appId, cacheFileName: cacheFileName))
     }
     
     init(filePath: FilePath) {

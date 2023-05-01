@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OffersGrid: View {
+struct OffersGridView: View {
     @Binding var loadedOfferItems: [OfferItem]
     
     let layout = [
@@ -33,6 +33,6 @@ struct OffersGrid: View {
 
 struct OffersGrid_Previews: PreviewProvider {
     static var previews: some View {
-        OffersGrid(loadedOfferItems: .constant(PreviewMocks.MockOfferItemsArray()))
+        OffersGridView(loadedOfferItems: .constant(PreviewMocks.MockOfferItemsArray()))
     }
 }

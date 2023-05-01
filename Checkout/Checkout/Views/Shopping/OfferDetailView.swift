@@ -8,7 +8,7 @@
 import SwiftUI
 import VioletPublicClientAPI
 
-struct OfferDetail: View {
+struct OfferDetailView: View {
     @Binding var offerItem: OfferItem
     @Binding var offerItemSelections: OfferItemSelections
     @ObservedObject var dataStore: DataStore = DataStore.shared
@@ -16,16 +16,16 @@ struct OfferDetail: View {
     func buttonAction() {
         offerItemSelections.insert(offerItem)
         Logger.info("offerItemSelections: \(offerItemSelections.description)")
-        var orderSkus: [OrderSku] = []
-        if let firstSku = offerItem.firstSku() {
-            orderSkus.append(OrderSku(skuId: firstSku.id))
-            
-        }
-        if let channelHeaders = dataStore.channelHeaders {
-            Logger.debug("OfferDetail -> buttonAction")
-            Logger.debug("orderSkus \(orderSkus.description)")
-            dataStore.apiCallService.sendCreateCart(channelHeaders: channelHeaders, orderSkus: orderSkus)
-        }
+//        var orderSkus: [OrderSku] = []
+//        if let firstSku = offerItem.firstSku() {
+//            orderSkus.append(OrderSku(skuId: firstSku.id))
+//            
+//        }
+//        if let channelHeaders = dataStore.channelHeaders {
+//            Logger.debug("OfferDetail -> buttonAction")
+//            Logger.debug("orderSkus \(orderSkus.description)")
+//            dataStore.apiCallService.sendCreateCart(channelHeaders: channelHeaders, orderSkus: orderSkus)
+//        }
         
     }
     
@@ -92,6 +92,6 @@ struct OfferDetail: View {
 
 struct OfferDetail_Previews: PreviewProvider {
     static var previews: some View {
-        OfferDetail(offerItem: .constant(PreviewMocks.MockOfferItem()), offerItemSelections: .constant(OfferItemSelections()))
+        OfferDetailView(offerItem: .constant(PreviewMocks.MockOfferItem()), offerItemSelections: .constant(OfferItemSelections()))
     }
 }

@@ -23,11 +23,29 @@ struct CartTabView: View {
     var tab: Tab = .cart
     
     func doCreateCart() {
-        if let channelHeaders = dataStore.channelHeaders {
-            Logger.debug("CartTabView -> sendCreateCart")
-            let orderSkus: [OrderSku] = []
-            dataStore.apiCallService.sendCreateCart(channelHeaders: channelHeaders, orderSkus: orderSkus)
+        if dataStore.currentOrder != nil {
+            Logger.info("Already have a Cart with ID:")
+        } else {
+            let orderSkus = offerItemSelections.items.compactMap { $0.firstSku() }.map { OrderSku(skuId: $0.id) }
+            if let channelHeaders = dataStore.channelHeaders {
+                Logger.debug("CartTabView -> sendCreateCart")
+                let orderSkus: [OrderSku] = []
+                dataStore.apiCallService.sendCreateCart(channelHeaders: channelHeaders, orderSkus: orderSkus)
+            }
         }
+    }
+    
+    func doRefetchOrderById() {
+        Logger.info("Starting: doRefetchOrderById")
+        if let channelHeaders = dataStore.channelHeaders,
+           let pendingOrderId = dataStore.currentPendingOrder?.orderId{
+            Logger.debug("CartTabView -> doRefetchOrderById")
+            dataStore.apiCallService.sendGetOrderByID(channelHeaders: channelHeaders, orderId: pendingOrderId)
+        }
+    }
+    
+    func doCartPaymentPostRequest() {
+        Logger.info("Starting: doCartPaymentPostRequest")
     }
     
     var cartItemsSections: some View {
@@ -43,7 +61,15 @@ struct CartTabView: View {
     var checkoutSection: some View {
         Section {
             //Text("Checkout Steps")
-            if dataStore.currentOrder == nil {
+            if let currentPendingOrder = dataStore.currentPendingOrder {
+                Text("Current Order ID: \(currentPendingOrder.orderIdDescription())")
+                Button("Refetch Order By ID") {
+                    doRefetchOrderById()
+                }
+                Button("CartPaymentPostRequest") {
+                    doCartPaymentPostRequest()
+                }
+            } else {
                 Button("Create Cart") {
                     doCreateCart()
                 }

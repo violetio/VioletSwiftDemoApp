@@ -22,7 +22,7 @@ struct ShoppingTabView: View {
     var body: some View {
         NavigationStack(path: $shoppingNavigationModel.offerItemPath) {
 //            Text("Loaded Offer Items Count: \(dataStore.loadedOfferItems.count)")
-            OffersGrid(loadedOfferItems: $dataStore.loadedOfferItems)
+            OffersGridView(loadedOfferItems: $dataStore.loadedOfferItems)
         }
         .navigationBarTitle("Offer Grid")
         .toolbar {
@@ -31,7 +31,7 @@ struct ShoppingTabView: View {
             }
         }
         .navigationDestination(for: OfferItem.self) { offerItem in
-            OfferDetail(offerItem: .constant(offerItem), offerItemSelections: $shoppingNavigationModel.offerItemSelections)
+            OfferDetailView(offerItem: .constant(offerItem), offerItemSelections: $shoppingNavigationModel.offerItemSelections)
         }
         .onAppear() {
             refreshPageOffers()

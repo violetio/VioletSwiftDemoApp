@@ -108,6 +108,7 @@
 		E7B41C8529FAC5E300E7371B /* ChannelHeadersAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C8429FAC5E300E7371B /* ChannelHeadersAPICall.swift */; };
 		E7B41C872A002CFF00E7371B /* OfferSkusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C862A002CFF00E7371B /* OfferSkusView.swift */; };
 		E7B41C892A00497F00E7371B /* IdentifiableItemSelections.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C882A00497F00E7371B /* IdentifiableItemSelections.swift */; };
+		E7B41C8B2A0050C900E7371B /* Error+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C8A2A0050C900E7371B /* Error+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,7 @@
 		E7B41C8429FAC5E300E7371B /* ChannelHeadersAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelHeadersAPICall.swift; sourceTree = "<group>"; };
 		E7B41C862A002CFF00E7371B /* OfferSkusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkusView.swift; sourceTree = "<group>"; };
 		E7B41C882A00497F00E7371B /* IdentifiableItemSelections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableItemSelections.swift; sourceTree = "<group>"; };
+		E7B41C8A2A0050C900E7371B /* Error+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +373,7 @@
 				E72E001729F1BA61009F7BFE /* PriceViewModel.swift */,
 				E72E001929F1C009009F7BFE /* IntPrice.swift */,
 				E7B41C6929F71EEC00E7371B /* OfferItem.swift */,
+				E7B41C8A2A0050C900E7371B /* Error+Extensions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				E7B41C7B29F9706000E7371B /* LoginPostView.swift in Sources */,
 				E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */,
 				E71CFBA229CE0C1E00598B15 /* GetCartByIDRequest.swift in Sources */,
+				E7B41C8B2A0050C900E7371B /* Error+Extensions.swift in Sources */,
 				E7B41C5429F589CA00E7371B /* DemoAppIdAndSecret.swift in Sources */,
 				E72EFFE129D4C858009F7BFE /* CheckoutNavigationView.swift in Sources */,
 				E7B41C6C29F72C0B00E7371B /* OfferGridTile.swift in Sources */,

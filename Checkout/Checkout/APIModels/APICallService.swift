@@ -71,6 +71,7 @@ class APICallService {
                 newPageOffers = returnedPageOffer
             } else if let gotError = error {
                 Logger.error(gotError)
+                Logger.error("Is 401? \(gotError.isErrorResponse_401())")
             }
             self.lastPageOffer = newPageOffers
             self.pendingAPICalls.remove(apiCall)

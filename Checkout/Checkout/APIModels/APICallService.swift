@@ -15,6 +15,7 @@ class APICallService {
     @Published var lastPageOffer: PageOffer? = nil
     @Published var lastRefreshTokenResponse: RefreshTokenResponse? = nil
     @Published var currentOrder: Order? = nil
+    @Published var expiredToken: Bool = false
     private var pendingAPICalls = Set<AnyHashable>()
     private var pendingNoOverlap = Set<PendingNoOverlap>()
     
@@ -35,6 +36,7 @@ class APICallService {
             guard let self = self else { return }
             if let loginResponse = data {
                 newLoginResponse = loginResponse
+                self.expiredToken = false
             } else if let gotError = error {
                 Logger.error(gotError)
             }
@@ -42,16 +44,6 @@ class APICallService {
             self.pendingAPICalls.remove(apiCall)
             self.pendingNoOverlap.remove(pending)
         }
-    }
-    
-    func sendCreateCart(channelHeaders: ChannelHeaders, skus: [OrderSku]? = nil) {
-        let pending = PendingNoOverlap.createCart
-        guard !pendingNoOverlap.contains(pending) else {
-            Logger.debug("sendGetPageOffers Overlap Prevented")
-            return
-        }
-        
-        pendingNoOverlap.insert(pending)
     }
     
     func sendGetPageOffers(channelHeaders: ChannelHeaders, merchantId: Int64) {
@@ -71,7 +63,11 @@ class APICallService {
                 newPageOffers = returnedPageOffer
             } else if let gotError = error {
                 Logger.error(gotError)
-                Logger.error("Is 401? \(gotError.isErrorResponse_401())")
+                if gotError.isErrorResponse_401() {
+                    self.expiredToken = true
+                } else {
+                    Logger.error("Error Code? \(String(describing: gotError.errorResponse_HttpCode()))")
+                }
             }
             self.lastPageOffer = newPageOffers
             self.pendingAPICalls.remove(apiCall)
@@ -95,6 +91,7 @@ class APICallService {
             guard let self = self else { return }
             if let returnedRefreshTokenResponse = data {
                 newRefreshTokenResponse = returnedRefreshTokenResponse
+                self.expiredToken = false
             } else if let gotError = error {
                 Logger.error(gotError)
             }

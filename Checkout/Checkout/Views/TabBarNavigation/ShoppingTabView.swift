@@ -21,6 +21,7 @@ struct ShoppingTabView: View {
     }
     var body: some View {
         NavigationStack(path: $shoppingNavigationModel.offerItemPath) {
+//            Text("Loaded Offer Items Count: \(dataStore.loadedOfferItems.count)")
             OffersGrid(loadedOfferItems: $dataStore.loadedOfferItems)
         }
         .navigationBarTitle("Offer Grid")
@@ -42,8 +43,8 @@ struct ShoppingTabView: View {
 struct ShoppingTabView_Previews: PreviewProvider {
     
     static var mockOfferItems: [OfferItem] {
-        return []
-        //return PreviewMocks.MockOfferItemsArray()
+        //return []
+        return PreviewMocks.MockOfferItemsArray()
     }
     static var previews: some View {
         ShoppingTabView(shoppingNavigationModel: .constant(ShoppingNavigationModel(offerItemPath: [], loadedOfferItems: mockOfferItems)))

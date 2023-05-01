@@ -41,6 +41,7 @@ class ChannelStore {
         if createDir {
             self.createDirectory()
         }
+        Logger.debug("ChannelStore Directory: \(channelIDStoreDirectory.directoryPath)")
     }
     
     func reloadCacheEntities() {

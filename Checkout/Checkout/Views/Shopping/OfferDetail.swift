@@ -6,14 +6,27 @@
 //
 
 import SwiftUI
+import VioletPublicClientAPI
 
 struct OfferDetail: View {
     @Binding var offerItem: OfferItem
     @Binding var offerItemSelections: OfferItemSelections
+    @ObservedObject var dataStore: DataStore = DataStore.shared
     
     func buttonAction() {
         offerItemSelections.insert(offerItem)
         Logger.info("offerItemSelections: \(offerItemSelections.description)")
+        var orderSkus: [OrderSku] = []
+        if let firstSku = offerItem.firstSku() {
+            orderSkus.append(OrderSku(skuId: firstSku.id))
+            
+        }
+        if let channelHeaders = dataStore.channelHeaders {
+            Logger.debug("OfferDetail -> buttonAction")
+            Logger.debug("orderSkus \(orderSkus.description)")
+            dataStore.apiCallService.sendCreateCart(channelHeaders: channelHeaders, orderSkus: orderSkus)
+        }
+        
     }
     
     var productDetailsView: some View {

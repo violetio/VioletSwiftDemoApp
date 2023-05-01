@@ -51,6 +51,17 @@ class DataStore: ObservableObject {
             if let offersContent = returnedValue?.content {
                 weakSelf.loadedOfferItems = OfferItem.fromEntities(entities: offersContent)
                 Logger.info("DataStore - Receive OfferItems = Count: \(weakSelf.loadedOfferItems.count)")
+            } else {
+                /*
+                if weakSelf.apiCallService.expiredToken == true {
+                    Logger.info("DataStore - Expired Token")
+                    if let refreshToken = weakSelf.currentAuthToken?.refreshToken {
+                        Logger.info("DataStore - Auto Refresh Token")
+                        weakSelf.apiCallService.sendRefreshToken(appIDAndSecret: weakSelf.activeAppIDAndSecret!, refreshToken: refreshToken)
+                    }
+                
+                }
+                 */
             }
         }.store(in: &cancellables)
         
@@ -68,7 +79,7 @@ class DataStore: ObservableObject {
         apiCallService.$currentOrder.sink { [weak self] returnedValue in
             guard let self = self else { return }
             self.currentOrder = returnedValue
-            Logger.debug("Replacing currentOrder")
+            Logger.debug("Replacing currentOrder: \(returnedValue?.id)")
         }.store(in: &cancellables)
 
     }

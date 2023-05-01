@@ -50,7 +50,7 @@ struct OfferDetail: View {
                             Color.purple
                         }
                         
-                    }
+                    }.frame(maxHeight: 300)
                 } else {
                     offerItem.thumbnailImage
                         .frame(minWidth:100, minHeight: 50)
@@ -60,7 +60,8 @@ struct OfferDetail: View {
                 productDetailsView
 
             }.padding([.leading, .trailing], 40)
-            
+                OfferSkusView(offerSkus: .constant( offerItem.skus()))
+            Spacer()
             Button {
                 buttonAction()
             } label: {

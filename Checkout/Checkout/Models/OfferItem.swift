@@ -37,6 +37,14 @@ struct OfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
     func firstAlbumMediaImageURL() -> URL? {
         return offerEntity?.firstAlbumMediaImageURL()
     }
+    
+    func firstSku() -> Sku? {
+        return offerEntity?.skus?.first
+    }
+    
+    func skus() -> [Sku] {
+        return offerEntity?.skus?.compactMap{ $0 } ?? []
+    }
 }
 
 extension OfferItem: EntityViewModel {

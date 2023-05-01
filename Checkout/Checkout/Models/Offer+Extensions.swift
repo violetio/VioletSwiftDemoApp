@@ -29,3 +29,7 @@ public extension Offer {
         return self.albums?.first
     }
 }
+
+extension Sku: Identifiable {
+    //No override needed because an `id` already exists on Sku
+}

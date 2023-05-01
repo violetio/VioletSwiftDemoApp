@@ -14,8 +14,7 @@ class APICallService {
     @Published var currentLoginResponse: LoginResponse? = nil
     @Published var lastPageOffer: PageOffer? = nil
     @Published var lastRefreshTokenResponse: RefreshTokenResponse? = nil
-    private var cancellables = Set<AnyCancellable>()
-    private var pendingPageOffersRequest2: Any?
+    @Published var currentOrder: Order? = nil
     private var pendingAPICalls = Set<AnyHashable>()
     private var pendingNoOverlap = Set<PendingNoOverlap>()
     
@@ -102,7 +101,38 @@ class APICallService {
             self.pendingAPICalls.remove(apiCall)
             self.pendingNoOverlap.remove(pending)
         }
+    }
+    
+    func sendCreateCart(channelHeaders: ChannelHeaders, orderSkus: [OrderSku] = []) {
+        Logger.debug("sendCreateCart")
+        let pending = PendingNoOverlap.createCart
+        guard !pendingNoOverlap.contains(pending) else {
+            Logger.debug("sendCreateCart Overlap Prevented")
+            return
+        }
         
+        pendingNoOverlap.insert(pending)
+        let body = CartInitializationRequest(baseCurrency: "USD",
+                                             skus: orderSkus,
+                                             referralId: nil,
+                                             appOrderId: nil,
+                                             customer: nil,
+                                             walletBasedCheckout: false)
+        let apiCall = APICall(apiCall: CheckoutCartPostRequest(channelHeaders: channelHeaders,
+                                                               cartInitializationRequest: body))
+        var newCart: Order?
+        _ = pendingAPICalls.insert(apiCall)
+        apiCall.send { [weak self] data, error in
+            guard let self = self else { return }
+            if let returnedOrder = data {
+                newCart = returnedOrder
+            } else if let gotError = error {
+                Logger.error(gotError)
+            }
+            self.currentOrder = newCart
+            self.pendingAPICalls.remove(apiCall)
+            self.pendingNoOverlap.remove(pending)
+        }
         
     }
     

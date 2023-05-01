@@ -235,7 +235,7 @@ final class APIModelsTests: APIXCTestCase {
             refreshToken = loginPostRequest.refreshToken!
         }
 
-        let authTokenGet = AuthTokenGet(appCreds: appCreds, refreshToken: refreshToken)
+        let authTokenGet = AuthTokenGet(appIDAndSecret: appCreds, refreshToken: refreshToken)
         let expectation = XCTestExpectation(description: "CallCompleted True")
 //
         let streamHandle: AnyCancellable? = authTokenGet.$callCompleted

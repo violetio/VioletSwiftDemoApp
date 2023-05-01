@@ -19,6 +19,7 @@ class DataStore: ObservableObject {
     @Published var currentAuthToken: CurrentAuthToken?
     @Published var channelHeaders: ChannelHeaders?
     @Published var loadedOfferItems: [OfferItem] = []
+    @Published var currentOrder: Order?
     
     let apiCallService = APICallService()
     var cancellables = Set<AnyCancellable>()
@@ -62,6 +63,12 @@ class DataStore: ObservableObject {
                     self.currentAuthToken = current.replaceAuthToken(authToken: newAuthToken)
             }
 
+        }.store(in: &cancellables)
+        
+        apiCallService.$currentOrder.sink { [weak self] returnedValue in
+            guard let self = self else { return }
+            self.currentOrder = returnedValue
+            Logger.debug("Replacing currentOrder")
         }.store(in: &cancellables)
 
     }

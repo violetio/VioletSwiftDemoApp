@@ -7,6 +7,7 @@
 
 import Combine
 import SwiftUI
+import VioletPublicClientAPI
 
 class OfferSelections: ObservableObject, CustomStringConvertible {
     
@@ -27,7 +28,7 @@ class OfferSelections: ObservableObject, CustomStringConvertible {
     func insert(_ newMember: OfferIDType) {
         self.offer_ids.insert(newMember)
         didChange.send()
-        
+
     }
     
     func contains(_ offer_id: OfferIDType) -> Bool {
@@ -36,5 +37,8 @@ class OfferSelections: ObservableObject, CustomStringConvertible {
     
     var description: String { return offer_ids.description }
     
-
+    func offerIdsList() -> [OfferIDType] {
+        return Array(offer_ids)
+    }
+    
 }

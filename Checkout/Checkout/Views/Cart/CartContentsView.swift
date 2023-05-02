@@ -7,13 +7,15 @@
 import SwiftUI
 
 struct CartContentsView: View {
-//    @EnvironmentObject var offerSelections: OfferSelections
     
     var body: some View {
-        Image(systemName: "globe")
-            .imageScale(.large)
-            .foregroundColor(.accentColor)
-        Text("CartContentsView")
+        let offerIdsList = [12555]
+        ScrollView {
+            ForEach(offerIdsList, id: \.self) { offer_id in
+                Text(String(offer_id))
+                CartItemView()
+            }
+        }.navigationTitle("Items In Cart: \(offerIdsList.count)")
     }
 }
 

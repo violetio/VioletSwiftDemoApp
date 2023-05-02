@@ -7,28 +7,34 @@
 
 import VioletPublicClientAPI
 
-class CheckoutCartCustomerPostRequest: DataResponseAPICall<Order> {
+class CheckoutCartCustomerPostRequest: ChannelHeadersAPICall<Order> {
 
-    let appCreds: AppCreds
-    let token: String
     let body: GuestOrderCustomer
     let cartId: Int64
     let priceCart: Bool
 
+    convenience init(appCreds: AppCreds, token: String, cartId: Int64, priceCart: Bool, guestOrderCustomer: GuestOrderCustomer) {
+        self.init(channelHeaders: appCreds.channelHeaders(token: token),
+                  cartId: cartId,
+                  priceCart: priceCart,
+                  guestOrderCustomer: guestOrderCustomer)
 
-    init(appCreds: AppCreds, token: String, cartId: Int64, priceCart: Bool, guestOrderCustomer: GuestOrderCustomer) {
-        self.appCreds = appCreds
-        self.token = token
+    }
+    
+    init(channelHeaders: ChannelHeaders, cartId: Int64, priceCart: Bool, guestOrderCustomer: GuestOrderCustomer) {
         self.cartId = cartId
         self.body = guestOrderCustomer
         self.priceCart = priceCart
+        super.init(channelHeaders: channelHeaders)
     }
 
-    func send() {
-        CheckoutCustomerAPI.checkoutCartCartIdCustomerPost(xVioletToken: token,
-                                         xVioletAppSecret: appCreds.apiSecret,
-                                         xVioletAppId: appCreds.appID,
-                                         cartId: cartId, priceCart: priceCart, body: body) { [weak self] data, error in
+    override func send() {
+        CheckoutCustomerAPI.checkoutCartCartIdCustomerPost(xVioletToken: channelHeaders.token,
+                                                           xVioletAppSecret: channelHeaders.apiSecret,
+                                                           xVioletAppId: channelHeaders.appID,
+                                                           cartId: cartId,
+                                                           priceCart: priceCart,
+                                                           body: body) { [weak self] data, error in
 
             guard let weakSelf = self else { return }
             weakSelf.callIsCompleted(errorResponse: error, dataResponse: data)

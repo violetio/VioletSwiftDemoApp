@@ -43,6 +43,16 @@ public class Logger {
         log(message,logLevel: .error)
     }
     
+    public static func error(_ error: Error?) {
+        if let anError = error {
+            log(anError.localizedDescription, logLevel: .error)
+        }
+    }
+    
+    public static func error(_ error: Error) {
+        log(error.localizedDescription, logLevel: .error)
+    }
+    
     public static func debug(_ message: String) {
         log(message,logLevel: .debug)
     }

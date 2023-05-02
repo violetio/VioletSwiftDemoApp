@@ -68,7 +68,7 @@ struct OfferView: View {
 struct OfferView_Previews: PreviewProvider {
     struct Preview: View
     {
-        let offer = Offer(productId: "01001", name: "Offer Name", source: .shopify, merchantId: 42, minPrice: 0199)
+        let offer = Offer(id: 1, productId: "01001", name: "Offer Name", source: .shopify, merchantId: 42, minPrice: 0199)
         
         
         let offer12555 = MockOffers.load_Offer_12555()

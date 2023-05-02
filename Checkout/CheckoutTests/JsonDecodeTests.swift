@@ -21,6 +21,12 @@ final class JsonDecodeTests: TestBundleFileTestCase {
         testFile_bag_id_43113 = testBundle.url(forResource: "bag_id_43113", withExtension: "json")
         testFile_shipping_methods_get_bag_id_43402 = testBundle.url(forResource: "shipping_methods_get_bag_id_43402", withExtension: "json")
     }
+    
+    
+    func test_Offer_OrderSku() {
+        let anOffer = MockOffers.load_Offer_12555()
+        anOffer?.skus?.count
+    }
 
     func test_Bag_43113() throws {
         let data: Data! = try! Data(contentsOf: testFile_bag_id_43113)
@@ -29,7 +35,7 @@ final class JsonDecodeTests: TestBundleFileTestCase {
         case .failure(let error):
             XCTFail("Did not Decode bag_43113 \(error)")
         case .success(let bag):
-            Logger.info("bag.id: \(bag.id)")
+            Logger.info("bag.id: \(String(bag.id ?? 0))")
             XCTAssertNotNil(bag)
         }
         
@@ -65,4 +71,5 @@ final class JsonDecodeTests: TestBundleFileTestCase {
         }
         
     }
+    
 }

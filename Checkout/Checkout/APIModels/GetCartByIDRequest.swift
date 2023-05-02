@@ -8,28 +8,24 @@
 import Foundation
 import VioletPublicClientAPI
 
-class GetCartByIDRequest: DataResponseAPICall<Order> {
-
-    let appCreds: AppCreds
-    let token: String
+class GetCartByIDRequest: ChannelHeadersAPICall<Order> {
     let orderId: Int64
 
-    init(appCreds: AppCreds, token: String, orderId: Int64) {
-        self.appCreds = appCreds
-        self.token = token
-        self.orderId = orderId
+    convenience init(appCreds: AppCreds, token: String, orderId: Int64) {
+        self.init(channelHeaders: appCreds.channelHeaders(token: token), orderId: orderId)
     }
 
-    func send() {
-        CheckoutCartAPI.checkoutCartCartIdGet(xVioletToken: token,
-                                                 xVioletAppSecret: appCreds.apiSecret,
-                                                 xVioletAppId: appCreds.appID,
-                                                 cartId: orderId) { data, error in
-            if let printData = data {
-//                Logger.info(printData.description ?? "")
-            } else if let printError = error {
-                Logger.error(printError.localizedDescription)
-            }
+    init(channelHeaders: ChannelHeaders, orderId: Int64) {
+        self.orderId = orderId
+        super.init(channelHeaders: channelHeaders)
+    }
+
+    override func send() {
+        CheckoutCartAPI.checkoutCartCartIdGet(xVioletToken: channelHeaders.token,
+                                              xVioletAppSecret: channelHeaders.apiSecret,
+                                              xVioletAppId: channelHeaders.appID,
+                                              cartId: orderId)
+        { data, error in
             self.callIsCompleted(errorResponse: error, dataResponse: data)
         }
     }

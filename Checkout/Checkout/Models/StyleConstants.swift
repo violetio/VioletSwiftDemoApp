@@ -22,6 +22,14 @@ struct StyleConstants {
         static let CornerRadius: CGFloat = 9
     }
     
+    struct OfferGridLayoutConstants {
+        static let imageMaxWidth: CGFloat = 80
+        static let imageMaxHeight: CGFloat = 80
+        static let itemMaxWidth: CGFloat = 100
+        static let itemMaxHeight: CGFloat = 120
+        static let aspectRatio: CGSize = CGSize(width: 80, height: 80)
+    }
+    
 }
 
 struct BlackBorder: ViewModifier {

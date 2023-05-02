@@ -1,0 +1,23 @@
+//
+//  OrderShippingMethodWrapperView.swift
+//  Checkout
+//
+//  Created by Alan Morford on 5/2/23.
+//
+
+import SwiftUI
+import VioletPublicClientAPI
+
+struct OrderShippingMethodWrapperView: View {
+    
+    @Binding var orderShippingMethodWrapper: OrderShippingMethodWrapper?
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
+struct OrderShippingMethodWrapperView_Previews: PreviewProvider {
+    static var previews: some View {
+        OrderShippingMethodWrapperView(orderShippingMethodWrapper: .constant(nil))
+    }
+}

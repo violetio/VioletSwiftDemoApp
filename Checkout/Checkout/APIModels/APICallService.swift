@@ -158,6 +158,33 @@ class APICallService {
         
     }
     
+    func sendCartCustomer(channelHeaders: ChannelHeaders, orderId: Int64, customer: GuestOrderCustomer) {
+        let pending = PendingNoOverlap.cartCustomer
+        guard !pendingNoOverlap.contains(pending) else {
+            Logger.debug("sendCartCustomer Overlap Prevented")
+            return
+        }
+        
+        pendingNoOverlap.insert(pending)
+        let apiCall = APICall(apiCall: CheckoutCartCustomerPostRequest(channelHeaders: channelHeaders,
+                                                                       cartId: orderId,
+                                                                       priceCart: false,
+                                                                       guestOrderCustomer: customer))
+        var existingOrder: Order?
+        _ = pendingAPICalls.insert(apiCall)
+        apiCall.send { [weak self] data, error in
+            guard let self = self else { return }
+            if let returnedOrder = data {
+                existingOrder = returnedOrder
+            } else if let gotError = error {
+                Logger.error(gotError)
+            }
+            self.currentOrder = existingOrder
+            self.pendingAPICalls.remove(apiCall)
+            self.pendingNoOverlap.remove(pending)
+        }
+    }
+    
     static var CallCounter: Int = 0
     static func NextCallCount() -> Int {
         CallCounter += 1
@@ -191,5 +218,6 @@ class APICallService {
         case pageOffers
         case createCart
         case getOrderById
+        case cartCustomer
     }
 }

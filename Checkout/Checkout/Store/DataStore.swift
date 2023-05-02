@@ -81,7 +81,7 @@ class DataStore: ObservableObject {
             self.currentOrder = returnedValue
             if let foundOrderResponse = returnedValue,
                let orderId = foundOrderResponse.id {
-                let newPendingOrder = PendingOrder(orderId: orderId)
+                let newPendingOrder = PendingOrder.fromOrder(foundOrderResponse)
                 self.currentPendingOrder = newPendingOrder
                 Logger.debug("Caching new Order ID: \(foundOrderResponse.id!)")
                 try? self.loadedChannelStore?.cachedOrder.set(foundOrderResponse)
@@ -142,7 +142,7 @@ class DataStore: ObservableObject {
             Logger.debug("DataStore.loadChannelStore restored Order ID: \(cachedOrder.id!)")
             self.currentOrder = cachedOrder
             if let orderId = cachedOrder.id {
-                let newPendingOrder = PendingOrder(orderId: orderId)
+                let newPendingOrder = PendingOrder.fromOrder(cachedOrder)
                 self.currentPendingOrder = newPendingOrder
             }
         }

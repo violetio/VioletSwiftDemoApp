@@ -11,6 +11,7 @@ import VioletPublicClientAPI
 enum CartListSections: Int, CaseIterable, Identifiable {
     case OfferItems
     case Checkout
+    case Customer
     
     var id: Int { rawValue }
 }
@@ -29,7 +30,6 @@ struct CartTabView: View {
             let orderSkus = offerItemSelections.items.compactMap { $0.firstSku() }.map { OrderSku(skuId: $0.id) }
             if let channelHeaders = dataStore.channelHeaders {
                 Logger.debug("CartTabView -> sendCreateCart")
-                let orderSkus: [OrderSku] = []
                 dataStore.apiCallService.sendCreateCart(channelHeaders: channelHeaders, orderSkus: orderSkus)
             }
         }
@@ -44,17 +44,41 @@ struct CartTabView: View {
         }
     }
     
-    func doCartPaymentPostRequest() {
-        Logger.info("Starting: doCartPaymentPostRequest")
+    func createOrderAddress() -> OrderAddress {
+        return OrderAddress(city: "Brooklyn", state: "NY", country: "US", postalCode: "11206", type: .shipping, address1: "999 Meserole Street")
+    }
+    func createGuestOrderCustomer() -> GuestOrderCustomer {
+        return GuestOrderCustomer(firstName: "Ishan",
+                                  lastName: "Wallet Checkout Tests",
+                                  email: "ishan.guru+test_order@violet.io", shippingAddress: createOrderAddress(), billingAddress: nil, sameAddress: true)
+        
     }
     
-    var cartItemsSections: some View {
+    func doAddCartGuestCustomer() {
+        Logger.info("Starting: doCartPaymentPostRequest")
+        if let channelHeaders = dataStore.channelHeaders,
+           let pendingOrderId = dataStore.currentPendingOrder?.orderId{
+            Logger.debug("CartTabView -> doCartPaymentPostRequest")
+            dataStore.apiCallService.sendCartCustomer(channelHeaders: channelHeaders, orderId: pendingOrderId, customer: createGuestOrderCustomer())
+        }
+    }
+    
+    var cartItemsSection: some View {
         Section {
             ForEach(offerItemSelections.items) { offerItem in
                 OfferGridTile(offerItem: .constant(offerItem))
             }
         } header: {
             Text("Cart Items")
+        }
+    }
+    
+    var customerSection: some View {
+        Section {
+            Text("Customer Section")
+            Text("Customer User ID: \(String(reflecting: dataStore.currentPendingOrder?.customerUserId))")
+        } header: {
+            Text("Customer")
         }
     }
     
@@ -66,8 +90,8 @@ struct CartTabView: View {
                 Button("Refetch Order By ID") {
                     doRefetchOrderById()
                 }
-                Button("CartPaymentPostRequest") {
-                    doCartPaymentPostRequest()
+                Button("Add Guest Order Customer") {
+                    doAddCartGuestCustomer()
                 }
             } else {
                 Button("Create Cart") {
@@ -83,9 +107,11 @@ struct CartTabView: View {
         List(CartListSections.allCases) { nextSection in
             switch nextSection {
             case .OfferItems:
-                cartItemsSections
+                cartItemsSection
             case .Checkout:
                 checkoutSection
+            case .Customer:
+                customerSection
             }
             
         }

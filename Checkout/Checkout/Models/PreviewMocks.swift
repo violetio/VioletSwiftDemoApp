@@ -5,6 +5,8 @@
 //  Created by Alan Morford on 4/19/23.
 //
 
+import VioletPublicClientAPI
+
 struct PreviewMocks {
     
     static func MockOfferItemsArray() -> [OfferItem] {
@@ -24,5 +26,15 @@ struct PreviewMocks {
         
     static func Mock_OfferItemSelections() -> OfferItemSelections {
         return OfferItemSelections(items: [MockOfferItem()])
+    }
+    
+    static func orderShippingMethodWrapperArray() -> OrderShippingMethodWrapperArray {
+        return [OrderShippingMethodWrapper(bagId: nil,
+                                           shippingMethods: orderShippingMethods())]
+    }
+    
+    static func orderShippingMethods() -> [OrderShippingMethod] {
+        return [OrderShippingMethod(price: 500, shippingMethodId: "ground" , bagId: 1),
+                OrderShippingMethod(price: 1500, shippingMethodId: "express" , bagId: 1)]
     }
 }

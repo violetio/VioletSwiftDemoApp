@@ -10,12 +10,15 @@ import Foundation
 import SwiftUI
 import VioletPublicClientAPI
 
+typealias OrderShippingMethodWrapperArray = [OrderShippingMethodWrapper]
+
 class APICallService {
     @Published var currentLoginResponse: LoginResponse? = nil
     @Published var lastPageOffer: PageOffer? = nil
     @Published var lastRefreshTokenResponse: RefreshTokenResponse? = nil
     @Published var currentOrder: Order? = nil
     @Published var expiredToken: Bool = false
+    @Published var lastShippingMethodsWrappers: OrderShippingMethodWrapperArray? = nil
     private var pendingAPICalls = Set<AnyHashable>()
     private var pendingNoOverlap = Set<PendingNoOverlap>()
     
@@ -185,6 +188,32 @@ class APICallService {
         }
     }
     
+    func sendGetShippingMethods(channelHeaders: ChannelHeaders, orderId: Int64) {
+        let pending = PendingNoOverlap.getShippingMethods
+        guard !pendingNoOverlap.contains(pending) else {
+            Logger.debug("sendCartCustomer Overlap Prevented")
+            return
+        }
+        
+        pendingNoOverlap.insert(pending)
+        let apiCall = APICall(apiCall: CheckoutCartShippingAvailableGetRequest(channelHeaders: channelHeaders, orderId: orderId))
+        var shippingMethodsWrapper: OrderShippingMethodWrapperArray?
+        _ = pendingAPICalls.insert(apiCall)
+        apiCall.send { [weak self] data, error in
+            guard let self = self else { return }
+            if let returnedWrapper = data {
+                Logger.debug("Shipping Methods:")
+                Logger.debug("\(returnedWrapper.debugDescription)")
+                shippingMethodsWrapper = returnedWrapper
+            } else if let gotError = error {
+                Logger.error(gotError)
+            }
+            self.lastShippingMethodsWrappers = shippingMethodsWrapper
+            self.pendingAPICalls.remove(apiCall)
+            self.pendingNoOverlap.remove(pending)
+        }
+    }
+    
     static var CallCounter: Int = 0
     static func NextCallCount() -> Int {
         CallCounter += 1
@@ -219,5 +248,6 @@ class APICallService {
         case createCart
         case getOrderById
         case cartCustomer
+        case getShippingMethods
     }
 }

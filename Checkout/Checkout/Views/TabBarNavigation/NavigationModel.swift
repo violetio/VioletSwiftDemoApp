@@ -23,10 +23,11 @@ class ShoppingNavigationModel: ObservableObject {
 }
 
 final class NavigationModel: ObservableObject, Codable {
+    static var startingTab: Tab = .cart
     @Published var selectedTab: Tab
     @State var shoppingNavigationModel: ShoppingNavigationModel
     
-    init(selectedTab: Tab = .settings,
+    init(selectedTab: Tab = Tab.startingTab,
          offerItemPath: [OfferItem] = [],
          loadedOfferItems: [OfferItem] = []) {
         self.selectedTab = selectedTab

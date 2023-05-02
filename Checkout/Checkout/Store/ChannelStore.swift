@@ -28,12 +28,14 @@ class ChannelStore {
     enum CacheFileNames: String {
         case loginResponse = "loginResponse.json"
         case lastOrder = "lastOrder.json"
+        case shippingMethodWrappersArray = "shippingMethodWrappersArray.json"
     }
     
     let appId: Int64
     let channelIDStoreDirectory: FileDirectory
     var cachedLoginResponse: CachedEntity<LoginResponse>
     var cachedOrder: CachedEntity<Order>
+    var cachedShippingMethodWrapper: CachedEntity<OrderShippingMethodWrapperArray>
 
     init(appId: Int64, createDir: Bool = false) {
         self.appId = appId
@@ -41,6 +43,7 @@ class ChannelStore {
         self.channelIDStoreDirectory = channelIDStoreDirectory
         self.cachedLoginResponse = .init(appId: appId, cacheFileName: .loginResponse)
         self.cachedOrder = .init(appId: appId, cacheFileName: .lastOrder)
+        self.cachedShippingMethodWrapper = .init(appId: appId, cacheFileName: .shippingMethodWrappersArray)
         if createDir {
             self.createDirectory()
         }
@@ -50,6 +53,7 @@ class ChannelStore {
     func reloadCacheEntities() {
         self.cachedLoginResponse.reloadCachedEntity()
         self.cachedOrder.reloadCachedEntity()
+        self.cachedShippingMethodWrapper.reloadCachedEntity()
     }
     
     func pathExists() -> Bool {

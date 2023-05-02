@@ -20,6 +20,7 @@ class DataStore: ObservableObject {
     @Published var loadedOfferItems: [OfferItem] = []
     @Published var currentOrder: Order?
     @Published var currentPendingOrder: PendingOrder?
+    @Published var shippingMethodsWrapper: OrderShippingMethodWrapperArray?
     
     let apiCallService = APICallService()
     var cancellables = Set<AnyCancellable>()
@@ -88,6 +89,14 @@ class DataStore: ObservableObject {
             }
             Logger.debug("Replacing currentOrder: \(returnedValue?.id)")
         }.store(in: &self.cancellables)
+        
+        self.apiCallService.$lastShippingMethodsWrappers.sink { [weak self] returnedValue in
+            guard let self = self else { return }
+            if let foundShippingMethodsWrappers = returnedValue {
+                self.shippingMethodsWrapper = foundShippingMethodsWrappers
+                try? self.loadedChannelStore?.cachedShippingMethodWrapper.set(foundShippingMethodsWrappers)
+            }
+        }.store(in: &self.cancellables)
     }
     
     func doLogOut() {
@@ -141,10 +150,11 @@ class DataStore: ObservableObject {
         if let cachedOrder = newChannelStore.cachedOrder.cachedEntity {
             Logger.debug("DataStore.loadChannelStore restored Order ID: \(cachedOrder.id!)")
             self.currentOrder = cachedOrder
-            if let orderId = cachedOrder.id {
-                let newPendingOrder = PendingOrder.fromOrder(cachedOrder)
-                self.currentPendingOrder = newPendingOrder
-            }
+            self.currentPendingOrder = PendingOrder.fromOrder(cachedOrder)
+        }
+        if let cachedShippingMethodsWrappersArray = newChannelStore.cachedShippingMethodWrapper.cachedEntity {
+            Logger.debug("DataStore.loadChannelStore restored shippingMethodsWrapper")
+            self.shippingMethodsWrapper = cachedShippingMethodsWrappersArray
         }
         self.loadedChannelStore = newChannelStore
     }

@@ -12,6 +12,7 @@ enum CartListSections: Int, CaseIterable, Identifiable {
     case OfferItems
     case Checkout
     case Customer
+    case GetShippingMethods
     
     var id: Int { rawValue }
 }
@@ -75,8 +76,14 @@ struct CartTabView: View {
     
     var customerSection: some View {
         Section {
-            Text("Customer Section")
-            Text("Customer User ID: \(String(reflecting: dataStore.currentPendingOrder?.customerUserId))")
+            if let customerUserId = dataStore.currentPendingOrder?.customerUserId {
+                Text("Customer User ID: \(String(reflecting: customerUserId))")
+                Text("First Name: \(String(reflecting: dataStore.currentPendingOrder?.firstName))")
+            } else {
+                Button("Add Guest Order Customer") {
+                    doAddCartGuestCustomer()
+                }
+            }
         } header: {
             Text("Customer")
         }
@@ -90,9 +97,7 @@ struct CartTabView: View {
                 Button("Refetch Order By ID") {
                     doRefetchOrderById()
                 }
-                Button("Add Guest Order Customer") {
-                    doAddCartGuestCustomer()
-                }
+                
             } else {
                 Button("Create Cart") {
                     doCreateCart()
@@ -103,6 +108,7 @@ struct CartTabView: View {
             Text("Checkout")
         }
     }
+    
     var body: some View {
         List(CartListSections.allCases) { nextSection in
             switch nextSection {
@@ -112,6 +118,8 @@ struct CartTabView: View {
                 checkoutSection
             case .Customer:
                 customerSection
+            case .GetShippingMethods:
+                CartShippingMethodsSectionView()
             }
             
         }

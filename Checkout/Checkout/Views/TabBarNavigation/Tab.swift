@@ -11,6 +11,10 @@ enum Tab: String {
     case shopping
     case cart
     case settings
+    
+    static var startingTab: Tab {
+        return .cart
+    }
 }
 
 extension Tab: Codable {

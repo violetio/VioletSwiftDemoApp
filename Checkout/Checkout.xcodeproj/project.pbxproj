@@ -112,6 +112,9 @@
 		E7B41C8D2A00703800E7371B /* PendingOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C8C2A00703800E7371B /* PendingOrder.swift */; };
 		E7B41C8F2A00791800E7371B /* Order_ID_61241.json in Resources */ = {isa = PBXBuildFile; fileRef = E7B41C8E2A00791800E7371B /* Order_ID_61241.json */; };
 		E7B41C932A00888000E7371B /* Order+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C922A00888000E7371B /* Order+Extensions.swift */; };
+		E7B41C962A01643A00E7371B /* OrderShippingMethodWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C952A01643A00E7371B /* OrderShippingMethodWrapperView.swift */; };
+		E7B41C982A01649900E7371B /* OrderShippingMethodWrapperArrayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C972A01649900E7371B /* OrderShippingMethodWrapperArrayView.swift */; };
+		E7B41C9A2A0165CF00E7371B /* CartShippingMethodsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C992A0165CF00E7371B /* CartShippingMethodsSectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +236,9 @@
 		E7B41C8C2A00703800E7371B /* PendingOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOrder.swift; sourceTree = "<group>"; };
 		E7B41C8E2A00791800E7371B /* Order_ID_61241.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order_ID_61241.json; sourceTree = "<group>"; };
 		E7B41C922A00888000E7371B /* Order+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+Extensions.swift"; sourceTree = "<group>"; };
+		E7B41C952A01643A00E7371B /* OrderShippingMethodWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShippingMethodWrapperView.swift; sourceTree = "<group>"; };
+		E7B41C972A01649900E7371B /* OrderShippingMethodWrapperArrayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShippingMethodWrapperArrayView.swift; sourceTree = "<group>"; };
+		E7B41C992A0165CF00E7371B /* CartShippingMethodsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartShippingMethodsSectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,6 +357,7 @@
 		E70BEB9029B94D710030335E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E7B41C942A01641700E7371B /* EntityViews */,
 				E70BEB6829B92B200030335E /* ContentView.swift */,
 				E7B41C4129F3361F00E7371B /* Cart */,
 				E72EFFFF29EDF587009F7BFE /* TabBarNavigation */,
@@ -537,6 +544,7 @@
 			children = (
 				E7B41C4229F3361F00E7371B /* CartContentsView.swift */,
 				E7B41C4429F342D100E7371B /* CartItemView.swift */,
+				E7B41C992A0165CF00E7371B /* CartShippingMethodsSectionView.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -567,6 +575,15 @@
 				E7B41C7229F75AB600E7371B /* ChannelStoreTests.swift */,
 			);
 			path = StoreTests;
+			sourceTree = "<group>";
+		};
+		E7B41C942A01641700E7371B /* EntityViews */ = {
+			isa = PBXGroup;
+			children = (
+				E7B41C952A01643A00E7371B /* OrderShippingMethodWrapperView.swift */,
+				E7B41C972A01649900E7371B /* OrderShippingMethodWrapperArrayView.swift */,
+			);
+			path = EntityViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -727,10 +744,12 @@
 			files = (
 				E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */,
 				E7B41C8529FAC5E300E7371B /* ChannelHeadersAPICall.swift in Sources */,
+				E7B41C962A01643A00E7371B /* OrderShippingMethodWrapperView.swift in Sources */,
 				E72EFFE529D4C8BA009F7BFE /* OfferView.swift in Sources */,
 				E7B41C932A00888000E7371B /* Order+Extensions.swift in Sources */,
 				E7B41C5129F5892E00E7371B /* AppIDAndSecret.swift in Sources */,
 				E7B41C5A29F58C6B00E7371B /* DemoUsernameAndPassword.swift in Sources */,
+				E7B41C9A2A0165CF00E7371B /* CartShippingMethodsSectionView.swift in Sources */,
 				E72E000529EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift in Sources */,
 				E7B41C6E29F72E0D00E7371B /* OfferDetailView.swift in Sources */,
 				E71CFBA029CD098D00598B15 /* GetOrderByIDRequest.swift in Sources */,
@@ -759,6 +778,7 @@
 				E7B41C8329F9CCB200E7371B /* ChannelHeaders.swift in Sources */,
 				E71CFB8929C26C7100598B15 /* FileDirectory.swift in Sources */,
 				E70BEB9229B94D8B0030335E /* HelloView.swift in Sources */,
+				E7B41C982A01649900E7371B /* OrderShippingMethodWrapperArrayView.swift in Sources */,
 				E7B41C4329F3362000E7371B /* CartContentsView.swift in Sources */,
 				E70BEBA329BAA2210030335E /* AppCreds.swift in Sources */,
 				E72E001129F07B0F009F7BFE /* PreviewMocks.swift in Sources */,

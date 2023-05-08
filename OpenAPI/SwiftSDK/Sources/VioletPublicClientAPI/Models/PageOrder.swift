@@ -17,12 +17,12 @@ public struct PageOrder: Codable, JSONEncodable, Hashable {
     public var size: Int?
     public var content: [Order]?
     public var number: Int?
-    public var sort: AnyCodable?
+    public var sort: Sort?
     public var first: Bool? = false
     public var last: Bool? = false
     public var numberOfElements: Int?
 
-    public init(totalPages: Int? = nil, totalElements: Int64? = nil, size: Int? = nil, content: [Order]? = nil, number: Int? = nil, sort: AnyCodable? = nil, first: Bool? = false, last: Bool? = false, numberOfElements: Int? = nil) {
+    public init(totalPages: Int? = nil, totalElements: Int64? = nil, size: Int? = nil, content: [Order]? = nil, number: Int? = nil, sort: Sort? = nil, first: Bool? = false, last: Bool? = false, numberOfElements: Int? = nil) {
         self.totalPages = totalPages
         self.totalElements = totalElements
         self.size = size

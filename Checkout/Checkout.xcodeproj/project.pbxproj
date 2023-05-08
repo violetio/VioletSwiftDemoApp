@@ -50,7 +50,6 @@
 		E71CFBBA29D2402100598B15 /* TestCheckoutSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */; };
 		E71CFBBC29D240EC00598B15 /* Order_ID_58374.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBBB29D240EC00598B15 /* Order_ID_58374.json */; };
 		E71CFBBE29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBBD29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json */; };
-		E72E000329EDFF72009F7BFE /* ShoppingOfferGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000229EDFF72009F7BFE /* ShoppingOfferGridItem.swift */; };
 		E72E000529EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */; };
 		E72E000729EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = E72E000629EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json */; };
 		E72E000B29EF3353009F7BFE /* Offer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000A29EF3353009F7BFE /* Offer+Extensions.swift */; };
@@ -181,7 +180,6 @@
 		E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCheckoutSequence.swift; sourceTree = "<group>"; };
 		E71CFBBB29D240EC00598B15 /* Order_ID_58374.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order_ID_58374.json; sourceTree = "<group>"; };
 		E71CFBBD29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shipping_methods_get_bag_id_43402.json; sourceTree = "<group>"; };
-		E72E000229EDFF72009F7BFE /* ShoppingOfferGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingOfferGridItem.swift; sourceTree = "<group>"; };
 		E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPageOffersByMerchantIDRequest.swift; sourceTree = "<group>"; };
 		E72E000629EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PageOffer_Page_1_MerchantID_10003_Response.json; sourceTree = "<group>"; };
 		E72E000A29EF3353009F7BFE /* Offer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Offer+Extensions.swift"; sourceTree = "<group>"; };
@@ -377,7 +375,6 @@
 			isa = PBXGroup;
 			children = (
 				E70BEB9429B94F5A0030335E /* VioletOffer.swift */,
-				E72E000229EDFF72009F7BFE /* ShoppingOfferGridItem.swift */,
 				E72E000A29EF3353009F7BFE /* Offer+Extensions.swift */,
 				E72E001029F07B0F009F7BFE /* PreviewMocks.swift */,
 				E72E001229F08410009F7BFE /* ViewModels_ReadMe.md */,
@@ -767,7 +764,6 @@
 				E7B41C872A002CFF00E7371B /* OfferSkusView.swift in Sources */,
 				E7B41C892A00497F00E7371B /* IdentifiableItemSelections.swift in Sources */,
 				E71CFBB129CE5FB300598B15 /* CheckoutCartCustomerPostRequest.swift in Sources */,
-				E72E000329EDFF72009F7BFE /* ShoppingOfferGridItem.swift in Sources */,
 				E7B41C4529F342D100E7371B /* CartItemView.swift in Sources */,
 				E72E001629F08C71009F7BFE /* StyleConstants.swift in Sources */,
 				E71CFB9E29CCD92C00598B15 /* CheckoutCartPostRequest.swift in Sources */,

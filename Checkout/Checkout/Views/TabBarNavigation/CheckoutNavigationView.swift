@@ -13,13 +13,14 @@ struct CheckoutNavigationView: View {
     @SceneStorage("navigation") private var navigationData: Data?
     @StateObject private var navigationModel = NavigationModel(offerItemPath: [], loadedOfferItems: PreviewMocks.MockOfferItemsArray())
     @ObservedObject var dataStore: DataStore = DataStore.shared
+    @State private var selection: Tab = .scenarios
     
     var body: some View {
-        TabView(selection: $navigationModel.selectedTab)
+        TabView(selection: $selection)
         {
             NavigationStack
             {
-                ShoppingTabView(store: $store, shoppingNavigationModel: $navigationModel.shoppingNavigationModel)
+                ShoppingTabView(store: $store, shoppingViewState: store.shoppingViewState)
             }
             .tabItem {
                 let menuText = Text("Shopping", comment: "API Scenarios")
@@ -60,7 +61,7 @@ struct CheckoutNavigationView: View {
             .tag(Tab.settings)
 
         }.onAppear() {
-//            DataStore.shared.changeAppId(activeAppIDAndSecret: DemoAppIdAndSecret.byDemoChannel(DemoChannels.defaultDemoChannel))
+            selection = store.state.defaultStartingTab
         }
         
     }

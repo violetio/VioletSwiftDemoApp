@@ -9,28 +9,26 @@ import Foundation
 import VioletPublicClientAPI
 
 class ShoppingViewState: ObservableObject {
-
     @Published var offerPath: [Offer]
+    @Published var loadedOfferItems: [OfferItem]
+    @Published var offerItemPath: [OfferItem]
 
-
-    init(offerPath: [Offer]) {
+    init(offerPath: [Offer], loadedOfferItems: [OfferItem], offerItemPath: [OfferItem]) {
         self.offerPath = offerPath
+        self.loadedOfferItems = loadedOfferItems
+        self.offerItemPath = offerItemPath
     }
 
     convenience init() {
-        self.init(offerPath: [])
+        self.init(offerPath: [],loadedOfferItems: [], offerItemPath: [])
     }
 
     func mergePageOffer(_ pageOffer: PageOffer) {
-
-        guard let content = pageOffer.content else {
+        guard let offersContent = pageOffer.content else {
             return
         }
-        Logger.info("PageOffer with count: \(content.count)")
-//        content.map { offer in
-//            //offer.
-//
-//        }
+        Logger.info("ShoppingViewState: PageOffer with count: \(offersContent.count)")
+        loadedOfferItems = OfferItem.fromEntities(entities: offersContent)
+        Logger.info("ShoppingViewState: loadedOfferItems.count: \(loadedOfferItems.count)")
     }
-
 }

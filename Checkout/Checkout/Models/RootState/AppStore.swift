@@ -77,7 +77,9 @@ class AppStore {
     }
 
     let state: AppState = AppState()
-    static let mockAppStore = AppStore()
+    static let mockAppStore = AppStore(shoppingViewState: ShoppingViewState(offerPath: [],
+                                                                            loadedOfferItems: PreviewMocks.MockOfferItemsArray(),
+                                                                            offerItemPath: []))
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore)}
     var channelLoginViewState = ChannelLoginViewState(appIDandSecret: DemoAppIdAndSecret.byDemoChannel(.defaultDemoChannel))
     var demoChannelViewState = DemoChannelViewState()
@@ -90,4 +92,12 @@ class AppStore {
     }
 
     let useDemoLogin: Bool = true
+    
+    init(channelLoginViewState: ChannelLoginViewState = ChannelLoginViewState(appIDandSecret: DemoAppIdAndSecret.byDemoChannel(.defaultDemoChannel)),
+         demoChannelViewState: DemoChannelViewState = DemoChannelViewState(),
+         shoppingViewState: ShoppingViewState = ShoppingViewState()) {
+        self.channelLoginViewState = channelLoginViewState
+        self.demoChannelViewState = demoChannelViewState
+        self.shoppingViewState = shoppingViewState
+    }
 }

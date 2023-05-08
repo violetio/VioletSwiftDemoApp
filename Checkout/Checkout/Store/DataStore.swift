@@ -141,7 +141,7 @@ class DataStore: ObservableObject {
             Logger.debug("DataStore.loadChannelStore restored currentAuthToken")
             self.currentAuthToken = CurrentAuthToken.fromLoginResponse(cached)
             if let cachedAuthToken = cached.token {
-                self.channelHeaders = ChannelHeaders(token: cachedAuthToken, appIdAndSecret: activeAppIDAndSecret)
+                self.channelHeaders = ChannelHeaders(token: cachedAuthToken, refreshToken: "", appIdAndSecret: activeAppIDAndSecret)
                 Logger.debug("DataStore.loadChannelStore restored channelHeaders")
             }
         } else {

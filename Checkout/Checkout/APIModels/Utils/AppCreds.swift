@@ -10,7 +10,7 @@ import VioletPublicClientAPI
 /// AppCreds captures the common properties necessary to call
 /// a Violet API Endpoint with an AppID
 /// TODO: Split out subtype for AppId and AppSecret as these are used together
-struct AppCreds: AppIDAndSecret {
+struct AppCreds: LoginInputsType {
     var appID: Int64 { appIDAndSecret.appID }
     var apiSecret: String { appIDAndSecret.apiSecret }
     let appIDAndSecret: AppIDAndSecret
@@ -58,6 +58,11 @@ struct AppCreds: AppIDAndSecret {
     }
     
     func channelHeaders(token: String) -> ChannelHeaders {
-        return ChannelHeaders(token: token, apiSecret: self.apiSecret, appID: self.appID)
-    }
+            return ChannelHeaders(token: token, refreshToken: ChannelHeaders.unknownRefreshToken, apiSecret: self.apiSecret, appID: self.appID)
+        }
+
+        func channelHeaders(token: String, refreshToken: String) -> ChannelHeaders {
+            return ChannelHeaders(token: token,
+                                  refreshToken: refreshToken, apiSecret: self.apiSecret, appID: self.appID)
+        }
 }

@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct CheckoutApp: App {
+    let store: AppStore = AppStore()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(store: .constant(store))
         }
     }
 }

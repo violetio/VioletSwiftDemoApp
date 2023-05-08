@@ -114,6 +114,10 @@
 		E7B41C962A01643A00E7371B /* OrderShippingMethodWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C952A01643A00E7371B /* OrderShippingMethodWrapperView.swift */; };
 		E7B41C982A01649900E7371B /* OrderShippingMethodWrapperArrayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C972A01649900E7371B /* OrderShippingMethodWrapperArrayView.swift */; };
 		E7B41C9A2A0165CF00E7371B /* CartShippingMethodsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C992A0165CF00E7371B /* CartShippingMethodsSectionView.swift */; };
+		E7B41C9C2A097B7D00E7371B /* LoginInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C9B2A097B7C00E7371B /* LoginInputs.swift */; };
+		E7B41C9F2A097DB100E7371B /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C9E2A097DB100E7371B /* AppStore.swift */; };
+		E7B41CA22A097E0300E7371B /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CA12A097E0300E7371B /* TypeAliases.swift */; };
+		E7B41CA42A097E7300E7371B /* ChannelHeader+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CA32A097E7300E7371B /* ChannelHeader+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +241,10 @@
 		E7B41C952A01643A00E7371B /* OrderShippingMethodWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShippingMethodWrapperView.swift; sourceTree = "<group>"; };
 		E7B41C972A01649900E7371B /* OrderShippingMethodWrapperArrayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShippingMethodWrapperArrayView.swift; sourceTree = "<group>"; };
 		E7B41C992A0165CF00E7371B /* CartShippingMethodsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartShippingMethodsSectionView.swift; sourceTree = "<group>"; };
+		E7B41C9B2A097B7C00E7371B /* LoginInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputs.swift; sourceTree = "<group>"; };
+		E7B41C9E2A097DB100E7371B /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		E7B41CA12A097E0300E7371B /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
+		E7B41CA32A097E7300E7371B /* ChannelHeader+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChannelHeader+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +307,8 @@
 		E70BEB6529B92B200030335E /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
+				E70BEB6629B92B200030335E /* CheckoutApp.swift */,
+				E7B41CA02A097DE200E7371B /* API+Extensions */,
 				E7B41C4B29F5877800E7371B /* Store */,
 				E7B41C4629F34AC700E7371B /* Utils */,
 				E72E001B29F1D1E4009F7BFE /* State */,
@@ -308,7 +318,6 @@
 				E70BEB9929BA54880030335E /* APIModels */,
 				E70BEB9329B94F370030335E /* Models */,
 				E70BEB9029B94D710030335E /* Views */,
-				E70BEB6629B92B200030335E /* CheckoutApp.swift */,
 				E70BEB6A29B92B210030335E /* Assets.xcassets */,
 				E70BEB6C29B92B210030335E /* Preview Content */,
 			);
@@ -374,6 +383,7 @@
 		E70BEB9329B94F370030335E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E7B41C9D2A097D9C00E7371B /* RootState */,
 				E70BEB9429B94F5A0030335E /* VioletOffer.swift */,
 				E72E000A29EF3353009F7BFE /* Offer+Extensions.swift */,
 				E72E001029F07B0F009F7BFE /* PreviewMocks.swift */,
@@ -383,7 +393,6 @@
 				E72E001729F1BA61009F7BFE /* PriceViewModel.swift */,
 				E72E001929F1C009009F7BFE /* IntPrice.swift */,
 				E7B41C6929F71EEC00E7371B /* OfferItem.swift */,
-				E7B41C8A2A0050C900E7371B /* Error+Extensions.swift */,
 				E7B41C922A00888000E7371B /* Order+Extensions.swift */,
 			);
 			path = Models;
@@ -405,6 +414,7 @@
 				E71CFB9D29CCD92C00598B15 /* CheckoutCartPostRequest.swift */,
 				E71CFBAC29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift */,
 				E7B41C7E29F9865500E7371B /* APICallService.swift */,
+				E7B41C9B2A097B7C00E7371B /* LoginInputs.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -583,6 +593,24 @@
 			path = EntityViews;
 			sourceTree = "<group>";
 		};
+		E7B41C9D2A097D9C00E7371B /* RootState */ = {
+			isa = PBXGroup;
+			children = (
+				E7B41C9E2A097DB100E7371B /* AppStore.swift */,
+			);
+			path = RootState;
+			sourceTree = "<group>";
+		};
+		E7B41CA02A097DE200E7371B /* API+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E7B41C8A2A0050C900E7371B /* Error+Extensions.swift */,
+				E7B41CA12A097E0300E7371B /* TypeAliases.swift */,
+				E7B41CA32A097E7300E7371B /* ChannelHeader+Extensions.swift */,
+			);
+			path = "API+Extensions";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -748,6 +776,7 @@
 				E7B41C5A29F58C6B00E7371B /* DemoUsernameAndPassword.swift in Sources */,
 				E7B41C9A2A0165CF00E7371B /* CartShippingMethodsSectionView.swift in Sources */,
 				E72E000529EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift in Sources */,
+				E7B41CA42A097E7300E7371B /* ChannelHeader+Extensions.swift in Sources */,
 				E7B41C6E29F72E0D00E7371B /* OfferDetailView.swift in Sources */,
 				E71CFBA029CD098D00598B15 /* GetOrderByIDRequest.swift in Sources */,
 				E71CFB8829C26C7100598B15 /* FileSystemObject.swift in Sources */,
@@ -757,6 +786,7 @@
 				E71CFB9A29CCCD7100598B15 /* DataResponseAPICall.swift in Sources */,
 				E71CFBAF29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift in Sources */,
 				E7B41C7F29F9865500E7371B /* APICallService.swift in Sources */,
+				E7B41CA22A097E0300E7371B /* TypeAliases.swift in Sources */,
 				E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */,
 				E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */,
 				E72E001A29F1C009009F7BFE /* IntPrice.swift in Sources */,
@@ -802,7 +832,9 @@
 				E7B41C5829F58C0700E7371B /* UsernameAndPassword.swift in Sources */,
 				E7B41C4F29F5880800E7371B /* UserInputCoordinator.swift in Sources */,
 				E7B41C4D29F5878D00E7371B /* DataStore.swift in Sources */,
+				E7B41C9F2A097DB100E7371B /* AppStore.swift in Sources */,
 				E71CFB8E29C26CE200598B15 /* BaseAPICall.swift in Sources */,
+				E7B41C9C2A097B7D00E7371B /* LoginInputs.swift in Sources */,
 				E7B41C6429F719B700E7371B /* SettingsTabView.swift in Sources */,
 				E7B41C4829F34AE700E7371B /* AutoKeyed.swift in Sources */,
 				E70BEB6729B92B200030335E /* CheckoutApp.swift in Sources */,

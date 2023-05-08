@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var selectedOffer = VioletOffer()
+    @Binding var store: AppStore
 
     #if os(iOS)
         @Environment(\.horizontalSizeClass) private var horizontalSizeClass
@@ -41,6 +41,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(store: AppStore.mockAppStoreBinding)
     }
 }

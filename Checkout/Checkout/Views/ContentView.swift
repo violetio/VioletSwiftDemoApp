@@ -27,7 +27,7 @@ struct ContentView: View {
     var body: some View {
         #if os(iOS)
             if horizontalSizeClass == .compact {
-                CheckoutNavigationView()
+                CheckoutNavigationView(store: $store)
             }
             else {
                 // For iPadOS

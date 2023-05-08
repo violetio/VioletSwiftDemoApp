@@ -19,6 +19,7 @@ enum CartListSections: Int, CaseIterable, Identifiable {
 
 struct CartTabView: View {
     
+    @Binding var store: AppStore
     @Binding var offerItemSelections: OfferItemSelections
     @ObservedObject var dataStore: DataStore = DataStore.shared
     
@@ -129,6 +130,6 @@ struct CartTabView: View {
 
 struct CartTabView_Previews: PreviewProvider {
     static var previews: some View {
-        CartTabView(offerItemSelections: .constant(PreviewMocks.Mock_OfferItemSelections()))
+        CartTabView(store: AppStore.mockAppStoreBinding, offerItemSelections: .constant(PreviewMocks.Mock_OfferItemSelections()))
     }
 }

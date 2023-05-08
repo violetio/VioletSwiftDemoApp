@@ -16,6 +16,7 @@ enum SettingsListSections: Int, CaseIterable, Identifiable {
 }
 struct SettingsTabView: View {
     
+    @Binding var store: AppStore
     @ObservedObject var dataStore: DataStore = DataStore.shared
     var tab: Tab = .settings
     let demoChannelOptions: [DemoChannels] = DemoChannels.allCases
@@ -135,6 +136,6 @@ struct SettingsTabView: View {
 
 struct SettingsTabView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsTabView()
+        SettingsTabView(store: AppStore.mockAppStoreBinding)
     }
 }

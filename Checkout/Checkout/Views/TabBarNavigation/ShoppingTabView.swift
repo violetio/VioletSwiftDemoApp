@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ShoppingTabView: View {
+    
+    @Binding var store: AppStore
     @Binding var shoppingNavigationModel: ShoppingNavigationModel
     @ObservedObject var dataStore: DataStore = DataStore.shared
     
@@ -47,6 +49,6 @@ struct ShoppingTabView_Previews: PreviewProvider {
         return PreviewMocks.MockOfferItemsArray()
     }
     static var previews: some View {
-        ShoppingTabView(shoppingNavigationModel: .constant(ShoppingNavigationModel(offerItemPath: [], loadedOfferItems: mockOfferItems)))
+        ShoppingTabView(store: AppStore.mockAppStoreBinding, shoppingNavigationModel: .constant(ShoppingNavigationModel(offerItemPath: [], loadedOfferItems: mockOfferItems)))
     }
 }

@@ -47,7 +47,8 @@ struct CheckoutNavigationView: View {
             .tag(Tab.cart)
             
             NavigationStack {
-                SettingsTabView(store: $store)
+                SettingsTabView(store: $store,
+                                channelLoginViewState: store.channelLoginViewState)
             }
             .tabItem {
                 Label {
@@ -59,7 +60,7 @@ struct CheckoutNavigationView: View {
             .tag(Tab.settings)
 
         }.onAppear() {
-            DataStore.shared.changeAppId(activeAppIDAndSecret: DemoAppIdAndSecret.byDemoChannel(DemoChannels.defaultDemoChannel))
+//            DataStore.shared.changeAppId(activeAppIDAndSecret: DemoAppIdAndSecret.byDemoChannel(DemoChannels.defaultDemoChannel))
         }
         
     }

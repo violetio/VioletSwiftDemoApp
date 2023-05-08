@@ -11,115 +11,109 @@ enum SettingsListSections: Int, CaseIterable, Identifiable {
     case ChannelIdentity
     case AuthToken
     case LogInOutRefresh
-    
+
     var id: Int { rawValue }
 }
+
 struct SettingsTabView: View {
-    
     @Binding var store: AppStore
-    @ObservedObject var dataStore: DataStore = DataStore.shared
+    @ObservedObject var channelLoginViewState: ChannelLoginViewState
+    @ObservedObject var dataStore: DataStore = .shared
     var tab: Tab = .settings
     let demoChannelOptions: [DemoChannels] = DemoChannels.allCases
-    @State var demoChannelSelection: DemoChannels = DemoChannels.defaultDemoChannel
+    @State var demoChannelSelection: DemoChannels = .defaultDemoChannel
 
     func demoAppCreds() -> AppCreds {
         return AppCreds.SandBoxTestCreds(demoChannelSelection)
     }
+
     func runLoginPost() {
-        dataStore.apiCallService.sendLoginPost(appCreds: demoAppCreds())
+//        dataStore.apiCallService.sendLoginPost(appCreds: demoAppCreds())
     }
-    
+
     func doLogOut() {
         Logger.debug("Log Out")
-        dataStore.doLogOut()
+//        dataStore.doLogOut()
     }
-    
+
     func doRefresh() {
         Logger.debug("Refresh")
-        if let headers = dataStore.channelHeaders,
-        let refreshToken = dataStore.currentAuthToken?.refreshToken {
-            dataStore.apiCallService.sendRefreshToken(appIDAndSecret: headers,
-                                                      refreshToken: refreshToken)
-        }
+//        if let headers = dataStore.channelHeaders,
+//           let refreshToken = dataStore.currentAuthToken?.refreshToken
+//        {
+////            dataStore.apiCallService.sendRefreshToken(appIDAndSecret: headers, refreshToken: refreshToken)
+//        }
     }
+
     var channelIdentitySection: some View {
         Section {
-            Picker("Demo Channel Select", selection: $demoChannelSelection) {
-                Text(DemoChannels.Alan.rawValue).tag(DemoChannels.Alan)
-                Text(DemoChannels.Ishan.rawValue).tag(DemoChannels.Ishan)
-            }
-            .pickerStyle(.segmented)
-            .onChange(of: demoChannelSelection) { newValue in
-                Logger.info("Demo Channel Select: \(newValue)")
-                dataStore.changeAppId(activeAppIDAndSecret: DemoAppIdAndSecret.byDemoChannel(newValue))
-            }
-            let appId: AppIDAndSecret = DemoAppIdAndSecret.byDemoChannel(demoChannelSelection)
-            let username: String = DemoUsernameAndPassword.byDemoChannel(demoChannelSelection).username
-            Text("Username: \(username)")
-            Text("AppId: \(String(appId.appID))")
-            
+            DemoChannelPickerView(demoChannelViewState: store.demoChannelViewState,
+                                  store: $store)
+
         } header: {
             Text("Channel")
         }
     }
-    
+
     var logInOutRefreshSection: some View {
         Section {
-            if dataStore.currentAuthToken != nil {
+            if let channelHeaders = store.channelLoginViewState.channelHeaders {
                 Button("Log Out") {
-                    doLogOut()
+                    store.send(.logout)
                 }
-                
+
                 Button("Refresh") {
-                    doRefresh()
+                    store.send(.refreshAuthTokenRequest(channelHeaders))
                 }
             } else {
-                Button("Log In") {
-                    runLoginPost()
+                if store.useDemoLogin {
+                    Button("Log In") {
+                        store.send(.loginRequest(store.demoLoginInputs(store.demoChannelViewState.demoChannelSelection)))
+                    }
+                } else {
+                    Text("Login Form Goes Here")
                 }
             }
-            
-            
-            
+
         } header: {
             Text("Log In/Out/Refresh")
         }
     }
-//    var authTokenSection: some View {
-//
-//        Section {
-//            if let loadedChannelStore = dataStore.loadedChannelStore {
-//                Text("Loaded Channel Store")
-//                if let foundCachedLoginResponse = loadedChannelStore.cachedLoginResponse.cachedEntity {
-//                    Text("Found Cached LoginResponse")
-//                } else {
-//                    Text("NO Cached LoginResponse")
-//                    Button("Login Post") {
-//                        runLoginPost()
-//                    }
-//                }
-//            } else {
-//                Text("No Channel Store Loaded")
-//            }
-//
-//            if let currentAuthToken = dataStore.currentAuthToken {
-//                Text("Token: \(currentAuthToken.authToken)")
-//                Text("RefreshToken: \(currentAuthToken.refreshToken)")
-//            } else {
-//                Text("No AuthToken")
-//            }
-//
-//
-//        } header: {
-//            Text("AuthToken")
-//        }
-//    }
+
     var authTokenSection: some View {
-        CurrentAuthTokenView(currentAuthToken: $dataStore.currentAuthToken)
+        Section {
+            if let channelHeaders = store.channelLoginViewState.channelHeaders {
+                HStack {
+                    Text("AuthToken:").fontWeight(.semibold).padding([.trailing], 5)
+                        .frame(minWidth: 90)
+                    Text("\(channelHeaders.authToken)")
+                        .monospaced()
+                        .minimumScaleFactor(0.3)
+                        .multilineTextAlignment(.trailing)
+                        .frame(width: 200, height: 80, alignment: .trailing)
+                }
+                HStack {
+                    Text("Refresh:").fontWeight(.semibold).padding([.trailing], 5)
+                        .frame(minWidth: 90)
+                    Text("\(channelHeaders.refreshToken)")
+                        .monospaced()
+                        .minimumScaleFactor(0.3)
+                        .multilineTextAlignment(.trailing)
+                        .frame(width: 200, height: 80, alignment: .trailing)
+                }
+            } else {
+                Label("No AuthToken", systemImage: "key.viewfinder")
+                    .font(.title)
+                    .multilineTextAlignment(.center)
+                    .frame(minWidth: 320, minHeight: 80)
+                // .background(Color.blue)
+            }
+        } header: {
+            Text("AuthToken")
+        }
     }
 
     var body: some View {
-        
         List(SettingsListSections.allCases) { nextSection in
             switch nextSection {
             case .ChannelIdentity:
@@ -129,13 +123,13 @@ struct SettingsTabView: View {
             case .LogInOutRefresh:
                 logInOutRefreshSection
             }
-            
         }
     }
 }
 
 struct SettingsTabView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsTabView(store: AppStore.mockAppStoreBinding)
+        SettingsTabView(store: AppStore.mockAppStoreBinding,
+                        channelLoginViewState: ChannelLoginViewState())
     }
 }

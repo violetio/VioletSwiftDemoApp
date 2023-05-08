@@ -27,7 +27,7 @@ class AppStore {
     }
 
     func send(_ action: AppAction) {
-        /*
+        
         switch action {
         case .changeActiveAppID(let newAppIDAndSecret):
             Logger.info("Store: Setting channelLoginViewState.appIDandSecret")
@@ -74,25 +74,20 @@ class AppStore {
             Logger.info("Store: Create Cart Request:")
 
         }
-*/
     }
 
     let state: AppState = AppState()
     static let mockAppStore = AppStore()
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore)}
-    /*
-    let pendingAPICalls = PendingAPICalls()
-
     var channelLoginViewState = ChannelLoginViewState(appIDandSecret: DemoAppIdAndSecret.byDemoChannel(.defaultDemoChannel))
-
     var demoChannelViewState = DemoChannelViewState()
-
+    
     var shoppingViewState = ShoppingViewState()
+    let pendingAPICalls = PendingAPICalls()
 
     func demoLoginInputs(_ selectedDemoChannel: DemoChannels) -> LoginInputsType {
         return AppCreds.loginInputs(for: selectedDemoChannel)
     }
-     */
 
     let useDemoLogin: Bool = true
 }

@@ -8,3 +8,4 @@
 import VioletPublicClientAPI
 
 typealias MerchantID = Int64
+typealias OrderShippingMethodWrapperArray = [OrderShippingMethodWrapper]

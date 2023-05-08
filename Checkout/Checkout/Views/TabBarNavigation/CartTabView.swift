@@ -29,11 +29,11 @@ struct CartTabView: View {
         if dataStore.currentOrder != nil {
             Logger.info("Already have a Cart with ID:")
         } else {
-            let orderSkus = offerItemSelections.items.compactMap { $0.firstSku() }.map { OrderSku(skuId: $0.id) }
-            if let channelHeaders = dataStore.channelHeaders {
-                Logger.debug("CartTabView -> sendCreateCart")
-                dataStore.apiCallService.sendCreateCart(channelHeaders: channelHeaders, orderSkus: orderSkus)
-            }
+//            let orderSkus = offerItemSelections.items.compactMap { $0.firstSku() }.map { OrderSku(skuId: $0.id) }
+//            if let channelHeaders = dataStore.channelHeaders {
+//                Logger.debug("CartTabView -> sendCreateCart")
+////                dataStore.apiCallService.sendCreateCart(channelHeaders: channelHeaders, orderSkus: orderSkus)
+//            }
         }
     }
     
@@ -42,7 +42,7 @@ struct CartTabView: View {
         if let channelHeaders = dataStore.channelHeaders,
            let pendingOrderId = dataStore.currentPendingOrder?.orderId{
             Logger.debug("CartTabView -> doRefetchOrderById")
-            dataStore.apiCallService.sendGetOrderByID(channelHeaders: channelHeaders, orderId: pendingOrderId)
+//            dataStore.apiCallService.sendGetOrderByID(channelHeaders: channelHeaders, orderId: pendingOrderId)
         }
     }
     
@@ -61,7 +61,7 @@ struct CartTabView: View {
         if let channelHeaders = dataStore.channelHeaders,
            let pendingOrderId = dataStore.currentPendingOrder?.orderId{
             Logger.debug("CartTabView -> doCartPaymentPostRequest")
-            dataStore.apiCallService.sendCartCustomer(channelHeaders: channelHeaders, orderId: pendingOrderId, customer: createGuestOrderCustomer())
+//            dataStore.apiCallService.sendCartCustomer(channelHeaders: channelHeaders, orderId: pendingOrderId, customer: createGuestOrderCustomer())
         }
     }
     
@@ -77,14 +77,14 @@ struct CartTabView: View {
     
     var customerSection: some View {
         Section {
-            if let customerUserId = dataStore.currentPendingOrder?.customerUserId {
-                Text("Customer User ID: \(String(reflecting: customerUserId))")
-                Text("First Name: \(String(reflecting: dataStore.currentPendingOrder?.firstName))")
-            } else {
-                Button("Add Guest Order Customer") {
-                    doAddCartGuestCustomer()
-                }
-            }
+//            if let customerUserId = dataStore.currentPendingOrder?.customerUserId {
+//                Text("Customer User ID: \(String(reflecting: customerUserId))")
+//                Text("First Name: \(String(reflecting: dataStore.currentPendingOrder?.firstName))")
+//            } else {
+//                Button("Add Guest Order Customer") {
+//                    doAddCartGuestCustomer()
+//                }
+//            }
         } header: {
             Text("Customer")
         }
@@ -93,17 +93,17 @@ struct CartTabView: View {
     var checkoutSection: some View {
         Section {
             //Text("Checkout Steps")
-            if let currentPendingOrder = dataStore.currentPendingOrder {
-                Text("Current Order ID: \(currentPendingOrder.orderIdDescription())")
-                Button("Refetch Order By ID") {
-                    doRefetchOrderById()
-                }
-                
-            } else {
-                Button("Create Cart") {
-                    doCreateCart()
-                }
-            }
+//            if let currentPendingOrder = dataStore.currentPendingOrder {
+//                Text("Current Order ID: \(currentPendingOrder.orderIdDescription())")
+//                Button("Refetch Order By ID") {
+//                    doRefetchOrderById()
+//                }
+//                
+//            } else {
+//                Button("Create Cart") {
+//                    doCreateCart()
+//                }
+//            }
             
         } header: {
             Text("Checkout")

@@ -18,7 +18,7 @@ struct ShoppingTabView: View {
     func refreshPageOffers() {
         if let channelHeaders = dataStore.channelHeaders {
             Logger.debug("ShoppingTabView -> sendGetPageOffers")
-            dataStore.apiCallService.sendGetPageOffers(channelHeaders: channelHeaders, merchantId: 10003)
+//            dataStore.apiCallService.sendGetPageOffers(channelHeaders: channelHeaders, merchantId: 10003)
         }
     }
     var body: some View {

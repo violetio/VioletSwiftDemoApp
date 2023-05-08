@@ -20,7 +20,7 @@ final class APIModelsTests: APIXCTestCase {
         // Given
         let checkoutCartShippingAvailableGetRequest = CheckoutCartShippingAvailableGetRequest(appCreds: appCreds,
                                                                                               token: self.loginToken,
-                                                                                              cartId: testCheckoutSequence.orderId)
+                                                                                              cartId: self.testCheckoutSequence.orderId)
         let expectationRunner = ExpectationRunner(checkoutCartShippingAvailableGetRequest)
         expectationRunner.sink {
             XCTAssertEqual($0, true)
@@ -35,7 +35,7 @@ final class APIModelsTests: APIXCTestCase {
         XCTAssertNotNil(checkoutCartShippingAvailableGetRequest.dataResponse)
 
         if let aDataResponse = checkoutCartShippingAvailableGetRequest.dataResponse {
-            persistEncodable(aDataResponse, to: testCheckoutSequence.shippingAvailable_Response_jsonResponseFileName())
+            persistEncodable(aDataResponse, to: self.testCheckoutSequence.shippingAvailable_Response_jsonResponseFileName())
         }
     }
 
@@ -45,7 +45,7 @@ final class APIModelsTests: APIXCTestCase {
 
         let checkoutCartCustomerPostRequest = CheckoutCartCustomerPostRequest(appCreds: appCreds,
                                                                               token: self.loginToken,
-                                                                              cartId: testCheckoutSequence.orderId, priceCart: false,
+                                                                              cartId: self.testCheckoutSequence.orderId, priceCart: false,
                                                                               guestOrderCustomer: guestOrderCustomer)
         let expectationRunner = ExpectationRunner(checkoutCartCustomerPostRequest)
         expectationRunner.sink {
@@ -61,7 +61,7 @@ final class APIModelsTests: APIXCTestCase {
         XCTAssertNotNil(checkoutCartCustomerPostRequest.dataResponse)
 
         if let aDataResponse = checkoutCartCustomerPostRequest.dataResponse {
-            persistEncodable(aDataResponse, to: testCheckoutSequence.cartCustomerPostAvailable_Response_jsonResponseFileName())
+            persistEncodable(aDataResponse, to: self.testCheckoutSequence.cartCustomerPostAvailable_Response_jsonResponseFileName())
         }
     }
 
@@ -70,7 +70,7 @@ final class APIModelsTests: APIXCTestCase {
         let body = PaymentMethodRequest(intentBasedCapture: true)
         let checkoutCartPaymentPostRequest = CheckoutCartPaymentPostRequest(appCreds: appCreds,
                                                                             token: self.loginToken,
-                                                                            cartId: testCheckoutSequence.orderId, priceCart: true, paymentMethodRequest: body)
+                                                                            cartId: self.testCheckoutSequence.orderId, priceCart: true, paymentMethodRequest: body)
         let expectationRunner = ExpectationRunner(checkoutCartPaymentPostRequest)
         expectationRunner.sink {
             XCTAssertEqual($0, true)
@@ -85,7 +85,7 @@ final class APIModelsTests: APIXCTestCase {
         XCTAssertNotNil(checkoutCartPaymentPostRequest.dataResponse)
 
         if let aDataResponse = checkoutCartPaymentPostRequest.dataResponse {
-            persistEncodable(aDataResponse, to: testCheckoutSequence.paymentIntentBased_Response_jsonResponseFileName())
+            persistEncodable(aDataResponse, to: self.testCheckoutSequence.paymentIntentBased_Response_jsonResponseFileName())
         }
     }
 
@@ -93,7 +93,7 @@ final class APIModelsTests: APIXCTestCase {
     ///  Change over to return `ShoppingCart` then will succeed w or w/o shipping_method
     func test_5_GetOrderByIDRequest() {
         // Given
-        let getOrderByIDRequest = GetCartByIDRequest(appCreds: appCreds, token: self.loginToken, orderId: testCheckoutSequence.orderId)
+        let getOrderByIDRequest = GetCartByIDRequest(appCreds: appCreds, token: self.loginToken, orderId: self.testCheckoutSequence.orderId)
 
         let expectationRunner = ExpectationRunner(getOrderByIDRequest)
         expectationRunner.sink {
@@ -136,19 +136,20 @@ final class APIModelsTests: APIXCTestCase {
         XCTAssertNotNil(checkoutCartPostRequest.dataResponse)
 
         if let aCart = checkoutCartPostRequest.dataResponse,
-           let orderId = aCart.id {
-                Logger.info("New CartID: \(orderId)")
-                testCheckoutSequence = TestCheckoutSequence(orderId: orderId)
-                persistEncodable(aCart, to: testCheckoutSequence.createCart_Response_jsonResponseFileName())
+           let orderId = aCart.id
+        {
+            Logger.info("New CartID: \(orderId)")
+            self.testCheckoutSequence = TestCheckoutSequence(orderId: orderId)
+            persistEncodable(aCart, to: self.testCheckoutSequence.createCart_Response_jsonResponseFileName())
         }
     }
 
     func test_3b_GetPageOffers() {
-        let merchantId : Int64 = 10003
+        let merchantId: Int64 = 10003
         let request = GetPageOffersByMerchantIDRequest(channelHeaders: appCreds.channelHeaders(token: self.loginToken), merchantId: merchantId)
-        
+
         let expectationRunner = ExpectationRunner(request)
-        
+
         expectationRunner.sink {
             XCTAssertEqual($0, true)
         }
@@ -160,12 +161,12 @@ final class APIModelsTests: APIXCTestCase {
         wait(for: expectationRunner.expectations, timeout: timeout_5s)
         XCTAssertNotNil(expectationRunner.streamHandle)
         XCTAssertNotNil(request.dataResponse)
-        
+
         if let aDataResponse = request.dataResponse {
             persistEncodable(aDataResponse, to: "PageOffer_Page_1_MerchantID_10003_Response.json")
         }
-        
     }
+
     func test_3_GetOffer() {
         // Given
         let getOfferByIDRequest = GetOfferByIDRequest(appCreds: appCreds, token: self.loginToken, offerId: 12574)
@@ -191,7 +192,7 @@ final class APIModelsTests: APIXCTestCase {
 
     func test_1_LoginPostRequest() {
         // Given
-        let loginPostRequest = LoginPostRequest(appCreds: appCreds)
+        let loginPostRequest = LoginPostRequest(loginInputs: appCreds)
         let expectation = XCTestExpectation(description: "CallCompleted True")
 
         let streamHandle: AnyCancellable? = loginPostRequest.$callCompleted
@@ -219,23 +220,20 @@ final class APIModelsTests: APIXCTestCase {
         }
     }
 
-    func DISABLED_test_2_AuthTokenGet() {
+    func test_2_AuthTokenGet() {
         // Given
-        guard let jsonData = reloadData(fileName: loginPostJsonResponse_fileName) else {
+        guard let loginResponse = TestBundleFileTestCase.decodeJson(LoginResponse.self, forResource: "loginPostJsonResponse") else {
             XCTFail("No Json Data")
             return
         }
 
-        let decodeResult = CodableHelper.decode(LoginResponse.self, from: jsonData)
-        var refreshToken = ""
-        switch decodeResult {
-        case .failure:
-            XCTFail("Not Decoded")
-        case .success(let loginPostRequest):
-            refreshToken = loginPostRequest.refreshToken!
+        guard let channelHeader = ChannelHeaders.from(loginResponse: loginResponse,
+                                                      appIdAndSecret: appCreds)
+        else {
+            XCTFail("No Json Data")
+            return
         }
-
-        let authTokenGet = AuthTokenGet(appIDAndSecret: appCreds, refreshToken: refreshToken)
+        let authTokenGet = AuthTokenGet(channelHeaders: channelHeader)
         let expectation = XCTestExpectation(description: "CallCompleted True")
 //
         let streamHandle: AnyCancellable? = authTokenGet.$callCompleted

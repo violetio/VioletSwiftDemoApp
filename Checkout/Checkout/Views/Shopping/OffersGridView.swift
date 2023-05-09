@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct OffersGridView: View {
-    //@Binding var loadedOfferItems: [OfferItem]
+    
     @Binding var store: AppStore
+    @ObservedObject var shoppingViewState: ShoppingViewState
     
     let layout = [
         GridItem(.fixed(100)),
@@ -20,7 +21,7 @@ struct OffersGridView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: layout, spacing: 5) {
-                ForEach($store.shoppingViewState.loadedOfferItems, id: \.offer_id) { offerItem in
+                ForEach($shoppingViewState.loadedOfferItems, id: \.offer_id) { offerItem in
                     NavigationLink(value: offerItem.wrappedValue) {
                         OfferGridTile(offerItem: offerItem)
                     }
@@ -34,6 +35,7 @@ struct OffersGridView: View {
 
 struct OffersGrid_Previews: PreviewProvider {
     static var previews: some View {
-        OffersGridView(store: AppStore.mockAppStoreBinding)
+        OffersGridView(store: AppStore.mockAppStoreBinding,
+                       shoppingViewState: AppStore.mockAppStore.shoppingViewState)
     }
 }

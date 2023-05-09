@@ -121,6 +121,7 @@
 		E7B41CAD2A0985D800E7371B /* DemoChannelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CAC2A0985D800E7371B /* DemoChannelPickerView.swift */; };
 		E7B41CAF2A0986F500E7371B /* PendingAPICalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CAE2A0986F500E7371B /* PendingAPICalls.swift */; };
 		E7B41CB12A09872600E7371B /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CB02A09872600E7371B /* APICall.swift */; };
+		E7B41CB32A0A9D7700E7371B /* DemoInject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CB22A0A9D7700E7371B /* DemoInject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -251,6 +252,7 @@
 		E7B41CAC2A0985D800E7371B /* DemoChannelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoChannelPickerView.swift; sourceTree = "<group>"; };
 		E7B41CAE2A0986F500E7371B /* PendingAPICalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingAPICalls.swift; sourceTree = "<group>"; };
 		E7B41CB02A09872600E7371B /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
+		E7B41CB22A0A9D7700E7371B /* DemoInject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoInject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -604,6 +606,7 @@
 			isa = PBXGroup;
 			children = (
 				E7B41C9E2A097DB100E7371B /* AppStore.swift */,
+				E7B41CB22A0A9D7700E7371B /* DemoInject.swift */,
 			);
 			path = RootState;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				E72EFFE329D4C892009F7BFE /* ScenariosListView.swift in Sources */,
 				E71CFB9A29CCCD7100598B15 /* DataResponseAPICall.swift in Sources */,
 				E71CFBAF29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift in Sources */,
+				E7B41CB32A0A9D7700E7371B /* DemoInject.swift in Sources */,
 				E7B41CA22A097E0300E7371B /* TypeAliases.swift in Sources */,
 				E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */,
 				E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */,

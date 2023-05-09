@@ -10,7 +10,6 @@ import SwiftUI
 struct ShoppingTabView: View {
     @Binding var store: AppStore
     @ObservedObject var shoppingViewState: ShoppingViewState
-//    @Binding var shoppingNavigationModel: ShoppingNavigationModel
     
     let tab: Tab = .shopping
     
@@ -23,7 +22,8 @@ struct ShoppingTabView: View {
     
     var body: some View {
         NavigationStack(path: $shoppingViewState.offerItemPath) {
-            OffersGridView(store: $store)
+            OffersGridView(store: $store,
+                           shoppingViewState: store.shoppingViewState)
         }
         .navigationBarTitle("Offer Grid")
         .toolbar {

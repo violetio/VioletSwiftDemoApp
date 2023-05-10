@@ -122,6 +122,7 @@
 		E7B41CAF2A0986F500E7371B /* PendingAPICalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CAE2A0986F500E7371B /* PendingAPICalls.swift */; };
 		E7B41CB12A09872600E7371B /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CB02A09872600E7371B /* APICall.swift */; };
 		E7B41CB32A0A9D7700E7371B /* DemoInject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CB22A0A9D7700E7371B /* DemoInject.swift */; };
+		E7B41CB52A0BE5A100E7371B /* Store+Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CB42A0BE5A100E7371B /* Store+Sender.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,6 +254,7 @@
 		E7B41CAE2A0986F500E7371B /* PendingAPICalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingAPICalls.swift; sourceTree = "<group>"; };
 		E7B41CB02A09872600E7371B /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		E7B41CB22A0A9D7700E7371B /* DemoInject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoInject.swift; sourceTree = "<group>"; };
+		E7B41CB42A0BE5A100E7371B /* Store+Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+Sender.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -607,6 +609,7 @@
 			children = (
 				E7B41C9E2A097DB100E7371B /* AppStore.swift */,
 				E7B41CB22A0A9D7700E7371B /* DemoInject.swift */,
+				E7B41CB42A0BE5A100E7371B /* Store+Sender.swift */,
 			);
 			path = RootState;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				E7B41CB32A0A9D7700E7371B /* DemoInject.swift in Sources */,
 				E7B41CA22A097E0300E7371B /* TypeAliases.swift in Sources */,
 				E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */,
+				E7B41CB52A0BE5A100E7371B /* Store+Sender.swift in Sources */,
 				E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */,
 				E72E001A29F1C009009F7BFE /* IntPrice.swift in Sources */,
 				E7B41C7729F769B900E7371B /* CachedEntity.swift in Sources */,

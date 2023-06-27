@@ -24,10 +24,9 @@ class CheckoutCartPaymentPostRequest: ChannelHeadersAPICall<Order> {
     }
 
     override func send() {
-        CheckoutPaymentAPI.checkoutCartCartIdPaymentPost(xVioletToken: channelHeaders.token,
+        CheckoutPaymentAPI.checkoutCartCartIdPaymentPost(cartId: cartId, xVioletToken: channelHeaders.token,
                                                          xVioletAppSecret: channelHeaders.apiSecret,
-                                                         xVioletAppId: channelHeaders.appID,
-                                                         cartId: cartId, priceCart: priceCart, body: body)
+                                                         xVioletAppId: channelHeaders.appID, priceCart: priceCart, body: body)
         { [weak self] data, error in
 
             guard let weakSelf = self else { return }

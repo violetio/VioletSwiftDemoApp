@@ -15,16 +15,16 @@ open class CatalogCategoriesAPI {
     /**
      Get Categories
      
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter page: (query)  (optional, default to 1)
      - parameter size: (query)  (optional, default to 20)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogCategoriesGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: [Category]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func catalogCategoriesGet(xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: [Category]?, _ error: Error?) -> Void)) -> RequestTask {
         return catalogCategoriesGetWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, page: page, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -39,14 +39,14 @@ open class CatalogCategoriesAPI {
      Get Categories
      - GET /catalog/categories
      - Retreives a paginated list of all available categories.
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter page: (query)  (optional, default to 1)
      - parameter size: (query)  (optional, default to 20)
      - returns: RequestBuilder<[Category]> 
      */
-    open class func catalogCategoriesGetWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, page: Int? = nil, size: Int? = nil) -> RequestBuilder<[Category]> {
+    open class func catalogCategoriesGetWithRequestBuilder(xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<[Category]> {
         let localVariablePath = "/catalog/categories"
         let localVariableURLString = VioletPublicClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -58,9 +58,9 @@ open class CatalogCategoriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "X-Violet-Token": xVioletToken.encodeToJSON(),
-            "X-Violet-App-Secret": xVioletAppSecret.encodeToJSON(),
-            "X-Violet-App-Id": xVioletAppId.encodeToJSON(),
+            "X-Violet-Token": xVioletToken?.encodeToJSON(),
+            "X-Violet-App-Secret": xVioletAppSecret?.encodeToJSON(),
+            "X-Violet-App-Id": xVioletAppId?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -73,16 +73,16 @@ open class CatalogCategoriesAPI {
     /**
      Get Category by ID
      
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
      - parameter id: (path)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogCategoriesIdGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, id: String, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: Category?, _ error: Error?) -> Void)) -> RequestTask {
-        return catalogCategoriesIdGetWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, id: id).execute(apiResponseQueue) { result in
+    open class func catalogCategoriesIdGet(id: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: Category?, _ error: Error?) -> Void)) -> RequestTask {
+        return catalogCategoriesIdGetWithRequestBuilder(id: id, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -96,13 +96,13 @@ open class CatalogCategoriesAPI {
      Get Category by ID
      - GET /catalog/categories/{id}
      - Retrieves a single category by ID.
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
      - parameter id: (path)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - returns: RequestBuilder<Category> 
      */
-    open class func catalogCategoriesIdGetWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, id: String) -> RequestBuilder<Category> {
+    open class func catalogCategoriesIdGetWithRequestBuilder(id: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil) -> RequestBuilder<Category> {
         var localVariablePath = "/catalog/categories/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -113,9 +113,9 @@ open class CatalogCategoriesAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "X-Violet-Token": xVioletToken.encodeToJSON(),
-            "X-Violet-App-Secret": xVioletAppSecret.encodeToJSON(),
-            "X-Violet-App-Id": xVioletAppId.encodeToJSON(),
+            "X-Violet-Token": xVioletToken?.encodeToJSON(),
+            "X-Violet-App-Secret": xVioletAppSecret?.encodeToJSON(),
+            "X-Violet-App-Id": xVioletAppId?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -128,16 +128,16 @@ open class CatalogCategoriesAPI {
     /**
      Get Category Tree
      
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
      - parameter id: (path)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogCategoriesIdTreeGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, id: String, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: [Category]?, _ error: Error?) -> Void)) -> RequestTask {
-        return catalogCategoriesIdTreeGetWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, id: id).execute(apiResponseQueue) { result in
+    open class func catalogCategoriesIdTreeGet(id: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: [Category]?, _ error: Error?) -> Void)) -> RequestTask {
+        return catalogCategoriesIdTreeGetWithRequestBuilder(id: id, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -151,13 +151,13 @@ open class CatalogCategoriesAPI {
      Get Category Tree
      - GET /catalog/categories/{id}/tree
      - Retreives the category tree by ID.
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
      - parameter id: (path)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - returns: RequestBuilder<[Category]> 
      */
-    open class func catalogCategoriesIdTreeGetWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, id: String) -> RequestBuilder<[Category]> {
+    open class func catalogCategoriesIdTreeGetWithRequestBuilder(id: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil) -> RequestBuilder<[Category]> {
         var localVariablePath = "/catalog/categories/{id}/tree"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -168,9 +168,9 @@ open class CatalogCategoriesAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "X-Violet-Token": xVioletToken.encodeToJSON(),
-            "X-Violet-App-Secret": xVioletAppSecret.encodeToJSON(),
-            "X-Violet-App-Id": xVioletAppId.encodeToJSON(),
+            "X-Violet-Token": xVioletToken?.encodeToJSON(),
+            "X-Violet-App-Secret": xVioletAppSecret?.encodeToJSON(),
+            "X-Violet-App-Id": xVioletAppId?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -183,18 +183,18 @@ open class CatalogCategoriesAPI {
     /**
      Search Categories
      
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
      - parameter query: (path)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter page: (query)  (optional, default to 1)
      - parameter size: (query)  (optional, default to 20)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogCategoriesSearchQueryGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, query: String, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: [Category]?, _ error: Error?) -> Void)) -> RequestTask {
-        return catalogCategoriesSearchQueryGetWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, query: query, page: page, size: size).execute(apiResponseQueue) { result in
+    open class func catalogCategoriesSearchQueryGet(query: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: [Category]?, _ error: Error?) -> Void)) -> RequestTask {
+        return catalogCategoriesSearchQueryGetWithRequestBuilder(query: query, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, page: page, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -208,15 +208,15 @@ open class CatalogCategoriesAPI {
      Search Categories
      - GET /catalog/categories/search/{query}
      - Performs a paginated search of all categories where name matches query.
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
      - parameter query: (path)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter page: (query)  (optional, default to 1)
      - parameter size: (query)  (optional, default to 20)
      - returns: RequestBuilder<[Category]> 
      */
-    open class func catalogCategoriesSearchQueryGetWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, query: String, page: Int? = nil, size: Int? = nil) -> RequestBuilder<[Category]> {
+    open class func catalogCategoriesSearchQueryGetWithRequestBuilder(query: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<[Category]> {
         var localVariablePath = "/catalog/categories/search/{query}"
         let queryPreEscape = "\(APIHelper.mapValueToPathItem(query))"
         let queryPostEscape = queryPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -231,9 +231,9 @@ open class CatalogCategoriesAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "X-Violet-Token": xVioletToken.encodeToJSON(),
-            "X-Violet-App-Secret": xVioletAppSecret.encodeToJSON(),
-            "X-Violet-App-Id": xVioletAppId.encodeToJSON(),
+            "X-Violet-Token": xVioletToken?.encodeToJSON(),
+            "X-Violet-App-Secret": xVioletAppSecret?.encodeToJSON(),
+            "X-Violet-App-Id": xVioletAppId?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -246,16 +246,16 @@ open class CatalogCategoriesAPI {
     /**
      Get Category by Slug
      
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
      - parameter slug: (path)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func catalogCategoriesSlugSlugGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, slug: String, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: Category?, _ error: Error?) -> Void)) -> RequestTask {
-        return catalogCategoriesSlugSlugGetWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, slug: slug).execute(apiResponseQueue) { result in
+    open class func catalogCategoriesSlugSlugGet(slug: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: Category?, _ error: Error?) -> Void)) -> RequestTask {
+        return catalogCategoriesSlugSlugGetWithRequestBuilder(slug: slug, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -269,13 +269,13 @@ open class CatalogCategoriesAPI {
      Get Category by Slug
      - GET /catalog/categories/slug/{slug}
      - Retrieves a single category by slug.
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
      - parameter slug: (path)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - returns: RequestBuilder<Category> 
      */
-    open class func catalogCategoriesSlugSlugGetWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, slug: String) -> RequestBuilder<Category> {
+    open class func catalogCategoriesSlugSlugGetWithRequestBuilder(slug: String, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil) -> RequestBuilder<Category> {
         var localVariablePath = "/catalog/categories/slug/{slug}"
         let slugPreEscape = "\(APIHelper.mapValueToPathItem(slug))"
         let slugPostEscape = slugPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -286,9 +286,9 @@ open class CatalogCategoriesAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "X-Violet-Token": xVioletToken.encodeToJSON(),
-            "X-Violet-App-Secret": xVioletAppSecret.encodeToJSON(),
-            "X-Violet-App-Id": xVioletAppId.encodeToJSON(),
+            "X-Violet-Token": xVioletToken?.encodeToJSON(),
+            "X-Violet-App-Secret": xVioletAppSecret?.encodeToJSON(),
+            "X-Violet-App-Id": xVioletAppId?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)

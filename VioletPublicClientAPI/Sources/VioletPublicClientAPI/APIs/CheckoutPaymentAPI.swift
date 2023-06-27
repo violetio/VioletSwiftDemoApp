@@ -15,18 +15,18 @@ open class CheckoutPaymentAPI {
     /**
      Apply Payment Method
      
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
      - parameter cartId: (path)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter priceCart: (query)  (optional, default to false)
      - parameter body: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func checkoutCartCartIdPaymentPost(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, cartId: Int64, priceCart: Bool? = nil, body: PaymentMethodRequest? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: Order?, _ error: Error?) -> Void)) -> RequestTask {
-        return checkoutCartCartIdPaymentPostWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, cartId: cartId, priceCart: priceCart, body: body).execute(apiResponseQueue) { result in
+    open class func checkoutCartCartIdPaymentPost(cartId: Int64, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, priceCart: Bool? = nil, body: PaymentMethodRequest? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: Order?, _ error: Error?) -> Void)) -> RequestTask {
+        return checkoutCartCartIdPaymentPostWithRequestBuilder(cartId: cartId, xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, priceCart: priceCart, body: body).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -39,15 +39,15 @@ open class CheckoutPaymentAPI {
     /**
      Apply Payment Method
      - POST /checkout/cart/{cart_id}/payment
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
      - parameter cartId: (path)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter priceCart: (query)  (optional, default to false)
      - parameter body: (body)  (optional)
      - returns: RequestBuilder<Order> 
      */
-    open class func checkoutCartCartIdPaymentPostWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, cartId: Int64, priceCart: Bool? = nil, body: PaymentMethodRequest? = nil) -> RequestBuilder<Order> {
+    open class func checkoutCartCartIdPaymentPostWithRequestBuilder(cartId: Int64, xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, priceCart: Bool? = nil, body: PaymentMethodRequest? = nil) -> RequestBuilder<Order> {
         var localVariablePath = "/checkout/cart/{cart_id}/payment"
         let cartIdPreEscape = "\(APIHelper.mapValueToPathItem(cartId))"
         let cartIdPostEscape = cartIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -61,9 +61,9 @@ open class CheckoutPaymentAPI {
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "X-Violet-Token": xVioletToken.encodeToJSON(),
-            "X-Violet-App-Secret": xVioletAppSecret.encodeToJSON(),
-            "X-Violet-App-Id": xVioletAppId.encodeToJSON(),
+            "X-Violet-Token": xVioletToken?.encodeToJSON(),
+            "X-Violet-App-Secret": xVioletAppSecret?.encodeToJSON(),
+            "X-Violet-App-Id": xVioletAppId?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -76,14 +76,14 @@ open class CheckoutPaymentAPI {
     /**
      Get Stripe Public Token
      
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func checkoutPaymentTokenGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: CurrentPaymentToken?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func checkoutPaymentTokenGet(xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: CurrentPaymentToken?, _ error: Error?) -> Void)) -> RequestTask {
         return checkoutPaymentTokenGetWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -98,12 +98,12 @@ open class CheckoutPaymentAPI {
      Get Stripe Public Token
      - GET /checkout/payment/token
      - Obtain the current Stripe Publishable Key for use in tokenizing payment card data with the <a target='_blank' href='https://stripe.com/docs/stripe-js/reference#stripe-create-token'>Stripe.js library</a>.
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - returns: RequestBuilder<CurrentPaymentToken> 
      */
-    open class func checkoutPaymentTokenGetWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64) -> RequestBuilder<CurrentPaymentToken> {
+    open class func checkoutPaymentTokenGetWithRequestBuilder(xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil) -> RequestBuilder<CurrentPaymentToken> {
         let localVariablePath = "/checkout/payment/token"
         let localVariableURLString = VioletPublicClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -111,9 +111,9 @@ open class CheckoutPaymentAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "X-Violet-Token": xVioletToken.encodeToJSON(),
-            "X-Violet-App-Secret": xVioletAppSecret.encodeToJSON(),
-            "X-Violet-App-Id": xVioletAppId.encodeToJSON(),
+            "X-Violet-Token": xVioletToken?.encodeToJSON(),
+            "X-Violet-App-Secret": xVioletAppSecret?.encodeToJSON(),
+            "X-Violet-App-Id": xVioletAppId?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)

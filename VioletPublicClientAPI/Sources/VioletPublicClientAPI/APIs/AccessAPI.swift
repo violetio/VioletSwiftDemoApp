@@ -15,14 +15,14 @@ open class AccessAPI {
     /**
      Refresh Token
      
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func authTokenGet(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: RefreshTokenResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func authTokenGet(xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: RefreshTokenResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return authTokenGetWithRequestBuilder(xVioletToken: xVioletToken, xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -37,12 +37,12 @@ open class AccessAPI {
      Refresh Token
      - GET /auth/token
      - Refreshes a Users token. Pass the \"refresh_token\" value provided in the response body of a login request in the \"X-Violet-Token\" header.
-     - parameter xVioletToken: (header)  
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
+     - parameter xVioletToken: (header)  (optional)
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - returns: RequestBuilder<RefreshTokenResponse> 
      */
-    open class func authTokenGetWithRequestBuilder(xVioletToken: String, xVioletAppSecret: String, xVioletAppId: Int64) -> RequestBuilder<RefreshTokenResponse> {
+    open class func authTokenGetWithRequestBuilder(xVioletToken: String? = nil, xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil) -> RequestBuilder<RefreshTokenResponse> {
         let localVariablePath = "/auth/token"
         let localVariableURLString = VioletPublicClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -50,9 +50,9 @@ open class AccessAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "X-Violet-Token": xVioletToken.encodeToJSON(),
-            "X-Violet-App-Secret": xVioletAppSecret.encodeToJSON(),
-            "X-Violet-App-Id": xVioletAppId.encodeToJSON(),
+            "X-Violet-Token": xVioletToken?.encodeToJSON(),
+            "X-Violet-App-Secret": xVioletAppSecret?.encodeToJSON(),
+            "X-Violet-App-Id": xVioletAppId?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
@@ -65,14 +65,14 @@ open class AccessAPI {
     /**
      Login
      
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter body: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func loginPost(xVioletAppSecret: String, xVioletAppId: Int64, body: LoginRequest? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: LoginResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func loginPost(xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, body: LoginRequest? = nil, apiResponseQueue: DispatchQueue = VioletPublicClientAPI.apiResponseQueue, completion: @escaping ((_ data: LoginResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return loginPostWithRequestBuilder(xVioletAppSecret: xVioletAppSecret, xVioletAppId: xVioletAppId, body: body).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -87,12 +87,12 @@ open class AccessAPI {
      Login
      - POST /login
      - Log into an existing Violet account with a username and password. If sucessful an access token will be returned in the response body for use in additional requests against the API.
-     - parameter xVioletAppSecret: (header)  
-     - parameter xVioletAppId: (header)  
+     - parameter xVioletAppSecret: (header)  (optional)
+     - parameter xVioletAppId: (header)  (optional)
      - parameter body: (body)  (optional)
      - returns: RequestBuilder<LoginResponse> 
      */
-    open class func loginPostWithRequestBuilder(xVioletAppSecret: String, xVioletAppId: Int64, body: LoginRequest? = nil) -> RequestBuilder<LoginResponse> {
+    open class func loginPostWithRequestBuilder(xVioletAppSecret: String? = nil, xVioletAppId: Int64? = nil, body: LoginRequest? = nil) -> RequestBuilder<LoginResponse> {
         let localVariablePath = "/login"
         let localVariableURLString = VioletPublicClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -100,8 +100,8 @@ open class AccessAPI {
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            "X-Violet-App-Secret": xVioletAppSecret.encodeToJSON(),
-            "X-Violet-App-Id": xVioletAppId.encodeToJSON(),
+            "X-Violet-App-Secret": xVioletAppSecret?.encodeToJSON(),
+            "X-Violet-App-Id": xVioletAppId?.encodeToJSON(),
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)

@@ -20,10 +20,9 @@ class CheckoutCartShippingAvailableGetRequest: ChannelHeadersAPICall<[OrderShipp
     }
 
     override func send() {
-        CheckoutShippingAPI.checkoutCartCartIdShippingAvailableGet(xVioletToken: channelHeaders.token,
+        CheckoutShippingAPI.checkoutCartCartIdShippingAvailableGet(cartId: orderId, xVioletToken: channelHeaders.token,
                                                                    xVioletAppSecret: channelHeaders.apiSecret,
-                                                                   xVioletAppId: channelHeaders.appID,
-                                                                   cartId: orderId)
+                                                                   xVioletAppId: channelHeaders.appID)
         { [weak self] data, error in
 
             guard let weakSelf = self else { return }

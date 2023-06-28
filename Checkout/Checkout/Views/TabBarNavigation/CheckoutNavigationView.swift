@@ -20,6 +20,22 @@ struct CheckoutNavigationView: View {
         {
             NavigationStack
             {
+                HelloView()
+            }
+            .tabItem {
+                let menuText = Text("Demo View", comment: "No comment")
+                Label
+                {
+                    menuText
+                }
+                icon: {
+                    Image(systemName: "square.grid.3x2")
+                }.accessibility(label: menuText)
+            }
+            .tag(Tab.demo)
+            
+            NavigationStack
+            {
                 ShoppingTabView(store: $store, shoppingViewState: store.shoppingViewState)
             }
             .tabItem {

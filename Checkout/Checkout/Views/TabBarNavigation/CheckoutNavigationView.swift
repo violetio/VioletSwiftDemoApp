@@ -13,23 +13,23 @@ struct CheckoutNavigationView: View {
     @SceneStorage("navigation") private var navigationData: Data?
     @StateObject private var navigationModel = NavigationModel(offerItemPath: [], loadedOfferItems: PreviewMocks.MockOfferItemsArray())
 
-    @State private var selection: Tab = .scenarios
+    @State private var selection: Tab = Tab.startingTab
     
     var body: some View {
         TabView(selection: $selection)
         {
             NavigationStack
             {
-                HelloView()
+                DemoAppView()
             }
             .tabItem {
-                let menuText = Text("Demo View", comment: "No comment")
+                let menuText = Text("DemoAppView", comment: "No comment")
                 Label
                 {
                     menuText
                 }
                 icon: {
-                    Image(systemName: "square.grid.3x2")
+                    Image(systemName: "cart")
                 }.accessibility(label: menuText)
             }
             .tag(Tab.demo)

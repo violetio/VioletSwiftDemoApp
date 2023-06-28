@@ -11,9 +11,10 @@ enum Tab: String {
     case shopping
     case cart
     case settings
+    case demo
     
     static var startingTab: Tab {
-        return .cart
+        return .demo
     }
 }
 
@@ -41,6 +42,8 @@ extension Tab: Codable {
             self = .cart
         case "settings":
             self = .settings
+        case "demo":
+            self = .demo
         default:
             throw CodingError.unknownValue
         }
@@ -59,6 +62,8 @@ extension Tab: Codable {
             try container.encode("cart", forKey: .rawValue)
         case .settings:
             try container.encode("settings", forKey: .rawValue)
+        case .demo:
+            try container.encode("demo", forKey: .rawValue)
         }
     }
     

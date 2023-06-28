@@ -7,22 +7,13 @@
 
 import VioletPublicClientAPI
 
-class AuthTokenGet: DataResponseAPICall<RefreshTokenResponse> {
-    let appIDAndSecret: AppIDAndSecret
-    let refreshToken: String
-
-    init(appIDAndSecret: AppIDAndSecret, refreshToken: String) {
-        self.appIDAndSecret = appIDAndSecret
-        self.refreshToken = refreshToken
-    }
+class AuthTokenGet: ChannelHeadersAPICall<RefreshTokenResponse> {
 
     override func send() {
-        AccessAPI.authTokenGet(xVioletToken: refreshToken,
-                               xVioletAppSecret: appIDAndSecret.apiSecret,
-                               xVioletAppId: appIDAndSecret.appID)
-        { [weak self] data, error in
-            guard let weakSelf = self else { return }
-            weakSelf.callIsCompleted(errorResponse: error, dataResponse: data)
+        AccessAPI.authTokenGet(xVioletToken: channelHeaders.refreshToken,
+                               xVioletAppSecret: channelHeaders.apiSecret,
+                               xVioletAppId: channelHeaders.appID) { data, error in
+            self.callIsCompleted(errorResponse: error, dataResponse: data)
         }
     }
 }

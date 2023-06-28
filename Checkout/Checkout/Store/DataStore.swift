@@ -22,82 +22,82 @@ class DataStore: ObservableObject {
     @Published var currentPendingOrder: PendingOrder?
     @Published var shippingMethodsWrapper: OrderShippingMethodWrapperArray?
     
-    let apiCallService = APICallService()
+//    let apiCallService = APICallService()
     var cancellables = Set<AnyCancellable>()
     
     init() {
-        self.startUp()
+//        self.startUp()
     }
     
-    func startUp() {
-        self.apiCallService.$currentLoginResponse.sink { completion in
-            switch completion {
-            case .finished:
-                Logger.info("apiCallService.$currentLoginResponse.sink: .finished")
-            case .failure(let error):
-                Logger.error("apiCallService.$currentLoginResponse.sink: .error")
-                Logger.error(error)
-            }
-        } receiveValue: { [weak self] returnedValue in
-            guard let weakSelf = self else { return }
-            if let foundLoginResponse = returnedValue {
-                Logger.debug("Caching new LoginResponse")
-                try? weakSelf.loadedChannelStore?.cachedLoginResponse.set(foundLoginResponse)
-            }
-            weakSelf.currentAuthToken = CurrentAuthToken.fromLoginResponse(returnedValue)
-        }.store(in: &self.cancellables)
-        
-        self.apiCallService.$lastPageOffer.sink { [weak self] returnedValue in
-            guard let weakSelf = self else { return }
-            if let offersContent = returnedValue?.content {
-                weakSelf.loadedOfferItems = OfferItem.fromEntities(entities: offersContent)
-                Logger.info("DataStore - Receive OfferItems = Count: \(weakSelf.loadedOfferItems.count)")
-            } else {
-                /*
-                 if weakSelf.apiCallService.expiredToken == true {
-                     Logger.info("DataStore - Expired Token")
-                     if let refreshToken = weakSelf.currentAuthToken?.refreshToken {
-                         Logger.info("DataStore - Auto Refresh Token")
-                         weakSelf.apiCallService.sendRefreshToken(appIDAndSecret: weakSelf.activeAppIDAndSecret!, refreshToken: refreshToken)
-                     }
-                
-                 }
-                  */
-            }
-        }.store(in: &self.cancellables)
-        
-        self.apiCallService.$lastRefreshTokenResponse.sink { [weak self] returnedValue in
-            guard let self = self else { return }
-            if let newAuthToken = returnedValue?.token,
-               let current = self.currentAuthToken
-            {
-                Logger.debug("Replacing currentAuthToken")
-                self.currentAuthToken = current.replaceAuthToken(authToken: newAuthToken)
-            }
-
-        }.store(in: &self.cancellables)
-        
-        self.apiCallService.$currentOrder.sink { [weak self] returnedValue in
-            guard let self = self else { return }
-            self.currentOrder = returnedValue
-            if let foundOrderResponse = returnedValue,
-               let orderId = foundOrderResponse.id {
-                let newPendingOrder = PendingOrder.fromOrder(foundOrderResponse)
-                self.currentPendingOrder = newPendingOrder
-                Logger.debug("Caching new Order ID: \(foundOrderResponse.id!)")
-                try? self.loadedChannelStore?.cachedOrder.set(foundOrderResponse)
-            }
-            Logger.debug("Replacing currentOrder: \(returnedValue?.id)")
-        }.store(in: &self.cancellables)
-        
-        self.apiCallService.$lastShippingMethodsWrappers.sink { [weak self] returnedValue in
-            guard let self = self else { return }
-            if let foundShippingMethodsWrappers = returnedValue {
-                self.shippingMethodsWrapper = foundShippingMethodsWrappers
-                try? self.loadedChannelStore?.cachedShippingMethodWrapper.set(foundShippingMethodsWrappers)
-            }
-        }.store(in: &self.cancellables)
-    }
+//    func startUp() {
+//        self.apiCallService.$currentLoginResponse.sink { completion in
+//            switch completion {
+//            case .finished:
+//                Logger.info("apiCallService.$currentLoginResponse.sink: .finished")
+//            case .failure(let error):
+//                Logger.error("apiCallService.$currentLoginResponse.sink: .error")
+//                Logger.error(error)
+//            }
+//        } receiveValue: { [weak self] returnedValue in
+//            guard let weakSelf = self else { return }
+//            if let foundLoginResponse = returnedValue {
+//                Logger.debug("Caching new LoginResponse")
+//                try? weakSelf.loadedChannelStore?.cachedLoginResponse.set(foundLoginResponse)
+//            }
+//            weakSelf.currentAuthToken = CurrentAuthToken.fromLoginResponse(returnedValue)
+//        }.store(in: &self.cancellables)
+//
+//        self.apiCallService.$lastPageOffer.sink { [weak self] returnedValue in
+//            guard let weakSelf = self else { return }
+//            if let offersContent = returnedValue?.content {
+//                weakSelf.loadedOfferItems = OfferItem.fromEntities(entities: offersContent)
+//                Logger.info("DataStore - Receive OfferItems = Count: \(weakSelf.loadedOfferItems.count)")
+//            } else {
+//                /*
+//                 if weakSelf.apiCallService.expiredToken == true {
+//                     Logger.info("DataStore - Expired Token")
+//                     if let refreshToken = weakSelf.currentAuthToken?.refreshToken {
+//                         Logger.info("DataStore - Auto Refresh Token")
+//                         weakSelf.apiCallService.sendRefreshToken(appIDAndSecret: weakSelf.activeAppIDAndSecret!, refreshToken: refreshToken)
+//                     }
+//
+//                 }
+//                  */
+//            }
+//        }.store(in: &self.cancellables)
+//
+//        self.apiCallService.$lastRefreshTokenResponse.sink { [weak self] returnedValue in
+//            guard let self = self else { return }
+//            if let newAuthToken = returnedValue?.token,
+//               let current = self.currentAuthToken
+//            {
+//                Logger.debug("Replacing currentAuthToken")
+//                self.currentAuthToken = current.replaceAuthToken(authToken: newAuthToken)
+//            }
+//
+//        }.store(in: &self.cancellables)
+//
+//        self.apiCallService.$currentOrder.sink { [weak self] returnedValue in
+//            guard let self = self else { return }
+//            self.currentOrder = returnedValue
+//            if let foundOrderResponse = returnedValue,
+//               let orderId = foundOrderResponse.id {
+//                let newPendingOrder = PendingOrder.fromOrder(foundOrderResponse)
+//                self.currentPendingOrder = newPendingOrder
+//                Logger.debug("Caching new Order ID: \(foundOrderResponse.id!)")
+//                try? self.loadedChannelStore?.cachedOrder.set(foundOrderResponse)
+//            }
+//            Logger.debug("Replacing currentOrder: \(returnedValue?.id)")
+//        }.store(in: &self.cancellables)
+//
+//        self.apiCallService.$lastShippingMethodsWrappers.sink { [weak self] returnedValue in
+//            guard let self = self else { return }
+//            if let foundShippingMethodsWrappers = returnedValue {
+//                self.shippingMethodsWrapper = foundShippingMethodsWrappers
+//                try? self.loadedChannelStore?.cachedShippingMethodWrapper.set(foundShippingMethodsWrappers)
+//            }
+//        }.store(in: &self.cancellables)
+//    }
     
     func doLogOut() {
         self.loadedChannelStore?.cachedLoginResponse.clearCachedEntity()
@@ -141,7 +141,7 @@ class DataStore: ObservableObject {
             Logger.debug("DataStore.loadChannelStore restored currentAuthToken")
             self.currentAuthToken = CurrentAuthToken.fromLoginResponse(cached)
             if let cachedAuthToken = cached.token {
-                self.channelHeaders = ChannelHeaders(token: cachedAuthToken, appIdAndSecret: activeAppIDAndSecret)
+                self.channelHeaders = ChannelHeaders(token: cachedAuthToken, refreshToken: "", appIdAndSecret: activeAppIDAndSecret)
                 Logger.debug("DataStore.loadChannelStore restored channelHeaders")
             }
         } else {

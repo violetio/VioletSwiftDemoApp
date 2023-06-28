@@ -9,17 +9,17 @@ import SwiftUI
 import VioletPublicClientAPI
 
 class LoginPostRequest: DataResponseAPICall<LoginResponse> {
-    let appCreds: AppCreds
 
-    init(appCreds: AppCreds) {
-        self.appCreds = appCreds
+    let loginInputs: LoginInputsType
+    
+    init(loginInputs: LoginInputsType) {
+        self.loginInputs = loginInputs
     }
 
     override func send() {
-        AccessAPI.loginPost(xVioletAppSecret: appCreds.apiSecret,
-                            xVioletAppId: appCreds.appID,
-                            body: appCreds.loginBody())
-        { [weak self] response, error in
+        AccessAPI.loginPost(xVioletAppSecret: loginInputs.apiSecret,
+                            xVioletAppId: loginInputs.appID,
+                            body: loginInputs.loginBody()) { [weak self] (response, error) in
             guard let weakSelf = self else { return }
             weakSelf.callIsCompleted(errorResponse: error, dataResponse: response)
         }

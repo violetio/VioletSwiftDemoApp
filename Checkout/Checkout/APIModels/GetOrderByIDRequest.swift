@@ -21,10 +21,9 @@ class GetOrderByIDRequest: ChannelHeadersAPICall<Order> {
     }
 
     override func send() {
-        OrdersAPI.ordersOrderIdGet(xVioletToken: channelHeaders.token,
+        OrdersAPI.ordersOrderIdGet(orderId: orderId, xVioletToken: channelHeaders.token,
                                    xVioletAppSecret: channelHeaders.apiSecret,
-                                   xVioletAppId: channelHeaders.appID,
-                                   orderId: orderId)
+                                   xVioletAppId: channelHeaders.appID)
         { data, error in
             if let printData = data {
                 Logger.info(printData.token ?? "")

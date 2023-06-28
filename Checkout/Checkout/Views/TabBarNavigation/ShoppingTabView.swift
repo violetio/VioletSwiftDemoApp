@@ -8,21 +8,22 @@
 import SwiftUI
 
 struct ShoppingTabView: View {
-    @Binding var shoppingNavigationModel: ShoppingNavigationModel
-    @ObservedObject var dataStore: DataStore = DataStore.shared
+    @Binding var store: AppStore
+    @ObservedObject var shoppingViewState: ShoppingViewState
     
     let tab: Tab = .shopping
     
     func refreshPageOffers() {
-        if let channelHeaders = dataStore.channelHeaders {
+        if let channelHeaders = store.channelLoginViewState.channelHeaders {
             Logger.debug("ShoppingTabView -> sendGetPageOffers")
-            dataStore.apiCallService.sendGetPageOffers(channelHeaders: channelHeaders, merchantId: 10003)
+            store.send(.offersPageRequest(channelHeaders, store.channelLoginViewState.merchantID))
         }
     }
+    
     var body: some View {
-        NavigationStack(path: $shoppingNavigationModel.offerItemPath) {
-//            Text("Loaded Offer Items Count: \(dataStore.loadedOfferItems.count)")
-            OffersGridView(loadedOfferItems: $dataStore.loadedOfferItems)
+        NavigationStack(path: $shoppingViewState.offerItemPath) {
+            OffersGridView(store: $store,
+                           shoppingViewState: store.shoppingViewState)
         }
         .navigationBarTitle("Offer Grid")
         .toolbar {
@@ -31,22 +32,22 @@ struct ShoppingTabView: View {
             }
         }
         .navigationDestination(for: OfferItem.self) { offerItem in
-            OfferDetailView(offerItem: .constant(offerItem), offerItemSelections: $shoppingNavigationModel.offerItemSelections)
+            //OfferDetailView(offerItem: .constant(offerItem), offerItemSelections: $shoppingNavigationModel.offerItemSelections)
         }
-        .onAppear() {
+        .onAppear {
             refreshPageOffers()
         }
-        
     }
 }
 
 struct ShoppingTabView_Previews: PreviewProvider {
-    
     static var mockOfferItems: [OfferItem] {
-        //return []
+        // return []
         return PreviewMocks.MockOfferItemsArray()
     }
+
     static var previews: some View {
-        ShoppingTabView(shoppingNavigationModel: .constant(ShoppingNavigationModel(offerItemPath: [], loadedOfferItems: mockOfferItems)))
+        ShoppingTabView(store: AppStore.mockAppStoreBinding,
+                        shoppingViewState: AppStore.mockAppStore.shoppingViewState)
     }
 }

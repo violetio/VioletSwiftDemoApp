@@ -9,16 +9,18 @@ import VioletPublicClientAPI
 
 struct CheckoutNavigationView: View {
 
+    @Binding var store: AppStore
     @SceneStorage("navigation") private var navigationData: Data?
     @StateObject private var navigationModel = NavigationModel(offerItemPath: [], loadedOfferItems: PreviewMocks.MockOfferItemsArray())
     @ObservedObject var dataStore: DataStore = DataStore.shared
+    @State private var selection: Tab = .scenarios
     
     var body: some View {
-        TabView(selection: $navigationModel.selectedTab)
+        TabView(selection: $selection)
         {
             NavigationStack
             {
-                ShoppingTabView(shoppingNavigationModel: $navigationModel.shoppingNavigationModel)
+                ShoppingTabView(store: $store, shoppingViewState: store.shoppingViewState)
             }
             .tabItem {
                 let menuText = Text("Shopping", comment: "API Scenarios")
@@ -33,8 +35,7 @@ struct CheckoutNavigationView: View {
             .tag(Tab.shopping)
 
             NavigationStack {
-                CartTabView(offerItemSelections: $navigationModel.shoppingNavigationModel.offerItemSelections)
-//                CartContentsView(viewDataCoordinator: $viewDataCoordinator)
+                CartTabView(store: $store, offerItemSelections: $navigationModel.shoppingNavigationModel.offerItemSelections)
             }
             .tabItem {
                 Label {
@@ -47,9 +48,8 @@ struct CheckoutNavigationView: View {
             .tag(Tab.cart)
             
             NavigationStack {
-                SettingsTabView()
-//                let fakeOffer = Offer(productId: "01001", name: "Offer Name", source: .shopify, merchantId: 42, minPrice: 0199)
-//                OfferView(offer:fakeOffer)
+                SettingsTabView(store: $store,
+                                channelLoginViewState: store.channelLoginViewState)
             }
             .tabItem {
                 Label {
@@ -61,7 +61,7 @@ struct CheckoutNavigationView: View {
             .tag(Tab.settings)
 
         }.onAppear() {
-            DataStore.shared.changeAppId(activeAppIDAndSecret: DemoAppIdAndSecret.byDemoChannel(DemoChannels.defaultDemoChannel))
+            selection = store.state.defaultStartingTab
         }
         
     }
@@ -69,6 +69,6 @@ struct CheckoutNavigationView: View {
 
 struct CheckoutNavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckoutNavigationView()
+        CheckoutNavigationView(store: AppStore.mockAppStoreBinding)
     }
 }

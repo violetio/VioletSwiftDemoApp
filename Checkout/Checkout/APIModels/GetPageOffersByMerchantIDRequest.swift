@@ -21,10 +21,9 @@ class GetPageOffersByMerchantIDRequest: ChannelHeadersAPICall<PageOffer> {
     }
 
     override func send() {
-        CatalogOffersAPI.catalogOffersMerchantsMerchantIdGet(xVioletToken: channelHeaders.token,
+        CatalogOffersAPI.catalogOffersMerchantsMerchantIdGet(merchantId: merchantId, xVioletToken: channelHeaders.token,
                                                              xVioletAppSecret: channelHeaders.apiSecret,
                                                              xVioletAppId: channelHeaders.appID,
-                                                             merchantId: merchantId,
                                                              page: page,
                                                              size: size)
         { [weak self] data, error in

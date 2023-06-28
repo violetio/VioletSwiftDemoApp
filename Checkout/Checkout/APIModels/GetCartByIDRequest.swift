@@ -21,10 +21,9 @@ class GetCartByIDRequest: ChannelHeadersAPICall<Order> {
     }
 
     override func send() {
-        CheckoutCartAPI.checkoutCartCartIdGet(xVioletToken: channelHeaders.token,
+        CheckoutCartAPI.checkoutCartCartIdGet(cartId: orderId, xVioletToken: channelHeaders.token,
                                               xVioletAppSecret: channelHeaders.apiSecret,
-                                              xVioletAppId: channelHeaders.appID,
-                                              cartId: orderId)
+                                              xVioletAppId: channelHeaders.appID)
         { data, error in
             self.callIsCompleted(errorResponse: error, dataResponse: data)
         }

@@ -12,22 +12,22 @@ struct CartShippingMethodsSectionView: View {
     
     func doGetShippingMethods() {
         Logger.info("Starting: doGetShippingMethods")
-        if let channelHeaders = dataStore.channelHeaders,
-           let pendingOrderId = dataStore.currentPendingOrder?.orderId{
-            Logger.debug("CartTabView -> sendGetShippingMethods")
-            dataStore.apiCallService.sendGetShippingMethods(channelHeaders: channelHeaders, orderId: pendingOrderId)
-        }
+//        if let channelHeaders = dataStore.channelHeaders,
+//           let pendingOrderId = dataStore.currentPendingOrder?.orderId{
+//            Logger.debug("CartTabView -> sendGetShippingMethods")
+////            dataStore.apiCallService.sendGetShippingMethods(channelHeaders: channelHeaders, orderId: pendingOrderId)
+//        }
     }
     
     var body: some View {
         Section {
-            if dataStore.shippingMethodsWrapper == nil {
-                Button("Get Shipping Methods") {
-                    doGetShippingMethods()
-                }
-            } else {
-                OrderShippingMethodWrapperArrayView(orderShippingMethodWrapperArray: $dataStore.shippingMethodsWrapper)
-            }
+//            if dataStore.shippingMethodsWrapper == nil {
+//                Button("Get Shipping Methods") {
+//                    doGetShippingMethods()
+//                }
+//            } else {
+//                OrderShippingMethodWrapperArrayView(orderShippingMethodWrapperArray: $dataStore.shippingMethodsWrapper)
+//            }
             
         } header: {
             Text("Shipping Methods")

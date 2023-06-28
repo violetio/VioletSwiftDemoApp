@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import VioletPublicClientAPI
 
-typealias OrderShippingMethodWrapperArray = [OrderShippingMethodWrapper]
+
 
 class APICallService {
     @Published var currentLoginResponse: LoginResponse? = nil

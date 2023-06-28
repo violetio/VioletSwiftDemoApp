@@ -21,10 +21,9 @@ class GetOfferByIDRequest: ChannelHeadersAPICall<Offer> {
     }
 
     override func send() {
-        CatalogOffersAPI.catalogOffersOfferIdGet(xVioletToken: channelHeaders.token,
+        CatalogOffersAPI.catalogOffersOfferIdGet(offerId: offerId, xVioletToken: channelHeaders.token,
                                                  xVioletAppSecret: channelHeaders.apiSecret,
-                                                 xVioletAppId: channelHeaders.appID,
-                                                 offerId: offerId)
+                                                 xVioletAppId: channelHeaders.appID)
         { data, error in
             self.callIsCompleted(errorResponse: error, dataResponse: data)
         }

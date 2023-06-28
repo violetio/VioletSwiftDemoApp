@@ -14,7 +14,8 @@ import Foundation
 public typealias VioletPublicClient = VioletPublicClientAPI
 
 open class VioletPublicClientAPI {
-    public static var basePath = "https://sandbox-api.violet.io:443/v1"
+    //public static var basePath = "https://sandbox-api.violet.io:443/v1"
+    public static var basePath = "http://localhost:8020/v1"
     public static var customHeaders: [String: String] = [:]
     public static var credential: URLCredential?
     public static var requestBuilderFactory: RequestBuilderFactory = URLSessionRequestBuilderFactory()

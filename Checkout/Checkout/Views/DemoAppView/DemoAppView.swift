@@ -9,7 +9,21 @@ import SwiftUI
 
 struct DemoAppView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                HStack {
+                    Text("Demo App")
+                        .font(.system(size: 25, weight: .bold))
+                      .foregroundColor(.black)
+                    Spacer()
+                    Image(systemName: "cart")
+                }.padding(.horizontal)
+            }
+        }
     }
 }
 

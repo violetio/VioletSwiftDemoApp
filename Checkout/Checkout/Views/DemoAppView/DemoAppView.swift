@@ -12,7 +12,7 @@ struct DemoAppView: View {
     
     var body: some View {
         NavigationStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            DemoAppProductGrid(store: $store)
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

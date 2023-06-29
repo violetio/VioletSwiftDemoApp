@@ -24,6 +24,7 @@
 		E70BEBA929BBA0FD0030335E /* EnvVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA829BBA0FD0030335E /* EnvVars.swift */; };
 		E712EAF82A4CDEFB00DDAE15 /* DemoAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */; };
 		E712EAFA2A4E27D700DDAE15 /* FigmaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */; };
+		E712EAFC2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */; };
 		E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB7A29BFC20100598B15 /* Logger.swift */; };
 		E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */; };
 		E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8229C2334B00598B15 /* APIModelsTests.swift */; };
@@ -166,6 +167,7 @@
 		E70BEBA829BBA0FD0030335E /* EnvVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVars.swift; sourceTree = "<group>"; };
 		E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppView.swift; sourceTree = "<group>"; };
 		E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaConstants.swift; sourceTree = "<group>"; };
+		E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppProductGrid.swift; sourceTree = "<group>"; };
 		E71CFB7A29BFC20100598B15 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPostRequest.swift; sourceTree = "<group>"; };
 		E71CFB8229C2334B00598B15 /* APIModelsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModelsTests.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */,
+				E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */,
 			);
 			path = DemoAppView;
 			sourceTree = "<group>";
@@ -851,6 +854,7 @@
 				E72E001129F07B0F009F7BFE /* PreviewMocks.swift in Sources */,
 				E7B41C6029F715ED00E7371B /* CartTabView.swift in Sources */,
 				E72E001429F0852F009F7BFE /* EntityViewModel.swift in Sources */,
+				E712EAFC2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift in Sources */,
 				E7B41C6A29F71EEC00E7371B /* OfferItem.swift in Sources */,
 				E7B41C7B29F9706000E7371B /* LoginPostView.swift in Sources */,
 				E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */,

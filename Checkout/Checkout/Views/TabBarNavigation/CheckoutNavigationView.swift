@@ -20,7 +20,7 @@ struct CheckoutNavigationView: View {
         {
             NavigationStack
             {
-                DemoAppView()
+                DemoAppView(store: $store)
             }
             .tabItem {
                 let menuText = Text("DemoAppView", comment: "No comment")

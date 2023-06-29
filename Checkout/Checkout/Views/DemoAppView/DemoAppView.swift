@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DemoAppView: View {
+    @Binding var store: AppStore
+    
     var body: some View {
         NavigationStack {
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
@@ -26,7 +28,6 @@ struct DemoAppView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavBarCartButton(action: {
-                    // Add your button action here
                     print("Custom button tapped!")
                 }, buttonText: "0")
             }
@@ -55,6 +56,6 @@ struct NavBarCartButton: View {
 
 struct DemoAppView_Previews: PreviewProvider {
     static var previews: some View {
-        DemoAppView()
+        DemoAppView(store: AppStore.mockAppStoreBinding)
     }
 }

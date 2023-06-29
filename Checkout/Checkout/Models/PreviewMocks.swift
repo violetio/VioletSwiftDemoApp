@@ -17,6 +17,14 @@ struct PreviewMocks {
         return innerOffers.compactMap(OfferItem.fromEntity)
     }
     
+    static func MockOfferItemsArray2() -> [DemoProductGridOfferItem] {
+        guard let pageOffers = MockOffers.load_PageOffers(),
+              let innerOffers = pageOffers.content else {
+            return []
+        }
+        return innerOffers.compactMap(DemoProductGridOfferItem.fromEntity)
+    }
+    
     static func MockOfferItem() -> OfferItem {
         guard let mockOffer = MockOffers.load_Offer_12555() else {
             return OfferItem.Empty()

@@ -19,7 +19,8 @@ struct DemoAppView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 HStack {
                     Text("Demo App")
-                        .font(.system(size: 25, weight: .bold))
+                        .font(.system(size: FigmaConstants.NavBar.titleFontSize,
+                                      weight: FigmaConstants.NavBar.titleFontWeight))
                       .foregroundColor(.black)
                     Spacer()
 
@@ -44,11 +45,11 @@ struct NavBarCartButton: View {
             HStack(spacing: 10) {
                 Image(systemName: "cart.fill")
                 Text(buttonText)
-                    .font(.system(size: 17, weight: .semibold))
+                    .font(.system(size: FigmaConstants.NavBarCartButton.itemCountFontSize,
+                                  weight: FigmaConstants.NavBarCartButton.itemCountFontWeight))
             }.padding(.horizontal, 20)
                 .padding(.vertical, 13)
-                .cornerRadius(10)
-                //.border(.black)
+                .cornerRadius(FigmaConstants.cornerRadius)
         }
     }
 }

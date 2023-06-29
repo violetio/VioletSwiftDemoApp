@@ -23,6 +23,7 @@
 		E70BEBA729BB9F650030335E /* EnvTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA629BB9F650030335E /* EnvTests.swift */; };
 		E70BEBA929BBA0FD0030335E /* EnvVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA829BBA0FD0030335E /* EnvVars.swift */; };
 		E712EAF82A4CDEFB00DDAE15 /* DemoAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */; };
+		E712EAFA2A4E27D700DDAE15 /* FigmaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */; };
 		E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB7A29BFC20100598B15 /* Logger.swift */; };
 		E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */; };
 		E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8229C2334B00598B15 /* APIModelsTests.swift */; };
@@ -164,6 +165,7 @@
 		E70BEBA629BB9F650030335E /* EnvTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvTests.swift; sourceTree = "<group>"; };
 		E70BEBA829BBA0FD0030335E /* EnvVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVars.swift; sourceTree = "<group>"; };
 		E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppView.swift; sourceTree = "<group>"; };
+		E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaConstants.swift; sourceTree = "<group>"; };
 		E71CFB7A29BFC20100598B15 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPostRequest.swift; sourceTree = "<group>"; };
 		E71CFB8229C2334B00598B15 /* APIModelsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModelsTests.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				E72E001929F1C009009F7BFE /* IntPrice.swift */,
 				E7B41C6929F71EEC00E7371B /* OfferItem.swift */,
 				E7B41C922A00888000E7371B /* Order+Extensions.swift */,
+				E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -829,6 +832,7 @@
 				E7B41C7729F769B900E7371B /* CachedEntity.swift in Sources */,
 				E7B41C872A002CFF00E7371B /* OfferSkusView.swift in Sources */,
 				E7B41C892A00497F00E7371B /* IdentifiableItemSelections.swift in Sources */,
+				E712EAFA2A4E27D700DDAE15 /* FigmaConstants.swift in Sources */,
 				E71CFBB129CE5FB300598B15 /* CheckoutCartCustomerPostRequest.swift in Sources */,
 				E7B41C4529F342D100E7371B /* CartItemView.swift in Sources */,
 				E72E001629F08C71009F7BFE /* StyleConstants.swift in Sources */,

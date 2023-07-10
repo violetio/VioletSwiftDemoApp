@@ -15,15 +15,17 @@ struct DemoProductGridOfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
     typealias Key = Int64
     public let offer_id: Int64
     public let name: String
+    public let vendor: String
     public let intPrice: IntPrice
     public let offerEntity: Offer?
     public let thumbnailImage: Image = Image(systemName: "questionmark.square.dashed")
     
-    init(offer_id: Int64, name: String, intPrice: IntPrice, offerEntity: Offer?) {
+    init(offer_id: Int64, name: String, intPrice: IntPrice, offerEntity: Offer?, vendor: String = "") {
         self.offer_id = offer_id
         self.name = name
         self.intPrice = intPrice
         self.offerEntity = offerEntity
+        self.vendor = vendor
     }
     
     var id: Int64 {
@@ -53,7 +55,8 @@ extension DemoProductGridOfferItem: EntityViewModel {
         return DemoProductGridOfferItem(offer_id: entity.id,
                          name: entity.name,
                          intPrice: IntPrice(price: entity.minPrice),
-                         offerEntity: entity)
+                         offerEntity: entity,
+                                        vendor: entity.vendor ?? "")
     }
     
     static func fromEntities(entities: [Entity]) -> [Self] {

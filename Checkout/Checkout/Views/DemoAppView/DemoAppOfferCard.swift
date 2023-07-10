@@ -37,6 +37,12 @@ struct DemoAppOfferCard: View {
                 Text("\(offerItem.seller)")
                     .font(Font.custom("Inter", size: 14))
                     .foregroundColor(FigmaConstants.Colors.systemGrey1)
+                Text("\(offerItem.intPrice.priceText())")
+                  .font(
+                    Font.custom("Inter", size: 14)
+                      .weight(.semibold)
+                  )
+                  .foregroundColor(.black)
                 
             }
             .padding(.horizontal, 10)

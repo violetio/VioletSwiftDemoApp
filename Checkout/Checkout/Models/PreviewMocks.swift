@@ -5,6 +5,7 @@
 //  Created by Alan Morford on 4/19/23.
 //
 
+import Foundation
 import VioletPublicClientAPI
 
 struct PreviewMocks {
@@ -30,6 +31,10 @@ struct PreviewMocks {
             return OfferItem.Empty()
         }
         return OfferItem.fromEntity(entity: mockOffer) ?? OfferItem.Empty()
+    }
+    
+    static func Mock_OfferItem_ImageURL() -> URL? {
+        return MockOfferItem().firstAlbumMediaImageURL()
     }
 
     static func Mock_DemoProductGridOfferItem() -> DemoProductGridOfferItem {

@@ -8,24 +8,48 @@
 import SwiftUI
 
 struct DemoAppOfferCardImage: View {
+    @Binding var imageURL: URL?
     var body: some View {
-        Rectangle()
-          .foregroundColor(.clear)
-          .frame(width: FigmaConstants.OfferCard.imageArea.width,
-                 height: FigmaConstants.OfferCard.imageArea.height)
-          .background(
-            Image("PATH_TO_IMAGE")
-              .resizable()
-              .aspectRatio(contentMode: .fill)
-              .frame(width: FigmaConstants.OfferCard.imageArea.width,
-                     height: FigmaConstants.OfferCard.imageArea.height)
-              .clipped()
-          )
+        VStack {
+            if let thumbURL = imageURL {
+                AsyncImage(url: thumbURL) { phase in
+                    if let image = phase.image {
+                        image.resizable().scaledToFill()
+                    } else if phase.error != nil {
+                        Color.red
+                    } else {
+                        Color.purple
+                    }
+                    
+                }.frame(width: FigmaConstants.OfferCard.imageArea.width,
+                        height: FigmaConstants.OfferCard.imageArea.height).clipped()
+            }
+            else {
+                Text("No Image Available")
+                    .font(Font.custom("SF Pro", size: 14))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
+            }
+        }.frame(width: FigmaConstants.OfferCard.imageArea.width,
+                height: FigmaConstants.OfferCard.imageArea.height)
+        //.withBlackBorder()
+
     }
 }
 
 struct DemoAppOfferCardImage_Previews: PreviewProvider {
     static var previews: some View {
-        DemoAppOfferCardImage()
+        //DemoAppOfferCardImage(imageURL: .constant(nil))
+        Group {
+            DemoAppOfferCardImage(imageURL: .constant(PreviewMocks.Mock_OfferItem_ImageURL()))
+                .previewLayout(PreviewLayout.fixed(width: FigmaConstants.OfferCard.imageArea.width,
+                                                   height: FigmaConstants.OfferCard.imageArea.height))
+                .previewDisplayName("Default preview")
+            
+            DemoAppOfferCardImage(imageURL: .constant(nil))
+                .previewLayout(PreviewLayout.fixed(width: FigmaConstants.OfferCard.imageArea.width,
+                                                   height: FigmaConstants.OfferCard.imageArea.height))
+                .previewDisplayName("No Image preview")
+        }
     }
 }

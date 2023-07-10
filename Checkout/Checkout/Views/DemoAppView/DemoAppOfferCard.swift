@@ -13,7 +13,7 @@ struct DemoAppOfferCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            DemoAppOfferCardImage()
+            DemoAppOfferCardImage(imageURL: .constant(offerItem.firstAlbumMediaImageURL()))
             VStack(alignment: .leading, spacing: 8) {
                 Text("\(offerItem.name)")
                     .font(.system(size: 21, weight: .semibold))

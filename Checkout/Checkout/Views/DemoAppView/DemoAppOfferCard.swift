@@ -34,6 +34,9 @@ struct DemoAppOfferCard: View {
                     .font(.system(size: 14, weight: .regular))
                     .italic()
                     .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
+                Text("Merchant Name")
+                    .font(.system(size: 14, weight: .regular))
+                    .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
                 
             }
             .padding(.horizontal, 10)

@@ -33,10 +33,10 @@ struct DemoAppOfferCard: View {
                 Text("\(offerItem.vendor)")
                     .font(.system(size: 14, weight: .regular))
                     .italic()
-                    .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
-                Text("Merchant Name")
-                    .font(.system(size: 14, weight: .regular))
-                    .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
+                    .foregroundColor(FigmaConstants.Colors.systemGrey1)
+                Text("\(offerItem.seller)")
+                    .font(Font.custom("Inter", size: 14))
+                    .foregroundColor(FigmaConstants.Colors.systemGrey1)
                 
             }
             .padding(.horizontal, 10)

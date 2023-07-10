@@ -9,7 +9,7 @@ import SwiftUI
 
 class AppStore {
     struct AppState {
-        let defaultStartingTab: Tab = .settings
+        let defaultStartingTab: Tab = Tab.startingTab
 
         let visibleTabs: Set<Tab> = Set([.shopping, .cart, .settings, .history])
 

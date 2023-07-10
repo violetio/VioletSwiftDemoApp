@@ -12,12 +12,28 @@ struct CheckoutNavigationView: View {
     @Binding var store: AppStore
     @SceneStorage("navigation") private var navigationData: Data?
     @StateObject private var navigationModel = NavigationModel(offerItemPath: [], loadedOfferItems: PreviewMocks.MockOfferItemsArray())
-    @ObservedObject var dataStore: DataStore = DataStore.shared
-    @State private var selection: Tab = .scenarios
+
+    @State private var selection: Tab = Tab.startingTab
     
     var body: some View {
         TabView(selection: $selection)
         {
+            NavigationStack
+            {
+                DemoAppView(store: $store)
+            }
+            .tabItem {
+                let menuText = Text("DemoAppView", comment: "No comment")
+                Label
+                {
+                    menuText
+                }
+                icon: {
+                    Image(systemName: "cart")
+                }.accessibility(label: menuText)
+            }
+            .tag(Tab.demo)
+            
             NavigationStack
             {
                 ShoppingTabView(store: $store, shoppingViewState: store.shoppingViewState)

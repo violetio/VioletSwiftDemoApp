@@ -22,6 +22,11 @@
 		E70BEBA529BAB47F0030335E /* CatalogOffersAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA429BAB47F0030335E /* CatalogOffersAPITests.swift */; };
 		E70BEBA729BB9F650030335E /* EnvTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA629BB9F650030335E /* EnvTests.swift */; };
 		E70BEBA929BBA0FD0030335E /* EnvVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA829BBA0FD0030335E /* EnvVars.swift */; };
+		E712EAF82A4CDEFB00DDAE15 /* DemoAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */; };
+		E712EAFA2A4E27D700DDAE15 /* FigmaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */; };
+		E712EAFC2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */; };
+		E712EAFE2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAFD2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift */; };
+		E712EB002A5C6A5000DDAE15 /* DemoAppOfferCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAFF2A5C6A5000DDAE15 /* DemoAppOfferCard.swift */; };
 		E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB7A29BFC20100598B15 /* Logger.swift */; };
 		E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */; };
 		E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8229C2334B00598B15 /* APIModelsTests.swift */; };
@@ -162,6 +167,11 @@
 		E70BEBA429BAB47F0030335E /* CatalogOffersAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogOffersAPITests.swift; sourceTree = "<group>"; };
 		E70BEBA629BB9F650030335E /* EnvTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvTests.swift; sourceTree = "<group>"; };
 		E70BEBA829BBA0FD0030335E /* EnvVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVars.swift; sourceTree = "<group>"; };
+		E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppView.swift; sourceTree = "<group>"; };
+		E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaConstants.swift; sourceTree = "<group>"; };
+		E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppProductGrid.swift; sourceTree = "<group>"; };
+		E712EAFD2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProductGridOfferItem.swift; sourceTree = "<group>"; };
+		E712EAFF2A5C6A5000DDAE15 /* DemoAppOfferCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppOfferCard.swift; sourceTree = "<group>"; };
 		E71CFB7A29BFC20100598B15 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPostRequest.swift; sourceTree = "<group>"; };
 		E71CFB8229C2334B00598B15 /* APIModelsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModelsTests.swift; sourceTree = "<group>"; };
@@ -374,6 +384,7 @@
 		E70BEB9029B94D710030335E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E712EAF62A4CDEDD00DDAE15 /* DemoAppView */,
 				E7B41C942A01641700E7371B /* EntityViews */,
 				E70BEB6829B92B200030335E /* ContentView.swift */,
 				E7B41C4129F3361F00E7371B /* Cart */,
@@ -402,6 +413,8 @@
 				E72E001929F1C009009F7BFE /* IntPrice.swift */,
 				E7B41C6929F71EEC00E7371B /* OfferItem.swift */,
 				E7B41C922A00888000E7371B /* Order+Extensions.swift */,
+				E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */,
+				E712EAFD2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -431,6 +444,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E712EAF62A4CDEDD00DDAE15 /* DemoAppView */ = {
+			isa = PBXGroup;
+			children = (
+				E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */,
+				E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */,
+				E712EAFF2A5C6A5000DDAE15 /* DemoAppOfferCard.swift */,
+			);
+			path = DemoAppView;
 			sourceTree = "<group>";
 		};
 		E71CFB8429C26C7100598B15 /* FileManager */ = {
@@ -818,6 +841,7 @@
 				E7B41C7729F769B900E7371B /* CachedEntity.swift in Sources */,
 				E7B41C872A002CFF00E7371B /* OfferSkusView.swift in Sources */,
 				E7B41C892A00497F00E7371B /* IdentifiableItemSelections.swift in Sources */,
+				E712EAFA2A4E27D700DDAE15 /* FigmaConstants.swift in Sources */,
 				E71CFBB129CE5FB300598B15 /* CheckoutCartCustomerPostRequest.swift in Sources */,
 				E7B41C4529F342D100E7371B /* CartItemView.swift in Sources */,
 				E72E001629F08C71009F7BFE /* StyleConstants.swift in Sources */,
@@ -835,13 +859,16 @@
 				E70BEBA329BAA2210030335E /* AppCreds.swift in Sources */,
 				E72E001129F07B0F009F7BFE /* PreviewMocks.swift in Sources */,
 				E7B41C6029F715ED00E7371B /* CartTabView.swift in Sources */,
+				E712EAFE2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift in Sources */,
 				E72E001429F0852F009F7BFE /* EntityViewModel.swift in Sources */,
+				E712EAFC2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift in Sources */,
 				E7B41C6A29F71EEC00E7371B /* OfferItem.swift in Sources */,
 				E7B41C7B29F9706000E7371B /* LoginPostView.swift in Sources */,
 				E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */,
 				E71CFBA229CE0C1E00598B15 /* GetCartByIDRequest.swift in Sources */,
 				E7B41C8B2A0050C900E7371B /* Error+Extensions.swift in Sources */,
 				E7B41C5429F589CA00E7371B /* DemoAppIdAndSecret.swift in Sources */,
+				E712EAF82A4CDEFB00DDAE15 /* DemoAppView.swift in Sources */,
 				E72EFFE129D4C858009F7BFE /* CheckoutNavigationView.swift in Sources */,
 				E7B41C6C29F72C0B00E7371B /* OfferGridTile.swift in Sources */,
 				E70BEBA929BBA0FD0030335E /* EnvVars.swift in Sources */,
@@ -850,6 +877,7 @@
 				E7B41CAB2A09843800E7371B /* ShoppingViewState.swift in Sources */,
 				E7B41C4A29F586E200E7371B /* OfferItemSelections.swift in Sources */,
 				E70BEB6929B92B200030335E /* ContentView.swift in Sources */,
+				E712EB002A5C6A5000DDAE15 /* DemoAppOfferCard.swift in Sources */,
 				E7B41C6629F71A5700E7371B /* NavigationModel.swift in Sources */,
 				E72E001829F1BA61009F7BFE /* PriceViewModel.swift in Sources */,
 				E7B41CB12A09872600E7371B /* APICall.swift in Sources */,

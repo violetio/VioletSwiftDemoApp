@@ -13,18 +13,7 @@ struct DemoAppOfferCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Rectangle()
-              .foregroundColor(.clear)
-              .frame(width: FigmaConstants.OfferCard.imageArea.width,
-                     height: FigmaConstants.OfferCard.imageArea.height)
-              .background(
-                Image("PATH_TO_IMAGE")
-                  .resizable()
-                  .aspectRatio(contentMode: .fill)
-                  .frame(width: FigmaConstants.OfferCard.imageArea.width,
-                         height: FigmaConstants.OfferCard.imageArea.height)
-                  .clipped()
-              )
+            DemoAppOfferCardImage()
             VStack(alignment: .leading, spacing: 8) {
                 Text("\(offerItem.name)")
                     .font(.system(size: 21, weight: .semibold))

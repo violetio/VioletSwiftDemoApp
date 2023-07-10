@@ -15,12 +15,14 @@ struct DemoAppOfferCard: View {
         VStack(alignment: .leading, spacing: 12) {
             Rectangle()
               .foregroundColor(.clear)
-              .frame(width: 340, height: 340)
+              .frame(width: FigmaConstants.OfferCard.imageArea.width,
+                     height: FigmaConstants.OfferCard.imageArea.height)
               .background(
                 Image("PATH_TO_IMAGE")
                   .resizable()
                   .aspectRatio(contentMode: .fill)
-                  .frame(width: 340, height: 340)
+                  .frame(width: FigmaConstants.OfferCard.imageArea.width,
+                         height: FigmaConstants.OfferCard.imageArea.height)
                   .clipped()
               )
             VStack(alignment: .leading, spacing: 8) {

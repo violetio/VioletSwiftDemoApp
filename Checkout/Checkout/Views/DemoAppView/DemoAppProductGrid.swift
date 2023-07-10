@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/**
+ 
+ Use Offer.vendor to populate OfferCard Merchant Name
+ */
 struct DemoAppProductGrid: View {
     @Binding var store: AppStore
     var loadedOffers: [DemoProductGridOfferItem] = PreviewMocks.MockOfferItemsArray2()

@@ -31,6 +31,13 @@ struct PreviewMocks {
         }
         return OfferItem.fromEntity(entity: mockOffer) ?? OfferItem.Empty()
     }
+
+    static func Mock_DemoProductGridOfferItem() -> DemoProductGridOfferItem {
+        guard let mockOffer = MockOffers.load_Offer_12555() else {
+            return DemoProductGridOfferItem.Empty()
+        }
+        return DemoProductGridOfferItem.fromEntity(entity: mockOffer) ?? DemoProductGridOfferItem.Empty()
+    }
         
     static func Mock_OfferItemSelections() -> OfferItemSelections {
         return OfferItemSelections(items: [MockOfferItem()])

@@ -27,6 +27,7 @@
 		E712EAFC2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */; };
 		E712EAFE2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAFD2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift */; };
 		E712EB002A5C6A5000DDAE15 /* DemoAppOfferCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAFF2A5C6A5000DDAE15 /* DemoAppOfferCard.swift */; };
+		E712EB072A5CA6C700DDAE15 /* DemoAppOfferCardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EB062A5CA6C700DDAE15 /* DemoAppOfferCardImage.swift */; };
 		E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB7A29BFC20100598B15 /* Logger.swift */; };
 		E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */; };
 		E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8229C2334B00598B15 /* APIModelsTests.swift */; };
@@ -172,6 +173,7 @@
 		E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppProductGrid.swift; sourceTree = "<group>"; };
 		E712EAFD2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoProductGridOfferItem.swift; sourceTree = "<group>"; };
 		E712EAFF2A5C6A5000DDAE15 /* DemoAppOfferCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppOfferCard.swift; sourceTree = "<group>"; };
+		E712EB062A5CA6C700DDAE15 /* DemoAppOfferCardImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppOfferCardImage.swift; sourceTree = "<group>"; };
 		E71CFB7A29BFC20100598B15 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPostRequest.swift; sourceTree = "<group>"; };
 		E71CFB8229C2334B00598B15 /* APIModelsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModelsTests.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 				E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */,
 				E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */,
 				E712EAFF2A5C6A5000DDAE15 /* DemoAppOfferCard.swift */,
+				E712EB062A5CA6C700DDAE15 /* DemoAppOfferCardImage.swift */,
 			);
 			path = DemoAppView;
 			sourceTree = "<group>";
@@ -816,6 +819,7 @@
 				E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */,
 				E7B41C8529FAC5E300E7371B /* ChannelHeadersAPICall.swift in Sources */,
 				E7B41C962A01643A00E7371B /* OrderShippingMethodWrapperView.swift in Sources */,
+				E712EB072A5CA6C700DDAE15 /* DemoAppOfferCardImage.swift in Sources */,
 				E72EFFE529D4C8BA009F7BFE /* OfferView.swift in Sources */,
 				E7B41CA72A0983C000E7371B /* ChannelLoginViewState.swift in Sources */,
 				E7B41C932A00888000E7371B /* Order+Extensions.swift in Sources */,

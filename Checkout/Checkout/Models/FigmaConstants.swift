@@ -30,4 +30,8 @@ struct FigmaConstants {
         }
     }
     
+    enum Colors {
+        static var systemGrey1: Color { Color(red: 0.56, green: 0.56, blue: 0.58) }
+    }
+    
 }

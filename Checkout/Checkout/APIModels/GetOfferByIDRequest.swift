@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import VioletPublicClientAPI
+import Violet
 
 class GetOfferByIDRequest: ChannelHeadersAPICall<Offer> {
     let offerId: Int64
@@ -21,11 +21,10 @@ class GetOfferByIDRequest: ChannelHeadersAPICall<Offer> {
     }
 
     override func send() {
-        CatalogOffersAPI.catalogOffersOfferIdGet(offerId: offerId, xVioletToken: channelHeaders.token,
-                                                 xVioletAppSecret: channelHeaders.apiSecret,
-                                                 xVioletAppId: channelHeaders.appID)
-        { data, error in
+//        CatalogOffersAPI.getOfferById(offerId: <#T##Int64#>, completion: <#T##((Offer?, Error?) -> Void)##((Offer?, Error?) -> Void)##(_ data: Offer?, _ error: Error?) -> Void#>)
+        CatalogOffersAPI.getOfferById(offerId: offerId) { data, error in
             self.callIsCompleted(errorResponse: error, dataResponse: data)
         }
+        
     }
 }

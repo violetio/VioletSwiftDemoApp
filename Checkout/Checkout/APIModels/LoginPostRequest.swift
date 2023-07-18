@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 class LoginPostRequest: DataResponseAPICall<LoginResponse> {
 
@@ -17,11 +17,13 @@ class LoginPostRequest: DataResponseAPICall<LoginResponse> {
     }
 
     override func send() {
+        /*
         AccessAPI.loginPost(xVioletAppSecret: loginInputs.apiSecret,
                             xVioletAppId: loginInputs.appID,
                             body: loginInputs.loginBody()) { [weak self] (response, error) in
             guard let weakSelf = self else { return }
             weakSelf.callIsCompleted(errorResponse: error, dataResponse: response)
         }
+         */
     }
 }

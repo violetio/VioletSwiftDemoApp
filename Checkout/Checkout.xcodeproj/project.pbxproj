@@ -17,7 +17,6 @@
 		E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9429B94F5A0030335E /* VioletOffer.swift */; };
 		E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9629BA37440030335E /* SelectedOfferView.swift */; };
 		E70BEB9B29BA54B00030335E /* GetOfferByIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */; };
-		E70BEBA029BA6ACF0030335E /* VioletPublicClientAPI in Frameworks */ = {isa = PBXBuildFile; productRef = E70BEB9F29BA6ACF0030335E /* VioletPublicClientAPI */; };
 		E70BEBA329BAA2210030335E /* AppCreds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA229BAA2210030335E /* AppCreds.swift */; };
 		E70BEBA529BAB47F0030335E /* CatalogOffersAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA429BAB47F0030335E /* CatalogOffersAPITests.swift */; };
 		E70BEBA729BB9F650030335E /* EnvTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA629BB9F650030335E /* EnvTests.swift */; };
@@ -36,7 +35,6 @@
 		E71CFB8A29C26C7100598B15 /* FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8729C26C7100598B15 /* FilePath.swift */; };
 		E71CFB8D29C26CE200598B15 /* AuthTokenGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8B29C26CE200598B15 /* AuthTokenGet.swift */; };
 		E71CFB8E29C26CE200598B15 /* BaseAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB8C29C26CE200598B15 /* BaseAPICall.swift */; };
-		E71CFB9129C3B2AC00598B15 /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = E71CFB9029C3B2AC00598B15 /* SwiftCSV */; };
 		E71CFB9829C90ABD00598B15 /* APIXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB9729C90ABD00598B15 /* APIXCTestCase.swift */; };
 		E71CFB9A29CCCD7100598B15 /* DataResponseAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB9929CCCD7100598B15 /* DataResponseAPICall.swift */; };
 		E71CFB9E29CCD92C00598B15 /* CheckoutCartPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFB9D29CCD92C00598B15 /* CheckoutCartPostRequest.swift */; };
@@ -129,6 +127,7 @@
 		E7B41CB12A09872600E7371B /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CB02A09872600E7371B /* APICall.swift */; };
 		E7B41CB32A0A9D7700E7371B /* DemoInject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CB22A0A9D7700E7371B /* DemoInject.swift */; };
 		E7B41CB52A0BE5A100E7371B /* Store+Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41CB42A0BE5A100E7371B /* Store+Sender.swift */; };
+		E7FA7BBF2A670E39001E9906 /* Violet in Frameworks */ = {isa = PBXBuildFile; productRef = E7FA7BBE2A670E39001E9906 /* Violet */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,7 +160,6 @@
 		E70BEB9129B94D8B0030335E /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
 		E70BEB9429B94F5A0030335E /* VioletOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VioletOffer.swift; sourceTree = "<group>"; };
 		E70BEB9629BA37440030335E /* SelectedOfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedOfferView.swift; sourceTree = "<group>"; };
-		E70BEB9829BA47580030335E /* VioletPublicClientAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = VioletPublicClientAPI; path = ../VioletPublicClientAPI; sourceTree = "<group>"; };
 		E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOfferByIDRequest.swift; sourceTree = "<group>"; };
 		E70BEBA129BA977D0030335E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E70BEBA229BAA2210030335E /* AppCreds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCreds.swift; sourceTree = "<group>"; };
@@ -276,14 +274,13 @@
 			files = (
 				E72EFFFA29EDAEE4009F7BFE /* StripePayments in Frameworks */,
 				E72EFFF829EDAEE4009F7BFE /* StripePaymentSheet in Frameworks */,
-				E70BEBA029BA6ACF0030335E /* VioletPublicClientAPI in Frameworks */,
 				E72EFFF429EDAEE4009F7BFE /* StripeFinancialConnections in Frameworks */,
 				E72EFFF029EDAEE4009F7BFE /* StripeApplePay in Frameworks */,
 				E72EFFF629EDAEE4009F7BFE /* StripeIdentity in Frameworks */,
-				E71CFB9129C3B2AC00598B15 /* SwiftCSV in Frameworks */,
 				E72EFFF229EDAEE4009F7BFE /* StripeCardScan in Frameworks */,
 				E72EFFFC29EDAEE4009F7BFE /* StripePaymentsUI in Frameworks */,
 				E72EFFEE29EDAEE4009F7BFE /* Stripe in Frameworks */,
+				E7FA7BBF2A670E39001E9906 /* Violet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +304,6 @@
 		E70BEB5A29B92B200030335E = {
 			isa = PBXGroup;
 			children = (
-				E70BEB9829BA47580030335E /* VioletPublicClientAPI */,
 				E70BEB6529B92B200030335E /* Checkout */,
 				E70BEB7629B92B220030335E /* CheckoutTests */,
 				E70BEB8029B92B220030335E /* CheckoutUITests */,
@@ -677,8 +673,6 @@
 			);
 			name = Checkout;
 			packageProductDependencies = (
-				E70BEB9F29BA6ACF0030335E /* VioletPublicClientAPI */,
-				E71CFB9029C3B2AC00598B15 /* SwiftCSV */,
 				E72EFFED29EDAEE4009F7BFE /* Stripe */,
 				E72EFFEF29EDAEE4009F7BFE /* StripeApplePay */,
 				E72EFFF129EDAEE4009F7BFE /* StripeCardScan */,
@@ -687,6 +681,7 @@
 				E72EFFF729EDAEE4009F7BFE /* StripePaymentSheet */,
 				E72EFFF929EDAEE4009F7BFE /* StripePayments */,
 				E72EFFFB29EDAEE4009F7BFE /* StripePaymentsUI */,
+				E7FA7BBE2A670E39001E9906 /* Violet */,
 			);
 			productName = Checkout;
 			productReference = E70BEB6329B92B200030335E /* Checkout.app */;
@@ -761,8 +756,8 @@
 			);
 			mainGroup = E70BEB5A29B92B200030335E;
 			packageReferences = (
-				E71CFB8F29C3B2AC00598B15 /* XCRemoteSwiftPackageReference "SwiftCSV" */,
 				E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */,
+				E7FA7BBD2A670E39001E9906 /* XCRemoteSwiftPackageReference "violet-swift" */,
 			);
 			productRefGroup = E70BEB6429B92B200030335E /* Products */;
 			projectDirPath = "";
@@ -1239,14 +1234,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E71CFB8F29C3B2AC00598B15 /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swiftcsv/SwiftCSV";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.8.1;
-			};
-		};
 		E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stripe/stripe-ios-spm";
@@ -1255,18 +1242,17 @@
 				minimumVersion = 23.0.0;
 			};
 		};
+		E7FA7BBD2A670E39001E9906 /* XCRemoteSwiftPackageReference "violet-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/violetio/violet-swift";
+			requirement = {
+				kind = revision;
+				revision = c7ca082579a466c53e43579e954a049720a6fc7b;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E70BEB9F29BA6ACF0030335E /* VioletPublicClientAPI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = VioletPublicClientAPI;
-		};
-		E71CFB9029C3B2AC00598B15 /* SwiftCSV */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E71CFB8F29C3B2AC00598B15 /* XCRemoteSwiftPackageReference "SwiftCSV" */;
-			productName = SwiftCSV;
-		};
 		E72EFFED29EDAEE4009F7BFE /* Stripe */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
@@ -1306,6 +1292,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E72EFFEC29EDAEE4009F7BFE /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
 			productName = StripePaymentsUI;
+		};
+		E7FA7BBE2A670E39001E9906 /* Violet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7FA7BBD2A670E39001E9906 /* XCRemoteSwiftPackageReference "violet-swift" */;
+			productName = Violet;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

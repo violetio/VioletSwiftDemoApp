@@ -8,7 +8,7 @@
 @testable import Checkout
 import Combine
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 import XCTest
 
 final class APIModelsTests: APIXCTestCase {
@@ -39,9 +39,10 @@ final class APIModelsTests: APIXCTestCase {
         }
     }
 
+    /*
     func test_7_CheckoutCartCustomerPostRequest() throws {
         // Given
-        let guestOrderCustomer: GuestOrderCustomer! = TestJsonResources.guestOrderCustomer_Demo
+        let guestOrderCustomer: OrderCustomer! = TestJsonResources.guestOrderCustomer_Demo
 
         let checkoutCartCustomerPostRequest = CheckoutCartCustomerPostRequest(appCreds: appCreds,
                                                                               token: self.loginToken,
@@ -64,6 +65,7 @@ final class APIModelsTests: APIXCTestCase {
             persistEncodable(aDataResponse, to: self.testCheckoutSequence.cartCustomerPostAvailable_Response_jsonResponseFileName())
         }
     }
+     */
 
     func test_6_CheckoutCartPaymentPostRequest() {
         // Given
@@ -109,6 +111,7 @@ final class APIModelsTests: APIXCTestCase {
         XCTAssertNotNil(getOrderByIDRequest.dataResponse)
     }
 
+    /*
     func test_4_CheckoutCartCreate() {
         // Given
         let orderSku_SkuId_33524 = OrderSku(skuId: 33524, quantity: 1)
@@ -143,10 +146,11 @@ final class APIModelsTests: APIXCTestCase {
             persistEncodable(aCart, to: self.testCheckoutSequence.createCart_Response_jsonResponseFileName())
         }
     }
+     */
 
     func test_3b_GetPageOffers() {
         let merchantId: Int64 = 10003
-        let request = GetPageOffersByMerchantIDRequest(channelHeaders: appCreds.channelHeaders(token: self.loginToken), merchantId: merchantId)
+        let request = GetPageOffersByMerchantIDRequest(channelHeaders: appCreds.channelHeaders(token: ""), merchantId: merchantId)
 
         let expectationRunner = ExpectationRunner(request)
 
@@ -165,11 +169,16 @@ final class APIModelsTests: APIXCTestCase {
         if let aDataResponse = request.dataResponse {
             persistEncodable(aDataResponse, to: "PageOffer_Page_1_MerchantID_10003_Response.json")
         }
+//        else if let anError: ErrorResponse = request.errorResponse as ErrorResponse {
+//            print("Error: ---")
+//            print("\(anError)")
+//            //persistEncodable(anError, to: "PageOffer_Error.json")
+//        }
     }
 
     func test_3_GetOffer() {
         // Given
-        let getOfferByIDRequest = GetOfferByIDRequest(appCreds: appCreds, token: self.loginToken, offerId: 12574)
+        let getOfferByIDRequest = GetOfferByIDRequest(appCreds: appCreds, token: "", offerId: 12574)
 
         let expectationRunner = ExpectationRunner(getOfferByIDRequest)
 

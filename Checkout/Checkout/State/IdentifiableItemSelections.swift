@@ -7,7 +7,7 @@
 
 import Combine
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 typealias ItemType = Identifiable & AutoKeyed
 class IdentifiableItemSelections<T: ItemType>: ObservableObject, CustomStringConvertible where T.ID == T.Key {

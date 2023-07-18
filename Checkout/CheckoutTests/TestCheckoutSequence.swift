@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import VioletPublicClientAPI
+import Violet
 import Checkout
 
 class TestCheckoutSequence {

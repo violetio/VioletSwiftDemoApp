@@ -5,7 +5,7 @@
 //  Created by Alan Morford on 5/1/23.
 //
 
-import VioletPublicClientAPI
+import Violet
 import Foundation
 
 public extension Error {

@@ -7,7 +7,7 @@
 
 import Combine
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 //typealias OfferItemsSelections2 = IdentifiableItemSelections<OfferItem>
 

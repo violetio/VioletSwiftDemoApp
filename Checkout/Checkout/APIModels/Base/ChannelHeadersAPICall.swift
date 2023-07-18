@@ -5,7 +5,7 @@
 //  Created by Alan Morford on 4/27/23.
 //
 
-import VioletPublicClientAPI
+import Violet
 /**
     Extract a common generic type `DataResponseAPICall`
         to capture the 'dataResponse' from an API Call typed to the call being made.

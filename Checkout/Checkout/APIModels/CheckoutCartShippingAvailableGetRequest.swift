@@ -5,7 +5,7 @@
 //  Created by Alan Morford on 3/24/23.
 //
 
-import VioletPublicClientAPI
+import Violet
 
 class CheckoutCartShippingAvailableGetRequest: ChannelHeadersAPICall<[OrderShippingMethodWrapper]> {
     let orderId: Int64
@@ -20,6 +20,7 @@ class CheckoutCartShippingAvailableGetRequest: ChannelHeadersAPICall<[OrderShipp
     }
 
     override func send() {
+        /*
         CheckoutShippingAPI.checkoutCartCartIdShippingAvailableGet(cartId: orderId, xVioletToken: channelHeaders.token,
                                                                    xVioletAppSecret: channelHeaders.apiSecret,
                                                                    xVioletAppId: channelHeaders.appID)
@@ -28,5 +29,6 @@ class CheckoutCartShippingAvailableGetRequest: ChannelHeadersAPICall<[OrderShipp
             guard let weakSelf = self else { return }
             weakSelf.callIsCompleted(errorResponse: error, dataResponse: data)
         }
+         */
     }
 }

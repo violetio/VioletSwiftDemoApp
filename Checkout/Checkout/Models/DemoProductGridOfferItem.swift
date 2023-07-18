@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 struct DemoProductGridOfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
     var autoKey: Int64 { offer_id }
@@ -54,9 +54,9 @@ struct DemoProductGridOfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
 extension DemoProductGridOfferItem: EntityViewModel {
     typealias Entity = Offer
     static func fromEntity(entity: Entity) -> Self? {
-        return DemoProductGridOfferItem(offer_id: entity.id,
-                                        name: entity.name,
-                                        intPrice: IntPrice(price: entity.minPrice),
+        return DemoProductGridOfferItem(offer_id: entity.id!,
+                                        name: entity.name!,
+                                        intPrice: IntPrice(price: entity.minPrice!),
                                         offerEntity: entity,
                                         vendor: entity.vendor ?? "",
                                         seller: entity.seller ?? "")

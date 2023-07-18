@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import VioletPublicClientAPI
+import Violet
 
 class GetCartByIDRequest: ChannelHeadersAPICall<Order> {
     let orderId: Int64
@@ -21,11 +21,13 @@ class GetCartByIDRequest: ChannelHeadersAPICall<Order> {
     }
 
     override func send() {
+        /*
         CheckoutCartAPI.checkoutCartCartIdGet(cartId: orderId, xVioletToken: channelHeaders.token,
                                               xVioletAppSecret: channelHeaders.apiSecret,
                                               xVioletAppId: channelHeaders.appID)
         { data, error in
             self.callIsCompleted(errorResponse: error, dataResponse: data)
         }
+         */
     }
 }

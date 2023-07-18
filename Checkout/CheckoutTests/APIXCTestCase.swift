@@ -8,7 +8,7 @@
 @testable import Checkout
 import Combine
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 import XCTest
 
 class APIXCTestCase: XCTestCase {

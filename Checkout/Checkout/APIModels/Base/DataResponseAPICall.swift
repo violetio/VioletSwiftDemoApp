@@ -5,7 +5,7 @@
 //  Created by Alan Morford on 3/23/23.
 //
 
-import VioletPublicClientAPI
+import Violet
 
 protocol APICallable {
     func send()

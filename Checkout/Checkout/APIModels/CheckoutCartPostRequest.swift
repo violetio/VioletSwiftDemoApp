@@ -5,7 +5,7 @@
 //  Created by Alan Morford on 3/23/23.
 //
 
-import VioletPublicClientAPI
+import Violet
 
 class CheckoutCartPostRequest: ChannelHeadersAPICall<Order> {
     let cartInitializationRequest: CartInitializationRequest
@@ -22,6 +22,7 @@ class CheckoutCartPostRequest: ChannelHeadersAPICall<Order> {
     }
 
     override func send() {
+        /*
         CheckoutCartAPI.checkoutCartPost(xVioletToken: channelHeaders.token,
                                          xVioletAppSecret: channelHeaders.apiSecret,
                                          xVioletAppId: channelHeaders.appID,
@@ -32,5 +33,6 @@ class CheckoutCartPostRequest: ChannelHeadersAPICall<Order> {
             guard let weakSelf = self else { return }
             weakSelf.callIsCompleted(errorResponse: error, dataResponse: data)
         }
+         */
     }
 }

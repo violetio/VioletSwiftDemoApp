@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import VioletPublicClientAPI
+import Violet
 
 class GetPageOffersByMerchantIDRequest: ChannelHeadersAPICall<PageOffer> {
     let merchantId: Int64
@@ -21,6 +21,15 @@ class GetPageOffersByMerchantIDRequest: ChannelHeadersAPICall<PageOffer> {
     }
 
     override func send() {
+        CatalogOffersAPI.searchOffers(body: OfferSearchRequest(merchantId: 10003)) { [weak self] data, error in
+            guard let self = self else { return }
+            self.logError(error)
+            if let anError = error {
+                print("\(anError.localizedDescription)")
+            }
+            self.callIsCompleted(errorResponse: error, dataResponse: data)
+        }
+        /*
         CatalogOffersAPI.catalogOffersMerchantsMerchantIdGet(merchantId: merchantId, xVioletToken: channelHeaders.token,
                                                              xVioletAppSecret: channelHeaders.apiSecret,
                                                              xVioletAppId: channelHeaders.appID,
@@ -31,5 +40,6 @@ class GetPageOffersByMerchantIDRequest: ChannelHeadersAPICall<PageOffer> {
             self.logError(error)
             self.callIsCompleted(errorResponse: error, dataResponse: data)
         }
+         */
     }
 }

@@ -7,7 +7,7 @@
 
 import Combine
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 class OfferSelections: ObservableObject, CustomStringConvertible {
     

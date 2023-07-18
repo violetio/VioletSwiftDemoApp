@@ -7,7 +7,7 @@
 
 import Combine
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 /**
  Extract errorResponse into BaseAPICall

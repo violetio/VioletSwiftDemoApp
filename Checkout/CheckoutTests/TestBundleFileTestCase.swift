@@ -5,7 +5,7 @@
 //  Created by Alan Morford on 3/24/23.
 //
 
-import VioletPublicClientAPI
+import Violet
 import XCTest
 
 class TestBundleFileTestCase: XCTestCase {

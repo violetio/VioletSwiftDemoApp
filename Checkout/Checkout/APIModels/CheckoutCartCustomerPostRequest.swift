@@ -5,23 +5,23 @@
 //  Created by Alan Morford on 3/24/23.
 //
 
-import VioletPublicClientAPI
+import Violet
 
 class CheckoutCartCustomerPostRequest: ChannelHeadersAPICall<Order> {
 
-    let body: GuestOrderCustomer
+    let body: OrderCustomer
     let cartId: Int64
     let priceCart: Bool
 
-    convenience init(appCreds: AppCreds, token: String, cartId: Int64, priceCart: Bool, guestOrderCustomer: GuestOrderCustomer) {
-        self.init(channelHeaders: appCreds.channelHeaders(token: token),
-                  cartId: cartId,
-                  priceCart: priceCart,
-                  guestOrderCustomer: guestOrderCustomer)
-
-    }
+//    convenience init(appCreds: AppCreds, token: String, cartId: Int64, priceCart: Bool, guestOrderCustomer: OrderCustomer) {
+//        self.init(channelHeaders: appCreds.channelHeaders(token: token),
+//                  cartId: cartId,
+//                  priceCart: priceCart,
+//                  guestOrderCustomer: guestOrderCustomer)
+//
+//    }
     
-    init(channelHeaders: ChannelHeaders, cartId: Int64, priceCart: Bool, guestOrderCustomer: GuestOrderCustomer) {
+    init(channelHeaders: ChannelHeaders, cartId: Int64, priceCart: Bool, guestOrderCustomer: OrderCustomer) {
         self.cartId = cartId
         self.body = guestOrderCustomer
         self.priceCart = priceCart
@@ -29,6 +29,7 @@ class CheckoutCartCustomerPostRequest: ChannelHeadersAPICall<Order> {
     }
 
     override func send() {
+        /*
         CheckoutCustomerAPI.checkoutCartCartIdCustomerPost(cartId: cartId, xVioletToken: channelHeaders.token,
                                                            xVioletAppSecret: channelHeaders.apiSecret,
                                                            xVioletAppId: channelHeaders.appID,
@@ -37,7 +38,8 @@ class CheckoutCartCustomerPostRequest: ChannelHeadersAPICall<Order> {
 
             guard let weakSelf = self else { return }
             weakSelf.callIsCompleted(errorResponse: error, dataResponse: data)
-
+         
         }
+         */
     }
 }

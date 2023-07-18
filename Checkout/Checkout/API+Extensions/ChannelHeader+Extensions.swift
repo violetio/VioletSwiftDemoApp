@@ -5,7 +5,7 @@
 //  Created on 5/5/23
 //
 
-import VioletPublicClientAPI
+import Violet
 
 extension ChannelHeaders {
 

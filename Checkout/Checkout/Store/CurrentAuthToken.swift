@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import VioletPublicClientAPI
+import Violet
 
 struct CurrentAuthToken {
     let authToken: String

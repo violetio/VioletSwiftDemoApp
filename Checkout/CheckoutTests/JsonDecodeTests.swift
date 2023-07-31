@@ -13,6 +13,9 @@ final class JsonDecodeTests: TestBundleFileTestCase {
     var testFile_get_order_by_id_58111: URL!
     var testFile_bag_id_43113: URL!
     var testFile_shipping_methods_get_bag_id_43402: URL!
+    var testFile_shipping_methods_get_bag_id_54314: URL!
+    var testFile_shipping_method_1_bag_id_54314: URL!
+    var testFile_shipping_method_2_bag_id_54314: URL!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -20,13 +23,28 @@ final class JsonDecodeTests: TestBundleFileTestCase {
         testFile_get_order_by_id_58111 = testBundle.url(forResource: "get_order_by_id_58111", withExtension: "json")
         testFile_bag_id_43113 = testBundle.url(forResource: "bag_id_43113", withExtension: "json")
         testFile_shipping_methods_get_bag_id_43402 = testBundle.url(forResource: "shipping_methods_get_bag_id_43402", withExtension: "json")
+        testFile_shipping_methods_get_bag_id_54314 = testBundle.url(forResource: "shipping_methods_get_bag_id_54314", withExtension: "json")
+        testFile_shipping_method_1_bag_id_54314 = testBundle.url(forResource: "shipping_method_1_bag_id_54314", withExtension: "json")
+        testFile_shipping_method_2_bag_id_54314 = testBundle.url(forResource: "shipping_method_2_bag_id_54314", withExtension: "json")
     }
     
-    
-    func test_Offer_OrderSku() {
-        let anOffer = MockOffers.load_Offer_12555()
-        anOffer?.skus?.count
+    func test_shipping_method_1_bag_id_54314() throws {
+        let data: Data! = try! Data(contentsOf: testFile_shipping_method_1_bag_id_54314)
+        //let decodedResult = CodableHelper.decode([OrderShippingMethodWrapper.self], from: data)
+        let decodedResult = CodableHelper.decode(OrderShippingMethod.self, from: data)
+        switch decodedResult {
+        case .failure(let error):
+            XCTFail("Did not Decode bag_54314 \(error)")
+        case .success(let orderShippingMethod):
+            Logger.info("orderShippingMethod: \(orderShippingMethod)")
+            XCTAssertNotNil(orderShippingMethod)
+        }
     }
+    
+//    func test_Offer_OrderSku() {
+//        let anOffer = MockOffers.load_Offer_12555()
+//        anOffer?.skus?.count
+//    }
 
     /*
     func test_Bag_43113() throws {
@@ -59,6 +77,21 @@ final class JsonDecodeTests: TestBundleFileTestCase {
             XCTAssertNotNil(orderShippingMethodWrapper)
         }
     }
+    
+    func test_Shipping_Methods_BagId_54314() throws {
+        let data: Data! = try! Data(contentsOf: testFile_shipping_methods_get_bag_id_54314)
+        //let decodedResult = CodableHelper.decode([OrderShippingMethodWrapper.self], from: data)
+        let decodedResult = CodableHelper.decode(OrderShippingMethodWrapperArray.self, from: data)
+        switch decodedResult {
+        case .failure(let error):
+            XCTFail("Did not Decode bag_54314 \(error)")
+        case .success(let orderShippingMethodWrapperArray):
+            //Logger.info("orderShippingMethodWrapper.bagId: \(orderShippingMethodWrapper.bagId)")
+            XCTAssertNotNil(orderShippingMethodWrapperArray)
+        }
+    }
+    
+    //
     
     /*
     func test_Order_58111() throws {

@@ -50,7 +50,7 @@ struct PreviewMocks {
     
     static func orderShippingMethodWrapperArray() -> OrderShippingMethodWrapperArray {
         return [OrderShippingMethodWrapper(bagId: nil,
-                                           shippingMethods: orderShippingMethods())]
+                                                                                    shippingMethods: orderShippingMethods())]
     }
     
     static func orderShippingMethods() -> [OrderShippingMethod] {
@@ -58,12 +58,12 @@ struct PreviewMocks {
                                     merchantId: 2,
                                     price: 500,
                                     shippingMethodId: "ground",
-                                    type: .flatRate ),
+                                    type: .flatRatePrice ),
                 OrderShippingMethod(bagId: 1,
                                     merchantId: 2,
                                     price: 1500,
                                     shippingMethodId: "express",
-                                    type: .flatRate)]
+                                    type: .flatRatePrice)]
     }
     
     static func offer() -> Offer{

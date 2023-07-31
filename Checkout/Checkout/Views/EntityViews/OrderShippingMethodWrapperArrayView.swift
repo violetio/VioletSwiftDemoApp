@@ -12,7 +12,7 @@ struct OrderShippingMethodWrapperArrayView: View {
     @Binding var orderShippingMethodWrapperArray: OrderShippingMethodWrapperArray?
     var body: some View {
         if let array = orderShippingMethodWrapperArray {
-            Text("Shipping Options: \(array.count)")
+//            Text("Shipping Options: \(array.count)")
 //            if let firstShippingMethod = array.first?.shippingMethods?.first {
 //                Text("Shipping: \(firstShippingMethod.shippingMethodId) - \(firstShippingMethod.price)")
 //            }

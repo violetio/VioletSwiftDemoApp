@@ -1,0 +1,23 @@
+{
+    "wrapper":[
+        {
+            "bagId": 54314,
+            "shippingMethods": [
+                {
+                    "carrier": "OTHER",
+                    "label": "Economy",
+                    "price": 490,
+                    "shippingMethodId": "shopify-Economy-4.90",
+                    "bagId": 54314
+                },
+                {
+                    "carrier": "OTHER",
+                    "label": "Standard",
+                    "price": 990,
+                    "shippingMethodId": "shopify-Standard-9.90",
+                    "bagId": 54314
+                }
+            ]
+        }
+    ]
+}

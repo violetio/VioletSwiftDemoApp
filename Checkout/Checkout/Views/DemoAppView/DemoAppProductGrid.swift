@@ -12,8 +12,8 @@ import SwiftUI
  Use Offer.vendor to populate OfferCard Merchant Name
  */
 struct DemoAppProductGrid: View {
-    @Binding var store: AppStore
     
+    @Binding var store: AppStore
     @ObservedObject var offerSearchViewState: OfferSearchViewState
 
     let layout = [
@@ -22,14 +22,30 @@ struct DemoAppProductGrid: View {
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: layout, spacing: 20) {
-                ForEach(offerSearchViewState.loadedOfferItems, id: \.offer_id) { offerItem in
-                    DemoAppOfferCard(store: $store,
-                                     offerItem: .constant(offerItem))
+            
+            if offerSearchViewState.loading {
+                
+                ProgressView() {
+                    Text("Loading Offers")
                 }
-            }.offset(CGSize(width: 0, height: 20)) //This pushes scroll content top y down 15 pts
-                .frame(minWidth: 390) //This matches the scrollview width to parent view width (at least on iPhone 14
-                .background(Color(red: 0.95, green: 0.95, blue: 0.97))
+            } else {
+                if offerSearchViewState.loadedOfferItems.count > 0 {
+                    LazyVGrid(columns: layout, spacing: 20) {
+                                    ForEach(offerSearchViewState.loadedOfferItems, id: \.offer_id) { offerItem in
+                                        DemoAppOfferCard(store: $store,
+                                                         offerItem: .constant(offerItem))
+                                    }
+                                }.offset(CGSize(width: 0, height: 20)) //This pushes scroll content top y down 15 pts
+                                    .frame(minWidth: 390) //This matches the scrollview width to parent view width (at least on iPhone 14
+                                    .withScrollViewBackgroundColor()
+                } else {
+                    ProgressView() {
+                        Text("Workout")
+                    }
+                }
+                
+            }
+            
                 
             
         }
@@ -43,6 +59,8 @@ struct DemoAppProductGrid_Previews: PreviewProvider {
                                offerSearchViewState: OfferSearchViewState.mockLoaded()).previewDisplayName("Offers Returned")
             
             DemoAppProductGrid(store: AppStore.mockAppStoreBinding, offerSearchViewState: OfferSearchViewState.mockEmpty()).previewDisplayName("No Offers Returned")
+            
+            DemoAppProductGrid(store: AppStore.mockAppStoreBinding, offerSearchViewState: OfferSearchViewState.mockLoading()).previewDisplayName("Loading Offers")
         }
     }
 }

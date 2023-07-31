@@ -87,6 +87,6 @@ class AppStore {
         self.init(channelLoginViewState: DemoInject.DemoChannelLoginViewState(),
                   demoChannelViewState: DemoChannelViewState(),
                   shoppingViewState: shoppingViewState ?? ShoppingViewState(),
-                  offerSearchViewState: OfferSearchViewState())
+                  offerSearchViewState: OfferSearchViewState(loading: true))
     }
 }

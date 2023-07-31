@@ -10,13 +10,11 @@ import Violet
 
 class OfferSearchViewState: ObservableObject {
     @Published var loadedOfferItems: [DemoProductGridOfferItem]
+    @Published var loading: Bool
 
-    init(loadedOfferItems: [DemoProductGridOfferItem]) {
+    init(loadedOfferItems: [DemoProductGridOfferItem] = [], loading: Bool = false) {
         self.loadedOfferItems = loadedOfferItems
-    }
-
-    convenience init() {
-        self.init(loadedOfferItems: [])
+        self.loading = loading
     }
 
 }
@@ -28,6 +26,10 @@ extension OfferSearchViewState {
     
     static func mockEmpty() -> OfferSearchViewState {
         return OfferSearchViewState(loadedOfferItems: [])
+    }
+    
+    static func mockLoading() -> OfferSearchViewState {
+        return OfferSearchViewState(loading: true)
     }
 }
 

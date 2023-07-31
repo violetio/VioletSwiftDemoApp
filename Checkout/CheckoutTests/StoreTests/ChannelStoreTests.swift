@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import VioletPublicClientAPI
+import Violet
 @testable import Checkout
 
 final class ChannelStoreTests: TestBundleFileTestCase {

@@ -5,7 +5,7 @@
 //  Created by Alan Morford on 3/9/23.
 //
 
-import VioletPublicClientAPI
+import Violet
 
 /// AppCreds captures the common properties necessary to call
 /// a Violet API Endpoint with an AppID
@@ -35,9 +35,9 @@ struct AppCreds: LoginInputsType {
         Logger.info("AppCreds: \(self)")
     }
     
-    func loginBody() -> LoginRequest {
-        return LoginRequest(username: self.username, password: self.password)
-    }
+//    func loginBody() -> LoginRequest {
+//        return LoginRequest(username: self.username, password: self.password)
+//    }
     
     static func SandBoxTestCreds() -> AppCreds {
         return AppCreds(EnvVars())

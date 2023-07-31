@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import Checkout
-import VioletPublicClientAPI
+import Violet
 
 final class ExtensionsTests: XCTestCase {
 

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import VioletPublicClientAPI
+import Violet
 
 struct PreviewMocks {
     
@@ -50,11 +50,29 @@ struct PreviewMocks {
     
     static func orderShippingMethodWrapperArray() -> OrderShippingMethodWrapperArray {
         return [OrderShippingMethodWrapper(bagId: nil,
-                                           shippingMethods: orderShippingMethods())]
+                                                                                    shippingMethods: orderShippingMethods())]
     }
     
     static func orderShippingMethods() -> [OrderShippingMethod] {
-        return [OrderShippingMethod(price: 500, shippingMethodId: "ground" , bagId: 1),
-                OrderShippingMethod(price: 1500, shippingMethodId: "express" , bagId: 1)]
+        return [OrderShippingMethod(bagId: 1,
+                                    merchantId: 2,
+                                    price: 500,
+                                    shippingMethodId: "ground",
+                                    type: .flatRatePrice ),
+                OrderShippingMethod(bagId: 1,
+                                    merchantId: 2,
+                                    price: 1500,
+                                    shippingMethodId: "express",
+                                    type: .flatRatePrice)]
+    }
+    
+    static func offer() -> Offer{
+        return Offer(available: true,
+                     merchantId: 42,
+                     minPrice: 199,
+                     name: "Offer Name",
+                     productId: "01001",
+                     source: .shopify,
+                     visible: true)
     }
 }

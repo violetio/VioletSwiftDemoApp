@@ -27,11 +27,10 @@ extension AppStore {
                 let newAPICall = APICall(apiCall: AuthTokenGet(channelHeaders: channelHeaders))
                 pendingAPICalls.enqueue(newAPICall)
                 newAPICall.send { dataResponse, _ in
-                    if let refreshResponse = dataResponse,
-                       let newAuthToken = refreshResponse.token
+                    if let refreshResponse = dataResponse
                     {
                         Logger.info("Got refreshResponse")
-                        self.state.channelLoginViewState.channelHeaders = channelHeaders.replaceToken(token: newAuthToken)
+                        self.state.channelLoginViewState.channelHeaders = channelHeaders.replaceToken(token: refreshResponse.token!)
                     }
                 }
 

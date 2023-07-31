@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import VioletPublicClientAPI
+import Violet
 
 class ShoppingViewState: ObservableObject {
     @Published var offerPath: [Offer]

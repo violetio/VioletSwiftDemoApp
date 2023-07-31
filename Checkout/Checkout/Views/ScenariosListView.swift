@@ -5,7 +5,7 @@
 //
 
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 struct ScenariosListView: View {
     // var scenarios: [Scenario]
@@ -34,7 +34,7 @@ struct ScenariosListView: View {
              */
 
             NavigationLink {
-                let fakeOffer = Offer(id: 1, productId: "01001", name: "Offer Name", source: .shopify, merchantId: 42, minPrice: 0199)
+                let fakeOffer = PreviewMocks.offer()
                 let offer12555 = MockOffers.load_Offer_12555()
                 OfferView(offer: offer12555 ?? fakeOffer)
             }

@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 struct ApiCallCounting {
     static var CallCounter: Int = 0

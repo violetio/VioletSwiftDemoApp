@@ -5,7 +5,7 @@
 //  Created by Alan Morford on 4/23/23.
 //
 
-import VioletPublicClientAPI
+import Violet
 
 class UserInputCoordinator {
     //

@@ -5,7 +5,7 @@
 //
 
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 struct CheckoutNavigationView: View {
 

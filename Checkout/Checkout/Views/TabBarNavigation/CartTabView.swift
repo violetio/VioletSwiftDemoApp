@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 enum CartListSections: Int, CaseIterable, Identifiable {
     case OfferItems
@@ -47,12 +47,18 @@ struct CartTabView: View {
     }
     
     func createOrderAddress() -> OrderAddress {
-        return OrderAddress(city: "Brooklyn", state: "NY", country: "US", postalCode: "11206", type: .shipping, address1: "999 Meserole Street")
+        return OrderAddress(address1: "999 Meserole Street",
+                            address2: "Brooklyn",
+                            city: "NY",
+                            country: "US",
+                            postalCode: "11206",
+                            state: "NY",
+                            type: .shipping)
+        
     }
-    func createGuestOrderCustomer() -> GuestOrderCustomer {
-        return GuestOrderCustomer(firstName: "Ishan",
-                                  lastName: "Wallet Checkout Tests",
-                                  email: "ishan.guru+test_order@violet.io", shippingAddress: createOrderAddress(), billingAddress: nil, sameAddress: true)
+    func createOrderCustomer() -> OrderCustomer {
+        return OrderCustomer(billingAddress: nil, email: "ishan.guru+test_order@violet.io", firstName: "Ishan",
+                             lastName: "Wallet Checkout Tests", sameAddress: true, shippingAddress: createOrderAddress())
         
     }
     
@@ -61,7 +67,7 @@ struct CartTabView: View {
         if let channelHeaders = dataStore.channelHeaders,
            let pendingOrderId = dataStore.currentPendingOrder?.orderId{
             Logger.debug("CartTabView -> doCartPaymentPostRequest")
-//            dataStore.apiCallService.sendCartCustomer(channelHeaders: channelHeaders, orderId: pendingOrderId, customer: createGuestOrderCustomer())
+//            dataStore.apiCallService.sendCartCustomer(channelHeaders: channelHeaders, orderId: pendingOrderId, customer: createOrderCustomer())
         }
     }
     

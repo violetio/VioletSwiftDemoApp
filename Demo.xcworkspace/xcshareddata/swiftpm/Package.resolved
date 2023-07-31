@@ -1,34 +1,32 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "AnyCodable",
-        "repositoryURL": "https://github.com/Flight-School/AnyCodable",
-        "state": {
-          "branch": null,
-          "revision": "862808b2070cd908cb04f9aafe7de83d35f81b05",
-          "version": "0.6.7"
-        }
-      },
-      {
-        "package": "Stripe",
-        "repositoryURL": "https://github.com/stripe/stripe-ios-spm",
-        "state": {
-          "branch": null,
-          "revision": "5c2f1729e4c873faaead832b654be662dbd6eba3",
-          "version": "23.6.0"
-        }
-      },
-      {
-        "package": "SwiftCSV",
-        "repositoryURL": "https://github.com/swiftcsv/SwiftCSV",
-        "state": {
-          "branch": null,
-          "revision": "96fa14b92e88e0befdbc8bc31c7c2c9594a30060",
-          "version": "0.8.1"
-        }
+  "pins" : [
+    {
+      "identity" : "anycodable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Flight-School/AnyCodable",
+      "state" : {
+        "revision" : "862808b2070cd908cb04f9aafe7de83d35f81b05",
+        "version" : "0.6.7"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "stripe-ios-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stripe/stripe-ios-spm",
+      "state" : {
+        "revision" : "5c2f1729e4c873faaead832b654be662dbd6eba3",
+        "version" : "23.6.0"
+      }
+    },
+    {
+      "identity" : "violet-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/violetio/violet-swift",
+      "state" : {
+        "revision" : "2a397a9dc48fbf90af103daf5abec6f21e060309",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 2
 }

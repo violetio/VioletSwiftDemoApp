@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 struct OfferView: View {
 
@@ -55,7 +55,7 @@ struct OfferView: View {
     }
     
     var highlistsView: some View {
-        Text(offer.name)
+        Text(offer.name!)
     }
     
     var detailsView: some View {
@@ -68,7 +68,14 @@ struct OfferView: View {
 struct OfferView_Previews: PreviewProvider {
     struct Preview: View
     {
-        let offer = Offer(id: 1, productId: "01001", name: "Offer Name", source: .shopify, merchantId: 42, minPrice: 0199)
+
+        let offer = Offer(available: true,
+                          merchantId: 42,
+                          minPrice: 199,
+                          name: "Offer Name",
+                          productId: "01001",
+                          source: .shopify,
+                          visible: true)
         
         
         let offer12555 = MockOffers.load_Offer_12555()

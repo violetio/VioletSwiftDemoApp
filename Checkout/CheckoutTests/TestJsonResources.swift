@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import VioletPublicClientAPI
+import Violet
 
 class TestJsonResources {
     var testBundle: Bundle {
@@ -21,11 +21,11 @@ class TestJsonResources {
         }
     }
     
-    static var guestOrderCustomer_Demo: GuestOrderCustomer? {
+    static var guestOrderCustomer_Demo: OrderCustomer? {
         get {
             let file: URL! = testBundle.url(forResource: "guestOrderCustomer_Demo", withExtension: "json")
             let data: Data! = try! Data(contentsOf: file)
-            let decodedResult = CodableHelper.decode(GuestOrderCustomer.self, from: data)
+            let decodedResult = CodableHelper.decode(OrderCustomer.self, from: data)
             switch decodedResult {
             case .failure(_):
                 return nil

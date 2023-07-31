@@ -7,7 +7,7 @@
 
 import Combine
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 class DataStore: ObservableObject {
     static let shared: DataStore = .init()

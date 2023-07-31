@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import VioletPublicClientAPI
+import Violet
 
 class GetOrderByIDRequest: ChannelHeadersAPICall<Order> {
     let orderId: Int64
@@ -21,6 +21,7 @@ class GetOrderByIDRequest: ChannelHeadersAPICall<Order> {
     }
 
     override func send() {
+        /*
         OrdersAPI.ordersOrderIdGet(orderId: orderId, xVioletToken: channelHeaders.token,
                                    xVioletAppSecret: channelHeaders.apiSecret,
                                    xVioletAppId: channelHeaders.appID)
@@ -32,5 +33,6 @@ class GetOrderByIDRequest: ChannelHeadersAPICall<Order> {
             }
             self.callIsCompleted(errorResponse: error, dataResponse: data)
         }
+         */
     }
 }

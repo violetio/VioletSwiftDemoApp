@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import VioletPublicClientAPI
+import Violet
 import Checkout
 
 class TestCheckoutSequence {
@@ -23,7 +23,15 @@ class TestCheckoutSequence {
     static func Order_ID_59087() -> TestCheckoutSequence {
         return TestCheckoutSequence(orderId: 59087)
     }
-
+    
+    func submitCart_Response_jsonResponseFileName() -> String {
+        return "Order_ID_" + String(self.orderId) + "_SubmitCart_Response.json"
+    }
+    
+    func applyShipping_Response_jsonResponseFileName() -> String {
+        return "Order_ID_" + String(self.orderId) + "_ApplyShipping_Response.json"
+    }
+    
     func shippingAvailable_Response_jsonResponseFileName() -> String {
         return "Order_ID_" + String(self.orderId) + "_ShippingAvailable_Response.json"
     }
@@ -38,6 +46,10 @@ class TestCheckoutSequence {
 
     func createCart_Response_jsonResponseFileName() -> String {
         return "Order_ID_" + String(self.orderId) + "_CreateCart_Response.json"
+    }
+    
+    func addSkuToCart_Response_jsonResponseFileName() -> String {
+        return "Order_ID_" + String(self.orderId) + "_AddSkuToCart_Response.json"
     }
     /**
         Looking for:

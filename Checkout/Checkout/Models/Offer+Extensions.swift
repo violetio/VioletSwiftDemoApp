@@ -5,7 +5,7 @@
 //  Created by Alan Morford on 4/18/23.
 //
 
-import VioletPublicClientAPI
+import Violet
 import Foundation
 
 public extension Offer {

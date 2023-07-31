@@ -5,7 +5,7 @@
 //  Created on 5/7/23
 //
 
-import VioletPublicClientAPI
+import Violet
 
 typealias MerchantID = Int64
 typealias OrderShippingMethodWrapperArray = [OrderShippingMethodWrapper]

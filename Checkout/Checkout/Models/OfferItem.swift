@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 struct OfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
     var autoKey: Int64 { offer_id }
@@ -50,9 +50,9 @@ struct OfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
 extension OfferItem: EntityViewModel {
     typealias Entity = Offer
     static func fromEntity(entity: Entity) -> Self? {
-        return OfferItem(offer_id: entity.id,
-                         name: entity.name,
-                         intPrice: IntPrice(price: entity.minPrice),
+        return OfferItem(offer_id: entity.id!,
+                         name: entity.name!,
+                         intPrice: IntPrice(price: entity.minPrice!),
                          offerEntity: entity)
     }
     

@@ -7,8 +7,7 @@
 
 import XCTest
 @testable import Checkout
-import VioletPublicClientAPI
-import SwiftCSV
+import Violet
 
 final class CatalogOffersAPITests: APIXCTestCase {
 /*

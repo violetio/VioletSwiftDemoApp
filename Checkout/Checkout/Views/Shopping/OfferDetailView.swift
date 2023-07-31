@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import VioletPublicClientAPI
+import Violet
 
 struct OfferDetailView: View {
     @Binding var offerItem: OfferItem

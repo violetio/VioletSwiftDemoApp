@@ -5,7 +5,7 @@
 //  Created by Alan Morford on 4/24/23.
 //
 
-import VioletPublicClientAPI
+import Violet
 import Foundation
 
 class CachedEntity<T: Codable> {

@@ -7,7 +7,7 @@
 
 import Combine
 import Foundation
-import VioletPublicClientAPI
+import Violet
 
 class ChannelStore {
     

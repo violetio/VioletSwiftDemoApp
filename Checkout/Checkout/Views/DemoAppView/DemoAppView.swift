@@ -24,7 +24,7 @@ struct DemoAppView: View {
                       .foregroundColor(.black)
                     Spacer()
 
-                }.padding(.horizontal)
+                }.padding(.all)
                 
             }
             ToolbarItem(placement: .navigationBarTrailing) {

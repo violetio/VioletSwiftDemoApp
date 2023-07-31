@@ -13,7 +13,9 @@ import SwiftUI
  */
 struct DemoAppProductGrid: View {
     @Binding var store: AppStore
-    var loadedOffers: [DemoProductGridOfferItem] = PreviewMocks.MockOfferItemsArray2()
+    
+    @ObservedObject var offerSearchViewState: OfferSearchViewState
+
     let layout = [
         GridItem(.fixed(340))
     ]
@@ -21,7 +23,7 @@ struct DemoAppProductGrid: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: layout, spacing: 20) {
-                ForEach(loadedOffers, id: \.offer_id) { offerItem in
+                ForEach(offerSearchViewState.loadedOfferItems, id: \.offer_id) { offerItem in
                     DemoAppOfferCard(store: $store,
                                      offerItem: .constant(offerItem))
                 }
@@ -36,6 +38,11 @@ struct DemoAppProductGrid: View {
 
 struct DemoAppProductGrid_Previews: PreviewProvider {
     static var previews: some View {
-        DemoAppProductGrid(store: AppStore.mockAppStoreBinding)
+        Group {
+            DemoAppProductGrid(store: AppStore.mockAppStoreBinding,
+                               offerSearchViewState: OfferSearchViewState.mockLoaded()).previewDisplayName("Offers Returned")
+            
+            DemoAppProductGrid(store: AppStore.mockAppStoreBinding, offerSearchViewState: OfferSearchViewState.mockEmpty()).previewDisplayName("No Offers Returned")
+        }
     }
 }

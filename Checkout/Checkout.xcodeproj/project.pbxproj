@@ -54,6 +54,7 @@
 		E71CFBBC29D240EC00598B15 /* Order_ID_58374.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBBB29D240EC00598B15 /* Order_ID_58374.json */; };
 		E71CFBBE29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBBD29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json */; };
 		E72C467E2A782B8D00F8C267 /* DemoStackContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72C467D2A782B8D00F8C267 /* DemoStackContentView.swift */; };
+		E72C46802A7866A700F8C267 /* OfferSearchViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72C467F2A7866A700F8C267 /* OfferSearchViewState.swift */; };
 		E72E000529EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */; };
 		E72E000729EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = E72E000629EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json */; };
 		E72E000B29EF3353009F7BFE /* Offer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E000A29EF3353009F7BFE /* Offer+Extensions.swift */; };
@@ -208,6 +209,7 @@
 		E71CFBBB29D240EC00598B15 /* Order_ID_58374.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order_ID_58374.json; sourceTree = "<group>"; };
 		E71CFBBD29D250DA00598B15 /* shipping_methods_get_bag_id_43402.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shipping_methods_get_bag_id_43402.json; sourceTree = "<group>"; };
 		E72C467D2A782B8D00F8C267 /* DemoStackContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStackContentView.swift; sourceTree = "<group>"; };
+		E72C467F2A7866A700F8C267 /* OfferSearchViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSearchViewState.swift; sourceTree = "<group>"; };
 		E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPageOffersByMerchantIDRequest.swift; sourceTree = "<group>"; };
 		E72E000629EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PageOffer_Page_1_MerchantID_10003_Response.json; sourceTree = "<group>"; };
 		E72E000A29EF3353009F7BFE /* Offer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Offer+Extensions.swift"; sourceTree = "<group>"; };
@@ -679,6 +681,7 @@
 				E7B41CA62A0983C000E7371B /* ChannelLoginViewState.swift */,
 				E7B41CA82A09841D00E7371B /* DemoChannelViewState.swift */,
 				E7B41CAA2A09843800E7371B /* ShoppingViewState.swift */,
+				E72C467F2A7866A700F8C267 /* OfferSearchViewState.swift */,
 			);
 			path = ViewState;
 			sourceTree = "<group>";
@@ -861,6 +864,7 @@
 				E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */,
 				E72EFFE329D4C892009F7BFE /* ScenariosListView.swift in Sources */,
 				E71CFB9A29CCCD7100598B15 /* DataResponseAPICall.swift in Sources */,
+				E72C46802A7866A700F8C267 /* OfferSearchViewState.swift in Sources */,
 				E71CFBAF29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift in Sources */,
 				E7B41CB32A0A9D7700E7371B /* DemoInject.swift in Sources */,
 				E7B41CA22A097E0300E7371B /* TypeAliases.swift in Sources */,

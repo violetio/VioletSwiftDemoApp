@@ -33,6 +33,28 @@ struct PreviewMocks {
         return OfferItem.fromEntity(entity: mockOffer) ?? OfferItem.Empty()
     }
     
+    static func MockOfferItem_12574() -> DemoProductGridOfferItem {
+        guard let mockOffer = MockOffers.load_Offer_12574() else {
+            return DemoProductGridOfferItem.Empty()
+        }
+        return DemoProductGridOfferItem.fromEntity(entity: mockOffer) ?? DemoProductGridOfferItem.Empty()
+    }
+    
+    static func MockOfferItem_12574_Media() -> [Media] {
+        guard let mockOffer = MockOffers.load_Offer_12574() else {
+            return []
+        }
+        var results: [Media] = []
+        mockOffer.albums?.forEach({ album in
+            if let foundMedia = album.media {
+                foundMedia.forEach { next in
+                    results.append(next)
+                }
+            }
+        })
+        return results
+    }
+    
     static func Mock_OfferItem_ImageURL() -> URL? {
         return MockOfferItem().firstAlbumMediaImageURL()
     }

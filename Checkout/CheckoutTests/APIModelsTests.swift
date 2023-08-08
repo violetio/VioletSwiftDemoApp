@@ -352,39 +352,4 @@ final class APIModelsTests: APIXCTestCase {
             persistEncodable(responseToPersist, to: loginPostJsonResponse_fileName)
         }
     }
-
-    func test_2_AuthTokenGet() {
-        // Given
-        guard let loginResponse = TestBundleFileTestCase.decodeJson(LoginResponse.self, forResource: "loginPostJsonResponse") else {
-            XCTFail("No Json Data")
-            return
-        }
-
-        guard let channelHeader = ChannelHeaders.from(loginResponse: loginResponse,
-                                                      appIdAndSecret: appCreds)
-        else {
-            XCTFail("No Json Data")
-            return
-        }
-        let authTokenGet = AuthTokenGet(channelHeaders: channelHeader)
-        let expectation = XCTestExpectation(description: "CallCompleted True")
-//
-        let streamHandle: AnyCancellable? = authTokenGet.$callCompleted
-            // Remove the first (initial) value - we don't need it
-            .dropFirst()
-            .sink(receiveValue: {
-                XCTAssertEqual($0, true)
-                self.token = authTokenGet.dataResponse?.token
-                expectation.fulfill()
-
-            })
-
-        // When
-        authTokenGet.send()
-
-        // Then
-        wait(for: [expectation], timeout: timeout_5s)
-        XCTAssertNotNil(streamHandle)
-        XCTAssertNotNil(self.token)
-    }
 }

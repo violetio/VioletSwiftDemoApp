@@ -14,7 +14,7 @@ struct DemoAppView: View {
         NavigationStack {
             DemoAppProductGrid(store: $store, offerSearchViewState: store.offerSearchViewState)
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.automatic)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 HStack {

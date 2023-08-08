@@ -13,7 +13,15 @@ struct DemoAppOfferPDP: View {
     @Binding var offerItem: DemoProductGridOfferItem
     
     var body: some View {
-        Text("Offer Item Detail: \(offerItem.name)")
+        VStack {
+            Text("Offer Images Carousel")
+            DemoAppOfferCardText(offerItem: $offerItem)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 0)
+            .frame(maxWidth: .infinity, alignment: .topLeading)
+            Text("Offer Item Detail: \(offerItem.name)")
+        }
+        
     }
 }
 

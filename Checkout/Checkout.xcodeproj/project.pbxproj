@@ -19,7 +19,6 @@
 		E70BEB9B29BA54B00030335E /* GetOfferByIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */; };
 		E70BEBA329BAA2210030335E /* AppCreds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA229BAA2210030335E /* AppCreds.swift */; };
 		E70BEBA529BAB47F0030335E /* CatalogOffersAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA429BAB47F0030335E /* CatalogOffersAPITests.swift */; };
-		E70BEBA729BB9F650030335E /* EnvTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA629BB9F650030335E /* EnvTests.swift */; };
 		E70BEBA929BBA0FD0030335E /* EnvVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA829BBA0FD0030335E /* EnvVars.swift */; };
 		E712EAF82A4CDEFB00DDAE15 /* DemoAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */; };
 		E712EAFA2A4E27D700DDAE15 /* FigmaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */; };
@@ -173,7 +172,6 @@
 		E70BEBA129BA977D0030335E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E70BEBA229BAA2210030335E /* AppCreds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCreds.swift; sourceTree = "<group>"; };
 		E70BEBA429BAB47F0030335E /* CatalogOffersAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogOffersAPITests.swift; sourceTree = "<group>"; };
-		E70BEBA629BB9F650030335E /* EnvTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvTests.swift; sourceTree = "<group>"; };
 		E70BEBA829BBA0FD0030335E /* EnvVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVars.swift; sourceTree = "<group>"; };
 		E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppView.swift; sourceTree = "<group>"; };
 		E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaConstants.swift; sourceTree = "<group>"; };
@@ -377,7 +375,6 @@
 				E71CFBA329CE0E0A00598B15 /* JsonBlobs */,
 				E71CFB8229C2334B00598B15 /* APIModelsTests.swift */,
 				E70BEBA429BAB47F0030335E /* CatalogOffersAPITests.swift */,
-				E70BEBA629BB9F650030335E /* EnvTests.swift */,
 				E71CFB9729C90ABD00598B15 /* APIXCTestCase.swift */,
 				E71CFBA629CE0EBD00598B15 /* JsonDecodeTests.swift */,
 				E71CFBAA29CE17B300598B15 /* TestBundleFileTestCase.swift */,
@@ -942,7 +939,6 @@
 			files = (
 				E71CFBB829D2349500598B15 /* ExpectationRunner.swift in Sources */,
 				E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */,
-				E70BEBA729BB9F650030335E /* EnvTests.swift in Sources */,
 				E71CFBBA29D2402100598B15 /* TestCheckoutSequence.swift in Sources */,
 				E71CFBA729CE0EBD00598B15 /* JsonDecodeTests.swift in Sources */,
 				E72E000D29EF33F1009F7BFE /* ExtensionsTests.swift in Sources */,

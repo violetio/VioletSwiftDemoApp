@@ -20,3 +20,10 @@ class ChannelHeadersAPICall<DataResponseType: Codable>: DataResponseAPICall<Data
         self.channelHeaders = channelHeaders
     }
 }
+
+
+class ProxyAPICall<DataResponseType: Codable>: DataResponseAPICall<DataResponseType> {
+    
+    override init() {
+    }
+}

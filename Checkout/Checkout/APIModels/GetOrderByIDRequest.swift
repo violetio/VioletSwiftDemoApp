@@ -1,23 +1,20 @@
 //
-//  GetOffer.swift
+//  GetOrderByIDRequest.swift
 //  Checkout
 //
-//  Created by Alan Morford on 3/9/23.
+//  Created on 3/9/23.
 //
 
 import Foundation
 import Violet
 
-class GetOrderByIDRequest: ChannelHeadersAPICall<Order> {
+class GetOrderByIDRequest: ProxyAPICall<Order> {
     let orderId: Int64
 
-    convenience init(appCreds: AppCreds, token: String, orderId: Int64) {
-        self.init(channelHeaders: appCreds.channelHeaders(token: token), orderId: orderId)
-    }
 
-    init(channelHeaders: ChannelHeaders, orderId: Int64) {
+    init(orderId: Int64) {
         self.orderId = orderId
-        super.init(channelHeaders: channelHeaders)
+        super.init()
     }
 
     override func send() {

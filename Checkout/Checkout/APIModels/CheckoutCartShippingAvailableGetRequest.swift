@@ -2,17 +2,17 @@
 //  CheckoutCartShippingAvailableGetRequest.swift
 //  Checkout
 //
-//  Created by Alan Morford on 3/24/23.
+//  Created on 3/24/23.
 //
 
 import Violet
 
-class CheckoutCartShippingAvailableGetRequest: ChannelHeadersAPICall<OrderShippingMethodWrapperArray> {
+class CheckoutCartShippingAvailableGetRequest: ProxyAPICall<OrderShippingMethodWrapperArray> {
     let orderId: Int64
 
-    init(channelHeaders: ChannelHeaders, orderId: Int64) {
+    init(orderId: Int64) {
         self.orderId = orderId
-        super.init(channelHeaders: channelHeaders)
+        super.init()
     }
 
     override func send() {

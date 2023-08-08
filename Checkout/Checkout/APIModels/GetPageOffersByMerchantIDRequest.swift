@@ -8,16 +8,16 @@
 import Foundation
 import Violet
 
-class GetPageOffersByMerchantIDRequest: ChannelHeadersAPICall<PageOffer> {
+class GetPageOffersByMerchantIDRequest: ProxyAPICall<PageOffer> {
     let merchantId: Int64
     let page: Int
     let size: Int
 
-    init(channelHeaders: ChannelHeaders, merchantId: Int64, page: Int = 1, size: Int = 20) {
+    init(merchantId: Int64, page: Int = 1, size: Int = 20) {
         self.merchantId = merchantId
         self.page = page
         self.size = size
-        super.init(channelHeaders: channelHeaders)
+        super.init()
     }
 
     override func send() {

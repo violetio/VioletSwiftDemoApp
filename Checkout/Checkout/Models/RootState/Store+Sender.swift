@@ -47,7 +47,7 @@ extension AppStore {
 
             case .offersPageRequest(let channelHeaders, let merchantId):
                 Logger.info("Store: Offers Page Request:")
-                let newAPICall = APICall(apiCall: GetPageOffersByMerchantIDRequest(channelHeaders: channelHeaders, merchantId: merchantId))
+                let newAPICall = APICall(apiCall: GetPageOffersByMerchantIDRequest(merchantId: merchantId))
                 pendingAPICalls.enqueue(newAPICall)
                 newAPICall.send { dataResponse, _ in
                     if let pageOffer = dataResponse {

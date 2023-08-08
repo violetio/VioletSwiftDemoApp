@@ -2,20 +2,20 @@
 //  CheckoutCartPaymentPostRequest.swift
 //  Checkout
 //
-//  Created by Alan Morford on 3/24/23.
+//  Created on 3/24/23.
 //
 
 import Violet
 
-class CheckoutCartCustomerPostRequest: ChannelHeadersAPICall<Order> {
+class CheckoutCartCustomerPostRequest: ProxyAPICall<Order> {
 
     let body: OrderCustomer
     let cartId: Int64
     
-    init(channelHeaders: ChannelHeaders, cartId: Int64, guestOrderCustomer: OrderCustomer) {
+    init(cartId: Int64, guestOrderCustomer: OrderCustomer) {
         self.cartId = cartId
         self.body = guestOrderCustomer
-        super.init(channelHeaders: channelHeaders)
+        super.init()
     }
 
     override func send() {

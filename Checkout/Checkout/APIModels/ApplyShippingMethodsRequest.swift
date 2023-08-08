@@ -7,14 +7,14 @@
 
 import Violet
 
-class ApplyShippingMethodsRequest: ChannelHeadersAPICall<Order> {
+class ApplyShippingMethodsRequest: ProxyAPICall<Order> {
     let orderId: Int64
     let body: [BagShippingMethod]
 
-    init(channelHeaders: ChannelHeaders, orderId: Int64, body: [BagShippingMethod]) {
+    init(orderId: Int64, body: [BagShippingMethod]) {
         self.orderId = orderId
         self.body = body
-        super.init(channelHeaders: channelHeaders)
+        super.init()
     }
 
     override func send() {

@@ -8,12 +8,12 @@
 import Foundation
 import Violet
 
-class GetCartByIDRequest: ChannelHeadersAPICall<Order> {
+class GetCartByIDRequest: ProxyAPICall<Order> {
     let orderId: Int64    
 
-    init(channelHeaders: ChannelHeaders, orderId: Int64) {
+    init(orderId: Int64) {
         self.orderId = orderId
-        super.init(channelHeaders: channelHeaders)
+        super.init()
     }
 
     override func send() {

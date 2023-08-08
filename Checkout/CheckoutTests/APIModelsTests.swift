@@ -38,8 +38,7 @@ final class APIModelsTests: APIXCTestCase {
 //    }
     //** PROXY TESTED
     func test_10_SubmitCheckout() {
-        let request = SubmitCartRequest(channelHeaders: appCreds.channelHeaders(token: ""),
-                                        orderId: testCheckoutSequence.orderId)
+        let request = SubmitCartRequest(orderId: testCheckoutSequence.orderId)
         
         let expectationRunner = ExpectationRunner(request)
         expectationRunner.sink {
@@ -213,8 +212,7 @@ final class APIModelsTests: APIXCTestCase {
         // Given
         let orderSku_SkuId_33524 = OrderSku(quantity: 1, skuId: 33524)
 
-        let addSkuToCartRequest = AddSkuToCartRequest(channelHeaders: appCreds.channelHeaders(token: ""),
-                                                      orderId: testCheckoutSequence.orderId,
+        let addSkuToCartRequest = AddSkuToCartRequest(orderId: testCheckoutSequence.orderId,
                                                       orderSku: orderSku_SkuId_33524)
         let expectationRunner = ExpectationRunner(addSkuToCartRequest)
 

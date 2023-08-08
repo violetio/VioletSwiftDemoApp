@@ -7,14 +7,14 @@
 
 import Violet
 
-class SubmitCartRequest: ChannelHeadersAPICall<Order> {
+class SubmitCartRequest: ProxyAPICall<Order> {
     let orderId: Int64
     let body: CartSubmissionRequest?
 
-    init(channelHeaders: ChannelHeaders, orderId: Int64, body: CartSubmissionRequest? = nil) {
+    init(orderId: Int64, body: CartSubmissionRequest? = nil) {
         self.orderId = orderId
         self.body = body
-        super.init(channelHeaders: channelHeaders)
+        super.init()
     }
 
     override func send() {

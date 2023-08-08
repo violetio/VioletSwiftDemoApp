@@ -26,8 +26,11 @@ struct DemoAppProductGrid: View {
             if offerSearchViewState.loading {
                 
                 ProgressView() {
-                    Text("Loading Offers")
+                    Text("Loading")
                 }
+                .frame(width: 109, height: 50, alignment: .center)
+                .cornerRadius(10)
+                    .withScrollViewBackgroundColor()
             } else {
                 if offerSearchViewState.loadedOfferItems.count > 0 {
                     LazyVGrid(columns: layout, spacing: 20) {
@@ -42,6 +45,7 @@ struct DemoAppProductGrid: View {
                     ProgressView() {
                         Text("Workout")
                     }
+                    
                 }
                 
             }

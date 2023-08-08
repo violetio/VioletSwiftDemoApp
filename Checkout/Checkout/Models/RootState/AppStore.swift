@@ -29,7 +29,7 @@ class AppStore {
         }
 
         init() {
-            self.init(channelLoginViewState: DemoInject.DemoChannelLoginViewState(),
+            self.init(channelLoginViewState: ChannelLoginViewState(),
                       demoChannelViewState: DemoChannelViewState(),
                       shoppingViewState: ShoppingViewState(),
                       offerSearchViewState: OfferSearchViewState())
@@ -84,9 +84,9 @@ class AppStore {
     }
 
     convenience init(shoppingViewState: ShoppingViewState? = nil) {
-        self.init(channelLoginViewState: DemoInject.DemoChannelLoginViewState(),
+        self.init(channelLoginViewState: ChannelLoginViewState(),
                   demoChannelViewState: DemoChannelViewState(),
                   shoppingViewState: shoppingViewState ?? ShoppingViewState(),
-                  offerSearchViewState: OfferSearchViewState(loading: true))
+                  offerSearchViewState: OfferSearchViewState.mockLoaded())
     }
 }

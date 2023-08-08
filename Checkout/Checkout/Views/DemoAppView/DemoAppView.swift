@@ -32,7 +32,7 @@ struct DemoAppView: View {
                         }, buttonText: "0")
                     }
                 }.navigationDestination(for: DemoProductGridOfferItem.self) { offerItem in
-                    Text("Offer Item Detail: \(offerItem.name)")
+                    DemoAppOfferPDP(store: $store, offerItem: .constant(offerItem))
                 }
         }
         

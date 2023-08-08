@@ -14,7 +14,6 @@ struct DemoStackContentView: View {
         NavigationStack
         {
             DemoAppView(store: $store)
-            //.toolbarBackground(.white)
         }
     }
 }

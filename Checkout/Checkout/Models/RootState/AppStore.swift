@@ -16,19 +16,23 @@ class AppStore {
         var channelLoginViewState: ChannelLoginViewState
         var demoChannelViewState: DemoChannelViewState
         var shoppingViewState: ShoppingViewState
+        var offerSearchViewState: OfferSearchViewState
 
         init(channelLoginViewState: ChannelLoginViewState,
              demoChannelViewState: DemoChannelViewState,
-             shoppingViewState: ShoppingViewState) {
+             shoppingViewState: ShoppingViewState,
+             offerSearchViewState: OfferSearchViewState) {
             self.channelLoginViewState = channelLoginViewState
             self.demoChannelViewState = demoChannelViewState
             self.shoppingViewState = shoppingViewState
+            self.offerSearchViewState = offerSearchViewState
         }
 
         init() {
-            self.init(channelLoginViewState: DemoInject.DemoChannelLoginViewState(),
+            self.init(channelLoginViewState: ChannelLoginViewState(),
                       demoChannelViewState: DemoChannelViewState(),
-                      shoppingViewState: ShoppingViewState())
+                      shoppingViewState: ShoppingViewState(),
+                      offerSearchViewState: OfferSearchViewState())
         }
     }
 
@@ -58,6 +62,7 @@ class AppStore {
     var demoChannelViewState: DemoChannelViewState { state.demoChannelViewState }
 
     var shoppingViewState: ShoppingViewState { state.shoppingViewState }
+    var offerSearchViewState: OfferSearchViewState { state.offerSearchViewState }
 
     func demoLoginInputs(_ selectedDemoChannel: DemoChannels) -> LoginInputsType {
         return AppCreds.loginInputs(for: selectedDemoChannel)
@@ -67,18 +72,21 @@ class AppStore {
 
     init(channelLoginViewState: ChannelLoginViewState,
          demoChannelViewState: DemoChannelViewState,
-         shoppingViewState: ShoppingViewState)
+         shoppingViewState: ShoppingViewState,
+         offerSearchViewState: OfferSearchViewState)
     {
         let newState = AppState(channelLoginViewState: channelLoginViewState,
                                 demoChannelViewState: demoChannelViewState,
-                                shoppingViewState: shoppingViewState)
+                                shoppingViewState: shoppingViewState,
+                                offerSearchViewState: offerSearchViewState)
         self.state = newState
         self.sender = AppSender(state: newState)
     }
 
     convenience init(shoppingViewState: ShoppingViewState? = nil) {
-        self.init(channelLoginViewState: DemoInject.DemoChannelLoginViewState(),
+        self.init(channelLoginViewState: ChannelLoginViewState(),
                   demoChannelViewState: DemoChannelViewState(),
-                  shoppingViewState: shoppingViewState ?? ShoppingViewState())
+                  shoppingViewState: shoppingViewState ?? ShoppingViewState(),
+                  offerSearchViewState: OfferSearchViewState.mockLoaded())
     }
 }

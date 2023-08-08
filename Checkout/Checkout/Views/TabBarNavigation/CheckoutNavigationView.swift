@@ -76,8 +76,10 @@ struct CheckoutNavigationView: View {
             }
             .tag(Tab.settings)
 
-        }.onAppear() {
+        }.toolbar(.hidden, for: .tabBar)
+            .onAppear() {
             selection = store.state.defaultStartingTab
+            
         }
         
     }

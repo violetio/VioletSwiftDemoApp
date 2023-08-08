@@ -23,9 +23,10 @@ struct DemoAppOfferCard: View {
                     .font(.system(size: 14, weight: .regular))
                     .italic()
                     .foregroundColor(FigmaConstants.Colors.systemGrey1)
-                Text("\(offerItem.seller)")
-                    .font(Font.custom("Inter", size: 14))
-                    .foregroundColor(FigmaConstants.Colors.systemGrey1)
+                Label("\(offerItem.seller)", image: "merchant_name_pre_icon")
+                        .font(Font.custom("Inter", size: 14))
+                        .labelStyle(.titleAndIcon)
+                        .foregroundColor(FigmaConstants.Colors.systemGrey1)
                 Text("\(offerItem.intPrice.priceText())")
                   .font(
                     Font.custom("Inter", size: 14)

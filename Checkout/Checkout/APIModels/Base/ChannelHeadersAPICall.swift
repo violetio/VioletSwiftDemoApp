@@ -1,8 +1,8 @@
 //
-//  ChannelHeadersAPICall.swift
+//  ProxyAPICall.swift
 //  Checkout
 //
-//  Created by Alan Morford on 4/27/23.
+//  Created on 4/27/23.
 //
 
 import Violet
@@ -13,10 +13,8 @@ import Violet
     Added Type Contraint <DataResponseType: Codable> to better constraint this to ONLY types returning from an APICall. Now atleast cannot simply be anything,
  
  */
-class ChannelHeadersAPICall<DataResponseType: Codable>: DataResponseAPICall<DataResponseType> {
-    let channelHeaders: ChannelHeaders
+class ProxyAPICall<DataResponseType: Codable>: DataResponseAPICall<DataResponseType> {
     
-    init(channelHeaders: ChannelHeaders) {
-        self.channelHeaders = channelHeaders
+    override init() {
     }
 }

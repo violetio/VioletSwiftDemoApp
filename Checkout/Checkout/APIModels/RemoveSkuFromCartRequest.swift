@@ -8,14 +8,14 @@
 import Foundation
 import Violet
 
-class RemoveSkuFromCartRequest: ChannelHeadersAPICall<Order> {
+class RemoveSkuFromCartRequest: ProxyAPICall<Order> {
     let orderId: Int64
     let orderSkuId: Int64
 
-    init(channelHeaders: ChannelHeaders, orderId: Int64, orderSkuId: Int64) {
+    init(orderId: Int64, orderSkuId: Int64) {
         self.orderId = orderId
         self.orderSkuId = orderSkuId
-        super.init(channelHeaders: channelHeaders)
+        super.init()
     }
 
     override func send() {

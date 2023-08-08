@@ -7,18 +7,14 @@
 
 import Violet
 
-class CheckoutCartPostRequest: ChannelHeadersAPICall<Order> {
+class CheckoutCartPostRequest: ProxyAPICall<Order> {
     let cartInitializationRequest: CartInitializationRequest
     let baseCurrency: String
 
-    convenience init(appCreds: AppCreds, token: String, cartInitializationRequest: CartInitializationRequest) {
-        self.init(channelHeaders: appCreds.channelHeaders(token: token), cartInitializationRequest: cartInitializationRequest)
-    }
-
-    init(channelHeaders: ChannelHeaders, cartInitializationRequest: CartInitializationRequest, baseCurrency: String = "USD") {
+    init(cartInitializationRequest: CartInitializationRequest, baseCurrency: String = "USD") {
         self.cartInitializationRequest = cartInitializationRequest
         self.baseCurrency = baseCurrency
-        super.init(channelHeaders: channelHeaders)
+        super.init()
     }
 
     override func send() {

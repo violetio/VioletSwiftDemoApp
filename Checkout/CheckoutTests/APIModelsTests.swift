@@ -38,8 +38,7 @@ final class APIModelsTests: APIXCTestCase {
 //    }
     //** PROXY TESTED
     func test_10_SubmitCheckout() {
-        let request = SubmitCartRequest(channelHeaders: appCreds.channelHeaders(token: ""),
-                                        orderId: testCheckoutSequence.orderId)
+        let request = SubmitCartRequest(orderId: testCheckoutSequence.orderId)
         
         let expectationRunner = ExpectationRunner(request)
         expectationRunner.sink {
@@ -63,7 +62,7 @@ final class APIModelsTests: APIXCTestCase {
     func test_9_ApplyShippingMethods() {
         
         let body = [BagShippingMethod(bagId: 54314,shippingMethodId: "shopify-Economy-4.90")]
-        let request = ApplyShippingMethodsRequest(channelHeaders: appCreds.channelHeaders(token: ""), orderId: testCheckoutSequence.orderId, body: body)
+        let request = ApplyShippingMethodsRequest(orderId: testCheckoutSequence.orderId, body: body)
         
         let expectationRunner = ExpectationRunner(request)
         expectationRunner.sink {
@@ -86,8 +85,7 @@ final class APIModelsTests: APIXCTestCase {
     //** PROXY TESTED
     func test_8_CheckoutCartShippingAvailableGetRequest() {
         // Given
-        let checkoutCartShippingAvailableGetRequest = CheckoutCartShippingAvailableGetRequest(channelHeaders: appCreds.channelHeaders(token: ""),
-                                                                                              orderId: self.testCheckoutSequence.orderId)
+        let checkoutCartShippingAvailableGetRequest = CheckoutCartShippingAvailableGetRequest(orderId: self.testCheckoutSequence.orderId)
         let expectationRunner = ExpectationRunner(checkoutCartShippingAvailableGetRequest)
         expectationRunner.sink {
             XCTAssertEqual($0, true)
@@ -113,8 +111,7 @@ final class APIModelsTests: APIXCTestCase {
         var guestOrderCustomer: OrderCustomer! = TestJsonResources.guestOrderCustomer_Demo
         guestOrderCustomer.sameAddress = true
 
-        let checkoutCartCustomerPostRequest = CheckoutCartCustomerPostRequest(channelHeaders: appCreds.channelHeaders(token: ""),
-                                                                              cartId: self.testCheckoutSequence.orderId,
+        let checkoutCartCustomerPostRequest = CheckoutCartCustomerPostRequest(cartId: self.testCheckoutSequence.orderId,
                                                                               guestOrderCustomer: guestOrderCustomer)
         let expectationRunner = ExpectationRunner(checkoutCartCustomerPostRequest)
         expectationRunner.sink {
@@ -143,8 +140,7 @@ final class APIModelsTests: APIXCTestCase {
                                         cardNumber: "4242424242424242", cardPostalCode: "11237",
                                         completeCheckout: nil,
                                         intentBasedCapture: false, token: nil)
-        let checkoutCartPaymentPostRequest = CheckoutCartPaymentPostRequest(channelHeaders: appCreds.channelHeaders(token: ""),
-                                                                            cartId: self.testCheckoutSequence.orderId,
+        let checkoutCartPaymentPostRequest = CheckoutCartPaymentPostRequest(cartId: self.testCheckoutSequence.orderId,
                                                                             priceCart: true, paymentMethodRequest: body)
         let expectationRunner = ExpectationRunner(checkoutCartPaymentPostRequest)
         expectationRunner.sink {
@@ -169,8 +165,7 @@ final class APIModelsTests: APIXCTestCase {
     //** PROXY TESTED
     func test_5_GetOrderByIDRequest() {
         // Given
-        let getOrderByIDRequest = GetCartByIDRequest(channelHeaders: appCreds.channelHeaders(token: ""),
-                                                     orderId: 68863)
+        let getOrderByIDRequest = GetCartByIDRequest(orderId: 68863)
 
         let expectationRunner = ExpectationRunner(getOrderByIDRequest)
         expectationRunner.sink {
@@ -190,9 +185,8 @@ final class APIModelsTests: APIXCTestCase {
     func test_4b_RemoveSkuFromCart() {
         // Given
         
-        let removeSkuFromCartRequest = RemoveSkuFromCartRequest(channelHeaders: appCreds.channelHeaders(token: ""),
-                                                      orderId: testCheckoutSequence.orderId,
-                                                      orderSkuId: 71645)
+        let removeSkuFromCartRequest = RemoveSkuFromCartRequest(orderId: testCheckoutSequence.orderId,
+                                                                orderSkuId: 71645)
         let expectationRunner = ExpectationRunner(removeSkuFromCartRequest)
 
         expectationRunner.sink {
@@ -218,8 +212,7 @@ final class APIModelsTests: APIXCTestCase {
         // Given
         let orderSku_SkuId_33524 = OrderSku(quantity: 1, skuId: 33524)
 
-        let addSkuToCartRequest = AddSkuToCartRequest(channelHeaders: appCreds.channelHeaders(token: ""),
-                                                      orderId: testCheckoutSequence.orderId,
+        let addSkuToCartRequest = AddSkuToCartRequest(orderId: testCheckoutSequence.orderId,
                                                       orderSku: orderSku_SkuId_33524)
         let expectationRunner = ExpectationRunner(addSkuToCartRequest)
 
@@ -251,9 +244,7 @@ final class APIModelsTests: APIXCTestCase {
                                              skus: [orderSku_SkuId_33524],
                                              walletBasedCheckout: false)
 
-        let checkoutCartPostRequest = CheckoutCartPostRequest(appCreds: appCreds,
-                                                              token: "",
-                                                              cartInitializationRequest: body)
+        let checkoutCartPostRequest = CheckoutCartPostRequest(cartInitializationRequest: body)
         let expectationRunner = ExpectationRunner(checkoutCartPostRequest)
 
         expectationRunner.sink {
@@ -280,7 +271,7 @@ final class APIModelsTests: APIXCTestCase {
     //** PROXY TESTED
     func test_3b_GetPageOffers() {
         let merchantId: Int64 = 10003
-        let request = GetPageOffersByMerchantIDRequest(channelHeaders: appCreds.channelHeaders(token: ""), merchantId: merchantId)
+        let request = GetPageOffersByMerchantIDRequest(merchantId: merchantId)
 
         let expectationRunner = ExpectationRunner(request)
 
@@ -309,7 +300,7 @@ final class APIModelsTests: APIXCTestCase {
     //** PROXY TESTED
     func test_3_GetOffer() {
         // Given
-        let getOfferByIDRequest = GetOfferByIDRequest(appCreds: appCreds, token: "", offerId: 12574)
+        let getOfferByIDRequest = GetOfferByIDRequest(offerId: 12574)
 
         let expectationRunner = ExpectationRunner(getOfferByIDRequest)
 
@@ -358,40 +349,5 @@ final class APIModelsTests: APIXCTestCase {
         if let responseToPersist = loginPostRequest.dataResponse {
             persistEncodable(responseToPersist, to: loginPostJsonResponse_fileName)
         }
-    }
-
-    func test_2_AuthTokenGet() {
-        // Given
-        guard let loginResponse = TestBundleFileTestCase.decodeJson(LoginResponse.self, forResource: "loginPostJsonResponse") else {
-            XCTFail("No Json Data")
-            return
-        }
-
-        guard let channelHeader = ChannelHeaders.from(loginResponse: loginResponse,
-                                                      appIdAndSecret: appCreds)
-        else {
-            XCTFail("No Json Data")
-            return
-        }
-        let authTokenGet = AuthTokenGet(channelHeaders: channelHeader)
-        let expectation = XCTestExpectation(description: "CallCompleted True")
-//
-        let streamHandle: AnyCancellable? = authTokenGet.$callCompleted
-            // Remove the first (initial) value - we don't need it
-            .dropFirst()
-            .sink(receiveValue: {
-                XCTAssertEqual($0, true)
-                self.token = authTokenGet.dataResponse?.token
-                expectation.fulfill()
-
-            })
-
-        // When
-        authTokenGet.send()
-
-        // Then
-        wait(for: [expectation], timeout: timeout_5s)
-        XCTAssertNotNil(streamHandle)
-        XCTAssertNotNil(self.token)
     }
 }

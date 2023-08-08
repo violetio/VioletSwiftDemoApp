@@ -23,16 +23,7 @@ extension AppStore {
             case .logout:
                 state.channelLoginViewState.channelHeaders = nil
             case .refreshAuthTokenRequest(let channelHeaders):
-                Logger.info("Store: Send Refresh Auth Token Request")
-                let newAPICall = APICall(apiCall: AuthTokenGet(channelHeaders: channelHeaders))
-                pendingAPICalls.enqueue(newAPICall)
-                newAPICall.send { dataResponse, _ in
-                    if let refreshResponse = dataResponse
-                    {
-                        Logger.info("Got refreshResponse")
-                        self.state.channelLoginViewState.channelHeaders = channelHeaders.replaceToken(token: refreshResponse.token!)
-                    }
-                }
+                Logger.info("Store: Unsupported - Refresh Auth Token Request")
 
             case .loginRequest(let loginInputs):
                 Logger.info("Store: Send Login Request: \(loginInputs.username)")
@@ -47,7 +38,7 @@ extension AppStore {
 
             case .offersPageRequest(let channelHeaders, let merchantId):
                 Logger.info("Store: Offers Page Request:")
-                let newAPICall = APICall(apiCall: GetPageOffersByMerchantIDRequest(channelHeaders: channelHeaders, merchantId: merchantId))
+                let newAPICall = APICall(apiCall: GetPageOffersByMerchantIDRequest(merchantId: merchantId))
                 pendingAPICalls.enqueue(newAPICall)
                 newAPICall.send { dataResponse, _ in
                     if let pageOffer = dataResponse {

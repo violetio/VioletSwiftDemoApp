@@ -18,8 +18,6 @@ struct DemoAppOfferCard: View {
             .padding(.horizontal, 10)
             .padding(.vertical, 0)
             .frame(maxWidth: .infinity, alignment: .topLeading)
-            Text("Variants Count: \(offerItem.variants.count)")
-            Text("OfferID: \(offerItem.id)")
             
         }
         .padding(.horizontal, 0)

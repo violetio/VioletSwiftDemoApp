@@ -22,9 +22,15 @@ struct DemoAppOfferPDP: View {
                     DemoAppOfferCardText(offerItem: $offerItem)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                     
-                    if offerItem.variants.count > 0 {
-                        Text("Variants Selectors")
-                        Text("Variants Count: \(offerItem.variants.count)")
+                    if offerItem.variantViewModels.count > 0 {
+//                        Text("Variants Selectors")
+//                        Text("Variants Count: \(offerItem.variants.count)")
+                        
+                        VStack {
+                            ForEach(offerItem.variantViewModels) { variant in
+                                Text("Variant Name: \(variant.name)")
+                            }
+                        }
                     }
                     
                     if StripeAPI.deviceSupportsApplePay() {

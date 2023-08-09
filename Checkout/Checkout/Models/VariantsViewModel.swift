@@ -37,10 +37,20 @@ class VariantsViewModel {
 }
 
 
-struct VariantViewModel {
-    let variant: Variant
+struct VariantViewModel: Equatable, Identifiable {
+    var id: String { name }
     
-    init(variant: Variant) {
+    let variant: Variant
+    let name: String
+    let variantValuesArray: [VariantValue]
+    
+    init?(variant: Variant) {
+        guard let variantName = variant.name else { return nil }
+        
+        guard let valuesSet = variant.values else { return nil }
+        
+        self.variantValuesArray = Array(valuesSet)
+        self.name = variantName
         self.variant = variant
     }
 }

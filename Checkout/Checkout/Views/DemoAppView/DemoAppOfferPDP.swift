@@ -24,6 +24,22 @@ struct DemoAppOfferPDP: View {
                     Text("Variants Selectors")
                     Text("Buttons")
                     
+                    Button {
+                        print("Add Sku To Cart")
+                    } label: {
+                        Text("Add To Cart")
+                            .font(Font.custom("SF Pro Text", size: 17))
+                            .frame(width: 340, height: 50)
+                            .foregroundColor(.white)
+                            .background(Color(red: 0, green: 0.48, blue: 1))
+                            .cornerRadius(12)
+                    }
+                    
+                    .padding(.horizontal, 15.5)
+                    .padding(.vertical, 15)
+                    .frame(width: 340, alignment: .top)
+
+                    
                     Text("Description")
                         .font(.system(size: 17, weight: .semibold))
                     // Small Regular Body

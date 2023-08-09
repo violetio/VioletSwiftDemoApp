@@ -40,19 +40,20 @@ struct PreviewMocks {
         return DemoProductGridOfferItem.fromEntity(entity: mockOffer) ?? DemoProductGridOfferItem.Empty()
     }
     
-    static func MockOfferItem_12574_Media() -> [Media] {
+    static func MockOfferItem_12574_ImageURLS() -> [URL] {
         guard let mockOffer = MockOffers.load_Offer_12574() else {
             return []
         }
-        var results: [Media] = []
-        mockOffer.albums?.forEach({ album in
-            if let foundMedia = album.media {
-                foundMedia.forEach { next in
-                    results.append(next)
-                }
-            }
-        })
-        return results
+//        var results: [Media] = []
+//        mockOffer.albums?.forEach({ album in
+//            if let foundMedia = album.media {
+//                foundMedia.forEach { next in
+//                    results.append(next)
+//                }
+//            }
+//        })
+//        return results
+        return mockOffer.allAlbumMediaURLs()
     }
     
     static func Mock_OfferItem_ImageURL() -> URL? {
@@ -60,7 +61,7 @@ struct PreviewMocks {
     }
 
     static func Mock_DemoProductGridOfferItem() -> DemoProductGridOfferItem {
-        guard let mockOffer = MockOffers.load_Offer_12555() else {
+        guard let mockOffer = MockOffers.load_Offer_12574() else {
             return DemoProductGridOfferItem.Empty()
         }
         return DemoProductGridOfferItem.fromEntity(entity: mockOffer) ?? DemoProductGridOfferItem.Empty()

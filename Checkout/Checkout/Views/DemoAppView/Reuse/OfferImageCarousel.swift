@@ -9,13 +9,11 @@ import SwiftUI
 import Violet
 
 struct OfferImageCarousel: View {
-    
-    @Binding var mediaArray: [Media]
+
+    var imageURLS: [URL]
     var body: some View {
         TabView {
-            ForEach(mediaArray, id: \.self) { mediaItem in
-                if let mediaUrlString = mediaItem.url,
-                   let imageURL = URL(string: mediaUrlString){
+            ForEach(imageURLS, id: \.self) { imageURL in
                     AsyncImage(url: imageURL) { phase in
                         if let image = phase.image {
                             image.resizable().scaledToFill()
@@ -26,24 +24,18 @@ struct OfferImageCarousel: View {
                         }
 
                     }.frame(width: FigmaConstants.OfferCard.imageArea.width,
-                            height: FigmaConstants.OfferCard.imageArea.height).clipped()
-                } else {
-                    Text("No Media URL")
-                }
-                
-
-
-
+                            height: FigmaConstants.OfferCard.imageArea.height).clipped().cornerRadius(10).offset(y:-10)
             }
         }
         .tabViewStyle(.page)
-        .indexViewStyle(.page(backgroundDisplayMode: .always))
+        .indexViewStyle(.page(backgroundDisplayMode: .always)).frame(width: FigmaConstants.OfferPDP.imageCarouselArea.width,
+                                                                     height: FigmaConstants.OfferPDP.imageCarouselArea.height)
         
     }
 }
 
 struct OfferImageCarousel_Previews: PreviewProvider {
     static var previews: some View {
-        OfferImageCarousel(mediaArray: .constant(PreviewMocks.MockOfferItem_12574_Media()))
+        OfferImageCarousel(imageURLS: PreviewMocks.MockOfferItem_12574_ImageURLS())
     }
 }

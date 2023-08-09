@@ -28,7 +28,8 @@ struct DemoAppOfferPDP: View {
                         
                         VStack {
                             ForEach(offerItem.variantViewModels) { variant in
-                                Text("Variant Name: \(variant.name)")
+//                                Text("Variant Name: \(variant.name)")
+                                OfferVariantValuePicker(variantViewModel: .constant(variant))
                             }
                         }
                     }

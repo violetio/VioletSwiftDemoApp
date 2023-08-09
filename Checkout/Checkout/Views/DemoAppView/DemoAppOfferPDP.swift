@@ -16,13 +16,25 @@ struct DemoAppOfferPDP: View {
         ScrollView {
             VStack {
                 OfferImageCarousel(imageURLS: offerItem.imageURLS)
-                DemoAppOfferCardText(offerItem: $offerItem)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 0)
-                    .frame(maxWidth: .infinity, alignment: .topLeading)
-                Text("Variants Selectors")
-                Text("Buttons")
-                Text("Offer Description")
+                
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    DemoAppOfferCardText(offerItem: $offerItem)
+                        .frame(maxWidth: .infinity, alignment: .topLeading)
+                    Text("Variants Selectors")
+                    Text("Buttons")
+                    
+                    Text("Description")
+                        .font(.system(size: 17, weight: .semibold))
+                    // Small Regular Body
+                    Text("\(offerItem.description)")
+                      .font(Font.custom("Inter", size: 14))
+                      .foregroundColor(.black)
+                      .frame(maxWidth: .infinity, alignment: .topLeading)
+                }
+                .padding(0)
+                .frame(width: 340, alignment: .topLeading)
+                
             }//.border(.blue)
         }
         

@@ -21,6 +21,7 @@ struct DemoProductGridOfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
     public let offerEntity: Offer?
     public let thumbnailImage: Image = Image(systemName: "questionmark.square.dashed")
     public let imageURLS: [URL]
+    public let description: String
     
     init(offer_id: Int64, name: String, intPrice: IntPrice, offerEntity: Offer?, vendor: String,seller: String) {
         self.offer_id = offer_id
@@ -30,6 +31,7 @@ struct DemoProductGridOfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
         self.vendor = vendor
         self.seller = seller
         self.imageURLS = offerEntity?.allAlbumMediaURLs() ?? []
+        self.description = offerEntity?.description ?? ""
     }
     
     var id: Int64 {

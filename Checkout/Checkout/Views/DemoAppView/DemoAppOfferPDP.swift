@@ -21,12 +21,13 @@ struct DemoAppOfferPDP: View {
                 VStack(alignment: .leading, spacing: 8) {
                     DemoAppOfferCardText(offerItem: $offerItem)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
+                    
                     Text("Variants Selectors")
                     
                     if StripeAPI.deviceSupportsApplePay() {
                         PaymentButton(action: applePayButtonAction).cornerRadius(12)
                     } else {
-                        Text("deviceSupportsApplePay: NO!")
+                        Text("Device does not support Apple Pay")
                     }
                     
                     Button {

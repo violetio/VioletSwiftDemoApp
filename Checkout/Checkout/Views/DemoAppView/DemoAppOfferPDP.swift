@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StripeApplePay
 
 struct DemoAppOfferPDP: View {
     
@@ -23,6 +24,12 @@ struct DemoAppOfferPDP: View {
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                     Text("Variants Selectors")
                     Text("Buttons")
+                    
+                    if StripeAPI.deviceSupportsApplePay() {
+                        Text("deviceSupportsApplePay: YES!")
+                    } else {
+                        Text("deviceSupportsApplePay: NO!")
+                    }
                     
                     Button {
                         print("Add Sku To Cart")

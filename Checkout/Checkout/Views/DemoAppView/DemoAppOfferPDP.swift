@@ -5,11 +5,11 @@
 //  Created on 8/8/23
 //
 
-import SwiftUI
+import PassKit
 import StripeApplePay
+import SwiftUI
 
 struct DemoAppOfferPDP: View {
-    
     @Binding var store: AppStore
     @Binding var offerItem: DemoProductGridOfferItem
     
@@ -18,15 +18,13 @@ struct DemoAppOfferPDP: View {
             VStack {
                 OfferImageCarousel(imageURLS: offerItem.imageURLS)
                 
-                
                 VStack(alignment: .leading, spacing: 8) {
                     DemoAppOfferCardText(offerItem: $offerItem)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                     Text("Variants Selectors")
-                    Text("Buttons")
                     
                     if StripeAPI.deviceSupportsApplePay() {
-                        Text("deviceSupportsApplePay: YES!")
+                        PaymentButton(action: applePayButtonAction).cornerRadius(12)
                     } else {
                         Text("deviceSupportsApplePay: NO!")
                     }
@@ -46,19 +44,17 @@ struct DemoAppOfferPDP: View {
                     .padding(.vertical, 15)
                     .frame(width: 340, alignment: .top)
 
-                    
                     Text("Description")
                         .font(.system(size: 17, weight: .semibold))
                     // Small Regular Body
                     Text("\(offerItem.description)")
-                      .font(Font.custom("Inter", size: 14))
-                      .foregroundColor(.black)
-                      .frame(maxWidth: .infinity, alignment: .topLeading)
+                        .font(Font.custom("Inter", size: 14))
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity, alignment: .topLeading)
                 }
                 .padding(0)
                 .frame(width: 340, alignment: .topLeading)
-                
-            }//.border(.blue)
+            } // .border(.blue)
         }.toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavBarCartButton(action: {
@@ -66,7 +62,10 @@ struct DemoAppOfferPDP: View {
                 }, buttonText: "0")
             }
         }
-        
+    }
+    
+    func applePayButtonAction() {
+        Logger.info("Apple Pay Button Tapped!")
     }
 }
 

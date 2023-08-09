@@ -22,7 +22,10 @@ struct DemoAppOfferPDP: View {
                     DemoAppOfferCardText(offerItem: $offerItem)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                     
-                    Text("Variants Selectors")
+                    if offerItem.variants.count > 0 {
+                        Text("Variants Selectors")
+                        Text("Variants Count: \(offerItem.variants.count)")
+                    }
                     
                     if StripeAPI.deviceSupportsApplePay() {
                         PaymentButton(action: applePayButtonAction).cornerRadius(12)
@@ -72,9 +75,16 @@ struct DemoAppOfferPDP: View {
 
 struct DemoAppOfferPDP_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
-                            offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem()))
+        Group {
+            NavigationStack {
+                DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
+                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12574()))
+            }.previewDisplayName("No Variants OfferID 12574")
+            
+            NavigationStack {
+                DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
+                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12555()))
+            }.previewDisplayName("3 Variants OfferID 12555")
         }
     }
 }

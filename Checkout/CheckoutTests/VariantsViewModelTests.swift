@@ -1,5 +1,5 @@
 //
-//  VariantViewModelTests.swift
+//  VariantsViewModelTests.swift
 //  CheckoutTests
 //
 //  Created on 8/9/23
@@ -8,7 +8,7 @@
 import XCTest
 @testable import Checkout
 
-final class VariantViewModelTests: XCTestCase {
+final class VariantsViewModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -19,9 +19,9 @@ final class VariantViewModelTests: XCTestCase {
     }
 
     func test_1() throws {
-        let sut = VariantViewModel(offer: MockOffers.load_Offer_12574()!)
+        let sut = VariantsViewModel(offer: MockOffers.load_Offer_12574()!)
         
-        XCTAssertEqual(sut.offer.variants!.count, 0)
+        XCTAssertEqual(sut.variants.count, 0)
     }
 
 }

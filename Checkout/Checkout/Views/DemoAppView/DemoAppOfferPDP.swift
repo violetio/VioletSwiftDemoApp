@@ -52,6 +52,12 @@ struct DemoAppOfferPDP: View {
                 .frame(width: 340, alignment: .topLeading)
                 
             }//.border(.blue)
+        }.toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavBarCartButton(action: {
+                    print("Custom button tapped!")
+                }, buttonText: "0")
+            }
         }
         
     }
@@ -59,7 +65,9 @@ struct DemoAppOfferPDP: View {
 
 struct DemoAppOfferPDP_Previews: PreviewProvider {
     static var previews: some View {
-        DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
-                        offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem()))
+        NavigationStack {
+            DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
+                            offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem()))
+        }
     }
 }

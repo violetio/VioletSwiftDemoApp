@@ -40,6 +40,12 @@ public extension Offer {
         })
         return urlsOut
     }
+    
+    func variantsArray() -> [Variant] {
+        var variantsArray: [Variant] = []
+        self.variants?.forEach { variantsArray.append($0) }
+        return variantsArray
+    }
 }
 
 extension Sku: Identifiable {

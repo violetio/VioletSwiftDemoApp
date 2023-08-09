@@ -44,23 +44,21 @@ struct PreviewMocks {
         guard let mockOffer = MockOffers.load_Offer_12574() else {
             return []
         }
-//        var results: [Media] = []
-//        mockOffer.albums?.forEach({ album in
-//            if let foundMedia = album.media {
-//                foundMedia.forEach { next in
-//                    results.append(next)
-//                }
-//            }
-//        })
-//        return results
         return mockOffer.allAlbumMediaURLs()
     }
     
     static func Mock_OfferItem_ImageURL() -> URL? {
         return MockOfferItem().firstAlbumMediaImageURL()
     }
-
-    static func Mock_DemoProductGridOfferItem() -> DemoProductGridOfferItem {
+    
+    static func Mock_DemoProductGridOfferItem_12555() -> DemoProductGridOfferItem {
+        guard let mockOffer = MockOffers.load_Offer_12555() else {
+            return DemoProductGridOfferItem.Empty()
+        }
+        return DemoProductGridOfferItem.fromEntity(entity: mockOffer) ?? DemoProductGridOfferItem.Empty()
+    }
+    
+    static func Mock_DemoProductGridOfferItem_12574() -> DemoProductGridOfferItem {
         guard let mockOffer = MockOffers.load_Offer_12574() else {
             return DemoProductGridOfferItem.Empty()
         }

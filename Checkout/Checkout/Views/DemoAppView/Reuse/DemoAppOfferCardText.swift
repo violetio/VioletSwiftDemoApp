@@ -37,6 +37,6 @@ struct DemoAppOfferCardText: View {
 
 struct DemoAppOfferCardText_Previews: PreviewProvider {
     static var previews: some View {
-        DemoAppOfferCardText(offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem()))
+        DemoAppOfferCardText(offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12574()))
     }
 }

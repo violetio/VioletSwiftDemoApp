@@ -42,15 +42,31 @@ struct VariantViewModel: Equatable, Identifiable {
     
     let variant: Variant
     let name: String
-    let variantValuesArray: [VariantValue]
+    let variantValuesArray: [VariantValueViewModel]
     
     init?(variant: Variant) {
         guard let variantName = variant.name else { return nil }
         
         guard let valuesSet = variant.values else { return nil }
         
-        self.variantValuesArray = Array(valuesSet)
+        self.variantValuesArray = valuesSet.compactMap { VariantValueViewModel($0) }
         self.name = variantName
         self.variant = variant
+    }
+}
+
+struct VariantValueViewModel: Equatable, Identifiable {
+    var id: String { name }
+    
+    let variantValue: VariantValue
+    let name: String
+    let skuId: [Int64]
+    init?(_ variantValue: VariantValue) {
+        guard let aName = variantValue.name else { return nil }
+        guard let aSkuIdSet = variantValue.skuIds else { return nil }
+        
+        self.skuId = Array(aSkuIdSet)
+        self.name = aName
+        self.variantValue = variantValue
     }
 }

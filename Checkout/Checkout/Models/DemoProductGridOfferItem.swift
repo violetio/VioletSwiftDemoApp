@@ -36,7 +36,9 @@ struct DemoProductGridOfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
         self.description = offerEntity?.description ?? ""
         let variantsArray = offerEntity?.variantsArray() ?? []
         self.variants = variantsArray
-        self.variantViewModels = variantsArray.compactMap { VariantViewModel(variant: $0)}
+        self.variantViewModels = variantsArray.compactMap { VariantViewModel(variant: $0)}.sorted(by: { l, r in
+            l.name < r.name
+        })
     }
     
     var id: Int64 {

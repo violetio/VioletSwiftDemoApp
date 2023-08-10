@@ -33,6 +33,9 @@ struct DemoAppView: View {
                     }
                 }.navigationDestination(for: DemoProductGridOfferItem.self) { offerItem in
                     DemoAppOfferPDP(store: $store, offerItem: .constant(offerItem))
+                }.onAppear {
+                    Logger.info("Grid Appeared")
+                    //Logger.info("\(self.na)")
                 }
         }
         

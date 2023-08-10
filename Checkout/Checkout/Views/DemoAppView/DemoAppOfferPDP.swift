@@ -26,12 +26,12 @@ struct DemoAppOfferPDP: View {
 //                        Text("Variants Selectors")
 //                        Text("Variants Count: \(offerItem.variants.count)")
                         
-                        VStack {
+                        List {
                             ForEach(offerItem.variantViewModels) { variant in
 //                                Text("Variant Name: \(variant.name)")
-                                OfferVariantValuePicker(variantViewModel: .constant(variant))
+                                OfferVariantValuePicker(variantViewModel: variant, selectedValue: variant.variantValuesArray[0].name).withBlackBorder().frame(width: 340,height: 170)
                             }
-                        }
+                        }.withBlackBorder()
                     }
                     
                     if StripeAPI.deviceSupportsApplePay() {

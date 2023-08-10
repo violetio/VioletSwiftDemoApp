@@ -19,9 +19,19 @@ final class VariantsViewModelTests: XCTestCase {
     }
 
     func test_1() throws {
-        let sut = VariantsViewModel(offer: MockOffers.load_Offer_12574()!)
+        let offer_id_12555 = MockOffers.load_Offer_12555()!
+        let sut = VariantsViewModel(offer: offer_id_12555)
+        XCTAssertEqual(sut.variants.count, 3)
         
-        XCTAssertEqual(sut.variants.count, 0)
+        
+        let offer_item = DemoProductGridOfferItem.fromEntity(entity: offer_id_12555)!
+        XCTAssertEqual(offer_item.variantViewModels.count, 3)
+        
+        let variant = offer_item.variantViewModels[0]
+        Logger.info("Variant Name: \(variant.name)")
+        variant.variantValuesArray.forEach { val in
+            Logger.info("val: \(val.name)")
+        }
     }
 
 }

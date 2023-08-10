@@ -34,14 +34,11 @@ struct DemoAppView: View {
                 }.navigationDestination(for: DemoProductGridOfferItem.self) { offerItem in
                     DemoAppOfferPDP(store: $store, offerItem: .constant(offerItem))
                 }.onAppear {
-                    //Logger.info("Grid Appeared")
-                    //Logger.info("\(self.na)")
                     if store.offerSearchViewState.emtpy {
                         store.sender.send(.offersPageRequest(10003))
                     }
                 }
         }
-        
     }
 }
 

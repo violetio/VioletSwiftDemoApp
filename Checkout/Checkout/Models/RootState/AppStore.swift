@@ -46,9 +46,7 @@ class AppStore {
     let state: AppState
     let sender: AppSender
     
-    static let mockAppStore = AppStore(shoppingViewState: ShoppingViewState(offerPath: [],
-                                                                            loadedOfferItems: PreviewMocks.MockOfferItemsArray(),
-                                                                            offerItemPath: []))
+    static let mockAppStore = AppStore(shoppingViewState: ShoppingViewState())
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }
 
     var demoChannelViewState: DemoChannelViewState { state.demoChannelViewState }

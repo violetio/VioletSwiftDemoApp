@@ -88,7 +88,6 @@
 		E7B41C5629F58BAF00E7371B /* DemoChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5529F58BAF00E7371B /* DemoChannels.swift */; };
 		E7B41C5829F58C0700E7371B /* UsernameAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5729F58C0700E7371B /* UsernameAndPassword.swift */; };
 		E7B41C5A29F58C6B00E7371B /* DemoUsernameAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C5929F58C6B00E7371B /* DemoUsernameAndPassword.swift */; };
-		E7B41C6829F71DF000E7371B /* OffersGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6729F71DF000E7371B /* OffersGridView.swift */; };
 		E7B41C6A29F71EEC00E7371B /* OfferItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6929F71EEC00E7371B /* OfferItem.swift */; };
 		E7B41C6C29F72C0B00E7371B /* OfferGridTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6B29F72C0B00E7371B /* OfferGridTile.swift */; };
 		E7B41C6E29F72E0D00E7371B /* OfferDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C6D29F72E0D00E7371B /* OfferDetailView.swift */; };
@@ -234,7 +233,6 @@
 		E7B41C5529F58BAF00E7371B /* DemoChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoChannels.swift; sourceTree = "<group>"; };
 		E7B41C5729F58C0700E7371B /* UsernameAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPassword.swift; sourceTree = "<group>"; };
 		E7B41C5929F58C6B00E7371B /* DemoUsernameAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUsernameAndPassword.swift; sourceTree = "<group>"; };
-		E7B41C6729F71DF000E7371B /* OffersGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersGridView.swift; sourceTree = "<group>"; };
 		E7B41C6929F71EEC00E7371B /* OfferItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferItem.swift; sourceTree = "<group>"; };
 		E7B41C6B29F72C0B00E7371B /* OfferGridTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferGridTile.swift; sourceTree = "<group>"; };
 		E7B41C6D29F72E0D00E7371B /* OfferDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailView.swift; sourceTree = "<group>"; };
@@ -567,7 +565,6 @@
 		E72EFFFD29EDF562009F7BFE /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
-				E7B41C6729F71DF000E7371B /* OffersGridView.swift */,
 				E7B41C6B29F72C0B00E7371B /* OfferGridTile.swift */,
 				E7B41C6D29F72E0D00E7371B /* OfferDetailView.swift */,
 				E7B41C862A002CFF00E7371B /* OfferSkusView.swift */,
@@ -906,7 +903,6 @@
 				E72E001829F1BA61009F7BFE /* PriceViewModel.swift in Sources */,
 				E7B41CB12A09872600E7371B /* APICall.swift in Sources */,
 				E7B41C7D29F9848900E7371B /* CurrentAuthToken.swift in Sources */,
-				E7B41C6829F71DF000E7371B /* OffersGridView.swift in Sources */,
 				E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */,
 				E7B41C5829F58C0700E7371B /* UsernameAndPassword.swift in Sources */,
 				E7B41C4F29F5880800E7371B /* UserInputCoordinator.swift in Sources */,

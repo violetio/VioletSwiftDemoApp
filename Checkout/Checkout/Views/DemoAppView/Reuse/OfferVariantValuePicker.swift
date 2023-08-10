@@ -21,13 +21,16 @@ struct OfferVariantValuePicker: View {
                 }
             } label: {
                 //Text(label)
-            }.frame(width: 340, height: 50)
+            }.frame(width: 360, height: 50)
         } label: {
             //Text(label)
             LabeledContent(variantViewModel.name, value: selectedValue).padding(.horizontal)
-                .frame(width: 340, height: 50)
+                .frame(width: 340, height: 44)
                 .foregroundColor(.black)
-        }.background(Color.white).cornerRadius(12)
+        }
+        .background(Color.white)
+        .cornerRadius(12)
+        .padding(.vertical, 5)
 
     }
 }

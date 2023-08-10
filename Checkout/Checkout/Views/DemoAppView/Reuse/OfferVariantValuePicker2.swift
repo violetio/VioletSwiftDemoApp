@@ -9,7 +9,8 @@ import SwiftUI
 
 struct OfferVariantValuePicker2: View {
     @State var variantViewModel: VariantViewModel
-    @State var selectedValue: String
+    @State var selectedValue: String? = nil
+    @State var labelText: String? = nil
     
     var geoSize: CGSize? = nil
     var body: some View {
@@ -20,11 +21,21 @@ struct OfferVariantValuePicker2: View {
                     Text(value.name)
                 }
             } label: {
+                if let v = selectedValue {
+                    Text("\(v)")
+                }
                 //Text(label)
-            }.frame(width: 340, height: 50)
+            }.frame(width: 340, height: 50).onChange(of: selectedValue) { newValue in
+                labelText = selectedValue
+            }
         } label: {
+//            if let v = selectedValue {
+//                Text("label")
+//            } else {
+//                Text("value")
+//            }
             //Text(label)
-            LabeledContent(variantViewModel.name, value: selectedValue).padding(.horizontal)
+            LabeledContent(labelText ?? variantViewModel.name, value:"").padding(.horizontal)
                 .frame(width: 340, height: 50)
                 .foregroundColor(.black)
         }.background(Color.white).cornerRadius(12)
@@ -37,6 +48,6 @@ struct OfferVariantValuePicker2_Previews: PreviewProvider {
     static let mockVariant_1 = mockOfferItem.variantViewModels[0]
     static let mockVariant_DefaultValue = mockVariant_1.variantValuesArray[0]
     static var previews: some View {
-        OfferVariantValuePicker(variantViewModel: mockVariant_1, selectedValue: mockVariant_DefaultValue.name)
+        OfferVariantValuePicker2(variantViewModel: mockVariant_1, selectedValue: nil)
     }
 }

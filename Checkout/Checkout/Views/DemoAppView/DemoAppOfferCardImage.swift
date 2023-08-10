@@ -16,9 +16,9 @@ struct DemoAppOfferCardImage: View {
                     if let image = phase.image {
                         image.resizable().scaledToFill()
                     } else if phase.error != nil {
-                        Color.red
+                        FigmaConstants.Colors.scrollViewBackgroundColor
                     } else {
-                        Color.purple
+                        FigmaConstants.Colors.scrollViewBackgroundColor
                     }
                     
                 }.frame(width: FigmaConstants.OfferCard.imageArea.width,

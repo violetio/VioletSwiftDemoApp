@@ -36,7 +36,7 @@ extension AppStore {
                 let newAPICall = APICall(apiCall: CreateCartRequest(cartInitializationRequest: cartInit,
                                                                     baseCurrency: "USD"))
                 pendingAPICalls.enqueue(newAPICall)
-                
+
                 newAPICall.send { dataResponse, _ in
                     if let order = dataResponse,
                        let orderId = order.id{
@@ -44,6 +44,18 @@ extension AppStore {
                         self.state.cartViewState.updateWithNewOrder(order: order)
                     }
                 }
+            case .cartByID(let orderID):
+                Logger.info("Store GetCartByID")
+                let newAPICall = APICall(apiCall: GetCartByIDRequest(orderId: orderID))
+                pendingAPICalls.enqueue(newAPICall)
+                newAPICall.send { dataResponse, _ in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.info("Resume Cart ID: \(orderId)")
+                        self.state.cartViewState.updateWithNewOrder(order: order)
+                    }
+                }
+                
             case .updateCartCustomerRequest:
                 Logger.info("Store: Create Cart Request:")
             }

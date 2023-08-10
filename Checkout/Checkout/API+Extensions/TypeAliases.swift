@@ -8,4 +8,5 @@
 import Violet
 
 typealias MerchantID = Int64
+typealias OrderID = Int64
 typealias OrderShippingMethodWrapperArray = [OrderShippingMethodWrapper]

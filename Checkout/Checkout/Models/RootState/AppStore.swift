@@ -32,6 +32,7 @@ class AppStore {
     enum AppAction {
         case offersPageRequest(MerchantID)
         case createCartRequest
+        case cartByID(OrderID)
         case updateCartCustomerRequest
     }
 

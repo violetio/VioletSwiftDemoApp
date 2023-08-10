@@ -38,7 +38,8 @@ struct DemoAppView: View {
                         store.sender.send(.offersPageRequest(10003))
                     }
                     if store.cartViewState.noCart {
-                        store.sender.send(.createCartRequest)
+                        //store.sender.send(.createCartRequest)
+                        store.sender.send(.cartByID(71169))
                     }
                 }
         }

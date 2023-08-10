@@ -37,6 +37,9 @@ struct DemoAppView: View {
                     if store.offerSearchViewState.emtpy {
                         store.sender.send(.offersPageRequest(10003))
                     }
+                    if store.cartViewState.noCart {
+                        store.sender.send(.createCartRequest)
+                    }
                 }
         }
     }

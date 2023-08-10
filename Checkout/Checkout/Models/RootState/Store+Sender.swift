@@ -5,6 +5,8 @@
 //  Created on 5/10/23
 //
 
+import Violet
+
 extension AppStore {
     class AppSender {
         let state: AppState
@@ -30,6 +32,18 @@ extension AppStore {
                 }
             case .createCartRequest:
                 Logger.info("Store: Create Cart Request:")
+                let cartInit = CartInitializationRequest(baseCurrency: "USD")
+                let newAPICall = APICall(apiCall: CreateCartRequest(cartInitializationRequest: cartInit,
+                                                                    baseCurrency: "USD"))
+                pendingAPICalls.enqueue(newAPICall)
+                
+                newAPICall.send { dataResponse, _ in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.info("Created Cart ID: \(orderId)")
+                        self.state.cartViewState.updateWithNewOrder(order: order)
+                    }
+                }
             case .updateCartCustomerRequest:
                 Logger.info("Store: Create Cart Request:")
             }

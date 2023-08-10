@@ -7,7 +7,7 @@
 
 import Violet
 
-class CheckoutCartPostRequest: ProxyAPICall<Order> {
+class CreateCartRequest: ProxyAPICall<Order> {
     let cartInitializationRequest: CartInitializationRequest
     let baseCurrency: String
 

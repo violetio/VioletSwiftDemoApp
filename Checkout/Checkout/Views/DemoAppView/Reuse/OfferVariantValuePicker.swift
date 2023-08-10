@@ -10,23 +10,24 @@ import SwiftUI
 struct OfferVariantValuePicker: View {
     @State var variantViewModel: VariantViewModel
     @State var selectedValue: String
+    
+    var geoSize: CGSize? = nil
     var body: some View {
 
-            List {
-                Picker("\(variantViewModel.name)", selection: $selectedValue) {
-                    ForEach(variantViewModel.variantValuesArray) { value in
-                        HStack {
-                            Text(value.name)
-                        }.font(Font.custom("SF Pro Text", size: 17)).foregroundColor(.black)
-                    }
-                }.font(Font.custom("SF Pro Text", size: 17))
-                
-            }.withBlackBorder().onAppear {
-                if let firstValueName = variantViewModel.variantValuesArray.first?.name {
-                    selectedValue = firstValueName
+        Menu {
+            Picker(selection: $selectedValue) {
+                ForEach(variantViewModel.variantValuesArray) { value in
+                    Text(value.name)
                 }
-
-            }
+            } label: {
+                //Text(label)
+            }.frame(width: 340, height: 50)
+        } label: {
+            //Text(label)
+            LabeledContent(variantViewModel.name, value: selectedValue).padding(.horizontal)
+                .frame(width: 340, height: 50)
+                .foregroundColor(.black)
+        }.background(Color.white).cornerRadius(12)
 
     }
 }

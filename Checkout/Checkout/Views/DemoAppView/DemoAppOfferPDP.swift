@@ -23,15 +23,11 @@ struct DemoAppOfferPDP: View {
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                     
                     if offerItem.variantViewModels.count > 0 {
-//                        Text("Variants Selectors")
-//                        Text("Variants Count: \(offerItem.variants.count)")
                         
-                        List {
-                            ForEach(offerItem.variantViewModels) { variant in
-//                                Text("Variant Name: \(variant.name)")
-                                OfferVariantValuePicker(variantViewModel: variant, selectedValue: variant.variantValuesArray[0].name).withBlackBorder().frame(width: 340,height: 170)
-                            }
-                        }.withBlackBorder()
+                        ForEach(offerItem.variantViewModels) { variant in
+                            OfferVariantValuePicker(variantViewModel: variant, selectedValue: variant.variantValuesArray[0].name)
+                        }
+
                     }
                     
                     if StripeAPI.deviceSupportsApplePay() {
@@ -72,7 +68,7 @@ struct DemoAppOfferPDP: View {
                     print("Custom button tapped!")
                 }, buttonText: "0")
             }
-        }
+        }.withScrollViewBackgroundColor()
     }
     
     func applePayButtonAction() {

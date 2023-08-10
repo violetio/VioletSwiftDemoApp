@@ -11,20 +11,20 @@ class AppStore {
     struct AppState {
 
         var demoChannelViewState: DemoChannelViewState
-        var shoppingViewState: ShoppingViewState
+        var cartViewState: CartViewState
         var offerSearchViewState: OfferSearchViewState
 
         init(demoChannelViewState: DemoChannelViewState,
-             shoppingViewState: ShoppingViewState,
+             cartViewState: CartViewState,
              offerSearchViewState: OfferSearchViewState) {
             self.demoChannelViewState = demoChannelViewState
-            self.shoppingViewState = shoppingViewState
+            self.cartViewState = cartViewState
             self.offerSearchViewState = offerSearchViewState
         }
 
         init() {
             self.init(demoChannelViewState: DemoChannelViewState(),
-                      shoppingViewState: ShoppingViewState(),
+                      cartViewState: CartViewState(),
                       offerSearchViewState: OfferSearchViewState())
         }
     }
@@ -46,12 +46,12 @@ class AppStore {
     let state: AppState
     let sender: AppSender
     
-    static let mockAppStore = AppStore(shoppingViewState: ShoppingViewState())
+    static let mockAppStore = AppStore(cartViewState: CartViewState())
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }
 
     var demoChannelViewState: DemoChannelViewState { state.demoChannelViewState }
 
-    var shoppingViewState: ShoppingViewState { state.shoppingViewState }
+    var cartViewState: CartViewState { state.cartViewState }
     var offerSearchViewState: OfferSearchViewState { state.offerSearchViewState }
 
     func demoLoginInputs(_ selectedDemoChannel: DemoChannels) -> LoginInputsType {
@@ -61,19 +61,19 @@ class AppStore {
     let useDemoLogin: Bool = true
 
     init(demoChannelViewState: DemoChannelViewState,
-         shoppingViewState: ShoppingViewState,
+         cartViewState: CartViewState,
          offerSearchViewState: OfferSearchViewState)
     {
         let newState = AppState(demoChannelViewState: demoChannelViewState,
-                                shoppingViewState: shoppingViewState,
+                                cartViewState: cartViewState,
                                 offerSearchViewState: offerSearchViewState)
         self.state = newState
         self.sender = AppSender(state: newState)
     }
 
-    convenience init(shoppingViewState: ShoppingViewState? = nil) {
+    convenience init(cartViewState: CartViewState? = nil) {
         self.init(demoChannelViewState: DemoChannelViewState(),
-                  shoppingViewState: shoppingViewState ?? ShoppingViewState(),
+                  cartViewState: cartViewState ?? CartViewState(),
                   offerSearchViewState: OfferSearchViewState.mockLoaded())
     }
 }

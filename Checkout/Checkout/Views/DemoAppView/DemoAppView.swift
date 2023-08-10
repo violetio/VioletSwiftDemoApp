@@ -36,7 +36,9 @@ struct DemoAppView: View {
                 }.onAppear {
                     //Logger.info("Grid Appeared")
                     //Logger.info("\(self.na)")
-                    store.sender.send(.offersPageRequest(10003))
+                    if store.offerSearchViewState.emtpy {
+                        store.sender.send(.offersPageRequest(10003))
+                    }
                 }
         }
         

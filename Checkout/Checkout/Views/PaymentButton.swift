@@ -41,10 +41,12 @@ extension PaymentButton {
         var action: () -> Void
         var button = PKPaymentButton(paymentButtonType: .plain, paymentButtonStyle: .automatic)
         
+        
         init(action: @escaping () -> Void) {
             self.action = action
             super.init()
             button.addTarget(self, action: #selector(callback(_:)), for: .touchUpInside)
+            button.cornerRadius = 12
         }
         
         @objc

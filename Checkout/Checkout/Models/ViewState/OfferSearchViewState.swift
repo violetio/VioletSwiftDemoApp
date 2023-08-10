@@ -11,6 +11,8 @@ import Violet
 class OfferSearchViewState: ObservableObject {
     @Published var loadedOfferItems: [DemoProductGridOfferItem]
     @Published var loading: Bool
+    
+    var emtpy: Bool { loadedOfferItems.count == 0 }
 
     init(loadedOfferItems: [DemoProductGridOfferItem] = [], loading: Bool = false) {
         self.loadedOfferItems = loadedOfferItems

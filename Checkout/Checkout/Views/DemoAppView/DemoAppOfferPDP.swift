@@ -33,8 +33,8 @@ struct DemoAppOfferPDP: View {
                     if StripeAPI.deviceSupportsApplePay() {
                         //Font 17
                         PaymentButton(action: applePayButtonAction)
-                            //.fontWeight(.)
-                            .frame(width: 340, height: 44).cornerRadius(12).padding(.top)
+                            
+                            .frame(width: 340, height: 44).padding(.top)
                     } else {
                         Text("Device does not support Apple Pay")
                     }

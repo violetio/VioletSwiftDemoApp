@@ -20,6 +20,10 @@ struct DemoProductGridOfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
     public let intPrice: IntPrice
     public let offerEntity: Offer?
     public let thumbnailImage: Image = Image(systemName: "questionmark.square.dashed")
+    public let imageURLS: [URL]
+    public let description: String
+    public let variants: [Variant]
+    public let variantViewModels: [VariantViewModel]
     
     init(offer_id: Int64, name: String, intPrice: IntPrice, offerEntity: Offer?, vendor: String,seller: String) {
         self.offer_id = offer_id
@@ -28,6 +32,13 @@ struct DemoProductGridOfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
         self.offerEntity = offerEntity
         self.vendor = vendor
         self.seller = seller
+        self.imageURLS = offerEntity?.allAlbumMediaURLs() ?? []
+        self.description = offerEntity?.description ?? ""
+        let variantsArray = offerEntity?.variantsArray() ?? []
+        self.variants = variantsArray
+        self.variantViewModels = variantsArray.compactMap { VariantViewModel(variant: $0)}.sorted(by: { l, r in
+            l.name < r.name
+        })
     }
     
     var id: Int64 {

@@ -9,28 +9,21 @@ import SwiftUI
 
 class AppStore {
     struct AppState {
-        let defaultStartingTab: Tab = Tab.startingTab
 
-        let visibleTabs: Set<Tab> = Set([.shopping, .cart, .settings, .history])
-
-        var channelLoginViewState: ChannelLoginViewState
         var demoChannelViewState: DemoChannelViewState
         var shoppingViewState: ShoppingViewState
         var offerSearchViewState: OfferSearchViewState
 
-        init(channelLoginViewState: ChannelLoginViewState,
-             demoChannelViewState: DemoChannelViewState,
+        init(demoChannelViewState: DemoChannelViewState,
              shoppingViewState: ShoppingViewState,
              offerSearchViewState: OfferSearchViewState) {
-            self.channelLoginViewState = channelLoginViewState
             self.demoChannelViewState = demoChannelViewState
             self.shoppingViewState = shoppingViewState
             self.offerSearchViewState = offerSearchViewState
         }
 
         init() {
-            self.init(channelLoginViewState: ChannelLoginViewState(),
-                      demoChannelViewState: DemoChannelViewState(),
+            self.init(demoChannelViewState: DemoChannelViewState(),
                       shoppingViewState: ShoppingViewState(),
                       offerSearchViewState: OfferSearchViewState())
         }
@@ -58,7 +51,6 @@ class AppStore {
                                                                             offerItemPath: []))
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }
 
-    var channelLoginViewState: ChannelLoginViewState { state.channelLoginViewState }
     var demoChannelViewState: DemoChannelViewState { state.demoChannelViewState }
 
     var shoppingViewState: ShoppingViewState { state.shoppingViewState }
@@ -70,13 +62,11 @@ class AppStore {
 
     let useDemoLogin: Bool = true
 
-    init(channelLoginViewState: ChannelLoginViewState,
-         demoChannelViewState: DemoChannelViewState,
+    init(demoChannelViewState: DemoChannelViewState,
          shoppingViewState: ShoppingViewState,
          offerSearchViewState: OfferSearchViewState)
     {
-        let newState = AppState(channelLoginViewState: channelLoginViewState,
-                                demoChannelViewState: demoChannelViewState,
+        let newState = AppState(demoChannelViewState: demoChannelViewState,
                                 shoppingViewState: shoppingViewState,
                                 offerSearchViewState: offerSearchViewState)
         self.state = newState
@@ -84,8 +74,7 @@ class AppStore {
     }
 
     convenience init(shoppingViewState: ShoppingViewState? = nil) {
-        self.init(channelLoginViewState: ChannelLoginViewState(),
-                  demoChannelViewState: DemoChannelViewState(),
+        self.init(demoChannelViewState: DemoChannelViewState(),
                   shoppingViewState: shoppingViewState ?? ShoppingViewState(),
                   offerSearchViewState: OfferSearchViewState.mockLoaded())
     }

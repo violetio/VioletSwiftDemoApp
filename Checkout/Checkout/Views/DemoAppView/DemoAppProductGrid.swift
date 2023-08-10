@@ -35,8 +35,10 @@ struct DemoAppProductGrid: View {
                 if offerSearchViewState.loadedOfferItems.count > 0 {
                     LazyVGrid(columns: layout, spacing: 20) {
                                     ForEach(offerSearchViewState.loadedOfferItems, id: \.offer_id) { offerItem in
-                                        DemoAppOfferCard(store: $store,
-                                                         offerItem: .constant(offerItem))
+                                        NavigationLink(value: offerItem) {
+                                            DemoAppOfferCard(store: $store,
+                                                             offerItem: .constant(offerItem))
+                                        }
                                     }
                                 }.offset(CGSize(width: 0, height: 20)) //This pushes scroll content top y down 15 pts
                                     .frame(minWidth: 390) //This matches the scrollview width to parent view width (at least on iPhone 14

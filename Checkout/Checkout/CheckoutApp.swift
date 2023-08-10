@@ -6,10 +6,16 @@
 //
 
 import SwiftUI
+import Stripe
 
 @main
 struct CheckoutApp: App {
     let store: AppStore = AppStore()
+    
+    init() {
+        //TODO: Is this necessary?
+        //StripeAPI.defaultPublishableKey = ""
+    }
     var body: some Scene {
         WindowGroup {
             ContentView(store: .constant(store))

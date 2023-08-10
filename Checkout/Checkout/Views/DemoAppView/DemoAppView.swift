@@ -13,26 +13,32 @@ struct DemoAppView: View {
     var body: some View {
         NavigationStack {
             DemoAppProductGrid(store: $store, offerSearchViewState: store.offerSearchViewState)
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                HStack {
-                    Text("Demo App")
-                        .font(.system(size: FigmaConstants.NavBar.titleFontSize,
-                                      weight: FigmaConstants.NavBar.titleFontWeight))
-                      .foregroundColor(.black)
-                    Spacer()
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        HStack {
+                            Text("Demo App")
+                                .font(.system(size: FigmaConstants.NavBar.titleFontSize,
+                                              weight: FigmaConstants.NavBar.titleFontWeight))
+                              .foregroundColor(.black)
+                            Spacer()
 
-                }.padding(.all)
-                
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavBarCartButton(action: {
-                    print("Custom button tapped!")
-                }, buttonText: "0")
-            }
+                        }.padding(.all)
+                        
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavBarCartButton(action: {
+                            print("Custom button tapped!")
+                        }, buttonText: "0")
+                    }
+                }.navigationDestination(for: DemoProductGridOfferItem.self) { offerItem in
+                    DemoAppOfferPDP(store: $store, offerItem: .constant(offerItem))
+                }.onAppear {
+                    Logger.info("Grid Appeared")
+                    //Logger.info("\(self.na)")
+                }
         }
+        
     }
 }
 

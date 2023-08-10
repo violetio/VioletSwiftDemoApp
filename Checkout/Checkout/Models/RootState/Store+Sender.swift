@@ -18,23 +18,16 @@ extension AppStore {
             switch action {
             case .changeActiveAppID(let newAppIDAndSecret):
                 Logger.info("Store: Setting channelLoginViewState.appIDandSecret")
-                state.channelLoginViewState.channelHeaders = nil
-                state.channelLoginViewState.appIDandSecret = newAppIDAndSecret
+//                state.channelLoginViewState.channelHeaders = nil
+//                state.channelLoginViewState.appIDandSecret = newAppIDAndSecret
             case .logout:
-                state.channelLoginViewState.channelHeaders = nil
+                Logger.info("Logout")
+//                state.channelLoginViewState.channelHeaders = nil
             case .refreshAuthTokenRequest(let channelHeaders):
                 Logger.info("Store: Unsupported - Refresh Auth Token Request")
 
             case .loginRequest(let loginInputs):
                 Logger.info("Store: Send Login Request: \(loginInputs.username)")
-                let newAPICall = APICall(apiCall: LoginPostRequest(loginInputs: loginInputs))
-                pendingAPICalls.enqueue(newAPICall)
-                newAPICall.send { dataResponse, _ in
-                    if let loginResponse = dataResponse {
-                        Logger.info("Got LoginResponse")
-                        self.state.channelLoginViewState.channelHeaders = ChannelHeaders.from(loginResponse: loginResponse, appIdAndSecret: loginInputs)
-                    }
-                }
 
             case .offersPageRequest(let channelHeaders, let merchantId):
                 Logger.info("Store: Offers Page Request:")

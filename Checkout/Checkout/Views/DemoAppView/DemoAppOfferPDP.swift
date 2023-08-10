@@ -31,7 +31,10 @@ struct DemoAppOfferPDP: View {
                     }
                     
                     if StripeAPI.deviceSupportsApplePay() {
-                        PaymentButton(action: applePayButtonAction).cornerRadius(12)
+                        //Font 17
+                        PaymentButton(action: applePayButtonAction)
+                            //.fontWeight(.)
+                            .frame(width: 340, height: 44).cornerRadius(12)
                     } else {
                         Text("Device does not support Apple Pay")
                     }
@@ -41,7 +44,7 @@ struct DemoAppOfferPDP: View {
                     } label: {
                         Text("Add To Cart")
                             .font(Font.custom("SF Pro Text", size: 17))
-                            .frame(width: 340, height: 50)
+                            .frame(width: 340, height: 44)
                             .foregroundColor(.white)
                             .background(Color(red: 0, green: 0.48, blue: 1))
                             .cornerRadius(12)

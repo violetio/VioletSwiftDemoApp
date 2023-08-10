@@ -17,6 +17,14 @@ class OfferSearchViewState: ObservableObject {
         self.loading = loading
     }
 
+    func updateLoadedOfferItems(_ pageOffer: PageOffer) {
+        guard let offersContent = pageOffer.content else {
+            return
+        }
+        Logger.info("OfferSearchViewState: PageOffer with count: \(offersContent.count)")
+        loadedOfferItems = DemoProductGridOfferItem.fromEntities(entities: offersContent)
+        Logger.info("OfferSearchViewState: loadedOfferItems.count: \(loadedOfferItems.count)")
+    }
 }
 
 extension OfferSearchViewState {

@@ -29,14 +29,16 @@ extension AppStore {
             case .loginRequest(let loginInputs):
                 Logger.info("Store: Send Login Request: \(loginInputs.username)")
 
-            case .offersPageRequest(let channelHeaders, let merchantId):
+            case .offersPageRequest(let merchantId):
                 Logger.info("Store: Offers Page Request:")
                 let newAPICall = APICall(apiCall: GetPageOffersByMerchantIDRequest(merchantId: merchantId))
                 pendingAPICalls.enqueue(newAPICall)
+                self.state.offerSearchViewState.loading = true
                 newAPICall.send { dataResponse, _ in
                     if let pageOffer = dataResponse {
                         Logger.info("Got PageOffer")
-                        self.state.shoppingViewState.mergePageOffer(pageOffer)
+                        self.state.offerSearchViewState.updateLoadedOfferItems(pageOffer)
+                        self.state.offerSearchViewState.loading = false
                     }
                 }
             case .createCartRequest:

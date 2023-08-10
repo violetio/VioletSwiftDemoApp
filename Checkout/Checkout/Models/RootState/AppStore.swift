@@ -30,10 +30,6 @@ class AppStore {
     }
 
     enum AppAction {
-        case changeActiveAppID(AppIDAndSecret)
-        case logout
-        case refreshAuthTokenRequest(ChannelHeaders)
-        case loginRequest(LoginInputsType)
         case offersPageRequest(MerchantID)
         case createCartRequest
         case updateCartCustomerRequest

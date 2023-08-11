@@ -29,36 +29,24 @@ struct DemoAppView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavBarCartButton(action: {
                             print("Custom button tapped!")
-                        }, buttonText: "0")
+                        }, cartViewState: store.cartViewState)
                     }
                 }.navigationDestination(for: DemoProductGridOfferItem.self) { offerItem in
                     DemoAppOfferPDP(store: $store, offerItem: .constant(offerItem))
                 }.onAppear {
-                    Logger.info("Grid Appeared")
-                    //Logger.info("\(self.na)")
+                    if store.offerSearchViewState.emtpy {
+                        store.sender.send(.offersPageRequest(10003))
+                    }
+                    if store.cartViewState.noCart {
+                        //store.sender.send(.createCartRequest)
+                        store.sender.send(.cartByID(71169))
+                    }
                 }
         }
-        
     }
 }
 
-struct NavBarCartButton: View {
-    var action: () -> Void
-    var buttonText: String
-    
-    var body: some View {
-        Button(action: action) {
-            HStack(spacing: 10) {
-                Image(systemName: "cart.fill")
-                Text(buttonText)
-                    .font(.system(size: FigmaConstants.NavBarCartButton.itemCountFontSize,
-                                  weight: FigmaConstants.NavBarCartButton.itemCountFontWeight))
-            }.padding(.horizontal, 20)
-                .padding(.vertical, 13)
-                .cornerRadius(FigmaConstants.cornerRadius)
-        }
-    }
-}
+
 
 
 struct DemoAppView_Previews: PreviewProvider {

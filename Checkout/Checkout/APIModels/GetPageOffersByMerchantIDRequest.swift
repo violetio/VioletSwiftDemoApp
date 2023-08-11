@@ -13,7 +13,7 @@ class GetPageOffersByMerchantIDRequest: ProxyAPICall<PageOffer> {
     let page: Int
     let size: Int
 
-    init(merchantId: Int64, page: Int = 1, size: Int = 20) {
+    init(merchantId: Int64, page: Int = 1, size: Int = 50) {
         self.merchantId = merchantId
         self.page = page
         self.size = size
@@ -21,7 +21,7 @@ class GetPageOffersByMerchantIDRequest: ProxyAPICall<PageOffer> {
     }
 
     override func send() {
-        CatalogOffersAPI.searchOffers(body: OfferSearchRequest(merchantId: 10003)) { [weak self] data, error in
+        CatalogOffersAPI.searchOffers(page: page, size: size, body: OfferSearchRequest(merchantId: Int(merchantId))) { [weak self] data, error in
             guard let self = self else { return }
             self.logError(error)
             if let anError = error {
@@ -29,17 +29,5 @@ class GetPageOffersByMerchantIDRequest: ProxyAPICall<PageOffer> {
             }
             self.callIsCompleted(errorResponse: error, dataResponse: data)
         }
-        /*
-        CatalogOffersAPI.catalogOffersMerchantsMerchantIdGet(merchantId: merchantId, xVioletToken: channelHeaders.token,
-                                                             xVioletAppSecret: channelHeaders.apiSecret,
-                                                             xVioletAppId: channelHeaders.appID,
-                                                             page: page,
-                                                             size: size)
-        { [weak self] data, error in
-            guard let self = self else { return }
-            self.logError(error)
-            self.callIsCompleted(errorResponse: error, dataResponse: data)
-        }
-         */
     }
 }

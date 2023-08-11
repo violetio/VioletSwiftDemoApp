@@ -244,7 +244,7 @@ final class APIModelsTests: APIXCTestCase {
                                              skus: [orderSku_SkuId_33524],
                                              walletBasedCheckout: false)
 
-        let checkoutCartPostRequest = CheckoutCartPostRequest(cartInitializationRequest: body)
+        let checkoutCartPostRequest = CreateCartRequest(cartInitializationRequest: body)
         let expectationRunner = ExpectationRunner(checkoutCartPostRequest)
 
         expectationRunner.sink {

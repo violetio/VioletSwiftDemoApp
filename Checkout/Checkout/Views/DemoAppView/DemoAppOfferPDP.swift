@@ -23,29 +23,34 @@ struct DemoAppOfferPDP: View {
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                     
                     if offerItem.variantViewModels.count > 0 {
-//                        Text("Variants Selectors")
-//                        Text("Variants Count: \(offerItem.variants.count)")
                         
-                        List {
-                            ForEach(offerItem.variantViewModels) { variant in
-//                                Text("Variant Name: \(variant.name)")
-                                OfferVariantValuePicker(variantViewModel: variant, selectedValue: variant.variantValuesArray[0].name).withBlackBorder().frame(width: 340,height: 170)
-                            }
-                        }.withBlackBorder()
+                        ForEach(offerItem.variantViewModels) { variant in
+                            OfferVariantValuePicker(variantViewModel: variant, selectedValue: variant.variantValuesArray[0].name)
+                        }
+
                     }
                     
                     if StripeAPI.deviceSupportsApplePay() {
-                        PaymentButton(action: applePayButtonAction).cornerRadius(12)
+                        //Font 17
+                        PaymentButton(action: applePayButtonAction)
+                            
+                            .frame(width: 340, height: 44).padding(.top)
                     } else {
                         Text("Device does not support Apple Pay")
                     }
                     
                     Button {
-                        print("Add Sku To Cart")
+                        if let orderID = store.cartViewState.cartId {
+                            let orderSkuID: OrderSkuID = 33524
+                            let orderQuantity: OrderQuantity = 1
+                            store.sender.send(.addSkuToCart(orderID, orderSkuID, orderQuantity))
+                        } else {
+                            Logger.error("DemoAppOfferPDP: No Active Order ID")
+                        }
                     } label: {
                         Text("Add To Cart")
                             .font(Font.custom("SF Pro Text", size: 17))
-                            .frame(width: 340, height: 50)
+                            .frame(width: 340, height: 44)
                             .foregroundColor(.white)
                             .background(Color(red: 0, green: 0.48, blue: 1))
                             .cornerRadius(12)
@@ -70,9 +75,9 @@ struct DemoAppOfferPDP: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavBarCartButton(action: {
                     print("Custom button tapped!")
-                }, buttonText: "0")
+                }, cartViewState: store.cartViewState)
             }
-        }
+        }.withScrollViewBackgroundColor()
     }
     
     func applePayButtonAction() {

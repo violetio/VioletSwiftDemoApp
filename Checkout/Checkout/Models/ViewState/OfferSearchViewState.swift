@@ -11,12 +11,22 @@ import Violet
 class OfferSearchViewState: ObservableObject {
     @Published var loadedOfferItems: [DemoProductGridOfferItem]
     @Published var loading: Bool
+    
+    var emtpy: Bool { loadedOfferItems.count == 0 }
 
     init(loadedOfferItems: [DemoProductGridOfferItem] = [], loading: Bool = false) {
         self.loadedOfferItems = loadedOfferItems
         self.loading = loading
     }
 
+    func updateLoadedOfferItems(_ pageOffer: PageOffer) {
+        guard let offersContent = pageOffer.content else {
+            return
+        }
+        Logger.info("OfferSearchViewState: PageOffer with count: \(offersContent.count)")
+        loadedOfferItems = DemoProductGridOfferItem.fromEntities(entities: offersContent)
+        Logger.info("OfferSearchViewState: loadedOfferItems.count: \(loadedOfferItems.count)")
+    }
 }
 
 extension OfferSearchViewState {

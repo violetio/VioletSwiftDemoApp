@@ -40,8 +40,11 @@ struct DemoAppOfferPDP: View {
                     }
                     
                     Button {
-                        //print("Add Sku To Cart")
-                        store.sender.send(.addSkuToCart)
+                        if let orderID = store.cartViewState.cartId {
+                            store.sender.send(.addSkuToCart(orderID))
+                        } else {
+                            Logger.error("DemoAppOfferPDP: No Active Order ID")
+                        }
                     } label: {
                         Text("Add To Cart")
                             .font(Font.custom("SF Pro Text", size: 17))

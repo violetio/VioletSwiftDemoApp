@@ -55,10 +55,11 @@ extension AppStore {
                         self.state.cartViewState.updateWithNewOrder(order: order)
                     }
                 }
-            case .addSkuToCart:
-                Logger.debug("Store+Sender: addSkuToCart")
-            case .removeSkuFromCart:
-                Logger.debug("Store+Sender: removeSkuFromCart")
+            case .addSkuToCart(let orderID):
+                Logger.debug("Store+Sender: addSkuToCart \(orderID)")
+                //let newAPICall = APICall(apiCall: AddSkuToCartRequest(orderId: <#T##Int64#>, orderSku: <#T##OrderSku#>))
+            case .removeSkuFromCart(let orderID):
+                Logger.debug("Store+Sender: removeSkuFromCart \(orderID)")
             case .updateCartCustomerRequest:
                 Logger.info("Store: Create Cart Request:")
             }

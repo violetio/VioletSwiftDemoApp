@@ -31,8 +31,9 @@ class CartViewState: ObservableObject {
                     Logger.debug("CartViewState - - - calcSkuCount: \(calcSkuCount)")
                 })
             })
-            Logger.debug("CartViewState - - skuCount: \(skuCount)")
+            
             self.skuCount = calcSkuCount
+            Logger.debug("CartViewState - - skuCount: \(skuCount)")
         }
     }
 }

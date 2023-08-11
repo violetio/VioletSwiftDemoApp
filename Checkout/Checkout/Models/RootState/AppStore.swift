@@ -33,7 +33,7 @@ class AppStore {
         case offersPageRequest(MerchantID)
         case createCartRequest
         case cartByID(OrderID)
-        case addSkuToCart(OrderID)
+        case addSkuToCart(OrderID,OrderSkuID,OrderQuantity)
         case removeSkuFromCart(OrderID)
         case updateCartCustomerRequest
     }

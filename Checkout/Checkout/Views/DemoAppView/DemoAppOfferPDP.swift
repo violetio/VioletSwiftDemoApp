@@ -41,7 +41,9 @@ struct DemoAppOfferPDP: View {
                     
                     Button {
                         if let orderID = store.cartViewState.cartId {
-                            store.sender.send(.addSkuToCart(orderID))
+                            let orderSkuID: OrderSkuID = 33524
+                            let orderQuantity: OrderQuantity = 1
+                            store.sender.send(.addSkuToCart(orderID, orderSkuID, orderQuantity))
                         } else {
                             Logger.error("DemoAppOfferPDP: No Active Order ID")
                         }

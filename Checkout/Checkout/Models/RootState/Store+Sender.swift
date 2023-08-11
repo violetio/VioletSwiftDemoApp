@@ -55,9 +55,19 @@ extension AppStore {
                         self.state.cartViewState.updateWithNewOrder(order: order)
                     }
                 }
-            case .addSkuToCart(let orderID):
+            case .addSkuToCart(let orderID, let orderSkuId, let quantity):
                 Logger.debug("Store+Sender: addSkuToCart \(orderID)")
-                //let newAPICall = APICall(apiCall: AddSkuToCartRequest(orderId: <#T##Int64#>, orderSku: <#T##OrderSku#>))
+                let orderSku = OrderSku(quantity: quantity, skuId: orderSkuId)
+                let newAPICall = APICall(apiCall: AddSkuToCartRequest(orderId: orderID,
+                                                                      orderSku: orderSku))
+                pendingAPICalls.enqueue(newAPICall)
+                newAPICall.send { dataResponse, _ in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.debug("Store+Sender: addSkuToCart Cart ID: \(orderId)")
+                        self.state.cartViewState.updateWithNewOrder(order: order)
+                    }
+                }
             case .removeSkuFromCart(let orderID):
                 Logger.debug("Store+Sender: removeSkuFromCart \(orderID)")
             case .updateCartCustomerRequest:

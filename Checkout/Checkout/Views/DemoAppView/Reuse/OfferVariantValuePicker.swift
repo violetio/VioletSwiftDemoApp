@@ -11,7 +11,6 @@ struct OfferVariantValuePicker: View {
     @State var variantViewModel: VariantViewModel
     @State var selectedValue: String
     
-    var geoSize: CGSize? = nil
     var body: some View {
 
         Menu {
@@ -20,10 +19,8 @@ struct OfferVariantValuePicker: View {
                     Text(value.name)
                 }
             } label: {
-                //Text(label)
             }.frame(width: 360, height: 50)
         } label: {
-            //Text(label)
             LabeledContent(variantViewModel.name, value: selectedValue).padding(.horizontal)
                 .frame(width: 340, height: 44)
                 .foregroundColor(.black)

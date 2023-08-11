@@ -75,7 +75,7 @@ struct DemoAppOfferPDP: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavBarCartButton(action: {
                     print("Custom button tapped!")
-                }, buttonText: "0")
+                }, cartViewState: store.cartViewState)
             }
         }.withScrollViewBackgroundColor()
     }

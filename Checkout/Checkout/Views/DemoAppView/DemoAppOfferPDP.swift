@@ -12,6 +12,7 @@ import SwiftUI
 struct DemoAppOfferPDP: View {
     @Binding var store: AppStore
     @Binding var offerItem: DemoProductGridOfferItem
+    @State var selectedSkuID: OrderSkuID? = nil
     
     var body: some View {
         ScrollView {
@@ -55,7 +56,7 @@ struct DemoAppOfferPDP: View {
                             .background(Color(red: 0, green: 0.48, blue: 1))
                             .cornerRadius(12)
                     }
-                    
+                    .disabled(selectedSkuID == nil)
                     .padding(.horizontal, 15.5)
                     .padding(.vertical, 15)
                     .frame(width: 340, alignment: .top)

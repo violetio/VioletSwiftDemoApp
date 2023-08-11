@@ -40,7 +40,8 @@ struct DemoAppOfferPDP: View {
                     }
                     
                     Button {
-                        print("Add Sku To Cart")
+                        //print("Add Sku To Cart")
+                        store.sender.send(.addSkuToCart)
                     } label: {
                         Text("Add To Cart")
                             .font(Font.custom("SF Pro Text", size: 17))

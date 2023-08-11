@@ -55,7 +55,10 @@ extension AppStore {
                         self.state.cartViewState.updateWithNewOrder(order: order)
                     }
                 }
-                
+            case .addSkuToCart:
+                Logger.debug("Store+Sender: addSkuToCart")
+            case .removeSkuFromCart:
+                Logger.debug("Store+Sender: removeSkuFromCart")
             case .updateCartCustomerRequest:
                 Logger.info("Store: Create Cart Request:")
             }

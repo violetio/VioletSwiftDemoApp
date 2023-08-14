@@ -94,13 +94,13 @@ struct DemoAppOfferPDP_Previews: PreviewProvider {
             NavigationStack {
                 DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
                                 offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12574()),
-                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12574().offerEntity!))
+                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12574().offerEntity))
             }.previewDisplayName("No Variants OfferID 12574")
             
             NavigationStack {
                 DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
                                 offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12555()),
-                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12555().offerEntity!))
+                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12555().offerEntity))
             }.previewDisplayName("3 Variants OfferID 12555")
         }
     }

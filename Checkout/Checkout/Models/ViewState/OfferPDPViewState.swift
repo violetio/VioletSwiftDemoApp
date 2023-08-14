@@ -26,6 +26,13 @@ class OfferPDPViewState: ObservableObject {
         self.variantViewModels = variantsArray.compactMap { VariantViewModel(variant: $0)}.sorted(by: { l, r in
             l.name < r.name
         })
+        if let singleSku = offer.singleSku(),
+           let singleSkuID = singleSku.id {
+            self.selectedSkuID = singleSkuID
+            Logger.debug("OfferPDPViewState: singleSkuID = \(singleSkuID)")
+        } else {
+            Logger.debug("OfferPDPViewState: Skus Count = \(offer.skus?.count ?? -1)")
+        }
     }
     
     func selected(variantName: String, valueName: String) {

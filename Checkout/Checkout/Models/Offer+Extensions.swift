@@ -46,6 +46,15 @@ public extension Offer {
         self.variants?.forEach { variantsArray.append($0) }
         return variantsArray
     }
+    
+    func singleSku() -> Sku? {
+        if let skuSet = self.skus {
+            if skuSet.count == 1 {
+                return skuSet.first
+            }
+        }
+        return nil
+    }
 }
 
 extension Sku: Identifiable {

@@ -13,6 +13,7 @@ struct DemoAppOfferPDP: View {
     @Binding var store: AppStore
     @Binding var offerItem: DemoProductGridOfferItem
     @State var selectedSkuID: OrderSkuID? = nil
+    @ObservedObject var offerPDPViewState: OfferPDPViewState
     
     var body: some View {
         ScrollView {
@@ -79,6 +80,7 @@ struct DemoAppOfferPDP: View {
                 }, cartViewState: store.cartViewState)
             }
         }.withScrollViewBackgroundColor()
+            
     }
     
     func applePayButtonAction() {
@@ -91,12 +93,14 @@ struct DemoAppOfferPDP_Previews: PreviewProvider {
         Group {
             NavigationStack {
                 DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
-                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12574()))
+                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12574()),
+                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12574().offerEntity!))
             }.previewDisplayName("No Variants OfferID 12574")
             
             NavigationStack {
                 DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
-                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12555()))
+                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12555()),
+                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12555().offerEntity!))
             }.previewDisplayName("3 Variants OfferID 12555")
         }
     }

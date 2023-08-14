@@ -28,6 +28,10 @@ struct OfferVariantValuePicker: View {
         .background(Color.white)
         .cornerRadius(12)
         .padding(.vertical, 5)
+        .onChange(of: selectedValue) { newValue in
+            let variantKey = "\(variantViewModel.name).\(selectedValue)"
+            Logger.info("Picker: \(variantKey)")
+        }
 
     }
 }

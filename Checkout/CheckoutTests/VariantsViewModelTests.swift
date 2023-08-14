@@ -21,8 +21,20 @@ final class VariantsViewModelTests: XCTestCase {
     func test_1() throws {
         let offer_id_12555 = MockOffers.load_Offer_12555()!
         let sut = VariantsViewModel(offer: offer_id_12555)
-        XCTAssertEqual(sut.variants.count, 3)
+//        XCTAssertEqual(sut.variants.count, 3)
+//        sut.go()
+        //let skuIdSetMap = VariantsViewModel.buildSkuIdSetMap(offer: offer_id_12555)
+        Logger.info("\(sut.skuIdSetMap)")
         
+        let setNamesToIntersect: [String] = ["Color.Semi Solar Yellow/ Scarlet" , "Size.6 Women\'s / 5 Men\'s", "Width.M"]
+        
+        let result = sut.skuID(setNamesToIntersect: setNamesToIntersect)
+        Logger.info("sut.skuID? : \(result)")
+        
+    }
+    
+    func test_2() throws {
+        let offer_id_12555 = MockOffers.load_Offer_12555()!
         
         let offer_item = DemoProductGridOfferItem.fromEntity(entity: offer_id_12555)!
         XCTAssertEqual(offer_item.variantViewModels.count, 3)

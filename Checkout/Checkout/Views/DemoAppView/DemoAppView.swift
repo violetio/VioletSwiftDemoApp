@@ -32,7 +32,9 @@ struct DemoAppView: View {
                         }, cartViewState: store.cartViewState)
                     }
                 }.navigationDestination(for: DemoProductGridOfferItem.self) { offerItem in
-                    DemoAppOfferPDP(store: $store, offerItem: .constant(offerItem))
+                    DemoAppOfferPDP(store: $store,
+                                    offerItem: .constant(offerItem),
+                                    offerPDPViewState: store.state.updateOfferPDPViewState(offerItem: offerItem))
                 }.onAppear {
                     if store.offerSearchViewState.emtpy {
                         store.sender.send(.offersPageRequest(10003))

@@ -7,6 +7,7 @@
 
 import Violet
 
+typealias SkuIdSetMap = [String: Set<Int64>]
 /*
  Pseudo code
  
@@ -18,22 +19,62 @@ import Violet
  */
 class VariantsViewModel {
     let offer: Offer
-    let variants: Set<Variant>
+    var skuIdSetMap: SkuIdSetMap
     
     init(offer: Offer) {
         self.offer = offer
-        self.variants = offer.variants ?? Set()
+        self.skuIdSetMap = Self.buildSkuIdSetMap(offer: offer)
     }
     
-    func getArray() {
-        let filtered = self.variants.filter { aVariant in
-            if let variantValues = aVariant.values,
-               variantValues.count > 0 {
-                return true
+    func skuID(setNamesToIntersect: [String]) -> Int64? {
+        var result: Int64? = nil
+        
+        var currentSkuIdSet = Set<Int64>()
+        for nextKey in setNamesToIntersect {
+            if let skuIDsFound = self.skuIdSetMap[nextKey] {
+                if currentSkuIdSet.isEmpty {
+                    currentSkuIdSet = skuIDsFound
+                    //Logger.debug("currentSkuIdSet Init: \(currentSkuIdSet)")
+                } else {
+                    currentSkuIdSet = currentSkuIdSet.intersection(skuIDsFound)
+                    if currentSkuIdSet.count == 1,
+                        let first = currentSkuIdSet.first {
+                        result = first
+                        //Logger.debug("Single Sku: \(first)")
+                        return result
+                    }
+                    //Logger.info("currentSkuIdSet Intersect: \(currentSkuIdSet)")
+                }
             }
-            return false
         }
+        return result
     }
+
+    static func buildSkuIdSetMap(offer: Offer) -> SkuIdSetMap{
+        var skuSetIDsMap: SkuIdSetMap = [:]
+        guard let variantArray = offer.variants else { return skuSetIDsMap }
+        
+        for aVariant in variantArray {
+            guard let variantName = aVariant.name else { continue }
+            guard let variantValuesArray = aVariant.values else { continue }
+            for aVariantValue in variantValuesArray {
+                guard let aVariantValueName = aVariantValue.name else { continue }
+                guard let skuIDSet = aVariantValue.skuIds else { continue }
+                skuSetIDsMap["\(variantName).\(aVariantValueName)"] = skuIDSet
+            }
+        }
+        return skuSetIDsMap
+    }
+
+//    func getArray() {
+//        let filtered = self.variants.filter { aVariant in
+//            if let variantValues = aVariant.values,
+//               variantValues.count > 0 {
+//                return true
+//            }
+//            return false
+//        }
+//    }
 }
 
 

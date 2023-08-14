@@ -13,6 +13,8 @@ struct DemoAppOfferPDP: View {
     @Binding var store: AppStore
     @Binding var offerItem: DemoProductGridOfferItem
     
+    @ObservedObject var offerPDPViewState: OfferPDPViewState
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -25,7 +27,7 @@ struct DemoAppOfferPDP: View {
                     if offerItem.variantViewModels.count > 0 {
                         
                         ForEach(offerItem.variantViewModels) { variant in
-                            OfferVariantValuePicker(variantViewModel: variant, selectedValue: variant.variantValuesArray[0].name)
+                            OfferVariantValuePicker(variantViewModel: variant, selectedValue: variant.variantValuesArray[0].name, offerPDPViewState: offerPDPViewState)
                         }
 
                     }
@@ -41,9 +43,12 @@ struct DemoAppOfferPDP: View {
                     
                     Button {
                         if let orderID = store.cartViewState.cartId {
-                            let orderSkuID: OrderSkuID = 33524
-                            let orderQuantity: OrderQuantity = 1
-                            store.sender.send(.addSkuToCart(orderID, orderSkuID, orderQuantity))
+                            if let orderSkuID: OrderSkuID = offerPDPViewState.selectedSkuID {
+                                let orderQuantity: OrderQuantity = 1
+                                store.sender.send(.addSkuToCart(orderID, orderSkuID, orderQuantity))
+                            } else {
+                                Logger.error("No Selected SkuID for OfferID \(offerItem.id)")
+                            }
                         } else {
                             Logger.error("DemoAppOfferPDP: No Active Order ID")
                         }
@@ -55,7 +60,7 @@ struct DemoAppOfferPDP: View {
                             .background(Color(red: 0, green: 0.48, blue: 1))
                             .cornerRadius(12)
                     }
-                    
+                    .disabled(offerPDPViewState.selectedSkuID == nil)
                     .padding(.horizontal, 15.5)
                     .padding(.vertical, 15)
                     .frame(width: 340, alignment: .top)
@@ -78,6 +83,7 @@ struct DemoAppOfferPDP: View {
                 }, cartViewState: store.cartViewState)
             }
         }.withScrollViewBackgroundColor()
+            
     }
     
     func applePayButtonAction() {
@@ -90,12 +96,14 @@ struct DemoAppOfferPDP_Previews: PreviewProvider {
         Group {
             NavigationStack {
                 DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
-                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12574()))
+                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12574()),
+                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12574().offerEntity))
             }.previewDisplayName("No Variants OfferID 12574")
             
             NavigationStack {
                 DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
-                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12555()))
+                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12555()),
+                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12555().offerEntity))
             }.previewDisplayName("3 Variants OfferID 12555")
         }
     }

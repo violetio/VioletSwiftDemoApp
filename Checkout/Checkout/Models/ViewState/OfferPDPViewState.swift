@@ -12,12 +12,13 @@ class OfferPDPViewState: ObservableObject {
     @Published var offer: Offer
     @Published var variantsViewModel: VariantsViewModel
     @Published var selectedSkuID: Int64? = nil
-    var selectedVariantKeys: [String: String] = [:]
+    @Published var selectedVariantKeys: [String: String] = [:]
     public let variants: [Variant]
     let variantViewModels: [VariantViewModel]
     
 
     init(offer: Offer) {
+        //Logger.debug("OfferPDPViewState: Init")
         self.offer = offer
         self.variantsViewModel = VariantsViewModel(offer: offer)
         let variantsArray = offer.variantsArray()
@@ -29,12 +30,17 @@ class OfferPDPViewState: ObservableObject {
     
     func selected(variantName: String, valueName: String) {
         let variantKey = "\(variantName).\(valueName)"
-        Logger.info("OfferPDPViewState: variantKey- \(variantKey)")
-        selectedVariantKeys[variantName] = variantKey
+        self.selectedVariantKeys[variantName] = variantKey
         if selectedVariantKeys.count == variantViewModels.count {
-            var newlySelectedSkuID = variantsViewModel.skuID(setNamesToIntersect: Array(selectedVariantKeys.values))
-            Logger.info("OfferPDPViewState: newlySelectedSkuID - \(newlySelectedSkuID)")
-            selectedSkuID = newlySelectedSkuID
+            if let newlySelectedSkuID = variantsViewModel.skuID(setNamesToIntersect: Array(selectedVariantKeys.values)) {
+                Logger.debug("OfferPDPViewState: newlySelectedSkuID - \(newlySelectedSkuID)")
+                selectedSkuID = newlySelectedSkuID
+            } else {
+                Logger.debug("OfferPDPViewState: newlySelectedSkuID - NOTHING for SelectedKeys: \(selectedVariantKeys)")
+            }
+        } else {
+//            Logger.debug("OfferPDPViewState: Missing Selection?")
+//            Logger.debug("- SelectedKeys: \(selectedVariantKeys)")
         }
     }
 

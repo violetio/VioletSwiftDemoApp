@@ -8,12 +8,22 @@
 import SwiftUI
 
 class AppStore {
-    struct AppState {
+    class AppState {
 
         var demoChannelViewState: DemoChannelViewState
         var cartViewState: CartViewState
         var offerSearchViewState: OfferSearchViewState
-
+        var offerPDPViewStates: [Int64: OfferPDPViewState] = [:]
+        
+        func updateOfferPDPViewState( offerItem: DemoProductGridOfferItem) -> OfferPDPViewState {
+            if let existingOfferPDPViewState = offerPDPViewStates[offerItem.id] {
+                return existingOfferPDPViewState
+            }
+            let newOfferPDPViewState: OfferPDPViewState = OfferPDPViewState(offer: offerItem.offerEntity)
+            offerPDPViewStates[offerItem.id] = newOfferPDPViewState
+            return newOfferPDPViewState
+        }
+        
         init(demoChannelViewState: DemoChannelViewState,
              cartViewState: CartViewState,
              offerSearchViewState: OfferSearchViewState) {
@@ -22,7 +32,7 @@ class AppStore {
             self.offerSearchViewState = offerSearchViewState
         }
 
-        init() {
+        convenience init() {
             self.init(demoChannelViewState: DemoChannelViewState(),
                       cartViewState: CartViewState(),
                       offerSearchViewState: OfferSearchViewState())

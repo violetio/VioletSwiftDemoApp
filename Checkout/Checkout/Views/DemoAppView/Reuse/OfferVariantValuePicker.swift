@@ -10,6 +10,7 @@ import SwiftUI
 struct OfferVariantValuePicker: View {
     @State var variantViewModel: VariantViewModel
     @State var selectedValue: String
+    @ObservedObject var offerPDPViewState: OfferPDPViewState
     
     var body: some View {
 
@@ -37,8 +38,7 @@ struct OfferVariantValuePicker: View {
     }
     
     func selected(variantName: String, valueName: String) {
-        let variantKey = "\(variantName).\(valueName)"
-        Logger.info("Picker: \(variantKey)")
+        offerPDPViewState.selected(variantName: variantName, valueName: valueName)
     }
 }
 
@@ -47,6 +47,8 @@ struct OfferVariantValuePicker_Previews: PreviewProvider {
     static let mockVariant_1 = mockOfferItem.variantViewModels[0]
     static let mockVariant_DefaultValue = mockVariant_1.variantValuesArray[0]
     static var previews: some View {
-        OfferVariantValuePicker(variantViewModel: mockVariant_1, selectedValue: mockVariant_DefaultValue.name)
+        OfferVariantValuePicker(variantViewModel: mockVariant_1,
+                                selectedValue: mockVariant_DefaultValue.name,
+                                offerPDPViewState: OfferPDPViewState(offer: mockOfferItem.offerEntity))
     }
 }

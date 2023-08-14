@@ -29,23 +29,21 @@ class VariantsViewModel {
     func skuID(setNamesToIntersect: [String]) -> Int64? {
         var result: Int64? = nil
         
-        let setNamesToIntersect: [String] = ["Color.Semi Solar Yellow/ Scarlet" , "Size.6 Women\'s / 5 Men\'s", "Width.M"]
-        
         var currentSkuIdSet = Set<Int64>()
         for nextKey in setNamesToIntersect {
             if let skuIDsFound = self.skuIdSetMap[nextKey] {
                 if currentSkuIdSet.isEmpty {
                     currentSkuIdSet = skuIDsFound
-                    Logger.info("currentSkuIdSet Init: \(currentSkuIdSet)")
+                    //Logger.debug("currentSkuIdSet Init: \(currentSkuIdSet)")
                 } else {
                     currentSkuIdSet = currentSkuIdSet.intersection(skuIDsFound)
                     if currentSkuIdSet.count == 1,
                         let first = currentSkuIdSet.first {
                         result = first
-                        Logger.info("Single Sku: \(first)")
+                        //Logger.debug("Single Sku: \(first)")
                         return result
                     }
-                    Logger.info("currentSkuIdSet Intersect: \(currentSkuIdSet)")
+                    //Logger.info("currentSkuIdSet Intersect: \(currentSkuIdSet)")
                 }
             }
         }

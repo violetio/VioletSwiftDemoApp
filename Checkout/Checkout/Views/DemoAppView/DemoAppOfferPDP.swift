@@ -27,7 +27,7 @@ struct DemoAppOfferPDP: View {
                     if offerItem.variantViewModels.count > 0 {
                         
                         ForEach(offerItem.variantViewModels) { variant in
-                            OfferVariantValuePicker(variantViewModel: variant, selectedValue: variant.variantValuesArray[0].name)
+                            OfferVariantValuePicker(variantViewModel: variant, selectedValue: variant.variantValuesArray[0].name, offerPDPViewState: offerPDPViewState)
                         }
 
                     }

@@ -34,7 +34,7 @@ struct DemoAppView: View {
                 }.navigationDestination(for: DemoProductGridOfferItem.self) { offerItem in
                     DemoAppOfferPDP(store: $store,
                                     offerItem: .constant(offerItem),
-                                    offerPDPViewState: OfferPDPViewState(offer: offerItem.offerEntity))
+                                    offerPDPViewState: store.state.updateOfferPDPViewState(offerItem: offerItem))
                 }.onAppear {
                     if store.offerSearchViewState.emtpy {
                         store.sender.send(.offersPageRequest(10003))

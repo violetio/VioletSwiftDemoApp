@@ -29,10 +29,16 @@ struct OfferVariantValuePicker: View {
         .cornerRadius(12)
         .padding(.vertical, 5)
         .onChange(of: selectedValue) { newValue in
-            let variantKey = "\(variantViewModel.name).\(selectedValue)"
-            Logger.info("Picker: \(variantKey)")
+            selected(variantName: variantViewModel.name, valueName: selectedValue)
+        }.onAppear {
+            selected(variantName: variantViewModel.name, valueName: selectedValue)
         }
 
+    }
+    
+    func selected(variantName: String, valueName: String) {
+        let variantKey = "\(variantName).\(valueName)"
+        Logger.info("Picker: \(variantKey)")
     }
 }
 

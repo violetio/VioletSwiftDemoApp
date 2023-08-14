@@ -32,9 +32,9 @@ struct DemoProductGridOfferItem: Identifiable, Equatable, Hashable, AutoKeyed {
         self.offerEntity = offerEntity
         self.vendor = vendor
         self.seller = seller
-        self.imageURLS = offerEntity.allAlbumMediaURLs() ?? []
+        self.imageURLS = offerEntity.allAlbumMediaURLs()
         self.description = offerEntity.description ?? ""
-        let variantsArray = offerEntity.variantsArray() ?? []
+        let variantsArray = offerEntity.variantsArray()
         self.variants = variantsArray
         self.variantViewModels = variantsArray.compactMap { VariantViewModel(variant: $0)}.sorted(by: { l, r in
             l.name < r.name

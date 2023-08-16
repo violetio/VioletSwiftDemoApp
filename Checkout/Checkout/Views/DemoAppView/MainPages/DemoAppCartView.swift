@@ -9,7 +9,14 @@ import SwiftUI
 
 struct DemoAppCartView: View {
     var body: some View {
-        Text("Cart View!")
+        List {
+            Section() {
+                Text("Merchant Name")
+                Text("Item 1")
+                Text("Item 2")
+                Text("Total")
+            }
+        }.navigationTitle("Shopping Cart")
     }
 }
 

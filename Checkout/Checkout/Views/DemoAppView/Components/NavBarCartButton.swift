@@ -14,7 +14,7 @@ struct NavBarCartButton: View {
     var body: some View {
         Button(action: action) {
             NavigationLink {
-                DemoAppCartView()
+                DemoAppCartView(cartViewState: cartViewState)
             } label: {
                 HStack(spacing: 10) {
                     Image(systemName: "cart.fill")

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DemoAppCartView: View {
+    @ObservedObject var cartViewState: CartViewState
+    
     var body: some View {
         List {
             Section() {
@@ -16,12 +18,12 @@ struct DemoAppCartView: View {
                 Text("Item 2")
                 Text("Total")
             }
-        }.navigationTitle("Shopping Cart")
+        }.navigationTitle("Shopping Cart \(cartViewState.skuCount)")
     }
 }
 
 struct DemoAppCartView_Previews: PreviewProvider {
     static var previews: some View {
-        DemoAppCartView()
+        DemoAppCartView(cartViewState: CartViewState(skuCount: 1))
     }
 }

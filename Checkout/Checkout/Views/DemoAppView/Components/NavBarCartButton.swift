@@ -13,14 +13,18 @@ struct NavBarCartButton: View {
     
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 10) {
-                Image(systemName: "cart.fill")
-                Text("\(cartViewState.skuCount)")
-                    .font(.system(size: FigmaConstants.NavBarCartButton.itemCountFontSize,
-                                  weight: FigmaConstants.NavBarCartButton.itemCountFontWeight))
-            }.padding(.horizontal, 20)
-                .padding(.vertical, 13)
-                .cornerRadius(FigmaConstants.cornerRadius)
+            NavigationLink {
+                DemoAppCartView()
+            } label: {
+                HStack(spacing: 10) {
+                    Image(systemName: "cart.fill")
+                    Text("\(cartViewState.skuCount)")
+                        .font(.system(size: FigmaConstants.NavBarCartButton.itemCountFontSize,
+                                      weight: FigmaConstants.NavBarCartButton.itemCountFontWeight))
+                }.padding(.horizontal, 20)
+                    .padding(.vertical, 13)
+                    .cornerRadius(FigmaConstants.cornerRadius)
+            }
         }
     }
 }

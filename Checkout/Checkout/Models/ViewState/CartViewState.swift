@@ -14,6 +14,8 @@ class CartViewState: ObservableObject {
     
     var noCart: Bool { cartId == nil }
     
+    var cartEmpty: Bool { skuCount == 0 }
+    
     init(skuCount: Int = 0) {
         self.skuCount = skuCount
     }

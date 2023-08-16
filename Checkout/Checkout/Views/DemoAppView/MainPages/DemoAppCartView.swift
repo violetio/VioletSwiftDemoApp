@@ -11,19 +11,36 @@ struct DemoAppCartView: View {
     @ObservedObject var cartViewState: CartViewState
     
     var body: some View {
-        List {
-            Section() {
-                Text("Merchant Name")
-                Text("Item 1")
-                Text("Item 2")
-                Text("Total")
-            }
-        }.navigationTitle("Shopping Cart \(cartViewState.skuCount)")
+        VStack {
+        
+                if cartViewState.cartEmpty {
+                    Text("Your Cart is Empty")
+                        .font(.system(size: 20, weight: .semibold))
+                    Text("Continue browsing the Demo App.")
+                        .font(.system(size: 14))
+                        .frame(minHeight: 25)
+
+                } else {
+                    List {
+                        Section() {
+                            Text("Merchant Name")
+                            Text("Item 1")
+                            Text("Item 2")
+                            Text("Total")
+                        }
+                    }
+                }
+            
+        }.navigationTitle("Shopping Cart")
     }
 }
 
 struct DemoAppCartView_Previews: PreviewProvider {
     static var previews: some View {
-        DemoAppCartView(cartViewState: CartViewState(skuCount: 1))
+        Group {
+            DemoAppCartView(cartViewState: CartViewState(skuCount: 1)).previewDisplayName("1 Sku")
+            
+            DemoAppCartView(cartViewState: CartViewState(skuCount: 0)).previewDisplayName("0 Skus")
+        }
     }
 }

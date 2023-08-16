@@ -470,7 +470,8 @@
 		E712EAF62A4CDEDD00DDAE15 /* DemoAppView */ = {
 			isa = PBXGroup;
 			children = (
-				E7F8D5902A82D9F300F720CD /* Reuse */,
+				E7F8D5CA2A8D2A6900F720CD /* MainPages */,
+				E7F8D5902A82D9F300F720CD /* Components */,
 				E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */,
 				E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */,
 				E712EAFF2A5C6A5000DDAE15 /* DemoAppOfferCard.swift */,
@@ -662,7 +663,7 @@
 			path = ViewState;
 			sourceTree = "<group>";
 		};
-		E7F8D5902A82D9F300F720CD /* Reuse */ = {
+		E7F8D5902A82D9F300F720CD /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				E7F8D5C42A855F3B00F720CD /* OfferVariantValuePicker2.swift */,
@@ -671,7 +672,14 @@
 				E7F8D59D2A8420FA00F720CD /* OfferVariantValuePicker.swift */,
 				E7F8D5C62A869F1F00F720CD /* NavBarCartButton.swift */,
 			);
-			path = Reuse;
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E7F8D5CA2A8D2A6900F720CD /* MainPages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainPages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

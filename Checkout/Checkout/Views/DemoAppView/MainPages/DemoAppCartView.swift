@@ -22,12 +22,7 @@ struct DemoAppCartView: View {
 
                 } else {
                     List {
-                        Section() {
-                            Text("Merchant Name")
-                            Text("Item 1")
-                            Text("Item 2")
-                            Text("Total")
-                        }
+                        CartBagSection()
                     }
                 }
             

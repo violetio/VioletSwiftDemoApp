@@ -400,7 +400,6 @@
 		E70BEB9029B94D710030335E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E7F8D5952A83F42700F720CD /* PaymentButton.swift */,
 				E712EAF62A4CDEDD00DDAE15 /* DemoAppView */,
 				E7B41C942A01641700E7371B /* EntityViews */,
 				E70BEB6829B92B200030335E /* ContentView.swift */,
@@ -470,14 +469,9 @@
 		E712EAF62A4CDEDD00DDAE15 /* DemoAppView */ = {
 			isa = PBXGroup;
 			children = (
+				E7F8D5CB2A8D2AE000F720CD /* RootView */,
 				E7F8D5CA2A8D2A6900F720CD /* MainPages */,
 				E7F8D5902A82D9F300F720CD /* Components */,
-				E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */,
-				E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */,
-				E712EAFF2A5C6A5000DDAE15 /* DemoAppOfferCard.swift */,
-				E712EB062A5CA6C700DDAE15 /* DemoAppOfferCardImage.swift */,
-				E72C467D2A782B8D00F8C267 /* DemoStackContentView.swift */,
-				E7F8D58E2A82D67300F720CD /* DemoAppOfferPDP.swift */,
 			);
 			path = DemoAppView;
 			sourceTree = "<group>";
@@ -666,6 +660,9 @@
 		E7F8D5902A82D9F300F720CD /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E7F8D5952A83F42700F720CD /* PaymentButton.swift */,
+				E712EB062A5CA6C700DDAE15 /* DemoAppOfferCardImage.swift */,
+				E712EAFF2A5C6A5000DDAE15 /* DemoAppOfferCard.swift */,
 				E7F8D5C42A855F3B00F720CD /* OfferVariantValuePicker2.swift */,
 				E7F8D5912A82DA0E00F720CD /* DemoAppOfferCardText.swift */,
 				E7F8D5932A82DE5900F720CD /* OfferImageCarousel.swift */,
@@ -678,8 +675,19 @@
 		E7F8D5CA2A8D2A6900F720CD /* MainPages */ = {
 			isa = PBXGroup;
 			children = (
+				E7F8D58E2A82D67300F720CD /* DemoAppOfferPDP.swift */,
+				E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */,
+				E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */,
 			);
 			path = MainPages;
+			sourceTree = "<group>";
+		};
+		E7F8D5CB2A8D2AE000F720CD /* RootView */ = {
+			isa = PBXGroup;
+			children = (
+				E72C467D2A782B8D00F8C267 /* DemoStackContentView.swift */,
+			);
+			path = RootView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

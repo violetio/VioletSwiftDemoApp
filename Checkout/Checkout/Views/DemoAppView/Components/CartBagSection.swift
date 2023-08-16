@@ -10,11 +10,21 @@ import SwiftUI
 struct CartBagSection: View {
     var body: some View {
         Section() {
-            Text("Merchant Name")
+            Label("Merchant Name", image: "merchant_name_pre_icon")
             Text("Item 1")
             Text("Item 2")
-            Text("Total")
+            BagTotalView
         }
+    }
+    
+    @ViewBuilder
+    var BagTotalView: some View {
+        HStack {
+            Text("Bag Total")
+                
+            Spacer()
+            Text("$1.99")
+        }.font(.system(size: 12, weight: .semibold))
     }
 }
 

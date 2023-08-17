@@ -17,8 +17,6 @@
 		E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9429B94F5A0030335E /* VioletOffer.swift */; };
 		E70BEB9729BA37440030335E /* SelectedOfferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9629BA37440030335E /* SelectedOfferView.swift */; };
 		E70BEB9B29BA54B00030335E /* GetOfferByIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */; };
-		E70BEBA329BAA2210030335E /* AppCreds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA229BAA2210030335E /* AppCreds.swift */; };
-		E70BEBA929BBA0FD0030335E /* EnvVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEBA829BBA0FD0030335E /* EnvVars.swift */; };
 		E712EAF82A4CDEFB00DDAE15 /* DemoAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */; };
 		E712EAFA2A4E27D700DDAE15 /* FigmaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */; };
 		E712EAFC2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */; };
@@ -173,8 +171,6 @@
 		E70BEB9629BA37440030335E /* SelectedOfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedOfferView.swift; sourceTree = "<group>"; };
 		E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOfferByIDRequest.swift; sourceTree = "<group>"; };
 		E70BEBA129BA977D0030335E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		E70BEBA229BAA2210030335E /* AppCreds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCreds.swift; sourceTree = "<group>"; };
-		E70BEBA829BBA0FD0030335E /* EnvVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVars.swift; sourceTree = "<group>"; };
 		E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppView.swift; sourceTree = "<group>"; };
 		E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaConstants.swift; sourceTree = "<group>"; };
 		E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppProductGrid.swift; sourceTree = "<group>"; };
@@ -505,8 +501,6 @@
 			isa = PBXGroup;
 			children = (
 				E71CFB7A29BFC20100598B15 /* Logger.swift */,
-				E70BEBA829BBA0FD0030335E /* EnvVars.swift */,
-				E70BEBA229BAA2210030335E /* AppCreds.swift */,
 				E7B41C5029F5892E00E7371B /* AppIDAndSecret.swift */,
 				E7B41C5329F589CA00E7371B /* DemoAppIdAndSecret.swift */,
 				E7B41C5529F58BAF00E7371B /* DemoChannels.swift */,
@@ -906,7 +900,6 @@
 				E70BEB9229B94D8B0030335E /* HelloView.swift in Sources */,
 				E7B41C982A01649900E7371B /* OrderShippingMethodWrapperArrayView.swift in Sources */,
 				E7B41C4329F3362000E7371B /* CartContentsView.swift in Sources */,
-				E70BEBA329BAA2210030335E /* AppCreds.swift in Sources */,
 				E72E001129F07B0F009F7BFE /* PreviewMocks.swift in Sources */,
 				E712EAFE2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift in Sources */,
 				E72E001429F0852F009F7BFE /* EntityViewModel.swift in Sources */,
@@ -923,7 +916,6 @@
 				E7FA7BC32A68479A001E9906 /* RemoveSkuFromCartRequest.swift in Sources */,
 				E7FA7BC12A674AFA001E9906 /* AddSkuToCartRequest.swift in Sources */,
 				E7B41C6C29F72C0B00E7371B /* OfferGridTile.swift in Sources */,
-				E70BEBA929BBA0FD0030335E /* EnvVars.swift in Sources */,
 				E7B41CA92A09841D00E7371B /* DemoChannelViewState.swift in Sources */,
 				E72EFFEB29DC88E1009F7BFE /* MockOffers.swift in Sources */,
 				E7B41CAB2A09843800E7371B /* CartViewState.swift in Sources */,

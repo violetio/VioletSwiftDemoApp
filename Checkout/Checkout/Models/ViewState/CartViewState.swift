@@ -53,7 +53,7 @@ class CartViewState: ObservableObject {
                             Logger.debug("CartViewState - - - calcSkuCount: \(calcSkuCount)")
                         }
                     })
-                    bagViewStates[bagID] = BagViewState(bagID: bagID, skuCount: bagSkuCount, orderSkuViewStates: orderSkuViewStates)
+                    bagViewStates[bagID] = BagViewState(bagID: bagID, orderSkuViewStates: orderSkuViewStates, bag: bag)
                 }
             })
             
@@ -65,18 +65,25 @@ class CartViewState: ObservableObject {
 
 class BagViewState: ObservableObject, Identifiable {
     @Published var bagID: Int64
-    @Published var skuCount: Int = 0
     @Published var orderSkuViewStates: [OrderSkuID: OrderSkuViewState]
+    @Published var bagSubtotalText: String = ""
     
     var orderSkuViewStatesArray: [OrderSkuViewState] { return Array(orderSkuViewStates.values) }
     
     var id: Int64 { bagID }
     
-    init(bagID: Int64, skuCount: Int, orderSkuViewStates: [OrderSkuID: OrderSkuViewState] = [:]) {
+    init(bagID: Int64, orderSkuViewStates: [OrderSkuID: OrderSkuViewState] = [:], bag: Bag? = nil) {
         self.bagID = bagID
-        self.skuCount = skuCount
         self.orderSkuViewStates = orderSkuViewStates
-        Logger.debug("BagViewState - Init - bagID: \(bagID) - skuCount - \(skuCount) - orderSkuIDCount - \(orderSkuViewStates)")
+        if let initBag = bag {
+            update(bag: initBag)
+        }
+        Logger.debug("BagViewState - Init - bagID: \(bagID) - orderSkuIDCount - \(orderSkuViewStates)")
+    }
+    
+    func update(bag: Bag) {
+        //
+        self.bagSubtotalText = (Double(bag.subTotal ?? 0) / 100).formatted(.currency(code: "USD"))
     }
     
 }

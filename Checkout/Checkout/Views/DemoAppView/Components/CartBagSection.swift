@@ -17,7 +17,6 @@ struct CartBagSection: View {
                 Text("OrderSkuId: \(orderSkuViewState.orderSkuID)")
             }
             
-            //Text("Item 2")
             BagTotalView
         }
     }
@@ -28,7 +27,7 @@ struct CartBagSection: View {
             Text("Bag Total")
                 
             Spacer()
-            Text("$1.99")
+            Text(bagViewState.bagSubtotalText)
         }.font(.system(size: 12, weight: .semibold))
     }
 }
@@ -36,7 +35,7 @@ struct CartBagSection: View {
 struct CartBagSection_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            CartBagSection(bagViewState: BagViewState(bagID: 56808, skuCount: 5))
+            CartBagSection(bagViewState: BagViewState(bagID: 56808, bag: MockOffers.load_OrderID_71169()!.bags![0]))
         }
     }
 }

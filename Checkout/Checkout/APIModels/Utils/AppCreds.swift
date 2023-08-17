@@ -24,12 +24,12 @@ struct AppCreds: LoginInputsType {
         self.log()
     }
     
-    init(_ envVars: EnvVars = EnvVars.Alan()) {
-        self.init(appID: envVars.sandbox_app_id,
-                  apiSecret: envVars.sandbox_app_secret,
-                  username: envVars.sandbox_app_username,
-                  password: envVars.sandbox_app_password)
-    }
+//    init(_ envVars: EnvVars = EnvVars.Alan()) {
+//        self.init(appID: envVars.sandbox_app_id,
+//                  apiSecret: envVars.sandbox_app_secret,
+//                  username: envVars.sandbox_app_username,
+//                  password: envVars.sandbox_app_password)
+//    }
     
     func log() {
         Logger.info("AppCreds: \(self)")
@@ -39,22 +39,22 @@ struct AppCreds: LoginInputsType {
 //        return LoginRequest(username: self.username, password: self.password)
 //    }
     
-    static func SandBoxTestCreds() -> AppCreds {
-        return AppCreds(EnvVars())
-    }
-    
-    static func SandBoxTestCreds_Alan() -> AppCreds {
-        return AppCreds(EnvVars.Alan())
-    }
-    
-    static func SandBoxTestCreds(_ demoChannel: DemoChannels) -> AppCreds {
-        switch demoChannel {
-        case .Alan:
-            return AppCreds(EnvVars.Alan())
-        case .Ishan:
-            return AppCreds(EnvVars())
-        }
-    }
+//    static func SandBoxTestCreds() -> AppCreds {
+//        return AppCreds(EnvVars())
+//    }
+//
+//    static func SandBoxTestCreds_Alan() -> AppCreds {
+//        return AppCreds(EnvVars.Alan())
+//    }
+//
+//    static func SandBoxTestCreds(_ demoChannel: DemoChannels) -> AppCreds {
+//        switch demoChannel {
+//        case .Alan:
+//            return AppCreds(EnvVars.Alan())
+//        case .Ishan:
+//            return AppCreds(EnvVars())
+//        }
+//    }
     
     func channelHeaders(token: String) -> ChannelHeaders {
         return ChannelHeaders(token: token, refreshToken: ChannelHeaders.unknownRefreshToken, apiSecret: self.apiSecret, appID: self.appID)
@@ -65,12 +65,12 @@ struct AppCreds: LoginInputsType {
                               refreshToken: refreshToken, apiSecret: self.apiSecret, appID: self.appID)
     }
     
-    static func loginInputs(for demoChannel: DemoChannels) -> AppCreds {
-        switch demoChannel {
-        case .Alan:
-            return AppCreds(EnvVars.Alan())
-        case .Ishan:
-            return AppCreds(EnvVars.Ishan())
-        }
-    }
+//    static func loginInputs(for demoChannel: DemoChannels) -> AppCreds {
+//        switch demoChannel {
+//        case .Alan:
+//            return AppCreds(EnvVars.Alan())
+//        case .Ishan:
+//            return AppCreds(EnvVars.Ishan())
+//        }
+//    }
 }

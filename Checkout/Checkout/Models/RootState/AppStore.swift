@@ -63,10 +63,6 @@ class AppStore {
     var cartViewState: CartViewState { state.cartViewState }
     var offerSearchViewState: OfferSearchViewState { state.offerSearchViewState }
 
-    func demoLoginInputs(_ selectedDemoChannel: DemoChannels) -> LoginInputsType {
-        return AppCreds.loginInputs(for: selectedDemoChannel)
-    }
-
     let useDemoLogin: Bool = true
 
     init(demoChannelViewState: DemoChannelViewState,

@@ -16,22 +16,10 @@ class APIXCTestCase: XCTestCase {
     let timeout: TimeInterval = 5
     let pageTimeout: TimeInterval = 15
     
-    let loginPostJsonResponse_fileName = "loginPostJsonResponse.json"
     let timeout_5s: TimeInterval = 5
     let timeout_10s: TimeInterval = 10
     let timeout_15s: TimeInterval = 15
-    //let appCreds = AppCreds.SandBoxTestCreds()
-    let appCreds = AppCreds()
-    
-    var loginToken: String {
-        get {
-            guard let loginToken = lastLoginPost_Token() else {
-                XCTFail("No Login Token")
-                return ""
-            }
-            return loginToken
-        }
-    }
+
 
     func persistData(fileName: String, data: Data) throws {
         let cachesDir = FileDirectory.CachesFileDirectory()
@@ -45,38 +33,6 @@ class APIXCTestCase: XCTestCase {
         let cachesDir = FileDirectory.CachesFileDirectory()
         let filePath = FilePath(fileName: fileName, fileDirectory: cachesDir)!
         return try? Data(contentsOf: filePath.fileURL)
-    }
-
-    func lastLoginPost_Token() -> String? {
-        guard let jsonData = reloadData(fileName: loginPostJsonResponse_fileName) else {
-            return nil
-        }
-
-        let decodeResult = CodableHelper.decode(LoginResponse.self, from: jsonData)
-        var token: String? = nil
-        switch decodeResult {
-        case .failure:
-            token = nil
-        case .success(let loginPostRequest):
-            token = loginPostRequest.token!
-        }
-        return token
-    }
-
-    func lastLoginPost_RefreshToken() -> String? {
-        guard let jsonData = reloadData(fileName: loginPostJsonResponse_fileName) else {
-            return nil
-        }
-
-        let decodeResult = CodableHelper.decode(LoginResponse.self, from: jsonData)
-        var refreshToken: String? = nil
-        switch decodeResult {
-        case .failure:
-            refreshToken = nil
-        case .success(let loginPostRequest):
-            refreshToken = loginPostRequest.refreshToken!
-        }
-        return refreshToken
     }
     
     func persistEncodable<T>(_ encodable: T, to filename: String) where T: Encodable {

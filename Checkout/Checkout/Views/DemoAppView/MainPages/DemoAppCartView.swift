@@ -1,0 +1,44 @@
+//
+//  DemoAppCartView.swift
+//  Checkout
+//
+//  Created on 8/16/23
+//
+
+import SwiftUI
+
+struct DemoAppCartView: View {
+    @ObservedObject var cartViewState: CartViewState
+    
+    var body: some View {
+        VStack {
+        
+                if cartViewState.cartEmpty {
+                    Text("Your Cart is Empty")
+                        .font(.system(size: 20, weight: .semibold))
+                    Text("Continue browsing the Demo App.")
+                        .font(.system(size: 14))
+                        .frame(minHeight: 25)
+
+                } else {
+                    List {
+                        ForEach(cartViewState.bagViewStatesArray) { bagViewState in
+                            CartBagSection(bagViewState: bagViewState)
+                        }
+                    }
+                }
+            
+        }.navigationTitle("Shopping Cart")
+    }
+}
+
+struct DemoAppCartView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        Group {
+            DemoAppCartView(cartViewState: CartViewState(order: MockOffers.load_OrderID_71169()!)).previewDisplayName("1 Sku")
+            
+            DemoAppCartView(cartViewState: CartViewState(skuCount: 0)).previewDisplayName("0 Skus")
+        }
+    }
+}

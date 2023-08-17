@@ -48,6 +48,10 @@ class TestCheckoutSequence {
         return "Order_ID_" + String(self.orderId) + "_CreateCart_Response.json"
     }
     
+    func getCartByID_Response_jsonResponseFileName() -> String {
+        return "Order_ID_" + String(self.orderId) + "_GetCartByID_Response.json"
+    }
+    
     func addSkuToCart_Response_jsonResponseFileName() -> String {
         return "Order_ID_" + String(self.orderId) + "_AddSkuToCart_Response.json"
     }

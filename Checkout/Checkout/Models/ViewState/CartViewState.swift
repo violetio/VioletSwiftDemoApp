@@ -64,6 +64,7 @@ class BagViewState: ObservableObject, Identifiable {
     @Published var bagSubtotalText: String = ""
     @Published var bagMerchantName: String = ""
     
+    
     var orderSkuViewStatesArray: [OrderSkuViewState] { return Array(orderSkuViewStates.values) }
     
     var id: Int64 { bagID }
@@ -96,6 +97,7 @@ class BagViewState: ObservableObject, Identifiable {
 class OrderSkuViewState: ObservableObject, Identifiable {
     @Published var orderSkuID: OrderSkuID = 0
     @Published var quantity: Int = 0
+    @Published var thumbURL: URL? = nil
     
     init(orderSkuID: OrderSkuID = 0, skuCount: Int = 0, orderSku: OrderSku? = nil) {
         self.orderSkuID = orderSkuID
@@ -110,6 +112,9 @@ class OrderSkuViewState: ObservableObject, Identifiable {
     func update(orderSku: OrderSku) {
         self.orderSkuID = orderSku.id ?? 0
         self.quantity = orderSku.quantity ?? 0
+        if let urlString = orderSku.thumbnail {
+            thumbURL = URL(string: urlString)
+        }
     }
     
     

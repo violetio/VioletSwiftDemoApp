@@ -11,7 +11,25 @@ struct CartBagSkuCell: View {
     @ObservedObject var orderSkuViewState: OrderSkuViewState
     var body: some View {
         HStack {
-            
+            if let thumbURL = orderSkuViewState.thumbURL {
+                AsyncImage(url: thumbURL) { phase in
+                    if let image = phase.image {
+                        image.resizable().scaledToFill()
+                    } else if phase.error != nil {
+                        FigmaConstants.Colors.scrollViewBackgroundColor
+                    } else {
+                        FigmaConstants.Colors.scrollViewBackgroundColor
+                    }
+                    
+                }.frame(width: 72,
+                        height: 72).clipped()
+            }
+            else {
+                Text("No Image Available")
+                    .font(Font.custom("SF Pro", size: 14))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
+            }
             VStack {
                 Text("OrderSkuId: \(orderSkuViewState.orderSkuID)")
             }

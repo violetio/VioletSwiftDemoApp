@@ -326,33 +326,4 @@ final class APIModelsTests: APIXCTestCase {
         }
     }
 
-    func test_1_LoginPostRequest() {
-        // Given
-        let loginPostRequest = LoginPostRequest(loginInputs: appCreds)
-        let expectation = XCTestExpectation(description: "CallCompleted True")
-
-        let streamHandle: AnyCancellable? = loginPostRequest.$callCompleted
-            // Remove the first (initial) value - we don't need it
-            .dropFirst()
-            .sink(receiveValue: {
-                XCTAssertEqual($0, true)
-                self.refreshToken = loginPostRequest.dataResponse?.refreshToken
-                self.token = loginPostRequest.dataResponse?.token
-                expectation.fulfill()
-
-            })
-
-        // When
-        loginPostRequest.send()
-
-        // Then
-        wait(for: [expectation], timeout: timeout_5s)
-        XCTAssertNotNil(streamHandle)
-        XCTAssertNotNil(self.token)
-        XCTAssertNotNil(self.refreshToken)
-
-        if let responseToPersist = loginPostRequest.dataResponse {
-            persistEncodable(responseToPersist, to: loginPostJsonResponse_fileName)
-        }
-    }
 }

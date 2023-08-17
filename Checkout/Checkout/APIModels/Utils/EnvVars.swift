@@ -7,6 +7,7 @@
 
 import Foundation
 
+/*
 struct EnvVars {
     let sandbox_app_secret: String
     let sandbox_app_id: Int64
@@ -43,3 +44,4 @@ struct EnvVars {
     }
 
 }
+*/

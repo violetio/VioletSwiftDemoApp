@@ -71,11 +71,11 @@ struct DemoAppCartView: View {
 }
 
 struct DemoAppCartView_Previews: PreviewProvider {
-    
+    static let mockOrder = MockOffers.load_OrderID_71169()!
     static var previews: some View {
         Group {
             NavigationStack {
-                DemoAppCartView(cartViewState: CartViewState(order: MockOffers.load_OrderID_71169()!))
+                DemoAppCartView(cartViewState: CartViewState(order: mockOrder))
             }.previewDisplayName("1 Sku")
             
             DemoAppCartView(cartViewState: CartViewState(skuCount: 0)).previewDisplayName("0 Skus")

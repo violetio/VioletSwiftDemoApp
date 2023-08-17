@@ -45,5 +45,11 @@ final class VariantsViewModelTests: XCTestCase {
             Logger.info("val: \(val.name)")
         }
     }
+    
+    func test_3() throws {
+        let sut = BagViewState(bag: MockOffers.load_OrderID_71169()!.bags![0])
+        XCTAssertEqual(sut.bagID, 56808)
+        XCTAssertEqual(sut.orderSkuViewStates.count, 3)
+    }
 
 }

@@ -12,9 +12,10 @@ struct CartBagSection: View {
     
     var body: some View {
         Section() {
-            Label("Merchant Name", image: "merchant_name_pre_icon")
+            Label(bagViewState.bagMerchantName, image: "merchant_name_pre_icon")
             ForEach(bagViewState.orderSkuViewStatesArray) { orderSkuViewState in
-                Text("OrderSkuId: \(orderSkuViewState.orderSkuID)")
+                CartBagSkuCell(orderSkuViewState: orderSkuViewState)
+                
             }
             
             BagTotalView

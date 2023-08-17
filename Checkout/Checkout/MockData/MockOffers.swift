@@ -31,6 +31,13 @@ public class MockOffers {
         }
         return decodePageOffer(from: jsonData)
     }
+    
+    public static func load_OrderID_71169() -> Order? {
+        guard let jsonData = jsonData(forResource: "Order_ID_71169_GetCartByID_Response") else {
+            return nil
+        }
+        return decodeOrder(from: jsonData)
+    }
 
     static func jsonData(forResource name: String) -> Data? {
         guard let fileURL = Bundle.main.url(forResource: name, withExtension: "json") else {
@@ -39,6 +46,19 @@ public class MockOffers {
         return try? Data(contentsOf: fileURL)
     }
 
+    static func decodeOrder(from jsonData: Data) -> Order? {
+        let decodeResult = CodableHelper.decode(Order.self, from: jsonData)
+        var pageOffer: Order? = nil
+        switch decodeResult {
+        case .failure:
+            pageOffer = nil
+        case .success(let decodedOrder):
+            pageOffer = decodedOrder
+        }
+        return pageOffer
+
+    }
+    
     static func decodePageOffer(from jsonData: Data) -> PageOffer? {
         let decodeResult = CodableHelper.decode(PageOffer.self, from: jsonData)
         var pageOffer: PageOffer? = nil

@@ -14,7 +14,7 @@ import XCTest
 final class APIModelsTests: APIXCTestCase {
     var refreshToken: String? = nil
     var token: String? = nil
-    var testCheckoutSequence = TestCheckoutSequence(orderId: 68863)
+    var testCheckoutSequence = TestCheckoutSequence(orderId: 71169)
 
 //    func test_11_CatalogSearchOffersRequest() {
 //        let request = CatalogSearchOffersRequest()
@@ -165,20 +165,25 @@ final class APIModelsTests: APIXCTestCase {
     //** PROXY TESTED
     func test_5_GetOrderByIDRequest() {
         // Given
-        let getOrderByIDRequest = GetCartByIDRequest(orderId: 68863)
+        let request = GetCartByIDRequest(orderId: testCheckoutSequence.orderId)
 
-        let expectationRunner = ExpectationRunner(getOrderByIDRequest)
+        let expectationRunner = ExpectationRunner(request)
         expectationRunner.sink {
             XCTAssertEqual($0, true)
         }
 
         // When
-        getOrderByIDRequest.send()
+        request.send()
 
         // Then
         wait(for: expectationRunner.expectations, timeout: timeout_5s)
         XCTAssertNotNil(expectationRunner.streamHandle)
-        XCTAssertNotNil(getOrderByIDRequest.dataResponse)
+        XCTAssertNotNil(request.dataResponse)
+        
+        
+        if let aDataResponse = request.dataResponse {
+            persistEncodable(aDataResponse, to: self.testCheckoutSequence.getCartByID_Response_jsonResponseFileName())
+        }
     }
     
     //** PROXY TESTED

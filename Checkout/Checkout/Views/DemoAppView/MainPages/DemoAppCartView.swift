@@ -33,9 +33,10 @@ struct DemoAppCartView: View {
 }
 
 struct DemoAppCartView_Previews: PreviewProvider {
+    
     static var previews: some View {
         Group {
-            DemoAppCartView(cartViewState: CartViewState(skuCount: 1)).previewDisplayName("1 Sku")
+            DemoAppCartView(cartViewState: CartViewState(order: MockOffers.load_OrderID_71169()!)).previewDisplayName("1 Sku")
             
             DemoAppCartView(cartViewState: CartViewState(skuCount: 0)).previewDisplayName("0 Skus")
         }

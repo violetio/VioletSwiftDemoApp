@@ -130,6 +130,7 @@
 		E7F8D5C92A8A82DF00F720CD /* OfferPDPViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F8D5C82A8A82DF00F720CD /* OfferPDPViewState.swift */; };
 		E7F8D5CD2A8D2B7B00F720CD /* DemoAppCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F8D5CC2A8D2B7B00F720CD /* DemoAppCartView.swift */; };
 		E7F8D5CF2A8D58E500F720CD /* CartBagSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F8D5CE2A8D58E500F720CD /* CartBagSection.swift */; };
+		E7F8D5D12A8E744300F720CD /* Order_ID_71169_GetCartByID_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = E7F8D5D02A8E744300F720CD /* Order_ID_71169_GetCartByID_Response.json */; };
 		E7FA7BC12A674AFA001E9906 /* AddSkuToCartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FA7BC02A674AFA001E9906 /* AddSkuToCartRequest.swift */; };
 		E7FA7BC32A68479A001E9906 /* RemoveSkuFromCartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FA7BC22A684799001E9906 /* RemoveSkuFromCartRequest.swift */; };
 		E7FA7BC72A688D58001E9906 /* shipping_methods_get_bag_id_54314.json in Resources */ = {isa = PBXBuildFile; fileRef = E7FA7BC62A688D58001E9906 /* shipping_methods_get_bag_id_54314.json */; };
@@ -278,6 +279,7 @@
 		E7F8D5C82A8A82DF00F720CD /* OfferPDPViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferPDPViewState.swift; sourceTree = "<group>"; };
 		E7F8D5CC2A8D2B7B00F720CD /* DemoAppCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppCartView.swift; sourceTree = "<group>"; };
 		E7F8D5CE2A8D58E500F720CD /* CartBagSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBagSection.swift; sourceTree = "<group>"; };
+		E7F8D5D02A8E744300F720CD /* Order_ID_71169_GetCartByID_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order_ID_71169_GetCartByID_Response.json; sourceTree = "<group>"; };
 		E7FA7BC02A674AFA001E9906 /* AddSkuToCartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSkuToCartRequest.swift; sourceTree = "<group>"; };
 		E7FA7BC22A684799001E9906 /* RemoveSkuFromCartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveSkuFromCartRequest.swift; sourceTree = "<group>"; };
 		E7FA7BC62A688D58001E9906 /* shipping_methods_get_bag_id_54314.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shipping_methods_get_bag_id_54314.json; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 		E71CFB9229C3B32C00598B15 /* MockData */ = {
 			isa = PBXGroup;
 			children = (
+				E7F8D5D02A8E744300F720CD /* Order_ID_71169_GetCartByID_Response.json */,
 				E72E000629EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json */,
 				E72EFFE829DC88E1009F7BFE /* MockOffers.swift */,
 				E72EFFE729DC88E1009F7BFE /* Offer_ID_12555_response.json */,
@@ -818,6 +821,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7F8D5D12A8E744300F720CD /* Order_ID_71169_GetCartByID_Response.json in Resources */,
 				E72E000729EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json in Resources */,
 				E70BEB6E29B92B210030335E /* Preview Assets.xcassets in Resources */,
 				E70BEB6B29B92B210030335E /* Assets.xcassets in Resources */,

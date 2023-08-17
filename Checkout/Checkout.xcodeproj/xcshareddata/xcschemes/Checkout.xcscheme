@@ -29,8 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E70BEB7229B92B220030335E"
@@ -72,73 +71,6 @@
             ReferencedContainer = "container:Checkout.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "CFNETWORK_DIAGNOSTICS"
-            value = "&quot;3&quot;"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "sandbox_app_id"
-            value = "10382"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "sandbox_app_secret"
-            value = "48f50b967d6944b18df3c212ca60a151"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "sandbox_app_username"
-            value = "ishan.guru@violet.io"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "sandbox_app_password"
-            value = "vxb*EHE4ahw4zmf@ekc"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "sandbox_app_id_alan"
-            value = "10199"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "sandbox_app_secret_alan"
-            value = "c50e054620634e9aacc22f5529b2782c"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "sandbox_app_username_alan"
-            value = "alan+sandbox@violet.io"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "sandbox_app_password_alan"
-            value = "SandboxPass1234!@"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "sandbox_app_id_ishan"
-            value = "10382"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "sandbox_app_secret_ishan"
-            value = "48f50b967d6944b18df3c212ca60a151"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "sandbox_app_username_ishan"
-            value = "ishan.guru@violet.io"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "sandbox_app_password_ishan"
-            value = "vxb*EHE4ahw4zmf@ekc"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

@@ -11,6 +11,7 @@ import Violet
 class CartViewState: ObservableObject {
     @Published var cartId: Int64? = nil
     @Published var skuCount: Int = 0
+    @Published var cartSubTotalText: String = ""
     @Published var bagViewStates: [Int64: BagViewState] = [:]
     
     var noCart: Bool { cartId == nil }
@@ -33,6 +34,9 @@ class CartViewState: ObservableObject {
         if let orderId = order.id {
             self.cartId = orderId
             Logger.debug("CartViewState - - Order ID: \(orderId)")
+            
+            self.cartSubTotalText = (Double(order.subTotal ?? 0) / 100).formatted(.currency(code: "USD"))
+            
             var calcSkuCount: Int = 0
             order.bags?.forEach({ bag in
                 Logger.debug("CartViewState - - - Bag ID: \(bag.id ?? 0)")

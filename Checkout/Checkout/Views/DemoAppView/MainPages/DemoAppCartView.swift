@@ -34,7 +34,7 @@ struct DemoAppCartView: View {
                     HStack {
                         Text("Subtotal")
                         Spacer()
-                        Text("$1.99")
+                        Text(cartViewState.cartSubTotalText)
                     }.font(.system(size: 14, weight: .semibold))
                         .padding(0)
                         //.withBlackBorder()

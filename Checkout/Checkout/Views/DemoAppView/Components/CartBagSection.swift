@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct CartBagSection: View {
+    @ObservedObject var bagViewState: BagViewState
+    
     var body: some View {
         Section() {
             Label("Merchant Name", image: "merchant_name_pre_icon")
-            Text("Item 1")
-            Text("Item 2")
+            ForEach(bagViewState.orderSkuViewStatesArray) { orderSkuViewState in
+                Text("OrderSkuId: \(orderSkuViewState.orderSkuID)")
+            }
+            
+            //Text("Item 2")
             BagTotalView
         }
     }
@@ -31,7 +36,7 @@ struct CartBagSection: View {
 struct CartBagSection_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            CartBagSection()
+            CartBagSection(bagViewState: BagViewState(bagID: 56808, skuCount: 5))
         }
     }
 }

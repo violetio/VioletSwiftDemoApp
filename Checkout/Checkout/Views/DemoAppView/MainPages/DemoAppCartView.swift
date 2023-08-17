@@ -22,7 +22,9 @@ struct DemoAppCartView: View {
 
                 } else {
                     List {
-                        CartBagSection()
+                        ForEach(cartViewState.bagViewStatesArray) { bagViewState in
+                            CartBagSection(bagViewState: bagViewState)
+                        }
                     }
                 }
             

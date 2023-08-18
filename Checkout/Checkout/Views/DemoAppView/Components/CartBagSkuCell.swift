@@ -38,13 +38,15 @@ struct CartBagSkuCell: View {
                     .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
                 Text(orderSkuViewState.skuPriceText)
                     .font(.system(size: 12, weight: .semibold))
+
                   
             }
         }.swipeActions {
             Button("Remove") {
                 print("Do Remove")
-            }
-        }
+            }.tint(.red)
+        }.frame(minHeight: 92)
+        
         
     }
 }

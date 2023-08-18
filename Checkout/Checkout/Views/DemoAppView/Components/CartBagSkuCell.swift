@@ -30,8 +30,19 @@ struct CartBagSkuCell: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
             }
-            VStack {
-                Text("OrderSkuId: \(orderSkuViewState.orderSkuID)")
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Offer name")
+                    .font(.system(size: 12, weight: .semibold))
+                Text("Brand Name")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
+                Text("$50.00 ")
+                    .font(.system(size: 12, weight: .semibold))
+                  
+            }
+        }.swipeActions {
+            Button("Remove") {
+                print("Do Remove")
             }
         }
         

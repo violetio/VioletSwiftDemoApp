@@ -23,11 +23,14 @@ extension AppStore {
                 let newAPICall = APICall(apiCall: GetPageOffersByMerchantIDRequest(merchantId: merchantId))
                 pendingAPICalls.enqueue(newAPICall)
                 self.state.offerSearchViewState.loading = true
-                newAPICall.send { dataResponse, _ in
+                newAPICall.send { dataResponse, dataError in
                     if let pageOffer = dataResponse {
                         Logger.info("Got PageOffer")
                         self.state.offerSearchViewState.updateLoadedOfferItems(pageOffer)
                         self.state.offerSearchViewState.loading = false
+                    } else if let apiError = dataError {
+                        Logger.error(apiError.localizedDescription)
+                        self.state.demoProxyViewState.setError(apiError: apiError)
                     }
                 }
             case .createCartRequest:
@@ -37,22 +40,28 @@ extension AppStore {
                                                                     baseCurrency: "USD"))
                 pendingAPICalls.enqueue(newAPICall)
 
-                newAPICall.send { dataResponse, _ in
+                newAPICall.send { dataResponse, dataError in
                     if let order = dataResponse,
                        let orderId = order.id{
                         Logger.info("Created Cart ID: \(orderId)")
                         self.state.cartViewState.updateWithNewOrder(order: order)
+                    } else if let apiError = dataError {
+                        Logger.error(apiError.localizedDescription)
+                        self.state.demoProxyViewState.setError(apiError: apiError)
                     }
                 }
             case .cartByID(let orderID):
                 Logger.info("Store GetCartByID")
                 let newAPICall = APICall(apiCall: GetCartByIDRequest(orderId: orderID))
                 pendingAPICalls.enqueue(newAPICall)
-                newAPICall.send { dataResponse, _ in
+                newAPICall.send { dataResponse, dataError in
                     if let order = dataResponse,
                        let orderId = order.id{
                         Logger.info("Resume Cart ID: \(orderId)")
                         self.state.cartViewState.updateWithNewOrder(order: order)
+                    } else if let apiError = dataError {
+                        Logger.error(apiError.localizedDescription)
+                        self.state.demoProxyViewState.setError(apiError: apiError)
                     }
                 }
             case .addSkuToCart(let orderID, let orderSkuId, let quantity):

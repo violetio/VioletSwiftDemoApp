@@ -12,7 +12,7 @@ struct DemoAppView: View {
     
     var body: some View {
         NavigationStack {
-            DemoAppProductGrid(store: $store, offerSearchViewState: store.offerSearchViewState)
+            DemoAppProductGrid(store: $store, offerSearchViewState: store.offerSearchViewState, demoProxyViewState: store.demoChannelViewState)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {

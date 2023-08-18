@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CartBagSkuCell: View {
+    @Binding var store: AppStore
     @ObservedObject var orderSkuViewState: OrderSkuViewState
     var body: some View {
         HStack {
@@ -48,7 +49,7 @@ struct CartBagSkuCell: View {
             }
         }.swipeActions {
             Button("Remove") {
-                print("Do Remove")
+                store.sender.send(.removeSkuFromCart(orderSkuViewState.orderID, orderSkuViewState.orderSkuID))
             }.tint(.red)
         }.frame(minHeight: 92)
         
@@ -63,6 +64,7 @@ struct CarBagOrderSkuListCell_Previews: PreviewProvider {
     static let mockSku2 = mockBag.skus![0]
     
     static var previews: some View {
-        CartBagSkuCell(orderSkuViewState: OrderSkuViewState(orderSku: mockSku1))
+        CartBagSkuCell(store: AppStore.mockAppStoreBinding,
+                       orderSkuViewState: OrderSkuViewState(orderID: mockOrder.id!, orderSku: mockSku1))
     }
 }

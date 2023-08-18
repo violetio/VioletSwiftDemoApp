@@ -27,7 +27,8 @@ struct DemoAppView: View {
                         
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        NavBarCartButton(action: {
+                        NavBarCartButton(store: $store,
+                                         action: {
                             print("Custom button tapped!")
                         }, cartViewState: store.cartViewState)
                     }

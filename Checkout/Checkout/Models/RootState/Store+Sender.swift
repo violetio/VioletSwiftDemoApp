@@ -77,8 +77,8 @@ extension AppStore {
                         self.state.cartViewState.updateWithNewOrder(order: order)
                     }
                 }
-            case .removeSkuFromCart(let orderID):
-                Logger.debug("Store+Sender: removeSkuFromCart \(orderID)")
+            case .removeSkuFromCart(let orderID, let orderSkuID):
+                Logger.debug("Store+Sender: removeSku: \(orderSkuID) FromCart: \(orderID)")
             case .updateCartCustomerRequest:
                 Logger.info("Store: Create Cart Request:")
             }

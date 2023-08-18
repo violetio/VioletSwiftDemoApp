@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DemoAppCartView: View {
+    @Binding var store: AppStore
     @ObservedObject var cartViewState: CartViewState
     
     var body: some View {
@@ -23,7 +24,8 @@ struct DemoAppCartView: View {
                 } else {
                     List {
                         ForEach(cartViewState.bagViewStatesArray) { bagViewState in
-                            CartBagSection(bagViewState: bagViewState)
+                            CartBagSection(store: $store,
+                                           bagViewState: bagViewState)
                         }
                     }
                 }
@@ -75,10 +77,12 @@ struct DemoAppCartView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationStack {
-                DemoAppCartView(cartViewState: CartViewState(order: mockOrder))
+                DemoAppCartView(store: AppStore.mockAppStoreBinding,
+                                cartViewState: CartViewState(order: mockOrder))
             }.previewDisplayName("1 Sku")
             
-            DemoAppCartView(cartViewState: CartViewState(skuCount: 0)).previewDisplayName("0 Skus")
+            DemoAppCartView(store: AppStore.mockAppStoreBinding,
+                            cartViewState: CartViewState(skuCount: 0)).previewDisplayName("0 Skus")
         }
     }
 }

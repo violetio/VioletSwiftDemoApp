@@ -9,16 +9,18 @@ import SwiftUI
 
 struct QuantityPicker: View {
     
-    @State var quatitySelected: Int = 0
+    @State var quatitySelected: Int = 1
+    let pickRange = (1...10)
     var body: some View {
         VStack(alignment: .trailing, spacing: 0) {
             Picker(selection: $quatitySelected) {
-                Text("QTY: 0").font(.system(size: 12, weight: .semibold)).tag(0).foregroundColor(.black)
-                Text("QTY: 1").font(.system(size: 12, weight: .semibold)).tag(1).foregroundColor(.black)
+                ForEach(Array(pickRange), id: \.self) { pickValue in
+                    Text("QTY: \(pickValue)").font(.system(size: 12, weight: .semibold)).tag(pickValue).foregroundColor(.black)
+                }.foregroundColor(.black)
                 
-            } label: {}
-            
-        }.frame(width: 105, height: 34)
+            } label: {}.frame(width: 95, height: 26)
+                .scaleEffect(0.75)   
+        }
     }
 }
 

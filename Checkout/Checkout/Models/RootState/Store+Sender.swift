@@ -73,12 +73,22 @@ extension AppStore {
                 newAPICall.send { dataResponse, _ in
                     if let order = dataResponse,
                        let orderId = order.id{
-                        Logger.debug("Store+Sender: addSkuToCart Cart ID: \(orderId)")
+                        Logger.debug("Store+Sender: ✅ addSkuToCart Cart ID: \(orderId)")
                         self.state.cartViewState.updateWithNewOrder(order: order)
                     }
                 }
             case .removeSkuFromCart(let orderID, let orderSkuID):
                 Logger.debug("Store+Sender: removeSku: \(orderSkuID) FromCart: \(orderID)")
+                let newAPICall = APICall(apiCall: RemoveSkuFromCartRequest(orderId: orderID,
+                                                                           orderSkuId: orderSkuID))
+                pendingAPICalls.enqueue(newAPICall)
+                newAPICall.send { dataResponse, _ in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.debug("Store+Sender: ✅ RemoveSkuFromCart Cart ID: \(orderId)")
+                        self.state.cartViewState.updateWithNewOrder(order: order)
+                    }
+                }
             case .updateCartCustomerRequest:
                 Logger.info("Store: Create Cart Request:")
             }

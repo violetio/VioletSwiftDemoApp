@@ -98,6 +98,9 @@ class OrderSkuViewState: ObservableObject, Identifiable {
     @Published var orderSkuID: OrderSkuID = 0
     @Published var quantity: Int = 0
     @Published var thumbURL: URL? = nil
+    @Published var name: String = ""
+    @Published var brand: String = ""
+    @Published var skuPriceText: String = ""
     
     init(orderSkuID: OrderSkuID = 0, skuCount: Int = 0, orderSku: OrderSku? = nil) {
         self.orderSkuID = orderSkuID
@@ -112,6 +115,11 @@ class OrderSkuViewState: ObservableObject, Identifiable {
     func update(orderSku: OrderSku) {
         self.orderSkuID = orderSku.id ?? 0
         self.quantity = orderSku.quantity ?? 0
+        
+        self.skuPriceText = (Double(orderSku.price ?? 0) / 100).formatted(.currency(code: "USD"))
+        
+        self.name = orderSku.name ?? ""
+        self.brand = orderSku.brand ?? ""
         if let urlString = orderSku.thumbnail {
             thumbURL = URL(string: urlString)
         }

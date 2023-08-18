@@ -31,12 +31,12 @@ struct CartBagSkuCell: View {
                     .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
             }
             VStack(alignment: .leading, spacing: 5) {
-                Text("Offer name")
+                Text(orderSkuViewState.name)
                     .font(.system(size: 12, weight: .semibold))
-                Text("Brand Name")
+                Text(orderSkuViewState.brand)
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
-                Text("$50.00 ")
+                Text(orderSkuViewState.skuPriceText)
                     .font(.system(size: 12, weight: .semibold))
                   
             }

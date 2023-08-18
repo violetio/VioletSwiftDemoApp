@@ -59,6 +59,7 @@ class CartViewState: ObservableObject {
 }
 
 class BagViewState: ObservableObject, Identifiable {
+    @Published var orderID: OrderID = 0
     @Published var bagID: Int64 = 0
     @Published var orderSkuViewStates: [OrderSkuID: OrderSkuViewState]
     @Published var bagSubtotalText: String = ""
@@ -80,12 +81,13 @@ class BagViewState: ObservableObject, Identifiable {
     
     func update(bag: Bag) {
         self.bagID = bag.id ?? 0
+        self.orderID = bag.orderId ?? 0
         self.bagMerchantName = bag.merchantName ?? ""
         self.bagSubtotalText = (Double(bag.subTotal ?? 0) / 100).formatted(.currency(code: "USD"))
         var collectOrderSkuViewStates: [OrderSkuID: OrderSkuViewState] = [:]
         bag.skus?.forEach({ orderSku in
             if let orderSkuID = orderSku.id {
-                let nextOrderSkuViewState = OrderSkuViewState(orderSku: orderSku)
+                let nextOrderSkuViewState = OrderSkuViewState(orderID: self.orderID, orderSku: orderSku)
                 collectOrderSkuViewStates[orderSkuID] = nextOrderSkuViewState
             }
         })
@@ -95,6 +97,7 @@ class BagViewState: ObservableObject, Identifiable {
 }
 
 class OrderSkuViewState: ObservableObject, Identifiable {
+    @Published var orderID: OrderID = 0
     @Published var orderSkuID: OrderSkuID = 0
     @Published var quantity: Int = 0
     @Published var thumbURL: URL? = nil
@@ -102,9 +105,8 @@ class OrderSkuViewState: ObservableObject, Identifiable {
     @Published var brand: String = ""
     @Published var skuPriceText: String = ""
     
-    init(orderSkuID: OrderSkuID = 0, skuCount: Int = 0, orderSku: OrderSku? = nil) {
-        self.orderSkuID = orderSkuID
-        self.quantity = skuCount
+    init(orderID: OrderID, orderSku: OrderSku? = nil) {
+        self.orderID = orderID
         if let initOrderSku = orderSku {
             self.update(orderSku: initOrderSku)
         }

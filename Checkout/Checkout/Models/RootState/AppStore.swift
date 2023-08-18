@@ -10,7 +10,7 @@ import SwiftUI
 class AppStore {
     class AppState {
 
-        var demoChannelViewState: DemoChannelViewState
+        var demoProxyViewState: DemoProxyActiveViewState
         var cartViewState: CartViewState
         var offerSearchViewState: OfferSearchViewState
         var offerPDPViewStates: [Int64: OfferPDPViewState] = [:]
@@ -24,16 +24,16 @@ class AppStore {
             return newOfferPDPViewState
         }
         
-        init(demoChannelViewState: DemoChannelViewState,
+        init(demoChannelViewState: DemoProxyActiveViewState,
              cartViewState: CartViewState,
              offerSearchViewState: OfferSearchViewState) {
-            self.demoChannelViewState = demoChannelViewState
+            self.demoProxyViewState = demoChannelViewState
             self.cartViewState = cartViewState
             self.offerSearchViewState = offerSearchViewState
         }
 
         convenience init() {
-            self.init(demoChannelViewState: DemoChannelViewState(),
+            self.init(demoChannelViewState: DemoProxyActiveViewState(),
                       cartViewState: CartViewState(),
                       offerSearchViewState: OfferSearchViewState())
         }
@@ -44,7 +44,7 @@ class AppStore {
         case createCartRequest
         case cartByID(OrderID)
         case addSkuToCart(OrderID,OrderSkuID,OrderQuantity)
-        case removeSkuFromCart(OrderID)
+        case removeSkuFromCart(OrderID,OrderSkuID)
         case updateCartCustomerRequest
     }
 
@@ -58,14 +58,14 @@ class AppStore {
     static let mockAppStore = AppStore(cartViewState: CartViewState())
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }
 
-    var demoChannelViewState: DemoChannelViewState { state.demoChannelViewState }
+    var demoChannelViewState: DemoProxyActiveViewState { state.demoProxyViewState }
 
     var cartViewState: CartViewState { state.cartViewState }
     var offerSearchViewState: OfferSearchViewState { state.offerSearchViewState }
 
     let useDemoLogin: Bool = true
 
-    init(demoChannelViewState: DemoChannelViewState,
+    init(demoChannelViewState: DemoProxyActiveViewState,
          cartViewState: CartViewState,
          offerSearchViewState: OfferSearchViewState)
     {
@@ -77,8 +77,8 @@ class AppStore {
     }
 
     convenience init(cartViewState: CartViewState? = nil) {
-        self.init(demoChannelViewState: DemoChannelViewState(),
+        self.init(demoChannelViewState: DemoProxyActiveViewState(),
                   cartViewState: cartViewState ?? CartViewState(),
-                  offerSearchViewState: OfferSearchViewState.mockLoaded())
+                  offerSearchViewState: OfferSearchViewState.mockEmpty())
     }
 }

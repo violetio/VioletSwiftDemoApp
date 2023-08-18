@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct CartBagSection: View {
+    @Binding var store: AppStore
     @ObservedObject var bagViewState: BagViewState
     
     var body: some View {
         Section() {
-            Label("Merchant Name", image: "merchant_name_pre_icon")
+            Label(bagViewState.bagMerchantName, image: "merchant_name_pre_icon")
             ForEach(bagViewState.orderSkuViewStatesArray) { orderSkuViewState in
-                Text("OrderSkuId: \(orderSkuViewState.orderSkuID)")
+                CartBagSkuCell(store: $store,
+                               orderSkuViewState: orderSkuViewState)
+                
             }
             
-            //Text("Item 2")
             BagTotalView
         }
     }
@@ -28,7 +30,7 @@ struct CartBagSection: View {
             Text("Bag Total")
                 
             Spacer()
-            Text("$1.99")
+            Text(bagViewState.bagSubtotalText)
         }.font(.system(size: 12, weight: .semibold))
     }
 }
@@ -36,7 +38,8 @@ struct CartBagSection: View {
 struct CartBagSection_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            CartBagSection(bagViewState: BagViewState(bagID: 56808, skuCount: 5))
+            CartBagSection(store: AppStore.mockAppStoreBinding,
+                           bagViewState: BagViewState(bagID: 56808, bag: MockOffers.load_OrderID_71169()!.bags![0]))
         }
     }
 }

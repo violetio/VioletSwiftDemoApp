@@ -15,6 +15,7 @@ struct DemoAppProductGrid: View {
     
     @Binding var store: AppStore
     @ObservedObject var offerSearchViewState: OfferSearchViewState
+    @ObservedObject var demoProxyViewState: DemoProxyActiveViewState
 
     let layout = [
         GridItem(.fixed(340))
@@ -22,7 +23,11 @@ struct DemoAppProductGrid: View {
     
     var body: some View {
         ScrollView {
-            
+            if !store.demoChannelViewState.proxyWorking {
+                VStack {
+                    Text("Proxy Server Problem")
+                }
+            } else
             if offerSearchViewState.loading {
                 VStack {
                     ProgressView() {
@@ -63,11 +68,11 @@ struct DemoAppProductGrid_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             DemoAppProductGrid(store: AppStore.mockAppStoreBinding,
-                               offerSearchViewState: OfferSearchViewState.mockLoaded()).previewDisplayName("Offers Returned")
+                               offerSearchViewState: OfferSearchViewState.mockLoaded(), demoProxyViewState: DemoProxyActiveViewState()).previewDisplayName("Offers Returned")
             
-            DemoAppProductGrid(store: AppStore.mockAppStoreBinding, offerSearchViewState: OfferSearchViewState.mockEmpty()).previewDisplayName("No Offers Returned")
+            DemoAppProductGrid(store: AppStore.mockAppStoreBinding, offerSearchViewState: OfferSearchViewState.mockEmpty(), demoProxyViewState: DemoProxyActiveViewState()).previewDisplayName("No Offers Returned")
             
-            DemoAppProductGrid(store: AppStore.mockAppStoreBinding, offerSearchViewState: OfferSearchViewState.mockLoading()).previewDisplayName("Loading Offers")
+            DemoAppProductGrid(store: AppStore.mockAppStoreBinding, offerSearchViewState: OfferSearchViewState.mockLoading(), demoProxyViewState: DemoProxyActiveViewState()).previewDisplayName("Loading Offers")
         }
     }
 }

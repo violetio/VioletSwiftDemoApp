@@ -31,7 +31,7 @@ struct CartBagSkuCell: View {
                     .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
             }
             VStack(alignment: .leading, spacing: 5) {
-                Text(orderSkuViewState.name)
+                Text(orderSkuViewState.name).truncationMode(.tail).lineLimit(2)
                     .font(.system(size: 12, weight: .semibold))
                 Text(orderSkuViewState.brand)
                     .font(.system(size: 12, weight: .semibold))

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E701B2BA2A8FF1E500A2EFD1 /* QuantityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2B92A8FF1E500A2EFD1 /* QuantityPicker.swift */; };
 		E70BEB6729B92B200030335E /* CheckoutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB6629B92B200030335E /* CheckoutApp.swift */; };
 		E70BEB6929B92B200030335E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB6829B92B200030335E /* ContentView.swift */; };
 		E70BEB6B29B92B210030335E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E70BEB6A29B92B210030335E /* Assets.xcassets */; };
@@ -158,6 +159,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E701B2B92A8FF1E500A2EFD1 /* QuantityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPicker.swift; sourceTree = "<group>"; };
 		E70BEB6329B92B200030335E /* Checkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70BEB6629B92B200030335E /* CheckoutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutApp.swift; sourceTree = "<group>"; };
 		E70BEB6829B92B200030335E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 				E7F8D5C62A869F1F00F720CD /* NavBarCartButton.swift */,
 				E7F8D5CE2A8D58E500F720CD /* CartBagSection.swift */,
 				E7F8D5D22A8EB83D00F720CD /* CartBagSkuCell.swift */,
+				E701B2B92A8FF1E500A2EFD1 /* QuantityPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E701B2BA2A8FF1E500A2EFD1 /* QuantityPicker.swift in Sources */,
 				E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */,
 				E7FA7BD12A69C3CB001E9906 /* CatalogSearchOffersRequest.swift in Sources */,
 				E7B41C8529FAC5E300E7371B /* ChannelHeadersAPICall.swift in Sources */,

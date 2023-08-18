@@ -30,14 +30,19 @@ struct CartBagSkuCell: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
             }
+            
             VStack(alignment: .leading, spacing: 5) {
                 Text(orderSkuViewState.name).truncationMode(.tail).lineLimit(2)
                     .font(.system(size: 12, weight: .semibold))
                 Text(orderSkuViewState.brand)
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(Color(red: 0.56, green: 0.56, blue: 0.58))
-                Text(orderSkuViewState.skuPriceText)
-                    .font(.system(size: 12, weight: .semibold))
+                HStack {
+                    Text(orderSkuViewState.skuPriceText)
+                        .font(.system(size: 12, weight: .semibold))
+                    Spacer()
+                    QuantityPicker()//.withBlackBorder()
+                }
 
                   
             }

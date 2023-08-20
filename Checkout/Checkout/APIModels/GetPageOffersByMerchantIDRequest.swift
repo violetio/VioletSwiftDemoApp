@@ -13,7 +13,7 @@ class GetPageOffersByMerchantIDRequest: ProxyAPICall<PageOffer> {
     let page: Int
     let size: Int
 
-    init(merchantId: Int64, page: Int = 1, size: Int = 50) {
+    init(merchantId: Int64, page: Int = 1, size: Int = 20) {
         self.merchantId = merchantId
         self.page = page
         self.size = size

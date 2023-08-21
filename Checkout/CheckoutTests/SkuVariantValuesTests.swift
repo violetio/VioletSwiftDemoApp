@@ -16,6 +16,9 @@ final class SkuVariantValuesTests: XCTestCase {
         let skuSet = offer_id_12555.skus!
         let firstSku = skuSet.first!
         let sut = SkuVariantValues(sku: firstSku)
+        //SkuVariantValues.inspect(sku: firstSku)
+        Logger.debug("SkuVariantValues: skuId = \(sut.skuId)")
+        Logger.debug("SkuVariantValues: variantNameValueMap = \(sut.variantNameValueMap)")
         
     }
 

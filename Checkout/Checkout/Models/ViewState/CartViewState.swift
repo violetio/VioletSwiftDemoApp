@@ -33,6 +33,8 @@ class CartViewState: ObservableObject {
         Logger.debug("CartViewState - Update")
         if let orderId = order.id {
             self.cartId = orderId
+            let currentBagIdSet = Set(bagViewStates.keys)
+            var updateBagIdSet = Set<Int64>()
             Logger.debug("CartViewState - - Order ID: \(orderId)")
             
             self.cartSubTotalText = (Double(order.subTotal ?? 0) / 100).formatted(.currency(code: "USD"))
@@ -41,6 +43,7 @@ class CartViewState: ObservableObject {
             order.bags?.forEach({ bag in
                 Logger.debug("CartViewState - - - Bag ID: \(bag.id ?? 0)")
                 if let bagID = bag.id {
+                    updateBagIdSet.insert(bagID)
                     bag.skus?.forEach({ orderSku in
                         if let orderSkuID = orderSku.id {
                             Logger.debug("CartViewState - - - OrderSku ID: \(orderSkuID)")
@@ -51,6 +54,13 @@ class CartViewState: ObservableObject {
                     bagViewStates[bagID] = BagViewState(bagID: bagID, bag: bag)
                 }
             })
+//            Logger.debug("CartViewState - - currentBagIdSet: \(currentBagIdSet)")
+//            Logger.debug("CartViewState - - updateBagIdSet: \(updateBagIdSet)")
+            let removedBagIdSet = currentBagIdSet.subtracting(updateBagIdSet)
+//            Logger.debug("CartViewState - - removedBagIdSet: \(removedBagIdSet)")
+            for removedBagId in removedBagIdSet {
+                bagViewStates.removeValue(forKey: removedBagId)
+            }
             
             self.skuCount = calcSkuCount
             Logger.debug("CartViewState - - skuCount: \(skuCount)")

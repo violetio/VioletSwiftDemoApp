@@ -14,23 +14,34 @@ struct QuantityPicker: View {
     @ObservedObject var orderSkuViewState: OrderSkuViewState
     let pickRange = (1...10)
     var body: some View {
-        VStack(alignment: .trailing, spacing: 0) {
-            Picker(selection: $quantitySelected) {
-                ForEach(Array(pickRange), id: \.self) { pickValue in
-                    Text("QTY: \(pickValue)").font(.system(size: 12, weight: .semibold)).tag(pickValue).foregroundColor(.black)
-                }.foregroundColor(.black)
-                
-            } label: {}.frame(width: 95, height: 26)
-                .scaleEffect(0.75).onChange(of: quantitySelected) { newValue in
-                    Logger().info("Quantity now: \(newValue)")
-                    store.sender.send(.updateSkuInCart(orderSkuViewState.orderID,
-                                                    orderSkuViewState.orderSkuID, newValue))
-                }
-        }
-//        .onAppear {
-//            quantitySelected = orderSkuViewState.quantity
-//            pickerActive = true
-//        }
+        ZStack {
+            HStack {
+                Spacer()
+                Picker(selection: $quantitySelected) {
+                    ForEach(Array(pickRange), id: \.self) { pickValue in
+                        Text("\(pickValue)").font(.system(size: 12, weight: .semibold)).tag(pickValue)
+                    }
+                    
+                } label: {}
+                    .frame(maxHeight: 21)
+                    .scaleEffect(0.75)
+                    .accentColor(.black)
+//                    .border(Color.green)
+            }
+            HStack {
+                Text("QTY:")
+                    .frame(maxHeight: 21)
+//                    .border(Color.green)
+                    .font(.system(size: 12, weight: .regular))
+                Spacer()
+            }
+        }.frame(maxWidth: 60, maxHeight: 21)
+            //.border(Color.blue)
+            .onChange(of: quantitySelected) { newValue in
+                Logger().info("Quantity now: \(newValue)")
+                store.sender.send(.updateSkuInCart(orderSkuViewState.orderID,
+                                                   orderSkuViewState.orderSkuID, newValue))
+            }
     }
 }
 

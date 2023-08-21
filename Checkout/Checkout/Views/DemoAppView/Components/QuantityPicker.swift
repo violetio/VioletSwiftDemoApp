@@ -9,7 +9,7 @@ import SwiftUI
 
 struct QuantityPicker: View {
     
-    @State var quantitySelected: Int = 1
+    @State var quantitySelected: Int
     @Binding var store: AppStore
     @ObservedObject var orderSkuViewState: OrderSkuViewState
     let pickRange = (1...10)
@@ -23,13 +23,14 @@ struct QuantityPicker: View {
             } label: {}.frame(width: 95, height: 26)
                 .scaleEffect(0.75).onChange(of: quantitySelected) { newValue in
                     Logger().info("Quantity now: \(newValue)")
-                    var diff = newValue - orderSkuViewState.quantity
-                    store.sender.send(.addSkuToCart(orderSkuViewState.orderID,
-                                                    orderSkuViewState.orderSkuID, diff))
+                    store.sender.send(.updateSkuInCart(orderSkuViewState.orderID,
+                                                    orderSkuViewState.orderSkuID, newValue))
                 }
-        }.onAppear {
-            quantitySelected = orderSkuViewState.quantity
         }
+//        .onAppear {
+//            quantitySelected = orderSkuViewState.quantity
+//            pickerActive = true
+//        }
     }
 }
 
@@ -40,7 +41,7 @@ struct QuantityPicker_Previews: PreviewProvider {
     static let mockSku2 = mockBag.skus![0]
     
     static var previews: some View {
-        QuantityPicker(store: AppStore.mockAppStoreBinding,
+        QuantityPicker(quantitySelected: 1, store: AppStore.mockAppStoreBinding,
                        orderSkuViewState: OrderSkuViewState(orderID: mockOrder.id!, orderSku: mockSku1))
     }
 }

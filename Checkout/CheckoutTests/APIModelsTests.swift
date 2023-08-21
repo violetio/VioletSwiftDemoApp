@@ -14,7 +14,7 @@ import XCTest
 final class APIModelsTests: APIXCTestCase {
     var refreshToken: String? = nil
     var token: String? = nil
-    var testCheckoutSequence = TestCheckoutSequence(orderId: 71169)
+    var testCheckoutSequence = TestCheckoutSequence(orderId: 72500)
 
 //    func test_11_CatalogSearchOffersRequest() {
 //        let request = CatalogSearchOffersRequest()
@@ -212,6 +212,35 @@ final class APIModelsTests: APIXCTestCase {
         }
     }
 
+    //** PROXY TESTED
+    func test_4c_UpdateSkuInCartCreate() {
+        // Given
+        let orderSkuId: Int64 = 76756
+        let orderSku_SkuId_33524 = OrderSku(quantity: 2, skuId: 33524)
+
+        let addSkuToCartRequest = UpdateSkuInCartRequest(orderId: testCheckoutSequence.orderId,
+                                                         orderSkuId: orderSkuId,
+                                                         orderSku: orderSku_SkuId_33524)
+        let expectationRunner = ExpectationRunner(addSkuToCartRequest)
+
+        expectationRunner.sink {
+            XCTAssertEqual($0, true)
+        }
+
+        // When
+        addSkuToCartRequest.send()
+
+        // Then
+        wait(for: expectationRunner.expectations, timeout: timeout_5s)
+        XCTAssertNotNil(expectationRunner.streamHandle)
+        XCTAssertNotNil(addSkuToCartRequest.dataResponse)
+
+        if let aCart = addSkuToCartRequest.dataResponse
+        {
+            persistEncodable(aCart, to: self.testCheckoutSequence.updateSkuInCart_Response_jsonResponseFileName())
+            
+        }
+    }
     //** PROXY TESTED
     func test_4a_AddSkuToCartCreate() {
         // Given

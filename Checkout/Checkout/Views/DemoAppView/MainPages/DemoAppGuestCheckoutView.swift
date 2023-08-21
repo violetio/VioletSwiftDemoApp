@@ -9,14 +9,13 @@ import SwiftUI
 
 struct DemoAppGuestCheckoutView: View {
     
-    @State var email: String = ""
-    @State var fullName: String = ""
+    @ObservedObject var guestCheckoutViewState: GuestCheckoutViewState
     var body: some View {
         VStack {
             Form {
-                TextField("Email", text: $email)
+                TextField("Email", text: $guestCheckoutViewState.email)
 
-                TextField("FullName", text: $fullName)
+                TextField("FullName", text: $guestCheckoutViewState.fullName)
             }.formStyle(.grouped)
             
 
@@ -27,6 +26,6 @@ struct DemoAppGuestCheckoutView: View {
 
 struct DemoAppGuestCheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        DemoAppGuestCheckoutView()
+        DemoAppGuestCheckoutView(guestCheckoutViewState: GuestCheckoutViewState())
     }
 }

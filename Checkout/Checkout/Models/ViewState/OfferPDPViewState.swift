@@ -18,14 +18,16 @@ class OfferPDPViewState: ObservableObject {
     
 
     init(offer: Offer) {
-        //Logger.debug("OfferPDPViewState: Init")
+        Logger.debug("OfferPDPViewState: Init - OfferID: \(offer.id ?? 0)")
         self.offer = offer
         self.variantsViewModel = VariantsViewModel(offer: offer)
         let variantsArray = offer.variantsArray()
+        Logger.debug("OfferPDPViewState: variantsArray - Count: \(variantsArray.count)")
         self.variants = variantsArray
         self.variantViewModels = variantsArray.compactMap { VariantViewModel(variant: $0)}.sorted(by: { l, r in
             l.name < r.name
         })
+        Logger.debug("OfferPDPViewState: Skus - Count: \(offer.skus?.count ?? 0)")
         if let singleSku = offer.singleSku(),
            let singleSkuID = singleSku.id {
             self.selectedSkuID = singleSkuID

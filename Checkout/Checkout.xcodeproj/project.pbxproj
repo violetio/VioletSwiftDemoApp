@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		E701B2BA2A8FF1E500A2EFD1 /* QuantityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2B92A8FF1E500A2EFD1 /* QuantityPicker.swift */; };
+		E701B2BC2A92A9A300A2EFD1 /* OfferVariants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2BB2A92A9A300A2EFD1 /* OfferVariants.swift */; };
+		E701B2BE2A92AA1700A2EFD1 /* OfferVariantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2BD2A92AA1700A2EFD1 /* OfferVariantsTests.swift */; };
+		E701B2C02A92AAE700A2EFD1 /* SkuVariantValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2BF2A92AAE700A2EFD1 /* SkuVariantValues.swift */; };
+		E701B2C22A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2C12A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift */; };
+		E701B2C42A93B5CE00A2EFD1 /* UpdateSkuInCartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2C32A93B5CE00A2EFD1 /* UpdateSkuInCartRequest.swift */; };
 		E70BEB6729B92B200030335E /* CheckoutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB6629B92B200030335E /* CheckoutApp.swift */; };
 		E70BEB6929B92B200030335E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB6829B92B200030335E /* ContentView.swift */; };
 		E70BEB6B29B92B210030335E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E70BEB6A29B92B210030335E /* Assets.xcassets */; };
@@ -160,6 +165,11 @@
 
 /* Begin PBXFileReference section */
 		E701B2B92A8FF1E500A2EFD1 /* QuantityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPicker.swift; sourceTree = "<group>"; };
+		E701B2BB2A92A9A300A2EFD1 /* OfferVariants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferVariants.swift; sourceTree = "<group>"; };
+		E701B2BD2A92AA1700A2EFD1 /* OfferVariantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferVariantsTests.swift; sourceTree = "<group>"; };
+		E701B2BF2A92AAE700A2EFD1 /* SkuVariantValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkuVariantValues.swift; sourceTree = "<group>"; };
+		E701B2C12A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkuVariantValuesTests.swift; sourceTree = "<group>"; };
+		E701B2C32A93B5CE00A2EFD1 /* UpdateSkuInCartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateSkuInCartRequest.swift; sourceTree = "<group>"; };
 		E70BEB6329B92B200030335E /* Checkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70BEB6629B92B200030335E /* CheckoutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutApp.swift; sourceTree = "<group>"; };
 		E70BEB6829B92B200030335E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -387,6 +397,8 @@
 				E71CFBB929D2402100598B15 /* TestCheckoutSequence.swift */,
 				E72E000C29EF33F1009F7BFE /* ExtensionsTests.swift */,
 				E7F8D5992A83FD3900F720CD /* VariantsViewModelTests.swift */,
+				E701B2BD2A92AA1700A2EFD1 /* OfferVariantsTests.swift */,
+				E701B2C12A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift */,
 			);
 			path = CheckoutTests;
 			sourceTree = "<group>";
@@ -434,6 +446,8 @@
 				E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */,
 				E712EAFD2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift */,
 				E7F8D5972A83FCF300F720CD /* VariantsViewModel.swift */,
+				E701B2BB2A92A9A300A2EFD1 /* OfferVariants.swift */,
+				E701B2BF2A92AAE700A2EFD1 /* SkuVariantValues.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -441,23 +455,24 @@
 		E70BEB9929BA54880030335E /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
-				E7FA7BCC2A689D20001E9906 /* ApplyShippingMethodsRequest.swift */,
-				E7FA7BC22A684799001E9906 /* RemoveSkuFromCartRequest.swift */,
-				E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */,
-				E71CFBB029CE5FB300598B15 /* CheckoutCartCustomerPostRequest.swift */,
-				E71CFBAE29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift */,
-				E71CFBA129CE0C1D00598B15 /* GetCartByIDRequest.swift */,
-				E71CFB9F29CD098D00598B15 /* GetOrderByIDRequest.swift */,
-				E71CFB9C29CCD01700598B15 /* Base */,
-				E71CFB9B29CCCFF800598B15 /* Utils */,
-				E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */,
-				E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */,
-				E71CFB9D29CCD92C00598B15 /* CreateCartRequest.swift */,
-				E71CFBAC29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift */,
-				E7B41C9B2A097B7C00E7371B /* LoginInputs.swift */,
 				E7FA7BC02A674AFA001E9906 /* AddSkuToCartRequest.swift */,
-				E7FA7BCE2A694F69001E9906 /* SubmitCartRequest.swift */,
+				E701B2C32A93B5CE00A2EFD1 /* UpdateSkuInCartRequest.swift */,
+				E7FA7BC22A684799001E9906 /* RemoveSkuFromCartRequest.swift */,
+				E7FA7BCC2A689D20001E9906 /* ApplyShippingMethodsRequest.swift */,
+				E71CFB9C29CCD01700598B15 /* Base */,
 				E7FA7BD02A69C3CB001E9906 /* CatalogSearchOffersRequest.swift */,
+				E71CFBB029CE5FB300598B15 /* CheckoutCartCustomerPostRequest.swift */,
+				E71CFBAC29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift */,
+				E71CFBAE29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift */,
+				E71CFB9D29CCD92C00598B15 /* CreateCartRequest.swift */,
+				E71CFBA129CE0C1D00598B15 /* GetCartByIDRequest.swift */,
+				E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */,
+				E71CFB9F29CD098D00598B15 /* GetOrderByIDRequest.swift */,
+				E72E000429EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift */,
+				E7B41C9B2A097B7C00E7371B /* LoginInputs.swift */,
+				E71CFB8029C10CDC00598B15 /* LoginPostRequest.swift */,
+				E7FA7BCE2A694F69001E9906 /* SubmitCartRequest.swift */,
+				E71CFB9B29CCCFF800598B15 /* Utils */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -873,6 +888,7 @@
 				E7F8D59E2A8420FA00F720CD /* OfferVariantValuePicker.swift in Sources */,
 				E7B41C5A29F58C6B00E7371B /* DemoUsernameAndPassword.swift in Sources */,
 				E7B41C9A2A0165CF00E7371B /* CartShippingMethodsSectionView.swift in Sources */,
+				E701B2C02A92AAE700A2EFD1 /* SkuVariantValues.swift in Sources */,
 				E72E000529EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift in Sources */,
 				E7B41CA42A097E7300E7371B /* ChannelHeader+Extensions.swift in Sources */,
 				E7B41C6E29F72E0D00E7371B /* OfferDetailView.swift in Sources */,
@@ -880,6 +896,7 @@
 				E71CFB8829C26C7100598B15 /* FileSystemObject.swift in Sources */,
 				E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */,
 				E72EFFE329D4C892009F7BFE /* ScenariosListView.swift in Sources */,
+				E701B2C42A93B5CE00A2EFD1 /* UpdateSkuInCartRequest.swift in Sources */,
 				E71CFB9A29CCCD7100598B15 /* DataResponseAPICall.swift in Sources */,
 				E72C46802A7866A700F8C267 /* OfferSearchViewState.swift in Sources */,
 				E7F8D58F2A82D67300F720CD /* DemoAppOfferPDP.swift in Sources */,
@@ -908,6 +925,7 @@
 				E7B41C982A01649900E7371B /* OrderShippingMethodWrapperArrayView.swift in Sources */,
 				E7B41C4329F3362000E7371B /* CartContentsView.swift in Sources */,
 				E72E001129F07B0F009F7BFE /* PreviewMocks.swift in Sources */,
+				E701B2BC2A92A9A300A2EFD1 /* OfferVariants.swift in Sources */,
 				E712EAFE2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift in Sources */,
 				E72E001429F0852F009F7BFE /* EntityViewModel.swift in Sources */,
 				E712EAFC2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift in Sources */,
@@ -958,10 +976,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E701B2C22A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift in Sources */,
 				E71CFBB829D2349500598B15 /* ExpectationRunner.swift in Sources */,
 				E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */,
 				E7F8D59A2A83FD3900F720CD /* VariantsViewModelTests.swift in Sources */,
 				E71CFBBA29D2402100598B15 /* TestCheckoutSequence.swift in Sources */,
+				E701B2BE2A92AA1700A2EFD1 /* OfferVariantsTests.swift in Sources */,
 				E71CFBA729CE0EBD00598B15 /* JsonDecodeTests.swift in Sources */,
 				E72E000D29EF33F1009F7BFE /* ExtensionsTests.swift in Sources */,
 				E71CFBAB29CE17B300598B15 /* TestBundleFileTestCase.swift in Sources */,

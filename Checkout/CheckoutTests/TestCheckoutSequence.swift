@@ -55,6 +55,10 @@ class TestCheckoutSequence {
     func addSkuToCart_Response_jsonResponseFileName() -> String {
         return "Order_ID_" + String(self.orderId) + "_AddSkuToCart_Response.json"
     }
+    
+    func updateSkuInCart_Response_jsonResponseFileName() -> String {
+        return "Order_ID_" + String(self.orderId) + "_UpdateSkuInCart_Response.json"
+    }
     /**
         Looking for:
         "stripe_key":  String,

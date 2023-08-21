@@ -64,9 +64,9 @@ extension AppStore {
                         self.state.demoProxyViewState.setError(apiError: apiError)
                     }
                 }
-            case .addSkuToCart(let orderID, let orderSkuId, let quantity):
+            case .addSkuToCart(let orderID, let offerSkuId, let quantity):
                 Logger.debug("Store+Sender: addSkuToCart \(orderID)")
-                let orderSku = OrderSku(quantity: quantity, skuId: orderSkuId)
+                let orderSku = OrderSku(quantity: quantity, skuId: offerSkuId)
                 let newAPICall = APICall(apiCall: AddSkuToCartRequest(orderId: orderID,
                                                                       orderSku: orderSku))
                 pendingAPICalls.enqueue(newAPICall)
@@ -74,6 +74,20 @@ extension AppStore {
                     if let order = dataResponse,
                        let orderId = order.id{
                         Logger.debug("Store+Sender: ✅ addSkuToCart Cart ID: \(orderId)")
+                        self.state.cartViewState.updateWithNewOrder(order: order)
+                    }
+                }
+            case .updateSkuInCart(let orderID, let orderSkuId, let quantity):
+                Logger.debug("Store+Sender: updateSkuInCart \(orderID) - orderSkuId: - \(orderSkuId)")
+                let orderSku = OrderSku(quantity: quantity, skuId: orderSkuId)
+                let newAPICall = APICall(apiCall: UpdateSkuInCartRequest(orderId: orderID,
+                                                                         orderSkuId: orderSkuId,
+                                                                         orderSku: orderSku))
+                pendingAPICalls.enqueue(newAPICall)
+                newAPICall.send { dataResponse, _ in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.debug("Store+Sender: ✅ updateSkuInCart Cart ID: \(orderId)")
                         self.state.cartViewState.updateWithNewOrder(order: order)
                     }
                 }

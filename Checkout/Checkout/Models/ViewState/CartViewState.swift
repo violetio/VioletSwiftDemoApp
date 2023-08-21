@@ -54,10 +54,13 @@ class CartViewState: ObservableObject {
                     bagViewStates[bagID] = BagViewState(bagID: bagID, bag: bag)
                 }
             })
-            Logger.debug("CartViewState - - currentBagIdSet: \(currentBagIdSet)")
-            Logger.debug("CartViewState - - updateBagIdSet: \(updateBagIdSet)")
+//            Logger.debug("CartViewState - - currentBagIdSet: \(currentBagIdSet)")
+//            Logger.debug("CartViewState - - updateBagIdSet: \(updateBagIdSet)")
             let removedBagIdSet = currentBagIdSet.subtracting(updateBagIdSet)
-            Logger.debug("CartViewState - - removedBagIdSet: \(removedBagIdSet)")
+//            Logger.debug("CartViewState - - removedBagIdSet: \(removedBagIdSet)")
+            for removedBagId in removedBagIdSet {
+                bagViewStates.removeValue(forKey: removedBagId)
+            }
             
             self.skuCount = calcSkuCount
             Logger.debug("CartViewState - - skuCount: \(skuCount)")

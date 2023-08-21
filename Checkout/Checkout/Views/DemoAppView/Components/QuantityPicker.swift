@@ -27,10 +27,6 @@ struct QuantityPicker: View {
                                                     orderSkuViewState.orderSkuID, newValue))
                 }
         }
-//        .onAppear {
-//            quantitySelected = orderSkuViewState.quantity
-//            pickerActive = true
-//        }
     }
 }
 

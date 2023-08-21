@@ -42,7 +42,7 @@ struct CartBagSkuCell: View {
                     Text(orderSkuViewState.skuPriceText)
                         .font(.system(size: 12, weight: .semibold))
                     Spacer()
-                    QuantityPicker(quantitySelected: orderSkuViewState.quantity,
+                    QuantityPicker2(quantitySelected: orderSkuViewState.quantity,
                                    store: $store,
                                    orderSkuViewState: orderSkuViewState)//.withBlackBorder()
                 }

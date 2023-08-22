@@ -39,6 +39,14 @@ struct DemoAppGuestCheckoutView: View {
             FormTextField(titleKey: "Postal Code", text: $guestCheckoutViewState.postalCode)
             FormTextField(titleKey: "State", text: $guestCheckoutViewState.state)
 
+            Toggle(isOn: $guestCheckoutViewState.sameAddress) {
+                        Text("Same as Billing")
+                
+                if !guestCheckoutViewState.sameAddress {
+                    Text("Showing Shipping Form")
+                }
+            }.frame(width: 340).padding()
+                    //.toggleStyle(.checkbox)
             
         }.frame(width: 390).navigationTitle("Guest Checkout").withScrollViewBackgroundColor()
 
@@ -50,8 +58,13 @@ struct DemoAppGuestCheckoutView_Previews: PreviewProvider {
         Group {
             NavigationStack {
                 DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
-                                         guestCheckoutViewState: GuestCheckoutViewState())
-            }
+                                         guestCheckoutViewState: GuestCheckoutViewState(sameAddress: true))
+            }.previewDisplayName("Same As Billing")
+            
+            NavigationStack {
+                DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
+                                         guestCheckoutViewState: GuestCheckoutViewState(sameAddress: false))
+            }.previewDisplayName("Show Shipping")
         }
     }
 }

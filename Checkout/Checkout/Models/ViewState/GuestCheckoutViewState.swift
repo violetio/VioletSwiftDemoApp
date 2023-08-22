@@ -15,12 +15,14 @@ class GuestCheckoutViewState: ObservableObject {
     @Published var lastName: String = ""
     @Published var address1: String = ""
     @Published var address2: String = ""
-    @Published var sameAddress: Bool = true
+    @Published var sameAddress: Bool
     @Published var city: String = ""
     @Published var state: String = ""
     @Published var postalCode: String = ""
     @Published var country: String = ""
-    init() {}
+    init(sameAddress: Bool = true) {
+        self.sameAddress = sameAddress
+    }
 }
 
 /**

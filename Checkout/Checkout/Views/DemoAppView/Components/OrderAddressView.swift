@@ -21,15 +21,15 @@ struct OrderAddressView: View {
                     .font(.system(size: 17, weight: .semibold))
                     .padding(.vertical)
             }
-            FormTextField(titleKey: "Email", text: $orderAddressViewState.email)
-            FormTextField(titleKey: "First Name", text: $orderAddressViewState.firstName)
-            FormTextField(titleKey: "Last Name", text: $orderAddressViewState.lastName)
-            FormTextField(titleKey: "Address 1", text: $orderAddressViewState.address1)
+            FormTextField(titleKey: orderAddressViewState.emailPrompt, text: $orderAddressViewState.email)
+            FormTextField(titleKey: orderAddressViewState.firstNamePrompt, text: $orderAddressViewState.firstName)
+            FormTextField(titleKey: orderAddressViewState.lastNamePrompt, text: $orderAddressViewState.lastName)
+            FormTextField(titleKey: orderAddressViewState.addressLine1Prompt, text: $orderAddressViewState.address1)
             //            FormTextField(titleKey: "Address 2", text: $orderAddressViewState.address2)
-            FormTextField(titleKey: "City", text: $orderAddressViewState.city)
-            FormTextField(titleKey: "Country", text: $orderAddressViewState.country)
-            FormTextField(titleKey: "Postal Code", text: $orderAddressViewState.postalCode)
-            FormTextField(titleKey: "State", text: $orderAddressViewState.state)
+            FormTextField(titleKey: orderAddressViewState.cityPrompt, text: $orderAddressViewState.city)
+            FormTextField(titleKey: orderAddressViewState.countryPrompt, text: $orderAddressViewState.country)
+            FormTextField(titleKey: orderAddressViewState.postalCodePrompt, text: $orderAddressViewState.postalCode)
+            FormTextField(titleKey: orderAddressViewState.statePrompt, text: $orderAddressViewState.state)
         }
     }
 }

@@ -22,6 +22,7 @@ struct FormTextField: View {
             .background(Color.white)
             .cornerRadius(10)
     }
+    
 }
 
 struct FormTextField_Previews: PreviewProvider {

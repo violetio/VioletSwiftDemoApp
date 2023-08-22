@@ -5,7 +5,7 @@
 //  Created on 8/22/23
 //
 
-import Foundation
+import SwiftUI
 import Violet
 
 /**
@@ -26,6 +26,16 @@ class OrderAddressViewState: ObservableObject {
     
     @Published var state: String = ""
     @Published var orderAddressType: OrderAddress.ModelType = .billing
+    
+    let emailPrompt: LocalizedStringKey = "Email Address *"
+    let firstNamePrompt: LocalizedStringKey = "First Name *"
+    let lastNamePrompt: LocalizedStringKey = "Last Name *"
+    let addressLine1Prompt: LocalizedStringKey = "Address Line 1 *"
+    let addressLine2Prompt: LocalizedStringKey = "Address Line 2"
+    let cityPrompt: LocalizedStringKey = "City *"
+    let statePrompt: LocalizedStringKey = "State *"
+    let countryPrompt: LocalizedStringKey = "Country *"
+    let postalCodePrompt: LocalizedStringKey = "Postal Code *"
 
     
     init(orderAddressType: OrderAddress.ModelType = .billing) {

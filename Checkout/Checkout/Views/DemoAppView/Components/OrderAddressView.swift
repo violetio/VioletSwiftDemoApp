@@ -17,19 +17,19 @@ struct OrderAddressView: View {
                     .font(.system(size: 17, weight: .semibold))
                     .padding(.vertical)
             } else {
-                Text("Billiing Address")
+                Text("Billing Address")
                     .font(.system(size: 17, weight: .semibold))
                     .padding(.vertical)
             }
-            FormTextField(titleKey: orderAddressViewState.emailPrompt, text: $orderAddressViewState.email)
-            FormTextField(titleKey: orderAddressViewState.firstNamePrompt, text: $orderAddressViewState.firstName)
-            FormTextField(titleKey: orderAddressViewState.lastNamePrompt, text: $orderAddressViewState.lastName)
-            FormTextField(titleKey: orderAddressViewState.addressLine1Prompt, text: $orderAddressViewState.address1)
+            FormTextField(orderAddressViewState.emailPrompt, text: $orderAddressViewState.email)
+            FormTextField(orderAddressViewState.firstNamePrompt, text: $orderAddressViewState.firstName)
+            FormTextField(orderAddressViewState.lastNamePrompt, text: $orderAddressViewState.lastName)
+            FormTextField(orderAddressViewState.addressLine1Prompt, text: $orderAddressViewState.address1)
             //            FormTextField(titleKey: "Address 2", text: $orderAddressViewState.address2)
-            FormTextField(titleKey: orderAddressViewState.cityPrompt, text: $orderAddressViewState.city)
-            FormTextField(titleKey: orderAddressViewState.countryPrompt, text: $orderAddressViewState.country)
-            FormTextField(titleKey: orderAddressViewState.postalCodePrompt, text: $orderAddressViewState.postalCode)
-            FormTextField(titleKey: orderAddressViewState.statePrompt, text: $orderAddressViewState.state)
+            FormTextField(orderAddressViewState.cityPrompt, text: $orderAddressViewState.city)
+            FormTextField(orderAddressViewState.countryPrompt, text: $orderAddressViewState.country)
+            FormTextField(orderAddressViewState.postalCodePrompt, text: $orderAddressViewState.postalCode)
+            FormTextField(orderAddressViewState.statePrompt, text: $orderAddressViewState.state)
         }
     }
 }

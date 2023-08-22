@@ -23,10 +23,14 @@ struct FormTextField: View {
             .cornerRadius(10)
     }
     
+    init(_ titleKey: LocalizedStringKey, text: Binding<String>) {
+        self.titleKey = titleKey
+        self._text = text
+    }
 }
 
 struct FormTextField_Previews: PreviewProvider {
     static var previews: some View {
-        FormTextField(titleKey: "Label", text: .constant(""))
+        FormTextField("Label", text: .constant(""))
     }
 }

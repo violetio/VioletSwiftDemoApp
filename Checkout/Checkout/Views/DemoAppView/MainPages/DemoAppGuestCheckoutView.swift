@@ -29,24 +29,35 @@ struct DemoAppGuestCheckoutView: View {
     @ObservedObject var guestCheckoutViewState: GuestCheckoutViewState
     var body: some View {
         ScrollView {
-            FormTextField(titleKey: "Email", text: $guestCheckoutViewState.email)
-            FormTextField(titleKey: "First Name", text: $guestCheckoutViewState.firstName)
-            FormTextField(titleKey: "Last Name", text: $guestCheckoutViewState.lastName)
-            FormTextField(titleKey: "Address 1", text: $guestCheckoutViewState.address1)
-//            FormTextField(titleKey: "Address 2", text: $guestCheckoutViewState.address2)
-            FormTextField(titleKey: "City", text: $guestCheckoutViewState.city)
-            FormTextField(titleKey: "Country", text: $guestCheckoutViewState.country)
-            FormTextField(titleKey: "Postal Code", text: $guestCheckoutViewState.postalCode)
-            FormTextField(titleKey: "State", text: $guestCheckoutViewState.state)
-
+            
+            /// BILLINING ADDRESS
+            VStack {
+                FormTextField(titleKey: "Email", text: $guestCheckoutViewState.email)
+                FormTextField(titleKey: "First Name", text: $guestCheckoutViewState.firstName)
+                FormTextField(titleKey: "Last Name", text: $guestCheckoutViewState.lastName)
+                FormTextField(titleKey: "Address 1", text: $guestCheckoutViewState.address1)
+                //            FormTextField(titleKey: "Address 2", text: $guestCheckoutViewState.address2)
+                FormTextField(titleKey: "City", text: $guestCheckoutViewState.city)
+                FormTextField(titleKey: "Country", text: $guestCheckoutViewState.country)
+                FormTextField(titleKey: "Postal Code", text: $guestCheckoutViewState.postalCode)
+                FormTextField(titleKey: "State", text: $guestCheckoutViewState.state)
+            }
+            /// SAME AS BILLING TOGGLE
             Toggle(isOn: $guestCheckoutViewState.sameAddress) {
                         Text("Same as Billing")
-                
-                if !guestCheckoutViewState.sameAddress {
-                    Text("Showing Shipping Form")
-                }
             }.frame(width: 340).padding()
-                    //.toggleStyle(.checkbox)
+                    
+            
+            
+            /// SHIPPING ADDRESS
+            
+            
+            
+            if !guestCheckoutViewState.sameAddress {
+                VStack {
+                    FormTextField(titleKey: "State", text: $guestCheckoutViewState.state)
+                }.padding(.vertical)
+            }
             
         }.frame(width: 390).navigationTitle("Guest Checkout").withScrollViewBackgroundColor()
 

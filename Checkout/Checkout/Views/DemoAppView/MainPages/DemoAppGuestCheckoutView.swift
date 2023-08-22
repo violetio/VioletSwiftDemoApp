@@ -31,17 +31,7 @@ struct DemoAppGuestCheckoutView: View {
         ScrollView {
             
             /// BILLINING ADDRESS
-            VStack {
-                FormTextField(titleKey: "Email", text: $guestCheckoutViewState.email)
-                FormTextField(titleKey: "First Name", text: $guestCheckoutViewState.firstName)
-                FormTextField(titleKey: "Last Name", text: $guestCheckoutViewState.lastName)
-                FormTextField(titleKey: "Address 1", text: $guestCheckoutViewState.address1)
-                //            FormTextField(titleKey: "Address 2", text: $guestCheckoutViewState.address2)
-                FormTextField(titleKey: "City", text: $guestCheckoutViewState.city)
-                FormTextField(titleKey: "Country", text: $guestCheckoutViewState.country)
-                FormTextField(titleKey: "Postal Code", text: $guestCheckoutViewState.postalCode)
-                FormTextField(titleKey: "State", text: $guestCheckoutViewState.state)
-            }
+            OrderAddressView(guestCheckoutViewState: guestCheckoutViewState)
             /// SAME AS BILLING TOGGLE
             Toggle(isOn: $guestCheckoutViewState.sameAddress) {
                         Text("Same as Billing")

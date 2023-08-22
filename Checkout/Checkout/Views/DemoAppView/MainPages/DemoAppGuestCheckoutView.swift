@@ -31,21 +31,45 @@ struct DemoAppGuestCheckoutView: View {
         ScrollView {
             
             /// BILLINING ADDRESS
+            /// VStack(alignment: .leading) {
+            
             OrderAddressView(orderAddressViewState: guestCheckoutViewState.billingOrderAddressViewState)
             
-            /// SAME AS BILLING TOGGLE
-            Toggle(isOn: $guestCheckoutViewState.sameAddress) {
-                        Text("Same as Billing")
-            }.frame(width: 340).padding()
             
             /// SHIPPING ADDRESS
             if !guestCheckoutViewState.sameAddress {
                 VStack(alignment: .leading) {
-                    Text("Shipping Address")
-                        .font(.system(size: 17, weight: .semibold))
+                    
                     OrderAddressView(orderAddressViewState: guestCheckoutViewState.shippingOrderAddressViewState)
                 }.padding(0)
             }
+            
+            /// SAME AS BILLING TOGGLE
+            Toggle(isOn: $guestCheckoutViewState.sameAddress) {
+                        Text("Shipping same as Billing")
+            }.frame(width: 340).padding().tint(.blue)
+            
+            Button {
+
+
+            } label: {
+                if guestCheckoutViewState.nextEnabled {
+                    Text("Next")
+                        .font(Font.custom("SF Pro Text", size: 17))
+                        .frame(width: 340, height: 50)
+                        .foregroundColor(.white)
+                        .background(Color(red: 0, green: 0.48, blue: 1))
+                        .cornerRadius(12)
+                } else {
+                    Text("Next")
+                        .font(Font.custom("SF Pro Text", size: 17))
+                        .frame(width: 340, height: 50)
+                        .foregroundColor(.white)
+                        .background(Color(red: 0.47, green: 0.47, blue: 0.5).opacity(0.16))
+                        .cornerRadius(12)
+                }
+            }
+            .frame(width: 340, alignment: .bottom).padding()
             
         }.frame(width: 390).navigationTitle("Guest Checkout").withScrollViewBackgroundColor()
 

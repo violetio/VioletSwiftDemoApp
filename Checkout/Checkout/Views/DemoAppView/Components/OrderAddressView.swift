@@ -11,7 +11,16 @@ struct OrderAddressView: View {
     @ObservedObject var orderAddressViewState: OrderAddressViewState
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            if orderAddressViewState.orderAddressType == .shipping {
+                Text("Shipping Address")
+                    .font(.system(size: 17, weight: .semibold))
+                    .padding(.vertical)
+            } else {
+                Text("Billiing Address")
+                    .font(.system(size: 17, weight: .semibold))
+                    .padding(.vertical)
+            }
             FormTextField(titleKey: "Email", text: $orderAddressViewState.email)
             FormTextField(titleKey: "First Name", text: $orderAddressViewState.firstName)
             FormTextField(titleKey: "Last Name", text: $orderAddressViewState.lastName)

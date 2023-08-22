@@ -36,6 +36,7 @@ struct DemoAppView: View {
                     DemoAppOfferPDP(store: $store,
                                     offerItem: .constant(offerItem),
                                     offerPDPViewState: store.state.updateOfferPDPViewState(offerItem: offerItem))
+                    
                 }.onAppear {
                     if store.offerSearchViewState.emtpy {
                         store.sender.send(.offersPageRequest(10003))

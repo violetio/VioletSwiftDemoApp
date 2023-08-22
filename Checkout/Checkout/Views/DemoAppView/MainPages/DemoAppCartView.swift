@@ -48,18 +48,27 @@ struct DemoAppCartView: View {
                         //.withBlackBorder()
                         
                 }
+                  
                 
-                Button {
-
+                NavigationLink {
+                    DemoAppGuestCheckoutView(store: $store,
+                                             guestCheckoutViewState: GuestCheckoutViewState())
                 } label: {
-                    Text("Checkout")
-                        .font(Font.custom("SF Pro Text", size: 17))
-                        .frame(width: 340, height: 50)
-                        .foregroundColor(.white)
-                        .background(Color(red: 0, green: 0.48, blue: 1))
-                        .cornerRadius(12)
+//                    Button {
+//
+//
+//                    } label: {
+                        Text("Checkout")
+                            .font(Font.custom("SF Pro Text", size: 17))
+                            .frame(width: 340, height: 50)
+                            .foregroundColor(.white)
+                            .background(Color(red: 0, green: 0.48, blue: 1))
+                            .cornerRadius(12)
+//                    }
+//                    .frame(width: 340, alignment: .bottom)
                 }
-                .frame(width: 340, alignment: .bottom)
+
+
             }.padding(25)
                 .background(Color.white)
 //            .withBlackBorder()

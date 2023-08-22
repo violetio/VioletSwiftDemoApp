@@ -19,7 +19,7 @@ class GuestCheckoutViewState: ObservableObject {
     @Published var city: String = ""
     @Published var state: String = ""
     @Published var postalCode: String = ""
-    @Published var county: String = ""
+    @Published var country: String = ""
     init() {}
 }
 

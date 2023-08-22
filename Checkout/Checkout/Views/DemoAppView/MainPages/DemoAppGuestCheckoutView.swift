@@ -31,7 +31,7 @@ struct DemoAppGuestCheckoutView: View {
         ScrollView {
             
             /// BILLINING ADDRESS
-            OrderAddressView(guestCheckoutViewState: guestCheckoutViewState)
+            OrderAddressView(orderAddressViewState: guestCheckoutViewState.billingOrderAddressViewState)
             
             /// SAME AS BILLING TOGGLE
             Toggle(isOn: $guestCheckoutViewState.sameAddress) {
@@ -41,12 +41,9 @@ struct DemoAppGuestCheckoutView: View {
             
             
             /// SHIPPING ADDRESS
-            
-            
-            
             if !guestCheckoutViewState.sameAddress {
                 VStack {
-                    FormTextField(titleKey: "State", text: $guestCheckoutViewState.state)
+                    OrderAddressView(orderAddressViewState: guestCheckoutViewState.shippingOrderAddressViewState)
                 }.padding(.vertical)
             }
             

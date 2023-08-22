@@ -20,6 +20,9 @@ class GuestCheckoutViewState: ObservableObject {
     @Published var state: String = ""
     @Published var postalCode: String = ""
     @Published var country: String = ""
+    
+    @Published var billingOrderAddressViewState = OrderAddressViewState(orderAddressType: .billing)
+    @Published var shippingOrderAddressViewState = OrderAddressViewState(orderAddressType: .shipping)
     init(sameAddress: Bool = true) {
         self.sameAddress = sameAddress
     }

@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct OrderAddressView: View {
-    @ObservedObject var guestCheckoutViewState: GuestCheckoutViewState
+    @ObservedObject var orderAddressViewState: OrderAddressViewState
     
     var body: some View {
         VStack {
-            FormTextField(titleKey: "Email", text: $guestCheckoutViewState.email)
-            FormTextField(titleKey: "First Name", text: $guestCheckoutViewState.firstName)
-            FormTextField(titleKey: "Last Name", text: $guestCheckoutViewState.lastName)
-            FormTextField(titleKey: "Address 1", text: $guestCheckoutViewState.address1)
-            //            FormTextField(titleKey: "Address 2", text: $guestCheckoutViewState.address2)
-            FormTextField(titleKey: "City", text: $guestCheckoutViewState.city)
-            FormTextField(titleKey: "Country", text: $guestCheckoutViewState.country)
-            FormTextField(titleKey: "Postal Code", text: $guestCheckoutViewState.postalCode)
-            FormTextField(titleKey: "State", text: $guestCheckoutViewState.state)
+            FormTextField(titleKey: "Email", text: $orderAddressViewState.email)
+            FormTextField(titleKey: "First Name", text: $orderAddressViewState.firstName)
+            FormTextField(titleKey: "Last Name", text: $orderAddressViewState.lastName)
+            FormTextField(titleKey: "Address 1", text: $orderAddressViewState.address1)
+            //            FormTextField(titleKey: "Address 2", text: $orderAddressViewState.address2)
+            FormTextField(titleKey: "City", text: $orderAddressViewState.city)
+            FormTextField(titleKey: "Country", text: $orderAddressViewState.country)
+            FormTextField(titleKey: "Postal Code", text: $orderAddressViewState.postalCode)
+            FormTextField(titleKey: "State", text: $orderAddressViewState.state)
         }
     }
 }
 
 struct OrderAddressView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderAddressView(guestCheckoutViewState: GuestCheckoutViewState())
+        OrderAddressView(orderAddressViewState: OrderAddressViewState())
     }
 }

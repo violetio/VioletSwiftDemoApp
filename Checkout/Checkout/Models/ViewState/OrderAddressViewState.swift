@@ -27,15 +27,15 @@ class OrderAddressViewState: ObservableObject {
     @Published var state: String = ""
     @Published var orderAddressType: OrderAddress.ModelType = .billing
     
-    let emailPrompt: LocalizedStringKey = "Email Address *"
-    let firstNamePrompt: LocalizedStringKey = "First Name *"
-    let lastNamePrompt: LocalizedStringKey = "Last Name *"
-    let addressLine1Prompt: LocalizedStringKey = "Address Line 1 *"
-    let addressLine2Prompt: LocalizedStringKey = "Address Line 2"
-    let cityPrompt: LocalizedStringKey = "City *"
-    let statePrompt: LocalizedStringKey = "State *"
-    let countryPrompt: LocalizedStringKey = "Country *"
-    let postalCodePrompt: LocalizedStringKey = "Postal Code *"
+    let emailPrompt: String = "Email Address *"
+    let firstNamePrompt: String = "First Name *"
+    let lastNamePrompt: String = "Last Name *"
+    let addressLine1Prompt: String = "Address Line 1 *"
+    let addressLine2Prompt: String = "Address Line 2"
+    let cityPrompt: String = "City *"
+    let statePrompt: String = "State *"
+    let countryPrompt: String = "Country *"
+    let postalCodePrompt: String = "Postal Code *"
 
     
     init(orderAddressType: OrderAddress.ModelType = .billing) {

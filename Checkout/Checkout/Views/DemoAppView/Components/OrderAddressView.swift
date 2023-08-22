@@ -21,11 +21,14 @@ struct OrderAddressView: View {
                     .font(.system(size: 17, weight: .semibold))
                     .padding(.vertical)
             }
-            FormTextField(orderAddressViewState.emailPrompt, text: $orderAddressViewState.email)
+            FormTextField(orderAddressViewState.emailPrompt,
+                          text: $orderAddressViewState.email) { newValue in
+                newValue.count > 0
+            }
             FormTextField(orderAddressViewState.firstNamePrompt, text: $orderAddressViewState.firstName)
             FormTextField(orderAddressViewState.lastNamePrompt, text: $orderAddressViewState.lastName)
             FormTextField(orderAddressViewState.addressLine1Prompt, text: $orderAddressViewState.address1)
-            //            FormTextField(titleKey: "Address 2", text: $orderAddressViewState.address2)
+            FormTextField(orderAddressViewState.addressLine2Prompt, text: $orderAddressViewState.address2)
             FormTextField(orderAddressViewState.cityPrompt, text: $orderAddressViewState.city)
             FormTextField(orderAddressViewState.countryPrompt, text: $orderAddressViewState.country)
             FormTextField(orderAddressViewState.postalCodePrompt, text: $orderAddressViewState.postalCode)

@@ -32,6 +32,7 @@ struct DemoAppGuestCheckoutView: View {
             
             /// BILLINING ADDRESS
             OrderAddressView(guestCheckoutViewState: guestCheckoutViewState)
+            
             /// SAME AS BILLING TOGGLE
             Toggle(isOn: $guestCheckoutViewState.sameAddress) {
                         Text("Same as Billing")

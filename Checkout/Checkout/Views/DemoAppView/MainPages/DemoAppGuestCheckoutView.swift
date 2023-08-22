@@ -37,14 +37,14 @@ struct DemoAppGuestCheckoutView: View {
             Toggle(isOn: $guestCheckoutViewState.sameAddress) {
                         Text("Same as Billing")
             }.frame(width: 340).padding()
-                    
-            
             
             /// SHIPPING ADDRESS
             if !guestCheckoutViewState.sameAddress {
-                VStack {
+                VStack(alignment: .leading) {
+                    Text("Shipping Address")
+                        .font(.system(size: 17, weight: .semibold))
                     OrderAddressView(orderAddressViewState: guestCheckoutViewState.shippingOrderAddressViewState)
-                }.padding(.vertical)
+                }.padding(0)
             }
             
         }.frame(width: 390).navigationTitle("Guest Checkout").withScrollViewBackgroundColor()

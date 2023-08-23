@@ -103,8 +103,18 @@ extension AppStore {
                         self.state.cartViewState.updateWithNewOrder(order: order)
                     }
                 }
-            case .updateCartCustomerRequest:
-                Logger.info("Store: Create Cart Request:")
+            case .updateCartCustomerRequest(let orderID, let orderCustomer):
+                Logger.debug("Store: Apply Order Customer - OrderID: \(orderID)")
+                let newAPICall = APICall(apiCall: CheckoutCartCustomerPostRequest(cartId: orderID,
+                                                                                  guestOrderCustomer: orderCustomer))
+                pendingAPICalls.enqueue(newAPICall)
+                newAPICall.send { dataResponse, _ in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.debug("Store+Sender: ✅ updateCartCustomerRequest Cart ID: \(orderId)")
+                        self.state.cartViewState.updateWithNewOrder(order: order)
+                    }
+                }
             }
         }
     }

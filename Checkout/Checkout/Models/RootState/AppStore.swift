@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Violet
 
 class AppStore {
     class AppState {
@@ -46,7 +47,7 @@ class AppStore {
         case addSkuToCart(OrderID,OfferSkuID,OrderQuantity)
         case updateSkuInCart(OrderID,OrderSkuID,OrderQuantity)
         case removeSkuFromCart(OrderID,OrderSkuID)
-        case updateCartCustomerRequest
+        case updateCartCustomerRequest(OrderID, OrderCustomer)
     }
 
     func send(_ action: AppAction) {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Violet
 
 /**
  {
@@ -30,17 +31,17 @@ struct DemoAppGuestCheckoutView: View {
     var body: some View {
         ScrollView {
             
-            /// BILLINING ADDRESS
+            /// SHIPPING ADDRESS
             /// VStack(alignment: .leading) {
             
-            OrderAddressView(orderAddressViewState: guestCheckoutViewState.billingOrderAddressViewState)
+            OrderAddressView(orderAddressViewState: guestCheckoutViewState.shippingOrderAddressViewState)
             
             
-            /// SHIPPING ADDRESS
+            /// BILLING ADDRESS
             if !guestCheckoutViewState.sameAddress {
                 VStack(alignment: .leading) {
                     
-                    OrderAddressView(orderAddressViewState: guestCheckoutViewState.shippingOrderAddressViewState)
+                    OrderAddressView(orderAddressViewState: guestCheckoutViewState.billingOrderAddressViewState)
                 }.padding(0)
             }
             
@@ -50,6 +51,13 @@ struct DemoAppGuestCheckoutView: View {
             }.frame(width: 340).padding().tint(.blue)
             
             Button {
+                if let orderCustomer = guestCheckoutViewState.produceOrderCustomerBody(),
+                   let orderId = store.state.cartViewState.cartId {
+                    Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
+                    Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
+                    Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
+                    //store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
+                }
 
 
             } label: {

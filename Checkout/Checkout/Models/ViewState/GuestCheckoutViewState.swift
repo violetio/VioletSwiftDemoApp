@@ -29,9 +29,11 @@ class GuestCheckoutViewState: ObservableObject {
     
     init(sameAddress: Bool = true) {
         self.sameAddress = sameAddress
-        Publishers.CombineLatest(billingOrderAddressViewState.$canSubmit, $sameAddress)
-            .map { isBillingAddressValid, useSameAddressShipping in
-                return isBillingAddressValid && useSameAddressShipping
+        
+        Publishers.CombineLatest3(billingOrderAddressViewState.$isAddressValid, $sameAddress, shippingOrderAddressViewState.$isAddressValid)
+            .map { isBillingAddressValid, useSameAddressShipping, isShippingAddressValid in
+                let sameOrShipping = useSameAddressShipping || isShippingAddressValid
+                return isBillingAddressValid && sameOrShipping
             }
             .assign(to: \.nextEnabled, on: self)
             .store(in: &cancellableSet)

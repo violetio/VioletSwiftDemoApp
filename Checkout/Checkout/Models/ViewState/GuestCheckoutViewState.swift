@@ -10,33 +10,45 @@ import Violet
 import Combine
 
 class GuestCheckoutViewState: ObservableObject {
-    @Published var email: String = ""
-    @Published var fullName: String = ""
-    @Published var firstName: String = ""
-    @Published var lastName: String = ""
-    @Published var address1: String = ""
-    @Published var address2: String = ""
+
     @Published var sameAddress: Bool
-    @Published var city: String = ""
-    @Published var state: String = ""
-    @Published var postalCode: String = ""
-    @Published var country: String = ""
     @Published var nextEnabled: Bool = false
     
     @Published var billingOrderAddressViewState = OrderAddressViewState(orderAddressType: .billing)
     @Published var shippingOrderAddressViewState = OrderAddressViewState(orderAddressType: .shipping)
+    
     private var cancellableSet: Set<AnyCancellable> = []
     
     init(sameAddress: Bool = true) {
         self.sameAddress = sameAddress
         
-        Publishers.CombineLatest3(billingOrderAddressViewState.$isAddressValid, $sameAddress, shippingOrderAddressViewState.$isAddressValid)
+        Publishers.CombineLatest3(billingOrderAddressViewState.$isAddressValid,
+                                  $sameAddress, shippingOrderAddressViewState.$isAddressValid)
             .map { isBillingAddressValid, useSameAddressShipping, isShippingAddressValid in
                 let sameOrShipping = useSameAddressShipping || isShippingAddressValid
                 return isBillingAddressValid && sameOrShipping
             }
             .assign(to: \.nextEnabled, on: self)
             .store(in: &cancellableSet)
+    }
+    
+    func produceOrderCustomerBody() -> OrderCustomer? {
+        guard nextEnabled, let shippingBody = shippingOrderAddressViewState.produceOrderAddressBody() else {
+            return nil
+        }
+        
+        var billingBody: OrderAddress? = nil
+        if !sameAddress {
+            billingBody = billingOrderAddressViewState.produceOrderAddressBody()
+            
+        }
+        var result = OrderCustomer(billingAddress: billingBody,
+                                   email: shippingOrderAddressViewState.email,
+                                   firstName: shippingOrderAddressViewState.firstName,
+                                   lastName: shippingOrderAddressViewState.lastName
+                                   ,sameAddress: sameAddress,
+                                   shippingAddress: shippingBody)
+        return result
     }
 }
 

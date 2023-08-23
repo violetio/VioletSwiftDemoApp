@@ -136,6 +136,22 @@ class OrderAddressViewState: ObservableObject {
         
     }
     
+    func produceOrderAddressBody() -> OrderAddress? {
+        guard isAddressValid else {
+            return nil
+        }
+        let result = OrderAddress(address1: address1,
+                                  address2: address2,
+                                  city: city,
+                                  country: country,
+                                  email: email,
+                                  phone: phone,
+                                  postalCode: postalCode,
+                                  state: state,
+                                  type: orderAddressType)
+        return result
+    }
+    
     static func textFieldNotEmpty(_ input: String) -> Bool {
         return !input.isEmpty
     }

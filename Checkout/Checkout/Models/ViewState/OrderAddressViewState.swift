@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Violet
+import Combine
 
 /**
  
@@ -38,20 +39,38 @@ class OrderAddressViewState: ObservableObject {
     let postalCodePrompt: String = "Postal Code *"
 
     
+    
+    @Published var isEmailValid: Bool = false
+    @Published var isFirstNameValid: Bool = false
+    @Published var canSubmit: Bool = false
+    
+    private var cancellableSet: Set<AnyCancellable> = []
+    
     init(orderAddressType: OrderAddress.ModelType = .billing) {
         self.orderAddressType = orderAddressType
+        $email
+            .map { email in
+                return Self.textFieldNotEmpty(email)
+                
+            }.assign(to: \.isEmailValid, on: self)
+            .store(in: &cancellableSet)
+        
+        $firstName
+            .map { firstName in
+                return Self.textFieldNotEmpty(firstName)
+                
+            }.assign(to: \.isFirstNameValid, on: self)
+            .store(in: &cancellableSet)
+        
+        Publishers.CombineLatest($isEmailValid, $isFirstNameValid)
+            .map {
+                return $0 && $1
+            }
+            .assign(to: \.canSubmit, on: self)
+            .store(in: &cancellableSet)
+    }
+    
+    static func textFieldNotEmpty(_ input: String) -> Bool {
+        return !input.isEmpty
     }
 }
-
-/**
- public enum ModelType: String, Codable, CaseIterable {
-     case shipping = "SHIPPING"
-     case billing = "BILLING"
- }
-
- 
- 
-
- /** Address Type */
- public var type: ModelType?
- */

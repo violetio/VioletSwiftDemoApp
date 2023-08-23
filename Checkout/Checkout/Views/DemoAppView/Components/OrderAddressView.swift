@@ -22,9 +22,7 @@ struct OrderAddressView: View {
                     .padding(.vertical)
             }
             FormTextField(orderAddressViewState.emailPrompt,
-                          text: $orderAddressViewState.email) { newValue in
-                newValue.count > 0
-            }
+                          text: $orderAddressViewState.email)
             FormTextField(orderAddressViewState.firstNamePrompt, text: $orderAddressViewState.firstName)
             FormTextField(orderAddressViewState.lastNamePrompt, text: $orderAddressViewState.lastName)
             FormTextField(orderAddressViewState.addressLine1Prompt, text: $orderAddressViewState.address1)

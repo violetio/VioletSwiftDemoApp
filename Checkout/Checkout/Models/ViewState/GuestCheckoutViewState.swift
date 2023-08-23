@@ -7,6 +7,7 @@
 
 import Foundation
 import Violet
+import Combine
 
 class GuestCheckoutViewState: ObservableObject {
     @Published var email: String = ""
@@ -24,8 +25,16 @@ class GuestCheckoutViewState: ObservableObject {
     
     @Published var billingOrderAddressViewState = OrderAddressViewState(orderAddressType: .billing)
     @Published var shippingOrderAddressViewState = OrderAddressViewState(orderAddressType: .shipping)
+    private var cancellableSet: Set<AnyCancellable> = []
+    
     init(sameAddress: Bool = true) {
         self.sameAddress = sameAddress
+        Publishers.CombineLatest(billingOrderAddressViewState.$canSubmit, $sameAddress)
+            .map { isBillingAddressValid, useSameAddressShipping in
+                return isBillingAddressValid && useSameAddressShipping
+            }
+            .assign(to: \.nextEnabled, on: self)
+            .store(in: &cancellableSet)
     }
 }
 

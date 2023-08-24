@@ -13,6 +13,7 @@ class CartViewState: ObservableObject {
     @Published var skuCount: Int = 0
     @Published var cartSubTotalText: String = ""
     @Published var bagViewStates: [Int64: BagViewState] = [:]
+    @Published var currentOrder: Order? = nil
     
     var noCart: Bool { cartId == nil }
     
@@ -31,6 +32,7 @@ class CartViewState: ObservableObject {
     
     func updateWithNewOrder(order: Order) {
         Logger.debug("CartViewState - Update")
+        self.currentOrder = order
         if let orderId = order.id {
             self.cartId = orderId
             let currentBagIdSet = Set(bagViewStates.keys)

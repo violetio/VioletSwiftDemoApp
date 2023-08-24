@@ -18,7 +18,6 @@ class OrderAddressViewState: ObservableObject {
     @Published var city: String = ""
     /** Country ISO2 Code */
     @Published var country: String = ""
-    @Published var email: String = ""
     @Published var firstName: String = ""
     @Published var lastName: String = ""
     @Published var name: String = ""
@@ -28,7 +27,6 @@ class OrderAddressViewState: ObservableObject {
     @Published var state: String = ""
     @Published var orderAddressType: OrderAddress.ModelType = .billing
     
-    let emailPrompt: String = "Email Address *"
     let firstNamePrompt: String = "First Name *"
     let lastNamePrompt: String = "Last Name *"
     let addressLine1Prompt: String = "Address Line 1 *"
@@ -38,9 +36,6 @@ class OrderAddressViewState: ObservableObject {
     let countryPrompt: String = "Country *"
     let postalCodePrompt: String = "Postal Code *"
 
-    
-    
-    @Published var isEmailValid: Bool = false
     @Published var isFirstNameValid: Bool = false
     @Published var isLastNameValid: Bool = false
     @Published var isAddress1Valid: Bool = false
@@ -49,7 +44,7 @@ class OrderAddressViewState: ObservableObject {
     @Published var isCountryValid: Bool = false
     @Published var isPostalCodeValid: Bool = false
     @Published var isPhoneValid: Bool = false
-    @Published var email_name_address1_valid = false
+    @Published var name_address1_valid = false
     @Published var city_state_postalCode_country_valid =  false
     @Published var isAddressValid: Bool = false
     
@@ -57,13 +52,6 @@ class OrderAddressViewState: ObservableObject {
     
     init(orderAddressType: OrderAddress.ModelType = .billing) {
         self.orderAddressType = orderAddressType
-        
-        $email
-            .map { input in
-                return Self.textFieldNotEmpty(input)
-                
-            }.assign(to: \.isEmailValid, on: self)
-            .store(in: &cancellableSet)
         
         $firstName
             .map { input in
@@ -86,10 +74,10 @@ class OrderAddressViewState: ObservableObject {
             }.assign(to: \.isAddress1Valid, on: self)
             .store(in: &cancellableSet)
         
-        Publishers.CombineLatest4($isEmailValid, $isFirstNameValid, $isLastNameValid, $isAddress1Valid)
-            .map { email, first, last, address1 in
-                return email && first && last && address1
-            }.assign(to: \.email_name_address1_valid, on: self)
+        Publishers.CombineLatest3($isFirstNameValid, $isLastNameValid, $isAddress1Valid)
+            .map { first, last, address1 in
+                return first && last && address1
+            }.assign(to: \.name_address1_valid, on: self)
             .store(in: &cancellableSet)
         
         
@@ -128,7 +116,7 @@ class OrderAddressViewState: ObservableObject {
         
         
         
-        Publishers.CombineLatest($email_name_address1_valid, $city_state_postalCode_country_valid).map {
+        Publishers.CombineLatest($name_address1_valid, $city_state_postalCode_country_valid).map {
             return $0 && $1
         }.assign(to: \.isAddressValid, on: self)
             .store(in: &cancellableSet)
@@ -144,7 +132,6 @@ class OrderAddressViewState: ObservableObject {
                                   address2: address2,
                                   city: city,
                                   country: country,
-                                  email: email,
                                   phone: phone,
                                   postalCode: postalCode,
                                   state: state,
@@ -153,10 +140,8 @@ class OrderAddressViewState: ObservableObject {
     }
     
     func loadFrom(orderAddress: OrderAddress?) {
-        if let loadEmail = orderAddress?.email,
-           loadEmail != email {
-            self.email = loadEmail
-        }
+//        Logger.debug("OrderAddressViewState - loadFrom: \(orderAddress)")
+        
         
         if let loadFirstName = orderAddress?.firstName,
            loadFirstName != firstName {

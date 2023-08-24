@@ -18,8 +18,9 @@ struct DemoAppGuestCheckoutView: View {
         ScrollView {
             
             /// SHIPPING ADDRESS
-            /// VStack(alignment: .leading) {
             
+            FormTextField(guestCheckoutViewState.emailPrompt,
+                          text: $guestCheckoutViewState.email)
             OrderAddressView(orderAddressViewState: guestCheckoutViewState.shippingOrderAddressViewState)
             
             
@@ -65,7 +66,14 @@ struct DemoAppGuestCheckoutView: View {
             }
             .frame(width: 340, alignment: .bottom).padding()
             
-        }.frame(width: 390).navigationTitle("Guest Checkout").withScrollViewBackgroundColor()
+        }.frame(width: 390)
+            .navigationTitle("Guest Checkout")
+            .withScrollViewBackgroundColor()
+            .onAppear {
+                if let order = store.cartViewState.currentOrder {
+                    store.state.guestCheckoutViewState.loadFrom(customer: order.customer, shippingAddress: order.shippingAddress, billingAddress: order.billingAddress)
+                }
+            }
 
     }
 }

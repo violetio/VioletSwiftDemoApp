@@ -23,8 +23,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/violetio/violet-swift",
       "state" : {
-        "revision" : "2a397a9dc48fbf90af103daf5abec6f21e060309",
-        "version" : "1.0.0"
+        "revision" : "b2ee12e248fe3c3abf24e7aab9e765c3cfe4d796"
       }
     }
   ],

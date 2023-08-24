@@ -18,24 +18,30 @@ struct DemoAppGuestCheckoutView: View {
         ScrollView {
             
             /// SHIPPING ADDRESS
-            
-            FormTextField(guestCheckoutViewState.emailPrompt,
-                          text: $guestCheckoutViewState.email)
-            OrderAddressView(orderAddressViewState: guestCheckoutViewState.shippingOrderAddressViewState)
-            
-            
-            /// BILLING ADDRESS
-            if !guestCheckoutViewState.sameAddress {
-                VStack(alignment: .leading) {
-                    
-                    OrderAddressView(orderAddressViewState: guestCheckoutViewState.billingOrderAddressViewState)
-                }.padding(0)
-            }
-            
+            VStack(alignment: .leading) {
+                Text("Shipping Address")
+                    .font(.system(size: 17, weight: .semibold))
+                    .padding(.vertical)
+                FormTextField(guestCheckoutViewState.emailPrompt,
+                              text: $guestCheckoutViewState.email)
+                OrderAddressView(orderAddressViewState: guestCheckoutViewState.shippingOrderAddressViewState)
+            }.padding(0)
             /// SAME AS BILLING TOGGLE
             Toggle(isOn: $guestCheckoutViewState.sameAddress) {
                         Text("Shipping same as Billing")
             }.frame(width: 340).padding().tint(.blue)
+            
+            /// BILLING ADDRESS
+            if !guestCheckoutViewState.sameAddress {
+                VStack(alignment: .leading) {
+                    Text("Billing Address")
+                        .font(.system(size: 17, weight: .semibold))
+                        .padding(.vertical)
+                    OrderAddressView(orderAddressViewState: guestCheckoutViewState.billingOrderAddressViewState)
+                }.padding(0)
+            }
+            
+            
             
             Button {
                 if let orderCustomer = guestCheckoutViewState.produceOrderCustomerBody(),

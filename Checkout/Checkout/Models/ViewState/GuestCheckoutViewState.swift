@@ -32,6 +32,20 @@ class GuestCheckoutViewState: ObservableObject {
             .store(in: &cancellableSet)
     }
     
+    func loadFrom(customer: OrderCustomer) {
+        if let loadSameAddress = customer.sameAddress {
+            Logger.debug("GuestCheckoutViewState: loadSameAddress - \(loadSameAddress)")
+            self.sameAddress = loadSameAddress
+        }
+    }
+    func loadFrom(customer: OrderCustomer?, shippingAddress: OrderAddress?, billingAddress: OrderAddress?) {
+        if let loadCustomer = customer {
+            loadFrom(customer: loadCustomer)
+        }
+        shippingOrderAddressViewState.loadFrom(orderAddress: shippingAddress)
+        billingOrderAddressViewState.loadFrom(orderAddress: billingAddress)
+    }
+    
     func produceOrderCustomerBody() -> OrderCustomer? {
         guard nextEnabled, let shippingBody = shippingOrderAddressViewState.produceOrderAddressBody() else {
             return nil
@@ -42,7 +56,7 @@ class GuestCheckoutViewState: ObservableObject {
             billingBody = billingOrderAddressViewState.produceOrderAddressBody()
             
         }
-        var result = OrderCustomer(billingAddress: billingBody,
+        let result = OrderCustomer(billingAddress: billingBody,
                                    email: shippingOrderAddressViewState.email,
                                    firstName: shippingOrderAddressViewState.firstName,
                                    lastName: shippingOrderAddressViewState.lastName

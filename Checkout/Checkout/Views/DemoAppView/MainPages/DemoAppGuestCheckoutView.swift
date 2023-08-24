@@ -9,21 +9,7 @@ import SwiftUI
 import Violet
 
 /**
- {
-         "first_name": "Ishan",
-         "last_name": "Wallet Checkout Tests",
-         "email": "ishan.guru+test_order@violet.io",
-         "shipping_address": {
-             "address_1":"",
-             "city":"Brooklyn",
-             "country":"US",
-             "postal_code":"11206",
-             "state":"NY",
-             "type":"SHIPPING"
-         },
-         "same_address": true
- }
- 
+
  */
 struct DemoAppGuestCheckoutView: View {
     @Binding var store: AppStore
@@ -56,7 +42,7 @@ struct DemoAppGuestCheckoutView: View {
                     Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
                     Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
                     Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
-                    //store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
+                    store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
                 }
 
 

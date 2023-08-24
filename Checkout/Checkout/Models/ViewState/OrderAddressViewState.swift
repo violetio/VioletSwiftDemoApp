@@ -152,6 +152,59 @@ class OrderAddressViewState: ObservableObject {
         return result
     }
     
+    func loadFrom(orderAddress: OrderAddress?) {
+        if let loadEmail = orderAddress?.email,
+           loadEmail != email {
+            self.email = loadEmail
+        }
+        
+        if let loadFirstName = orderAddress?.firstName,
+           loadFirstName != firstName {
+            self.firstName = loadFirstName
+        }
+        
+        if let loadLastName = orderAddress?.lastName,
+           loadLastName != lastName {
+            self.lastName = loadLastName
+        }
+        
+        if let loadAddress1 = orderAddress?.address1,
+           loadAddress1 != address1 {
+            self.address1 = loadAddress1
+        }
+
+        if let loadAddress2 = orderAddress?.address2,
+           loadAddress2 != address2 {
+            self.address2 = loadAddress2
+        }
+        
+        if let loadCity = orderAddress?.city,
+           loadCity != city {
+            self.city = loadCity
+        }
+        
+        if let loadState = orderAddress?.state,
+           loadState != state {
+            self.state = loadState
+        }
+
+        if let loadCountry = orderAddress?.country,
+           loadCountry != country {
+            self.country = loadCountry
+        }
+        
+        if let loadPostalCode = orderAddress?.postalCode,
+           loadPostalCode != postalCode {
+            self.postalCode = loadPostalCode
+        }
+        
+        if let loadPhone = orderAddress?.phone,
+           loadPhone != phone {
+            self.phone = loadPhone
+        }
+
+    }
+    
     static func textFieldNotEmpty(_ input: String) -> Bool {
         return !input.isEmpty
     }

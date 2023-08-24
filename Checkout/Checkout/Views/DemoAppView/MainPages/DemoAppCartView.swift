@@ -52,7 +52,7 @@ struct DemoAppCartView: View {
                 
                 NavigationLink {
                     DemoAppGuestCheckoutView(store: $store,
-                                             guestCheckoutViewState: GuestCheckoutViewState())
+                                             guestCheckoutViewState: store.state.guestCheckoutViewState)
                 } label: {
 //                    Button {
 //

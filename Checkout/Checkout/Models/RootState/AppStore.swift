@@ -48,6 +48,8 @@ class AppStore {
                                             shippingAddress: order.shippingAddress,
                                             billingAddress: order.billingAddress)
         }
+        
+        
     }
 
     enum AppAction {
@@ -93,5 +95,15 @@ class AppStore {
         self.init(demoChannelViewState: DemoProxyActiveViewState(),
                   cartViewState: cartViewState ?? CartViewState(),
                   offerSearchViewState: OfferSearchViewState.mockEmpty())
+    }
+    
+    func onAppAppear() {
+        if offerSearchViewState.emtpy {
+            sender.send(.offersPageRequest(10003))
+        }
+        if cartViewState.noCart {
+            //sender.send(.createCartRequest)
+            sender.send(.cartByID(72500))
+        }
     }
 }

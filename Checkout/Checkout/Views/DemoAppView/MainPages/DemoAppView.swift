@@ -38,13 +38,7 @@ struct DemoAppView: View {
                                     offerPDPViewState: store.state.updateOfferPDPViewState(offerItem: offerItem))
                     
                 }.onAppear {
-                    if store.offerSearchViewState.emtpy {
-                        store.sender.send(.offersPageRequest(10003))
-                    }
-                    if store.cartViewState.noCart {
-//                        store.sender.send(.createCartRequest)
-                        store.sender.send(.cartByID(72500))
-                    }
+                    store.onAppAppear()
                 }
         }
     }

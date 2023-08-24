@@ -18,6 +18,9 @@
 		E701B2CC2A94076500A2EFD1 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2CB2A94076500A2EFD1 /* FormTextField.swift */; };
 		E701B2CE2A9525EA00A2EFD1 /* OrderAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2CD2A9525EA00A2EFD1 /* OrderAddressView.swift */; };
 		E701B2D02A9526D600A2EFD1 /* OrderAddressViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2CF2A9526D600A2EFD1 /* OrderAddressViewState.swift */; };
+		E701B2D22A97CA5500A2EFD1 /* country_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = E701B2D12A97CA5500A2EFD1 /* country_codes.json */; };
+		E701B2D42A97CA6800A2EFD1 /* CountryCodesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2D32A97CA6800A2EFD1 /* CountryCodesArray.swift */; };
+		E701B2D62A97CAC800A2EFD1 /* CountryCodesArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2D52A97CAC800A2EFD1 /* CountryCodesArrayTests.swift */; };
 		E70BEB6729B92B200030335E /* CheckoutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB6629B92B200030335E /* CheckoutApp.swift */; };
 		E70BEB6929B92B200030335E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB6829B92B200030335E /* ContentView.swift */; };
 		E70BEB6B29B92B210030335E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E70BEB6A29B92B210030335E /* Assets.xcassets */; };
@@ -180,6 +183,9 @@
 		E701B2CB2A94076500A2EFD1 /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
 		E701B2CD2A9525EA00A2EFD1 /* OrderAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAddressView.swift; sourceTree = "<group>"; };
 		E701B2CF2A9526D600A2EFD1 /* OrderAddressViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAddressViewState.swift; sourceTree = "<group>"; };
+		E701B2D12A97CA5500A2EFD1 /* country_codes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country_codes.json; sourceTree = "<group>"; };
+		E701B2D32A97CA6800A2EFD1 /* CountryCodesArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodesArray.swift; sourceTree = "<group>"; };
+		E701B2D52A97CAC800A2EFD1 /* CountryCodesArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodesArrayTests.swift; sourceTree = "<group>"; };
 		E70BEB6329B92B200030335E /* Checkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70BEB6629B92B200030335E /* CheckoutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutApp.swift; sourceTree = "<group>"; };
 		E70BEB6829B92B200030335E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -409,6 +415,7 @@
 				E7F8D5992A83FD3900F720CD /* VariantsViewModelTests.swift */,
 				E701B2BD2A92AA1700A2EFD1 /* OfferVariantsTests.swift */,
 				E701B2C12A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift */,
+				E701B2D52A97CAC800A2EFD1 /* CountryCodesArrayTests.swift */,
 			);
 			path = CheckoutTests;
 			sourceTree = "<group>";
@@ -619,7 +626,9 @@
 		E7B41C4629F34AC700E7371B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E701B2D12A97CA5500A2EFD1 /* country_codes.json */,
 				E7B41C4729F34AE700E7371B /* AutoKeyed.swift */,
+				E701B2D32A97CA6800A2EFD1 /* CountryCodesArray.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -852,6 +861,7 @@
 				E72E000729EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json in Resources */,
 				E70BEB6E29B92B210030335E /* Preview Assets.xcassets in Resources */,
 				E70BEB6B29B92B210030335E /* Assets.xcassets in Resources */,
+				E701B2D22A97CA5500A2EFD1 /* country_codes.json in Resources */,
 				E72EFFE929DC88E1009F7BFE /* Offer_ID_12574_Response.json in Resources */,
 				E72EFFEA29DC88E1009F7BFE /* Offer_ID_12555_response.json in Resources */,
 			);
@@ -949,6 +959,7 @@
 				E712EAFC2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift in Sources */,
 				E7F8D5922A82DA0E00F720CD /* DemoAppOfferCardText.swift in Sources */,
 				E7F8D5942A82DE5900F720CD /* OfferImageCarousel.swift in Sources */,
+				E701B2D42A97CA6800A2EFD1 /* CountryCodesArray.swift in Sources */,
 				E7B41C6A29F71EEC00E7371B /* OfferItem.swift in Sources */,
 				E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */,
 				E7F8D5982A83FCF300F720CD /* VariantsViewModel.swift in Sources */,
@@ -999,6 +1010,7 @@
 				E701B2C22A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift in Sources */,
 				E71CFBB829D2349500598B15 /* ExpectationRunner.swift in Sources */,
 				E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */,
+				E701B2D62A97CAC800A2EFD1 /* CountryCodesArrayTests.swift in Sources */,
 				E7F8D59A2A83FD3900F720CD /* VariantsViewModelTests.swift in Sources */,
 				E71CFBBA29D2402100598B15 /* TestCheckoutSequence.swift in Sources */,
 				E701B2BE2A92AA1700A2EFD1 /* OfferVariantsTests.swift in Sources */,

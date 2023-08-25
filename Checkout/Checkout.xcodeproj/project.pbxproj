@@ -11,7 +11,7 @@
 		E701B2BC2A92A9A300A2EFD1 /* OfferVariants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2BB2A92A9A300A2EFD1 /* OfferVariants.swift */; };
 		E701B2BE2A92AA1700A2EFD1 /* OfferVariantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2BD2A92AA1700A2EFD1 /* OfferVariantsTests.swift */; };
 		E701B2C02A92AAE700A2EFD1 /* OfferSkusVariants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2BF2A92AAE700A2EFD1 /* OfferSkusVariants.swift */; };
-		E701B2C22A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2C12A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift */; };
+		E701B2C22A92AB5D00A2EFD1 /* OfferSkusVariantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2C12A92AB5D00A2EFD1 /* OfferSkusVariantsTests.swift */; };
 		E701B2C42A93B5CE00A2EFD1 /* UpdateSkuInCartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2C32A93B5CE00A2EFD1 /* UpdateSkuInCartRequest.swift */; };
 		E701B2C82A93E03500A2EFD1 /* DemoAppGuestCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2C72A93E03500A2EFD1 /* DemoAppGuestCheckoutView.swift */; };
 		E701B2CA2A93E4AC00A2EFD1 /* GuestCheckoutViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2C92A93E4AC00A2EFD1 /* GuestCheckoutViewState.swift */; };
@@ -176,7 +176,7 @@
 		E701B2BB2A92A9A300A2EFD1 /* OfferVariants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferVariants.swift; sourceTree = "<group>"; };
 		E701B2BD2A92AA1700A2EFD1 /* OfferVariantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferVariantsTests.swift; sourceTree = "<group>"; };
 		E701B2BF2A92AAE700A2EFD1 /* OfferSkusVariants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkusVariants.swift; sourceTree = "<group>"; };
-		E701B2C12A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkuVariantValuesTests.swift; sourceTree = "<group>"; };
+		E701B2C12A92AB5D00A2EFD1 /* OfferSkusVariantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkusVariantsTests.swift; sourceTree = "<group>"; };
 		E701B2C32A93B5CE00A2EFD1 /* UpdateSkuInCartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateSkuInCartRequest.swift; sourceTree = "<group>"; };
 		E701B2C72A93E03500A2EFD1 /* DemoAppGuestCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppGuestCheckoutView.swift; sourceTree = "<group>"; };
 		E701B2C92A93E4AC00A2EFD1 /* GuestCheckoutViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCheckoutViewState.swift; sourceTree = "<group>"; };
@@ -414,7 +414,7 @@
 				E72E000C29EF33F1009F7BFE /* ExtensionsTests.swift */,
 				E7F8D5992A83FD3900F720CD /* VariantsViewModelTests.swift */,
 				E701B2BD2A92AA1700A2EFD1 /* OfferVariantsTests.swift */,
-				E701B2C12A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift */,
+				E701B2C12A92AB5D00A2EFD1 /* OfferSkusVariantsTests.swift */,
 				E701B2D52A97CAC800A2EFD1 /* CountryCodesArrayTests.swift */,
 			);
 			path = CheckoutTests;
@@ -1007,7 +1007,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E701B2C22A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift in Sources */,
+				E701B2C22A92AB5D00A2EFD1 /* OfferSkusVariantsTests.swift in Sources */,
 				E71CFBB829D2349500598B15 /* ExpectationRunner.swift in Sources */,
 				E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */,
 				E701B2D62A97CAC800A2EFD1 /* CountryCodesArrayTests.swift in Sources */,

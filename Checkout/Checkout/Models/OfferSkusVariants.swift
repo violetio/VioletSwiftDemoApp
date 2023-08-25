@@ -23,6 +23,20 @@ class OfferSkusVariants {
         return OfferSkusVariants.skuID(setNamesToIntersect: setNamesToIntersect, skuIdSetMap: self.skuIdSetMap)
     }
     
+    func intersectingSkuIdSetMap(key: String) -> SkuIdSetMap {
+        var result: SkuIdSetMap = [:]
+        guard let matchedSkuIdSet = skuIdSetMap[key] else {
+            return result
+        }
+        
+        skuIdSetMap.forEach { (okey: String, value: Set<Int64>) in
+            if !value.intersection(matchedSkuIdSet).isEmpty {
+                result[okey] = value
+            }
+        }
+        return result
+    }
+    
     static func skuID(setNamesToIntersect: [String], skuIdSetMap: SkuIdSetMap) -> Int64? {
         var result: Int64? = nil
         
@@ -74,13 +88,12 @@ class OfferSkusVariants {
                 variantViewModels.append(VariantViewModel(name: variantName, valueNamesSet: valueNameSet))
             }
         }
-        Logger.debug("variantViewModels: \(variantViewModels)")
+        //Logger.debug("variantViewModels: \(variantViewModels)")
         return variantViewModels
     }
     
     static func buildSkuIdSetMap(offer: Offer) -> SkuIdSetMap {
         var skuSetIDsMap: SkuIdSetMap = [:]
-        var variantNameToValueNameSetsMap: [String: Set<String>] = [:]
         guard let offerSkus = offer.skus else { return skuSetIDsMap }
         
         offerSkus.forEach { offerSku in
@@ -97,23 +110,11 @@ class OfferSkusVariants {
                         } else {
                             skuSetIDsMap[key] = Set<Int64>(arrayLiteral: skuId)
                         }
-                        if var valueNameSet = variantNameToValueNameSetsMap[name] {
-                            valueNameSet.insert(value)
-                            variantNameToValueNameSetsMap[name] = valueNameSet
-                        } else {
-                            variantNameToValueNameSetsMap[name] = Set<String>(arrayLiteral: value)
-                        }
                     }
                 }
             }
         }
-        var variantViewModels: [VariantViewModel] = []
-        variantNameToValueNameSetsMap.keys.forEach { variantName in
-            if let valueNameSet = variantNameToValueNameSetsMap[variantName] {
-                variantViewModels.append(VariantViewModel(name: variantName, valueNamesSet: valueNameSet))
-            }
-        }
-        Logger.debug("variantViewModels: \(variantViewModels)")
+        
         return skuSetIDsMap
     }
 }

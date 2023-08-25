@@ -1,5 +1,5 @@
 //
-//  SkuVariantValuesTests.swift
+//  OfferSkusVariantsTests.swift
 //  CheckoutTests
 //
 //  Created on 8/20/23
@@ -8,7 +8,7 @@
 import XCTest
 @testable import Checkout
 
-final class SkuVariantValuesTests: XCTestCase {
+final class OfferSkusVariantsTests: XCTestCase {
 
 
     func test_Init() throws {
@@ -28,5 +28,8 @@ final class SkuVariantValuesTests: XCTestCase {
 //        XCTAssertNotNil(offer_id_12569)
         
         let sut = OfferSkusVariants(offer: offer_id_12569)
+        
+        let intersectingSkuIdSetMap = sut.intersectingSkuIdSetMap(key: "Color.Team Red/ Thunder Blue/ Blue")
+        Logger.debug("intersectingSkuIdSetMap: \(intersectingSkuIdSetMap)")
     }
 }

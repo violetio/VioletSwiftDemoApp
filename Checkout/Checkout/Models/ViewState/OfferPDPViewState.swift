@@ -11,22 +11,25 @@ import Violet
 class OfferPDPViewState: ObservableObject {
     @Published var offer: Offer
     @Published var variantsViewModel: VariantsViewModel
+    @Published var offerSkusVariants: OfferSkusVariants
     @Published var selectedSkuID: Int64? = nil
     @Published var selectedVariantKeys: [String: String] = [:]
     public let variants: [Variant]
-    let variantViewModels: [VariantViewModel]
+    //let variantViewModels: [VariantViewModel]
+    var variantViewModels: [VariantViewModel] { offerSkusVariants.variantViewModels }
     
 
     init(offer: Offer) {
         Logger.debug("OfferPDPViewState: Init - OfferID: \(offer.id ?? 0)")
         self.offer = offer
         self.variantsViewModel = VariantsViewModel(offer: offer)
+        self.offerSkusVariants = OfferSkusVariants(offer: offer)
         let variantsArray = offer.variantsArray()
         Logger.debug("OfferPDPViewState: variantsArray - Count: \(variantsArray.count)")
         self.variants = variantsArray
-        self.variantViewModels = variantsArray.compactMap { VariantViewModel(variant: $0)}.sorted(by: { l, r in
-            l.name < r.name
-        })
+//        self.variantViewModels = variantsArray.compactMap { VariantViewModel(variant: $0)}.sorted(by: { l, r in
+//            l.name < r.name
+//        })
         Logger.debug("OfferPDPViewState: Skus - Count: \(offer.skus?.count ?? 0)")
         if let singleSku = offer.singleSku(),
            let singleSkuID = singleSku.id {
@@ -41,7 +44,7 @@ class OfferPDPViewState: ObservableObject {
         let variantKey = "\(variantName).\(valueName)"
         self.selectedVariantKeys[variantName] = variantKey
         if selectedVariantKeys.count == variantViewModels.count {
-            if let newlySelectedSkuID = variantsViewModel.skuID(setNamesToIntersect: Array(selectedVariantKeys.values)) {
+            if let newlySelectedSkuID = offerSkusVariants.skuID(setNamesToIntersect: Array(selectedVariantKeys.values)) {
                 Logger.debug("OfferPDPViewState: newlySelectedSkuID - \(newlySelectedSkuID)")
                 selectedSkuID = newlySelectedSkuID
             } else {

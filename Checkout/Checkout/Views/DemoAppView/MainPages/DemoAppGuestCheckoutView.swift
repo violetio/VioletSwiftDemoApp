@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Violet
+import StripeApplePay
 
 /**
 
@@ -17,8 +18,24 @@ struct DemoAppGuestCheckoutView: View {
     var body: some View {
         ScrollView {
             
+            //if store.cartViewState.
+            
             /// SHIPPING ADDRESS
             VStack(alignment: .leading) {
+                if store.cartViewState.bagCount <= 1 {
+                    if StripeAPI.deviceSupportsApplePay() {
+                        //Font 17
+                        PaymentButton(action: applePayButtonAction)
+                            
+                            .frame(width: 340, height: 44).padding(.top)
+                    } else {
+                        Text("Device does not support Apple Pay")
+                    }
+                } else {
+                    Text("NO Apply Pay")
+                }
+                    
+                
                 Text("Shipping Address")
                     .font(.system(size: 17, weight: .semibold))
                     .padding(.vertical)
@@ -40,8 +57,6 @@ struct DemoAppGuestCheckoutView: View {
                     OrderAddressView(orderAddressViewState: guestCheckoutViewState.billingOrderAddressViewState)
                 }.padding(0)
             }
-            
-            
             
             Button {
                 if let orderCustomer = guestCheckoutViewState.produceOrderCustomerBody(),
@@ -81,6 +96,10 @@ struct DemoAppGuestCheckoutView: View {
                 }
             }
 
+    }
+    
+    func applePayButtonAction() {
+        Logger.info("Apple Pay Button Tapped!")
     }
 }
 

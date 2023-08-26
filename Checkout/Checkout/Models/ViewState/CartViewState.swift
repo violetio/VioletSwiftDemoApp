@@ -21,6 +21,8 @@ class CartViewState: ObservableObject {
     
     var bagViewStatesArray: [BagViewState] { return Array(bagViewStates.values) }
     
+    var bagCount: Int { bagViewStates.count }
+    
     init(skuCount: Int = 0) {
         self.skuCount = skuCount
     }

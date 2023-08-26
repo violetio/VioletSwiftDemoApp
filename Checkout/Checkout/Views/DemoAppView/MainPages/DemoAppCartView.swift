@@ -15,11 +15,13 @@ struct DemoAppCartView: View {
         VStack(spacing: 0) {
         
                 if cartViewState.cartEmpty {
+                    Spacer()
                     Text("Your Cart is Empty")
                         .font(.system(size: 20, weight: .semibold))
                     Text("Continue browsing the Demo App.")
                         .font(.system(size: 14))
                         .frame(minHeight: 25)
+                    Spacer()
 
                 } else {
                     List {

@@ -37,6 +37,31 @@ class OfferSkusVariants {
         return result
     }
     
+    func availableVariants(key: String) -> Set<String> {
+        let intersectingSkuIdSetMap = intersectingSkuIdSetMap(key: key)
+        var interestingKeys = Set<String>(intersectingSkuIdSetMap.keys)
+        interestingKeys.remove(key)
+        return interestingKeys
+    }
+    
+    func availableVariantViewModels(key: String) -> [String: VariantViewModel] {
+        let intersectingKeys = availableVariants(key: key)
+        var availableVariantViewModels: [String: VariantViewModel] = [:]
+        intersectingKeys.forEach { aKey in
+            let split = aKey.split(separator: ".")
+            if split.count == 2 {
+                let variantName = split[0], valueName = split[1]
+                if var variantViewModels = availableVariantViewModels[String(variantName)] {
+                    variantViewModels.addValueName(valueName: String(valueName))
+                    availableVariantViewModels[String(variantName)] = variantViewModels
+                } else {
+                    availableVariantViewModels[String(variantName)] = VariantViewModel(name: String(variantName), valueNamesArray: [String(valueName)])
+                }
+            }
+        }
+        return availableVariantViewModels
+    }
+    
     static func skuID(setNamesToIntersect: [String], skuIdSetMap: SkuIdSetMap) -> Int64? {
         var result: Int64? = nil
         

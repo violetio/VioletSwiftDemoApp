@@ -82,7 +82,7 @@ struct VariantViewModel: Equatable, Identifiable {
     var id: String { name }
     
     let name: String
-    let variantValuesArray: [VariantValueViewModel]
+    var variantValuesArray: [VariantValueViewModel]
     
     init?(variant: Variant) {
         guard let variantName = variant.name else { return nil }
@@ -101,6 +101,10 @@ struct VariantViewModel: Equatable, Identifiable {
     init(name: String, valueNamesSet: Set<String>) {
         self.name = name
         self.variantValuesArray = valueNamesSet.map { VariantValueViewModel(name: $0)}
+    }
+    
+    mutating func addValueName(valueName: String) {
+        variantValuesArray.append(VariantValueViewModel(name: valueName))
     }
 }
 

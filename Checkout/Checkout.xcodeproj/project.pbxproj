@@ -10,9 +10,17 @@
 		E701B2BA2A8FF1E500A2EFD1 /* QuantityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2B92A8FF1E500A2EFD1 /* QuantityPicker.swift */; };
 		E701B2BC2A92A9A300A2EFD1 /* OfferVariants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2BB2A92A9A300A2EFD1 /* OfferVariants.swift */; };
 		E701B2BE2A92AA1700A2EFD1 /* OfferVariantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2BD2A92AA1700A2EFD1 /* OfferVariantsTests.swift */; };
-		E701B2C02A92AAE700A2EFD1 /* SkuVariantValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2BF2A92AAE700A2EFD1 /* SkuVariantValues.swift */; };
-		E701B2C22A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2C12A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift */; };
+		E701B2C02A92AAE700A2EFD1 /* OfferSkusVariants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2BF2A92AAE700A2EFD1 /* OfferSkusVariants.swift */; };
+		E701B2C22A92AB5D00A2EFD1 /* OfferSkusVariantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2C12A92AB5D00A2EFD1 /* OfferSkusVariantsTests.swift */; };
 		E701B2C42A93B5CE00A2EFD1 /* UpdateSkuInCartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2C32A93B5CE00A2EFD1 /* UpdateSkuInCartRequest.swift */; };
+		E701B2C82A93E03500A2EFD1 /* DemoAppGuestCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2C72A93E03500A2EFD1 /* DemoAppGuestCheckoutView.swift */; };
+		E701B2CA2A93E4AC00A2EFD1 /* GuestCheckoutViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2C92A93E4AC00A2EFD1 /* GuestCheckoutViewState.swift */; };
+		E701B2CC2A94076500A2EFD1 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2CB2A94076500A2EFD1 /* FormTextField.swift */; };
+		E701B2CE2A9525EA00A2EFD1 /* OrderAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2CD2A9525EA00A2EFD1 /* OrderAddressView.swift */; };
+		E701B2D02A9526D600A2EFD1 /* OrderAddressViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2CF2A9526D600A2EFD1 /* OrderAddressViewState.swift */; };
+		E701B2D22A97CA5500A2EFD1 /* country_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = E701B2D12A97CA5500A2EFD1 /* country_codes.json */; };
+		E701B2D42A97CA6800A2EFD1 /* CountryCodesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2D32A97CA6800A2EFD1 /* CountryCodesArray.swift */; };
+		E701B2D62A97CAC800A2EFD1 /* CountryCodesArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E701B2D52A97CAC800A2EFD1 /* CountryCodesArrayTests.swift */; };
 		E70BEB6729B92B200030335E /* CheckoutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB6629B92B200030335E /* CheckoutApp.swift */; };
 		E70BEB6929B92B200030335E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB6829B92B200030335E /* ContentView.swift */; };
 		E70BEB6B29B92B210030335E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E70BEB6A29B92B210030335E /* Assets.xcassets */; };
@@ -167,9 +175,17 @@
 		E701B2B92A8FF1E500A2EFD1 /* QuantityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPicker.swift; sourceTree = "<group>"; };
 		E701B2BB2A92A9A300A2EFD1 /* OfferVariants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferVariants.swift; sourceTree = "<group>"; };
 		E701B2BD2A92AA1700A2EFD1 /* OfferVariantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferVariantsTests.swift; sourceTree = "<group>"; };
-		E701B2BF2A92AAE700A2EFD1 /* SkuVariantValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkuVariantValues.swift; sourceTree = "<group>"; };
-		E701B2C12A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkuVariantValuesTests.swift; sourceTree = "<group>"; };
+		E701B2BF2A92AAE700A2EFD1 /* OfferSkusVariants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkusVariants.swift; sourceTree = "<group>"; };
+		E701B2C12A92AB5D00A2EFD1 /* OfferSkusVariantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSkusVariantsTests.swift; sourceTree = "<group>"; };
 		E701B2C32A93B5CE00A2EFD1 /* UpdateSkuInCartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateSkuInCartRequest.swift; sourceTree = "<group>"; };
+		E701B2C72A93E03500A2EFD1 /* DemoAppGuestCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppGuestCheckoutView.swift; sourceTree = "<group>"; };
+		E701B2C92A93E4AC00A2EFD1 /* GuestCheckoutViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCheckoutViewState.swift; sourceTree = "<group>"; };
+		E701B2CB2A94076500A2EFD1 /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
+		E701B2CD2A9525EA00A2EFD1 /* OrderAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAddressView.swift; sourceTree = "<group>"; };
+		E701B2CF2A9526D600A2EFD1 /* OrderAddressViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAddressViewState.swift; sourceTree = "<group>"; };
+		E701B2D12A97CA5500A2EFD1 /* country_codes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country_codes.json; sourceTree = "<group>"; };
+		E701B2D32A97CA6800A2EFD1 /* CountryCodesArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodesArray.swift; sourceTree = "<group>"; };
+		E701B2D52A97CAC800A2EFD1 /* CountryCodesArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodesArrayTests.swift; sourceTree = "<group>"; };
 		E70BEB6329B92B200030335E /* Checkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70BEB6629B92B200030335E /* CheckoutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutApp.swift; sourceTree = "<group>"; };
 		E70BEB6829B92B200030335E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -398,7 +414,8 @@
 				E72E000C29EF33F1009F7BFE /* ExtensionsTests.swift */,
 				E7F8D5992A83FD3900F720CD /* VariantsViewModelTests.swift */,
 				E701B2BD2A92AA1700A2EFD1 /* OfferVariantsTests.swift */,
-				E701B2C12A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift */,
+				E701B2C12A92AB5D00A2EFD1 /* OfferSkusVariantsTests.swift */,
+				E701B2D52A97CAC800A2EFD1 /* CountryCodesArrayTests.swift */,
 			);
 			path = CheckoutTests;
 			sourceTree = "<group>";
@@ -447,7 +464,7 @@
 				E712EAFD2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift */,
 				E7F8D5972A83FCF300F720CD /* VariantsViewModel.swift */,
 				E701B2BB2A92A9A300A2EFD1 /* OfferVariants.swift */,
-				E701B2BF2A92AAE700A2EFD1 /* SkuVariantValues.swift */,
+				E701B2BF2A92AAE700A2EFD1 /* OfferSkusVariants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -609,7 +626,9 @@
 		E7B41C4629F34AC700E7371B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E701B2D12A97CA5500A2EFD1 /* country_codes.json */,
 				E7B41C4729F34AE700E7371B /* AutoKeyed.swift */,
+				E701B2D32A97CA6800A2EFD1 /* CountryCodesArray.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -670,6 +689,8 @@
 				E7B41CAA2A09843800E7371B /* CartViewState.swift */,
 				E72C467F2A7866A700F8C267 /* OfferSearchViewState.swift */,
 				E7F8D5C82A8A82DF00F720CD /* OfferPDPViewState.swift */,
+				E701B2C92A93E4AC00A2EFD1 /* GuestCheckoutViewState.swift */,
+				E701B2CF2A9526D600A2EFD1 /* OrderAddressViewState.swift */,
 			);
 			path = ViewState;
 			sourceTree = "<group>";
@@ -688,6 +709,8 @@
 				E7F8D5CE2A8D58E500F720CD /* CartBagSection.swift */,
 				E7F8D5D22A8EB83D00F720CD /* CartBagSkuCell.swift */,
 				E701B2B92A8FF1E500A2EFD1 /* QuantityPicker.swift */,
+				E701B2CB2A94076500A2EFD1 /* FormTextField.swift */,
+				E701B2CD2A9525EA00A2EFD1 /* OrderAddressView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -699,6 +722,7 @@
 				E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */,
 				E7F8D58E2A82D67300F720CD /* DemoAppOfferPDP.swift */,
 				E7F8D5CC2A8D2B7B00F720CD /* DemoAppCartView.swift */,
+				E701B2C72A93E03500A2EFD1 /* DemoAppGuestCheckoutView.swift */,
 			);
 			path = MainPages;
 			sourceTree = "<group>";
@@ -837,6 +861,7 @@
 				E72E000729EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json in Resources */,
 				E70BEB6E29B92B210030335E /* Preview Assets.xcassets in Resources */,
 				E70BEB6B29B92B210030335E /* Assets.xcassets in Resources */,
+				E701B2D22A97CA5500A2EFD1 /* country_codes.json in Resources */,
 				E72EFFE929DC88E1009F7BFE /* Offer_ID_12574_Response.json in Resources */,
 				E72EFFEA29DC88E1009F7BFE /* Offer_ID_12555_response.json in Resources */,
 			);
@@ -875,20 +900,23 @@
 			files = (
 				E701B2BA2A8FF1E500A2EFD1 /* QuantityPicker.swift in Sources */,
 				E71CFB8129C10CDC00598B15 /* LoginPostRequest.swift in Sources */,
+				E701B2CE2A9525EA00A2EFD1 /* OrderAddressView.swift in Sources */,
 				E7FA7BD12A69C3CB001E9906 /* CatalogSearchOffersRequest.swift in Sources */,
 				E7B41C8529FAC5E300E7371B /* ChannelHeadersAPICall.swift in Sources */,
 				E7F8D5CD2A8D2B7B00F720CD /* DemoAppCartView.swift in Sources */,
+				E701B2CA2A93E4AC00A2EFD1 /* GuestCheckoutViewState.swift in Sources */,
 				E7B41C962A01643A00E7371B /* OrderShippingMethodWrapperView.swift in Sources */,
 				E712EB072A5CA6C700DDAE15 /* DemoAppOfferCardImage.swift in Sources */,
 				E72EFFE529D4C8BA009F7BFE /* OfferView.swift in Sources */,
 				E7F8D5962A83F42700F720CD /* PaymentButton.swift in Sources */,
+				E701B2CC2A94076500A2EFD1 /* FormTextField.swift in Sources */,
 				E7B41CA72A0983C000E7371B /* ChannelLoginViewState.swift in Sources */,
 				E7B41C932A00888000E7371B /* Order+Extensions.swift in Sources */,
 				E7B41C5129F5892E00E7371B /* AppIDAndSecret.swift in Sources */,
 				E7F8D59E2A8420FA00F720CD /* OfferVariantValuePicker.swift in Sources */,
 				E7B41C5A29F58C6B00E7371B /* DemoUsernameAndPassword.swift in Sources */,
 				E7B41C9A2A0165CF00E7371B /* CartShippingMethodsSectionView.swift in Sources */,
-				E701B2C02A92AAE700A2EFD1 /* SkuVariantValues.swift in Sources */,
+				E701B2C02A92AAE700A2EFD1 /* OfferSkusVariants.swift in Sources */,
 				E72E000529EF1035009F7BFE /* GetPageOffersByMerchantIDRequest.swift in Sources */,
 				E7B41CA42A097E7300E7371B /* ChannelHeader+Extensions.swift in Sources */,
 				E7B41C6E29F72E0D00E7371B /* OfferDetailView.swift in Sources */,
@@ -931,6 +959,7 @@
 				E712EAFC2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift in Sources */,
 				E7F8D5922A82DA0E00F720CD /* DemoAppOfferCardText.swift in Sources */,
 				E7F8D5942A82DE5900F720CD /* OfferImageCarousel.swift in Sources */,
+				E701B2D42A97CA6800A2EFD1 /* CountryCodesArray.swift in Sources */,
 				E7B41C6A29F71EEC00E7371B /* OfferItem.swift in Sources */,
 				E70BEB9529B94F5A0030335E /* VioletOffer.swift in Sources */,
 				E7F8D5982A83FCF300F720CD /* VariantsViewModel.swift in Sources */,
@@ -947,11 +976,13 @@
 				E7F8D5C52A855F3B00F720CD /* OfferVariantValuePicker2.swift in Sources */,
 				E7B41C4A29F586E200E7371B /* OfferItemSelections.swift in Sources */,
 				E70BEB6929B92B200030335E /* ContentView.swift in Sources */,
+				E701B2D02A9526D600A2EFD1 /* OrderAddressViewState.swift in Sources */,
 				E712EB002A5C6A5000DDAE15 /* DemoAppOfferCard.swift in Sources */,
 				E72E001829F1BA61009F7BFE /* PriceViewModel.swift in Sources */,
 				E7B41CB12A09872600E7371B /* APICall.swift in Sources */,
 				E7B41C7D29F9848900E7371B /* CurrentAuthToken.swift in Sources */,
 				E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */,
+				E701B2C82A93E03500A2EFD1 /* DemoAppGuestCheckoutView.swift in Sources */,
 				E7F8D5CF2A8D58E500F720CD /* CartBagSection.swift in Sources */,
 				E7B41C5829F58C0700E7371B /* UsernameAndPassword.swift in Sources */,
 				E7B41C4F29F5880800E7371B /* UserInputCoordinator.swift in Sources */,
@@ -976,9 +1007,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E701B2C22A92AB5D00A2EFD1 /* SkuVariantValuesTests.swift in Sources */,
+				E701B2C22A92AB5D00A2EFD1 /* OfferSkusVariantsTests.swift in Sources */,
 				E71CFBB829D2349500598B15 /* ExpectationRunner.swift in Sources */,
 				E71CFB8329C2334B00598B15 /* APIModelsTests.swift in Sources */,
+				E701B2D62A97CAC800A2EFD1 /* CountryCodesArrayTests.swift in Sources */,
 				E7F8D59A2A83FD3900F720CD /* VariantsViewModelTests.swift in Sources */,
 				E71CFBBA29D2402100598B15 /* TestCheckoutSequence.swift in Sources */,
 				E701B2BE2A92AA1700A2EFD1 /* OfferVariantsTests.swift in Sources */,
@@ -1319,8 +1351,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/violetio/violet-swift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				kind = revision;
+				revision = b2ee12e248fe3c3abf24e7aab9e765c3cfe4d796;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

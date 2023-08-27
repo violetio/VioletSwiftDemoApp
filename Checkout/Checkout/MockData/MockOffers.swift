@@ -32,6 +32,15 @@ public class MockOffers {
         return decodePageOffer(from: jsonData)
     }
     
+    public static func load_PageOffers(offerId: Int64) -> Offer? {
+        guard let jsonData = jsonData(forResource: "PageOffer_Page_1_MerchantID_10003_Response") else {
+            return nil
+        }
+        guard let pageOffers = decodePageOffer(from: jsonData) else { return nil }
+        guard let offersArray = pageOffers.content else { return nil }
+        return offersArray.first(where: {$0.id == offerId})
+    }
+    
     public static func load_OrderID_71169() -> Order? {
         guard let jsonData = jsonData(forResource: "Order_ID_71169_GetCartByID_Response") else {
             return nil

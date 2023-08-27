@@ -14,6 +14,7 @@ struct DemoStackContentView: View {
         NavigationStack
         {
             DemoAppView(store: $store)
+            //DemoAppGuestCheckoutView(store: $store, guestCheckoutViewState: GuestCheckoutViewState())
         }
     }
 }

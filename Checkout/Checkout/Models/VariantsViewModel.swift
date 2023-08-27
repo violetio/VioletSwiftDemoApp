@@ -81,7 +81,6 @@ class VariantsViewModel {
 struct VariantViewModel: Equatable, Identifiable {
     var id: String { name }
     
-    let variant: Variant
     let name: String
     let variantValuesArray: [VariantValueViewModel]
     
@@ -92,22 +91,30 @@ struct VariantViewModel: Equatable, Identifiable {
         
         self.variantValuesArray = valuesSet.compactMap { VariantValueViewModel($0) }
         self.name = variantName
-        self.variant = variant
+    }
+    
+    init(name: String, valueNamesArray: [String]) {
+        self.name = name
+        self.variantValuesArray = valueNamesArray.map { VariantValueViewModel(name: $0)}
+    }
+    
+    init(name: String, valueNamesSet: Set<String>) {
+        self.name = name
+        self.variantValuesArray = valueNamesSet.map { VariantValueViewModel(name: $0)}
     }
 }
 
 struct VariantValueViewModel: Equatable, Identifiable {
     var id: String { name }
     
-    let variantValue: VariantValue
     let name: String
-    let skuId: [Int64]
     init?(_ variantValue: VariantValue) {
         guard let aName = variantValue.name else { return nil }
-        guard let aSkuIdSet = variantValue.skuIds else { return nil }
         
-        self.skuId = Array(aSkuIdSet)
         self.name = aName
-        self.variantValue = variantValue
+    }
+    
+    init(name: String) {
+        self.name = name
     }
 }

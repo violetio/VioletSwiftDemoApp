@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Violet
 
 class AppStore {
     class AppState {
@@ -13,6 +14,7 @@ class AppStore {
         var demoProxyViewState: DemoProxyActiveViewState
         var cartViewState: CartViewState
         var offerSearchViewState: OfferSearchViewState
+        var guestCheckoutViewState: GuestCheckoutViewState
         var offerPDPViewStates: [Int64: OfferPDPViewState] = [:]
         
         func updateOfferPDPViewState( offerItem: DemoProductGridOfferItem) -> OfferPDPViewState {
@@ -26,17 +28,28 @@ class AppStore {
         
         init(demoChannelViewState: DemoProxyActiveViewState,
              cartViewState: CartViewState,
-             offerSearchViewState: OfferSearchViewState) {
+             offerSearchViewState: OfferSearchViewState, guestCheckoutViewState: GuestCheckoutViewState) {
             self.demoProxyViewState = demoChannelViewState
             self.cartViewState = cartViewState
             self.offerSearchViewState = offerSearchViewState
+            self.guestCheckoutViewState = guestCheckoutViewState
         }
 
         convenience init() {
             self.init(demoChannelViewState: DemoProxyActiveViewState(),
                       cartViewState: CartViewState(),
-                      offerSearchViewState: OfferSearchViewState())
+                      offerSearchViewState: OfferSearchViewState(),
+            guestCheckoutViewState: GuestCheckoutViewState())
         }
+        
+        func updateWithNewOrder(order: Order) {
+            cartViewState.updateWithNewOrder(order: order)
+            guestCheckoutViewState.loadFrom(customer: order.customer,
+                                            shippingAddress: order.shippingAddress,
+                                            billingAddress: order.billingAddress)
+        }
+        
+        
     }
 
     enum AppAction {
@@ -46,7 +59,7 @@ class AppStore {
         case addSkuToCart(OrderID,OfferSkuID,OrderQuantity)
         case updateSkuInCart(OrderID,OrderSkuID,OrderQuantity)
         case removeSkuFromCart(OrderID,OrderSkuID)
-        case updateCartCustomerRequest
+        case updateCartCustomerRequest(OrderID, OrderCustomer)
     }
 
     func send(_ action: AppAction) {
@@ -72,7 +85,8 @@ class AppStore {
     {
         let newState = AppState(demoChannelViewState: demoChannelViewState,
                                 cartViewState: cartViewState,
-                                offerSearchViewState: offerSearchViewState)
+                                offerSearchViewState: offerSearchViewState,
+        guestCheckoutViewState: GuestCheckoutViewState())
         self.state = newState
         self.sender = AppSender(state: newState)
     }
@@ -81,5 +95,16 @@ class AppStore {
         self.init(demoChannelViewState: DemoProxyActiveViewState(),
                   cartViewState: cartViewState ?? CartViewState(),
                   offerSearchViewState: OfferSearchViewState.mockEmpty())
+    }
+    
+    func onAppAppear() {
+        if offerSearchViewState.emtpy {
+            sender.send(.offersPageRequest(10003))
+        }
+        if cartViewState.noCart {
+            //sender.send(.createCartRequest)
+//            sender.send(.cartByID(72500))
+            sender.send(.cartByID(73302))
+        }
     }
 }

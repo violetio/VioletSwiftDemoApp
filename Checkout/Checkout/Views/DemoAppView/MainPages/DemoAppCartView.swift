@@ -15,11 +15,13 @@ struct DemoAppCartView: View {
         VStack(spacing: 0) {
         
                 if cartViewState.cartEmpty {
+                    Spacer()
                     Text("Your Cart is Empty")
                         .font(.system(size: 20, weight: .semibold))
                     Text("Continue browsing the Demo App.")
                         .font(.system(size: 14))
                         .frame(minHeight: 25)
+                    Spacer()
 
                 } else {
                     List {
@@ -48,18 +50,27 @@ struct DemoAppCartView: View {
                         //.withBlackBorder()
                         
                 }
+                  
                 
-                Button {
-
+                NavigationLink {
+                    DemoAppGuestCheckoutView(store: $store,
+                                             guestCheckoutViewState: store.state.guestCheckoutViewState)
                 } label: {
-                    Text("Checkout")
-                        .font(Font.custom("SF Pro Text", size: 17))
-                        .frame(width: 340, height: 50)
-                        .foregroundColor(.white)
-                        .background(Color(red: 0, green: 0.48, blue: 1))
-                        .cornerRadius(12)
+//                    Button {
+//
+//
+//                    } label: {
+                        Text("Checkout")
+                            .font(Font.custom("SF Pro Text", size: 17))
+                            .frame(width: 340, height: 50)
+                            .foregroundColor(.white)
+                            .background(Color(red: 0, green: 0.48, blue: 1))
+                            .cornerRadius(12)
+//                    }
+//                    .frame(width: 340, alignment: .bottom)
                 }
-                .frame(width: 340, alignment: .bottom)
+
+
             }.padding(25)
                 .background(Color.white)
 //            .withBlackBorder()

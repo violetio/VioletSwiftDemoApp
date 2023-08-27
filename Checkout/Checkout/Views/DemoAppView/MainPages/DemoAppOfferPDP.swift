@@ -24,13 +24,7 @@ struct DemoAppOfferPDP: View {
                     DemoAppOfferCardText(offerItem: $offerItem)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                     
-                    if offerPDPViewState.variantViewModels.count > 0 {
-                        
-                        ForEach(offerPDPViewState.variantViewModels) { variant in
-                            OfferVariantValuePicker(variantViewModel: variant, selectedValue: variant.variantValuesArray[0].name, offerPDPViewState: offerPDPViewState)
-                        }
-
-                    }
+                    DemoAppOfferPDPVariantsView(offerPDPViewState: offerPDPViewState)
                     
                     if StripeAPI.deviceSupportsApplePay() {
                         //Font 17

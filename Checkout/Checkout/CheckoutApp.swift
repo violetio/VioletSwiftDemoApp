@@ -11,6 +11,7 @@ import Stripe
 @main
 struct CheckoutApp: App {
     let store: AppStore = AppStore()
+    @StateObject var router = Router()
     
     init() {
         //TODO: Is this necessary?
@@ -18,7 +19,7 @@ struct CheckoutApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            ContentView(store: .constant(store))
+            ContentView(store: .constant(store)).environmentObject(router)
         }
     }
 }

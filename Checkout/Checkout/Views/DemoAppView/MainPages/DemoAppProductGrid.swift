@@ -16,6 +16,7 @@ struct DemoAppProductGrid: View {
     @Binding var store: AppStore
     @ObservedObject var offerSearchViewState: OfferSearchViewState
     @ObservedObject var demoProxyViewState: DemoProxyActiveViewState
+    @State var selectedOfferItem: DemoProductGridOfferItem? = nil
 
     let layout = [
         GridItem(.fixed(340))
@@ -40,15 +41,23 @@ struct DemoAppProductGrid: View {
             } else {
                 if offerSearchViewState.loadedOfferItems.count > 0 {
                     LazyVGrid(columns: layout, spacing: 20) {
-                                    ForEach(offerSearchViewState.loadedOfferItems, id: \.offer_id) { offerItem in
-                                        NavigationLink(value: offerItem) {
-                                            DemoAppOfferCard(store: $store,
-                                                             offerItem: .constant(offerItem))
-                                        }
-                                    }
-                                }.offset(CGSize(width: 0, height: 20)) //This pushes scroll content top y down 15 pts
-                                    .frame(minWidth: 390) //This matches the scrollview width to parent view width (at least on iPhone 14
-                                    .withScrollViewBackgroundColor()
+                        ForEach(offerSearchViewState.loadedOfferItems, id: \.offer_id) { offerItem in
+                            NavigationLink(value: offerItem) {
+                                
+                            }
+                        }
+                        
+                    }.offset(CGSize(width: 0, height: 20)) //This pushes scroll content top y down 15 pts
+                        .frame(minWidth: 390) //This matches the scrollview width to parent view width (at least on iPhone 14
+                        .withScrollViewBackgroundColor()
+                        .navigationDestination(for: NavigationKey.self) { key in
+                            switch key {
+                            case .offerPDP(let offerItem):
+                                DemoAppOfferCard(store: $store,
+                                                 offerItem: .constant(offerItem))
+                            }
+                            
+                        }
                 } else {
                     ProgressView() {
                         Text("Workout")

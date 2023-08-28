@@ -13,13 +13,14 @@ final class OfferSkusVariantsTests: XCTestCase {
 
     func test_Init() throws {
         let offer_id_12555 = MockOffers.load_Offer_12555()!
-        let skuSet = offer_id_12555.skus!
-        let firstSku = skuSet.first!
+//        let skuSet = offer_id_12555.skus!
+//        let firstSku = skuSet.first!
         let sut = OfferSkusVariants(offer: offer_id_12555)
-        let setNamesToIntersect: [String] = ["Color.Semi Solar Yellow/ Scarlet" , "Size.6 Women\'s / 5 Men\'s", "Width.M"]
-        
-        let result = sut.skuID(setNamesToIntersect: setNamesToIntersect)
-        Logger.info("sut.skuID? : \(result)")
+//        let setNamesToIntersect: [String] = ["Color.Semi Solar Yellow/ Scarlet" , "Size.6 Women\'s / 5 Men\'s", "Width.M"]
+//
+//        let result = sut.skuID(setNamesToIntersect: setNamesToIntersect)
+//        Logger.info("sut.skuID? : \(result)")
+        Logger.info("Variant Names : \(sut.namedVariantViewModels.keys)")
         
     }
 
@@ -30,22 +31,9 @@ final class OfferSkusVariantsTests: XCTestCase {
         let sut = OfferSkusVariants(offer: offer_id_12569)
         let key = "Color.Light Cream/ Anthracite"
 
-        let intersectingKeys = sut.availableVariants(key: key)
         var availableVariantViewModels: [String: VariantViewModel] = [:]
-        intersectingKeys.forEach { aKey in
-            let split = aKey.split(separator: ".")
-            if split.count == 2 {
-                let variantName = split[0], valueName = split[1]
-                if var variantViewModels = availableVariantViewModels[String(variantName)] {
-                    variantViewModels.addValueName(valueName: String(valueName))
-                    availableVariantViewModels[String(variantName)] = variantViewModels
-                } else {
-                    availableVariantViewModels[String(variantName)] = VariantViewModel(name: String(variantName), valueNamesArray: [String(valueName)])
-                }
-                Logger.debug("variantName: \(variantName), valueName: \(valueName)")
-            }
-
-        }
+        
+        availableVariantViewModels = sut.availableVariantViewModels(key: key)
         Logger.debug("availableVariantViewModels: \(availableVariantViewModels)")
     }
     

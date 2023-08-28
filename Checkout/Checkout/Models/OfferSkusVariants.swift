@@ -12,11 +12,16 @@ class OfferSkusVariants {
     let offer: Offer
     var skuIdSetMap: SkuIdSetMap
     var variantViewModels: [VariantViewModel]
+    var namedVariantViewModels: [String: VariantViewModel]
     
     init(offer: Offer) {
         self.offer = offer
         self.skuIdSetMap = Self.buildSkuIdSetMap(offer: offer)
-        self.variantViewModels = Self.buildVariantViewModels(offer: offer)
+        let allVariantViewModels = Self.buildVariantViewModels(offer: offer)
+        self.variantViewModels = allVariantViewModels
+        self.namedVariantViewModels = allVariantViewModels.reduce(into: [String: VariantViewModel](), { partialResult, next in
+            partialResult[next.name] = next
+        })
     }
     
     func skuID(setNamesToIntersect: [String]) -> Int64? {

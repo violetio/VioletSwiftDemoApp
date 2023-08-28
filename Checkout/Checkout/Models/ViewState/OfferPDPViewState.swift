@@ -14,8 +14,7 @@ class OfferPDPViewState: ObservableObject {
     @Published var offerSkusVariants: OfferSkusVariants
     @Published var selectedSkuID: Int64? = nil
     @Published var selectedVariantKeys: [String: String] = [:]
-    public let variants: [Variant]
-    //let variantViewModels: [VariantViewModel]
+
     var variantViewModels: [VariantViewModel] { offerSkusVariants.variantViewModels }
     
 
@@ -26,10 +25,7 @@ class OfferPDPViewState: ObservableObject {
         self.offerSkusVariants = OfferSkusVariants(offer: offer)
         let variantsArray = offer.variantsArray()
         Logger.debug("OfferPDPViewState: variantsArray - Count: \(variantsArray.count)")
-        self.variants = variantsArray
-//        self.variantViewModels = variantsArray.compactMap { VariantViewModel(variant: $0)}.sorted(by: { l, r in
-//            l.name < r.name
-//        })
+
         Logger.debug("OfferPDPViewState: Skus - Count: \(offer.skus?.count ?? 0)")
         if let singleSku = offer.singleSku(),
            let singleSkuID = singleSku.id {
@@ -40,7 +36,18 @@ class OfferPDPViewState: ObservableObject {
         }
     }
     
+    func updateAvailableVariants(variantName: String, valueName: String) {
+        Logger.debug("updateAvailableVariants: variantName - \(variantName) - valueName - \(valueName)")
+        let variantKey = "\(variantName).\(valueName)"
+        var intersecting = offerSkusVariants.intersectingSkuIdSetMap(key: variantKey)
+        intersecting.removeValue(forKey: variantKey)
+        Logger.debug("Other variants showing should be:")
+        Logger.debug(" - \(intersecting)")
+    }
+    
     func selected(variantName: String, valueName: String) {
+        updateAvailableVariants(variantName: variantName, valueName: valueName)
+        
         let variantKey = "\(variantName).\(valueName)"
         self.selectedVariantKeys[variantName] = variantKey
         if selectedVariantKeys.count == variantViewModels.count {

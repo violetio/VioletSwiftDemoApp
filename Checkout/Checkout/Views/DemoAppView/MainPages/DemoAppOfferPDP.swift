@@ -12,6 +12,7 @@ import SwiftUI
 struct DemoAppOfferPDP: View {
     @Binding var store: AppStore
     @Binding var offerItem: DemoProductGridOfferItem
+    @Binding var appViewNavPath: NavigationPath
     
     @ObservedObject var offerPDPViewState: OfferPDPViewState
     
@@ -90,13 +91,13 @@ struct DemoAppOfferPDP_Previews: PreviewProvider {
         Group {
             NavigationStack {
                 DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
-                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12574()),
+                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12574()), appViewNavPath: .constant(NavigationPath()),
                                 offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12574().offerEntity))
             }.previewDisplayName("No Variants OfferID 12574")
             
             NavigationStack {
                 DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
-                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12555()),
+                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12555()), appViewNavPath: .constant(NavigationPath()),
                                 offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12555().offerEntity))
             }.previewDisplayName("3 Variants OfferID 12555")
         }

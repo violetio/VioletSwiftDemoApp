@@ -9,9 +9,9 @@ import SwiftUI
 
 struct DemoAppView: View {
     @Binding var store: AppStore
-    
+    @State var appViewNavPath = NavigationPath()
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $appViewNavPath) {
             DemoAppProductGrid(store: $store, offerSearchViewState: store.offerSearchViewState, demoProxyViewState: store.demoChannelViewState)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -34,7 +34,7 @@ struct DemoAppView: View {
                     }
                 }.navigationDestination(for: DemoProductGridOfferItem.self) { offerItem in
                     DemoAppOfferPDP(store: $store,
-                                    offerItem: .constant(offerItem),
+                                    offerItem: .constant(offerItem), appViewNavPath: $appViewNavPath,
                                     offerPDPViewState: store.state.updateOfferPDPViewState(offerItem: offerItem))
                     
                 }.onAppear {

@@ -102,9 +102,11 @@ class AppStore {
             sender.send(.offersPageRequest(10003))
         }
         if cartViewState.noCart {
-            //sender.send(.createCartRequest)
-//            sender.send(.cartByID(72500))
-            sender.send(.cartByID(73302))
+//            sender.send(.createCartRequest)
+//                sender.send(.cartByID(71169))
+            sender.send(.cartByID(72500))
+//            sender.send(.cartByID(73302))
+//            sender.send(.cartByID(73461))
         }
     }
 }

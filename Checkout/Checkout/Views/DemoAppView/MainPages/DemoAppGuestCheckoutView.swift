@@ -94,6 +94,9 @@ struct DemoAppGuestCheckoutView: View {
                 if let order = store.cartViewState.currentOrder {
                     store.state.guestCheckoutViewState.loadFrom(customer: order.customer, shippingAddress: order.shippingAddress, billingAddress: order.billingAddress)
                 }
+                if guestCheckoutViewState.orderHasAddress {
+                    Logger.debug("Order has Address")
+                }
             }
 
     }

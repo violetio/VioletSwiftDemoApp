@@ -19,8 +19,9 @@ struct CartBagSection: View {
                                orderSkuViewState: orderSkuViewState)
                 
             }
-            
             BagTotalView
+        }.alignmentGuide(.listRowSeparatorLeading) { d in
+            d[.leading]
         }
     }
     

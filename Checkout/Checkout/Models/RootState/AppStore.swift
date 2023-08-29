@@ -16,6 +16,7 @@ class AppStore {
         var offerSearchViewState: OfferSearchViewState
         var shippingViewState: ShippingViewState
         var offerPDPViewStates: [Int64: OfferPDPViewState] = [:]
+        let router: Router = Router()
         
         func updateOfferPDPViewState( offerItem: DemoProductGridOfferItem) -> OfferPDPViewState {
             if let existingOfferPDPViewState = offerPDPViewStates[offerItem.id] {
@@ -49,6 +50,18 @@ class AppStore {
                                             billingAddress: order.billingAddress)
         }
         
+        func markCheckoutPageComplete(_ navigationKey: NavigationKey) {
+            if !cartViewState.checkoutPagesComplete.contains(navigationKey) {
+                cartViewState.checkoutPagesComplete.insert(navigationKey)
+                Logger.debug("markCheckoutPageComplete: \(navigationKey)")
+                if navigationKey == .addShippingAddress {
+                    Logger.debug("markCheckoutPageComplete: Go to \(NavigationKey.selectShippingMethod)")
+                    router.paths.append(NavigationKey.selectShippingMethod)
+                }
+                
+            }
+        }
+        
         
     }
 
@@ -68,6 +81,7 @@ class AppStore {
 
     let state: AppState
     let sender: AppSender
+    var router: Router { state.router }
     
     static let mockAppStore = AppStore(cartViewState: CartViewState())
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }

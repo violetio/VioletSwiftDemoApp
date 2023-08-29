@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DemoAppView: View {
     @Binding var store: AppStore
-    @StateObject var router = Router()
+    @StateObject var router: Router
     
     var body: some View {
         NavigationStack(path: $router.paths) {
@@ -65,6 +65,6 @@ struct DemoAppView: View {
 
 struct DemoAppView_Previews: PreviewProvider {
     static var previews: some View {
-        DemoAppView(store: AppStore.mockAppStoreBinding)
+        DemoAppView(store: AppStore.mockAppStoreBinding, router: Router())
     }
 }

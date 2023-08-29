@@ -113,6 +113,7 @@ extension AppStore {
                        let orderId = order.id{
                         Logger.debug("Store+Sender: ✅ updateCartCustomerRequest Cart ID: \(orderId)")
                         self.state.updateWithNewOrder(order: order)
+                        self.state.markCheckoutPageComplete(.addShippingAddress)
                     }
                 }
             }

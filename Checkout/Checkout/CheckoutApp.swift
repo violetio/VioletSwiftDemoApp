@@ -19,7 +19,7 @@ struct CheckoutApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            DemoAppView(store: .constant(store))
+            DemoAppView(store: .constant(store), router: store.router)
         }
     }
 }

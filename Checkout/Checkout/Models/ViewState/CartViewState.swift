@@ -15,6 +15,8 @@ class CartViewState: ObservableObject {
     @Published var bagViewStates: [Int64: BagViewState] = [:]
     @Published var currentOrder: Order? = nil
     
+    @Published var checkoutPagesComplete: Set<NavigationKey> = Set()
+    
     var noCart: Bool { cartId == nil }
     
     var cartEmpty: Bool { skuCount == 0 }

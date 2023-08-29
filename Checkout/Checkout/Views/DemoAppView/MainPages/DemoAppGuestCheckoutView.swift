@@ -67,7 +67,6 @@ struct DemoAppGuestCheckoutView: View {
                     Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
                     Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
                     store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
-                    router.paths.append(NavigationKey.selectShippingMethod)
                 }
 
 

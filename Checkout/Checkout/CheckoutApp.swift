@@ -19,7 +19,7 @@ struct CheckoutApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            ContentView(store: .constant(store)).environmentObject(router)
+            ContentView(store: .constant(store))
         }
     }
 }

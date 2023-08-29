@@ -45,6 +45,12 @@ struct DemoAppView: View {
                         DemoAppCartView(store: $store,
                                         cartViewState: store.state.cartViewState,
                                         router: router)
+                    case .addShippingAddress:
+                        DemoAppGuestCheckoutView(store: $store,
+                                                 guestCheckoutViewState: store.state.guestCheckoutViewState,
+                                                 router: router)
+                    case .selectShippingMethod:
+                        DemoAppShippingMethodSelectView()
                     }
                     
                 }.onAppear {

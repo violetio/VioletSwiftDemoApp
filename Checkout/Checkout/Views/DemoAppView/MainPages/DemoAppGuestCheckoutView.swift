@@ -14,7 +14,7 @@ import StripeApplePay
  */
 struct DemoAppGuestCheckoutView: View {
     @Binding var store: AppStore
-    @ObservedObject var guestCheckoutViewState: GuestCheckoutViewState
+    @ObservedObject var shippingViewState: ShippingViewState
     @StateObject var router: Router
     
     var body: some View {
@@ -41,27 +41,27 @@ struct DemoAppGuestCheckoutView: View {
                 Text("Shipping Address")
                     .font(.system(size: 17, weight: .semibold))
                     .padding(.vertical)
-                FormTextField(guestCheckoutViewState.emailPrompt,
-                              text: $guestCheckoutViewState.email)
-                OrderAddressView(orderAddressViewState: guestCheckoutViewState.shippingOrderAddressViewState)
+                FormTextField(shippingViewState.emailPrompt,
+                              text: $shippingViewState.email)
+                OrderAddressView(orderAddressViewState: shippingViewState.shippingOrderAddressViewState)
             }.padding(0)
             /// SAME AS BILLING TOGGLE
-            Toggle(isOn: $guestCheckoutViewState.sameAddress) {
+            Toggle(isOn: $shippingViewState.sameAddress) {
                         Text("Shipping same as Billing")
             }.frame(width: 340).padding().tint(.blue)
             
             /// BILLING ADDRESS
-            if !guestCheckoutViewState.sameAddress {
+            if !shippingViewState.sameAddress {
                 VStack(alignment: .leading) {
                     Text("Billing Address")
                         .font(.system(size: 17, weight: .semibold))
                         .padding(.vertical)
-                    OrderAddressView(orderAddressViewState: guestCheckoutViewState.billingOrderAddressViewState)
+                    OrderAddressView(orderAddressViewState: shippingViewState.billingOrderAddressViewState)
                 }.padding(0)
             }
             
             Button {
-                if let orderCustomer = guestCheckoutViewState.produceOrderCustomerBody(),
+                if let orderCustomer = shippingViewState.produceOrderCustomerBody(),
                    let orderId = store.state.cartViewState.cartId {
                     Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
                     Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
@@ -72,7 +72,7 @@ struct DemoAppGuestCheckoutView: View {
 
 
             } label: {
-                if guestCheckoutViewState.nextEnabled {
+                if shippingViewState.nextEnabled {
                     Text("Next")
                         .font(Font.custom("SF Pro Text", size: 17))
                         .frame(width: 340, height: 50)
@@ -95,9 +95,9 @@ struct DemoAppGuestCheckoutView: View {
             .withScrollViewBackgroundColor()
             .onAppear {
                 if let order = store.cartViewState.currentOrder {
-                    store.state.guestCheckoutViewState.loadFrom(customer: order.customer, shippingAddress: order.shippingAddress, billingAddress: order.billingAddress)
+                    store.state.shippingViewState.loadFrom(customer: order.customer, shippingAddress: order.shippingAddress, billingAddress: order.billingAddress)
                 }
-                if guestCheckoutViewState.orderHasAddress {
+                if shippingViewState.orderHasAddress {
                     Logger.debug("Order has Address")
                 }
                         
@@ -117,12 +117,12 @@ struct DemoAppGuestCheckoutView_Previews: PreviewProvider {
         Group {
             NavigationStack {
                 DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
-                                         guestCheckoutViewState: GuestCheckoutViewState(sameAddress: true), router: Router())
+                                         shippingViewState: ShippingViewState(sameAddress: true), router: Router())
             }.previewDisplayName("Same As Billing")
             
             NavigationStack {
                 DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
-                                         guestCheckoutViewState: GuestCheckoutViewState(sameAddress: false),
+                                         shippingViewState: ShippingViewState(sameAddress: false),
                                          router: Router())
             }.previewDisplayName("Show Shipping")
         }

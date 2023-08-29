@@ -14,7 +14,7 @@ class AppStore {
         var demoProxyViewState: DemoProxyActiveViewState
         var cartViewState: CartViewState
         var offerSearchViewState: OfferSearchViewState
-        var guestCheckoutViewState: GuestCheckoutViewState
+        var shippingViewState: ShippingViewState
         var offerPDPViewStates: [Int64: OfferPDPViewState] = [:]
         
         func updateOfferPDPViewState( offerItem: DemoProductGridOfferItem) -> OfferPDPViewState {
@@ -28,23 +28,23 @@ class AppStore {
         
         init(demoChannelViewState: DemoProxyActiveViewState,
              cartViewState: CartViewState,
-             offerSearchViewState: OfferSearchViewState, guestCheckoutViewState: GuestCheckoutViewState) {
+             offerSearchViewState: OfferSearchViewState, shippingViewState: ShippingViewState) {
             self.demoProxyViewState = demoChannelViewState
             self.cartViewState = cartViewState
             self.offerSearchViewState = offerSearchViewState
-            self.guestCheckoutViewState = guestCheckoutViewState
+            self.shippingViewState = shippingViewState
         }
 
         convenience init() {
             self.init(demoChannelViewState: DemoProxyActiveViewState(),
                       cartViewState: CartViewState(),
                       offerSearchViewState: OfferSearchViewState(),
-            guestCheckoutViewState: GuestCheckoutViewState())
+            shippingViewState: ShippingViewState())
         }
         
         func updateWithNewOrder(order: Order) {
             cartViewState.updateWithNewOrder(order: order)
-            guestCheckoutViewState.loadFrom(customer: order.customer,
+            shippingViewState.loadFrom(customer: order.customer,
                                             shippingAddress: order.shippingAddress,
                                             billingAddress: order.billingAddress)
         }
@@ -86,7 +86,7 @@ class AppStore {
         let newState = AppState(demoChannelViewState: demoChannelViewState,
                                 cartViewState: cartViewState,
                                 offerSearchViewState: offerSearchViewState,
-        guestCheckoutViewState: GuestCheckoutViewState())
+        shippingViewState: ShippingViewState())
         self.state = newState
         self.sender = AppSender(state: newState)
     }

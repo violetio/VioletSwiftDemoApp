@@ -47,7 +47,7 @@ struct DemoAppView: View {
                                         router: router)
                     case .addShippingAddress:
                         DemoAppGuestCheckoutView(store: $store,
-                                                 guestCheckoutViewState: store.state.guestCheckoutViewState,
+                                                 shippingViewState: store.state.shippingViewState,
                                                  router: router)
                     case .selectShippingMethod:
                         DemoAppShippingMethodSelectView()

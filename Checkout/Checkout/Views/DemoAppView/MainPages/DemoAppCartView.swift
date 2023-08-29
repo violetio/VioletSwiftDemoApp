@@ -10,6 +10,7 @@ import SwiftUI
 struct DemoAppCartView: View {
     @Binding var store: AppStore
     @ObservedObject var cartViewState: CartViewState
+    @StateObject var router: Router
     
     var body: some View {
         VStack(spacing: 0) {
@@ -79,7 +80,9 @@ struct DemoAppCartView: View {
             
         }.frame(maxHeight: .infinity).withScrollViewBackgroundColor()
 //            .withBlackBorder()
-        .navigationTitle("Shopping Cart")
+        .navigationTitle("Shopping Cart").onAppear {
+            Logger.debug("router.paths.count: \(router.paths.count)")
+        }
     }
 }
 
@@ -89,11 +92,12 @@ struct DemoAppCartView_Previews: PreviewProvider {
         Group {
             NavigationStack {
                 DemoAppCartView(store: AppStore.mockAppStoreBinding,
-                                cartViewState: CartViewState(order: mockOrder))
+                                cartViewState: CartViewState(order: mockOrder), router: Router())
             }.previewDisplayName("1 Sku")
             
             DemoAppCartView(store: AppStore.mockAppStoreBinding,
-                            cartViewState: CartViewState(skuCount: 0)).previewDisplayName("0 Skus")
+                            cartViewState: CartViewState(skuCount: 0),
+                            router: Router()).previewDisplayName("0 Skus")
         }
     }
 }

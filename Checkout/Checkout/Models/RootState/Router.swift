@@ -10,7 +10,7 @@ import SwiftUI
 enum NavigationKey: Hashable, Identifiable {
 //    case offersGrid
     case offerPDP(DemoProductGridOfferItem)
-//    case cartView
+    case cartView
 //    case addShippingAddress
 //    case selectShippingMethod
     

@@ -19,7 +19,8 @@ struct CheckoutApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            ContentView(store: .constant(store))
+            //ContentView(store: .constant(store))
+            DemoAppView(store: .constant(store))
         }
     }
 }

@@ -50,7 +50,7 @@ struct DemoAppView: View {
                                                  shippingViewState: store.state.shippingViewState,
                                                  router: router)
                     case .selectShippingMethod:
-                        DemoAppShippingMethodSelectView()
+                        DemoAppShippingMethodSelectView(store: $store, cartViewState: store.cartViewState)
                     }
                     
                 }.onAppear {

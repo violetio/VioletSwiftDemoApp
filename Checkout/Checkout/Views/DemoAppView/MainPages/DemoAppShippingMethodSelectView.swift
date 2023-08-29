@@ -8,17 +8,11 @@
 import SwiftUI
 
 struct DemoAppShippingMethodSelectView: View {
+    @Binding var store: AppStore
+    @ObservedObject var cartViewState: CartViewState
+    
     var body: some View {
         List {
-            Section {
-                Text("Contact Card")
-            } header: {
-                Text("Contact")
-            }
-            
-            Section {
-                Text("Ship To Card")
-            }
             
             Section {
                 Text("Shipping Method Card 1")
@@ -37,6 +31,7 @@ struct DemoAppShippingMethodSelectView: View {
 struct DemoAppShippingMethodSelectView_Previews: PreviewProvider {
     static var previews: some View {
         
-        DemoAppShippingMethodSelectView()
+        DemoAppShippingMethodSelectView(store: AppStore.mockAppStoreBinding,
+                                        cartViewState: CartViewState(skuCount: 0))
     }
 }

@@ -85,11 +85,13 @@ struct DemoAppCartView: View {
 
 struct DemoAppCartView_Previews: PreviewProvider {
     static let mockOrder = MockOffers.load_OrderID_71169()!
+//    static let mockOrder_2 = MockOffers.load_
     static var previews: some View {
         Group {
             NavigationStack {
                 DemoAppCartView(store: AppStore.mockAppStoreBinding,
-                                cartViewState: CartViewState(order: mockOrder), router: Router())
+                                cartViewState: CartViewState(order: mockOrder),
+                                router: Router())
             }.previewDisplayName("1 Sku")
             
             DemoAppCartView(store: AppStore.mockAppStoreBinding,

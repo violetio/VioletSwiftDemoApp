@@ -12,8 +12,8 @@ import SwiftUI
 struct DemoAppOfferPDP: View {
     @Binding var store: AppStore
     @Binding var offerItem: DemoProductGridOfferItem
-    
     @ObservedObject var offerPDPViewState: OfferPDPViewState
+    @StateObject var router: Router
     
     var body: some View {
         ScrollView {
@@ -24,13 +24,7 @@ struct DemoAppOfferPDP: View {
                     DemoAppOfferCardText(offerItem: $offerItem)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                     
-                    if offerPDPViewState.variantViewModels.count > 0 {
-                        
-                        ForEach(offerPDPViewState.variantViewModels) { variant in
-                            OfferVariantValuePicker(variantViewModel: variant, selectedValue: variant.variantValuesArray[0].name, offerPDPViewState: offerPDPViewState)
-                        }
-
-                    }
+                    DemoAppOfferPDPVariantsView(offerPDPViewState: offerPDPViewState)
                     
                     if StripeAPI.deviceSupportsApplePay() {
                         //Font 17
@@ -80,9 +74,12 @@ struct DemoAppOfferPDP: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavBarCartButton(store: $store,
                                  action: {},
-                                 cartViewState: store.cartViewState)
+                                 cartViewState: store.cartViewState,
+                                 router: router)
             }
-        }.withScrollViewBackgroundColor()
+        }.withScrollViewBackgroundColor().onAppear {
+            Logger.debug("router.paths.count: \(router.paths.count)")
+        }
             
     }
     
@@ -97,13 +94,13 @@ struct DemoAppOfferPDP_Previews: PreviewProvider {
             NavigationStack {
                 DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
                                 offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12574()),
-                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12574().offerEntity))
+                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12574().offerEntity), router: Router())
             }.previewDisplayName("No Variants OfferID 12574")
             
             NavigationStack {
                 DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
                                 offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12555()),
-                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12555().offerEntity))
+                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12555().offerEntity), router: Router())
             }.previewDisplayName("3 Variants OfferID 12555")
         }
     }

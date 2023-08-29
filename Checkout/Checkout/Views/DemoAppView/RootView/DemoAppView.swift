@@ -9,9 +9,10 @@ import SwiftUI
 
 struct DemoAppView: View {
     @Binding var store: AppStore
+    @StateObject var router = Router()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $router.paths) {
             DemoAppProductGrid(store: $store, offerSearchViewState: store.offerSearchViewState, demoProxyViewState: store.demoChannelViewState)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -30,12 +31,27 @@ struct DemoAppView: View {
                         NavBarCartButton(store: $store,
                                          action: {
                             print("Custom button tapped!")
-                        }, cartViewState: store.cartViewState)
+                        }, cartViewState: store.cartViewState,
+                                         router: router)
                     }
-                }.navigationDestination(for: DemoProductGridOfferItem.self) { offerItem in
-                    DemoAppOfferPDP(store: $store,
-                                    offerItem: .constant(offerItem),
-                                    offerPDPViewState: store.state.updateOfferPDPViewState(offerItem: offerItem))
+                }.navigationDestination(for: NavigationKey.self) { key in
+                    switch key {
+                    case .offerPDP(let offerItem):
+                        DemoAppOfferPDP(store: $store,
+                                        offerItem: .constant(offerItem),
+                                        offerPDPViewState: store.state.updateOfferPDPViewState(offerItem: offerItem),
+                                        router: router)
+                    case .cartView:
+                        DemoAppCartView(store: $store,
+                                        cartViewState: store.state.cartViewState,
+                                        router: router)
+                    case .addShippingAddress:
+                        DemoAppGuestCheckoutView(store: $store,
+                                                 guestCheckoutViewState: store.state.guestCheckoutViewState,
+                                                 router: router)
+                    case .selectShippingMethod:
+                        DemoAppShippingMethodSelectView()
+                    }
                     
                 }.onAppear {
                     store.onAppAppear()

@@ -15,6 +15,8 @@ import StripeApplePay
 struct DemoAppGuestCheckoutView: View {
     @Binding var store: AppStore
     @ObservedObject var guestCheckoutViewState: GuestCheckoutViewState
+    @StateObject var router: Router
+    
     var body: some View {
         ScrollView {
             
@@ -65,6 +67,7 @@ struct DemoAppGuestCheckoutView: View {
                     Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
                     Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
                     store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
+                    router.paths.append(NavigationKey.selectShippingMethod)
                 }
 
 
@@ -94,6 +97,12 @@ struct DemoAppGuestCheckoutView: View {
                 if let order = store.cartViewState.currentOrder {
                     store.state.guestCheckoutViewState.loadFrom(customer: order.customer, shippingAddress: order.shippingAddress, billingAddress: order.billingAddress)
                 }
+                if guestCheckoutViewState.orderHasAddress {
+                    Logger.debug("Order has Address")
+                }
+                        
+                Logger.debug("router.paths.count: \(router.paths.count)")
+                    
             }
 
     }
@@ -108,12 +117,13 @@ struct DemoAppGuestCheckoutView_Previews: PreviewProvider {
         Group {
             NavigationStack {
                 DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
-                                         guestCheckoutViewState: GuestCheckoutViewState(sameAddress: true))
+                                         guestCheckoutViewState: GuestCheckoutViewState(sameAddress: true), router: Router())
             }.previewDisplayName("Same As Billing")
             
             NavigationStack {
                 DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
-                                         guestCheckoutViewState: GuestCheckoutViewState(sameAddress: false))
+                                         guestCheckoutViewState: GuestCheckoutViewState(sameAddress: false),
+                                         router: Router())
             }.previewDisplayName("Show Shipping")
         }
     }

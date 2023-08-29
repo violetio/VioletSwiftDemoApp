@@ -17,6 +17,7 @@ class GuestCheckoutViewState: ObservableObject {
     
     @Published var billingOrderAddressViewState = OrderAddressViewState(orderAddressType: .billing)
     @Published var shippingOrderAddressViewState = OrderAddressViewState(orderAddressType: .shipping)
+    @Published var orderHasAddress: Bool = false
     
     let emailPrompt: String = "Email Address *"
     
@@ -58,6 +59,9 @@ class GuestCheckoutViewState: ObservableObject {
     func loadFrom(customer: OrderCustomer?, shippingAddress: OrderAddress?, billingAddress: OrderAddress?) {
         if let loadCustomer = customer {
             loadFrom(customer: loadCustomer)
+        }
+        if shippingAddress != nil {
+            self.orderHasAddress = true
         }
         shippingOrderAddressViewState.loadFrom(orderAddress: shippingAddress)
         billingOrderAddressViewState.loadFrom(orderAddress: billingAddress)

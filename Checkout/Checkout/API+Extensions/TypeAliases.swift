@@ -7,6 +7,7 @@
 
 import Violet
 
+public typealias BagID = Int64
 public typealias MerchantID = Int64
 public typealias OrderID = Int64
 public typealias SkuID = Int64

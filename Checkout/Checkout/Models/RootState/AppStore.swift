@@ -66,7 +66,7 @@ class AppStore {
     }
 
     enum AppAction {
-        case offersPageRequest(MerchantID)
+        case offersPageRequest(MerchantID?=nil)
         case createCartRequest
         case cartByID(OrderID)
         case addSkuToCart(OrderID,OfferSkuID,OrderQuantity)
@@ -113,14 +113,15 @@ class AppStore {
     
     func onAppAppear() {
         if offerSearchViewState.emtpy {
-            sender.send(.offersPageRequest(10003))
+            sender.send(.offersPageRequest(nil))
         }
         if cartViewState.noCart {
 //            sender.send(.createCartRequest)
 //                sender.send(.cartByID(71169))
-            sender.send(.cartByID(72500))
+//            sender.send(.cartByID(72500))
 //            sender.send(.cartByID(73302))
 //            sender.send(.cartByID(73461))
+            sender.send(.cartByID(73791))
         }
     }
 }

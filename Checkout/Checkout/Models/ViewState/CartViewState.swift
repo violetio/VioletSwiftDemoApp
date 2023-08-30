@@ -14,7 +14,7 @@ class CartViewState: ObservableObject {
     @Published var cartSubTotalText: String = ""
     @Published var bagViewStates: [Int64: BagViewState] = [:]
     @Published var currentOrder: Order? = nil
-    
+    @Published var currentOrderShippingMethods: OrderShippingMethodWrapperArray? = nil
     @Published var checkoutPagesComplete: Set<NavigationKey> = Set()
     
     var noCart: Bool { cartId == nil }
@@ -32,6 +32,10 @@ class CartViewState: ObservableObject {
     convenience init(order: Order) {
         self.init()
         self.updateWithNewOrder(order: order)
+    }
+    
+    func updateWithNewShippingMethods(orderShippingMethods: OrderShippingMethodWrapperArray) {
+        self.currentOrderShippingMethods = orderShippingMethods
     }
     
     func updateWithNewOrder(order: Order) {

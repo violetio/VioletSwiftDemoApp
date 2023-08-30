@@ -47,6 +47,13 @@ public class MockOffers {
         }
         return decodeOrder(from: jsonData)
     }
+    
+    public static func load_OrderID_72500_ShippingMethods() -> OrderShippingMethodWrapperArray? {
+        guard let jsonData = jsonData(forResource: "Order_ID_72500_ShippingMethods") else {
+            return nil
+        }
+        return decode(from: jsonData)
+    }
 
     static func jsonData(forResource name: String) -> Data? {
         guard let fileURL = Bundle.main.url(forResource: name, withExtension: "json") else {
@@ -65,6 +72,19 @@ public class MockOffers {
             pageOffer = decodedOrder
         }
         return pageOffer
+
+    }
+    
+    public static func decode<T: Decodable>(from jsonData: Data) -> T? {
+        let decodeResult = CodableHelper.decode(T.self, from: jsonData)
+        var result: T? = nil
+        switch decodeResult {
+        case .failure:
+            result = nil
+        case .success(let decodedOrder):
+            result = decodedOrder
+        }
+        return result
 
     }
     

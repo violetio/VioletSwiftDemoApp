@@ -19,16 +19,19 @@ struct DemoAppShippingMethodSelectView: View {
                 if let value = orderShippingMethodSelectViewState.bagIDToBagShippingMethodStateMap[key] {
                     Section {
                         ForEach(value.shippingMethodArray) { aShippingMethodArrayItem in
-                            VStack(alignment: .leading, spacing: 5) {
-                                Text("\(aShippingMethodArrayItem.label)")
-                                    .font(.system(size: 15))
-                                    .frame(minHeight: 20)
-                                Text("\(aShippingMethodArrayItem.price)")
-                                    .foregroundColor(FigmaConstants.Colors.secondaryFontColor).opacity(0.6)
-                                    .font(.system(size: 13))
-                                    .frame(minHeight: 18)
-                            }.frame(minHeight: 69)
-                        }
+                            
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text("\(aShippingMethodArrayItem.label)")
+                                        .font(.system(size: 15))
+                                        .frame(minHeight: 20)
+                                    Text("\(aShippingMethodArrayItem.price)")
+                                        .foregroundColor(FigmaConstants.Colors.secondaryFontColor).opacity(0.6)
+                                        .font(.system(size: 13))
+                                        .frame(minHeight: 18)
+                                }.frame(width: .infinity, height: 69)
+                                .listRowBackground(value.selectedShippingMethodID == aShippingMethodArrayItem.shippingMethodId ? Color.blue : Color.white)
+                                    //.withBlackBorder()
+                            }//.withBlackBorder()
                         
                     } header: {
                         Label(value.merchantName, image: "merchant_name_pre_icon").padding(.vertical, 10)

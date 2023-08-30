@@ -14,6 +14,7 @@ import Combine
  */
 class OrderShippingMethodSelectViewState: ObservableObject {
     var bagIDToBagShippingMethodStateMap: [BagID: BagShippingMethodSelectViewState] = [:]
+    @Published var bagIDToShippingMethodIDs: [Int64:String] = [:]
     
     init(orderShippingMethods: OrderShippingMethodWrapperArray?) {
         self.loadFrom(orderShippingMethods: orderShippingMethods)
@@ -41,6 +42,7 @@ class BagShippingMethodSelectViewState: ObservableObject {
     @Published var bagID: Int64 = 0
     var shippingMethodArray: [ShippingMethodArrayItem] = []
     var merchantName: String = "Merchant Name"
+    @Published var selectedShippingMethodID: String?
     
     init(shippingMethodWrapper: OrderShippingMethodWrapper?) {
         self.loadFrom(shippingMethodWrapper: shippingMethodWrapper)
@@ -55,7 +57,12 @@ class BagShippingMethodSelectViewState: ObservableObject {
             self.bagID = aBagId
             self.shippingMethodArray = arrayOfShippingMethods.compactMap { ShippingMethodArrayItem( $0) }
         }
+        self.selectedShippingMethodID = Self.preselectedShippingMethodID(shippingMethodArray: self.shippingMethodArray)
         
+    }
+    
+    static func preselectedShippingMethodID(shippingMethodArray: [ShippingMethodArrayItem]) -> String? {
+        return shippingMethodArray.first?.shippingMethodId
     }
     
 }

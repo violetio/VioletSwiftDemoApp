@@ -12,7 +12,7 @@ import Violet
 final class CartViewStateTests: XCTestCase {
 
     func test_Init_OrderShippingMethodSelectViewState() throws {
-        let mockOrderShippingMethodWrapperArray: OrderShippingMethodWrapperArray = MockOffers.load_OrderID_72500_ShippingMethods()!
+        let mockOrderShippingMethodWrapperArray: OrderShippingMethodWrapperArray = MockOffers.load_OrderID_73936_ShippingMethods()!
 //        Logger.debug("mockOrderShippingMethodWrapperArray: \(mockOrderShippingMethodWrapperArray)")
         let sut = OrderShippingMethodSelectViewState(orderShippingMethods: mockOrderShippingMethodWrapperArray)
         //Logger.debug("sut: \(sut)")

@@ -14,21 +14,35 @@ import Combine
  */
 class OrderShippingMethodSelectViewState: ObservableObject {
     var bagIDToBagShippingMethodStateMap: [BagID: BagShippingMethodSelectViewState] = [:]
+    var bagIDToMerchantNameMap: [BagID: String] = [:]
     @Published var bagIDToShippingMethodIDs: [Int64:String] = [:]
     
-    init(orderShippingMethods: OrderShippingMethodWrapperArray?) {
-        self.loadFrom(orderShippingMethods: orderShippingMethods)
+    init(orderShippingMethods: OrderShippingMethodWrapperArray?, order: Order? = nil) {
+        self.loadFrom(orderShippingMethods: orderShippingMethods, order: order)
     }
     
-    func loadFrom(orderShippingMethods: OrderShippingMethodWrapperArray?) {
+    func loadFrom(orderShippingMethods: OrderShippingMethodWrapperArray?, order: Order? = nil) {
         guard let foundOrderShippingMethods = orderShippingMethods else {
             return
+        }
+        if let orderBags = order?.bags {
+            var buildBagIDToMerchantNameMap: [BagID: String] = [:]
+            orderBags.forEach { bag in
+                if let bagId = bag.id,
+                   let merchantName = bag.merchantName {
+                    buildBagIDToMerchantNameMap[bagId] = merchantName
+                }
+            }
+            self.bagIDToMerchantNameMap = buildBagIDToMerchantNameMap
         }
         
         
         var buildBagIDToBagShippingMethodStateMap: [BagID: BagShippingMethodSelectViewState] = [:]
         foundOrderShippingMethods.forEach { shippingMethodWrapper in
             let next = BagShippingMethodSelectViewState(shippingMethodWrapper: shippingMethodWrapper)
+            if let bagMerchantName = self.bagIDToMerchantNameMap[next.bagID] {
+                next.merchantName = bagMerchantName
+            }
             buildBagIDToBagShippingMethodStateMap[next.bagID] = next
         }
         self.bagIDToBagShippingMethodStateMap = buildBagIDToBagShippingMethodStateMap

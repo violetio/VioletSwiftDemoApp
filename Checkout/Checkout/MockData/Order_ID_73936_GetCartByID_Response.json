@@ -1,0 +1,162 @@
+{
+  "status" : "IN_PROGRESS",
+  "user_id" : 10658,
+  "priced" : false,
+  "currency_symbol" : "$",
+  "date_last_modified" : "2023-08-31T18:47:13.000Z",
+  "date_created" : "2023-08-31T17:55:36.000Z",
+  "currency" : "USD",
+  "bags" : [
+    {
+      "financial_status" : "UNPAID",
+      "status" : "IN_PROGRESS",
+      "fulfillments" : [
+
+      ],
+      "date_created" : "2023-08-31T17:56:02.000Z",
+      "channel" : "APP",
+      "currency" : "USD",
+      "merchant_id" : 10068,
+      "taxes_included" : false,
+      "discounts" : [
+
+      ],
+      "app_id" : 10549,
+      "external_currency" : "USD",
+      "order_id" : 73936,
+      "id" : 59623,
+      "platform" : "SHOPIFY",
+      "sub_total" : 1000,
+      "merchant_name" : "Space Drinks",
+      "commission_rate" : 15,
+      "taxes" : [
+
+      ],
+      "transactions" : [
+
+      ],
+      "remorse_period_ends" : "2023-09-30T17:56:02.000Z",
+      "wallet_based_checkout" : false,
+      "fulfillment_status" : "PROCESSING",
+      "skus" : [
+        {
+          "app_id" : 10549,
+          "quantity" : 1,
+          "id" : 78053,
+          "external_id" : "42519626711215",
+          "brand" : "The CBM Store",
+          "sku_id" : 196776,
+          "weight" : 3,
+          "price" : 1000,
+          "product_id" : "f9ad79876bfd4504b0fc400d5b2e7487",
+          "line_price" : 1000,
+          "available" : true,
+          "merchant_id" : 10068,
+          "product_type" : "PHYSICAL",
+          "thumbnail" : "https:\/\/cdn.shopify.com\/s\/files\/1\/0621\/1849\/4383\/files\/wealthy_Spacewalk_Slushie_ce45b9bf-6733-4b3a-867a-f0ccfdaa1cf4.png",
+          "name" : "Spacewalk Slushie - 3 oz.",
+          "status" : "IN_PROGRESS"
+        }
+      ],
+      "external_checkout" : true
+    },
+    {
+      "financial_status" : "UNPAID",
+      "status" : "IN_PROGRESS",
+      "fulfillments" : [
+
+      ],
+      "date_created" : "2023-08-31T17:55:47.000Z",
+      "channel" : "APP",
+      "currency" : "USD",
+      "merchant_id" : 10189,
+      "taxes_included" : false,
+      "discounts" : [
+
+      ],
+      "app_id" : 10549,
+      "external_currency" : "USD",
+      "order_id" : 73936,
+      "id" : 59622,
+      "platform" : "SHOPIFY",
+      "sub_total" : 19500,
+      "merchant_name" : "the violet garden",
+      "commission_rate" : 20,
+      "taxes" : [
+
+      ],
+      "transactions" : [
+
+      ],
+      "remorse_period_ends" : "2023-09-30T17:55:47.000Z",
+      "wallet_based_checkout" : false,
+      "fulfillment_status" : "PROCESSING",
+      "skus" : [
+        {
+          "app_id" : 10549,
+          "quantity" : 1,
+          "id" : 78052,
+          "external_id" : "45101363921197",
+          "brand" : "The Violet Garden",
+          "sku_id" : 196649,
+          "weight" : 4,
+          "price" : 19500,
+          "product_id" : "7f2312954c294c5eb0c6082ba924a2cb",
+          "line_price" : 19500,
+          "available" : true,
+          "merchant_id" : 10189,
+          "product_type" : "PHYSICAL",
+          "thumbnail" : "https:\/\/cdn.shopify.com\/s\/files\/1\/0758\/9363\/7421\/files\/wealthy_floral_design_shoes_floating_with_a_red_pastel_colour_b_f6378c09-551b-4212-9e52-f88e7a66f1b1.png",
+          "name" : "Fire Fist Ace Runner - 38 \/ Endurance",
+          "status" : "IN_PROGRESS"
+        }
+      ],
+      "external_checkout" : true
+    }
+  ],
+  "stripe_key" : "pk_test_UHg8oLvg4rrDCbvtqfwTE8qd",
+  "errors" : [
+
+  ],
+  "app_id" : 10549,
+  "shipping_address" : {
+    "phone" : "",
+    "city" : "Brooklyn",
+    "country" : "US",
+    "address_1" : "999 Meseroles Street",
+    "postal_code" : "11237",
+    "last_name" : "Box",
+    "state" : "NY",
+    "address_2" : "",
+    "type" : "SHIPPING",
+    "name" : "Sandy Box",
+    "first_name" : "Sandy"
+  },
+  "id" : 73936,
+  "developer_id" : 10454,
+  "sub_total" : 20500,
+  "is_guest" : true,
+  "token" : "2eb5cfe503ff45bf9f369faddc70dfe2",
+  "wallet_based_checkout" : false,
+  "customer" : {
+    "email" : "alan+sandbox@violet.io",
+    "last_name" : "Box",
+    "user_id" : 10658,
+    "name" : "Sandy Box",
+    "first_name" : "Sandy"
+  },
+  "guest" : true,
+  "billing_address" : {
+    "phone" : "",
+    "city" : "Brooklyn",
+    "country" : "US",
+    "address_1" : "999 Meseroles Street",
+    "postal_code" : "11237",
+    "last_name" : "Box",
+    "state" : "NY",
+    "address_2" : "",
+    "type" : "BILLING",
+    "name" : "Sandy Box",
+    "first_name" : "Sandy"
+  }
+}

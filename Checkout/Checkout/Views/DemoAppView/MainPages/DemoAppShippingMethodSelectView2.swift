@@ -52,7 +52,7 @@ struct DemoAppShippingMethodSelectView2: View {
 
 struct DemoAppShippingMethodSelectView2_Previews: PreviewProvider {
     static let mockOrder = MockOffers.load_OrderID_71169()!
-    static let mockOrderShippingMethodWrapperArray = MockOffers.load_OrderID_72500_ShippingMethods()!
+    static let mockOrderShippingMethodWrapperArray = MockOffers.load_OrderID_73936_ShippingMethods()!
     static let mockOrderShippingMethodSelectViewState = OrderShippingMethodSelectViewState(orderShippingMethods: mockOrderShippingMethodWrapperArray)
     
     static var previews: some View {

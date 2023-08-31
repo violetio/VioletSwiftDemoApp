@@ -62,6 +62,10 @@ class AppStore {
             }
         }
         
+        func updateWith(orderShipping: OrderShippingMethodWrapperArray) {
+            Logger.debug("orderShipping: \(orderShipping)")
+        }
+        
         
     }
 
@@ -73,6 +77,7 @@ class AppStore {
         case updateSkuInCart(OrderID,OrderSkuID,OrderQuantity)
         case removeSkuFromCart(OrderID,OrderSkuID)
         case updateCartCustomerRequest(OrderID, OrderCustomer)
+        case fetchShippingMethods(OrderID)
     }
 
     func send(_ action: AppAction) {
@@ -116,12 +121,16 @@ class AppStore {
             sender.send(.offersPageRequest(nil))
         }
         if cartViewState.noCart {
-//            sender.send(.createCartRequest)
+            sender.send(.createCartRequest)
 //                sender.send(.cartByID(71169))
 //            sender.send(.cartByID(72500))
 //            sender.send(.cartByID(73302))
 //            sender.send(.cartByID(73461))
-            sender.send(.cartByID(73791))
+//            sender.send(.cartByID(73791))
+            
+            //Carts with Ishans AppID 10549
+            sender.send(.cartByID(73936))
+            
         }
     }
 }

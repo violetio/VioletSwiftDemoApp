@@ -90,7 +90,21 @@ struct DemoAppGuestCheckoutView: View {
             .frame(width: 340, alignment: .bottom).padding()
             
         }.frame(width: 390)
-            .navigationTitle("Guest Checkout")
+            .navigationTitle("Guest Checkout").toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Test") {
+//                        shippingViewState.shippingOrderAddressViewState.email = "alan+sandbox@violet.io"
+                        shippingViewState.shippingOrderAddressViewState.firstName = "Sandy"
+                        shippingViewState.shippingOrderAddressViewState.lastName = "Box"
+                        shippingViewState.shippingOrderAddressViewState.address1 = "999 Meseroles Street"
+                        shippingViewState.shippingOrderAddressViewState.city = "Brooklyn"
+                        shippingViewState.shippingOrderAddressViewState.state = "NY"
+                        shippingViewState.shippingOrderAddressViewState.country = "US"
+                        shippingViewState.shippingOrderAddressViewState.postalCode = "11237"
+                        
+                    }
+                }
+            }
             .withScrollViewBackgroundColor()
             .onAppear {
                 if let order = store.cartViewState.currentOrder {

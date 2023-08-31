@@ -114,6 +114,20 @@ extension AppStore {
                         Logger.debug("Store+Sender: ✅ updateCartCustomerRequest Cart ID: \(orderId)")
                         self.state.updateWithNewOrder(order: order)
                         self.state.markCheckoutPageComplete(.addShippingAddress)
+                        self.send(.fetchShippingMethods(orderID))
+                    }
+                }
+            case .fetchShippingMethods(let orderID):
+                Logger.debug("fetchShippingMethods: \(orderID)")
+                let newAPICall = APICall(apiCall: CheckoutCartShippingAvailableGetRequest(orderId: orderID))
+                pendingAPICalls.enqueue(newAPICall)
+                newAPICall.send { dataResponse, _ in
+                    if let orderShippingMethodsArrayWrapper = dataResponse {
+                        self.state.updateWith(orderShipping: orderShippingMethodsArrayWrapper)
+//                        Logger.debug("Store+Sender: ✅ updateCartCustomerRequest Cart ID: \(orderId)")
+//                        self.state.updateWithNewOrder(order: order)
+//                        self.state.markCheckoutPageComplete(.addShippingAddress)
+//                        self.send(.fetchShippingMethods(orderID))
                     }
                 }
             }

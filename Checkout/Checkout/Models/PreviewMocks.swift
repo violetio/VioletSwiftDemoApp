@@ -64,10 +64,6 @@ struct PreviewMocks {
         }
         return DemoProductGridOfferItem.fromEntity(entity: mockOffer) ?? DemoProductGridOfferItem.Empty()
     }
-        
-    static func Mock_OfferItemSelections() -> OfferItemSelections {
-        return OfferItemSelections(items: [MockOfferItem()])
-    }
     
     static func orderShippingMethodWrapperArray() -> OrderShippingMethodWrapperArray {
         return [OrderShippingMethodWrapper(bagId: nil,

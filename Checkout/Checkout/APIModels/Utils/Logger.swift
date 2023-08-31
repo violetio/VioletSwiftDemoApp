@@ -19,41 +19,31 @@ public class Logger {
         case debug
     }
     
-    public func log(_ message: String, logLevel: LogLevel = .info) {
-        print("\(logLevel): \(message)")
+    public static func log(_ message: String, logLevel: LogLevel = .info, file: String = #file, line: Int = #line) {
+        let lastFilePathComponent = file.split(separator: "/").last ?? "?"
+        print("[\(logLevel)]: \(lastFilePathComponent):\(line) - \(message)")
     }
     
-    public func info(_ message: String) {
-        log(message,logLevel: .info)
-    }
-    
-    public func error(_ message: String) {
-        log(message,logLevel: .error)
-    }
-    
-    public static func log(_ message: String, logLevel: LogLevel = .info) {
-        print("\(logLevel): \(message)")
+
+    public static func info(_ message: String, file: String = #file, line: Int = #line) {
+        log(message,logLevel: .info, file: file, line: line)
     }
 
-    public static func info(_ message: String) {
-        log(message,logLevel: .info)
-    }
-
-    public static func error(_ message: String) {
-        log(message,logLevel: .error)
+    public static func error(_ message: String, file: String = #file, line: Int = #line) {
+        log(message,logLevel: .error, file: file, line: line)
     }
     
-    public static func error(_ error: Error?) {
+    public static func error(_ error: Error?, file: String = #file, line: Int = #line) {
         if let anError = error {
-            log(anError.localizedDescription, logLevel: .error)
+            log(anError.localizedDescription, logLevel: .error, file: file, line: line)
         }
     }
     
-    public static func error(_ error: Error) {
-        log(error.localizedDescription, logLevel: .error)
+    public static func error(_ error: Error, file: String = #file, line: Int = #line) {
+        log(error.localizedDescription, logLevel: .error, file: file, line: line)
     }
     
-    public static func debug(_ message: String) {
-        log(message,logLevel: .debug)
+    public static func debug(_ message: String, file: String = #file, line: Int = #line) {
+        log(message,logLevel: .debug, file: file, line: line)
     }
 }

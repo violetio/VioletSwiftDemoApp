@@ -2,7 +2,7 @@
 //  CheckoutUITestsLaunchTests.swift
 //  CheckoutUITests
 //
-//  Created by Alan Morford on 3/8/23.
+//  Created on 3/8/23.
 //
 
 import XCTest

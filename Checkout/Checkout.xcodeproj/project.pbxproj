@@ -71,7 +71,6 @@
 		E72E001629F08C71009F7BFE /* StyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E001529F08C71009F7BFE /* StyleConstants.swift */; };
 		E72E001829F1BA61009F7BFE /* PriceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E001729F1BA61009F7BFE /* PriceViewModel.swift */; };
 		E72E001A29F1C009009F7BFE /* IntPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E001929F1C009009F7BFE /* IntPrice.swift */; };
-		E72EFFE329D4C892009F7BFE /* ScenariosListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EFFE229D4C892009F7BFE /* ScenariosListView.swift */; };
 		E72EFFE529D4C8BA009F7BFE /* OfferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72EFFE429D4C8BA009F7BFE /* OfferView.swift */; };
 		E72EFFE929DC88E1009F7BFE /* Offer_ID_12574_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = E72EFFE629DC88E1009F7BFE /* Offer_ID_12574_Response.json */; };
 		E72EFFEA29DC88E1009F7BFE /* Offer_ID_12555_response.json in Resources */ = {isa = PBXBuildFile; fileRef = E72EFFE729DC88E1009F7BFE /* Offer_ID_12555_response.json */; };
@@ -245,7 +244,6 @@
 		E72E001529F08C71009F7BFE /* StyleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConstants.swift; sourceTree = "<group>"; };
 		E72E001729F1BA61009F7BFE /* PriceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceViewModel.swift; sourceTree = "<group>"; };
 		E72E001929F1C009009F7BFE /* IntPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntPrice.swift; sourceTree = "<group>"; };
-		E72EFFE229D4C892009F7BFE /* ScenariosListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenariosListView.swift; sourceTree = "<group>"; };
 		E72EFFE429D4C8BA009F7BFE /* OfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferView.swift; sourceTree = "<group>"; };
 		E72EFFE629DC88E1009F7BFE /* Offer_ID_12574_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Offer_ID_12574_Response.json; sourceTree = "<group>"; };
 		E72EFFE729DC88E1009F7BFE /* Offer_ID_12555_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Offer_ID_12555_response.json; sourceTree = "<group>"; };
@@ -449,7 +447,6 @@
 				E72EFFFD29EDF562009F7BFE /* Shopping */,
 				E70BEB9129B94D8B0030335E /* HelloView.swift */,
 				E70BEB9629BA37440030335E /* SelectedOfferView.swift */,
-				E72EFFE229D4C892009F7BFE /* ScenariosListView.swift */,
 				E72EFFE429D4C8BA009F7BFE /* OfferView.swift */,
 			);
 			path = Views;
@@ -937,7 +934,6 @@
 				E71CFBA029CD098D00598B15 /* GetOrderByIDRequest.swift in Sources */,
 				E71CFB8829C26C7100598B15 /* FileSystemObject.swift in Sources */,
 				E71CFB7B29BFC20100598B15 /* Logger.swift in Sources */,
-				E72EFFE329D4C892009F7BFE /* ScenariosListView.swift in Sources */,
 				E701B2C42A93B5CE00A2EFD1 /* UpdateSkuInCartRequest.swift in Sources */,
 				E71CFB9A29CCCD7100598B15 /* DataResponseAPICall.swift in Sources */,
 				E72C46802A7866A700F8C267 /* OfferSearchViewState.swift in Sources */,

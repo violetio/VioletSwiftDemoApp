@@ -84,8 +84,10 @@ class BagShippingMethodSelectViewState: ObservableObject {
 class ShippingMethodArrayItem: Identifiable {
     let bagID: BagID
     let price: Int
+    let intPrice: IntPrice
     let shippingMethodId: String
     let label: String
+    var priceText: String { intPrice.priceText() }
     
     var id: String { shippingMethodId }
     
@@ -98,6 +100,7 @@ class ShippingMethodArrayItem: Identifiable {
         
         self.bagID = aBagId
         self.price = aPrice
+        self.intPrice = IntPrice(price: aPrice)
         self.shippingMethodId = aShippingMethodId
         self.label = aLabel
     }

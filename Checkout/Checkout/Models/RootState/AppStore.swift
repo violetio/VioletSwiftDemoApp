@@ -43,6 +43,17 @@ class AppStore {
             shippingViewState: ShippingViewState())
         }
         
+        func resumeExistingOrder(order: Order) {
+            cartViewState.updateWithNewOrder(order: order)
+            shippingViewState.loadFrom(customer: order.customer,
+                                            shippingAddress: order.shippingAddress,
+                                            billingAddress: order.billingAddress)
+//            if shippingViewState.nextEnabled {
+//                Logger.debug("resumeExistingOrder - shippingViewState.nextEnabled")
+//                cartViewState.checkoutPagesComplete.insert(.addShippingAddress)
+//            }
+        }
+        
         func updateWithNewOrder(order: Order) {
             cartViewState.updateWithNewOrder(order: order)
             shippingViewState.loadFrom(customer: order.customer,
@@ -61,11 +72,6 @@ class AppStore {
                 
             }
         }
-        
-        func updateWith(orderShipping: OrderShippingMethodWrapperArray) {
-            Logger.debug("orderShipping: \(orderShipping)")
-        }
-        
         
     }
 
@@ -121,7 +127,7 @@ class AppStore {
             sender.send(.offersPageRequest(nil))
         }
         if cartViewState.noCart {
-            sender.send(.createCartRequest)
+//            sender.send(.createCartRequest)
 //                sender.send(.cartByID(71169))
 //            sender.send(.cartByID(72500))
 //            sender.send(.cartByID(73302))

@@ -58,7 +58,7 @@ extension AppStore {
                     if let order = dataResponse,
                        let orderId = order.id{
                         Logger.info("Resume Cart ID: \(orderId)")
-                        self.state.updateWithNewOrder(order: order)
+                        self.state.resumeExistingOrder(order: order)
                     } else if let apiError = dataError {
                         Logger.error(apiError.localizedDescription)
                         self.state.demoProxyViewState.setError(apiError: apiError)
@@ -113,7 +113,7 @@ extension AppStore {
                        let orderId = order.id{
                         Logger.debug("Store+Sender: ✅ updateCartCustomerRequest Cart ID: \(orderId)")
                         self.state.updateWithNewOrder(order: order)
-                        self.state.markCheckoutPageComplete(.addShippingAddress)
+//                        self.state.markCheckoutPageComplete(.addShippingAddress)
                         self.send(.fetchShippingMethods(orderID))
                     }
                 }
@@ -123,11 +123,8 @@ extension AppStore {
                 pendingAPICalls.enqueue(newAPICall)
                 newAPICall.send { dataResponse, _ in
                     if let orderShippingMethodsArrayWrapper = dataResponse {
-                        self.state.updateWith(orderShipping: orderShippingMethodsArrayWrapper)
-//                        Logger.debug("Store+Sender: ✅ updateCartCustomerRequest Cart ID: \(orderId)")
-//                        self.state.updateWithNewOrder(order: order)
-//                        self.state.markCheckoutPageComplete(.addShippingAddress)
-//                        self.send(.fetchShippingMethods(orderID))
+                        self.state.cartViewState.updateWithNewShippingMethods(orderShippingMethods: orderShippingMethodsArrayWrapper)
+                        self.state.markCheckoutPageComplete(.addShippingAddress)
                     }
                 }
             }

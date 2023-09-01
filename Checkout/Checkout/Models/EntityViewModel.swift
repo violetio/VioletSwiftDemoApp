@@ -2,7 +2,7 @@
 //  ViewModel.swift
 //  Checkout
 //
-//  Created by Alan Morford on 4/19/23.
+//  Created on 4/19/23.
 //
 
 /**

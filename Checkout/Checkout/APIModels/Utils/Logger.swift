@@ -2,7 +2,7 @@
 //  Logger.swift
 //  Checkout
 //
-//  Created by Alan Morford on 3/13/23.
+//  Created on 3/13/23.
 //
 
 import Foundation

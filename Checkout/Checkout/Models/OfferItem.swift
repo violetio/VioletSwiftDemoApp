@@ -2,7 +2,7 @@
 //  OfferItem.swift
 //  Checkout
 //
-//  Created by Alan Morford on 4/24/23.
+//  Created on 4/24/23.
 //
 
 import Foundation

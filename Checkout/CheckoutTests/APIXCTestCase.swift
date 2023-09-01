@@ -2,7 +2,7 @@
 //  APIXCTestCase.swift
 //  CheckoutTests
 //
-//  Created by Alan Morford on 3/20/23.
+//  Created on 3/20/23.
 //
 
 @testable import Checkout

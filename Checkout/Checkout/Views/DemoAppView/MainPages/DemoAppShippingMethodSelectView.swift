@@ -24,12 +24,15 @@ struct DemoAppShippingMethodSelectView: View {
                                     Text("\(aShippingMethodArrayItem.label)")
                                         .font(.system(size: 15))
                                         .frame(minHeight: 20)
-                                    Text("\(aShippingMethodArrayItem.price)")
+                                    Text("\(aShippingMethodArrayItem.priceText)")
                                         .foregroundColor(FigmaConstants.Colors.secondaryFontColor).opacity(0.6)
                                         .font(.system(size: 13))
                                         .frame(minHeight: 18)
-                                }.frame(width: .infinity, height: 69)
-                                .listRowBackground(value.selectedShippingMethodID == aShippingMethodArrayItem.shippingMethodId ? Color.blue : Color.white)
+                                }//.frame(width: .infinity, height: 69)
+                                .listRowBackground(value.selectedShippingMethodID == aShippingMethodArrayItem.shippingMethodId ? Color.blue : Color.white).onTapGesture {
+                                    Logger.debug("Tap on Shipping Method: \(aShippingMethodArrayItem.label)")
+                                    //orderShippingMethodSelectViewState.s
+                                }
                                     //.withBlackBorder()
                             }//.withBlackBorder()
                         
@@ -39,7 +42,7 @@ struct DemoAppShippingMethodSelectView: View {
                 }
             }
 
-        }
+        }.navigationTitle("Select")
         
     }
 }
@@ -51,8 +54,12 @@ struct DemoAppShippingMethodSelectView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        DemoAppShippingMethodSelectView(store: AppStore.mockAppStoreBinding,
-                                        cartViewState: CartViewState(skuCount: 0),
-                                        orderShippingMethodSelectViewState: mockOrderShippingMethodSelectViewState)
+        Group {
+            NavigationStack {
+                DemoAppShippingMethodSelectView(store: AppStore.mockAppStoreBinding,
+                                                cartViewState: CartViewState(skuCount: 0),
+                                                orderShippingMethodSelectViewState: mockOrderShippingMethodSelectViewState)
+            }.previewDisplayName("Multi Bag")
+        }
     }
 }

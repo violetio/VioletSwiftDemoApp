@@ -52,7 +52,7 @@ struct DemoAppView: View {
                     case .selectShippingMethod:
                         DemoAppShippingMethodSelectView(store: $store,
                                                         cartViewState: store.cartViewState,
-                        orderShippingMethodSelectViewState: OrderShippingMethodSelectViewState(orderShippingMethods: nil))
+                                                        orderShippingMethodSelectViewState: store.cartViewState.orderShippingMethodSelectViewState)
                     }
                     
                 }.onAppear {

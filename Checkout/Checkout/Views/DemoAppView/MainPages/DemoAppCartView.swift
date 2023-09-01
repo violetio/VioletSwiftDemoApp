@@ -77,9 +77,7 @@ struct DemoAppCartView: View {
             
         }.frame(maxHeight: .infinity).withScrollViewBackgroundColor()
 //            .withBlackBorder()
-        .navigationTitle("Shopping Cart").onAppear {
-            Logger.debug("router.paths.count: \(router.paths.count)")
-        }
+        .navigationTitle("Shopping Cart")
     }
 }
 

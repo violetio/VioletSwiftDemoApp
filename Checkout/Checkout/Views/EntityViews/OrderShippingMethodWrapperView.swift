@@ -2,7 +2,7 @@
 //  OrderShippingMethodWrapperView.swift
 //  Checkout
 //
-//  Created by Alan Morford on 5/2/23.
+//  Created on 5/2/23.
 //
 
 import SwiftUI

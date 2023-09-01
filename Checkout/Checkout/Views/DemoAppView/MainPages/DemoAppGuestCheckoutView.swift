@@ -20,8 +20,6 @@ struct DemoAppGuestCheckoutView: View {
     var body: some View {
         ScrollView {
             
-            //if store.cartViewState.
-            
             /// SHIPPING ADDRESS
             VStack(alignment: .leading) {
                 if store.cartViewState.bagCount <= 1 {
@@ -61,12 +59,18 @@ struct DemoAppGuestCheckoutView: View {
             }
             
             Button {
-                if let orderCustomer = shippingViewState.produceOrderCustomerBody(),
-                   let orderId = store.state.cartViewState.cartId {
-                    Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
-                    Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
-                    Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
-                    store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
+                if let orderId = store.state.cartViewState.cartId {
+                    if store.cartViewState.checkoutPagesComplete.contains(.addShippingAddress) {
+                        self.store.send(.fetchShippingMethods(orderId))
+                        //router.paths.append(NavigationKey.selectShippingMethod)
+                    } else {
+                        if let orderCustomer = shippingViewState.produceOrderCustomerBody() {
+                            Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
+                            Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
+                            Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
+                            store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
+                        }
+                    }
                 }
 
 
@@ -107,14 +111,9 @@ struct DemoAppGuestCheckoutView: View {
             }
             .withScrollViewBackgroundColor()
             .onAppear {
-                if let order = store.cartViewState.currentOrder {
-                    store.state.shippingViewState.loadFrom(customer: order.customer, shippingAddress: order.shippingAddress, billingAddress: order.billingAddress)
-                }
                 if shippingViewState.orderHasAddress {
                     Logger.debug("Order has Address")
                 }
-                        
-                Logger.debug("router.paths.count: \(router.paths.count)")
                     
             }
 

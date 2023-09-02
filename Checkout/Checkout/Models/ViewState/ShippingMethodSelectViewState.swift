@@ -104,4 +104,14 @@ class ShippingMethodArrayItem: Identifiable {
         self.shippingMethodId = aShippingMethodId
         self.label = aLabel
     }
+    
+    init(bagID: BagID, price: Int, shippingMethodId: String, label: String) {
+        self.bagID = bagID
+        self.price = price
+        self.intPrice = IntPrice(price: price)
+        self.shippingMethodId = shippingMethodId
+        self.label = label
+    }
+    
 }
+

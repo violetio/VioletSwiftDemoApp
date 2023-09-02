@@ -91,10 +91,10 @@
 		E77ED7992A9FB8A2009A5A52 /* ShippingMethodSelectViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77ED7982A9FB8A2009A5A52 /* ShippingMethodSelectViewState.swift */; };
 		E77ED79B2A9FE708009A5A52 /* OfferPDPViewStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77ED79A2A9FE708009A5A52 /* OfferPDPViewStateTests.swift */; };
 		E77ED79D2A9FE783009A5A52 /* PageOffer_Page_1_No_MerchantID_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = E77ED79C2A9FE783009A5A52 /* PageOffer_Page_1_No_MerchantID_Response.json */; };
-		E77ED7A12AA0F99E009A5A52 /* DemoAppShippingMethodSelectView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77ED7A02AA0F99E009A5A52 /* DemoAppShippingMethodSelectView2.swift */; };
 		E77ED7A32AA11BAC009A5A52 /* Order_ID_73936_ShippingAvailable_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = E77ED7A22AA11BAC009A5A52 /* Order_ID_73936_ShippingAvailable_Response.json */; };
 		E77ED7A52AA12460009A5A52 /* Order_ID_73936_GetCartByID_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = E77ED7A42AA12460009A5A52 /* Order_ID_73936_GetCartByID_Response.json */; };
 		E77ED7A72AA124F9009A5A52 /* OrderShippingMethodSelectViewStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77ED7A62AA124F9009A5A52 /* OrderShippingMethodSelectViewStateTests.swift */; };
+		E77ED7A92AA399A1009A5A52 /* ShippingMethodOptionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77ED7A82AA399A0009A5A52 /* ShippingMethodOptionCard.swift */; };
 		E7B41C3E29F3304B00E7371B /* PendingOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C3D29F3304B00E7371B /* PendingOrderTests.swift */; };
 		E7B41C4329F3362000E7371B /* CartContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C4229F3361F00E7371B /* CartContentsView.swift */; };
 		E7B41C4529F342D100E7371B /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B41C4429F342D100E7371B /* CartItemView.swift */; };
@@ -256,10 +256,10 @@
 		E77ED7982A9FB8A2009A5A52 /* ShippingMethodSelectViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingMethodSelectViewState.swift; sourceTree = "<group>"; };
 		E77ED79A2A9FE708009A5A52 /* OfferPDPViewStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferPDPViewStateTests.swift; sourceTree = "<group>"; };
 		E77ED79C2A9FE783009A5A52 /* PageOffer_Page_1_No_MerchantID_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PageOffer_Page_1_No_MerchantID_Response.json; sourceTree = "<group>"; };
-		E77ED7A02AA0F99E009A5A52 /* DemoAppShippingMethodSelectView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoAppShippingMethodSelectView2.swift; sourceTree = "<group>"; };
 		E77ED7A22AA11BAC009A5A52 /* Order_ID_73936_ShippingAvailable_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order_ID_73936_ShippingAvailable_Response.json; sourceTree = "<group>"; };
 		E77ED7A42AA12460009A5A52 /* Order_ID_73936_GetCartByID_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order_ID_73936_GetCartByID_Response.json; sourceTree = "<group>"; };
 		E77ED7A62AA124F9009A5A52 /* OrderShippingMethodSelectViewStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShippingMethodSelectViewStateTests.swift; sourceTree = "<group>"; };
+		E77ED7A82AA399A0009A5A52 /* ShippingMethodOptionCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippingMethodOptionCard.swift; sourceTree = "<group>"; };
 		E7B41C3D29F3304B00E7371B /* PendingOrderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOrderTests.swift; sourceTree = "<group>"; };
 		E7B41C4229F3361F00E7371B /* CartContentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartContentsView.swift; sourceTree = "<group>"; };
 		E7B41C4429F342D100E7371B /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
@@ -705,6 +705,7 @@
 		E7F8D5902A82D9F300F720CD /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E77ED7A82AA399A0009A5A52 /* ShippingMethodOptionCard.swift */,
 				E7F8D5952A83F42700F720CD /* PaymentButton.swift */,
 				E712EB062A5CA6C700DDAE15 /* DemoAppOfferCardImage.swift */,
 				E712EAFF2A5C6A5000DDAE15 /* DemoAppOfferCard.swift */,
@@ -726,7 +727,6 @@
 		E7F8D5CA2A8D2A6900F720CD /* MainPages */ = {
 			isa = PBXGroup;
 			children = (
-				E77ED7A02AA0F99E009A5A52 /* DemoAppShippingMethodSelectView2.swift */,
 				E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */,
 				E7F8D58E2A82D67300F720CD /* DemoAppOfferPDP.swift */,
 				E7F8D5CC2A8D2B7B00F720CD /* DemoAppCartView.swift */,
@@ -962,7 +962,6 @@
 				E77ED7932A9D520A009A5A52 /* Router.swift in Sources */,
 				E70BEB9229B94D8B0030335E /* HelloView.swift in Sources */,
 				E7B41C4329F3362000E7371B /* CartContentsView.swift in Sources */,
-				E77ED7A12AA0F99E009A5A52 /* DemoAppShippingMethodSelectView2.swift in Sources */,
 				E72E001129F07B0F009F7BFE /* PreviewMocks.swift in Sources */,
 				E701B2BC2A92A9A300A2EFD1 /* OfferVariants.swift in Sources */,
 				E712EAFE2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift in Sources */,
@@ -990,6 +989,7 @@
 				E712EB002A5C6A5000DDAE15 /* DemoAppOfferCard.swift in Sources */,
 				E72E001829F1BA61009F7BFE /* PriceViewModel.swift in Sources */,
 				E7B41CB12A09872600E7371B /* APICall.swift in Sources */,
+				E77ED7A92AA399A1009A5A52 /* ShippingMethodOptionCard.swift in Sources */,
 				E7B41C7D29F9848900E7371B /* CurrentAuthToken.swift in Sources */,
 				E77ED7992A9FB8A2009A5A52 /* ShippingMethodSelectViewState.swift in Sources */,
 				E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */,

@@ -58,7 +58,7 @@ struct DemoAppGuestCheckoutView: View {
                 }.padding(0)
             }
             
-            Button {
+            NextButton(nextEnabled: $shippingViewState.nextEnabled) {
                 if let orderId = store.state.cartViewState.cartId {
                     if store.cartViewState.checkoutPagesComplete.contains(.addShippingAddress) {
                         self.store.send(.fetchShippingMethods(orderId))
@@ -72,25 +72,40 @@ struct DemoAppGuestCheckoutView: View {
                         }
                     }
                 }
-
-
-            } label: {
-                if shippingViewState.nextEnabled {
-                    Text("Next")
-                        .font(Font.custom("SF Pro Text", size: 17))
-                        .frame(width: 340, height: 50)
-                        .foregroundColor(.white)
-                        .background(Color(red: 0, green: 0.48, blue: 1))
-                        .cornerRadius(12)
-                } else {
-                    Text("Next")
-                        .font(Font.custom("SF Pro Text", size: 17))
-                        .frame(width: 340, height: 50)
-                        .foregroundColor(.white)
-                        .background(Color(red: 0.47, green: 0.47, blue: 0.5).opacity(0.16))
-                        .cornerRadius(12)
-                }
-            }
+            }.frame(width: 340, alignment: .bottom).padding()
+//            Button {
+//                if let orderId = store.state.cartViewState.cartId {
+//                    if store.cartViewState.checkoutPagesComplete.contains(.addShippingAddress) {
+//                        self.store.send(.fetchShippingMethods(orderId))
+//                        //router.paths.append(NavigationKey.selectShippingMethod)
+//                    } else {
+//                        if let orderCustomer = shippingViewState.produceOrderCustomerBody() {
+//                            Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
+//                            Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
+//                            Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
+//                            store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
+//                        }
+//                    }
+//                }
+//
+//
+//            } label: {
+//                if shippingViewState.nextEnabled {
+//                    Text("Next")
+//                        .font(Font.custom("SF Pro Text", size: 17))
+//                        .frame(width: 340, height: 50)
+//                        .foregroundColor(.white)
+//                        .background(Color(red: 0, green: 0.48, blue: 1))
+//                        .cornerRadius(12)
+//                } else {
+//                    Text("Next")
+//                        .font(Font.custom("SF Pro Text", size: 17))
+//                        .frame(width: 340, height: 50)
+//                        .foregroundColor(.white)
+//                        .background(Color(red: 0.47, green: 0.47, blue: 0.5).opacity(0.16))
+//                        .cornerRadius(12)
+//                }
+//            }
             .frame(width: 340, alignment: .bottom).padding()
             
         }.frame(width: 390)

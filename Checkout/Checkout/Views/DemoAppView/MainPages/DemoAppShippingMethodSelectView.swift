@@ -19,23 +19,15 @@ struct DemoAppShippingMethodSelectView: View {
 
                 if let bagShippingMethodViewState = orderShippingMethodSelectViewState.bagIDToBagShippingMethodStateMap[key] {
 
-                    VStack(alignment: .leading) {
-                        Label(bagShippingMethodViewState.merchantName, image: "merchant_name_pre_icon")
-                        ForEach(bagShippingMethodViewState.shippingMethodArray) { aShippingMethodArrayItem in
-
-                            ShippingMethodOptionCard(shippingMethodArrayItem: aShippingMethodArrayItem,
-                                                     selectedShippingMethodID: .constant("")).onTapGesture {
-                                Logger.info("Tapped Shipping Method ID: \(aShippingMethodArrayItem.shippingMethodId)")
-                                bagShippingMethodViewState.selectedShippingMethodID = aShippingMethodArrayItem.shippingMethodId
-                                orderShippingMethodSelectViewState.bagIDToShippingMethodIDs[bagShippingMethodViewState.bagID] = aShippingMethodArrayItem.shippingMethodId
-                                
-                            }
-
-                        }//.withBlackBorder()
-                    }.frame(width: 390)
+                    BagShippingMethodSelectView(bagShippingMethodSelectViewState: bagShippingMethodViewState).padding(.vertical)
                 }
 
             }
+            
+            
+            NextButton(nextEnabled: .constant(true)) {
+                Logger.debug("Next Button Tapped in Shipping Method Select")
+            }.frame(width: 340, alignment: .bottom).padding()
 
         }.withScrollViewBackgroundColor()
             .navigationTitle("Select")

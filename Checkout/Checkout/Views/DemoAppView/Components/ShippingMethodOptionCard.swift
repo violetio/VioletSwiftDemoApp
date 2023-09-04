@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShippingMethodOptionCard: View {
     let shippingMethodArrayItem: ShippingMethodArrayItem
-    @Binding var selectedShippingMethodID: String
+    @Binding var selectedShippingMethodID: String?
     var body: some View {
 
         ZStack {

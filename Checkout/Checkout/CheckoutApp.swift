@@ -11,7 +11,6 @@ import Stripe
 @main
 struct CheckoutApp: App {
     let store: AppStore = AppStore()
-    @StateObject var router = Router()
     
     init() {
         //TODO: Is this necessary?

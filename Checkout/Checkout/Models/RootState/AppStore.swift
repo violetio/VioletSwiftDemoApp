@@ -16,6 +16,7 @@ class AppStore {
         var offerSearchViewState: OfferSearchViewState
         var shippingViewState: ShippingViewState
         var offerPDPViewStates: [Int64: OfferPDPViewState] = [:]
+        var apiCallActivityState = APICallActivityState()
         let router: Router = Router()
         
         func updateOfferPDPViewState( offerItem: DemoProductGridOfferItem) -> OfferPDPViewState {

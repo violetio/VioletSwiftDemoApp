@@ -79,6 +79,7 @@ struct DemoAppGuestCheckoutView: View {
         }.frame(width: 390)
             .navigationTitle("Guest Checkout")
             .withScrollViewBackgroundColor()
+            
             .onAppear {
                 if shippingViewState.orderHasAddress {
                     Logger.debug("Order has Address")

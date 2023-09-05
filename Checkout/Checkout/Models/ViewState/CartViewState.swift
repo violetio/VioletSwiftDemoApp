@@ -42,13 +42,13 @@ class CartViewState: ObservableObject {
     }
     
     func updateWithNewOrder(order: Order) {
-        Logger.debug("CartViewState - Update")
+//        Logger.debug("CartViewState - Update")
         self.currentOrder = order
         if let orderId = order.id {
             self.cartId = orderId
             let currentBagIdSet = Set(bagViewStates.keys)
             var updateBagIdSet = Set<Int64>()
-            Logger.debug("CartViewState - - Order ID: \(orderId)")
+//            Logger.debug("CartViewState - - Order ID: \(orderId)")
             
             self.cartSubTotalText = (Double(order.subTotal ?? 0) / 100).formatted(.currency(code: "USD"))
             
@@ -59,9 +59,9 @@ class CartViewState: ObservableObject {
                     updateBagIdSet.insert(bagID)
                     bag.skus?.forEach({ orderSku in
                         if let orderSkuID = orderSku.id {
-                            Logger.debug("CartViewState - - - OrderSku ID: \(orderSkuID)")
+//                            Logger.debug("CartViewState - - - OrderSku ID: \(orderSkuID)")
                             calcSkuCount += orderSku.quantity ?? 0
-                            Logger.debug("CartViewState - - - calcSkuCount: \(calcSkuCount)")
+//                            Logger.debug("CartViewState - - - calcSkuCount: \(calcSkuCount)")
                         }
                     })
                     bagViewStates[bagID] = BagViewState(bagID: bagID, bag: bag)
@@ -76,7 +76,7 @@ class CartViewState: ObservableObject {
             }
             
             self.skuCount = calcSkuCount
-            Logger.debug("CartViewState - - skuCount: \(skuCount)")
+//            Logger.debug("CartViewState - - skuCount: \(skuCount)")
         }
     }
 }

@@ -16,13 +16,19 @@ extension AppStore {
             self.state = state
         }
 
+        func startAPICall<T, DataResponseType: Codable>(_ with: T) -> APICall<T, DataResponseType> where T: DataResponseAPICall<DataResponseType> {
+            let newAPICall = APICall(apiCall: with)
+            state.apiCallActivityState.increment()
+            pendingAPICalls.enqueue(newAPICall)
+            return newAPICall
+        }
+        
         func send(_ action: AppAction) {
             switch action {
             case .offersPageRequest(let merchantId):
                 Logger.info("Store: Offers Page Request:")
-                let newAPICall = APICall(apiCall: GetPageOffersByMerchantIDRequest(merchantId: merchantId))
-                pendingAPICalls.enqueue(newAPICall)
-                self.state.offerSearchViewState.loading = true
+
+                let newAPICall = self.startAPICall(GetPageOffersByMerchantIDRequest(merchantId: merchantId))
                 newAPICall.send { dataResponse, dataError in
                     if let pageOffer = dataResponse {
                         Logger.info("Got PageOffer")
@@ -32,13 +38,13 @@ extension AppStore {
                         Logger.error(apiError.localizedDescription)
                         self.state.demoProxyViewState.setError(apiError: apiError)
                     }
+                    self.state.apiCallActivityState.decrement()
                 }
             case .createCartRequest:
                 Logger.info("Store: Create Cart Request:")
                 let cartInit = CartInitializationRequest(baseCurrency: "USD")
-                let newAPICall = APICall(apiCall: CreateCartRequest(cartInitializationRequest: cartInit,
-                                                                    baseCurrency: "USD"))
-                pendingAPICalls.enqueue(newAPICall)
+                let newAPICall = self.startAPICall(CreateCartRequest(cartInitializationRequest: cartInit,
+                                                                     baseCurrency: "USD"))
 
                 newAPICall.send { dataResponse, dataError in
                     if let order = dataResponse,
@@ -49,11 +55,12 @@ extension AppStore {
                         Logger.error(apiError.localizedDescription)
                         self.state.demoProxyViewState.setError(apiError: apiError)
                     }
+                    self.state.apiCallActivityState.decrement()
                 }
             case .cartByID(let orderID):
                 Logger.info("Store GetCartByID")
-                let newAPICall = APICall(apiCall: GetCartByIDRequest(orderId: orderID))
-                pendingAPICalls.enqueue(newAPICall)
+                let newAPICall = self.startAPICall(GetCartByIDRequest(orderId: orderID))
+
                 newAPICall.send { dataResponse, dataError in
                     if let order = dataResponse,
                        let orderId = order.id{
@@ -63,51 +70,51 @@ extension AppStore {
                         Logger.error(apiError.localizedDescription)
                         self.state.demoProxyViewState.setError(apiError: apiError)
                     }
+                    self.state.apiCallActivityState.decrement()
                 }
             case .addSkuToCart(let orderID, let offerSkuId, let quantity):
                 Logger.debug("Store+Sender: addSkuToCart \(orderID)")
                 let orderSku = OrderSku(quantity: quantity, skuId: offerSkuId)
-                let newAPICall = APICall(apiCall: AddSkuToCartRequest(orderId: orderID,
+                let newAPICall = self.startAPICall(AddSkuToCartRequest(orderId: orderID,
                                                                       orderSku: orderSku))
-                pendingAPICalls.enqueue(newAPICall)
                 newAPICall.send { dataResponse, _ in
                     if let order = dataResponse,
                        let orderId = order.id{
                         Logger.debug("Store+Sender: ✅ addSkuToCart Cart ID: \(orderId)")
                         self.state.updateWithNewOrder(order: order)
                     }
+                    self.state.apiCallActivityState.decrement()
                 }
             case .updateSkuInCart(let orderID, let orderSkuId, let quantity):
                 Logger.debug("Store+Sender: updateSkuInCart \(orderID) - orderSkuId: - \(orderSkuId)")
                 let orderSku = OrderSku(quantity: quantity, skuId: orderSkuId)
-                let newAPICall = APICall(apiCall: UpdateSkuInCartRequest(orderId: orderID,
+                let newAPICall = self.startAPICall(UpdateSkuInCartRequest(orderId: orderID,
                                                                          orderSkuId: orderSkuId,
                                                                          orderSku: orderSku))
-                pendingAPICalls.enqueue(newAPICall)
                 newAPICall.send { dataResponse, _ in
                     if let order = dataResponse,
                        let orderId = order.id{
                         Logger.debug("Store+Sender: ✅ updateSkuInCart Cart ID: \(orderId)")
                         self.state.updateWithNewOrder(order: order)
                     }
+                    self.state.apiCallActivityState.decrement()
                 }
             case .removeSkuFromCart(let orderID, let orderSkuID):
                 Logger.debug("Store+Sender: removeSku: \(orderSkuID) FromCart: \(orderID)")
-                let newAPICall = APICall(apiCall: RemoveSkuFromCartRequest(orderId: orderID,
+                let newAPICall = self.startAPICall(RemoveSkuFromCartRequest(orderId: orderID,
                                                                            orderSkuId: orderSkuID))
-                pendingAPICalls.enqueue(newAPICall)
                 newAPICall.send { dataResponse, _ in
                     if let order = dataResponse,
                        let orderId = order.id{
                         Logger.debug("Store+Sender: ✅ RemoveSkuFromCart Cart ID: \(orderId)")
                         self.state.updateWithNewOrder(order: order)
                     }
+                    self.state.apiCallActivityState.decrement()
                 }
             case .updateCartCustomerRequest(let orderID, let orderCustomer):
                 Logger.debug("Store: Apply Order Customer - OrderID: \(orderID)")
-                let newAPICall = APICall(apiCall: CheckoutCartCustomerPostRequest(cartId: orderID,
+                let newAPICall = self.startAPICall(CheckoutCartCustomerPostRequest(cartId: orderID,
                                                                                   guestOrderCustomer: orderCustomer))
-                pendingAPICalls.enqueue(newAPICall)
                 newAPICall.send { dataResponse, _ in
                     if let order = dataResponse,
                        let orderId = order.id{
@@ -116,21 +123,21 @@ extension AppStore {
 //                        self.state.markCheckoutPageComplete(.addShippingAddress)
                         self.send(.fetchShippingMethods(orderID))
                     }
+                    self.state.apiCallActivityState.decrement()
                 }
             case .fetchShippingMethods(let orderID):
                 Logger.debug("fetchShippingMethods: \(orderID)")
-                let newAPICall = APICall(apiCall: CheckoutCartShippingAvailableGetRequest(orderId: orderID))
-                pendingAPICalls.enqueue(newAPICall)
+                let newAPICall = self.startAPICall(CheckoutCartShippingAvailableGetRequest(orderId: orderID))
                 newAPICall.send { dataResponse, _ in
                     if let orderShippingMethodsArrayWrapper = dataResponse {
                         self.state.cartViewState.updateWithNewShippingMethods(orderShippingMethods: orderShippingMethodsArrayWrapper)
                         self.state.markCheckoutPageComplete(.addShippingAddress)
                     }
+                    self.state.apiCallActivityState.decrement()
                 }
             case .applyShippingMethods(let orderID, let bagShippingMethodArray):
                 Logger.debug("applyShippingMethods: \(orderID) method Count: \(bagShippingMethodArray.count)")
-                let newAPICall = APICall(apiCall: ApplyShippingMethodsRequest(orderId: orderID, body: bagShippingMethodArray))
-                pendingAPICalls.enqueue(newAPICall)
+                let newAPICall = self.startAPICall(ApplyShippingMethodsRequest(orderId: orderID, body: bagShippingMethodArray))
                 newAPICall.send { dataResponse, _ in
                     if let order = dataResponse,
                        let orderId = order.id{
@@ -138,6 +145,7 @@ extension AppStore {
                         self.state.updateWithNewOrder(order: order)
                         self.state.markCheckoutPageComplete(.selectShippingMethod)
                     }
+                    self.state.apiCallActivityState.decrement()
                 }
             }
         }

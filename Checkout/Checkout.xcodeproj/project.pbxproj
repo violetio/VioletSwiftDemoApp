@@ -52,7 +52,7 @@
 		E71CFBA729CE0EBD00598B15 /* JsonDecodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBA629CE0EBD00598B15 /* JsonDecodeTests.swift */; };
 		E71CFBA929CE129F00598B15 /* bag_id_43113.json in Resources */ = {isa = PBXBuildFile; fileRef = E71CFBA829CE129F00598B15 /* bag_id_43113.json */; };
 		E71CFBAB29CE17B300598B15 /* TestBundleFileTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBAA29CE17B300598B15 /* TestBundleFileTestCase.swift */; };
-		E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBAC29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift */; };
+		E71CFBAD29CE442700598B15 /* RequestIntentBasedCapturePayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBAC29CE442700598B15 /* RequestIntentBasedCapturePayment.swift */; };
 		E71CFBAF29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBAE29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift */; };
 		E71CFBB129CE5FB300598B15 /* CheckoutCartCustomerPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBB029CE5FB300598B15 /* CheckoutCartCustomerPostRequest.swift */; };
 		E71CFBB329CE613B00598B15 /* TestJsonResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71CFBB229CE613B00598B15 /* TestJsonResources.swift */; };
@@ -224,7 +224,7 @@
 		E71CFBA629CE0EBD00598B15 /* JsonDecodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecodeTests.swift; sourceTree = "<group>"; };
 		E71CFBA829CE129F00598B15 /* bag_id_43113.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bag_id_43113.json; sourceTree = "<group>"; };
 		E71CFBAA29CE17B300598B15 /* TestBundleFileTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBundleFileTestCase.swift; sourceTree = "<group>"; };
-		E71CFBAC29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCartPaymentPostRequest.swift; sourceTree = "<group>"; };
+		E71CFBAC29CE442700598B15 /* RequestIntentBasedCapturePayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestIntentBasedCapturePayment.swift; sourceTree = "<group>"; };
 		E71CFBAE29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCartShippingAvailableGetRequest.swift; sourceTree = "<group>"; };
 		E71CFBB029CE5FB300598B15 /* CheckoutCartCustomerPostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutCartCustomerPostRequest.swift; sourceTree = "<group>"; };
 		E71CFBB229CE613B00598B15 /* TestJsonResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestJsonResources.swift; sourceTree = "<group>"; };
@@ -487,7 +487,7 @@
 				E71CFB9C29CCD01700598B15 /* Base */,
 				E7FA7BD02A69C3CB001E9906 /* CatalogSearchOffersRequest.swift */,
 				E71CFBB029CE5FB300598B15 /* CheckoutCartCustomerPostRequest.swift */,
-				E71CFBAC29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift */,
+				E71CFBAC29CE442700598B15 /* RequestIntentBasedCapturePayment.swift */,
 				E71CFBAE29CE4E7300598B15 /* CheckoutCartShippingAvailableGetRequest.swift */,
 				E71CFB9D29CCD92C00598B15 /* CreateCartRequest.swift */,
 				E71CFBA129CE0C1D00598B15 /* GetCartByIDRequest.swift */,
@@ -1003,7 +1003,7 @@
 				E77ED7A92AA399A1009A5A52 /* ShippingMethodOptionCard.swift in Sources */,
 				E7B41C7D29F9848900E7371B /* CurrentAuthToken.swift in Sources */,
 				E77ED7992A9FB8A2009A5A52 /* ShippingMethodSelectViewState.swift in Sources */,
-				E71CFBAD29CE442700598B15 /* CheckoutCartPaymentPostRequest.swift in Sources */,
+				E71CFBAD29CE442700598B15 /* RequestIntentBasedCapturePayment.swift in Sources */,
 				E701B2C82A93E03500A2EFD1 /* DemoAppGuestCheckoutView.swift in Sources */,
 				E7F8D5CF2A8D58E500F720CD /* CartBagSection.swift in Sources */,
 				E7B41C5829F58C0700E7371B /* UsernameAndPassword.swift in Sources */,

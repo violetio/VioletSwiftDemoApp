@@ -86,6 +86,7 @@ class AppStore {
         case updateCartCustomerRequest(OrderID, OrderCustomer)
         case fetchShippingMethods(OrderID)
         case applyShippingMethods(OrderID, BagShippingMethodArray)
+        case requestIntentBasedCapture(OrderID)
     }
 
     func send(_ action: AppAction) {

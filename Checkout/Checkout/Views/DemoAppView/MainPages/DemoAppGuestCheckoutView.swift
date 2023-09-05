@@ -62,13 +62,15 @@ struct DemoAppGuestCheckoutView: View {
                 if let orderId = store.state.cartViewState.cartId {
                     if store.cartViewState.checkoutPagesComplete.contains(.addShippingAddress) {
                         self.store.send(.fetchShippingMethods(orderId))
-                        //router.paths.append(NavigationKey.selectShippingMethod)
+                        
+                        
                     } else {
                         if let orderCustomer = shippingViewState.produceOrderCustomerBody() {
-                            Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
-                            Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
-                            Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
+//                            Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
+//                            Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
+//                            Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
                             store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
+                            store.send(.requestIntentBasedCapture(orderId))
                         }
                     }
                 }

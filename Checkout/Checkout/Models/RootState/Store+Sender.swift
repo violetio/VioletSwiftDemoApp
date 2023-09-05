@@ -146,6 +146,17 @@ extension AppStore {
                     }
                     self.state.apiCallActivityState.decrement()
                 }
+            case .requestIntentBasedCapture(let orderID):
+                Logger.debug("requestIntentBasedCapture: \(orderID)")
+                let newAPICall = self.startAPICall(RequestIntentBasedCapturePayment(cartId: orderID))
+                newAPICall.send { dataResponse, _ in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.debug("Store+Sender: ✅ IntentBasedCapture Cart ID: \(orderId) paymentIntentClientSecret: \(order.paymentIntentClientSecret)")
+                        self.state.updateWithNewOrder(order: order)
+                    }
+                    self.state.apiCallActivityState.decrement()
+                }
             }
         }
     }

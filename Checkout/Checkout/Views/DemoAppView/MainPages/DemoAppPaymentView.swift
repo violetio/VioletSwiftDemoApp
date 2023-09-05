@@ -6,10 +6,26 @@
 //
 
 import SwiftUI
+import StripePaymentSheet
 
 struct DemoAppPaymentView: View {
+    
+//    @State private var paymentMethodParams: STPPaymentMethodParams = STPPaymentMethodParams()
+//    @State private var cardFormIsComplete: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Payment")
+//            STPCardFormView.Representable(paymentMethodParams: $paymentMethodParams,
+//                                          isComplete: $cardFormIsComplete)
+//                .padding()
+//            Button(action: {
+//                print("Process payment...")
+//            }, label: {
+//                Text("Buy")
+//            }).disabled(!cardFormIsComplete)
+//            .padding()
+        }
     }
 }
 

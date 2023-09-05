@@ -127,6 +127,9 @@ extension AppStore {
                         self.state.markCheckoutPageComplete(.addShippingAddress)
                     }
                 }
+            case .applyShippingMethods(let orderID, let bagShippingMethodArray):
+                Logger.debug("applyShippingMethods: \(orderID) method Count: \(bagShippingMethodArray.count)")
+                let newAPICall = APICall(apiCall: ApplyShippingMethodsRequest(orderId: orderID, body: bagShippingMethodArray))
             }
         }
     }

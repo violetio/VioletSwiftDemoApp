@@ -15,3 +15,4 @@ public typealias OfferSkuID = Int64
 public typealias OrderSkuID = Int64
 public typealias OrderQuantity = Int
 public typealias OrderShippingMethodWrapperArray = [OrderShippingMethodWrapper]
+public typealias BagShippingMethodArray = [BagShippingMethod]

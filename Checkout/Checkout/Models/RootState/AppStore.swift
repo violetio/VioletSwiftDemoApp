@@ -84,6 +84,7 @@ class AppStore {
         case removeSkuFromCart(OrderID,OrderSkuID)
         case updateCartCustomerRequest(OrderID, OrderCustomer)
         case fetchShippingMethods(OrderID)
+        case applyShippingMethods(OrderID, BagShippingMethodArray)
     }
 
     func send(_ action: AppAction) {

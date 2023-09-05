@@ -48,6 +48,12 @@ class OrderShippingMethodSelectViewState: ObservableObject {
         self.bagIDToBagShippingMethodStateMap = buildBagIDToBagShippingMethodStateMap
         Logger.debug("bagIDToBagShippingMethodStateMap: \(bagIDToBagShippingMethodStateMap)")
     }
+    
+    func bagShippingMethodArray() -> BagShippingMethodArray {
+        return bagIDToBagShippingMethodStateMap.values.sorted(by: { $0.bagID < $1.bagID }).map { next in
+            return BagShippingMethod(bagId: next.bagID, shippingMethodId: next.selectedShippingMethodID)
+        }
+    }
 }
 
 

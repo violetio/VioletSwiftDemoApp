@@ -130,6 +130,15 @@ extension AppStore {
             case .applyShippingMethods(let orderID, let bagShippingMethodArray):
                 Logger.debug("applyShippingMethods: \(orderID) method Count: \(bagShippingMethodArray.count)")
                 let newAPICall = APICall(apiCall: ApplyShippingMethodsRequest(orderId: orderID, body: bagShippingMethodArray))
+                pendingAPICalls.enqueue(newAPICall)
+                newAPICall.send { dataResponse, _ in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.debug("Store+Sender: ✅ applyShippingMethods Cart ID: \(orderId)")
+                        self.state.updateWithNewOrder(order: order)
+                        self.state.markCheckoutPageComplete(.selectShippingMethod)
+                    }
+                }
             }
         }
     }

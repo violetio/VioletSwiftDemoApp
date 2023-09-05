@@ -28,7 +28,7 @@ struct DemoAppShippingMethodSelectView: View {
             NextButton(nextEnabled: .constant(true)) {
                 Logger.debug("Next Button Tapped in Shipping Method Select")
                 if let orderId = cartViewState.cartId {
-                    let bagShippingMethodArray: BagShippingMethodArray = []
+                    let bagShippingMethodArray: BagShippingMethodArray = orderShippingMethodSelectViewState.bagShippingMethodArray()
                     store.send(.applyShippingMethods(orderId, bagShippingMethodArray))
                 }
             }.frame(width: 340, alignment: .bottom).padding()

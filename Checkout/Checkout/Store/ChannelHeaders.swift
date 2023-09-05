@@ -2,7 +2,7 @@
 //  ChannelTokenAndSecret.swift
 //  Checkout
 //
-//  Created by Alan Morford on 4/26/23.
+//  Created on 4/26/23.
 //
 
 struct ChannelHeaders: AppIDAndSecret {

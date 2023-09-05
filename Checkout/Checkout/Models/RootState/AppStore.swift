@@ -14,8 +14,9 @@ class AppStore {
         var demoProxyViewState: DemoProxyActiveViewState
         var cartViewState: CartViewState
         var offerSearchViewState: OfferSearchViewState
-        var guestCheckoutViewState: GuestCheckoutViewState
+        var shippingViewState: ShippingViewState
         var offerPDPViewStates: [Int64: OfferPDPViewState] = [:]
+        let router: Router = Router()
         
         func updateOfferPDPViewState( offerItem: DemoProductGridOfferItem) -> OfferPDPViewState {
             if let existingOfferPDPViewState = offerPDPViewStates[offerItem.id] {
@@ -28,38 +29,62 @@ class AppStore {
         
         init(demoChannelViewState: DemoProxyActiveViewState,
              cartViewState: CartViewState,
-             offerSearchViewState: OfferSearchViewState, guestCheckoutViewState: GuestCheckoutViewState) {
+             offerSearchViewState: OfferSearchViewState, shippingViewState: ShippingViewState) {
             self.demoProxyViewState = demoChannelViewState
             self.cartViewState = cartViewState
             self.offerSearchViewState = offerSearchViewState
-            self.guestCheckoutViewState = guestCheckoutViewState
+            self.shippingViewState = shippingViewState
         }
 
         convenience init() {
             self.init(demoChannelViewState: DemoProxyActiveViewState(),
                       cartViewState: CartViewState(),
                       offerSearchViewState: OfferSearchViewState(),
-            guestCheckoutViewState: GuestCheckoutViewState())
+            shippingViewState: ShippingViewState())
+        }
+        
+        func resumeExistingOrder(order: Order) {
+            cartViewState.updateWithNewOrder(order: order)
+            shippingViewState.loadFrom(customer: order.customer,
+                                            shippingAddress: order.shippingAddress,
+                                            billingAddress: order.billingAddress)
+//            if shippingViewState.nextEnabled {
+//                Logger.debug("resumeExistingOrder - shippingViewState.nextEnabled")
+//                cartViewState.checkoutPagesComplete.insert(.addShippingAddress)
+//            }
         }
         
         func updateWithNewOrder(order: Order) {
             cartViewState.updateWithNewOrder(order: order)
-            guestCheckoutViewState.loadFrom(customer: order.customer,
+            shippingViewState.loadFrom(customer: order.customer,
                                             shippingAddress: order.shippingAddress,
                                             billingAddress: order.billingAddress)
         }
         
+        func markCheckoutPageComplete(_ navigationKey: NavigationKey) {
+            if !cartViewState.checkoutPagesComplete.contains(navigationKey) {
+                cartViewState.checkoutPagesComplete.insert(navigationKey)
+                Logger.debug("markCheckoutPageComplete: \(navigationKey)")
+                if navigationKey == .addShippingAddress {
+                    Logger.debug("markCheckoutPageComplete: Go to \(NavigationKey.selectShippingMethod)")
+                    router.paths.append(NavigationKey.selectShippingMethod)
+                }
+                
+            }
+        }
         
     }
 
     enum AppAction {
-        case offersPageRequest(MerchantID)
+        case offersPageRequest(MerchantID?=nil)
         case createCartRequest
         case cartByID(OrderID)
         case addSkuToCart(OrderID,OfferSkuID,OrderQuantity)
         case updateSkuInCart(OrderID,OrderSkuID,OrderQuantity)
         case removeSkuFromCart(OrderID,OrderSkuID)
         case updateCartCustomerRequest(OrderID, OrderCustomer)
+        case fetchShippingMethods(OrderID)
+        case applyShippingMethods(OrderID, BagShippingMethodArray)
     }
 
     func send(_ action: AppAction) {
@@ -68,6 +93,7 @@ class AppStore {
 
     let state: AppState
     let sender: AppSender
+    var router: Router { state.router }
     
     static let mockAppStore = AppStore(cartViewState: CartViewState())
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }
@@ -86,7 +112,7 @@ class AppStore {
         let newState = AppState(demoChannelViewState: demoChannelViewState,
                                 cartViewState: cartViewState,
                                 offerSearchViewState: offerSearchViewState,
-        guestCheckoutViewState: GuestCheckoutViewState())
+        shippingViewState: ShippingViewState())
         self.state = newState
         self.sender = AppSender(state: newState)
     }
@@ -99,14 +125,19 @@ class AppStore {
     
     func onAppAppear() {
         if offerSearchViewState.emtpy {
-            sender.send(.offersPageRequest(10003))
+            sender.send(.offersPageRequest(nil))
         }
         if cartViewState.noCart {
 //            sender.send(.createCartRequest)
 //                sender.send(.cartByID(71169))
-            sender.send(.cartByID(72500))
+//            sender.send(.cartByID(72500))
 //            sender.send(.cartByID(73302))
 //            sender.send(.cartByID(73461))
+//            sender.send(.cartByID(73791))
+            
+            //Carts with Ishans AppID 10549
+            sender.send(.cartByID(73936))
+            
         }
     }
 }

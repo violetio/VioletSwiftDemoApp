@@ -9,7 +9,7 @@ import Foundation
 import Violet
 import Combine
 
-class GuestCheckoutViewState: ObservableObject {
+class ShippingViewState: ObservableObject {
 
     @Published var sameAddress: Bool
     @Published var email: String = ""

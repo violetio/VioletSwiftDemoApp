@@ -14,13 +14,11 @@ import StripeApplePay
  */
 struct DemoAppGuestCheckoutView: View {
     @Binding var store: AppStore
-    @ObservedObject var guestCheckoutViewState: GuestCheckoutViewState
+    @ObservedObject var shippingViewState: ShippingViewState
     @StateObject var router: Router
     
     var body: some View {
         ScrollView {
-            
-            //if store.cartViewState.
             
             /// SHIPPING ADDRESS
             VStack(alignment: .leading) {
@@ -41,67 +39,50 @@ struct DemoAppGuestCheckoutView: View {
                 Text("Shipping Address")
                     .font(.system(size: 17, weight: .semibold))
                     .padding(.vertical)
-                FormTextField(guestCheckoutViewState.emailPrompt,
-                              text: $guestCheckoutViewState.email)
-                OrderAddressView(orderAddressViewState: guestCheckoutViewState.shippingOrderAddressViewState)
+                FormTextField(shippingViewState.emailPrompt,
+                              text: $shippingViewState.email)
+                OrderAddressView(orderAddressViewState: shippingViewState.shippingOrderAddressViewState)
             }.padding(0)
             /// SAME AS BILLING TOGGLE
-            Toggle(isOn: $guestCheckoutViewState.sameAddress) {
+            Toggle(isOn: $shippingViewState.sameAddress) {
                         Text("Shipping same as Billing")
             }.frame(width: 340).padding().tint(.blue)
             
             /// BILLING ADDRESS
-            if !guestCheckoutViewState.sameAddress {
+            if !shippingViewState.sameAddress {
                 VStack(alignment: .leading) {
                     Text("Billing Address")
                         .font(.system(size: 17, weight: .semibold))
                         .padding(.vertical)
-                    OrderAddressView(orderAddressViewState: guestCheckoutViewState.billingOrderAddressViewState)
+                    OrderAddressView(orderAddressViewState: shippingViewState.billingOrderAddressViewState)
                 }.padding(0)
             }
             
-            Button {
-                if let orderCustomer = guestCheckoutViewState.produceOrderCustomerBody(),
-                   let orderId = store.state.cartViewState.cartId {
-                    Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
-                    Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
-                    Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
-                    store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
-                    router.paths.append(NavigationKey.selectShippingMethod)
+            NextButton(nextEnabled: $shippingViewState.nextEnabled) {
+                if let orderId = store.state.cartViewState.cartId {
+                    if store.cartViewState.checkoutPagesComplete.contains(.addShippingAddress) {
+                        self.store.send(.fetchShippingMethods(orderId))
+                        //router.paths.append(NavigationKey.selectShippingMethod)
+                    } else {
+                        if let orderCustomer = shippingViewState.produceOrderCustomerBody() {
+                            Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
+                            Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
+                            Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
+                            store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
+                        }
+                    }
                 }
+            }.frame(width: 340, alignment: .bottom).padding()
 
-
-            } label: {
-                if guestCheckoutViewState.nextEnabled {
-                    Text("Next")
-                        .font(Font.custom("SF Pro Text", size: 17))
-                        .frame(width: 340, height: 50)
-                        .foregroundColor(.white)
-                        .background(Color(red: 0, green: 0.48, blue: 1))
-                        .cornerRadius(12)
-                } else {
-                    Text("Next")
-                        .font(Font.custom("SF Pro Text", size: 17))
-                        .frame(width: 340, height: 50)
-                        .foregroundColor(.white)
-                        .background(Color(red: 0.47, green: 0.47, blue: 0.5).opacity(0.16))
-                        .cornerRadius(12)
-                }
-            }
             .frame(width: 340, alignment: .bottom).padding()
             
         }.frame(width: 390)
             .navigationTitle("Guest Checkout")
             .withScrollViewBackgroundColor()
             .onAppear {
-                if let order = store.cartViewState.currentOrder {
-                    store.state.guestCheckoutViewState.loadFrom(customer: order.customer, shippingAddress: order.shippingAddress, billingAddress: order.billingAddress)
-                }
-                if guestCheckoutViewState.orderHasAddress {
+                if shippingViewState.orderHasAddress {
                     Logger.debug("Order has Address")
                 }
-                        
-                Logger.debug("router.paths.count: \(router.paths.count)")
                     
             }
 
@@ -117,12 +98,12 @@ struct DemoAppGuestCheckoutView_Previews: PreviewProvider {
         Group {
             NavigationStack {
                 DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
-                                         guestCheckoutViewState: GuestCheckoutViewState(sameAddress: true), router: Router())
+                                         shippingViewState: ShippingViewState(sameAddress: true), router: Router())
             }.previewDisplayName("Same As Billing")
             
             NavigationStack {
                 DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
-                                         guestCheckoutViewState: GuestCheckoutViewState(sameAddress: false),
+                                         shippingViewState: ShippingViewState(sameAddress: false),
                                          router: Router())
             }.previewDisplayName("Show Shipping")
         }

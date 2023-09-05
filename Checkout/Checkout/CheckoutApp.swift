@@ -2,7 +2,7 @@
 //  CheckoutApp.swift
 //  Checkout
 //
-//  Created by Alan Morford on 3/8/23.
+//  Created on 3/8/23.
 //
 
 import SwiftUI
@@ -11,7 +11,6 @@ import Stripe
 @main
 struct CheckoutApp: App {
     let store: AppStore = AppStore()
-    @StateObject var router = Router()
     
     init() {
         //TODO: Is this necessary?
@@ -19,7 +18,7 @@ struct CheckoutApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            DemoAppView(store: .constant(store))
+            DemoAppView(store: .constant(store), router: store.router)
         }
     }
 }

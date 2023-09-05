@@ -2,7 +2,7 @@
 //  TestCheckoutSequence.swift
 //  CheckoutTests
 //
-//  Created by Alan Morford on 3/27/23.
+//  Created on 3/27/23.
 //
 
 import Foundation

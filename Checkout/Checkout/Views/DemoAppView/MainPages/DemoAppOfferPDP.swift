@@ -77,9 +77,7 @@ struct DemoAppOfferPDP: View {
                                  cartViewState: store.cartViewState,
                                  router: router)
             }
-        }.withScrollViewBackgroundColor().onAppear {
-            Logger.debug("router.paths.count: \(router.paths.count)")
-        }
+        }.withScrollViewBackgroundColor()
             
     }
     

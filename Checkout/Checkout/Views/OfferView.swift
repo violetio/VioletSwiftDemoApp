@@ -2,7 +2,7 @@
 //  OfferView.swift
 //  Checkout
 //
-//  Created by Alan Morford on 3/29/23.
+//  Created on 3/29/23.
 //
 
 import SwiftUI

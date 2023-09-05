@@ -2,7 +2,7 @@
 //  DemoChannels.swift
 //  Checkout
 //
-//  Created by Alan Morford on 4/23/23.
+//  Created on 4/23/23.
 //
 
 enum DemoChannels: String, CaseIterable, Identifiable, Equatable {

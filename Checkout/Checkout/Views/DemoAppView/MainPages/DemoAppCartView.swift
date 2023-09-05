@@ -77,19 +77,19 @@ struct DemoAppCartView: View {
             
         }.frame(maxHeight: .infinity).withScrollViewBackgroundColor()
 //            .withBlackBorder()
-        .navigationTitle("Shopping Cart").onAppear {
-            Logger.debug("router.paths.count: \(router.paths.count)")
-        }
+        .navigationTitle("Shopping Cart")
     }
 }
 
 struct DemoAppCartView_Previews: PreviewProvider {
     static let mockOrder = MockOffers.load_OrderID_71169()!
+
     static var previews: some View {
         Group {
             NavigationStack {
                 DemoAppCartView(store: AppStore.mockAppStoreBinding,
-                                cartViewState: CartViewState(order: mockOrder), router: Router())
+                                cartViewState: CartViewState(order: mockOrder),
+                                router: Router())
             }.previewDisplayName("1 Sku")
             
             DemoAppCartView(store: AppStore.mockAppStoreBinding,

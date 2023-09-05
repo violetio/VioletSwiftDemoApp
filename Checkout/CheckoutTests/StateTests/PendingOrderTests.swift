@@ -2,7 +2,7 @@
 //  PendingOrderTests.swift
 //  CheckoutTests
 //
-//  Created by Alan Morford on 4/21/23.
+//  Created on 4/21/23.
 //
 
 import XCTest

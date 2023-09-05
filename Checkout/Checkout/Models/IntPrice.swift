@@ -2,7 +2,7 @@
 //  IntPrice.swift
 //  Checkout
 //
-//  Created by Alan Morford on 4/20/23.
+//  Created on 4/20/23.
 //
 
 import Foundation
@@ -19,7 +19,7 @@ struct IntPrice: PriceViewModel, Equatable {
         return USDPriceFormatter.string(from: NSNumber(value: amount/100)) ?? ""
     }
     
-    let price: Int
+    var price: Int
     init(price: Int) {
         self.price = price
     }

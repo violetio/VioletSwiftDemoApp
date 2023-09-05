@@ -2,7 +2,7 @@
 //  APIModelsTests.swift
 //  CheckoutTests
 //
-//  Created by Alan Morford on 3/14/23.
+//  Created on 3/14/23.
 //
 
 @testable import Checkout
@@ -14,7 +14,7 @@ import XCTest
 final class APIModelsTests: APIXCTestCase {
     var refreshToken: String? = nil
     var token: String? = nil
-    var testCheckoutSequence = TestCheckoutSequence(orderId: 72500)
+    var testCheckoutSequence = TestCheckoutSequence(orderId: 73936)
 
 //    func test_11_CatalogSearchOffersRequest() {
 //        let request = CatalogSearchOffersRequest()

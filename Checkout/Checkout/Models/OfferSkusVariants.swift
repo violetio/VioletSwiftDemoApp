@@ -68,7 +68,6 @@ class OfferSkusVariants {
     }
     
     static func skuID(setNamesToIntersect: [String], skuIdSetMap: SkuIdSetMap) -> Int64? {
-        var result: Int64? = nil
         
         var currentSkuIdSet = Set<Int64>()
         for nextKey in setNamesToIntersect {
@@ -78,17 +77,14 @@ class OfferSkusVariants {
                     //Logger.debug("currentSkuIdSet Init: \(currentSkuIdSet)")
                 } else {
                     currentSkuIdSet = currentSkuIdSet.intersection(skuIDsFound)
-                    if currentSkuIdSet.count == 1,
-                        let first = currentSkuIdSet.first {
-                        result = first
-                        //Logger.debug("Single Sku: \(first)")
-                        return result
+                    if currentSkuIdSet.count == 1 {
+                        return currentSkuIdSet.first
                     }
-                    //Logger.info("currentSkuIdSet Intersect: \(currentSkuIdSet)")
                 }
             }
         }
-        return result
+        
+        return currentSkuIdSet.first
     }
     
     static func buildVariantViewModels(offer: Offer) -> [VariantViewModel] {

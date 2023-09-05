@@ -2,7 +2,7 @@
 //  PreviewMocks.swift
 //  Checkout
 //
-//  Created by Alan Morford on 4/19/23.
+//  Created on 4/19/23.
 //
 
 import Foundation
@@ -10,13 +10,6 @@ import Violet
 
 struct PreviewMocks {
     
-    static func MockOfferItemsArray() -> [OfferItem] {
-        guard let pageOffers = MockOffers.load_PageOffers(),
-              let innerOffers = pageOffers.content else {
-            return []
-        }
-        return innerOffers.compactMap(OfferItem.fromEntity)
-    }
     
     static func MockOfferItemsArray2() -> [DemoProductGridOfferItem] {
         guard let pageOffers = MockOffers.load_PageOffers(),
@@ -63,10 +56,6 @@ struct PreviewMocks {
             return DemoProductGridOfferItem.Empty()
         }
         return DemoProductGridOfferItem.fromEntity(entity: mockOffer) ?? DemoProductGridOfferItem.Empty()
-    }
-        
-    static func Mock_OfferItemSelections() -> OfferItemSelections {
-        return OfferItemSelections(items: [MockOfferItem()])
     }
     
     static func orderShippingMethodWrapperArray() -> OrderShippingMethodWrapperArray {

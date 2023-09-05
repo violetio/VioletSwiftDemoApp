@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DemoAppView: View {
     @Binding var store: AppStore
-    @StateObject var router = Router()
+    @StateObject var router: Router
     
     var body: some View {
         NavigationStack(path: $router.paths) {
@@ -47,10 +47,12 @@ struct DemoAppView: View {
                                         router: router)
                     case .addShippingAddress:
                         DemoAppGuestCheckoutView(store: $store,
-                                                 guestCheckoutViewState: store.state.guestCheckoutViewState,
+                                                 shippingViewState: store.state.shippingViewState,
                                                  router: router)
                     case .selectShippingMethod:
-                        DemoAppShippingMethodSelectView()
+                        DemoAppShippingMethodSelectView(store: $store,
+                                                        cartViewState: store.cartViewState,
+                                                        orderShippingMethodSelectViewState: store.cartViewState.orderShippingMethodSelectViewState)
                     }
                     
                 }.onAppear {
@@ -65,6 +67,6 @@ struct DemoAppView: View {
 
 struct DemoAppView_Previews: PreviewProvider {
     static var previews: some View {
-        DemoAppView(store: AppStore.mockAppStoreBinding)
+        DemoAppView(store: AppStore.mockAppStoreBinding, router: Router())
     }
 }

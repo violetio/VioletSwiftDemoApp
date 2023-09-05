@@ -2,7 +2,7 @@
 //  PriceViewModel.swift
 //  Checkout
 //
-//  Created by Alan Morford on 4/20/23.
+//  Created on 4/20/23.
 //
 
 import Foundation

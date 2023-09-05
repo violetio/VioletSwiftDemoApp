@@ -36,6 +36,7 @@ struct FigmaConstants {
     
     enum Colors {
         static var systemGrey1: Color { Color(red: 0.56, green: 0.56, blue: 0.58) }
+        static var secondaryFontColor:  Color { Color(red: 0.24, green: 0.24, blue: 0.26) }
         static var scrollViewBackgroundColor: Color { Color(red: 0.95, green: 0.95, blue: 0.97) }
     }
     

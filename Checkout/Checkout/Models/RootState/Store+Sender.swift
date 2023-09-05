@@ -58,7 +58,7 @@ extension AppStore {
                     if let order = dataResponse,
                        let orderId = order.id{
                         Logger.info("Resume Cart ID: \(orderId)")
-                        self.state.updateWithNewOrder(order: order)
+                        self.state.resumeExistingOrder(order: order)
                     } else if let apiError = dataError {
                         Logger.error(apiError.localizedDescription)
                         self.state.demoProxyViewState.setError(apiError: apiError)
@@ -113,6 +113,30 @@ extension AppStore {
                        let orderId = order.id{
                         Logger.debug("Store+Sender: ✅ updateCartCustomerRequest Cart ID: \(orderId)")
                         self.state.updateWithNewOrder(order: order)
+//                        self.state.markCheckoutPageComplete(.addShippingAddress)
+                        self.send(.fetchShippingMethods(orderID))
+                    }
+                }
+            case .fetchShippingMethods(let orderID):
+                Logger.debug("fetchShippingMethods: \(orderID)")
+                let newAPICall = APICall(apiCall: CheckoutCartShippingAvailableGetRequest(orderId: orderID))
+                pendingAPICalls.enqueue(newAPICall)
+                newAPICall.send { dataResponse, _ in
+                    if let orderShippingMethodsArrayWrapper = dataResponse {
+                        self.state.cartViewState.updateWithNewShippingMethods(orderShippingMethods: orderShippingMethodsArrayWrapper)
+                        self.state.markCheckoutPageComplete(.addShippingAddress)
+                    }
+                }
+            case .applyShippingMethods(let orderID, let bagShippingMethodArray):
+                Logger.debug("applyShippingMethods: \(orderID) method Count: \(bagShippingMethodArray.count)")
+                let newAPICall = APICall(apiCall: ApplyShippingMethodsRequest(orderId: orderID, body: bagShippingMethodArray))
+                pendingAPICalls.enqueue(newAPICall)
+                newAPICall.send { dataResponse, _ in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.debug("Store+Sender: ✅ applyShippingMethods Cart ID: \(orderId)")
+                        self.state.updateWithNewOrder(order: order)
+                        self.state.markCheckoutPageComplete(.selectShippingMethod)
                     }
                 }
             }

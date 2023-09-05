@@ -38,7 +38,7 @@ struct QuantityPicker: View {
         }.frame(maxWidth: 60, maxHeight: 21)
             //.border(Color.blue)
             .onChange(of: quantitySelected) { newValue in
-                Logger().info("Quantity now: \(newValue)")
+                Logger.info("Quantity now: \(newValue)")
                 store.sender.send(.updateSkuInCart(orderSkuViewState.orderID,
                                                    orderSkuViewState.orderSkuID, newValue))
             }

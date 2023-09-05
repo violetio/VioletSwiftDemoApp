@@ -10,13 +10,11 @@ import Violet
 
 class OfferSearchViewState: ObservableObject {
     @Published var loadedOfferItems: [DemoProductGridOfferItem]
-    @Published var loading: Bool
     
     var emtpy: Bool { loadedOfferItems.count == 0 }
 
-    init(loadedOfferItems: [DemoProductGridOfferItem] = [], loading: Bool = false) {
+    init(loadedOfferItems: [DemoProductGridOfferItem] = []) {
         self.loadedOfferItems = loadedOfferItems
-        self.loading = loading
     }
 
     func updateLoadedOfferItems(_ pageOffer: PageOffer) {
@@ -36,10 +34,6 @@ extension OfferSearchViewState {
     
     static func mockEmpty() -> OfferSearchViewState {
         return OfferSearchViewState(loadedOfferItems: [])
-    }
-    
-    static func mockLoading() -> OfferSearchViewState {
-        return OfferSearchViewState(loading: true)
     }
 }
 

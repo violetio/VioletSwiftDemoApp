@@ -26,14 +26,13 @@ extension AppStore {
         func send(_ action: AppAction) {
             switch action {
             case .offersPageRequest(let merchantId):
-                Logger.info("Store: Offers Page Request:")
+//                Logger.info("Store: Offers Page Request:")
 
                 let newAPICall = self.startAPICall(GetPageOffersByMerchantIDRequest(merchantId: merchantId))
                 newAPICall.send { dataResponse, dataError in
                     if let pageOffer = dataResponse {
-                        Logger.info("Got PageOffer")
+//                        Logger.info("Got PageOffer")
                         self.state.offerSearchViewState.updateLoadedOfferItems(pageOffer)
-                        self.state.offerSearchViewState.loading = false
                     } else if let apiError = dataError {
                         Logger.error(apiError.localizedDescription)
                         self.state.demoProxyViewState.setError(apiError: apiError)
@@ -41,7 +40,7 @@ extension AppStore {
                     self.state.apiCallActivityState.decrement()
                 }
             case .createCartRequest:
-                Logger.info("Store: Create Cart Request:")
+//                Logger.info("Store: Create Cart Request:")
                 let cartInit = CartInitializationRequest(baseCurrency: "USD")
                 let newAPICall = self.startAPICall(CreateCartRequest(cartInitializationRequest: cartInit,
                                                                      baseCurrency: "USD"))

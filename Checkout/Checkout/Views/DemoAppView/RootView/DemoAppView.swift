@@ -59,7 +59,9 @@ struct DemoAppView: View {
                 }.onAppear {
                     store.onAppAppear()
                 }
-        }.disabled(apiCallActivityState.isPendingAPICall).overlay {
+        }
+        .disabled(apiCallActivityState.isPendingAPICall)
+        .overlay {
             if apiCallActivityState.isPendingAPICall {
                 VStack {
                     ProgressView() {
@@ -68,7 +70,6 @@ struct DemoAppView: View {
                         .background(Color(red: 0.98, green: 0.98, blue: 0.98).opacity(0.88)).cornerRadius(10)
                 }
                 .frame(minWidth: 390, minHeight: 844)
-                    //.withBlackBorder()
             }
         }
     }

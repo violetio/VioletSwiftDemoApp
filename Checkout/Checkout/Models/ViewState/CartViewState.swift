@@ -17,6 +17,7 @@ class CartViewState: ObservableObject {
     @Published var currentOrderShippingMethods: OrderShippingMethodWrapperArray? = nil
     @Published var checkoutPagesComplete: Set<NavigationKey> = Set()
     @Published var orderShippingMethodSelectViewState: OrderShippingMethodSelectViewState
+    @Published var payment_intent_client_secret: String? = nil
     
     var noCart: Bool { cartId == nil }
     
@@ -48,7 +49,6 @@ class CartViewState: ObservableObject {
             self.cartId = orderId
             let currentBagIdSet = Set(bagViewStates.keys)
             var updateBagIdSet = Set<Int64>()
-//            Logger.debug("CartViewState - - Order ID: \(orderId)")
             
             self.cartSubTotalText = (Double(order.subTotal ?? 0) / 100).formatted(.currency(code: "USD"))
             
@@ -58,25 +58,23 @@ class CartViewState: ObservableObject {
                 if let bagID = bag.id {
                     updateBagIdSet.insert(bagID)
                     bag.skus?.forEach({ orderSku in
-                        if let orderSkuID = orderSku.id {
-//                            Logger.debug("CartViewState - - - OrderSku ID: \(orderSkuID)")
+                        if orderSku.id != nil {
                             calcSkuCount += orderSku.quantity ?? 0
-//                            Logger.debug("CartViewState - - - calcSkuCount: \(calcSkuCount)")
                         }
                     })
                     bagViewStates[bagID] = BagViewState(bagID: bagID, bag: bag)
                 }
             })
-//            Logger.debug("CartViewState - - currentBagIdSet: \(currentBagIdSet)")
-//            Logger.debug("CartViewState - - updateBagIdSet: \(updateBagIdSet)")
+
             let removedBagIdSet = currentBagIdSet.subtracting(updateBagIdSet)
-//            Logger.debug("CartViewState - - removedBagIdSet: \(removedBagIdSet)")
             for removedBagId in removedBagIdSet {
                 bagViewStates.removeValue(forKey: removedBagId)
             }
             
             self.skuCount = calcSkuCount
-//            Logger.debug("CartViewState - - skuCount: \(skuCount)")
+            
+            self.payment_intent_client_secret = order.paymentIntentClientSecret
+
         }
     }
 }
@@ -99,7 +97,7 @@ class BagViewState: ObservableObject, Identifiable {
         if let initBag = bag {
             update(bag: initBag)
         }
-        Logger.debug("BagViewState - Init - bagID: \(bagID) - orderSkuIDCount - \(orderSkuViewStates)")
+//        Logger.debug("BagViewState - Init - bagID: \(bagID) - orderSkuIDCount - \(orderSkuViewStates)")
     }
     
     func update(bag: Bag) {

@@ -13,12 +13,13 @@ struct CheckoutApp: App {
     let store: AppStore = AppStore()
     
     init() {
-        //TODO: Is this necessary?
-        //StripeAPI.defaultPublishableKey = ""
+        StripeAPI.defaultPublishableKey = "pk_test_UHg8oLvg4rrDCbvtqfwTE8qd"
     }
     var body: some Scene {
         WindowGroup {
-            DemoAppView(store: .constant(store), router: store.router)
+            DemoAppView(store: .constant(store),
+                        router: store.router,
+                        apiCallActivityState: store.state.apiCallActivityState)
         }
     }
 }

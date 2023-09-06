@@ -28,16 +28,6 @@ struct DemoAppProductGrid: View {
                 VStack {
                     Text("Proxy Server Problem")
                 }
-            } else
-            if offerSearchViewState.loading {
-                VStack {
-                    ProgressView() {
-                        Text("Loading")
-                    }
-                    .frame(width: 109, height: 50, alignment: .center)
-                    .cornerRadius(10)
-                    
-                }.withScrollViewBackgroundColor()
             } else {
 
                 if offerSearchViewState.loadedOfferItems.count > 0 {
@@ -54,9 +44,9 @@ struct DemoAppProductGrid: View {
                         .withScrollViewBackgroundColor()
 
                 } else {
-                    ProgressView() {
-                        Text("Workout")
-                    }                    
+//                    ProgressView() {
+//                        Text("Workout")
+//                    }                    
                 }
                 
             }
@@ -74,8 +64,6 @@ struct DemoAppProductGrid_Previews: PreviewProvider {
                                offerSearchViewState: OfferSearchViewState.mockLoaded(), demoProxyViewState: DemoProxyActiveViewState()).previewDisplayName("Offers Returned")
             
             DemoAppProductGrid(store: AppStore.mockAppStoreBinding, offerSearchViewState: OfferSearchViewState.mockEmpty(), demoProxyViewState: DemoProxyActiveViewState()).previewDisplayName("No Offers Returned")
-            
-            DemoAppProductGrid(store: AppStore.mockAppStoreBinding, offerSearchViewState: OfferSearchViewState.mockLoading(), demoProxyViewState: DemoProxyActiveViewState()).previewDisplayName("Loading Offers")
         }
     }
 }

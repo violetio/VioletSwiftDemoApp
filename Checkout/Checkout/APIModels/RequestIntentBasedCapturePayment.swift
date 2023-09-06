@@ -7,20 +7,18 @@
 
 import Violet
 
-class CheckoutCartPaymentPostRequest: ProxyAPICall<Order> {
+class RequestIntentBasedCapturePayment: ProxyAPICall<Order> {
     let body: PaymentMethodRequest
     let cartId: Int64
-    let priceCart: Bool
 
-    init(cartId: Int64, priceCart: Bool, paymentMethodRequest: PaymentMethodRequest) {
+    init(cartId: Int64) {
         self.cartId = cartId
-        self.body = paymentMethodRequest
-        self.priceCart = priceCart
+        self.body = PaymentMethodRequest(intentBasedCapture: true)
         super.init()
     }
 
     override func send() {
-        CheckoutPaymentAPI.applyPaymentMethod(cartId: cartId, priceCart: priceCart, body: body)
+        CheckoutPaymentAPI.applyPaymentMethod(cartId: cartId, body: body)
         { [weak self] data, error in
 
             guard let weakSelf = self else { return }

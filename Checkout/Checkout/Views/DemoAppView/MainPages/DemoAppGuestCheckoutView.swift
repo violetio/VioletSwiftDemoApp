@@ -22,19 +22,10 @@ struct DemoAppGuestCheckoutView: View {
             
             /// SHIPPING ADDRESS
             VStack(alignment: .leading) {
-                if store.cartViewState.bagCount <= 1 {
-                    if StripeAPI.deviceSupportsApplePay() {
-                        //Font 17
+                if AppStore.deviceSupportsApplePay() && store.cartViewState.bagCount <= 1 {
                         PaymentButton(action: applePayButtonAction)
-                            
                             .frame(width: 340, height: 44).padding(.top)
-                    } else {
-                        Text("Device does not support Apple Pay")
-                    }
-                } else {
-                    Text("NO Apply Pay")
-                }
-                    
+                }   
                 
                 Text("Shipping Address")
                     .font(.system(size: 17, weight: .semibold))
@@ -62,13 +53,15 @@ struct DemoAppGuestCheckoutView: View {
                 if let orderId = store.state.cartViewState.cartId {
                     if store.cartViewState.checkoutPagesComplete.contains(.addShippingAddress) {
                         self.store.send(.fetchShippingMethods(orderId))
-                        //router.paths.append(NavigationKey.selectShippingMethod)
+                        
+                        
                     } else {
                         if let orderCustomer = shippingViewState.produceOrderCustomerBody() {
-                            Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
-                            Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
-                            Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
+//                            Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
+//                            Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
+//                            Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
                             store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
+                            store.send(.requestIntentBasedCapture(orderId))
                         }
                     }
                 }
@@ -79,6 +72,7 @@ struct DemoAppGuestCheckoutView: View {
         }.frame(width: 390)
             .navigationTitle("Guest Checkout")
             .withScrollViewBackgroundColor()
+            
             .onAppear {
                 if shippingViewState.orderHasAddress {
                     Logger.debug("Order has Address")

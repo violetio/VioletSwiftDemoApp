@@ -140,8 +140,8 @@ final class APIModelsTests: APIXCTestCase {
                                         cardNumber: "4242424242424242", cardPostalCode: "11237",
                                         completeCheckout: nil,
                                         intentBasedCapture: false, token: nil)
-        let checkoutCartPaymentPostRequest = CheckoutCartPaymentPostRequest(cartId: self.testCheckoutSequence.orderId,
-                                                                            priceCart: true, paymentMethodRequest: body)
+        let checkoutCartPaymentPostRequest = RequestIntentBasedCapturePayment(cartId: self.testCheckoutSequence.orderId,
+                                                                            priceCart: true)
         let expectationRunner = ExpectationRunner(checkoutCartPaymentPostRequest)
         expectationRunner.sink {
             XCTAssertEqual($0, true)

@@ -10,6 +10,7 @@ import SwiftUI
 struct DemoAppView: View {
     @Binding var store: AppStore
     @StateObject var router: Router
+    @StateObject var apiCallActivityState: APICallActivityState
     
     var body: some View {
         NavigationStack(path: $router.paths) {
@@ -59,6 +60,18 @@ struct DemoAppView: View {
                     store.onAppAppear()
                 }
         }
+        .disabled(apiCallActivityState.isPendingAPICall)
+        .overlay {
+            if apiCallActivityState.isPendingAPICall {
+                VStack {
+                    ProgressView() {
+                        Text("Loading")
+                    }.frame(width: 110, height: 70, alignment: .center)
+                        .background(Color(red: 0.98, green: 0.98, blue: 0.98).opacity(0.88)).cornerRadius(10)
+                }
+                .frame(minWidth: 390, minHeight: 844)
+            }
+        }
     }
 }
 
@@ -67,6 +80,6 @@ struct DemoAppView: View {
 
 struct DemoAppView_Previews: PreviewProvider {
     static var previews: some View {
-        DemoAppView(store: AppStore.mockAppStoreBinding, router: Router())
+        DemoAppView(store: AppStore.mockAppStoreBinding, router: Router(), apiCallActivityState: APICallActivityState())
     }
 }

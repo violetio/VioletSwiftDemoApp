@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Violet
+import Stripe
 
 class AppStore {
     class AppState {
@@ -16,6 +17,7 @@ class AppStore {
         var offerSearchViewState: OfferSearchViewState
         var shippingViewState: ShippingViewState
         var offerPDPViewStates: [Int64: OfferPDPViewState] = [:]
+        var apiCallActivityState = APICallActivityState()
         let router: Router = Router()
         
         func updateOfferPDPViewState( offerItem: DemoProductGridOfferItem) -> OfferPDPViewState {
@@ -85,6 +87,7 @@ class AppStore {
         case updateCartCustomerRequest(OrderID, OrderCustomer)
         case fetchShippingMethods(OrderID)
         case applyShippingMethods(OrderID, BagShippingMethodArray)
+        case requestIntentBasedCapture(OrderID)
     }
 
     func send(_ action: AppAction) {
@@ -97,6 +100,9 @@ class AppStore {
     
     static let mockAppStore = AppStore(cartViewState: CartViewState())
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }
+    static func deviceSupportsApplePay() -> Bool {
+        return StripeAPI.deviceSupportsApplePay()//true; //
+    }
 
     var demoChannelViewState: DemoProxyActiveViewState { state.demoProxyViewState }
 
@@ -136,8 +142,9 @@ class AppStore {
 //            sender.send(.cartByID(73791))
             
             //Carts with Ishans AppID 10549
-            sender.send(.cartByID(73936))
-            
+            //sender.send(.cartByID(73936))
+            //sender.send(.cartByID(74445))
+            sender.send(.cartByID(74447)) //74447 - Demo for PET-100
         }
     }
 }

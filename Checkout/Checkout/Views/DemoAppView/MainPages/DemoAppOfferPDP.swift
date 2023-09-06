@@ -26,13 +26,10 @@ struct DemoAppOfferPDP: View {
                     
                     DemoAppOfferPDPVariantsView(offerPDPViewState: offerPDPViewState)
                     
-                    if StripeAPI.deviceSupportsApplePay() {
+                    if AppStore.deviceSupportsApplePay() && store.cartViewState.bagCount <= 1 {
                         //Font 17
                         PaymentButton(action: applePayButtonAction)
-                            
                             .frame(width: 340, height: 44).padding(.top)
-                    } else {
-                        Text("Device does not support Apple Pay")
                     }
                     
                     Button {

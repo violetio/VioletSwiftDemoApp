@@ -22,19 +22,10 @@ struct DemoAppGuestCheckoutView: View {
             
             /// SHIPPING ADDRESS
             VStack(alignment: .leading) {
-                if store.cartViewState.bagCount <= 1 {
-                    if StripeAPI.deviceSupportsApplePay() {
-                        //Font 17
+                if AppStore.deviceSupportsApplePay() && store.cartViewState.bagCount <= 1 {
                         PaymentButton(action: applePayButtonAction)
-                            
                             .frame(width: 340, height: 44).padding(.top)
-                    } else {
-                        Text("Device does not support Apple Pay")
-                    }
-                } else {
-                    Text("NO Apply Pay")
-                }
-                    
+                }   
                 
                 Text("Shipping Address")
                     .font(.system(size: 17, weight: .semibold))

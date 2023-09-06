@@ -20,6 +20,7 @@ struct FormTextField: View {
             TextField(titleKey,
                       text: $text)
             .autocapitalization(autoCapStyle)
+            .autocorrectionDisabled(true)
             .padding()
             .font(Font.custom("SF Pro Text", size: 12))
             

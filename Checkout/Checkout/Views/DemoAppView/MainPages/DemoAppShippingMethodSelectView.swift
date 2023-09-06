@@ -14,7 +14,11 @@ struct DemoAppShippingMethodSelectView: View {
     
     var body: some View {
         ScrollView {
-            
+            Text("Select Shipping Methods")
+            .font(.system(size: 17, weight: .semibold))
+            .frame(width: 340, alignment: .topLeading)
+            .padding()
+
             ForEach(orderShippingMethodSelectViewState.bagIDToBagShippingMethodStateMap.keys.sorted(by: >), id: \.self) { key in
 
                 if let bagShippingMethodViewState = orderShippingMethodSelectViewState.bagIDToBagShippingMethodStateMap[key] {

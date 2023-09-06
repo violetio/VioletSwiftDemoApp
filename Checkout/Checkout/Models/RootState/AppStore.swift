@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Violet
+import Stripe
 
 class AppStore {
     class AppState {
@@ -99,6 +100,9 @@ class AppStore {
     
     static let mockAppStore = AppStore(cartViewState: CartViewState())
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }
+    static func deviceSupportsApplePay() -> Bool {
+        return StripeAPI.deviceSupportsApplePay()//true; //
+    }
 
     var demoChannelViewState: DemoProxyActiveViewState { state.demoProxyViewState }
 
@@ -138,8 +142,9 @@ class AppStore {
 //            sender.send(.cartByID(73791))
             
             //Carts with Ishans AppID 10549
-            sender.send(.cartByID(73936))
-            
+            //sender.send(.cartByID(73936))
+            //sender.send(.cartByID(74445))
+            sender.send(.cartByID(74447)) //74447 - Demo for PET-100
         }
     }
 }

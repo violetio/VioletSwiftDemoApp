@@ -44,9 +44,9 @@ struct DemoAppProductGrid: View {
                         .withScrollViewBackgroundColor()
 
                 } else {
-                    ProgressView() {
-                        Text("Workout")
-                    }                    
+//                    ProgressView() {
+//                        Text("Workout")
+//                    }                    
                 }
                 
             }

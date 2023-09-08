@@ -52,10 +52,10 @@ struct DemoAppView: View {
                                                  router: router)
                     case .selectShippingMethod:
                         DemoAppShippingMethodSelectView(store: $store,
-                                                        cartViewState: store.cartViewState,
-                                                        orderShippingMethodSelectViewState: store.cartViewState.orderShippingMethodSelectViewState)
+                                                        cartViewState: store.cartViewState)
                     case .payForOrder:
-                        DemoAppPaymentView(cartViewState: store.cartViewState)
+                        DemoAppPaymentView(store: $store,
+                                           cartViewState: store.cartViewState)
                     }
                     
                 }.onAppear {

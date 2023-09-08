@@ -16,7 +16,7 @@ class CartViewState: ObservableObject {
     @Published var currentOrder: Order? = nil
     @Published var currentOrderShippingMethods: OrderShippingMethodWrapperArray? = nil
     @Published var checkoutPagesComplete: Set<NavigationKey> = Set()
-    @Published var orderShippingMethodSelectViewState: OrderShippingMethodSelectViewState
+    @Published var orderShippingMethodSelectViewState: OrderShippingMethodSelectViewState? = nil
     @Published var payment_intent_client_secret: String? = nil
     @Published var paymentSheetViewState: PaymentSheetViewState? = nil
     
@@ -24,18 +24,20 @@ class CartViewState: ObservableObject {
     
     var cartEmpty: Bool { skuCount == 0 }
     
+    @Published var cartNotEmpty: Bool = true
+    
     var bagViewStatesArray: [BagViewState] { return Array(bagViewStates.values) }
     
     var bagCount: Int { bagViewStates.count }
     
-    init(skuCount: Int = 0) {
-        self.skuCount = skuCount
-        self.orderShippingMethodSelectViewState = OrderShippingMethodSelectViewState(orderShippingMethods: nil)
-    }
     
-    convenience init(order: Order) {
-        self.init()
-        self.updateWithNewOrder(order: order)
+    init(order: Order? = nil, orderShippingMethods: OrderShippingMethodWrapperArray? = nil) {
+        if let foundOrder = order {
+            self.updateWithNewOrder(order: foundOrder)
+        }
+        if let foundOrderShippingMethods = orderShippingMethods {
+            self.updateWithNewShippingMethods(orderShippingMethods: foundOrderShippingMethods)
+        }
     }
     
     func updateWithNewShippingMethods(orderShippingMethods: OrderShippingMethodWrapperArray) {
@@ -73,6 +75,7 @@ class CartViewState: ObservableObject {
             }
             
             self.skuCount = calcSkuCount
+            self.cartNotEmpty = calcSkuCount > 0
             
             if let foundPaymentIntent = order.paymentIntentClientSecret {
                 self.payment_intent_client_secret = foundPaymentIntent

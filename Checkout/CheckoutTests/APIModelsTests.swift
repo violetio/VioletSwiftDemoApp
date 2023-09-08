@@ -14,7 +14,7 @@ import XCTest
 final class APIModelsTests: APIXCTestCase {
     var refreshToken: String? = nil
     var token: String? = nil
-    var testCheckoutSequence = TestCheckoutSequence(orderId: 73936)
+    var testCheckoutSequence = TestCheckoutSequence(orderId: 74599)
 
 //    func test_11_CatalogSearchOffersRequest() {
 //        let request = CatalogSearchOffersRequest()
@@ -140,8 +140,7 @@ final class APIModelsTests: APIXCTestCase {
                                         cardNumber: "4242424242424242", cardPostalCode: "11237",
                                         completeCheckout: nil,
                                         intentBasedCapture: false, token: nil)
-        let checkoutCartPaymentPostRequest = RequestIntentBasedCapturePayment(cartId: self.testCheckoutSequence.orderId,
-                                                                            priceCart: true)
+        let checkoutCartPaymentPostRequest = RequestIntentBasedCapturePayment(cartId: self.testCheckoutSequence.orderId)
         let expectationRunner = ExpectationRunner(checkoutCartPaymentPostRequest)
         expectationRunner.sink {
             XCTAssertEqual($0, true)

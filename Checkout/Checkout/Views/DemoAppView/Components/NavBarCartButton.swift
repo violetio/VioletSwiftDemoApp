@@ -33,7 +33,7 @@ struct NavBarCartButton_Previews: PreviewProvider {
     static var previews: some View {
         NavBarCartButton(store: AppStore.mockAppStoreBinding,
                          action: {},
-                         cartViewState: CartViewState(skuCount: 1),
+                         cartViewState: CartViewState(),
                          router: Router())
     }
 }

@@ -159,6 +159,8 @@ extension AppStore {
                     }
                     self.state.apiCallActivityState.decrement()
                 }
+            case .submitOrder(let orderId):
+                Logger.debug("submitOrder: \(orderId)")
             }
         }
     }

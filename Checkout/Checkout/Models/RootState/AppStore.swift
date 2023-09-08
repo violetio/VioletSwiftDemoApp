@@ -92,6 +92,7 @@ class AppStore {
         case fetchShippingMethods(OrderID)
         case applyShippingMethods(OrderID, BagShippingMethodArray)
         case requestIntentBasedCapture(OrderID)
+        case submitOrder(OrderID)
     }
 
     func send(_ action: AppAction) {
@@ -138,8 +139,8 @@ class AppStore {
             sender.send(.offersPageRequest(nil))
         }
         if cartViewState.noCart {
-            sender.send(.createCartRequest)
-            //sender.send(.cartByID(74527))
+//            sender.send(.createCartRequest)
+            sender.send(.cartByID(74600))
         }
     }
 }

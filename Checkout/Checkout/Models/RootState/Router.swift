@@ -22,4 +22,9 @@ enum NavigationKey: Hashable, Identifiable {
 
 class Router: ObservableObject {
     @Published var paths = NavigationPath()
+    @Published var lastPath: NavigationKey? = nil
+    func append(_ path: NavigationKey) {
+        self.lastPath = path
+        paths.append(path)
+    }
 }

@@ -70,7 +70,6 @@ struct DemoAppOfferPDP: View {
         }.toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavBarCartButton(store: $store,
-                                 action: {},
                                  cartViewState: store.cartViewState,
                                  router: router)
             }

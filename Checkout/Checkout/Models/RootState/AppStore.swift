@@ -69,11 +69,11 @@ class AppStore {
 //                Logger.debug("markCheckoutPageComplete: \(navigationKey)")
                 if navigationKey == .addShippingAddress {
                     Logger.debug("markCheckoutPageComplete: \(navigationKey) -> Go to \(NavigationKey.selectShippingMethod)")
-                    router.paths.append(NavigationKey.selectShippingMethod)
+                    router.append(NavigationKey.selectShippingMethod)
                 }
                 if navigationKey == .selectShippingMethod {
                     Logger.debug("markCheckoutPageComplete: \(navigationKey) -> Go to \(NavigationKey.payForOrder)")
-                    router.paths.append(NavigationKey.payForOrder)
+                    router.append(NavigationKey.payForOrder)
                 }
                 
             }

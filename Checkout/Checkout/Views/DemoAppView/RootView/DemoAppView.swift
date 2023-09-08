@@ -30,9 +30,7 @@ struct DemoAppView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavBarCartButton(store: $store,
-                                         action: {
-                            print("Custom button tapped!")
-                        }, cartViewState: store.cartViewState,
+                                         cartViewState: store.cartViewState,
                                          router: router)
                     }
                 }.navigationDestination(for: NavigationKey.self) { key in
@@ -52,9 +50,11 @@ struct DemoAppView: View {
                                                  router: router)
                     case .selectShippingMethod:
                         DemoAppShippingMethodSelectView(store: $store,
+                                                        router: router,
                                                         cartViewState: store.cartViewState)
                     case .payForOrder:
                         DemoAppPaymentView(store: $store,
+                                           router: router,
                                            cartViewState: store.cartViewState)
                     }
                     

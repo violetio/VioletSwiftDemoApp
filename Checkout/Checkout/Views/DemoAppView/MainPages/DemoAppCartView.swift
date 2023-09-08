@@ -49,7 +49,7 @@ struct DemoAppCartView: View {
                 NextButton(buttonText: "Checkout",
                            nextEnabled: $cartViewState.cartNotEmpty,
                            action: {
-                    router.paths.append(NavigationKey.addShippingAddress)
+                    router.append(NavigationKey.addShippingAddress)
                 })
 
             }.padding(25)
@@ -61,6 +61,13 @@ struct DemoAppCartView: View {
         }.frame(maxHeight: .infinity).withScrollViewBackgroundColor()
 //            .withBlackBorder()
         .navigationTitle("Shopping Cart")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavBarCartButton(store: $store,
+                                 cartViewState: store.cartViewState,
+                                 router: router)
+            }
+        }
     }
 }
 

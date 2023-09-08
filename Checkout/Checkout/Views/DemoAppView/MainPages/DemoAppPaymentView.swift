@@ -12,14 +12,16 @@ struct DemoAppPaymentView: View {
     
     @State var psIsPresented: Bool = false
     @Binding var store: AppStore
+    @StateObject var router: Router
     @ObservedObject var cartViewState: CartViewState
     
     var body: some View {
-        ScrollView {
+        VStack {
             VStack {
-                
-                Text("Review and Pay")
-                Spacer()
+                ScrollView {
+                    
+                    Text("Review and Pay")
+                }.frame(width: 340).withBlackBorder()
                 VStack(alignment: .leading, spacing: 0) {
                     
                     CartAmountDetailLine(detailLabelText: "Subtotal",
@@ -33,11 +35,11 @@ struct DemoAppPaymentView: View {
                     
                     
                         
-                }.frame(width: 340)
+                }.frame(width: 340).withScrollViewBackgroundColor().withBlackBorder()
                 
                 if let ps: PaymentSheet = cartViewState.paymentSheetViewState?.paymentSheet {
                     
-                    NextButton(buttonText: "Buy", nextEnabled: .constant(true)) {
+                    NextButton(buttonText: "Pay", nextEnabled: .constant(true)) {
                         psIsPresented = true
                         Logger.debug("psIsPresented: \(psIsPresented)")
                     }.paymentSheet(isPresented: $psIsPresented,
@@ -47,6 +49,14 @@ struct DemoAppPaymentView: View {
                 } else {
                     Text("No PaymentSheet Init")
                 }
+            }
+        }
+        .navigationTitle("Review & Pay")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavBarCartButton(store: $store,
+                                 cartViewState: store.cartViewState,
+                                 router: router)
             }
         }
     }
@@ -76,7 +86,10 @@ struct DemoAppPaymentView_Previews: PreviewProvider {
     static let mockOrder = MockOffers.load_OrderID_74445()!
     
     static var previews: some View {
-        DemoAppPaymentView(store: AppStore.mockAppStoreBinding,
-                           cartViewState: CartViewState(order: mockOrder))
+        NavigationStack {
+            DemoAppPaymentView(store: AppStore.mockAppStoreBinding,
+                               router: Router(),
+                               cartViewState: CartViewState(order: mockOrder))
+        }
     }
 }

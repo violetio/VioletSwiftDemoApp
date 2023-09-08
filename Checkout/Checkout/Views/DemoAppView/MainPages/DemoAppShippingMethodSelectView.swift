@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DemoAppShippingMethodSelectView: View {
     @Binding var store: AppStore
+    @StateObject var router: Router
     @ObservedObject var cartViewState: CartViewState
     
     var body: some View {
@@ -40,6 +41,13 @@ struct DemoAppShippingMethodSelectView: View {
             }
         }.withScrollViewBackgroundColor()
             .navigationTitle("Select")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavBarCartButton(store: $store,
+                                     cartViewState: store.cartViewState,
+                                     router: router)
+                }
+            }
         
     }
 }
@@ -54,6 +62,7 @@ struct DemoAppShippingMethodSelectView_Previews: PreviewProvider {
         Group {
             NavigationStack {
                 DemoAppShippingMethodSelectView(store: AppStore.mockAppStoreBinding,
+                                                router: Router(),
                                                 cartViewState: CartViewState(order: mockOrder, orderShippingMethods: mockOrderShippingMethodWrapperArray))
             }.previewDisplayName("Multi Bag")
         }

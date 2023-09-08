@@ -9,13 +9,20 @@ import SwiftUI
 
 struct NavBarCartButton: View {
     @Binding var store: AppStore
-    var action: () -> Void
     @ObservedObject var cartViewState: CartViewState
     @StateObject var router: Router
-    
+    let lastPathsToIgnore: Set<NavigationKey> = [.cartView, .addShippingAddress, .selectShippingMethod, .payForOrder]
     var body: some View {
-        Button(action: action) {
-            NavigationLink(value: NavigationKey.cartView) {
+        Button() {
+            var ignoreNav = false
+            if let lastPath = router.lastPath {
+                ignoreNav = lastPathsToIgnore.contains(lastPath)
+            }
+            Logger.debug("ignoreNav \(ignoreNav)")
+            if !ignoreNav {
+                router.append(NavigationKey.cartView)
+            }
+        } label: {
                 HStack(spacing: 10) {
                     Image(systemName: "cart.fill")
                     Text("\(cartViewState.skuCount)")
@@ -24,7 +31,6 @@ struct NavBarCartButton: View {
                 }.padding(.horizontal, 20)
                     .padding(.vertical, 13)
                     .cornerRadius(FigmaConstants.cornerRadius)
-            }
         }
     }
 }
@@ -32,7 +38,6 @@ struct NavBarCartButton: View {
 struct NavBarCartButton_Previews: PreviewProvider {
     static var previews: some View {
         NavBarCartButton(store: AppStore.mockAppStoreBinding,
-                         action: {},
                          cartViewState: CartViewState(),
                          router: Router())
     }

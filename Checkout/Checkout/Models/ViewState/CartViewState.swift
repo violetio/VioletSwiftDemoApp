@@ -18,6 +18,7 @@ class CartViewState: ObservableObject {
     @Published var checkoutPagesComplete: Set<NavigationKey> = Set()
     @Published var orderShippingMethodSelectViewState: OrderShippingMethodSelectViewState
     @Published var payment_intent_client_secret: String? = nil
+    @Published var paymentSheetViewState: PaymentSheetViewState? = nil
     
     var noCart: Bool { cartId == nil }
     
@@ -73,7 +74,14 @@ class CartViewState: ObservableObject {
             
             self.skuCount = calcSkuCount
             
-            self.payment_intent_client_secret = order.paymentIntentClientSecret
+            if let foundPaymentIntent = order.paymentIntentClientSecret {
+                self.payment_intent_client_secret = foundPaymentIntent
+                if let existingPaymentSheetViewState = self.paymentSheetViewState {
+                    existingPaymentSheetViewState.update(payment_intent_client_secret: foundPaymentIntent)
+                } else {
+                    self.paymentSheetViewState = PaymentSheetViewState(new_payment_intent_client_secret: foundPaymentIntent)
+                }
+            }
 
         }
     }

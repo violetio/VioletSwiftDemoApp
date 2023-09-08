@@ -54,6 +54,8 @@ struct DemoAppView: View {
                         DemoAppShippingMethodSelectView(store: $store,
                                                         cartViewState: store.cartViewState,
                                                         orderShippingMethodSelectViewState: store.cartViewState.orderShippingMethodSelectViewState)
+                    case .payForOrder:
+                        DemoAppPaymentView(cartViewState: store.cartViewState)
                     }
                     
                 }.onAppear {

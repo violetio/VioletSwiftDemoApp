@@ -66,10 +66,14 @@ class AppStore {
         func markCheckoutPageComplete(_ navigationKey: NavigationKey) {
             if !cartViewState.checkoutPagesComplete.contains(navigationKey) {
                 cartViewState.checkoutPagesComplete.insert(navigationKey)
-                Logger.debug("markCheckoutPageComplete: \(navigationKey)")
+//                Logger.debug("markCheckoutPageComplete: \(navigationKey)")
                 if navigationKey == .addShippingAddress {
-                    Logger.debug("markCheckoutPageComplete: Go to \(NavigationKey.selectShippingMethod)")
+                    Logger.debug("markCheckoutPageComplete: \(navigationKey) -> Go to \(NavigationKey.selectShippingMethod)")
                     router.paths.append(NavigationKey.selectShippingMethod)
+                }
+                if navigationKey == .selectShippingMethod {
+                    Logger.debug("markCheckoutPageComplete: \(navigationKey) -> Go to \(NavigationKey.payForOrder)")
+                    router.paths.append(NavigationKey.payForOrder)
                 }
                 
             }
@@ -134,17 +138,8 @@ class AppStore {
             sender.send(.offersPageRequest(nil))
         }
         if cartViewState.noCart {
-//            sender.send(.createCartRequest)
-//                sender.send(.cartByID(71169))
-//            sender.send(.cartByID(72500))
-//            sender.send(.cartByID(73302))
-//            sender.send(.cartByID(73461))
-//            sender.send(.cartByID(73791))
-            
-            //Carts with Ishans AppID 10549
-            //sender.send(.cartByID(73936))
-            //sender.send(.cartByID(74445))
-            sender.send(.cartByID(74447)) //74447 - Demo for PET-100
+            sender.send(.createCartRequest)
+            //sender.send(.cartByID(74527))
         }
     }
 }

@@ -13,6 +13,7 @@ enum NavigationKey: Hashable, Identifiable {
     case cartView
     case addShippingAddress
     case selectShippingMethod
+    case payForOrder
     
     var id: String {
         String(describing: self)

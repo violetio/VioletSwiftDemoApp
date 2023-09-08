@@ -11,12 +11,13 @@ struct CartAmountDetailLine: View {
     
     var detailLabelText: String
     var amountLabelText: String
+    var fontWeight: Font.Weight = .regular
     var body: some View {
         HStack {
             Text(detailLabelText)
             Spacer()
             Text(amountLabelText)
-        }.font(.system(size: 14, weight: .semibold))
+        }.font(.system(size: 14, weight: fontWeight))
     }
 }
 
@@ -26,7 +27,8 @@ struct CartAmountDetailLine_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             CartAmountDetailLine(detailLabelText: "Total",
-                                 amountLabelText: mockCartViewState.cartFullTotalText)
+                                 amountLabelText: mockCartViewState.cartFullTotalText,
+                                 fontWeight: .semibold)
         }.frame(width: 340)
     }
 }

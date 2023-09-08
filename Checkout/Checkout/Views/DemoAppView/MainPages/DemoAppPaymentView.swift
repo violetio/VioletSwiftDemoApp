@@ -18,7 +18,22 @@ struct DemoAppPaymentView: View {
         ScrollView {
             VStack {
                 
-                Text("Stripe PaymentSheet")
+                Text("Review and Pay")
+                Spacer()
+                VStack(alignment: .leading, spacing: 0) {
+                    
+                    CartAmountDetailLine(detailLabelText: "Subtotal",
+                                         amountLabelText: cartViewState.cartSubTotalText)
+                    CartAmountDetailLine(detailLabelText: "Shipping",
+                                         amountLabelText: cartViewState.cartShippingTotalText)
+                    CartAmountDetailLine(detailLabelText: "Tax",
+                                         amountLabelText: cartViewState.cartTaxText)
+                    CartAmountDetailLine(detailLabelText: "Total",
+                                         amountLabelText: cartViewState.cartFullTotalText, fontWeight: .semibold)
+                    
+                    
+                        
+                }.frame(width: 340)
                 
                 if let ps: PaymentSheet = cartViewState.paymentSheetViewState?.paymentSheet {
                     

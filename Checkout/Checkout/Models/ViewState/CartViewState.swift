@@ -12,6 +12,9 @@ class CartViewState: ObservableObject {
     @Published var cartId: Int64? = nil
     @Published var skuCount: Int = 0
     @Published var cartSubTotalText: String = ""
+    @Published var cartShippingTotalText: String = ""
+    @Published var cartTaxText: String = ""
+    @Published var cartFullTotalText: String = ""
     @Published var bagViewStates: [Int64: BagViewState] = [:]
     @Published var currentOrder: Order? = nil
     @Published var currentOrderShippingMethods: OrderShippingMethodWrapperArray? = nil
@@ -45,6 +48,9 @@ class CartViewState: ObservableObject {
         self.orderShippingMethodSelectViewState = OrderShippingMethodSelectViewState(orderShippingMethods: orderShippingMethods, order: self.currentOrder)
     }
     
+    func logOrderTotals() {
+        Logger.debug("Subtotal: \(cartSubTotalText) - Shipping: \(cartShippingTotalText) - Tax: \(cartTaxText) - FullTotal: \(cartFullTotalText)")
+    }
     func updateWithNewOrder(order: Order) {
 //        Logger.debug("CartViewState - Update")
         self.currentOrder = order
@@ -54,6 +60,10 @@ class CartViewState: ObservableObject {
             var updateBagIdSet = Set<Int64>()
             
             self.cartSubTotalText = (Double(order.subTotal ?? 0) / 100).formatted(.currency(code: "USD"))
+            self.cartTaxText = (Double(order.taxTotal ?? 0) / 100).formatted(.currency(code: "USD"))
+            self.cartShippingTotalText = (Double(order.shippingTotal ?? 0) / 100).formatted(.currency(code: "USD"))
+            self.cartFullTotalText = (Double(order.total ?? 0) / 100).formatted(.currency(code: "USD"))
+            logOrderTotals()
             
             var calcSkuCount: Int = 0
             order.bags?.forEach({ bag in

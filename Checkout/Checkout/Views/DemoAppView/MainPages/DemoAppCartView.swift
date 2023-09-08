@@ -35,14 +35,8 @@ struct DemoAppCartView: View {
             
             VStack(spacing: 20) {
                 VStack(alignment: .leading, spacing: 0) {
-                    //Spacer()
-                    HStack {
-                        Text("Subtotal")
-                        Spacer()
-                        Text(cartViewState.cartSubTotalText)
-                    }.font(.system(size: 14, weight: .semibold))
-                        .padding(0)
-                        //.withBlackBorder()
+                    
+                    CartAmountDetailLine(detailLabelText: "Subtotal", amountLabelText: cartViewState.cartSubTotalText).padding(0)
                     
                     Text("Shipping and taxes calculated at checkout.")
                         .frame(maxHeight: 21)

@@ -17,6 +17,7 @@ class CartViewState: ObservableObject {
     @Published var cartFullTotalText: String = ""
     @Published var bagViewStates: [Int64: BagViewState] = [:]
     @Published var currentOrder: Order? = nil
+    @Published var shippingViewState: ShippingViewState = ShippingViewState()
     @Published var currentOrderShippingMethods: OrderShippingMethodWrapperArray? = nil
     @Published var checkoutPagesComplete: Set<NavigationKey> = Set()
     @Published var orderShippingMethodSelectViewState: OrderShippingMethodSelectViewState? = nil
@@ -98,6 +99,10 @@ class CartViewState: ObservableObject {
             }
 
         }
+        
+        shippingViewState.loadFrom(customer: order.customer,
+                                        shippingAddress: order.shippingAddress,
+                                        billingAddress: order.billingAddress)
     }
 }
 

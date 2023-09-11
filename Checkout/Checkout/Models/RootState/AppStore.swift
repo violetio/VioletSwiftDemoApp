@@ -15,7 +15,6 @@ class AppStore {
         var demoProxyViewState: DemoProxyActiveViewState
         var cartViewState: CartViewState
         var offerSearchViewState: OfferSearchViewState
-        var shippingViewState: ShippingViewState
         var offerPDPViewStates: [Int64: OfferPDPViewState] = [:]
         var apiCallActivityState = APICallActivityState()
         let router: Router = Router()
@@ -31,36 +30,24 @@ class AppStore {
         
         init(demoChannelViewState: DemoProxyActiveViewState,
              cartViewState: CartViewState,
-             offerSearchViewState: OfferSearchViewState, shippingViewState: ShippingViewState) {
+             offerSearchViewState: OfferSearchViewState) {
             self.demoProxyViewState = demoChannelViewState
             self.cartViewState = cartViewState
             self.offerSearchViewState = offerSearchViewState
-            self.shippingViewState = shippingViewState
         }
 
         convenience init() {
             self.init(demoChannelViewState: DemoProxyActiveViewState(),
                       cartViewState: CartViewState(),
-                      offerSearchViewState: OfferSearchViewState(),
-            shippingViewState: ShippingViewState())
+                      offerSearchViewState: OfferSearchViewState())
         }
         
         func resumeExistingOrder(order: Order) {
             cartViewState.updateWithNewOrder(order: order)
-            shippingViewState.loadFrom(customer: order.customer,
-                                            shippingAddress: order.shippingAddress,
-                                            billingAddress: order.billingAddress)
-//            if shippingViewState.nextEnabled {
-//                Logger.debug("resumeExistingOrder - shippingViewState.nextEnabled")
-//                cartViewState.checkoutPagesComplete.insert(.addShippingAddress)
-//            }
         }
         
         func updateWithNewOrder(order: Order) {
             cartViewState.updateWithNewOrder(order: order)
-            shippingViewState.loadFrom(customer: order.customer,
-                                            shippingAddress: order.shippingAddress,
-                                            billingAddress: order.billingAddress)
         }
         
         func markCheckoutPageComplete(_ navigationKey: NavigationKey) {
@@ -122,8 +109,7 @@ class AppStore {
     {
         let newState = AppState(demoChannelViewState: demoChannelViewState,
                                 cartViewState: cartViewState,
-                                offerSearchViewState: offerSearchViewState,
-        shippingViewState: ShippingViewState())
+                                offerSearchViewState: offerSearchViewState)
         self.state = newState
         self.sender = AppSender(state: newState)
     }

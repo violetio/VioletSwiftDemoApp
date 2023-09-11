@@ -24,7 +24,10 @@ struct DemoAppPaymentView: View {
                                          bagViewState: bagViewState).padding(0)
                     }
                     
-                    ReviewEmailAddress(shippingViewState: cartViewState.shippingViewState)
+                    Section {
+                        ReviewEmailAddress(shippingViewState: cartViewState.shippingViewState)
+                    }
+                    ReviewShippingAddress(shippingViewState: cartViewState.shippingViewState)
                 }
                 VStack(alignment: .leading, spacing: 4) {
                     

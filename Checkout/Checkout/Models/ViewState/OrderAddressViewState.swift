@@ -153,6 +153,10 @@ class OrderAddressViewState: ObservableObject {
             self.lastName = loadLastName
         }
         
+        if let fullName = orderAddress?.name {
+            self.name = fullName
+        }
+        
         if let loadAddress1 = orderAddress?.address1,
            loadAddress1 != address1 {
             self.address1 = loadAddress1

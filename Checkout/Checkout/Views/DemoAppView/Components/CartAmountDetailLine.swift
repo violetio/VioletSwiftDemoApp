@@ -17,7 +17,9 @@ struct CartAmountDetailLine: View {
             Text(detailLabelText)
             Spacer()
             Text(amountLabelText)
-        }.font(.system(size: 14, weight: fontWeight))
+        }
+        .font(.system(size: 14, weight: fontWeight))
+        .frame(height: 25)
     }
 }
 

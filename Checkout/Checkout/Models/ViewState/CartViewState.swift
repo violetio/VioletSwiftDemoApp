@@ -29,7 +29,7 @@ class CartViewState: ObservableObject {
     
     @Published var cartNotEmpty: Bool = true
     
-    var bagViewStatesArray: [BagViewState] { return Array(bagViewStates.values) }
+    var bagViewStatesArray: [BagViewState] { return Array(bagViewStates.values.sorted(by: { $0.bagID < $1.bagID })) }
     
     var bagCount: Int { bagViewStates.count }
     
@@ -83,6 +83,7 @@ class CartViewState: ObservableObject {
             for removedBagId in removedBagIdSet {
                 bagViewStates.removeValue(forKey: removedBagId)
             }
+//            let bagIDSortedBagViewStates = bagViewStates.values.sorted(by: { $0.bagID < $1.bagID })
             
             self.skuCount = calcSkuCount
             self.cartNotEmpty = calcSkuCount > 0
@@ -105,10 +106,13 @@ class BagViewState: ObservableObject, Identifiable {
     @Published var bagID: Int64 = 0
     @Published var orderSkuViewStates: [OrderSkuID: OrderSkuViewState]
     @Published var bagSubtotalText: String = ""
+    @Published var bagShippingText: String = ""
+    @Published var bagTaxText: String = ""
     @Published var bagMerchantName: String = ""
+    @Published var merchantCurrency: String = "USD"
     
     
-    var orderSkuViewStatesArray: [OrderSkuViewState] { return Array(orderSkuViewStates.values) }
+    var orderSkuViewStatesArray: [OrderSkuViewState] { return Array(orderSkuViewStates.values.sorted(by: { $0.orderSkuID < $1.orderSkuID })) }
     
     var id: Int64 { bagID }
     
@@ -125,7 +129,10 @@ class BagViewState: ObservableObject, Identifiable {
         self.bagID = bag.id ?? 0
         self.orderID = bag.orderId ?? 0
         self.bagMerchantName = bag.merchantName ?? ""
-        self.bagSubtotalText = (Double(bag.subTotal ?? 0) / 100).formatted(.currency(code: "USD"))
+        self.merchantCurrency = bag.currency ?? "USD"
+        self.bagSubtotalText = (Double(bag.subTotal ?? 0) / 100).formatted(.currency(code: merchantCurrency))
+        self.bagShippingText = (Double(bag.shippingTotal ?? 0) / 100).formatted(.currency(code: merchantCurrency))
+        self.bagTaxText = (Double(bag.taxTotal ?? 0) / 100).formatted(.currency(code: merchantCurrency))
         var collectOrderSkuViewStates: [OrderSkuID: OrderSkuViewState] = [:]
         bag.skus?.forEach({ orderSku in
             if let orderSkuID = orderSku.id {

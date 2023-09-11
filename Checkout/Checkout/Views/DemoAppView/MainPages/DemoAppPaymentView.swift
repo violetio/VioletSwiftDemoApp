@@ -17,12 +17,14 @@ struct DemoAppPaymentView: View {
     
     var body: some View {
         VStack {
-            VStack {
-                ScrollView {
-                    
-                    Text("Review and Pay")
-                }.frame(width: 340).withBlackBorder()
-                VStack(alignment: .leading, spacing: 0) {
+            VStack(spacing: 0) {
+                List {
+                    ForEach(cartViewState.bagViewStatesArray) { bagViewState in
+                        ReviewBagSection(store: $store,
+                                         bagViewState: bagViewState).padding(0)
+                    }
+                }
+                VStack(alignment: .leading, spacing: 4) {
                     
                     CartAmountDetailLine(detailLabelText: "Subtotal",
                                          amountLabelText: cartViewState.cartSubTotalText)
@@ -35,7 +37,8 @@ struct DemoAppPaymentView: View {
                     
                     
                         
-                }.frame(width: 340).withScrollViewBackgroundColor().withBlackBorder()
+                }.frame(width: 340,
+                        height: 150)//.withScrollViewBackgroundColor().withBlackBorder()
                 
                 if let ps: PaymentSheet = cartViewState.paymentSheetViewState?.paymentSheet {
                     
@@ -51,7 +54,7 @@ struct DemoAppPaymentView: View {
                 }
             }
         }
-        .navigationTitle("Review & Pay")
+        .navigationTitle("Review")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavBarCartButton(store: $store,
@@ -84,12 +87,13 @@ struct DemoAppPaymentView: View {
 
 struct DemoAppPaymentView_Previews: PreviewProvider {
     static let mockOrder = MockOffers.load_OrderID_74445()!
+    static let mockCartViewState = CartViewState(order: mockOrder)
     
     static var previews: some View {
         NavigationStack {
             DemoAppPaymentView(store: AppStore.mockAppStoreBinding,
                                router: Router(),
-                               cartViewState: CartViewState(order: mockOrder))
+                               cartViewState: mockCartViewState)
         }
     }
 }

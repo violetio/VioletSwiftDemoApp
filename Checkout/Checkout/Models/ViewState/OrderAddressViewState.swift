@@ -51,6 +51,10 @@ class OrderAddressViewState: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     
     init(orderAddressType: OrderAddress.ModelType = .billing) {
+        if let countryCode = (Locale.current as NSLocale).object(forKey: .countryCode) as? String {
+            Logger.debug("countryCode: \(countryCode)")
+            self.country = countryCode
+        }
         self.orderAddressType = orderAddressType
         
         $firstName

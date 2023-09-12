@@ -56,6 +56,8 @@ struct DemoAppView: View {
                         DemoAppPaymentView(store: $store,
                                            router: router,
                                            cartViewState: store.cartViewState)
+                    case .orderConfirmation:
+                        DemoAppOrderConfirmationView()
                     }
                     
                 }.onAppear {

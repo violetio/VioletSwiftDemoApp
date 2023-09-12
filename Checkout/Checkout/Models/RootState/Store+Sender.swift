@@ -161,6 +161,18 @@ extension AppStore {
                 }
             case .submitOrder(let orderId):
                 Logger.debug("submitOrder: \(orderId)")
+                let newAPICall = self.startAPICall(SubmitCartRequest(orderId: orderId))
+                newAPICall.send { dataResponse, errorResponse in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.debug("Store+Sender: ✅ Submit Order Cart ID: \(orderId) Success -  Order Status: \(String(describing: order.status))")
+                        self.state.updateWithNewOrder(order: order)
+                        self.state.markCheckoutPageComplete(.payForOrder)
+                    } else if let error = errorResponse {
+                        Logger.error(error.localizedDescription)
+                    }
+                    self.state.apiCallActivityState.decrement()
+                }
             }
         }
     }

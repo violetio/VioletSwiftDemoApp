@@ -62,6 +62,10 @@ class AppStore {
                     Logger.debug("markCheckoutPageComplete: \(navigationKey) -> Go to \(NavigationKey.payForOrder)")
                     router.append(NavigationKey.payForOrder)
                 }
+                if navigationKey == .payForOrder {
+                    Logger.debug("markCheckoutPageComplete: \(navigationKey) -> Go to \(NavigationKey.orderConfirmation)")
+                    router.append(NavigationKey.orderConfirmation)
+                }
                 
             }
         }
@@ -125,8 +129,8 @@ class AppStore {
             sender.send(.offersPageRequest(nil))
         }
         if cartViewState.noCart {
-//            sender.send(.createCartRequest)
-            sender.send(.cartByID(74600))
+            sender.send(.createCartRequest)
+//            sender.send(.cartByID(74600))
         }
     }
 }

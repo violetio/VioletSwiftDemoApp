@@ -5,6 +5,7 @@
 //  Created on 5/10/23
 //
 
+import Foundation
 import Violet
 
 extension AppStore {
@@ -83,6 +84,22 @@ extension AppStore {
                         self.state.updateWithNewOrder(order: order)
                     }
                     self.state.apiCallActivityState.decrement()
+                }
+            case .addSkuToCartWithIntent(let orderID, let offerSkuId, let quantity):
+                Logger.debug("Store+Sender: addSkuToCart \(orderID)")
+                let orderSku = OrderSku(quantity: quantity, skuId: offerSkuId)
+                let newAPICall = self.startAPICall(AddSkuToCartRequest(orderId: orderID,
+                                                                      orderSku: orderSku))
+                newAPICall.send { dataResponse, _ in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.debug("Store+Sender: ✅ addSkuToCart Cart ID: \(orderId)")
+                        self.state.updateWithNewOrder(order: order)
+                    }
+                    self.state.apiCallActivityState.decrement()
+                    DispatchQueue.main.async {
+                        self.send(.requestIntentBasedCapture(orderID))
+                    }
                 }
             case .updateSkuInCart(let orderID, let orderSkuId, let quantity):
                 Logger.debug("Store+Sender: updateSkuInCart \(orderID) - orderSkuId: - \(orderSkuId)")

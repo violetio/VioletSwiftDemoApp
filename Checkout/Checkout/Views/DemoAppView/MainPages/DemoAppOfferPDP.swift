@@ -27,13 +27,10 @@ struct DemoAppOfferPDP: View {
                     
                     DemoAppOfferPDPVariantsView(offerPDPViewState: offerPDPViewState)
                     
-                    if AppStore.deviceSupportsApplePay() && store.cartViewState.bagCount <= 1 {
-                        //Font 17
-                        PaymentButton(action: applePayButtonAction)
-                            .frame(width: 340, height: 44).padding(.top)
-                    }
-                    PaymentSheetPresentView(store: $store,
-                                            cartViewState: cartViewState)
+                    InstantPaymentSheetPresentView(store: $store,
+                                                   cartViewState: cartViewState,
+                                                   selectedSkuID: $offerPDPViewState.selectedSkuID,
+                                                   hasPaymentIntent: $cartViewState.paymentSheetViewState.hasPaymentIntent)
                     
                     Button {
                         if let orderID = store.cartViewState.cartId {

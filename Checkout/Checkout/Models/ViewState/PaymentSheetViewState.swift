@@ -5,6 +5,7 @@
 //  Created on 9/6/23
 //
 
+import Combine
 import Foundation
 import SwiftUI
 import StripePaymentSheet
@@ -17,7 +18,9 @@ class PaymentSheetViewState: ObservableObject {
     @Published var paymentConfiguration: PaymentSheet.Configuration
     @Published var applePayConfiguration: PaymentSheet.ApplePayConfiguration? = nil
     @Published var payment_intent_client_secret: String? = nil
+    @Published var hasPaymentIntent: Bool = false
 
+    private var cancellableSet: Set<AnyCancellable> = []
     
     init(new_payment_intent_client_secret: String? = nil, bagCount: Int = 0) {
         var configuration = PaymentSheet.Configuration()
@@ -31,6 +34,7 @@ class PaymentSheetViewState: ObservableObject {
     
     func update(payment_intent_client_secret: String, bagCount: Int) {
         self.payment_intent_client_secret = payment_intent_client_secret
+        
         Logger.debug("payment_intent_client_secret: \(payment_intent_client_secret)")
         
         if bagCount <= 1 {
@@ -47,6 +51,7 @@ class PaymentSheetViewState: ObservableObject {
         } else {
             Logger.debug("Existing .paymentSheet")
         }
+        self.hasPaymentIntent = payment_intent_client_secret != nil
     }
     
     static func applePayConfiguration(merchantId: String = "io.violet", merchantCountryCode: String = "US") -> PaymentSheet.ApplePayConfiguration {

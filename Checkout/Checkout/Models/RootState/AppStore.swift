@@ -83,6 +83,7 @@ class AppStore {
         case fetchShippingMethods(OrderID)
         case applyShippingMethods(OrderID, BagShippingMethodArray)
         case requestIntentBasedCapture(OrderID)
+        case addSkuToCartWithIntent(OrderID,OfferSkuID,OrderQuantity)
         case submitOrder(OrderID)
     }
 

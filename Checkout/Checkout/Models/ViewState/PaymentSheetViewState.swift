@@ -11,7 +11,7 @@ import StripePaymentSheet
 import Violet
 
 class PaymentSheetViewState: ObservableObject {
-    @Published var psIsPresented: Bool = false
+//    @Published var psIsPresented: Bool = false
     @Published var paymentSheet: PaymentSheet? = nil
     @Published var paymentResult: PaymentSheetResult? = nil
     @Published var paymentConfiguration: PaymentSheet.Configuration
@@ -39,9 +39,14 @@ class PaymentSheetViewState: ObservableObject {
         } else {
             paymentConfiguration.applePay = nil
         }
-        var newPaymentSheet = PaymentSheet(paymentIntentClientSecret: payment_intent_client_secret, configuration: paymentConfiguration)
         
-        self.paymentSheet = newPaymentSheet
+        if self.paymentSheet == nil {
+            let newPaymentSheet = PaymentSheet(paymentIntentClientSecret: payment_intent_client_secret, configuration: paymentConfiguration)
+            self.paymentSheet = newPaymentSheet
+            Logger.debug("Created .paymentSheet")
+        } else {
+            Logger.debug("Existing .paymentSheet")
+        }
     }
     
     static func applePayConfiguration(merchantId: String = "io.violet", merchantCountryCode: String = "US") -> PaymentSheet.ApplePayConfiguration {

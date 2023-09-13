@@ -13,14 +13,15 @@ struct PaymentSheetPresentView: View {
     @Binding var store: AppStore
     //@StateObject var router: Router
     @ObservedObject var cartViewState: CartViewState
+    @State var psIsPresented: Bool = false
     
     var body: some View {
         if let ps: PaymentSheet = cartViewState.paymentSheetViewState.paymentSheet {
             
             NextButton(buttonText: "Pay", nextEnabled: .constant(true)) {
-                cartViewState.paymentSheetViewState.psIsPresented = true
-                //Logger.debug("psIsPresented: \(cartViewState.paymentSheetViewState.psIsPresented)")
-            }.paymentSheet(isPresented: $cartViewState.paymentSheetViewState.psIsPresented,
+                psIsPresented = true
+                Logger.debug("psIsPresented: \(psIsPresented)")
+            }.paymentSheet(isPresented: $psIsPresented,
                            paymentSheet: ps,
                            onCompletion: handlePaymentSheetResult)
             
@@ -40,7 +41,7 @@ struct PaymentSheetPresentView: View {
         case .failed(let sheetError):
             Logger.error("PaymentSheetResult: .failed - Error \(sheetError.localizedDescription) - On Error, Do _")
         }
-        cartViewState.paymentSheetViewState.psIsPresented = false
+        psIsPresented = false
     }
     
     func submitOrder() {
@@ -58,6 +59,7 @@ struct PaymentSheetPresentView_Previews: PreviewProvider {
     static var previews: some View {
         PaymentSheetPresentView(store: AppStore.mockAppStoreBinding,
 //                                router: Router(),
-                                cartViewState: mockCartViewState)
+                                cartViewState: mockCartViewState,
+                                psIsPresented: false)
     }
 }

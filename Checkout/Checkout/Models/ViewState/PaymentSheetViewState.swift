@@ -11,7 +11,7 @@ import StripePaymentSheet
 import Violet
 
 class PaymentSheetViewState: ObservableObject {
-//    @Published var psIsPresented: Bool = false
+
     @Published var paymentSheet: PaymentSheet? = nil
     @Published var paymentResult: PaymentSheetResult? = nil
     @Published var paymentConfiguration: PaymentSheet.Configuration

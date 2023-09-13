@@ -39,6 +39,7 @@ struct DemoAppView: View {
                         DemoAppOfferPDP(store: $store,
                                         offerItem: .constant(offerItem),
                                         offerPDPViewState: store.state.updateOfferPDPViewState(offerItem: offerItem),
+                                        cartViewState: store.cartViewState,
                                         router: router)
                     case .cartView:
                         DemoAppCartView(store: $store,

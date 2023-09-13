@@ -45,18 +45,8 @@ struct DemoAppPaymentView: View {
                 }.frame(width: 340,
                         height: 150)//.withScrollViewBackgroundColor().withBlackBorder()
                 
-                if let ps: PaymentSheet = cartViewState.paymentSheetViewState?.paymentSheet {
-                    
-                    NextButton(buttonText: "Pay", nextEnabled: .constant(true)) {
-                        psIsPresented = true
-                        Logger.debug("psIsPresented: \(psIsPresented)")
-                    }.paymentSheet(isPresented: $psIsPresented,
-                                   paymentSheet: ps,
-                                   onCompletion: handlePaymentSheetResult)
-                    
-                } else {
-                    Text("No PaymentSheet Init")
-                }
+                PaymentSheetPresentView(store: $store,
+                                        cartViewState: cartViewState)
             }
         }
         .navigationTitle("Review")
@@ -67,26 +57,6 @@ struct DemoAppPaymentView: View {
                                  router: router)
             }
         }
-    }
-    
-    func handlePaymentSheetResult(_ result: PaymentSheetResult) {
-        Logger.debug("PaymentSheetResult: \(result)")
-        switch result {
-        case .completed:
-            Logger.debug("PaymentSheetResult: \(result) - Submitting Order")
-            self.submitOrder()
-        case .canceled:
-            Logger.debug("PaymentSheetResult: \(result) - On Cancel, Do _")
-        case .failed(let sheetError):
-            Logger.error("PaymentSheetResult: .failed - Error \(sheetError.localizedDescription) - On Error, Do _")
-        }
-    }
-    
-    func submitOrder() {
-        if let orderId = store.state.cartViewState.cartId {
-            store.send(.submitOrder(orderId))
-        }
-        
     }
 }
 

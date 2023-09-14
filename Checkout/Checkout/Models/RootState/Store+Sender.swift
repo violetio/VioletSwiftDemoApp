@@ -5,6 +5,7 @@
 //  Created on 5/10/23
 //
 
+import Foundation
 import Violet
 
 extension AppStore {
@@ -84,6 +85,22 @@ extension AppStore {
                     }
                     self.state.apiCallActivityState.decrement()
                 }
+            case .addSkuToCartWithIntent(let orderID, let offerSkuId, let quantity):
+                Logger.debug("Store+Sender: addSkuToCart \(orderID)")
+                let orderSku = OrderSku(quantity: quantity, skuId: offerSkuId)
+                let newAPICall = self.startAPICall(AddSkuToCartRequest(orderId: orderID,
+                                                                      orderSku: orderSku))
+                newAPICall.send { dataResponse, _ in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.debug("Store+Sender: ✅ addSkuToCart Cart ID: \(orderId)")
+                        self.state.updateWithNewOrder(order: order)
+                    }
+                    self.state.apiCallActivityState.decrement()
+                    DispatchQueue.main.async {
+                        self.send(.requestIntentBasedCapture(orderID))
+                    }
+                }
             case .updateSkuInCart(let orderID, let orderSkuId, let quantity):
                 Logger.debug("Store+Sender: updateSkuInCart \(orderID) - orderSkuId: - \(orderSkuId)")
                 let orderSku = OrderSku(quantity: quantity, skuId: orderSkuId)
@@ -149,11 +166,27 @@ extension AppStore {
             case .requestIntentBasedCapture(let orderID):
                 Logger.debug("requestIntentBasedCapture: \(orderID)")
                 let newAPICall = self.startAPICall(RequestIntentBasedCapturePayment(cartId: orderID))
-                newAPICall.send { dataResponse, _ in
+                newAPICall.send { dataResponse, errorResponse in
                     if let order = dataResponse,
                        let orderId = order.id{
-                        Logger.debug("Store+Sender: ✅ IntentBasedCapture Cart ID: \(orderId) paymentIntentClientSecret: \(order.paymentIntentClientSecret)")
+                        Logger.debug("Store+Sender: ✅ IntentBasedCapture Cart ID: \(orderId) paymentIntentClientSecret: \(String(describing: order.paymentIntentClientSecret))")
                         self.state.updateWithNewOrder(order: order)
+                    } else if let error = errorResponse {
+                        Logger.error(error.localizedDescription)
+                    }
+                    self.state.apiCallActivityState.decrement()
+                }
+            case .submitOrder(let orderId):
+                Logger.debug("submitOrder: \(orderId)")
+                let newAPICall = self.startAPICall(SubmitCartRequest(orderId: orderId))
+                newAPICall.send { dataResponse, errorResponse in
+                    if let order = dataResponse,
+                       let orderId = order.id{
+                        Logger.debug("Store+Sender: ✅ Submit Order Cart ID: \(orderId) Success -  Order Status: \(String(describing: order.status))")
+                        self.state.updateWithNewOrder(order: order)
+                        self.state.markCheckoutPageComplete(.payForOrder)
+                    } else if let error = errorResponse {
+                        Logger.error(error.localizedDescription)
                     }
                     self.state.apiCallActivityState.decrement()
                 }

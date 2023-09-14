@@ -71,6 +71,13 @@ struct DemoAppGuestCheckoutView: View {
             
         }.frame(width: 390)
             .navigationTitle("Guest Checkout")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavBarCartButton(store: $store,
+                                     cartViewState: store.cartViewState,
+                                     router: router)
+                }
+            }
             .withScrollViewBackgroundColor()
             
             .onAppear {

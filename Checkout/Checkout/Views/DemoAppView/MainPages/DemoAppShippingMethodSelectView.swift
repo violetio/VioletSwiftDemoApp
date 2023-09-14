@@ -9,8 +9,8 @@ import SwiftUI
 
 struct DemoAppShippingMethodSelectView: View {
     @Binding var store: AppStore
+    @StateObject var router: Router
     @ObservedObject var cartViewState: CartViewState
-    @ObservedObject var orderShippingMethodSelectViewState: OrderShippingMethodSelectViewState
     
     var body: some View {
         ScrollView {
@@ -19,26 +19,35 @@ struct DemoAppShippingMethodSelectView: View {
             .frame(width: 340, alignment: .topLeading)
             .padding()
 
-            ForEach(orderShippingMethodSelectViewState.bagIDToBagShippingMethodStateMap.keys.sorted(by: >), id: \.self) { key in
-
-                if let bagShippingMethodViewState = orderShippingMethodSelectViewState.bagIDToBagShippingMethodStateMap[key] {
-
-                    BagShippingMethodSelectView(bagShippingMethodSelectViewState: bagShippingMethodViewState).padding(.vertical)
+            if let orderShippingMethodSelectViewState = cartViewState.orderShippingMethodSelectViewState {
+                ForEach(orderShippingMethodSelectViewState.bagIDToBagShippingMethodStateMap.keys.sorted(by: >), id: \.self) { key in
+                    
+                    if let bagShippingMethodViewState = orderShippingMethodSelectViewState.bagIDToBagShippingMethodStateMap[key] {
+                        
+                        BagShippingMethodSelectView(bagShippingMethodSelectViewState: bagShippingMethodViewState).padding(.vertical)
+                    }
+                    
                 }
-
+                
+                
+                
+                NextButton(nextEnabled: .constant(true)) {
+                    Logger.debug("Next Button Tapped in Shipping Method Select")
+                    if let orderId = cartViewState.cartId {
+                        let bagShippingMethodArray: BagShippingMethodArray = orderShippingMethodSelectViewState.bagShippingMethodArray()
+                        store.send(.applyShippingMethods(orderId, bagShippingMethodArray))
+                    }
+                }.frame(width: 340, alignment: .bottom).padding()
             }
-            
-            
-            NextButton(nextEnabled: .constant(true)) {
-                Logger.debug("Next Button Tapped in Shipping Method Select")
-                if let orderId = cartViewState.cartId {
-                    let bagShippingMethodArray: BagShippingMethodArray = orderShippingMethodSelectViewState.bagShippingMethodArray()
-                    store.send(.applyShippingMethods(orderId, bagShippingMethodArray))
-                }
-            }.frame(width: 340, alignment: .bottom).padding()
-
         }.withScrollViewBackgroundColor()
             .navigationTitle("Select")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavBarCartButton(store: $store,
+                                     cartViewState: store.cartViewState,
+                                     router: router)
+                }
+            }
         
     }
 }
@@ -53,8 +62,8 @@ struct DemoAppShippingMethodSelectView_Previews: PreviewProvider {
         Group {
             NavigationStack {
                 DemoAppShippingMethodSelectView(store: AppStore.mockAppStoreBinding,
-                                                cartViewState: CartViewState(skuCount: 0),
-                                                orderShippingMethodSelectViewState: mockOrderShippingMethodSelectViewState)
+                                                router: Router(),
+                                                cartViewState: CartViewState(order: mockOrder, orderShippingMethods: mockOrderShippingMethodWrapperArray))
             }.previewDisplayName("Multi Bag")
         }
     }

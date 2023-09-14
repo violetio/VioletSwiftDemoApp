@@ -39,7 +39,8 @@ class ShippingViewState: ObservableObject {
                                   $sameAddress, shippingOrderAddressViewState.$isAddressValid)
             .map { isEmailValid, isBillingAddressValid, useSameAddressShipping, isShippingAddressValid in
                 let sameOrShipping = useSameAddressShipping || isBillingAddressValid
-                return isEmailValid && isShippingAddressValid && sameOrShipping
+                let combinedValid = isEmailValid && isShippingAddressValid && sameOrShipping
+                return combinedValid
             }
             .assign(to: \.nextEnabled, on: self)
             .store(in: &cancellableSet)

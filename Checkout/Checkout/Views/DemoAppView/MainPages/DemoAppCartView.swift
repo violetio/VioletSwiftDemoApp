@@ -35,14 +35,8 @@ struct DemoAppCartView: View {
             
             VStack(spacing: 20) {
                 VStack(alignment: .leading, spacing: 0) {
-                    //Spacer()
-                    HStack {
-                        Text("Subtotal")
-                        Spacer()
-                        Text(cartViewState.cartSubTotalText)
-                    }.font(.system(size: 14, weight: .semibold))
-                        .padding(0)
-                        //.withBlackBorder()
+                    
+                    CartAmountDetailLine(detailLabelText: "Subtotal", amountLabelText: cartViewState.cartSubTotalText).padding(0)
                     
                     Text("Shipping and taxes calculated at checkout.")
                         .frame(maxHeight: 21)
@@ -51,23 +45,12 @@ struct DemoAppCartView: View {
                         //.withBlackBorder()
                         
                 }
-                  
                 
-                NavigationLink(value: NavigationKey.addShippingAddress) {
-//                    Button {
-//
-//
-//                    } label: {
-                        Text("Checkout")
-                            .font(Font.custom("SF Pro Text", size: 17))
-                            .frame(width: 340, height: 50)
-                            .foregroundColor(.white)
-                            .background(Color(red: 0, green: 0.48, blue: 1))
-                            .cornerRadius(12)
-//                    }
-//                    .frame(width: 340, alignment: .bottom)
-                }
-
+                NextButton(buttonText: "Checkout",
+                           nextEnabled: $cartViewState.cartNotEmpty,
+                           action: {
+                    router.append(NavigationKey.addShippingAddress)
+                })
 
             }.padding(25)
                 .background(Color.white)
@@ -78,11 +61,19 @@ struct DemoAppCartView: View {
         }.frame(maxHeight: .infinity).withScrollViewBackgroundColor()
 //            .withBlackBorder()
         .navigationTitle("Shopping Cart")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavBarCartButton(store: $store,
+                                 cartViewState: store.cartViewState,
+                                 router: router)
+            }
+        }
     }
 }
 
 struct DemoAppCartView_Previews: PreviewProvider {
     static let mockOrder = MockOffers.load_OrderID_71169()!
+    static let mockOrder_74599 = MockOffers.load_OrderID_74599()!
 
     static var previews: some View {
         Group {
@@ -93,7 +84,7 @@ struct DemoAppCartView_Previews: PreviewProvider {
             }.previewDisplayName("1 Sku")
             
             DemoAppCartView(store: AppStore.mockAppStoreBinding,
-                            cartViewState: CartViewState(skuCount: 0),
+                            cartViewState: CartViewState(order: mockOrder_74599),
                             router: Router()).previewDisplayName("0 Skus")
         }
     }

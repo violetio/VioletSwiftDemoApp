@@ -30,9 +30,7 @@ struct DemoAppView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavBarCartButton(store: $store,
-                                         action: {
-                            print("Custom button tapped!")
-                        }, cartViewState: store.cartViewState,
+                                         cartViewState: store.cartViewState,
                                          router: router)
                     }
                 }.navigationDestination(for: NavigationKey.self) { key in
@@ -41,6 +39,7 @@ struct DemoAppView: View {
                         DemoAppOfferPDP(store: $store,
                                         offerItem: .constant(offerItem),
                                         offerPDPViewState: store.state.updateOfferPDPViewState(offerItem: offerItem),
+                                        cartViewState: store.cartViewState,
                                         router: router)
                     case .cartView:
                         DemoAppCartView(store: $store,
@@ -48,12 +47,18 @@ struct DemoAppView: View {
                                         router: router)
                     case .addShippingAddress:
                         DemoAppGuestCheckoutView(store: $store,
-                                                 shippingViewState: store.state.shippingViewState,
+                                                 shippingViewState: store.cartViewState.shippingViewState,
                                                  router: router)
                     case .selectShippingMethod:
                         DemoAppShippingMethodSelectView(store: $store,
-                                                        cartViewState: store.cartViewState,
-                                                        orderShippingMethodSelectViewState: store.cartViewState.orderShippingMethodSelectViewState)
+                                                        router: router,
+                                                        cartViewState: store.cartViewState)
+                    case .payForOrder:
+                        DemoAppPaymentView(store: $store,
+                                           router: router,
+                                           cartViewState: store.cartViewState)
+                    case .orderConfirmation:
+                        DemoAppOrderConfirmationView()
                     }
                     
                 }.onAppear {

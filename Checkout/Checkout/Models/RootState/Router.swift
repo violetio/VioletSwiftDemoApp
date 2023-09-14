@@ -13,6 +13,8 @@ enum NavigationKey: Hashable, Identifiable {
     case cartView
     case addShippingAddress
     case selectShippingMethod
+    case payForOrder
+    case orderConfirmation
     
     var id: String {
         String(describing: self)
@@ -21,4 +23,9 @@ enum NavigationKey: Hashable, Identifiable {
 
 class Router: ObservableObject {
     @Published var paths = NavigationPath()
+    @Published var lastPath: NavigationKey? = nil
+    func append(_ path: NavigationKey) {
+        self.lastPath = path
+        paths.append(path)
+    }
 }

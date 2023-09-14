@@ -12,28 +12,36 @@ class CartViewState: ObservableObject {
     @Published var cartId: Int64? = nil
     @Published var skuCount: Int = 0
     @Published var cartSubTotalText: String = ""
+    @Published var cartShippingTotalText: String = ""
+    @Published var cartTaxText: String = ""
+    @Published var cartFullTotalText: String = ""
     @Published var bagViewStates: [Int64: BagViewState] = [:]
     @Published var currentOrder: Order? = nil
+    @Published var shippingViewState: ShippingViewState = ShippingViewState()
     @Published var currentOrderShippingMethods: OrderShippingMethodWrapperArray? = nil
     @Published var checkoutPagesComplete: Set<NavigationKey> = Set()
-    @Published var orderShippingMethodSelectViewState: OrderShippingMethodSelectViewState
+    @Published var orderShippingMethodSelectViewState: OrderShippingMethodSelectViewState? = nil
+    @Published var payment_intent_client_secret: String? = nil
+    @Published var paymentSheetViewState: PaymentSheetViewState = PaymentSheetViewState()
     
     var noCart: Bool { cartId == nil }
     
     var cartEmpty: Bool { skuCount == 0 }
     
-    var bagViewStatesArray: [BagViewState] { return Array(bagViewStates.values) }
+    @Published var cartNotEmpty: Bool = true
+    
+    var bagViewStatesArray: [BagViewState] { return Array(bagViewStates.values.sorted(by: { $0.bagID < $1.bagID })) }
     
     var bagCount: Int { bagViewStates.count }
     
-    init(skuCount: Int = 0) {
-        self.skuCount = skuCount
-        self.orderShippingMethodSelectViewState = OrderShippingMethodSelectViewState(orderShippingMethods: nil)
-    }
     
-    convenience init(order: Order) {
-        self.init()
-        self.updateWithNewOrder(order: order)
+    init(order: Order? = nil, orderShippingMethods: OrderShippingMethodWrapperArray? = nil) {
+        if let foundOrder = order {
+            self.updateWithNewOrder(order: foundOrder)
+        }
+        if let foundOrderShippingMethods = orderShippingMethods {
+            self.updateWithNewShippingMethods(orderShippingMethods: foundOrderShippingMethods)
+        }
     }
     
     func updateWithNewShippingMethods(orderShippingMethods: OrderShippingMethodWrapperArray) {
@@ -41,6 +49,9 @@ class CartViewState: ObservableObject {
         self.orderShippingMethodSelectViewState = OrderShippingMethodSelectViewState(orderShippingMethods: orderShippingMethods, order: self.currentOrder)
     }
     
+    func logOrderTotals() {
+        Logger.debug("Subtotal: \(cartSubTotalText) - Shipping: \(cartShippingTotalText) - Tax: \(cartTaxText) - FullTotal: \(cartFullTotalText)")
+    }
     func updateWithNewOrder(order: Order) {
 //        Logger.debug("CartViewState - Update")
         self.currentOrder = order
@@ -48,9 +59,12 @@ class CartViewState: ObservableObject {
             self.cartId = orderId
             let currentBagIdSet = Set(bagViewStates.keys)
             var updateBagIdSet = Set<Int64>()
-//            Logger.debug("CartViewState - - Order ID: \(orderId)")
             
             self.cartSubTotalText = (Double(order.subTotal ?? 0) / 100).formatted(.currency(code: "USD"))
+            self.cartTaxText = (Double(order.taxTotal ?? 0) / 100).formatted(.currency(code: "USD"))
+            self.cartShippingTotalText = (Double(order.shippingTotal ?? 0) / 100).formatted(.currency(code: "USD"))
+            self.cartFullTotalText = (Double(order.total ?? 0) / 100).formatted(.currency(code: "USD"))
+            logOrderTotals()
             
             var calcSkuCount: Int = 0
             order.bags?.forEach({ bag in
@@ -58,26 +72,33 @@ class CartViewState: ObservableObject {
                 if let bagID = bag.id {
                     updateBagIdSet.insert(bagID)
                     bag.skus?.forEach({ orderSku in
-                        if let orderSkuID = orderSku.id {
-//                            Logger.debug("CartViewState - - - OrderSku ID: \(orderSkuID)")
+                        if orderSku.id != nil {
                             calcSkuCount += orderSku.quantity ?? 0
-//                            Logger.debug("CartViewState - - - calcSkuCount: \(calcSkuCount)")
                         }
                     })
                     bagViewStates[bagID] = BagViewState(bagID: bagID, bag: bag)
                 }
             })
-//            Logger.debug("CartViewState - - currentBagIdSet: \(currentBagIdSet)")
-//            Logger.debug("CartViewState - - updateBagIdSet: \(updateBagIdSet)")
+
             let removedBagIdSet = currentBagIdSet.subtracting(updateBagIdSet)
-//            Logger.debug("CartViewState - - removedBagIdSet: \(removedBagIdSet)")
             for removedBagId in removedBagIdSet {
                 bagViewStates.removeValue(forKey: removedBagId)
             }
+//            let bagIDSortedBagViewStates = bagViewStates.values.sorted(by: { $0.bagID < $1.bagID })
             
             self.skuCount = calcSkuCount
-//            Logger.debug("CartViewState - - skuCount: \(skuCount)")
+            self.cartNotEmpty = calcSkuCount > 0
+            
+            if let foundPaymentIntent = order.paymentIntentClientSecret {
+                Logger.debug("foundPaymentIntent: \(foundPaymentIntent)")                
+                self.paymentSheetViewState.update(payment_intent_client_secret: foundPaymentIntent, bagCount: self.bagCount)
+            }
+
         }
+        
+        shippingViewState.loadFrom(customer: order.customer,
+                                        shippingAddress: order.shippingAddress,
+                                        billingAddress: order.billingAddress)
     }
 }
 
@@ -86,10 +107,13 @@ class BagViewState: ObservableObject, Identifiable {
     @Published var bagID: Int64 = 0
     @Published var orderSkuViewStates: [OrderSkuID: OrderSkuViewState]
     @Published var bagSubtotalText: String = ""
+    @Published var bagShippingText: String = ""
+    @Published var bagTaxText: String = ""
     @Published var bagMerchantName: String = ""
+    @Published var merchantCurrency: String = "USD"
     
     
-    var orderSkuViewStatesArray: [OrderSkuViewState] { return Array(orderSkuViewStates.values) }
+    var orderSkuViewStatesArray: [OrderSkuViewState] { return Array(orderSkuViewStates.values.sorted(by: { $0.orderSkuID < $1.orderSkuID })) }
     
     var id: Int64 { bagID }
     
@@ -99,14 +123,17 @@ class BagViewState: ObservableObject, Identifiable {
         if let initBag = bag {
             update(bag: initBag)
         }
-        Logger.debug("BagViewState - Init - bagID: \(bagID) - orderSkuIDCount - \(orderSkuViewStates)")
+//        Logger.debug("BagViewState - Init - bagID: \(bagID) - orderSkuIDCount - \(orderSkuViewStates)")
     }
     
     func update(bag: Bag) {
         self.bagID = bag.id ?? 0
         self.orderID = bag.orderId ?? 0
         self.bagMerchantName = bag.merchantName ?? ""
-        self.bagSubtotalText = (Double(bag.subTotal ?? 0) / 100).formatted(.currency(code: "USD"))
+        self.merchantCurrency = bag.currency ?? "USD"
+        self.bagSubtotalText = (Double(bag.subTotal ?? 0) / 100).formatted(.currency(code: merchantCurrency))
+        self.bagShippingText = (Double(bag.shippingTotal ?? 0) / 100).formatted(.currency(code: merchantCurrency))
+        self.bagTaxText = (Double(bag.taxTotal ?? 0) / 100).formatted(.currency(code: merchantCurrency))
         var collectOrderSkuViewStates: [OrderSkuID: OrderSkuViewState] = [:]
         bag.skus?.forEach({ orderSku in
             if let orderSkuID = orderSku.id {

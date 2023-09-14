@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct NextButton: View {
+    static let DefaultButtonText = "Next"
     @Binding var nextEnabled: Bool
     
     var action: () -> Void
+    var buttonText: String
     
-    public init(nextEnabled: Binding<Bool>, action: @escaping () -> Void = {}) {
+    public init(buttonText: String = Self.DefaultButtonText, nextEnabled: Binding<Bool>, action: @escaping () -> Void = {}) {
         self._nextEnabled = nextEnabled
         self.action = action
+        self.buttonText = buttonText
     }
     var body: some View {
         Button {
@@ -22,14 +25,14 @@ struct NextButton: View {
 
         } label: {
             if nextEnabled {
-                Text("Next")
+                Text(buttonText)
                     .font(Font.custom("SF Pro Text", size: 17))
                     .frame(width: 340, height: 50)
                     .foregroundColor(.white)
                     .background(Color(red: 0, green: 0.48, blue: 1))
                     .cornerRadius(12)
             } else {
-                Text("Next")
+                Text(buttonText)
                     .font(Font.custom("SF Pro Text", size: 17))
                     .frame(width: 340, height: 50)
                     .foregroundColor(.white)

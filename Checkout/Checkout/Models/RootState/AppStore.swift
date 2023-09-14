@@ -15,7 +15,6 @@ class AppStore {
         var demoProxyViewState: DemoProxyActiveViewState
         var cartViewState: CartViewState
         var offerSearchViewState: OfferSearchViewState
-        var shippingViewState: ShippingViewState
         var offerPDPViewStates: [Int64: OfferPDPViewState] = [:]
         var apiCallActivityState = APICallActivityState()
         let router: Router = Router()
@@ -31,45 +30,41 @@ class AppStore {
         
         init(demoChannelViewState: DemoProxyActiveViewState,
              cartViewState: CartViewState,
-             offerSearchViewState: OfferSearchViewState, shippingViewState: ShippingViewState) {
+             offerSearchViewState: OfferSearchViewState) {
             self.demoProxyViewState = demoChannelViewState
             self.cartViewState = cartViewState
             self.offerSearchViewState = offerSearchViewState
-            self.shippingViewState = shippingViewState
         }
 
         convenience init() {
             self.init(demoChannelViewState: DemoProxyActiveViewState(),
                       cartViewState: CartViewState(),
-                      offerSearchViewState: OfferSearchViewState(),
-            shippingViewState: ShippingViewState())
+                      offerSearchViewState: OfferSearchViewState())
         }
         
         func resumeExistingOrder(order: Order) {
             cartViewState.updateWithNewOrder(order: order)
-            shippingViewState.loadFrom(customer: order.customer,
-                                            shippingAddress: order.shippingAddress,
-                                            billingAddress: order.billingAddress)
-//            if shippingViewState.nextEnabled {
-//                Logger.debug("resumeExistingOrder - shippingViewState.nextEnabled")
-//                cartViewState.checkoutPagesComplete.insert(.addShippingAddress)
-//            }
         }
         
         func updateWithNewOrder(order: Order) {
             cartViewState.updateWithNewOrder(order: order)
-            shippingViewState.loadFrom(customer: order.customer,
-                                            shippingAddress: order.shippingAddress,
-                                            billingAddress: order.billingAddress)
         }
         
         func markCheckoutPageComplete(_ navigationKey: NavigationKey) {
             if !cartViewState.checkoutPagesComplete.contains(navigationKey) {
                 cartViewState.checkoutPagesComplete.insert(navigationKey)
-                Logger.debug("markCheckoutPageComplete: \(navigationKey)")
+//                Logger.debug("markCheckoutPageComplete: \(navigationKey)")
                 if navigationKey == .addShippingAddress {
-                    Logger.debug("markCheckoutPageComplete: Go to \(NavigationKey.selectShippingMethod)")
-                    router.paths.append(NavigationKey.selectShippingMethod)
+                    Logger.debug("markCheckoutPageComplete: \(navigationKey) -> Go to \(NavigationKey.selectShippingMethod)")
+                    router.append(NavigationKey.selectShippingMethod)
+                }
+                if navigationKey == .selectShippingMethod {
+                    Logger.debug("markCheckoutPageComplete: \(navigationKey) -> Go to \(NavigationKey.payForOrder)")
+                    router.append(NavigationKey.payForOrder)
+                }
+                if navigationKey == .payForOrder {
+                    Logger.debug("markCheckoutPageComplete: \(navigationKey) -> Go to \(NavigationKey.orderConfirmation)")
+                    router.append(NavigationKey.orderConfirmation)
                 }
                 
             }
@@ -88,6 +83,8 @@ class AppStore {
         case fetchShippingMethods(OrderID)
         case applyShippingMethods(OrderID, BagShippingMethodArray)
         case requestIntentBasedCapture(OrderID)
+        case addSkuToCartWithIntent(OrderID,OfferSkuID,OrderQuantity)
+        case submitOrder(OrderID)
     }
 
     func send(_ action: AppAction) {
@@ -117,8 +114,7 @@ class AppStore {
     {
         let newState = AppState(demoChannelViewState: demoChannelViewState,
                                 cartViewState: cartViewState,
-                                offerSearchViewState: offerSearchViewState,
-        shippingViewState: ShippingViewState())
+                                offerSearchViewState: offerSearchViewState)
         self.state = newState
         self.sender = AppSender(state: newState)
     }
@@ -134,17 +130,8 @@ class AppStore {
             sender.send(.offersPageRequest(nil))
         }
         if cartViewState.noCart {
-//            sender.send(.createCartRequest)
-//                sender.send(.cartByID(71169))
-//            sender.send(.cartByID(72500))
-//            sender.send(.cartByID(73302))
-//            sender.send(.cartByID(73461))
-//            sender.send(.cartByID(73791))
-            
-            //Carts with Ishans AppID 10549
-            //sender.send(.cartByID(73936))
-            //sender.send(.cartByID(74445))
-            sender.send(.cartByID(74447)) //74447 - Demo for PET-100
+            sender.send(.createCartRequest)
+//            sender.send(.cartByID(74827))
         }
     }
 }

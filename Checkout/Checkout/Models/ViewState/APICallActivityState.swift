@@ -21,14 +21,14 @@ class APICallActivityState: ObservableObject {
     
     func increment() {
         pendingAPICallCount += 1
-        Logger.debug("increment: pendingAPICallCount: \(pendingAPICallCount)")
+        //Logger.debug("increment: pendingAPICallCount: \(pendingAPICallCount)")
     }
     
     func decrement() {
         if pendingAPICallCount>0 {
             pendingAPICallCount -= 1
         }
-        Logger.debug("decrement: pendingAPICallCount: \(pendingAPICallCount)")
+        //Logger.debug("decrement: pendingAPICallCount: \(pendingAPICallCount)")
     }
 }
 

@@ -27,12 +27,11 @@ struct CartBagSection: View {
     
     @ViewBuilder
     var BagTotalView: some View {
-        HStack {
-            Text("Bag Total")
-                
-            Spacer()
-            Text(bagViewState.bagSubtotalText)
-        }.font(.system(size: 12, weight: .semibold))
+        VStack {
+            CartAmountDetailLine(detailLabelText: "Bag Total",
+                                 amountLabelText: bagViewState.bagSubtotalText,
+                                 fontWeight: .semibold).frame(height: 25)
+        }
     }
 }
 

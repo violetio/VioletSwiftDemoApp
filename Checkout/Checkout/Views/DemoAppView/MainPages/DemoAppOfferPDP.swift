@@ -13,6 +13,7 @@ struct DemoAppOfferPDP: View {
     @Binding var store: AppStore
     @Binding var offerItem: DemoProductGridOfferItem
     @ObservedObject var offerPDPViewState: OfferPDPViewState
+    @ObservedObject var cartViewState: CartViewState
     @StateObject var router: Router
     
     var body: some View {
@@ -26,11 +27,10 @@ struct DemoAppOfferPDP: View {
                     
                     DemoAppOfferPDPVariantsView(offerPDPViewState: offerPDPViewState)
                     
-                    if AppStore.deviceSupportsApplePay() && store.cartViewState.bagCount <= 1 {
-                        //Font 17
-                        PaymentButton(action: applePayButtonAction)
-                            .frame(width: 340, height: 44).padding(.top)
-                    }
+                    InstantPaymentSheetPresentView(store: $store,
+                                                   cartViewState: cartViewState,
+                                                   selectedSkuID: $offerPDPViewState.selectedSkuID,
+                                                   hasPaymentIntent: $cartViewState.paymentSheetViewState.hasPaymentIntent)
                     
                     Button {
                         if let orderID = store.cartViewState.cartId {
@@ -70,7 +70,6 @@ struct DemoAppOfferPDP: View {
         }.toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavBarCartButton(store: $store,
-                                 action: {},
                                  cartViewState: store.cartViewState,
                                  router: router)
             }
@@ -84,18 +83,28 @@ struct DemoAppOfferPDP: View {
 }
 
 struct DemoAppOfferPDP_Previews: PreviewProvider {
+    static let mockOrder = MockOffers.load_OrderID_73938()!
+    static let mockCartViewState = CartViewState(order: mockOrder)
+    static let mockOfferItem_12574 = PreviewMocks.Mock_DemoProductGridOfferItem_12574()
+    static let mockOfferItem_12555 = PreviewMocks.Mock_DemoProductGridOfferItem_12555()
+    static let mockOfferPDPViewState_12574 = OfferPDPViewState(offer: mockOfferItem_12574.offerEntity)
+    static let mockOfferPDPViewState_12555 = OfferPDPViewState(offer: mockOfferItem_12555.offerEntity)
     static var previews: some View {
         Group {
             NavigationStack {
                 DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
-                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12574()),
-                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12574().offerEntity), router: Router())
+                                offerItem: .constant(mockOfferItem_12574),
+                                offerPDPViewState: mockOfferPDPViewState_12574,
+                                cartViewState: mockCartViewState,
+                                router: Router())
             }.previewDisplayName("No Variants OfferID 12574")
             
             NavigationStack {
                 DemoAppOfferPDP(store: AppStore.mockAppStoreBinding,
-                                offerItem: .constant(PreviewMocks.Mock_DemoProductGridOfferItem_12555()),
-                                offerPDPViewState: OfferPDPViewState(offer: PreviewMocks.Mock_DemoProductGridOfferItem_12555().offerEntity), router: Router())
+                                offerItem: .constant(mockOfferItem_12555),
+                                offerPDPViewState: mockOfferPDPViewState_12555,
+                                cartViewState: mockCartViewState,
+                                router: Router())
             }.previewDisplayName("3 Variants OfferID 12555")
         }
     }

@@ -46,8 +46,29 @@ public class MockOffers {
         return decode(from: jsonData)
     }
     
+    public static func load_OrderID_74599() -> Order? {
+        guard let jsonData = jsonData(forResource: "Order_ID_74599_GetCartByID_Response") else {
+            return nil
+        }
+        return decode(from: jsonData)
+    }
+    
+    public static func load_OrderID_74445() -> Order? {
+        guard let jsonData = jsonData(forResource: "Order_ID_74445_GetCartByID_Response") else {
+            return nil
+        }
+        return decode(from: jsonData)
+    }
+    
     public static func load_OrderID_73936() -> Order? {
         guard let jsonData = jsonData(forResource: "Order_ID_73936_GetCartByID_Response") else {
+            return nil
+        }
+        return decode(from: jsonData)
+    }
+    
+    public static func load_OrderID_73938() -> Order? {
+        guard let jsonData = jsonData(forResource: "Order_ID_73938_GetCartByID_Response") else {
             return nil
         }
         return decode(from: jsonData)

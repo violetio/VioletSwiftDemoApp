@@ -1,0 +1,23 @@
+{
+  "app_id" : 10549,
+  "id" : 74599,
+  "date_last_modified" : "2023-09-08T19:49:55.000Z",
+  "status" : "IN_PROGRESS",
+  "wallet_based_checkout" : false,
+  "priced" : false,
+  "developer_id" : 10454,
+  "is_guest" : true,
+  "user_id" : 10658,
+  "token" : "3941f3f39e164743932f338e5fe6d81e",
+  "date_created" : "2023-09-08T19:49:55.000Z",
+  "stripe_key" : "pk_test_UHg8oLvg4rrDCbvtqfwTE8qd",
+  "guest" : true,
+  "currency_symbol" : "$",
+  "bags" : [
+
+  ],
+  "currency" : "USD",
+  "errors" : [
+
+  ]
+}

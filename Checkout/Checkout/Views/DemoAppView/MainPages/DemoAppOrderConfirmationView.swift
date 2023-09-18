@@ -56,12 +56,11 @@ struct DemoAppOrderConfirmationView: View {
                 
             }
         }
-        //.navigationTitle("Confirm")
+        .navigationTitle("Confirm")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavBarCartButton(store: $store,
-                                 cartViewState: store.cartViewState,
-                                 router: router)
+                NavBarRestartButton(store: $store,
+                                    router: router)
             }
         }
     }
@@ -70,10 +69,11 @@ struct DemoAppOrderConfirmationView: View {
 struct DemoAppOrderConfirmationView_Previews: PreviewProvider {
     static let mockOrder = MockOffers.load_OrderID_74688()!
     static let mockCartViewState = CartViewState(order: mockOrder)
+    static let mockAppStore = AppStore(cartViewState: mockCartViewState)
     
     static var previews: some View {
         NavigationStack {
-            DemoAppOrderConfirmationView(store: AppStore.mockAppStoreBinding,
+            DemoAppOrderConfirmationView(store: .constant(mockAppStore),
                                          router: Router(),
                                          cartViewState: mockCartViewState)
         }

@@ -17,7 +17,8 @@ struct OrderAddressView: View {
             FormTextField(orderAddressViewState.addressLine1Prompt, text: $orderAddressViewState.address1)
             FormTextField(orderAddressViewState.addressLine2Prompt, text: $orderAddressViewState.address2)
             FormTextField(orderAddressViewState.cityPrompt, text: $orderAddressViewState.city)
-//            FormTextField(orderAddressViewState.countryPrompt, text: $orderAddressViewState.country)
+            FormTextField(orderAddressViewState.statePrompt, text: $orderAddressViewState.state)
+            FormTextField(orderAddressViewState.postalCodePrompt, text: $orderAddressViewState.postalCode)
             
             Menu {
                 Picker("Country", selection: $orderAddressViewState.country) {
@@ -35,8 +36,7 @@ struct OrderAddressView: View {
             .background(Color.white)
             .cornerRadius(12)
             .padding(.vertical, 5)
-            FormTextField(orderAddressViewState.postalCodePrompt, text: $orderAddressViewState.postalCode)
-            FormTextField(orderAddressViewState.statePrompt, text: $orderAddressViewState.state)
+            
         }
     }
 }

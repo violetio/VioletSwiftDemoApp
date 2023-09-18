@@ -58,7 +58,7 @@ extension AppStore {
                     self.state.apiCallActivityState.decrement()
                 }
             case .cartByID(let orderID):
-                Logger.info("Store GetCartByID")
+                Logger.info("Store GetCartByID: \(orderID)")
                 let newAPICall = self.startAPICall(GetCartByIDRequest(orderId: orderID))
 
                 newAPICall.send { dataResponse, dataError in

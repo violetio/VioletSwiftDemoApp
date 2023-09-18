@@ -10,6 +10,7 @@ import StripeApplePay
 import SwiftUI
 
 struct DemoAppOfferPDP: View {
+    @Environment(\.dismiss) private var offerPDPDismiss
     @Binding var store: AppStore
     @Binding var offerItem: DemoProductGridOfferItem
     @ObservedObject var offerPDPViewState: OfferPDPViewState
@@ -81,10 +82,7 @@ struct DemoAppOfferPDP: View {
         }
             
     }
-    
-    func applePayButtonAction() {
-        Logger.info("Apple Pay Button Tapped!")
-    }
+
 }
 
 struct DemoAppOfferPDP_Previews: PreviewProvider {

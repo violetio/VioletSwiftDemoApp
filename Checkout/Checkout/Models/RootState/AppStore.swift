@@ -74,6 +74,13 @@ class AppStore {
             }
         }
         
+        func restart() {
+            router.restart()
+            cartViewState.restart()
+            
+        }
+        
+        
     }
 
     enum AppAction {
@@ -98,6 +105,7 @@ class AppStore {
     let state: AppState
     let sender: AppSender
     var router: Router { state.router }
+    var firstAppearance: Bool = true
     
     static let mockAppStore = AppStore(cartViewState: CartViewState())
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }
@@ -130,14 +138,24 @@ class AppStore {
     }
     
     func onAppAppear() {
-        if offerSearchViewState.emtpy {
-            sender.send(.offersPageRequest(nil))
+        if firstAppearance {
+            if offerSearchViewState.emtpy {
+                sender.send(.offersPageRequest(nil))
+            }
+            if cartViewState.noCart {
+                //            sender.send(.createCartRequest)
+                
+                sender.send(.cartByID(75154))
+                //            sender.send(.requestIntentBasedCapture(74923))
+            }
+            firstAppearance = false
         }
-        if cartViewState.noCart {
-//            sender.send(.createCartRequest)
-            
-            sender.send(.cartByID(75154))
-//            sender.send(.requestIntentBasedCapture(74923))
-        }
+    }
+    
+    func restart() {
+        state.restart()
+        
+        //self.send(.createCartRequest)
+        sender.send(.cartByID(75170))
     }
 }

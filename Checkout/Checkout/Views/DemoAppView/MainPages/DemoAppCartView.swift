@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DemoAppCartView: View {
+    @Environment(\.dismiss) private var cartViewDismiss
     @Binding var store: AppStore
     @ObservedObject var cartViewState: CartViewState
     @StateObject var router: Router

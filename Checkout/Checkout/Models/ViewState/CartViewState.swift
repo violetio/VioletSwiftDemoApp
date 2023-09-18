@@ -53,10 +53,11 @@ class CartViewState: ObservableObject {
         Logger.debug("Subtotal: \(cartSubTotalText) - Shipping: \(cartShippingTotalText) - Tax: \(cartTaxText) - FullTotal: \(cartFullTotalText)")
     }
     func updateWithNewOrder(order: Order) {
-//        Logger.debug("CartViewState - Update")
+        Logger.debug("CartViewState - Update")
         self.currentOrder = order
         if let orderId = order.id {
             self.cartId = orderId
+            Logger.debug("orderId: \(orderId)")
             let currentBagIdSet = Set(bagViewStates.keys)
             var updateBagIdSet = Set<Int64>()
             
@@ -99,6 +100,24 @@ class CartViewState: ObservableObject {
         shippingViewState.loadFrom(customer: order.customer,
                                         shippingAddress: order.shippingAddress,
                                         billingAddress: order.billingAddress)
+    }
+    
+    func restart() {
+        self.cartId = nil
+        self.skuCount = 0
+        self.cartSubTotalText = ""
+        self.cartShippingTotalText = ""
+        self.cartTaxText = ""
+        self.cartFullTotalText = ""
+        self.bagViewStates = [:]
+        self.currentOrder = nil
+        self.shippingViewState = ShippingViewState()
+        self.currentOrderShippingMethods = nil
+        self.checkoutPagesComplete = Set()
+        self.orderShippingMethodSelectViewState = nil
+        self.payment_intent_client_secret = nil
+        self.paymentSheetViewState = PaymentSheetViewState()
+        
     }
 }
 

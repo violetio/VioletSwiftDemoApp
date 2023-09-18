@@ -16,11 +16,13 @@ struct NavBarCartButton: View {
         Button() {
             var ignoreNav = false
             if let lastPath = router.lastPath {
+                Logger.debug("lastPath: \(lastPath)")
                 ignoreNav = lastPathsToIgnore.contains(lastPath)
             }
             Logger.debug("ignoreNav \(ignoreNav)")
             if !ignoreNav {
                 router.append(NavigationKey.cartView)
+
             }
         } label: {
                 HStack(spacing: 10) {

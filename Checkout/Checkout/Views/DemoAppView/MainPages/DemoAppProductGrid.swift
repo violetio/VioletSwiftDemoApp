@@ -24,7 +24,7 @@ struct DemoAppProductGrid: View {
     
     var body: some View {
         ScrollView {
-            if !store.demoChannelViewState.proxyWorking {
+            if !store.demoProxyActiveViewState.proxyWorking {
                 VStack {
                     Text("Proxy Server Problem")
                 }

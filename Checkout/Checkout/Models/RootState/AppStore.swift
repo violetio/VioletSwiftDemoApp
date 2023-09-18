@@ -32,16 +32,16 @@ class AppStore {
             self.currentOfferPDPViewState = nil
         }
         
-        init(demoChannelViewState: DemoProxyActiveViewState,
+        init(demoProxyActiveViewState: DemoProxyActiveViewState,
              cartViewState: CartViewState,
              offerSearchViewState: OfferSearchViewState) {
-            self.demoProxyViewState = demoChannelViewState
+            self.demoProxyViewState = demoProxyActiveViewState
             self.cartViewState = cartViewState
             self.offerSearchViewState = offerSearchViewState
         }
 
         convenience init() {
-            self.init(demoChannelViewState: DemoProxyActiveViewState(),
+            self.init(demoProxyActiveViewState: DemoProxyActiveViewState(),
                       cartViewState: CartViewState(),
                       offerSearchViewState: OfferSearchViewState())
         }
@@ -105,18 +105,18 @@ class AppStore {
         return StripeAPI.deviceSupportsApplePay()//true; //
     }
 
-    var demoChannelViewState: DemoProxyActiveViewState { state.demoProxyViewState }
+    var demoProxyActiveViewState: DemoProxyActiveViewState { state.demoProxyViewState }
 
     var cartViewState: CartViewState { state.cartViewState }
     var offerSearchViewState: OfferSearchViewState { state.offerSearchViewState }
 
     let useDemoLogin: Bool = true
 
-    init(demoChannelViewState: DemoProxyActiveViewState,
+    init(demoProxyActiveViewState: DemoProxyActiveViewState,
          cartViewState: CartViewState,
          offerSearchViewState: OfferSearchViewState)
     {
-        let newState = AppState(demoChannelViewState: demoChannelViewState,
+        let newState = AppState(demoProxyActiveViewState: demoProxyActiveViewState,
                                 cartViewState: cartViewState,
                                 offerSearchViewState: offerSearchViewState)
         self.state = newState
@@ -124,7 +124,7 @@ class AppStore {
     }
 
     convenience init(cartViewState: CartViewState? = nil) {
-        self.init(demoChannelViewState: DemoProxyActiveViewState(),
+        self.init(demoProxyActiveViewState: DemoProxyActiveViewState(),
                   cartViewState: cartViewState ?? CartViewState(),
                   offerSearchViewState: OfferSearchViewState.mockEmpty())
     }

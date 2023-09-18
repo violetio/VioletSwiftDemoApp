@@ -23,7 +23,7 @@ struct InstantPaymentSheetPresentView: View {
     
     func applePayButtonAction() {
         Logger.info("Apple Pay Button Tapped!")
-        if let paymentIntent = cartViewState.paymentSheetViewState.payment_intent_client_secret {
+        if cartViewState.paymentSheetViewState.hasPaymentIntent {
             psIsPresented = true
         } else {
             if cartViewState.bagCount == 0 {
@@ -58,9 +58,8 @@ struct InstantPaymentSheetPresentView: View {
                             .frame(width: 340, height: 44).padding(.top)
                     }
                 }
-                Text("SkuID: \(String(describing: selectedSkuID))")
-            }.onReceive(Just(hasPaymentIntent)) {
-                Logger.debug("hasPaymentIntent: \($0)")
+//                Text("SkuID: \(String(describing: selectedSkuID))")
+            }.onReceive(Just(hasPaymentIntent)) { _ in
                 DispatchQueue.main.async {
                     trigger()
                 }
@@ -69,6 +68,8 @@ struct InstantPaymentSheetPresentView: View {
         }
     }
 
+    ///TODO: DemoFeature.pdpApplePay depends on getting ShippingAddress and Email while Apple Pay Panel is open AND supplying back shippingMethod
+    ///PaymentSheet currently appears to not provide this data back from the STPApplePayContext internally managed behind the scenes.
     func shippingContactChange(contact: PKContact) async -> PKPaymentRequestShippingContactUpdate {
         Logger.debug("contact: \(contact)")
         return PKPaymentRequestShippingContactUpdate(errors: nil, paymentSummaryItems: [], shippingMethods: [])

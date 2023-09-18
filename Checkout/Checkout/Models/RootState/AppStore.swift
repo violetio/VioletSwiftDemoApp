@@ -15,17 +15,21 @@ class AppStore {
         var demoProxyViewState: DemoProxyActiveViewState
         var cartViewState: CartViewState
         var offerSearchViewState: OfferSearchViewState
-        var offerPDPViewStates: [Int64: OfferPDPViewState] = [:]
+        var currentOfferPDPViewState: OfferPDPViewState? = nil
         var apiCallActivityState = APICallActivityState()
         let router: Router = Router()
         
         func updateOfferPDPViewState( offerItem: DemoProductGridOfferItem) -> OfferPDPViewState {
-            if let existingOfferPDPViewState = offerPDPViewStates[offerItem.id] {
+            if let existingOfferPDPViewState = currentOfferPDPViewState {
                 return existingOfferPDPViewState
             }
             let newOfferPDPViewState: OfferPDPViewState = OfferPDPViewState(offer: offerItem.offerEntity)
-            offerPDPViewStates[offerItem.id] = newOfferPDPViewState
+            currentOfferPDPViewState = newOfferPDPViewState
             return newOfferPDPViewState
+        }
+        
+        func clearOfferPDPViewState() {
+            self.currentOfferPDPViewState = nil
         }
         
         init(demoChannelViewState: DemoProxyActiveViewState,
@@ -130,8 +134,10 @@ class AppStore {
             sender.send(.offersPageRequest(nil))
         }
         if cartViewState.noCart {
-            sender.send(.createCartRequest)
-//            sender.send(.cartByID(74827))
+//            sender.send(.createCartRequest)
+            
+            sender.send(.cartByID(75154))
+//            sender.send(.requestIntentBasedCapture(74923))
         }
     }
 }

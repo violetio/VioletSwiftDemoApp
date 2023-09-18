@@ -15,6 +15,7 @@ import StripeApplePay
 struct DemoAppGuestCheckoutView: View {
     @Binding var store: AppStore
     @ObservedObject var shippingViewState: ShippingViewState
+    @ObservedObject var cartViewState: CartViewState
     @StateObject var router: Router
     
     var body: some View {
@@ -22,10 +23,12 @@ struct DemoAppGuestCheckoutView: View {
             
             /// SHIPPING ADDRESS
             VStack(alignment: .leading) {
-                if AppStore.deviceSupportsApplePay() && store.cartViewState.bagCount <= 1 {
-                        PaymentButton(action: applePayButtonAction)
-                            .frame(width: 340, height: 44).padding(.top)
-                }   
+                if cartViewState.bagCount == 1 {
+                    InstantPaymentSheetPresentView(store: $store,
+                                                   cartViewState: cartViewState,
+                                                   selectedSkuID: .constant(nil),
+                                                   hasPaymentIntent: $cartViewState.paymentSheetViewState.hasPaymentIntent)
+                }
                 
                 Text("Shipping Address")
                     .font(.system(size: 17, weight: .semibold))
@@ -57,9 +60,6 @@ struct DemoAppGuestCheckoutView: View {
                         
                     } else {
                         if let orderCustomer = shippingViewState.produceOrderCustomerBody() {
-//                            Logger.debug("DemoAppGuestCheckoutView: Next Button Send OrderCustomer")
-//                            Logger.debug("DemoAppGuestCheckoutView: OrderId - \(orderId)")
-//                            Logger.debug("DemoAppGuestCheckoutView: orderCustomer - \(orderCustomer)")
                             store.sender.send(.updateCartCustomerRequest(orderId, orderCustomer))
                             store.send(.requestIntentBasedCapture(orderId))
                         }
@@ -88,25 +88,38 @@ struct DemoAppGuestCheckoutView: View {
             }
 
     }
-    
-    func applePayButtonAction() {
-        Logger.info("Apple Pay Button Tapped!")
-    }
 }
 
 struct DemoAppGuestCheckoutView_Previews: PreviewProvider {
+    static let mockOrder_NoBags = MockOffers.load_OrderID_73938()!
+    static let mockOrder_1Bag = MockOffers.load_OrderID_71169()!
+    static let mockCartViewState_NoBags = CartViewState(order: mockOrder_NoBags)
+    static let mockCartViewState_1Bag = CartViewState(order: mockOrder_1Bag)
+    
     static var previews: some View {
         Group {
             NavigationStack {
                 DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
-                                         shippingViewState: ShippingViewState(sameAddress: true), router: Router())
+                                         shippingViewState: ShippingViewState(sameAddress: true),
+                                         cartViewState: mockCartViewState_NoBags,
+                                         router: Router())
             }.previewDisplayName("Same As Billing")
             
             NavigationStack {
                 DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
                                          shippingViewState: ShippingViewState(sameAddress: false),
+                                         cartViewState: mockCartViewState_NoBags,
                                          router: Router())
             }.previewDisplayName("Show Shipping")
+            
+            if AppStore.DemoFeatures.pdpApplePay.isSupported {
+                NavigationStack {
+                    DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
+                                             shippingViewState: ShippingViewState(sameAddress: true),
+                                             cartViewState: mockCartViewState_1Bag,
+                                             router: Router())
+                }.previewDisplayName("1 Bag Apple Pay")
+            }
         }
     }
 }

@@ -73,7 +73,12 @@ struct DemoAppOfferPDP: View {
                                  cartViewState: store.cartViewState,
                                  router: router)
             }
-        }.withScrollViewBackgroundColor()
+        }
+        .withScrollViewBackgroundColor()
+        .onDisappear {
+            Logger.debug("PDP Disappear")
+            store.state.clearOfferPDPViewState()
+        }
             
     }
     

@@ -112,12 +112,14 @@ struct DemoAppGuestCheckoutView_Previews: PreviewProvider {
                                          router: Router())
             }.previewDisplayName("Show Shipping")
             
-            NavigationStack {
-                DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
-                                         shippingViewState: ShippingViewState(sameAddress: true),
-                                         cartViewState: mockCartViewState_1Bag,
-                                         router: Router())
-            }.previewDisplayName("1 Bag Apple Pay")
+            if AppStore.DemoFeatures.pdpApplePay.isSupported {
+                NavigationStack {
+                    DemoAppGuestCheckoutView(store: AppStore.mockAppStoreBinding,
+                                             shippingViewState: ShippingViewState(sameAddress: true),
+                                             cartViewState: mockCartViewState_1Bag,
+                                             router: Router())
+                }.previewDisplayName("1 Bag Apple Pay")
+            }
         }
     }
 }

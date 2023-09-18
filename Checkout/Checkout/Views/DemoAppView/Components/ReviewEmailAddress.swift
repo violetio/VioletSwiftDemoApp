@@ -10,7 +10,7 @@ import SwiftUI
 struct ReviewEmailAddress: View {
     @ObservedObject var shippingViewState: ShippingViewState
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 9) {
             Text("Email Address")
             .font(.system(size: 14, weight: .semibold))
             .foregroundColor(Color(red: 0.07, green: 0.09, blue: 0.15))

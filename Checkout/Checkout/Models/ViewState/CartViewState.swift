@@ -111,6 +111,7 @@ class BagViewState: ObservableObject, Identifiable {
     @Published var bagTaxText: String = ""
     @Published var bagMerchantName: String = ""
     @Published var merchantCurrency: String = "USD"
+    @Published var bagShippingMethodLabel: String = ""
     
     
     var orderSkuViewStatesArray: [OrderSkuViewState] { return Array(orderSkuViewStates.values.sorted(by: { $0.orderSkuID < $1.orderSkuID })) }
@@ -141,6 +142,7 @@ class BagViewState: ObservableObject, Identifiable {
                 collectOrderSkuViewStates[orderSkuID] = nextOrderSkuViewState
             }
         })
+        self.bagShippingMethodLabel = bag.shippingMethod?.label ?? ""
         self.orderSkuViewStates = collectOrderSkuViewStates
     }
     

@@ -131,7 +131,9 @@ class AppStore {
         }
         if cartViewState.noCart {
             sender.send(.createCartRequest)
-//            sender.send(.cartByID(74827))
+            
+//            sender.send(.cartByID(74923))
+//            sender.send(.requestIntentBasedCapture(74923))
         }
     }
 }

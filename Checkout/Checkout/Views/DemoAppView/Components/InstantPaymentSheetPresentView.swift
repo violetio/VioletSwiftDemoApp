@@ -9,6 +9,8 @@ import Combine
 import Foundation
 import SwiftUI
 import StripePaymentSheet
+import Violet
+import PassKit
 
 struct InstantPaymentSheetPresentView: View {
     @Binding var store: AppStore
@@ -24,40 +26,53 @@ struct InstantPaymentSheetPresentView: View {
         if let paymentIntent = cartViewState.paymentSheetViewState.payment_intent_client_secret {
             psIsPresented = true
         } else {
-            if let skuID = self.selectedSkuID,
-               let cartId = cartViewState.cartId {
+            if cartViewState.bagCount == 0 {
+                if let skuID = self.selectedSkuID,
+                   let cartId = cartViewState.cartId {
+                    self.waitingForIntent = true
+                    store.send(.addSkuToCartWithIntent(cartId, skuID, 1))
+                }
+            } else {
                 self.waitingForIntent = true
-                store.send(.addSkuToCartWithIntent(cartId, skuID, 1))
+                if let cartId = cartViewState.cartId {
+                    self.waitingForIntent = true
+                    store.send(.requestIntentBasedCapture(cartId))
+                }
             }
         }
     }
     
     var body: some View {
-        VStack {
-            if AppStore.deviceSupportsApplePay() && store.cartViewState.bagCount <= 1 {
-                if let paymentSheet = cartViewState.paymentSheetViewState.paymentSheet {
-                    PaymentButton(action: applePayButtonAction)
-                        .frame(width: 340, height: 44).padding(.top)
-                        .paymentSheet(isPresented: $psIsPresented,
-                                      paymentSheet: paymentSheet,
-                                      onCompletion: handlePaymentSheetResult)
-                    
-                } else {
-                    PaymentButton(action: applePayButtonAction)
-                        .frame(width: 340, height: 44).padding(.top)
+        if AppStore.DemoFeatures.pdpApplePay.isSupported {
+            VStack {
+                if AppStore.deviceSupportsApplePay() && store.cartViewState.bagCount <= 1 {
+                    if let paymentSheet = cartViewState.paymentSheetViewState.paymentSheet {
+                        PaymentButton(action: applePayButtonAction)
+                            .frame(width: 340, height: 44).padding(.top)
+                            .paymentSheet(isPresented: $psIsPresented,
+                                          paymentSheet: paymentSheet,
+                                          onCompletion: handlePaymentSheetResult)
+                        
+                    } else {
+                        PaymentButton(action: applePayButtonAction)
+                            .frame(width: 340, height: 44).padding(.top)
+                    }
                 }
+                Text("SkuID: \(String(describing: selectedSkuID))")
+            }.onReceive(Just(hasPaymentIntent)) {
+                Logger.debug("hasPaymentIntent: \($0)")
+                DispatchQueue.main.async {
+                    trigger()
+                }
+                
             }
-            Text("SkuID: \(String(describing: selectedSkuID))")
-        }.onReceive(Just(hasPaymentIntent)) {
-            Logger.debug("hasPaymentIntent: \($0)")
-            DispatchQueue.main.async {
-                trigger()
-            }
-            
         }
-        
     }
 
+    func shippingContactChange(contact: PKContact) async -> PKPaymentRequestShippingContactUpdate {
+        Logger.debug("contact: \(contact)")
+        return PKPaymentRequestShippingContactUpdate(errors: nil, paymentSummaryItems: [], shippingMethods: [])
+    }
     
     func trigger() {
         if waitingForIntent && hasPaymentIntent {

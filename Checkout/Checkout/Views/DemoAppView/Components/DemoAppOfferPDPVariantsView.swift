@@ -11,7 +11,7 @@ struct DemoAppOfferPDPVariantsView: View {
     @ObservedObject var offerPDPViewState: OfferPDPViewState
     
     var body: some View {
-        if offerPDPViewState.variantViewModels.count > 0 {
+        if offerPDPViewState.variantViewModels.count > 0 && offerPDPViewState.singleSkuID == nil {
             
             ForEach(offerPDPViewState.variantViewModels) { variant in
                 OfferVariantValuePicker(variantViewModel: variant, selectedValue: variant.variantValuesArray[0].name, offerPDPViewState: offerPDPViewState)

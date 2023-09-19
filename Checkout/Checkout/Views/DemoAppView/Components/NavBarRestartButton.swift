@@ -18,7 +18,7 @@ struct NavBarRestartButton: View {
             
         } label: {
                 HStack(spacing: 10) {
-                    Image(systemName: "restart.circle")
+                    Image(systemName: "house")
                 }.padding(.horizontal, 20)
                     .padding(.vertical, 13)
                     .cornerRadius(FigmaConstants.cornerRadius)

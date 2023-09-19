@@ -57,7 +57,6 @@ class AppStore {
         func markCheckoutPageComplete(_ navigationKey: NavigationKey) {
             if !cartViewState.checkoutPagesComplete.contains(navigationKey) {
                 cartViewState.checkoutPagesComplete.insert(navigationKey)
-//                Logger.debug("markCheckoutPageComplete: \(navigationKey)")
                 if navigationKey == .addShippingAddress {
                     Logger.debug("markCheckoutPageComplete: \(navigationKey) -> Go to \(NavigationKey.selectShippingMethod)")
                     router.append(NavigationKey.selectShippingMethod)
@@ -77,10 +76,7 @@ class AppStore {
         func restart() {
             router.restart()
             cartViewState.restart()
-            
         }
-        
-        
     }
 
     enum AppAction {
@@ -107,18 +103,14 @@ class AppStore {
     var router: Router { state.router }
     var firstAppearance: Bool = true
     
-    static let mockAppStore = AppStore(cartViewState: CartViewState())
-    static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }
     static func deviceSupportsApplePay() -> Bool {
-        return StripeAPI.deviceSupportsApplePay()//true; //
+        return StripeAPI.deviceSupportsApplePay()
     }
 
     var demoProxyActiveViewState: DemoProxyActiveViewState { state.demoProxyViewState }
 
     var cartViewState: CartViewState { state.cartViewState }
     var offerSearchViewState: OfferSearchViewState { state.offerSearchViewState }
-
-    let useDemoLogin: Bool = true
 
     init(demoProxyActiveViewState: DemoProxyActiveViewState,
          cartViewState: CartViewState,
@@ -143,10 +135,11 @@ class AppStore {
                 sender.send(.offersPageRequest(nil))
             }
             if cartViewState.noCart {
-                            sender.send(.createCartRequest)
-                
-//                sender.send(.cartByID(75154))
-                //            sender.send(.requestIntentBasedCapture(74923))
+                if let cartId = AppStore.resumeCartId {
+                    sender.send(.cartByID(cartId))
+                } else {
+                    sender.send(.createCartRequest)
+                }
             }
             firstAppearance = false
         }
@@ -154,8 +147,6 @@ class AppStore {
     
     func restart() {
         state.restart()
-        
         self.send(.createCartRequest)
-//        sender.send(.cartByID(75170))
     }
 }

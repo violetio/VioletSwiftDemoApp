@@ -10,6 +10,7 @@ import Violet
 
 class CartViewState: ObservableObject {
     @Published var cartId: Int64? = nil
+    @Published var cartCurrency: String = "USD"
     @Published var skuCount: Int = 0
     @Published var cartSubTotalText: String = ""
     @Published var cartShippingTotalText: String = ""
@@ -60,12 +61,13 @@ class CartViewState: ObservableObject {
             Logger.debug("orderId: \(orderId)")
             let currentBagIdSet = Set(bagViewStates.keys)
             var updateBagIdSet = Set<Int64>()
+            self.cartCurrency = order.cartCurrency
             
-            self.cartSubTotalText = (Double(order.subTotal ?? 0) / 100).formatted(.currency(code: "USD"))
-            self.cartTaxText = (Double(order.taxTotal ?? 0) / 100).formatted(.currency(code: "USD"))
-            self.cartShippingTotalText = (Double(order.shippingTotal ?? 0) / 100).formatted(.currency(code: "USD"))
-            self.cartFullTotalText = (Double(order.total ?? 0) / 100).formatted(.currency(code: "USD"))
-            logOrderTotals()
+            self.cartSubTotalText = order.cartSubTotalText
+            self.cartTaxText = order.cartTaxTotalText
+            self.cartShippingTotalText = order.cartShippingTotalText
+            self.cartFullTotalText = order.cartFullTotalText
+//            logOrderTotals()
             
             var calcSkuCount: Int = 0
             order.bags?.forEach({ bag in

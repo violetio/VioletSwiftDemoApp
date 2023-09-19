@@ -7,6 +7,7 @@
 
 import Foundation
 import Violet
+import SwiftUI
 
 struct PreviewMocks {
     
@@ -17,13 +18,6 @@ struct PreviewMocks {
             return []
         }
         return innerOffers.compactMap(DemoProductGridOfferItem.fromEntity)
-    }
-    
-    static func MockOfferItem() -> OfferItem {
-        guard let mockOffer = MockOffers.load_Offer_12555() else {
-            return OfferItem.Empty()
-        }
-        return OfferItem.fromEntity(entity: mockOffer) ?? OfferItem.Empty()
     }
     
     static func MockOfferItem_12574() -> DemoProductGridOfferItem {
@@ -41,7 +35,7 @@ struct PreviewMocks {
     }
     
     static func Mock_OfferItem_ImageURL() -> URL? {
-        return MockOfferItem().firstAlbumMediaImageURL()
+        return Mock_DemoProductGridOfferItem_12555().firstAlbumMediaImageURL()
     }
     
     static func Mock_DemoProductGridOfferItem_12555() -> DemoProductGridOfferItem {
@@ -96,4 +90,12 @@ extension OfferSearchViewState {
     static func mockEmpty() -> OfferSearchViewState {
         return OfferSearchViewState(loadedOfferItems: [])
     }
+}
+
+extension AppStore {
+    static let mockAppStore = AppStore(cartViewState: CartViewState())
+    static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }
+    
+    //Resume a specific CardId by setting it here
+    static let resumeCartId: Int64? = nil //75186
 }

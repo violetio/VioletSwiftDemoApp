@@ -63,10 +63,11 @@ struct DemoAppPaymentView: View {
 struct DemoAppPaymentView_Previews: PreviewProvider {
     static let mockOrder = MockOffers.load_OrderID_74445()!
     static let mockCartViewState = CartViewState(order: mockOrder)
+    static let mockAppStore = AppStore(cartViewState: mockCartViewState)
     
     static var previews: some View {
         NavigationStack {
-            DemoAppPaymentView(store: AppStore.mockAppStoreBinding,
+            DemoAppPaymentView(store: .constant(mockAppStore),
                                router: Router(),
                                cartViewState: mockCartViewState)
         }

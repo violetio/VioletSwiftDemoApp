@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Stripe
+import Violet
 
 @main
 struct CheckoutApp: App {

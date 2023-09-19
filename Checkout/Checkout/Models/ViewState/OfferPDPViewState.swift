@@ -14,6 +14,7 @@ class OfferPDPViewState: ObservableObject {
     @Published var offerSkusVariants: OfferSkusVariants
     @Published var selectedSkuID: Int64? = nil
     @Published var selectedVariantKeys: [String: String] = [:]
+    @Published var singleSkuID: Int64? = nil
 
     var variantViewModels: [VariantViewModel] { offerSkusVariants.variantViewModels }
     
@@ -29,6 +30,7 @@ class OfferPDPViewState: ObservableObject {
         Logger.debug("OfferPDPViewState: Skus - Count: \(offer.skus?.count ?? 0)")
         if let singleSku = offer.singleSku(),
            let singleSkuID = singleSku.id {
+            self.singleSkuID = singleSkuID
             self.selectedSkuID = singleSkuID
             Logger.debug("OfferPDPViewState: singleSkuID = \(singleSkuID)")
         } else {

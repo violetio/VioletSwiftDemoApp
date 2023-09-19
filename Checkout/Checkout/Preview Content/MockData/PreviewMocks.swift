@@ -86,3 +86,14 @@ struct PreviewMocks {
                      visible: true)
     }
 }
+
+
+extension OfferSearchViewState {
+    static func mockLoaded() -> OfferSearchViewState {
+        return OfferSearchViewState(loadedOfferItems: PreviewMocks.MockOfferItemsArray2())
+    }
+    
+    static func mockEmpty() -> OfferSearchViewState {
+        return OfferSearchViewState(loadedOfferItems: [])
+    }
+}

@@ -32,16 +32,16 @@ class AppStore {
             self.currentOfferPDPViewState = nil
         }
         
-        init(demoChannelViewState: DemoProxyActiveViewState,
+        init(demoProxyActiveViewState: DemoProxyActiveViewState,
              cartViewState: CartViewState,
              offerSearchViewState: OfferSearchViewState) {
-            self.demoProxyViewState = demoChannelViewState
+            self.demoProxyViewState = demoProxyActiveViewState
             self.cartViewState = cartViewState
             self.offerSearchViewState = offerSearchViewState
         }
 
         convenience init() {
-            self.init(demoChannelViewState: DemoProxyActiveViewState(),
+            self.init(demoProxyActiveViewState: DemoProxyActiveViewState(),
                       cartViewState: CartViewState(),
                       offerSearchViewState: OfferSearchViewState())
         }
@@ -74,6 +74,13 @@ class AppStore {
             }
         }
         
+        func restart() {
+            router.restart()
+            cartViewState.restart()
+            
+        }
+        
+        
     }
 
     enum AppAction {
@@ -98,6 +105,7 @@ class AppStore {
     let state: AppState
     let sender: AppSender
     var router: Router { state.router }
+    var firstAppearance: Bool = true
     
     static let mockAppStore = AppStore(cartViewState: CartViewState())
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }
@@ -105,18 +113,18 @@ class AppStore {
         return StripeAPI.deviceSupportsApplePay()//true; //
     }
 
-    var demoChannelViewState: DemoProxyActiveViewState { state.demoProxyViewState }
+    var demoProxyActiveViewState: DemoProxyActiveViewState { state.demoProxyViewState }
 
     var cartViewState: CartViewState { state.cartViewState }
     var offerSearchViewState: OfferSearchViewState { state.offerSearchViewState }
 
     let useDemoLogin: Bool = true
 
-    init(demoChannelViewState: DemoProxyActiveViewState,
+    init(demoProxyActiveViewState: DemoProxyActiveViewState,
          cartViewState: CartViewState,
          offerSearchViewState: OfferSearchViewState)
     {
-        let newState = AppState(demoChannelViewState: demoChannelViewState,
+        let newState = AppState(demoProxyActiveViewState: demoProxyActiveViewState,
                                 cartViewState: cartViewState,
                                 offerSearchViewState: offerSearchViewState)
         self.state = newState
@@ -124,20 +132,30 @@ class AppStore {
     }
 
     convenience init(cartViewState: CartViewState? = nil) {
-        self.init(demoChannelViewState: DemoProxyActiveViewState(),
+        self.init(demoProxyActiveViewState: DemoProxyActiveViewState(),
                   cartViewState: cartViewState ?? CartViewState(),
                   offerSearchViewState: OfferSearchViewState.mockEmpty())
     }
     
     func onAppAppear() {
-        if offerSearchViewState.emtpy {
-            sender.send(.offersPageRequest(nil))
+        if firstAppearance {
+            if offerSearchViewState.emtpy {
+                sender.send(.offersPageRequest(nil))
+            }
+            if cartViewState.noCart {
+                            sender.send(.createCartRequest)
+                
+//                sender.send(.cartByID(75154))
+                //            sender.send(.requestIntentBasedCapture(74923))
+            }
+            firstAppearance = false
         }
-        if cartViewState.noCart {
-//            sender.send(.createCartRequest)
-            
-            sender.send(.cartByID(75154))
-//            sender.send(.requestIntentBasedCapture(74923))
-        }
+    }
+    
+    func restart() {
+        state.restart()
+        
+        self.send(.createCartRequest)
+//        sender.send(.cartByID(75170))
     }
 }

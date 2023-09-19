@@ -58,7 +58,7 @@ extension AppStore {
                     self.state.apiCallActivityState.decrement()
                 }
             case .cartByID(let orderID):
-                Logger.info("Store GetCartByID")
+                Logger.info("Store GetCartByID: \(orderID)")
                 let newAPICall = self.startAPICall(GetCartByIDRequest(orderId: orderID))
 
                 newAPICall.send { dataResponse, dataError in
@@ -162,6 +162,9 @@ extension AppStore {
                         self.state.markCheckoutPageComplete(.selectShippingMethod)
                     }
                     self.state.apiCallActivityState.decrement()
+                    DispatchQueue.main.async {
+                        self.send(.requestIntentBasedCapture(orderID))
+                    }
                 }
             case .requestIntentBasedCapture(let orderID):
                 Logger.debug("requestIntentBasedCapture: \(orderID)")

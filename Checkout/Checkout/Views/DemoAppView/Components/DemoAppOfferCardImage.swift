@@ -39,7 +39,6 @@ struct DemoAppOfferCardImage: View {
 
 struct DemoAppOfferCardImage_Previews: PreviewProvider {
     static var previews: some View {
-        //DemoAppOfferCardImage(imageURL: .constant(nil))
         Group {
             DemoAppOfferCardImage(imageURL: .constant(PreviewMocks.Mock_OfferItem_ImageURL()))
                 .previewLayout(PreviewLayout.fixed(width: FigmaConstants.OfferCard.imageArea.width,

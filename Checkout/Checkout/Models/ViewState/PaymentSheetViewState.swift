@@ -34,6 +34,12 @@ class PaymentSheetViewState: ObservableObject {
     }
     
     func update(payment_intent_client_secret: String?, bagCount: Int) {
+        var secret_changed = false
+        if let current_secret = self.payment_intent_client_secret,
+           let new_secret = payment_intent_client_secret,
+           current_secret != new_secret {
+            secret_changed = true
+        }
         self.payment_intent_client_secret = payment_intent_client_secret
         guard let found_client_secret = payment_intent_client_secret else {
             self.applePayConfiguration = nil
@@ -50,15 +56,11 @@ class PaymentSheetViewState: ObservableObject {
             paymentConfiguration.applePay = nil
         }
         
-        if self.paymentSheet == nil {
+        if self.paymentSheet == nil || secret_changed {
             let newPaymentSheet = PaymentSheet(paymentIntentClientSecret: found_client_secret,
                                                configuration: paymentConfiguration)
             self.paymentSheet = newPaymentSheet
-            //Logger.debug("Created .paymentSheet")
         }
-//        else {
-//            Logger.debug("Existing .paymentSheet")
-//        }
         self.hasPaymentIntent = true
     }
 

@@ -32,7 +32,7 @@ struct ReviewBagSection: View {
                                  amountLabelText: bagViewState.bagShippingText).frame(height: 25)
             CartAmountDetailLine(detailLabelText: "Tax",
                                  amountLabelText: bagViewState.bagTaxText).frame(height: 25)
-            CartAmountDetailLine(detailLabelText: "Total",
+            CartAmountDetailLine(detailLabelText: "Bag Total",
                                  amountLabelText: bagViewState.bagSubtotalText,
                                  fontWeight: .semibold).frame(height: 25)
         }

@@ -143,9 +143,9 @@ class AppStore {
                 sender.send(.offersPageRequest(nil))
             }
             if cartViewState.noCart {
-                //            sender.send(.createCartRequest)
+                            sender.send(.createCartRequest)
                 
-                sender.send(.cartByID(75154))
+//                sender.send(.cartByID(75154))
                 //            sender.send(.requestIntentBasedCapture(74923))
             }
             firstAppearance = false
@@ -155,7 +155,7 @@ class AppStore {
     func restart() {
         state.restart()
         
-        //self.send(.createCartRequest)
-        sender.send(.cartByID(75170))
+        self.send(.createCartRequest)
+//        sender.send(.cartByID(75170))
     }
 }

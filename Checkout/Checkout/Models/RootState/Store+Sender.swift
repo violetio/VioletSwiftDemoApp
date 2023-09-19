@@ -162,6 +162,9 @@ extension AppStore {
                         self.state.markCheckoutPageComplete(.selectShippingMethod)
                     }
                     self.state.apiCallActivityState.decrement()
+                    DispatchQueue.main.async {
+                        self.send(.requestIntentBasedCapture(orderID))
+                    }
                 }
             case .requestIntentBasedCapture(let orderID):
                 Logger.debug("requestIntentBasedCapture: \(orderID)")

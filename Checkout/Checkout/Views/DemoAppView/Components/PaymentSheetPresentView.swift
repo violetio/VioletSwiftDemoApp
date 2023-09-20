@@ -5,13 +5,12 @@
 //  Created on 9/13/23
 //
 
-import SwiftUI
+import PassKit
 import SwiftUI
 import StripePaymentSheet
 
 struct PaymentSheetPresentView: View {
     @Binding var store: AppStore
-    //@StateObject var router: Router
     @ObservedObject var cartViewState: CartViewState
     @State var psIsPresented: Bool = false
     
@@ -24,6 +23,11 @@ struct PaymentSheetPresentView: View {
             }.paymentSheet(isPresented: $psIsPresented,
                            paymentSheet: ps,
                            onCompletion: handlePaymentSheetResult)
+            .onAppear {
+                cartViewState.paymentSheetViewState.paymentAuthorizationResultHandler = self.handlePaymentAuthorizationResult
+            }.onDisappear {
+                cartViewState.paymentSheetViewState.paymentAuthorizationResultHandler = nil
+            }
             
         } else {
             Text("No PaymentSheet Init")
@@ -31,17 +35,21 @@ struct PaymentSheetPresentView: View {
     }
     
     func handlePaymentSheetResult(_ result: PaymentSheetResult) {
-        Logger.debug("PaymentSheetResult: \(result)")
-        switch result {
-        case .completed:
-            Logger.debug("PaymentSheetResult: \(result) - Submitting Order")
-            self.submitOrder()
-        case .canceled:
-            Logger.debug("PaymentSheetResult: \(result) - On Cancel, Do _")
-        case .failed(let sheetError):
-            Logger.error("PaymentSheetResult: .failed - Error \(sheetError.localizedDescription) - On Error, Do _")
-        }
         psIsPresented = false
+    }
+    
+    /**
+        Set on `paymentSheetViewState.paymentAuthorizationResultHandler` to run `submitOrder`
+     */
+    func handlePaymentAuthorizationResult(_ result: PKPaymentAuthorizationResult) {
+        switch result.status {
+        case .success:
+            self.submitOrder()
+        default:
+            Logger.debug("authorizationResultHandler \(result.status)")
+        
+        }
+        
     }
     
     func submitOrder() {
@@ -58,7 +66,6 @@ struct PaymentSheetPresentView_Previews: PreviewProvider {
     
     static var previews: some View {
         PaymentSheetPresentView(store: AppStore.mockAppStoreBinding,
-//                                router: Router(),
                                 cartViewState: mockCartViewState,
                                 psIsPresented: false)
     }

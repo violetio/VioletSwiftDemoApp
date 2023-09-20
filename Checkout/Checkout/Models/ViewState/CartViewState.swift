@@ -10,6 +10,7 @@ import Violet
 
 class CartViewState: ObservableObject {
     @Published var cartId: Int64? = nil
+    @Published var cartCurrency: String = "USD"
     @Published var skuCount: Int = 0
     @Published var cartSubTotalText: String = ""
     @Published var cartShippingTotalText: String = ""
@@ -60,16 +61,17 @@ class CartViewState: ObservableObject {
             Logger.debug("orderId: \(orderId)")
             let currentBagIdSet = Set(bagViewStates.keys)
             var updateBagIdSet = Set<Int64>()
+            self.cartCurrency = order.cartCurrency
             
-            self.cartSubTotalText = (Double(order.subTotal ?? 0) / 100).formatted(.currency(code: "USD"))
-            self.cartTaxText = (Double(order.taxTotal ?? 0) / 100).formatted(.currency(code: "USD"))
-            self.cartShippingTotalText = (Double(order.shippingTotal ?? 0) / 100).formatted(.currency(code: "USD"))
-            self.cartFullTotalText = (Double(order.total ?? 0) / 100).formatted(.currency(code: "USD"))
-            logOrderTotals()
+            self.cartSubTotalText = order.cartSubTotalText
+            self.cartTaxText = order.cartTaxTotalText
+            self.cartShippingTotalText = order.cartShippingTotalText
+            self.cartFullTotalText = order.cartFullTotalText
+//            logOrderTotals()
             
             var calcSkuCount: Int = 0
             order.bags?.forEach({ bag in
-                Logger.debug("CartViewState - - - Bag ID: \(bag.id ?? 0)")
+                //Logger.debug("CartViewState - - - Bag ID: \(bag.id ?? 0)")
                 if let bagID = bag.id {
                     updateBagIdSet.insert(bagID)
                     bag.skus?.forEach({ orderSku in
@@ -85,13 +87,11 @@ class CartViewState: ObservableObject {
             for removedBagId in removedBagIdSet {
                 bagViewStates.removeValue(forKey: removedBagId)
             }
-//            let bagIDSortedBagViewStates = bagViewStates.values.sorted(by: { $0.bagID < $1.bagID })
             
             self.skuCount = calcSkuCount
             self.cartNotEmpty = calcSkuCount > 0
             
             if let foundPaymentIntent = order.paymentIntentClientSecret {
-                Logger.debug("foundPaymentIntent: \(foundPaymentIntent)")                
                 self.paymentSheetViewState.update(payment_intent_client_secret: foundPaymentIntent, bagCount: self.bagCount)
             }
 
@@ -100,6 +100,15 @@ class CartViewState: ObservableObject {
         shippingViewState.loadFrom(customer: order.customer,
                                         shippingAddress: order.shippingAddress,
                                         billingAddress: order.billingAddress)
+    }
+    
+    func orderSkuViewState(offerSkuId: OfferSkuID) -> OrderSkuViewState? {
+        for next in bagViewStatesArray {
+            if let found = next.orderSkuViewState(offerSkuId: offerSkuId) {
+                return found
+            }
+        }
+        return nil
     }
     
     func restart() {
@@ -143,7 +152,6 @@ class BagViewState: ObservableObject, Identifiable {
         if let initBag = bag {
             update(bag: initBag)
         }
-//        Logger.debug("BagViewState - Init - bagID: \(bagID) - orderSkuIDCount - \(orderSkuViewStates)")
     }
     
     func update(bag: Bag) {
@@ -165,6 +173,15 @@ class BagViewState: ObservableObject, Identifiable {
         self.orderSkuViewStates = collectOrderSkuViewStates
     }
     
+    func orderSkuViewState(offerSkuId: OfferSkuID) -> OrderSkuViewState? {
+        for next in orderSkuViewStatesArray {
+            if next.offerSkuID == offerSkuId {
+                return next
+            }
+        }
+        return nil
+    }
+    
 }
 
 class OrderSkuViewState: ObservableObject, Identifiable {
@@ -175,6 +192,7 @@ class OrderSkuViewState: ObservableObject, Identifiable {
     @Published var name: String = ""
     @Published var brand: String = ""
     @Published var skuPriceText: String = ""
+    @Published var offerSkuID: OfferSkuID = 0
     
     init(orderID: OrderID, orderSku: OrderSku? = nil) {
         self.orderID = orderID
@@ -188,7 +206,7 @@ class OrderSkuViewState: ObservableObject, Identifiable {
     func update(orderSku: OrderSku) {
         self.orderSkuID = orderSku.id ?? 0
         self.quantity = orderSku.quantity ?? 0
-        
+        self.offerSkuID = orderSku.skuId ?? 0
         self.skuPriceText = (Double(orderSku.price ?? 0) / 100).formatted(.currency(code: "USD"))
         
         self.name = orderSku.name ?? ""

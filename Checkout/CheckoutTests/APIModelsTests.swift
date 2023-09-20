@@ -14,7 +14,7 @@ import XCTest
 final class APIModelsTests: APIXCTestCase {
     var refreshToken: String? = nil
     var token: String? = nil
-    var testCheckoutSequence = TestCheckoutSequence(orderId: 74688)
+    var testCheckoutSequence = TestCheckoutSequence(orderId: 74445)
 
 //    func test_11_CatalogSearchOffersRequest() {
 //        let request = CatalogSearchOffersRequest()

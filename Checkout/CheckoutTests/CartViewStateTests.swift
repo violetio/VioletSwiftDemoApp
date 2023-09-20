@@ -17,5 +17,12 @@ final class CartViewStateTests: XCTestCase {
         let sut = OrderShippingMethodSelectViewState(orderShippingMethods: mockOrderShippingMethodWrapperArray)
         //Logger.debug("sut: \(sut)")
     }
+    
+    func test_orderSkuViewState_for_offerSkuId() throws {
+        let mockOrder = MockOffers.load_OrderID_71169()!
+        let cartViewState = CartViewState(order:  mockOrder)
+        let found = cartViewState.orderSkuViewState(offerSkuId: 33524)
+        XCTAssertNotNil(found)
+    }
 
 }

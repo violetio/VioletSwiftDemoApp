@@ -135,8 +135,8 @@ class AppStore {
                 sender.send(.offersPageRequest(nil))
             }
             if cartViewState.noCart {
-                if let cartId = AppStore.resumeCartId {
-                    sender.send(.cartByID(cartId))
+                if let cartId = InitJson.resumeCartId {
+                    sender.send(.cartByID(Int64(cartId)))
                 } else {
                     sender.send(.createCartRequest)
                 }

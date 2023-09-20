@@ -96,6 +96,4 @@ extension AppStore {
     static let mockAppStore = AppStore(cartViewState: CartViewState())
     static var mockAppStoreBinding: Binding<AppStore> { .constant(mockAppStore) }
     
-    //Resume a specific CardId by setting it here
-    static let resumeCartId: Int64? = nil //75186
 }

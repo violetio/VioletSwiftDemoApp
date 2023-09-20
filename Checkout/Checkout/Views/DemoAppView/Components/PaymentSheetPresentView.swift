@@ -5,10 +5,9 @@
 //  Created on 9/13/23
 //
 
-import SwiftUI
+import PassKit
 import SwiftUI
 import StripePaymentSheet
-import PassKit
 
 struct PaymentSheetPresentView: View {
     @Binding var store: AppStore
@@ -45,7 +44,6 @@ struct PaymentSheetPresentView: View {
     func handlePaymentAuthorizationResult(_ result: PKPaymentAuthorizationResult) {
         switch result.status {
         case .success:
-//            Logger.debug("authorizationResultHandler .success")
             self.submitOrder()
         default:
             Logger.debug("authorizationResultHandler \(result.status)")
@@ -68,7 +66,6 @@ struct PaymentSheetPresentView_Previews: PreviewProvider {
     
     static var previews: some View {
         PaymentSheetPresentView(store: AppStore.mockAppStoreBinding,
-//                                router: Router(),
                                 cartViewState: mockCartViewState,
                                 psIsPresented: false)
     }

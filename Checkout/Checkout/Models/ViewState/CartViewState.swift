@@ -102,6 +102,15 @@ class CartViewState: ObservableObject {
                                         billingAddress: order.billingAddress)
     }
     
+    func orderSkuViewState(offerSkuId: OfferSkuID) -> OrderSkuViewState? {
+        for next in bagViewStatesArray {
+            if let found = next.orderSkuViewState(offerSkuId: offerSkuId) {
+                return found
+            }
+        }
+        return nil
+    }
+    
     func restart() {
         self.cartId = nil
         self.skuCount = 0
@@ -164,6 +173,15 @@ class BagViewState: ObservableObject, Identifiable {
         self.orderSkuViewStates = collectOrderSkuViewStates
     }
     
+    func orderSkuViewState(offerSkuId: OfferSkuID) -> OrderSkuViewState? {
+        for next in orderSkuViewStatesArray {
+            if next.offerSkuID == offerSkuId {
+                return next
+            }
+        }
+        return nil
+    }
+    
 }
 
 class OrderSkuViewState: ObservableObject, Identifiable {
@@ -174,6 +192,7 @@ class OrderSkuViewState: ObservableObject, Identifiable {
     @Published var name: String = ""
     @Published var brand: String = ""
     @Published var skuPriceText: String = ""
+    @Published var offerSkuID: OfferSkuID = 0
     
     init(orderID: OrderID, orderSku: OrderSku? = nil) {
         self.orderID = orderID
@@ -187,7 +206,7 @@ class OrderSkuViewState: ObservableObject, Identifiable {
     func update(orderSku: OrderSku) {
         self.orderSkuID = orderSku.id ?? 0
         self.quantity = orderSku.quantity ?? 0
-        
+        self.offerSkuID = orderSku.skuId ?? 0
         self.skuPriceText = (Double(orderSku.price ?? 0) / 100).formatted(.currency(code: "USD"))
         
         self.name = orderSku.name ?? ""

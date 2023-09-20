@@ -84,7 +84,7 @@ struct DemoAppCartView_Previews: PreviewProvider {
                 DemoAppCartView(store: AppStore.mockAppStoreBinding,
                                 cartViewState: CartViewState(order: mockOrder),
                                 router: Router())
-            }.previewDisplayName("1 Sku")
+            }.previewDisplayName("3 Sku")
             
             NavigationStack {
                 DemoAppCartView(store: AppStore.mockAppStoreBinding,

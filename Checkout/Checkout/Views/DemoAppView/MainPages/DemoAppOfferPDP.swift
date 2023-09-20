@@ -35,9 +35,16 @@ struct DemoAppOfferPDP: View {
                     
                     Button {
                         if let orderID = store.cartViewState.cartId {
-                            if let orderSkuID: OrderSkuID = offerPDPViewState.selectedSkuID {
-                                let orderQuantity: OrderQuantity = 1
-                                store.sender.send(.addSkuToCart(orderID, orderSkuID, orderQuantity))
+                            if let offerSkuID: OfferSkuID = offerPDPViewState.selectedSkuID {
+                                if let orderSkuViewState = cartViewState.orderSkuViewState(offerSkuId: offerSkuID) {
+                                    let newValue = orderSkuViewState.quantity + 1
+                                    store.sender.send(.updateSkuInCart(orderSkuViewState.orderID,
+                                                                       orderSkuViewState.orderSkuID, newValue))
+                                    
+                                } else {
+                                    let orderQuantity: OrderQuantity = 1
+                                    store.sender.send(.addSkuToCart(orderID, offerSkuID, orderQuantity))
+                                }
                             } else {
                                 Logger.error("No Selected SkuID for OfferID \(offerItem.id)")
                             }

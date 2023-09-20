@@ -77,7 +77,6 @@ struct DemoAppOfferPDP: View {
         }
         .withScrollViewBackgroundColor()
         .onDisappear {
-            Logger.debug("PDP Disappear")
             store.state.clearOfferPDPViewState()
         }
             

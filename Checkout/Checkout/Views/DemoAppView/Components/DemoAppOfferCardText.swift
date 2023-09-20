@@ -20,15 +20,13 @@ struct DemoAppOfferCardText: View {
                 .font(.system(size: 14, weight: .regular))
                 .italic()
                 .foregroundColor(FigmaConstants.Colors.systemGrey1)
+                .frame(minHeight: 25)
             Label("\(offerItem.seller)", image: "merchant_name_pre_icon")
                     .font(Font.custom("Inter", size: 14))
                     .labelStyle(.titleAndIcon)
                     .foregroundColor(FigmaConstants.Colors.systemGrey1)
             Text("\(offerItem.intPrice.priceText())")
-              .font(
-                Font.custom("Inter", size: 14)
-                  .weight(.semibold)
-              )
+                .font(.system(size: 14, weight: .bold))
               .foregroundColor(.black)
             
         }

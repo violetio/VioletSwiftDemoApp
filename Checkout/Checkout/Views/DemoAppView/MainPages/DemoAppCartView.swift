@@ -18,11 +18,13 @@ struct DemoAppCartView: View {
         
                 if cartViewState.cartEmpty {
                     Spacer()
-                    Text("Your Cart is Empty")
-                        .font(.system(size: 20, weight: .semibold))
-                    Text("Continue browsing the Demo App.")
-                        .font(.system(size: 14))
-                        .frame(minHeight: 25)
+                    VStack(spacing: 10) {
+                        Text("Your Cart is Empty")
+                            .font(.system(size: 20, weight: .semibold))
+                        Text("Continue browsing the Demo App.")
+                            .font(.system(size: 14))
+                            .frame(minHeight: 25)
+                    }
                     Spacer()
 
                 } else {
@@ -84,9 +86,11 @@ struct DemoAppCartView_Previews: PreviewProvider {
                                 router: Router())
             }.previewDisplayName("1 Sku")
             
-            DemoAppCartView(store: AppStore.mockAppStoreBinding,
-                            cartViewState: CartViewState(order: mockOrder_74599),
-                            router: Router()).previewDisplayName("0 Skus")
+            NavigationStack {
+                DemoAppCartView(store: AppStore.mockAppStoreBinding,
+                                cartViewState: CartViewState(order: mockOrder_74599),
+                                router: Router())
+            }.previewDisplayName("0 Skus")
         }
     }
 }

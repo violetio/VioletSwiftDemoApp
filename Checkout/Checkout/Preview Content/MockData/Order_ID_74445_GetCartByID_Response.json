@@ -1,42 +1,57 @@
 {
   "status" : "IN_PROGRESS",
+  "total" : 26042,
   "user_id" : 10658,
-  "priced" : false,
+  "priced" : true,
   "currency_symbol" : "$",
-  "date_last_modified" : "2023-09-06T17:30:23.000Z",
+  "date_last_modified" : "2023-09-06T21:28:35.000Z",
   "date_created" : "2023-09-06T17:23:13.000Z",
   "currency" : "USD",
+  "shipping_total" : 0,
   "payment_intent_client_secret" : "pi_3NnPYVK29KDiBVld0ZY624ig_secret_JLhbMrspJV9BQRCIJfEnI8R5Q",
   "bags" : [
     {
       "financial_status" : "UNPAID",
       "status" : "IN_PROGRESS",
+      "total" : 1000,
       "fulfillments" : [
 
       ],
       "date_created" : "2023-09-06T17:24:18.000Z",
       "channel" : "APP",
       "currency" : "USD",
+      "shipping_total" : 0,
       "merchant_id" : 10068,
-      "taxes_included" : false,
+      "shipping_method" : {
+        "bag_id" : 60136,
+        "id" : 54248,
+        "price" : 0,
+        "label" : "Economy",
+        "type" : "FLAT_RATE_PRICE",
+        "merchant_id" : 10068,
+        "shipping_method_id" : "9e912b3dae9b0e04b6f1facf08aa7cb2"
+      },
       "discounts" : [
 
       ],
+      "taxes_included" : false,
       "app_id" : 10549,
       "external_currency" : "USD",
       "order_id" : 74445,
+      "tax_total" : 0,
       "id" : 60136,
       "platform" : "SHOPIFY",
-      "sub_total" : 1000,
       "merchant_name" : "Space Drinks",
       "commission_rate" : 15,
+      "sub_total" : 1000,
+      "discount_total" : 0,
       "taxes" : [
 
       ],
+      "remorse_period_ends" : "2023-10-06T17:24:18.000Z",
       "transactions" : [
 
       ],
-      "remorse_period_ends" : "2023-10-06T17:24:18.000Z",
       "wallet_based_checkout" : false,
       "fulfillment_status" : "PROCESSING",
       "skus" : [
@@ -64,32 +79,116 @@
     {
       "financial_status" : "UNPAID",
       "status" : "IN_PROGRESS",
+      "total" : 25042,
       "fulfillments" : [
 
       ],
       "date_created" : "2023-09-06T17:23:54.000Z",
       "channel" : "APP",
       "currency" : "USD",
+      "shipping_total" : 0,
       "merchant_id" : 10189,
-      "taxes_included" : false,
+      "shipping_method" : {
+        "bag_id" : 60135,
+        "id" : 54249,
+        "price" : 0,
+        "label" : "Economy",
+        "type" : "FLAT_RATE_PRICE",
+        "merchant_id" : 10189,
+        "shipping_method_id" : "9e912b3dae9b0e04b6f1facf08aa7cb2"
+      },
       "discounts" : [
 
       ],
+      "taxes_included" : false,
       "app_id" : 10549,
       "external_currency" : "USD",
       "order_id" : 74445,
+      "tax_total" : 2042,
       "id" : 60135,
       "platform" : "SHOPIFY",
-      "sub_total" : 23000,
       "merchant_name" : "the violet garden",
       "commission_rate" : 20,
+      "sub_total" : 23000,
+      "discount_total" : 0,
       "taxes" : [
-
+        {
+          "amount" : 140,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "New York State Tax",
+          "rate" : 4
+        },
+        {
+          "amount" : 780,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "New York State Tax",
+          "rate" : 4
+        },
+        {
+          "amount" : 0,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "New York State Tax",
+          "rate" : 4
+        },
+        {
+          "amount" : 13,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "Kings County Tax",
+          "rate" : 0.375
+        },
+        {
+          "amount" : 73,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "Kings County Tax",
+          "rate" : 0.375
+        },
+        {
+          "amount" : 0,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "Kings County Tax",
+          "rate" : 0.375
+        },
+        {
+          "amount" : 158,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "Brooklyn City Tax",
+          "rate" : 4.5
+        },
+        {
+          "amount" : 878,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "Brooklyn City Tax",
+          "rate" : 4.5
+        },
+        {
+          "amount" : 0,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "Brooklyn City Tax",
+          "rate" : 4.5
+        }
       ],
+      "remorse_period_ends" : "2023-10-06T17:23:54.000Z",
       "transactions" : [
 
       ],
-      "remorse_period_ends" : "2023-10-06T17:23:54.000Z",
       "wallet_based_checkout" : false,
       "fulfillment_status" : "PROCESSING",
       "skus" : [
@@ -151,12 +250,13 @@
     "name" : "Sand Box",
     "first_name" : "Sand"
   },
+  "tax_total" : 2042,
   "id" : 74445,
   "developer_id" : 10454,
-  "sub_total" : 24000,
   "is_guest" : true,
+  "sub_total" : 24000,
   "token" : "017963a267a44cd3978a6a4615cad4c3",
-  "wallet_based_checkout" : false,
+  "discount_total" : 0,
   "customer" : {
     "email" : "alan+sandbox@violet.io",
     "last_name" : "Box",
@@ -164,6 +264,7 @@
     "name" : "Sand Box",
     "first_name" : "Sand"
   },
+  "wallet_based_checkout" : false,
   "guest" : true,
   "billing_address" : {
     "phone" : "",

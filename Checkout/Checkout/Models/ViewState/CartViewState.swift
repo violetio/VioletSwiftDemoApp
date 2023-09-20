@@ -71,7 +71,7 @@ class CartViewState: ObservableObject {
             
             var calcSkuCount: Int = 0
             order.bags?.forEach({ bag in
-                Logger.debug("CartViewState - - - Bag ID: \(bag.id ?? 0)")
+                //Logger.debug("CartViewState - - - Bag ID: \(bag.id ?? 0)")
                 if let bagID = bag.id {
                     updateBagIdSet.insert(bagID)
                     bag.skus?.forEach({ orderSku in
@@ -87,13 +87,11 @@ class CartViewState: ObservableObject {
             for removedBagId in removedBagIdSet {
                 bagViewStates.removeValue(forKey: removedBagId)
             }
-//            let bagIDSortedBagViewStates = bagViewStates.values.sorted(by: { $0.bagID < $1.bagID })
             
             self.skuCount = calcSkuCount
             self.cartNotEmpty = calcSkuCount > 0
             
             if let foundPaymentIntent = order.paymentIntentClientSecret {
-                Logger.debug("foundPaymentIntent: \(foundPaymentIntent)")                
                 self.paymentSheetViewState.update(payment_intent_client_secret: foundPaymentIntent, bagCount: self.bagCount)
             }
 
@@ -145,7 +143,6 @@ class BagViewState: ObservableObject, Identifiable {
         if let initBag = bag {
             update(bag: initBag)
         }
-//        Logger.debug("BagViewState - Init - bagID: \(bagID) - orderSkuIDCount - \(orderSkuViewStates)")
     }
     
     func update(bag: Bag) {

@@ -13,13 +13,14 @@ import StripePaymentSheet
 import Violet
 
 class PaymentSheetViewState: ObservableObject {
-    
+    typealias PKPaymentAuthorizationResultHandler = (PKPaymentAuthorizationResult) -> Void
     @Published var paymentSheet: PaymentSheet? = nil
     @Published var paymentResult: PaymentSheetResult? = nil
     @Published var paymentConfiguration: PaymentSheet.Configuration
     @Published var applePayConfiguration: PaymentSheet.ApplePayConfiguration? = nil
     @Published var payment_intent_client_secret: String? = nil
     @Published var hasPaymentIntent: Bool = false
+    var paymentAuthorizationResultHandler: PKPaymentAuthorizationResultHandler? = nil
 
     private var cancellableSet: Set<AnyCancellable> = []
     
@@ -47,10 +48,9 @@ class PaymentSheetViewState: ObservableObject {
             self.hasPaymentIntent = false
             return
         }
-        //Logger.debug("payment_intent_client_secret: \(payment_intent_client_secret)")
         
         if bagCount <= 1 {
-            self.applePayConfiguration = self.applePayConfiguration()
+            self.applePayConfiguration = self.applePayConfiguration(usage: [.resultSubmitOrder])
             paymentConfiguration.applePay = self.applePayConfiguration
         } else {
             paymentConfiguration.applePay = nil
@@ -64,8 +64,8 @@ class PaymentSheetViewState: ObservableObject {
         self.hasPaymentIntent = true
     }
 
-    func applePayConfiguration(merchantId: String = "io.violet", merchantCountryCode: String = "US", useCustomHandlers: Bool = false) -> PaymentSheet.ApplePayConfiguration {
-        let customHandlers: PaymentSheet.ApplePayConfiguration.Handlers? = useCustomHandlers ? customHandlers() : nil
+    func applePayConfiguration(merchantId: String = "io.violet", merchantCountryCode: String = "US", usage: CustomHandlerUsage = []) -> PaymentSheet.ApplePayConfiguration {
+        let customHandlers: PaymentSheet.ApplePayConfiguration.Handlers? = !usage.isEmpty ? customHandlers(usage: usage) : nil
 
         let config = PaymentSheet.ApplePayConfiguration(merchantId: merchantId,
                                                         merchantCountryCode: merchantCountryCode,
@@ -76,12 +76,30 @@ class PaymentSheetViewState: ObservableObject {
         return config
     }
     
+    struct CustomHandlerUsage: OptionSet {
+        let rawValue: Int
+        static let requireShippingContact = CustomHandlerUsage(rawValue: 1<<0)
+        static let resultSubmitOrder = CustomHandlerUsage(rawValue: 1<<1)
+    
+    }
     static let RequiredShippingContactFields: Set<PKContactField> = [.name,.emailAddress,.postalAddress]
-    func customHandlers() -> PaymentSheet.ApplePayConfiguration.Handlers {
+    func customHandlers(usage: CustomHandlerUsage = []) -> PaymentSheet.ApplePayConfiguration.Handlers {
         let customHandlers = PaymentSheet.ApplePayConfiguration.Handlers { request in
-            request.requiredShippingContactFields = Self.RequiredShippingContactFields
+            if usage.contains(.requireShippingContact) {
+                request.requiredShippingContactFields = Self.RequiredShippingContactFields
+            }
             return request
         } authorizationResultHandler: { result, completion in
+            if usage.contains(.resultSubmitOrder) {
+                switch result.status {
+                case .success:
+                    Logger.debug("authorizationResultHandler .success")
+                default:
+                    Logger.debug("authorizationResultHandler \(result.status)")
+                
+                }
+                self.paymentAuthorizationResultHandler?(result)
+            }
             completion(result)
         }
         return customHandlers

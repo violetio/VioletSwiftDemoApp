@@ -54,7 +54,8 @@ struct DemoAppPaymentView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavBarCartButton(store: $store,
                                  cartViewState: store.cartViewState,
-                                 router: router)
+                                 router: router,
+                                 ignoreNav: true)
             }
         }
     }

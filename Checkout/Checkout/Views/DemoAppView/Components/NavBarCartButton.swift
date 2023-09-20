@@ -11,14 +11,9 @@ struct NavBarCartButton: View {
     @Binding var store: AppStore
     @ObservedObject var cartViewState: CartViewState
     @StateObject var router: Router
-    let lastPathsToIgnore: Set<NavigationKey> = [.cartView, .addShippingAddress, .selectShippingMethod, .payForOrder]
+    @State var ignoreNav = false
     var body: some View {
         Button() {
-            var ignoreNav = false
-            if let lastPath = router.lastPath {
-                Logger.debug("lastPath: \(lastPath)")
-                ignoreNav = lastPathsToIgnore.contains(lastPath)
-            }
             Logger.debug("ignoreNav \(ignoreNav)")
             if !ignoreNav {
                 router.append(NavigationKey.cartView)

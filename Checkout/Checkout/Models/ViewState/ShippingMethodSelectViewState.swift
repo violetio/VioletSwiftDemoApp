@@ -14,6 +14,7 @@ import Combine
  */
 class OrderShippingMethodSelectViewState: ObservableObject {
     var bagIDToBagShippingMethodStateMap: [BagID: BagShippingMethodSelectViewState] = [:]
+    var bagIDToExistingOrderShippingMethod: [BagID: OrderShippingMethod] = [:]
     var bagIDToMerchantNameMap: [BagID: String] = [:]
     @Published var bagIDToShippingMethodIDs: [Int64:String] = [:]
     
@@ -25,28 +26,39 @@ class OrderShippingMethodSelectViewState: ObservableObject {
         guard let foundOrderShippingMethods = orderShippingMethods else {
             return
         }
+        
+        
         if let orderBags = order?.bags {
+            var buildBagIDToExistingOrderShippingMethod: [BagID: OrderShippingMethod] = [:]
             var buildBagIDToMerchantNameMap: [BagID: String] = [:]
             orderBags.forEach { bag in
                 if let bagId = bag.id,
                    let merchantName = bag.merchantName {
                     buildBagIDToMerchantNameMap[bagId] = merchantName
+                    if let bagShippingMethod = bag.shippingMethod {
+                        buildBagIDToExistingOrderShippingMethod[bagId] = bagShippingMethod
+                        
+                    }
                 }
             }
             self.bagIDToMerchantNameMap = buildBagIDToMerchantNameMap
+            self.bagIDToExistingOrderShippingMethod = buildBagIDToExistingOrderShippingMethod
         }
         
         
         var buildBagIDToBagShippingMethodStateMap: [BagID: BagShippingMethodSelectViewState] = [:]
         foundOrderShippingMethods.forEach { shippingMethodWrapper in
-            let next = BagShippingMethodSelectViewState(shippingMethodWrapper: shippingMethodWrapper)
-            if let bagMerchantName = self.bagIDToMerchantNameMap[next.bagID] {
-                next.merchantName = bagMerchantName
+            if let bagId = shippingMethodWrapper.bagId {
+                let next = BagShippingMethodSelectViewState(shippingMethodWrapper: shippingMethodWrapper,
+                                                            orderShippingMethod: bagIDToExistingOrderShippingMethod[bagId])
+                if let bagMerchantName = self.bagIDToMerchantNameMap[next.bagID] {
+                    next.merchantName = bagMerchantName
+                }
+                buildBagIDToBagShippingMethodStateMap[next.bagID] = next
             }
-            buildBagIDToBagShippingMethodStateMap[next.bagID] = next
         }
         self.bagIDToBagShippingMethodStateMap = buildBagIDToBagShippingMethodStateMap
-        Logger.debug("bagIDToBagShippingMethodStateMap: \(bagIDToBagShippingMethodStateMap)")
+//        Logger.debug("bagIDToBagShippingMethodStateMap: \(bagIDToBagShippingMethodStateMap)")
     }
     
     func bagShippingMethodArray() -> BagShippingMethodArray {
@@ -61,14 +73,14 @@ class BagShippingMethodSelectViewState: ObservableObject {
  
     @Published var bagID: Int64 = 0
     var shippingMethodArray: [ShippingMethodArrayItem] = []
-    var merchantName: String = "Merchant Name"
+    var merchantName: String = ""
     @Published var selectedShippingMethodID: String?
     
-    init(shippingMethodWrapper: OrderShippingMethodWrapper?) {
-        self.loadFrom(shippingMethodWrapper: shippingMethodWrapper)
+    init(shippingMethodWrapper: OrderShippingMethodWrapper?, orderShippingMethod: OrderShippingMethod? = nil) {
+        self.loadFrom(shippingMethodWrapper: shippingMethodWrapper, orderShippingMethod: orderShippingMethod)
     }
     
-    func loadFrom(shippingMethodWrapper: OrderShippingMethodWrapper?) {
+    func loadFrom(shippingMethodWrapper: OrderShippingMethodWrapper?, orderShippingMethod: OrderShippingMethod? = nil) {
         guard let found = shippingMethodWrapper else {
             return
         }
@@ -77,7 +89,11 @@ class BagShippingMethodSelectViewState: ObservableObject {
             self.bagID = aBagId
             self.shippingMethodArray = arrayOfShippingMethods.compactMap { ShippingMethodArrayItem( $0) }
         }
-        self.selectedShippingMethodID = Self.preselectedShippingMethodID(shippingMethodArray: self.shippingMethodArray)
+        if let alreadySelectedShippingMethodID = orderShippingMethod?.shippingMethodId {
+            self.selectedShippingMethodID = alreadySelectedShippingMethodID
+        } else {
+            self.selectedShippingMethodID = Self.preselectedShippingMethodID(shippingMethodArray: self.shippingMethodArray)
+        }
         
     }
     

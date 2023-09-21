@@ -35,6 +35,14 @@ struct PaymentSheetPresentView: View {
     }
     
     func handlePaymentSheetResult(_ result: PaymentSheetResult) {
+        switch result {
+        case .completed:
+            if cartViewState.paymentSheetViewState.applePayConfiguration == nil {
+                self.submitOrder()
+            }
+        default:
+            Logger.debug("handlePaymentSheetResult: \(result)")
+        }
         psIsPresented = false
     }
     

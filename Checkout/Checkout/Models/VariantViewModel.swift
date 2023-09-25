@@ -12,6 +12,9 @@ struct VariantViewModel: Equatable, Identifiable {
     
     let name: String
     var variantValuesArray: [VariantValueViewModel]
+    var skuMapKeys: [String] {
+        variantValuesArray.map { "\(name).\($0.name)" }
+    }
     
     init?(variant: Variant) {
         guard let variantName = variant.name else { return nil }
@@ -41,6 +44,8 @@ struct VariantValueViewModel: Equatable, Identifiable {
     var id: String { name }
     
     let name: String
+    
+    
     init?(_ variantValue: VariantValue) {
         guard let aName = variantValue.name else { return nil }
         

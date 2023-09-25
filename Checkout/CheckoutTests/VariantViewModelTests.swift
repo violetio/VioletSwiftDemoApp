@@ -15,12 +15,6 @@ final class VariantViewModelTests: XCTestCase {
         
         let offer_item = DemoProductGridOfferItem.fromEntity(entity: offer_id_12555)!
         XCTAssertEqual(offer_item.variantViewModels.count, 3)
-        
-        let variant = offer_item.variantViewModels[0]
-        Logger.info("Variant Name: \(variant.name)")
-        variant.variantValuesArray.forEach { val in
-            Logger.info("val: \(val.name)")
-        }
     }
     
     func test_3() throws {

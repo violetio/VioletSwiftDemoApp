@@ -1,4 +1,5 @@
 {
     "basePath": null,
-    "resumeCartId": null
+    "resumeCartId": null,
+    "loggerEnabled": false
 }

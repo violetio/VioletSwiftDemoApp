@@ -13,12 +13,7 @@ import XCTest
 
 class APIXCTestCase: XCTestCase {
     
-    let timeout: TimeInterval = 5
-    let pageTimeout: TimeInterval = 15
-    
     let timeout_5s: TimeInterval = 5
-    let timeout_10s: TimeInterval = 10
-    let timeout_15s: TimeInterval = 15
 
 
     func persistData(fileName: String, data: Data) throws {

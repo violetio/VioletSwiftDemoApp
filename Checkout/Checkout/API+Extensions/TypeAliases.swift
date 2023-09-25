@@ -16,3 +16,4 @@ public typealias OrderSkuID = Int64
 public typealias OrderQuantity = Int
 public typealias OrderShippingMethodWrapperArray = [OrderShippingMethodWrapper]
 public typealias BagShippingMethodArray = [BagShippingMethod]
+public typealias SkuIdSetMap = [String: Set<OfferSkuID>]

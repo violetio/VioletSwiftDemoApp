@@ -8,14 +8,17 @@
 import Foundation
 import Violet
 
+/**
+    A Violet `Offer` Entity may have 1 or more `Sku` entities in its `skus: [...]` array.
+    Each `Sku` element has an `id` and 1 or more `SkuVariantValues` entities in its array of `variant_values: [...]`
+    The type `OfferSkuVariants` gathers those properties.
+ **/
 class OfferSkusVariants {
-    let offer: Offer
     var skuIdSetMap: SkuIdSetMap
     var variantViewModels: [VariantViewModel]
     var namedVariantViewModels: [String: VariantViewModel]
     
     init(offer: Offer) {
-        self.offer = offer
         self.skuIdSetMap = Self.buildSkuIdSetMap(offer: offer)
         let allVariantViewModels = Self.buildVariantViewModels(offer: offer)
         self.variantViewModels = allVariantViewModels
@@ -94,8 +97,8 @@ class OfferSkusVariants {
         
         offerSkus.forEach { offerSku in
 
-            if let variantValuesSet = offerSku.variantValues {
-                for variantValue in variantValuesSet {
+            if let skuVariantValuesSet = offerSku.variantValues {
+                for variantValue in skuVariantValuesSet {
                     if let name = variantValue.variant,
                        let value = variantValue.value {
                         if var valueNameSet = variantNameToValueNameSetsMap[name] {

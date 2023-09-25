@@ -27,6 +27,8 @@
 		E70BEB8229B92B220030335E /* CheckoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB8129B92B220030335E /* CheckoutUITests.swift */; };
 		E70BEB8429B92B220030335E /* CheckoutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB8329B92B220030335E /* CheckoutUITestsLaunchTests.swift */; };
 		E70BEB9B29BA54B00030335E /* GetOfferByIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */; };
+		E7107EA82ABCD6C600EB6BE6 /* Order_ID_74445_ShippingAvailable_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = E7107EA72ABCD6C600EB6BE6 /* Order_ID_74445_ShippingAvailable_Response.json */; };
+		E7107EAA2AC2019500EB6BE6 /* InitJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7107EA92AC2019500EB6BE6 /* InitJson.swift */; };
 		E712EAF82A4CDEFB00DDAE15 /* DemoAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */; };
 		E712EAFA2A4E27D700DDAE15 /* FigmaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */; };
 		E712EAFC2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */; };
@@ -191,6 +193,8 @@
 		E70BEB8329B92B220030335E /* CheckoutUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E70BEB9A29BA54B00030335E /* GetOfferByIDRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOfferByIDRequest.swift; sourceTree = "<group>"; };
 		E70BEBA129BA977D0030335E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E7107EA72ABCD6C600EB6BE6 /* Order_ID_74445_ShippingAvailable_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order_ID_74445_ShippingAvailable_Response.json; sourceTree = "<group>"; };
+		E7107EA92AC2019500EB6BE6 /* InitJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitJson.swift; sourceTree = "<group>"; };
 		E712EAF72A4CDEFB00DDAE15 /* DemoAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppView.swift; sourceTree = "<group>"; };
 		E712EAF92A4E27D700DDAE15 /* FigmaConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaConstants.swift; sourceTree = "<group>"; };
 		E712EAFB2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppProductGrid.swift; sourceTree = "<group>"; };
@@ -502,6 +506,7 @@
 		E71CFB9229C3B32C00598B15 /* MockData */ = {
 			isa = PBXGroup;
 			children = (
+				E7107EA72ABCD6C600EB6BE6 /* Order_ID_74445_ShippingAvailable_Response.json */,
 				E72E001029F07B0F009F7BFE /* PreviewMocks.swift */,
 				E77ED7D52AB8FEFA009A5A52 /* Order_ID_74688_GetCartByID_Response.json */,
 				E77ED7CD2AB24D34009A5A52 /* Order_ID_73938_GetCartByID_Response.json */,
@@ -579,6 +584,7 @@
 				E701B2D12A97CA5500A2EFD1 /* country_codes.json */,
 				E7B41C4729F34AE700E7371B /* AutoKeyed.swift */,
 				E701B2D32A97CA6800A2EFD1 /* CountryCodesArray.swift */,
+				E7107EA92AC2019500EB6BE6 /* InitJson.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -806,6 +812,7 @@
 				E77ED7D62AB8FEFA009A5A52 /* Order_ID_74688_GetCartByID_Response.json in Resources */,
 				E77ED7BC2AABB55F009A5A52 /* Order_ID_74599_GetCartByID_Response.json in Resources */,
 				E77ED7A32AA11BAC009A5A52 /* Order_ID_73936_ShippingAvailable_Response.json in Resources */,
+				E7107EA82ABCD6C600EB6BE6 /* Order_ID_74445_ShippingAvailable_Response.json in Resources */,
 				E72E000729EF13A8009F7BFE /* PageOffer_Page_1_MerchantID_10003_Response.json in Resources */,
 				E77ED7DA2ABB6107009A5A52 /* init.json in Resources */,
 				E77ED7A52AA12460009A5A52 /* Order_ID_73936_GetCartByID_Response.json in Resources */,
@@ -899,6 +906,7 @@
 				E77ED7C42AAF9DDF009A5A52 /* ReviewShippingAddress.swift in Sources */,
 				E712EAFE2A4E2CCC00DDAE15 /* DemoProductGridOfferItem.swift in Sources */,
 				E72E001429F0852F009F7BFE /* EntityViewModel.swift in Sources */,
+				E7107EAA2AC2019500EB6BE6 /* InitJson.swift in Sources */,
 				E712EAFC2A4E2B2D00DDAE15 /* DemoAppProductGrid.swift in Sources */,
 				E7F8D5922A82DA0E00F720CD /* DemoAppOfferCardText.swift in Sources */,
 				E7F8D5942A82DE5900F720CD /* OfferImageCarousel.swift in Sources */,

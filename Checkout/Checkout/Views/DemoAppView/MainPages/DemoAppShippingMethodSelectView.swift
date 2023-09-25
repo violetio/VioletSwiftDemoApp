@@ -58,6 +58,12 @@ struct DemoAppShippingMethodSelectView_Previews: PreviewProvider {
     static let mockOrderShippingMethodWrapperArray = MockOffers.load_OrderID_73936_ShippingMethods()!
     static let mockOrderShippingMethodSelectViewState = OrderShippingMethodSelectViewState(orderShippingMethods: mockOrderShippingMethodWrapperArray, order: mockOrder)
     
+    static let mockOrder_74445 = MockOffers.load_OrderID_74445()!
+    static let mockOrderShippingMethodWrapperArray_74445 = MockOffers.load_OrderID_74445_ShippingMethods()!
+    static let mockCartViewState_74445 = CartViewState(order: mockOrder_74445, orderShippingMethods: mockOrderShippingMethodWrapperArray_74445)
+    static let mockAppStore_74445 = AppStore(cartViewState: mockCartViewState_74445)
+    
+    
     static var previews: some View {
         
         Group {
@@ -66,6 +72,12 @@ struct DemoAppShippingMethodSelectView_Previews: PreviewProvider {
                                                 router: Router(),
                                                 cartViewState: CartViewState(order: mockOrder, orderShippingMethods: mockOrderShippingMethodWrapperArray))
             }.previewDisplayName("Multi Bag")
+            
+            NavigationStack {
+                DemoAppShippingMethodSelectView(store: .constant(mockAppStore_74445),
+                                                router: Router(),
+                                                cartViewState: mockCartViewState_74445)
+            }.previewDisplayName("Shipping Methods On Order")
         }
     }
 }

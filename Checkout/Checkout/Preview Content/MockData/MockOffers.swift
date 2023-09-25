@@ -60,6 +60,13 @@ public class MockOffers {
         return decode(from: jsonData)
     }
     
+    public static func load_OrderID_74445_ShippingMethods() -> OrderShippingMethodWrapperArray? {
+        guard let jsonData = jsonData(forResource: "Order_ID_74445_ShippingAvailable_Response") else {
+            return nil
+        }
+        return decode(from: jsonData)
+    }
+    
     public static func load_OrderID_73936() -> Order? {
         guard let jsonData = jsonData(forResource: "Order_ID_73936_GetCartByID_Response") else {
             return nil

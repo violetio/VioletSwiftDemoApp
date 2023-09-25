@@ -5,6 +5,7 @@
 //  Created on 9/13/23
 //
 
+import Combine
 import PassKit
 import SwiftUI
 import StripePaymentSheet
@@ -13,11 +14,13 @@ struct PaymentSheetPresentView: View {
     @Binding var store: AppStore
     @ObservedObject var cartViewState: CartViewState
     @State var psIsPresented: Bool = false
+    @State var paymentSheetEvents: [PaymentSheetEvents] = []
     
     var body: some View {
         if let ps: PaymentSheet = cartViewState.paymentSheetViewState.paymentSheet {
             
             NextButton(buttonText: "Pay", nextEnabled: .constant(true)) {
+                paymentSheetEvents.append(.presented)
                 psIsPresented = true
                 Logger.debug("psIsPresented: \(psIsPresented)")
             }.paymentSheet(isPresented: $psIsPresented,
@@ -29,13 +32,29 @@ struct PaymentSheetPresentView: View {
                 cartViewState.paymentSheetViewState.paymentAuthorizationResultHandler = nil
             }
             
+            
         } else {
             Text("No PaymentSheet Init")
         }
     }
     
     func handlePaymentSheetResult(_ result: PaymentSheetResult) {
+        Logger.debug("handlePaymentSheetResult")
+        switch result {
+        case .completed:
+            Logger.debug("handlePaymentSheetResult: \(result)")
+            if !paymentSheetEvents.contains(.orderSubmitted) {
+                Logger.debug("submitOrder")
+                paymentSheetEvents.append(.orderSubmitted)
+                self.submitOrder()
+            } else {
+                Logger.debug("applePayConfiguration non-nil!")
+            }
+        default:
+            Logger.debug("handlePaymentSheetResult: \(result)")
+        }
         psIsPresented = false
+        paymentSheetEvents = []
     }
     
     /**
@@ -44,7 +63,10 @@ struct PaymentSheetPresentView: View {
     func handlePaymentAuthorizationResult(_ result: PKPaymentAuthorizationResult) {
         switch result.status {
         case .success:
-            self.submitOrder()
+            
+                paymentSheetEvents.append(.orderSubmitted)
+                self.submitOrder()
+            
         default:
             Logger.debug("authorizationResultHandler \(result.status)")
         
@@ -54,9 +76,17 @@ struct PaymentSheetPresentView: View {
     
     func submitOrder() {
         if let orderId = store.state.cartViewState.cartId {
+            Logger.debug("submit orderId: \(orderId)")
             store.send(.submitOrder(orderId))
+        } else {
+            Logger.debug("submit NO orderId")
         }
         
+    }
+    
+    enum PaymentSheetEvents {
+        case presented
+        case orderSubmitted
     }
 }
 

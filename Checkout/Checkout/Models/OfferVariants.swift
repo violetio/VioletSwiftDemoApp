@@ -43,9 +43,9 @@ class OfferVariants {
 
     static func buildSkuIdSetMap(offer: Offer) -> SkuIdSetMap{
         var skuSetIDsMap: SkuIdSetMap = [:]
-        guard let variantArray = offer.variants else { return skuSetIDsMap }
+        guard let variantSet = offer.variants else { return skuSetIDsMap }
         
-        for aVariant in variantArray {
+        for aVariant in variantSet {
             guard let variantName = aVariant.name else { continue }
             guard let variantValuesArray = aVariant.values else { continue }
             for aVariantValue in variantValuesArray {

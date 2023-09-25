@@ -10,7 +10,6 @@ import Violet
 
 class OfferPDPViewState: ObservableObject {
     @Published var offer: Offer
-    @Published var variantsViewModel: VariantsViewModel
     @Published var offerSkusVariants: OfferSkusVariants
     @Published var selectedSkuID: Int64? = nil
     @Published var selectedVariantKeys: [String: String] = [:]
@@ -22,7 +21,6 @@ class OfferPDPViewState: ObservableObject {
     init(offer: Offer) {
         Logger.debug("OfferPDPViewState: Init - OfferID: \(offer.id ?? 0)")
         self.offer = offer
-        self.variantsViewModel = VariantsViewModel(offer: offer)
         self.offerSkusVariants = OfferSkusVariants(offer: offer)
         let variantsArray = offer.variantsArray()
         Logger.debug("OfferPDPViewState: variantsArray - Count: \(variantsArray.count)")

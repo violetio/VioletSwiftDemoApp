@@ -16,8 +16,8 @@ struct CheckoutApp: App {
     
     init() {
         StripeAPI.defaultPublishableKey = "pk_test_UHg8oLvg4rrDCbvtqfwTE8qd"
-//        **Point VioletAPI to proxy host address by setting in `init.json` as "basePath"**
-//        if let initBasePath = InitJson.initData["basePath"] {
+        //**Point VioletAPI to proxy host address by setting in `init.json` as "basePath"**
+//        if let initBasePath = InitJson.initData["basePath"] as? String {
 //            VioletAPI.basePath = initBasePath
 //        }
 

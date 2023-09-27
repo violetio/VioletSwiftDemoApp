@@ -28,9 +28,6 @@ class GetPageOffersByMerchantIDRequest: ProxyAPICall<PageOffer> {
         CatalogOffersAPI.searchOffers(page: page, size: size, body: OfferSearchRequest(merchantId: self.merchantId)) { [weak self] data, error in
             guard let self = self else { return }
             self.logError(error)
-            if let anError = error {
-                print("\(anError.localizedDescription)")
-            }
             self.callIsCompleted(errorResponse: error, dataResponse: data)
         }
     }

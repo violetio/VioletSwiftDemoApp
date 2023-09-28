@@ -71,6 +71,8 @@ struct DemoAppOfferPDP: View {
                         .font(Font.custom("Inter", size: 14))
                         .foregroundColor(.black)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
+                    
+                    Spacer()
                 }
                 .padding(0)
                 .frame(width: 340, alignment: .topLeading)

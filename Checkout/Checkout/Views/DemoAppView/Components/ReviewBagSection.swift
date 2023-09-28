@@ -10,13 +10,15 @@ import SwiftUI
 struct ReviewBagSection: View {
     @Binding var store: AppStore
     @ObservedObject var bagViewState: BagViewState
+    var locked = true
     
     var body: some View {
         Section() {
             Label(bagViewState.bagMerchantName, image: "merchant_name_pre_icon")
             ForEach(bagViewState.orderSkuViewStatesArray) { orderSkuViewState in
                 CartBagSkuCell(store: $store,
-                               orderSkuViewState: orderSkuViewState)
+                               orderSkuViewState: orderSkuViewState,
+                               locked: locked)
                 
             }
             BagTotalView

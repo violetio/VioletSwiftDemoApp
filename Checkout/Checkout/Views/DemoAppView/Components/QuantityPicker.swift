@@ -35,7 +35,7 @@ struct QuantityPicker: View {
                     .font(.system(size: 12, weight: .regular))
                 Spacer()
             }
-        }.frame(maxWidth: 60, maxHeight: 21)
+        }.frame(maxWidth: 64, maxHeight: 21)
             //.border(Color.blue)
             .onChange(of: quantitySelected) { newValue in
                 Logger.info("Quantity now: \(newValue)")

@@ -29,13 +29,13 @@ public extension Offer {
         return self.albums?.first
     }
     
-    func allAlbumMediaURLs() -> [URL] {
+    func allAlbumMediaURLs(width: Int = 340) -> [URL] {
         guard let albumSet = self.albums else {
             return []
         }
         let urlsOut: [URL] = albumSet.reduce(into: [URL](), { partialResult, nextAlbum in
             let urlString = nextAlbum.media?.compactMap {  $0.url } ?? []
-            let urls = urlString.compactMap {  URL(string: $0)}
+            let urls = urlString.compactMap {  URL(string: "\($0)?width=\(width)")}
             partialResult.append(contentsOf: urls)
         })
         return urlsOut

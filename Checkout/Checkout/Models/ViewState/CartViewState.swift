@@ -212,7 +212,7 @@ class OrderSkuViewState: ObservableObject, Identifiable {
         self.name = orderSku.name ?? ""
         self.brand = orderSku.brand ?? ""
         if let urlString = orderSku.thumbnail {
-            thumbURL = URL(string: urlString)
+            thumbURL = URL(string: "\(urlString)?width=72")
         }
     }
     

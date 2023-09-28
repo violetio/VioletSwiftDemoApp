@@ -1,0 +1,30 @@
+[
+  {
+    "shipping_methods" : [
+      {
+        "label" : "Economy",
+        "bag_id" : 60136,
+        "price" : 0,
+        "shipping_method_id" : "9e912b3dae9b0e04b6f1facf08aa7cb2"
+      },
+      {
+        "label" : "Standard",
+        "bag_id" : 60136,
+        "price" : 990,
+        "shipping_method_id" : "b55f835102bc5d6c9dea1c8e93e46baa"
+      }
+    ],
+    "bag_id" : 60136
+  },
+  {
+    "shipping_methods" : [
+      {
+        "label" : "Economy",
+        "bag_id" : 60135,
+        "price" : 0,
+        "shipping_method_id" : "9e912b3dae9b0e04b6f1facf08aa7cb2"
+      }
+    ],
+    "bag_id" : 60135
+  }
+]

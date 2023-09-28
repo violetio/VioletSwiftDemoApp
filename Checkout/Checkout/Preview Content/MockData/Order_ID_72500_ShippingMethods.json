@@ -1,0 +1,15 @@
+[
+    {
+        "bag_id": 58584,
+        "shipping_methods": [
+            {
+                "carrier": "OTHER",
+                "label": "Ground",
+                "price": 500,
+                "external_id": "ground",
+                "shipping_method_id": "ground",
+                "bag_id": 58584
+            }
+        ]
+    }
+]

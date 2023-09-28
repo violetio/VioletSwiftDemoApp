@@ -1,0 +1,121 @@
+{
+  "app_id" : 10199,
+  "id" : 71169,
+  "date_last_modified" : "2023-08-10T22:05:58.000Z",
+  "status" : "IN_PROGRESS",
+  "sub_total" : 44500,
+  "priced" : false,
+  "wallet_based_checkout" : false,
+  "developer_id" : 10174,
+  "is_guest" : true,
+  "user_id" : 10268,
+  "token" : "541494b498814592a39e91acd9c518ec",
+  "date_created" : "2023-08-10T22:05:58.000Z",
+  "stripe_key" : "pk_test_UHg8oLvg4rrDCbvtqfwTE8qd",
+  "guest" : true,
+  "currency_symbol" : "$",
+  "bags" : [
+    {
+      "financial_status" : "UNPAID",
+      "status" : "IN_PROGRESS",
+      "fulfillments" : [
+
+      ],
+      "date_created" : "2023-08-11T16:05:59.000Z",
+      "channel" : "APP",
+      "currency" : "USD",
+      "merchant_id" : 10003,
+      "taxes_included" : false,
+      "discounts" : [
+
+      ],
+      "app_id" : 10199,
+      "external_currency" : "USD",
+      "order_id" : 71169,
+      "id" : 56808,
+      "platform" : "ECWID",
+      "sub_total" : 44500,
+      "merchant_name" : "Nordies Store",
+      "commission_rate" : 10,
+      "taxes" : [
+
+      ],
+      "transactions" : [
+
+      ],
+      "remorse_period_ends" : "2023-09-10T16:05:59.000Z",
+      "wallet_based_checkout" : false,
+      "fulfillment_status" : "PROCESSING",
+      "skus" : [
+        {
+          "app_id" : 10199,
+          "id" : 74608,
+          "external_id" : "141418660",
+          "quantity" : 3,
+          "brand" : "Vio",
+          "width" : 0,
+          "sku_id" : 33524,
+          "length" : 0,
+          "weight" : 1,
+          "price" : 9500,
+          "product_id" : "d45fc564046d43c5adee46b95d153d8e",
+          "line_price" : 28500,
+          "height" : 0,
+          "available" : true,
+          "merchant_id" : 10003,
+          "product_type" : "PHYSICAL",
+          "thumbnail" : "https:\/\/d2j6dbq0eux0bg.cloudfront.net\/images\/13101742\/1089530467.jpg",
+          "name" : "Venn Puzzle",
+          "status" : "IN_PROGRESS"
+        },
+        {
+          "app_id" : 10199,
+          "id" : 74883,
+          "external_id" : "options::126187568::Aero Blue\/ Scarlet\/ Navy_5 Women's \/ 4 Men's_M",
+          "quantity" : 1,
+          "brand" : "ADIDAS",
+          "width" : 0,
+          "sku_id" : 32113,
+          "length" : 0,
+          "weight" : 0,
+          "price" : 8000,
+          "product_id" : "0ac36fc015664051ba1ea238b88a495c",
+          "line_price" : 8000,
+          "height" : 0,
+          "available" : true,
+          "merchant_id" : 10003,
+          "product_type" : "PHYSICAL",
+          "thumbnail" : "https:\/\/d2j6dbq0eux0bg.cloudfront.net\/images\/13101742\/954601682.jpg",
+          "name" : "Continental 80 Sneaker - Aero Blue\/ Scarlet\/ Navy\/5 Women's \/ 4 Men's\/M",
+          "status" : "IN_PROGRESS"
+        },
+        {
+          "app_id" : 10199,
+          "id" : 74884,
+          "external_id" : "options::126187568::Aero Blue\/ Scarlet\/ Navy_9.5 Women's \/ 8.5 Men's_M",
+          "quantity" : 1,
+          "brand" : "ADIDAS",
+          "width" : 0,
+          "sku_id" : 32099,
+          "length" : 0,
+          "weight" : 0,
+          "price" : 8000,
+          "product_id" : "0ac36fc015664051ba1ea238b88a495c",
+          "line_price" : 8000,
+          "height" : 0,
+          "available" : true,
+          "merchant_id" : 10003,
+          "product_type" : "PHYSICAL",
+          "thumbnail" : "https:\/\/d2j6dbq0eux0bg.cloudfront.net\/images\/13101742\/954601682.jpg",
+          "name" : "Continental 80 Sneaker - Aero Blue\/ Scarlet\/ Navy\/9.5 Women's \/ 8.5 Men's\/M",
+          "status" : "IN_PROGRESS"
+        }
+      ],
+      "external_checkout" : true
+    }
+  ],
+  "currency" : "USD",
+  "errors" : [
+
+  ]
+}

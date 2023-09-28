@@ -1,0 +1,282 @@
+{
+  "status" : "IN_PROGRESS",
+  "total" : 27032,
+  "user_id" : 10658,
+  "priced" : true,
+  "currency_symbol" : "$",
+  "date_last_modified" : "2023-09-21T21:39:13.000Z",
+  "date_created" : "2023-09-06T17:23:13.000Z",
+  "currency" : "USD",
+  "shipping_total" : 990,
+  "payment_intent_client_secret" : "pi_3NsuaaK29KDiBVld1wGy3o22_secret_Sdcr9RKBYMPXgv0fOxc9YmK7u",
+  "bags" : [
+    {
+      "financial_status" : "UNPAID",
+      "status" : "IN_PROGRESS",
+      "total" : 1990,
+      "fulfillments" : [
+
+      ],
+      "date_created" : "2023-09-06T17:24:18.000Z",
+      "channel" : "APP",
+      "currency" : "USD",
+      "shipping_total" : 990,
+      "merchant_id" : 10068,
+      "shipping_method" : {
+        "bag_id" : 60136,
+        "id" : 55242,
+        "price" : 990,
+        "label" : "Standard",
+        "type" : "FLAT_RATE_PRICE",
+        "merchant_id" : 10068,
+        "shipping_method_id" : "b55f835102bc5d6c9dea1c8e93e46baa"
+      },
+      "discounts" : [
+
+      ],
+      "taxes_included" : false,
+      "app_id" : 10549,
+      "external_currency" : "USD",
+      "order_id" : 74445,
+      "tax_total" : 0,
+      "id" : 60136,
+      "platform" : "SHOPIFY",
+      "merchant_name" : "Space Drinks",
+      "commission_rate" : 15,
+      "sub_total" : 1000,
+      "discount_total" : 0,
+      "taxes" : [
+
+      ],
+      "remorse_period_ends" : "2023-10-06T17:24:18.000Z",
+      "transactions" : [
+
+      ],
+      "wallet_based_checkout" : false,
+      "fulfillment_status" : "PROCESSING",
+      "skus" : [
+        {
+          "app_id" : 10549,
+          "quantity" : 1,
+          "id" : 78737,
+          "external_id" : "42519626743983",
+          "brand" : "The CBM Store",
+          "sku_id" : 196777,
+          "weight" : 3,
+          "price" : 1000,
+          "product_id" : "f9ad79876bfd4504b0fc400d5b2e7487",
+          "line_price" : 1000,
+          "available" : true,
+          "merchant_id" : 10068,
+          "product_type" : "PHYSICAL",
+          "thumbnail" : "https:\/\/cdn.shopify.com\/s\/files\/1\/0621\/1849\/4383\/files\/wealthy_Spacewalk_Slushie_ce45b9bf-6733-4b3a-867a-f0ccfdaa1cf4.png",
+          "name" : "Spacewalk Slushie - 5 oz.",
+          "status" : "IN_PROGRESS"
+        }
+      ],
+      "external_checkout" : true
+    },
+    {
+      "financial_status" : "UNPAID",
+      "status" : "IN_PROGRESS",
+      "total" : 25042,
+      "fulfillments" : [
+
+      ],
+      "date_created" : "2023-09-06T17:23:54.000Z",
+      "channel" : "APP",
+      "currency" : "USD",
+      "shipping_total" : 0,
+      "merchant_id" : 10189,
+      "shipping_method" : {
+        "bag_id" : 60135,
+        "id" : 55243,
+        "price" : 0,
+        "label" : "Economy",
+        "type" : "FLAT_RATE_PRICE",
+        "merchant_id" : 10189,
+        "shipping_method_id" : "9e912b3dae9b0e04b6f1facf08aa7cb2"
+      },
+      "discounts" : [
+
+      ],
+      "taxes_included" : false,
+      "app_id" : 10549,
+      "external_currency" : "USD",
+      "order_id" : 74445,
+      "tax_total" : 2042,
+      "id" : 60135,
+      "platform" : "SHOPIFY",
+      "merchant_name" : "the violet garden",
+      "commission_rate" : 20,
+      "sub_total" : 23000,
+      "discount_total" : 0,
+      "taxes" : [
+        {
+          "amount" : 140,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "New York State Tax",
+          "rate" : 4
+        },
+        {
+          "amount" : 780,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "New York State Tax",
+          "rate" : 4
+        },
+        {
+          "amount" : 0,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "New York State Tax",
+          "rate" : 4
+        },
+        {
+          "amount" : 158,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "New York City City Tax",
+          "rate" : 4.5
+        },
+        {
+          "amount" : 878,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "New York City City Tax",
+          "rate" : 4.5
+        },
+        {
+          "amount" : 0,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "New York City City Tax",
+          "rate" : 4.5
+        },
+        {
+          "amount" : 13,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "Metropolitan Commuter Transportation District",
+          "rate" : 0.375
+        },
+        {
+          "amount" : 73,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "Metropolitan Commuter Transportation District",
+          "rate" : 0.375
+        },
+        {
+          "amount" : 0,
+          "order_id" : 74445,
+          "state" : "NY",
+          "merchant_id" : 10189,
+          "description" : "Metropolitan Commuter Transportation District",
+          "rate" : 0.375
+        }
+      ],
+      "remorse_period_ends" : "2023-10-06T17:23:54.000Z",
+      "transactions" : [
+
+      ],
+      "wallet_based_checkout" : false,
+      "fulfillment_status" : "PROCESSING",
+      "skus" : [
+        {
+          "app_id" : 10549,
+          "quantity" : 1,
+          "id" : 78735,
+          "external_id" : "45101059375405",
+          "brand" : "The Violet Garden",
+          "sku_id" : 196592,
+          "weight" : 3,
+          "price" : 3500,
+          "product_id" : "87f88388d8a44de6b7ea74d1b822926f",
+          "line_price" : 3500,
+          "available" : true,
+          "merchant_id" : 10189,
+          "product_type" : "PHYSICAL",
+          "thumbnail" : "https:\/\/cdn.shopify.com\/s\/files\/1\/0758\/9363\/7421\/files\/wealthy_floral_design_tshirt_with_a_blue_pastel_colour_backgrou_f3388107-d83b-4d9f-bae1-0a4198e412fd.png",
+          "name" : "Pastel Flower Land - Extra-Large \/ Design One \/ Blue",
+          "status" : "IN_PROGRESS"
+        },
+        {
+          "app_id" : 10549,
+          "quantity" : 1,
+          "id" : 78736,
+          "external_id" : "45101364805933",
+          "brand" : "The Violet Garden",
+          "sku_id" : 196650,
+          "weight" : 4,
+          "price" : 19500,
+          "product_id" : "7f2312954c294c5eb0c6082ba924a2cb",
+          "line_price" : 19500,
+          "available" : true,
+          "merchant_id" : 10189,
+          "product_type" : "PHYSICAL",
+          "thumbnail" : "https:\/\/cdn.shopify.com\/s\/files\/1\/0758\/9363\/7421\/files\/wealthy_floral_design_shoes_floating_with_a_red_pastel_colour_b_f6378c09-551b-4212-9e52-f88e7a66f1b1.png",
+          "name" : "Fire Fist Ace Runner - 43 \/ Power",
+          "status" : "IN_PROGRESS"
+        }
+      ],
+      "external_checkout" : true
+    }
+  ],
+  "stripe_key" : "pk_test_UHg8oLvg4rrDCbvtqfwTE8qd",
+  "errors" : [
+
+  ],
+  "app_id" : 10549,
+  "shipping_address" : {
+    "phone" : "",
+    "city" : "Brooklyn",
+    "country" : "US",
+    "address_1" : "999 Meseroles Street",
+    "postal_code" : "11237",
+    "last_name" : "Box",
+    "state" : "NY",
+    "address_2" : "",
+    "type" : "SHIPPING",
+    "name" : "Sand Box",
+    "first_name" : "Sand"
+  },
+  "tax_total" : 2042,
+  "id" : 74445,
+  "developer_id" : 10454,
+  "is_guest" : true,
+  "sub_total" : 24000,
+  "token" : "017963a267a44cd3978a6a4615cad4c3",
+  "discount_total" : 0,
+  "customer" : {
+    "email" : "alan+sandbox@violet.io",
+    "last_name" : "Box",
+    "user_id" : 10658,
+    "name" : "Sand Box",
+    "first_name" : "Sand"
+  },
+  "wallet_based_checkout" : false,
+  "guest" : true,
+  "billing_address" : {
+    "phone" : "",
+    "city" : "Brooklyn",
+    "country" : "US",
+    "address_1" : "999 Meseroles Street",
+    "postal_code" : "11237",
+    "last_name" : "Box",
+    "state" : "NY",
+    "address_2" : "",
+    "type" : "BILLING",
+    "name" : "Sand Box",
+    "first_name" : "Sand"
+  }
+}

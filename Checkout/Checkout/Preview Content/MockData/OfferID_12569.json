@@ -1,0 +1,2822 @@
+{
+    "id": 12569,
+    "product_id": "6bb158a41c684a6ba1b2abe3740b3921",
+    "external_id": "126187482",
+    "external_url": "https://violetio.ecwid.com/Windrunner-Colorblock-Jacket-p126187482",
+    "name": "'Windrunner' Colorblock Jacket",
+    "description": "This bold color-blocked running jacket of tough ripstop fabric is framed by banded trim for a distraction-free fit and topped by an adjustable hood for extra coverage. The lightweight design features a ventilating back yoke and breathable mesh lining so you don't overheat from warm-up to cool-down.",
+    "source": "ECWID",
+    "seller": "Nordies Store",
+    "vendor": "Vio",
+    "merchant_id": 10003,
+    "available": true,
+    "visible": true,
+    "min_price": 10000,
+    "max_price": 10000,
+    "currency": "USD",
+    "meta": [],
+    "variants": [
+        {
+            "id": 861174,
+            "name": "Color",
+            "visual": true,
+            "values": [
+                {
+                    "id": 6063217,
+                    "name": "Anthracite/ Barely Volt",
+                    "sku_ids": [
+                        33440,
+                        33412,
+                        33429,
+                        33431,
+                        33432
+                    ]
+                }
+            ]
+        }
+    ],
+    "skus": [
+        {
+            "id": 33429,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850082",
+            "name": "'Windrunner' Colorblock Jacket - Anthracite/ Barely Volt/XX-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39156,
+                    "parent_id": 33429,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66804,
+                            "album_id": 39156,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574697.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574697.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66804,
+                        "album_id": 39156,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574697.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574697.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "XX-Large"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Anthracite/ Barely Volt"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33443,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38527276",
+            "name": "'Windrunner' Colorblock Jacket - Red Sepia/ Black/ Taupe/ White/Small",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39157,
+                    "parent_id": 33443,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66805,
+                            "album_id": 39157,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574707.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574707.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66805,
+                        "album_id": 39157,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574707.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574707.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Small"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Red Sepia/ Black/ Taupe/ White"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33435,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850083",
+            "name": "'Windrunner' Colorblock Jacket - Diffused Blue/ Cobalt Tint/Medium",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39158,
+                    "parent_id": 33435,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66806,
+                            "album_id": 39158,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574917.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574917.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66806,
+                        "album_id": 39158,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574917.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574917.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Diffused Blue/ Cobalt Tint"
+                },
+                {
+                    "variant": "Size",
+                    "value": "Medium"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33419,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38527278",
+            "name": "'Windrunner' Colorblock Jacket - Red Sepia/ Black/ Taupe/ White/X-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39159,
+                    "parent_id": 33419,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66807,
+                            "album_id": 39159,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574767.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574767.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66807,
+                        "album_id": 39159,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574767.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574767.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Red Sepia/ Black/ Taupe/ White"
+                },
+                {
+                    "variant": "Size",
+                    "value": "X-Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33439,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850084",
+            "name": "'Windrunner' Colorblock Jacket - Blue Force/ Team Red/Medium",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39160,
+                    "parent_id": 33439,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66808,
+                            "album_id": 39160,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574892.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574892.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66808,
+                        "album_id": 39160,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574892.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574892.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Medium"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Blue Force/ Team Red"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33441,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850085",
+            "name": "'Windrunner' Colorblock Jacket - Diffused Blue/ Cobalt Tint/Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39161,
+                    "parent_id": 33441,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66809,
+                            "album_id": 39161,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574847.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574847.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66809,
+                        "album_id": 39161,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574847.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574847.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Diffused Blue/ Cobalt Tint"
+                },
+                {
+                    "variant": "Size",
+                    "value": "Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33414,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850086",
+            "name": "'Windrunner' Colorblock Jacket - Diffused Blue/ Cobalt Tint/Small",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39162,
+                    "parent_id": 33414,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66810,
+                            "album_id": 39162,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574822.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574822.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66810,
+                        "album_id": 39162,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574822.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574822.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Diffused Blue/ Cobalt Tint"
+                },
+                {
+                    "variant": "Size",
+                    "value": "Small"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33420,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850087",
+            "name": "'Windrunner' Colorblock Jacket - Light Cream/ Anthracite/Medium",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39163,
+                    "parent_id": 33420,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66811,
+                            "album_id": 39163,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574223.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574223.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66811,
+                        "album_id": 39163,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574223.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574223.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Medium"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Light Cream/ Anthracite"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33430,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850088",
+            "name": "'Windrunner' Colorblock Jacket - Midnight Navy/ Olive Canvas/Small",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39164,
+                    "parent_id": 33430,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66812,
+                            "album_id": 39164,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574143.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574143.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66812,
+                        "album_id": 39164,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574143.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574143.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Small"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Midnight Navy/ Olive Canvas"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33457,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850089",
+            "name": "'Windrunner' Colorblock Jacket - Diffused Blue/ Cobalt Tint/XX-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39165,
+                    "parent_id": 33457,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66813,
+                            "album_id": 39165,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574113.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574113.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66813,
+                        "album_id": 39165,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574113.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574113.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Diffused Blue/ Cobalt Tint"
+                },
+                {
+                    "variant": "Size",
+                    "value": "XX-Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33451,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "35826702",
+            "name": "'Windrunner' Colorblock Jacket - Team Red/ Thunder Blue/ Blue/XX-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39166,
+                    "parent_id": 33451,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66814,
+                            "album_id": 39166,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574667.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574667.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66814,
+                        "album_id": 39166,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574667.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574667.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Team Red/ Thunder Blue/ Blue"
+                },
+                {
+                    "variant": "Size",
+                    "value": "XX-Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33459,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38416845",
+            "name": "'Windrunner' Colorblock Jacket - Ashen/ Ocean/ White/ Igloo/Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39167,
+                    "parent_id": 33459,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66815,
+                            "album_id": 39167,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574647.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574647.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66815,
+                        "album_id": 39167,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574647.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574647.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Large"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Ashen/ Ocean/ White/ Igloo"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33415,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38416841",
+            "name": "'Windrunner' Colorblock Jacket - Ashen/ Ocean/ White/ Igloo/Medium",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39168,
+                    "parent_id": 33415,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66816,
+                            "album_id": 39168,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574579.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574579.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66816,
+                        "album_id": 39168,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574579.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574579.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Medium"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Ashen/ Ocean/ White/ Igloo"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33447,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38416842",
+            "name": "'Windrunner' Colorblock Jacket - Ashen/ Ocean/ White/ Igloo/XX-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39169,
+                    "parent_id": 33447,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66817,
+                            "album_id": 39169,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574627.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574627.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66817,
+                        "album_id": 39169,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574627.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574627.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "XX-Large"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Ashen/ Ocean/ White/ Igloo"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33416,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "options::126187482::Ocean Bliss/ Aegean Storm_Medium",
+            "name": "'Windrunner' Colorblock Jacket - Ocean Bliss/ Aegean Storm/Medium",
+            "in_stock": true,
+            "qty_available": 9969,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Medium"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Ocean Bliss/ Aegean Storm"
+                }
+            ],
+            "type": "PHYSICAL",
+            "status": "AVAILABLE",
+            "date_created": "2018-12-11T20:47:58+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33455,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38416840",
+            "name": "'Windrunner' Colorblock Jacket - Purple/ Blue/ University Red/Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39170,
+                    "parent_id": 33455,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66818,
+                            "album_id": 39170,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574547.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574547.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66818,
+                        "album_id": 39170,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574547.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574547.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Large"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Purple/ Blue/ University Red"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33437,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850090",
+            "name": "'Windrunner' Colorblock Jacket - Diffused Blue/ Cobalt Tint/X-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39171,
+                    "parent_id": 33437,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66819,
+                            "album_id": 39171,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574427.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574427.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66819,
+                        "album_id": 39171,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574427.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574427.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Diffused Blue/ Cobalt Tint"
+                },
+                {
+                    "variant": "Size",
+                    "value": "X-Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33454,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850091",
+            "name": "'Windrunner' Colorblock Jacket - Light Cream/ Anthracite/Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39172,
+                    "parent_id": 33454,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66820,
+                            "album_id": 39172,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574402.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574402.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66820,
+                        "album_id": 39172,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574402.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574402.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Light Cream/ Anthracite"
+                },
+                {
+                    "variant": "Size",
+                    "value": "Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33421,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850092",
+            "name": "'Windrunner' Colorblock Jacket - Midnight Navy/ Olive Canvas/Medium",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39174,
+                    "parent_id": 33421,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66822,
+                            "album_id": 39174,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574392.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574392.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66822,
+                        "album_id": 39174,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574392.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574392.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Medium"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Midnight Navy/ Olive Canvas"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33431,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850070",
+            "name": "'Windrunner' Colorblock Jacket - Anthracite/ Barely Volt/Small",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39173,
+                    "parent_id": 33431,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66821,
+                            "album_id": 39173,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574387.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574387.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66821,
+                        "album_id": 39173,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574387.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574387.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Small"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Anthracite/ Barely Volt"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33424,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850093",
+            "name": "'Windrunner' Colorblock Jacket - Light Cream/ Anthracite/Small",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39175,
+                    "parent_id": 33424,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66823,
+                            "album_id": 39175,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574372.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574372.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66823,
+                        "album_id": 39175,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574372.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574372.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Small"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Light Cream/ Anthracite"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33453,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850094",
+            "name": "'Windrunner' Colorblock Jacket - Midnight Navy/ Olive Canvas/XX-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39176,
+                    "parent_id": 33453,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66824,
+                            "album_id": 39176,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574532.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574532.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66824,
+                        "album_id": 39176,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574532.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574532.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "XX-Large"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Midnight Navy/ Olive Canvas"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33438,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850095",
+            "name": "'Windrunner' Colorblock Jacket - Light Cream/ Anthracite/X-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39178,
+                    "parent_id": 33438,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66826,
+                            "album_id": 39178,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574522.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574522.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66826,
+                        "album_id": 39178,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574522.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574522.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Light Cream/ Anthracite"
+                },
+                {
+                    "variant": "Size",
+                    "value": "X-Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33449,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850073",
+            "name": "'Windrunner' Colorblock Jacket - Blue Force/ Team Red/Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39177,
+                    "parent_id": 33449,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66825,
+                            "album_id": 39177,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574502.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574502.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66825,
+                        "album_id": 39177,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574502.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574502.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Blue Force/ Team Red"
+                },
+                {
+                    "variant": "Size",
+                    "value": "Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33413,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850096",
+            "name": "'Windrunner' Colorblock Jacket - Midnight Navy/ Olive Canvas/Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39179,
+                    "parent_id": 33413,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66827,
+                            "album_id": 39179,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574472.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574472.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66827,
+                        "album_id": 39179,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574472.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574472.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Large"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Midnight Navy/ Olive Canvas"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33412,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850075",
+            "name": "'Windrunner' Colorblock Jacket - Anthracite/ Barely Volt/Medium",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39180,
+                    "parent_id": 33412,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66828,
+                            "album_id": 39180,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574452.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574452.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66828,
+                        "album_id": 39180,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574452.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574452.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Medium"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Anthracite/ Barely Volt"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33445,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850098",
+            "name": "'Windrunner' Colorblock Jacket - Light Cream/ Anthracite/XX-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39181,
+                    "parent_id": 33445,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66829,
+                            "album_id": 39181,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574632.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574632.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66829,
+                        "album_id": 39181,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574632.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574632.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Light Cream/ Anthracite"
+                },
+                {
+                    "variant": "Size",
+                    "value": "XX-Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33423,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850077",
+            "name": "'Windrunner' Colorblock Jacket - Blue Force/ Team Red/X-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39182,
+                    "parent_id": 33423,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66830,
+                            "album_id": 39182,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574602.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574602.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66830,
+                        "album_id": 39182,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574602.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574602.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Blue Force/ Team Red"
+                },
+                {
+                    "variant": "Size",
+                    "value": "X-Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33442,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850099",
+            "name": "'Windrunner' Colorblock Jacket - Midnight Navy/ Olive Canvas/X-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39183,
+                    "parent_id": 33442,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66831,
+                            "album_id": 39183,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574607.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574607.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66831,
+                        "album_id": 39183,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574607.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574607.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "X-Large"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Midnight Navy/ Olive Canvas"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33432,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850078",
+            "name": "'Windrunner' Colorblock Jacket - Anthracite/ Barely Volt/X-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39184,
+                    "parent_id": 33432,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66832,
+                            "album_id": 39184,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574559.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574559.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66832,
+                        "album_id": 39184,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574559.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574559.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "X-Large"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Anthracite/ Barely Volt"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33440,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850079",
+            "name": "'Windrunner' Colorblock Jacket - Anthracite/ Barely Volt/Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39185,
+                    "parent_id": 33440,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66833,
+                            "album_id": 39185,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574537.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574537.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66833,
+                        "album_id": 39185,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574537.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574537.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Large"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Anthracite/ Barely Volt"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33434,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "35826698",
+            "name": "'Windrunner' Colorblock Jacket - Team Red/ Thunder Blue/ Blue/Small",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39186,
+                    "parent_id": 33434,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66834,
+                            "album_id": 39186,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574367.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574367.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66834,
+                        "album_id": 39186,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574367.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574367.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Small"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Team Red/ Thunder Blue/ Blue"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33417,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38416838",
+            "name": "'Windrunner' Colorblock Jacket - Purple/ Blue/ University Red/XX-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39187,
+                    "parent_id": 33417,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66835,
+                            "album_id": 39187,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574318.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574318.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66835,
+                        "album_id": 39187,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574318.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574318.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "XX-Large"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Purple/ Blue/ University Red"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33446,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38416837",
+            "name": "'Windrunner' Colorblock Jacket - Purple/ Blue/ University Red/X-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39188,
+                    "parent_id": 33446,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66836,
+                            "album_id": 39188,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574293.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574293.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66836,
+                        "album_id": 39188,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574293.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574293.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Purple/ Blue/ University Red"
+                },
+                {
+                    "variant": "Size",
+                    "value": "X-Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33418,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38416834",
+            "name": "'Windrunner' Colorblock Jacket - Ashen/ Ocean/ White/ Igloo/X-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39189,
+                    "parent_id": 33418,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66837,
+                            "album_id": 39189,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574248.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574248.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66837,
+                        "album_id": 39189,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574248.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574248.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "X-Large"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Ashen/ Ocean/ White/ Igloo"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33433,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37055264",
+            "name": "'Windrunner' Colorblock Jacket - Ocean Bliss/ Aegean Storm/XX-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39191,
+                    "parent_id": 33433,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66839,
+                            "album_id": 39191,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574799.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574799.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66839,
+                        "album_id": 39191,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574799.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574799.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Ocean Bliss/ Aegean Storm"
+                },
+                {
+                    "variant": "Size",
+                    "value": "XX-Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33444,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38416835",
+            "name": "'Windrunner' Colorblock Jacket - Purple/ Blue/ University Red/Medium",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39190,
+                    "parent_id": 33444,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66838,
+                            "album_id": 39190,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574268.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574268.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66838,
+                        "album_id": 39190,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574268.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574268.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Medium"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Purple/ Blue/ University Red"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33426,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38416831",
+            "name": "'Windrunner' Colorblock Jacket - Purple/ Blue/ University Red/Small",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39192,
+                    "parent_id": 33426,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66840,
+                            "album_id": 39192,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574188.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574188.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66840,
+                        "album_id": 39192,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574188.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574188.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Small"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Purple/ Blue/ University Red"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33428,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38527270",
+            "name": "'Windrunner' Colorblock Jacket - Red Sepia/ Black/ Taupe/ White/Medium",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39193,
+                    "parent_id": 33428,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66841,
+                            "album_id": 39193,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574682.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574682.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66841,
+                        "album_id": 39193,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574682.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574682.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Medium"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Red Sepia/ Black/ Taupe/ White"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33427,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38416851",
+            "name": "'Windrunner' Colorblock Jacket - Ashen/ Ocean/ White/ Igloo/Small",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39194,
+                    "parent_id": 33427,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66842,
+                            "album_id": 39194,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574065.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574065.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66842,
+                        "album_id": 39194,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574065.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574065.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Small"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Ashen/ Ocean/ White/ Igloo"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33456,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38527274",
+            "name": "'Windrunner' Colorblock Jacket - Red Sepia/ Black/ Taupe/ White/Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39196,
+                    "parent_id": 33456,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66844,
+                            "album_id": 39196,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574907.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574907.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66844,
+                        "album_id": 39196,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574907.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574907.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Large"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Red Sepia/ Black/ Taupe/ White"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33458,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850080",
+            "name": "'Windrunner' Colorblock Jacket - Blue Force/ Team Red/Small",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39195,
+                    "parent_id": 33458,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66843,
+                            "album_id": 39195,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574747.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574747.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66843,
+                        "album_id": 39195,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574747.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574747.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Size",
+                    "value": "Small"
+                },
+                {
+                    "variant": "Color",
+                    "value": "Blue Force/ Team Red"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33448,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "38527273",
+            "name": "'Windrunner' Colorblock Jacket - Red Sepia/ Black/ Taupe/ White/XX-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39198,
+                    "parent_id": 33448,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66846,
+                            "album_id": 39198,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574867.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574867.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66846,
+                        "album_id": 39198,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574867.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574867.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Red Sepia/ Black/ Taupe/ White"
+                },
+                {
+                    "variant": "Size",
+                    "value": "XX-Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        },
+        {
+            "id": 33450,
+            "offer_id": 12569,
+            "merchant_id": 10003,
+            "external_id": "37850081",
+            "name": "'Windrunner' Colorblock Jacket - Blue Force/ Team Red/XX-Large",
+            "in_stock": true,
+            "qty_available": 9999,
+            "inventory_tracked": true,
+            "sale_price": 10000,
+            "retail_price": 10000,
+            "currency": "USD",
+            "taxable": true,
+            "tax_type": "DEFAULT",
+            "albums": [
+                {
+                    "id": 39197,
+                    "parent_id": 33450,
+                    "type": "SKU",
+                    "name": "Sku Album",
+                    "media": [
+                        {
+                            "id": 66845,
+                            "album_id": 39197,
+                            "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574727.jpg",
+                            "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574727.jpg",
+                            "type": "IMAGE",
+                            "display_order": 0,
+                            "primary": true
+                        }
+                    ],
+                    "primary_media": {
+                        "id": 66845,
+                        "album_id": 39197,
+                        "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574727.jpg",
+                        "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574727.jpg",
+                        "type": "IMAGE",
+                        "display_order": 0,
+                        "primary": true
+                    }
+                }
+            ],
+            "variant_values": [
+                {
+                    "variant": "Color",
+                    "value": "Blue Force/ Team Red"
+                },
+                {
+                    "variant": "Size",
+                    "value": "XX-Large"
+                }
+            ],
+            "status": "AVAILABLE",
+            "date_created": "2022-02-18T05:51:48+0000",
+            "date_last_modified": "2023-08-08T19:45:35+0000",
+            "sku_dimensions": {
+                "weight": 0,
+                "height": 0,
+                "width": 0,
+                "length": 0,
+                "type": "SKU"
+            }
+        }
+    ],
+    "albums": [
+        {
+            "id": 31375,
+            "parent_id": 12569,
+            "type": "OFFER",
+            "name": "Offer Album",
+            "media": [
+                {
+                    "id": 53750,
+                    "album_id": 31375,
+                    "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574003.jpg",
+                    "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574003.jpg",
+                    "type": "IMAGE",
+                    "display_order": 0,
+                    "primary": true
+                }
+            ],
+            "primary_media": {
+                "id": 53750,
+                "album_id": 31375,
+                "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574003.jpg",
+                "source_url": "https://d2j6dbq0eux0bg.cloudfront.net/images/13101742/954574003.jpg",
+                "type": "IMAGE",
+                "display_order": 0,
+                "primary": true
+            }
+        }
+    ],
+    "three_denabled": false,
+    "status": "AVAILABLE",
+    "publishing_status": "PUBLISHED",
+    "date_created": "2018-12-11T20:47:58+0000",
+    "date_last_modified": "2023-08-08T19:45:35+0000",
+    "commission_rate": 10,
+    "currency_symbol": "$",
+    "subscription_status": "NOT_SUBSCRIBED"
+}
